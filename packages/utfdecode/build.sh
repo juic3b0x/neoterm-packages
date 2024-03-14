@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/fornwall/utfdecode
+NEOTERM_PKG_DESCRIPTION="Tool for decoding, encoding and debugging unicode"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.3.4
+NEOTERM_PKG_REVISION=6
+NEOTERM_PKG_SRCURL=https://github.com/fornwall/utfdecode/releases/download/v$NEOTERM_PKG_VERSION/utfdecode-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=5fd1473f6cf6bdedeb33569c3b0f6823aceda366c714f6a475e2d28767f99b5a
+NEOTERM_PKG_DEPENDS="libc++"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag" # As of 2022-11-29T12:17:41 no github releases are available.

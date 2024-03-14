@@ -1,0 +1,13 @@
+# X11 package
+NEOTERM_PKG_HOMEPAGE=https://xcb.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X11 client-side library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.16.1"
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/archive/individual/lib/libxcb-$NEOTERM_PKG_VERSION.tar.xz
+NEOTERM_PKG_SHA256=f24d187154c8e027b358fc7cb6588e35e33e6a92f11c668fe77396a7ae66e311
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libxau, libxdmcp"
+NEOTERM_PKG_BUILD_DEPENDS="xcb-proto, xorg-util-macros"
+NEOTERM_PKG_RECOMMENDS="xorg-xauth"
+NEOTERM_PKG_RM_AFTER_INSTALL="lib/python*"

@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=http://www.tads.org/frobtads.htm
+NEOTERM_PKG_DESCRIPTION="TADS is a free authoring system for writing your own Interactive Fiction"
+NEOTERM_PKG_LICENSE="non-free"
+NEOTERM_PKG_VERSION=2.0
+NEOTERM_PKG_REVISION=3
+NEOTERM_PKG_SRCURL=https://github.com/realnc/frobtads/releases/download/v$NEOTERM_PKG_VERSION/frobtads-$NEOTERM_PKG_VERSION.tar.bz2
+NEOTERM_PKG_SHA256=893bd3fd77dfdc8bfe8a96e8d7bfac693da0e4278871f10fe7faa59cc239a090
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_RM_AFTER_INSTALL="share/frobtads/tads3/doc share/frobtads/tads3/lib/webuires"
+NEOTERM_PKG_DEPENDS="libc++, ncurses, libcurl"
+NEOTERM_PKG_LICENSE_FILE="doc/COPYING"
+NEOTERM_PKG_MAINTAINER="@neoterm"

@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/complexlogic/rsgain
+NEOTERM_PKG_DESCRIPTION="A simple audio normalizazion utility"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="Joshua Kahn @TomJo2000"
+NEOTERM_PKG_VERSION=3.5
+NEOTERM_PKG_SRCURL=https://github.com/complexlogic/rsgain/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=46689e175be24d1d662002dcd2ab5a2f77e644904e88228ca3f3b8d118b266be
+NEOTERM_PKG_DEPENDS='taglib, fmt, libinih, libebur128, ffmpeg'
+NEOTERM_PKG_AUTO_UPDATE=true

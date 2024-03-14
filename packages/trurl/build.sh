@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE="https://curl.se/trurl/"
+NEOTERM_PKG_DESCRIPTION="trurl is a command line tool that parses and manipulates URLs"
+NEOTERM_PKG_LICENSE="curl"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.10"
+NEOTERM_PKG_SRCURL="https://github.com/curl/trurl/archive/trurl-$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256="e54ee05a1a39f2547fbb39225f9cf5e2608eeaf07ad3f7dbff0a069d060d3c46"
+NEOTERM_PKG_DEPENDS="libcurl"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+"

@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://nyancat.dakko.us
+NEOTERM_PKG_DESCRIPTION="Nyancat in your terminal, rendered through ANSI escape sequences."
+NEOTERM_PKG_LICENSE="NCSA"
+NEOTERM_PKG_MAINTAINER="Oliver Schmidhauser @Neo-Oli"
+NEOTERM_PKG_VERSION=1.5.2
+NEOTERM_PKG_SRCURL=https://github.com/klange/nyancat/archive/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=88cdcaa9c7134503dd0364a97fa860da3381a09cb555c3aae9918360827c2032
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC=true

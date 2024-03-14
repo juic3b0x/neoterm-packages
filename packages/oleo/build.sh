@@ -1,0 +1,19 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/oleo/
+NEOTERM_PKG_DESCRIPTION="The GNU Spreadsheet"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.99.16
+NEOTERM_PKG_REVISION=7
+NEOTERM_PKG_SRCURL=http://ftp.gnu.org/gnu/oleo/oleo-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=6598df85d06ff2534ec08ed0657508f17dbbc58dd02d419160989de7c487bc86
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--without-x --infodir=$NEOTERM_PREFIX/share/info"
+NEOTERM_PKG_KEEP_INFOPAGES=true
+
+NEOTERM_PKG_RM_AFTER_INSTALL="
+Oleo/*
+share/oleo/oleo.html"
+
+neoterm_step_pre_configure() {
+	export CFLAGS+=" -fcommon"
+}

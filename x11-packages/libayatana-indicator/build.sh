@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/AyatanaIndicators/libayatana-indicator
+NEOTERM_PKG_DESCRIPTION="Ayatana Indicators Shared Library"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.9.4"
+NEOTERM_PKG_SRCURL=https://github.com/AyatanaIndicators/libayatana-indicator/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=a18d3c682e29afd77db24366f8475b26bda22b0e16ff569a2ec71cd6eb4eac95
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="ayatana-ido, gdk-pixbuf, glib, gtk3"

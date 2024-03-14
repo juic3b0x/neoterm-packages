@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://www.nongnu.org/lzip/lzlib.html
+NEOTERM_PKG_DESCRIPTION="A library providing in-memory LZMA compression and decompression functions"
+NEOTERM_PKG_LICENSE="BSD 2-Clause, GPL-2.0"
+NEOTERM_PKG_LICENSE_FILE="COPYING, COPYING.GPL"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.14"
+NEOTERM_PKG_SRCURL=https://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=5acac8714ed4f306020bae660dddce706e5f8a795863679037da9fe6bf4dcf6f
+NEOTERM_PKG_AUTO_UPDATE=true

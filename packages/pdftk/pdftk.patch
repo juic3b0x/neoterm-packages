@@ -1,0 +1,5 @@
+--- a/pdftk
++++ b/pdftk
+@@ -0,0 +1,2 @@
++#!@NEOTERM_PREFIX@/bin/sh
++exec java -cp @NEOTERM_PREFIX@/share/java/pdftk.jar:@NEOTERM_PREFIX@/share/java/bcprov.jar:@NEOTERM_PREFIX@/share/java/commons-lang3.jar com.gitlab.pdftk_java.pdftk "$@"

@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/max-niederman/ttyper
+NEOTERM_PKG_DESCRIPTION="Terminal-based typing test"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.4.1"
+NEOTERM_PKG_SRCURL=https://github.com/max-niederman/ttyper/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=8adfaf4842fefbda9c3579874550e853b562d27e09707d892cba914233799b39
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC=true

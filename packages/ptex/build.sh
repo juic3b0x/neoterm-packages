@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/wdas/ptex
+NEOTERM_PKG_DESCRIPTION="Per-Face Texture Mapping for Production Rendering"
+NEOTERM_PKG_LICENSE="BSD"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.4.2
+NEOTERM_PKG_SRCURL=https://github.com/wdas/ptex/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=c8235fb30c921cfb10848f4ea04d5b662ba46886c5e32ad5137c5086f3979ee1
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="libc++, zlib"

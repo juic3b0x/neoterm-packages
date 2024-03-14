@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/carlobaldassi/liblqr
+NEOTERM_PKG_DESCRIPTION="Provides a C/C++ API for performing non-uniform resizing of images by the seam-carving technique"
+NEOTERM_PKG_LICENSE="GPL-3.0, LGPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.4.2
+NEOTERM_PKG_SRCURL=https://github.com/carlobaldassi/liblqr/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=1019a2d91f3935f1f817eb204a51ec977a060d39704c6dafa183b110fd6280b0
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="glib"

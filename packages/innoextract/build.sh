@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://constexpr.org/innoextract/
+NEOTERM_PKG_DESCRIPTION="A tool to unpack installers created by Inno Setup"
+NEOTERM_PKG_LICENSE="ZLIB"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.9
+NEOTERM_PKG_REVISION=6
+NEOTERM_PKG_SRCURL=https://constexpr.org/innoextract/files/innoextract-${NEOTERM_PKG_VERSION}/innoextract-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=6344a69fc1ed847d4ed3e272e0da5998948c6b828cb7af39c6321aba6cf88126
+NEOTERM_PKG_DEPENDS="libc++, boost, liblzma, libiconv"
+NEOTERM_PKG_BUILD_DEPENDS="boost-headers"

@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE=https://geos.osgeo.org/
+NEOTERM_PKG_DESCRIPTION="Geometry Engine, C++ port of the Java Topology Suite"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Henrik Grimler @Grimler91"
+NEOTERM_PKG_VERSION="3.12.1"
+NEOTERM_PKG_SRCURL=https://github.com/libgeos/geos/archive/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=f6e2f3aaa417410d3fa4c78a9c5ef60d46097ef7ad0aee3bbbb77327350e1e01
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++"
+NEOTERM_PKG_BREAKS="libgeos-dev"
+NEOTERM_PKG_REPLACES="libgeos-dev"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_FORCE_CMAKE=true

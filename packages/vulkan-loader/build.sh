@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-packages
+NEOTERM_PKG_DESCRIPTION="A metapackage that provides vulkan loader library"
+NEOTERM_PKG_LICENSE="Public Domain"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.0.3
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="vulkan-loader-generic | vulkan-loader-android"
+NEOTERM_PKG_ANTI_BUILD_DEPENDS="vulkan-loader-android, vulkan-loader-generic"
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_SKIP_SRC_EXTRACT=true
+NEOTERM_PKG_METAPACKAGE=true

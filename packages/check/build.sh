@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://libcheck.github.io/check
+NEOTERM_PKG_DESCRIPTION="A unit testing framework for C"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.15.2
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://github.com/libcheck/check/releases/download/${NEOTERM_PKG_VERSION}/check-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=a8de4e0bacfb4d76dd1c618ded263523b53b85d92a146d8835eb1a52932fa20a
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libtool, pkg-config, texinfo"
+NEOTERM_PKG_BUILD_IN_SRC=true

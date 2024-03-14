@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/ebiggers/libdeflate
+NEOTERM_PKG_DESCRIPTION="C library for fast compression and decompression"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.19"
+NEOTERM_PKG_SRCURL=https://github.com/ebiggers/libdeflate/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=27bf62d71cd64728ff43a9feb92f2ac2f2bf748986d856133cc1e51992428c25
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_FORCE_CMAKE=true

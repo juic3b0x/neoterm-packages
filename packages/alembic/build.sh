@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://alembic.io
+NEOTERM_PKG_DESCRIPTION="A framework for sharing scene data that includes a C++ lib, a file format and client plugin"
+NEOTERM_PKG_LICENSE="BSD 3-Clause, BSL-1.0"
+NEOTERM_PKG_LICENSE_FILE="LICENSE.txt"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.8.5
+NEOTERM_PKG_SRCURL=https://github.com/alembic/alembic/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=180a12f08d391cd89f021f279dbe3b5423b1db751a9898540c8059a45825c2e9
+NEOTERM_PKG_DEPENDS="imath, libc++"

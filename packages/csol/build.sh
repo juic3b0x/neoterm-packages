@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/nielssp/csol
+NEOTERM_PKG_DESCRIPTION="A small collection of solitaire games implemented in C using ncurses"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.6.0
+NEOTERM_PKG_SRCURL=https://github.com/nielssp/csol/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=9fa45da2b73fcb4e58b5e0734c92e5325e664fab95ca31873760244ef9ddedd9
+NEOTERM_PKG_DEPENDS="libandroid-support, ncurses"
+NEOTERM_CMAKE_BUILD="Unix Makefiles"
+NEOTERM_PKG_GROUPS="games"
+NEOTERM_PKG_BUILD_IN_SRC=true

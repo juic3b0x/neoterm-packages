@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://zsync.moria.org.uk/
+NEOTERM_PKG_DESCRIPTION="A file transfer program to download files from remote web servers"
+NEOTERM_PKG_LICENSE="Artistic-License-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.6.2
+NEOTERM_PKG_REVISION=5
+NEOTERM_PKG_SRCURL=http://zsync.moria.org.uk/download/zsync-$NEOTERM_PKG_VERSION.tar.bz2
+NEOTERM_PKG_SHA256=0b9d53433387aa4f04634a6c63a5efa8203070f2298af72a705f9be3dda65af2
+NEOTERM_PKG_BUILD_IN_SRC=true

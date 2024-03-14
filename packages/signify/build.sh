@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/aperezdc/signify
+NEOTERM_PKG_DESCRIPTION="Lightweight cryptographic signing and verifying tool"
+NEOTERM_PKG_LICENSE="ISC"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=31
+NEOTERM_PKG_SRCURL=https://github.com/aperezdc/signify/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=8111af7424f4cc69dab5cd43a14ccd607ca2d171ac77dd3ae288264a53254e5f
+NEOTERM_PKG_DEPENDS="libbsd"
+NEOTERM_PKG_BUILD_DEPENDS="libbsd"
+NEOTERM_PKG_BUILD_IN_SRC=true

@@ -1,0 +1,21 @@
+NEOTERM_SUBPKG_INCLUDE="
+bin/$NEOTERM_HOST_PLATFORM-*
+bin/addr2line
+bin/ar
+bin/c++filt
+bin/dwp
+bin/ld
+bin/nm
+bin/objcopy
+bin/objdump
+bin/ranlib
+bin/readelf
+bin/size
+bin/strings
+bin/strip
+share/binutils/
+"
+NEOTERM_SUBPKG_DESCRIPTION="GNU Binutils (metapackage)"
+NEOTERM_SUBPKG_DEPEND_ON_PARENT=no
+NEOTERM_SUBPKG_DEPENDS="binutils-bin"
+NEOTERM_SUBPKG_CONFLICTS="binutils-is-llvm"

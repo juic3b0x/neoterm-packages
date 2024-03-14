@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=http://www.jedsoft.org/most/index.html
+NEOTERM_PKG_DESCRIPTION="A terminal pager similar to 'more' and 'less'"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=5.2.0
+NEOTERM_PKG_SRCURL=https://github.com/jedsoft/most/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=5e51a02e45660ce81336046f6ed4110c406dfd8f5972601016e046d393dcdadb
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="slang"
+NEOTERM_PKG_BUILD_IN_SRC=true

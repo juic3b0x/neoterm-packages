@@ -1,0 +1,15 @@
+NEOTERM_PKG_HOMEPAGE=http://duc.zevv.nl/
+NEOTERM_PKG_DESCRIPTION="High-performance disk usage analyzer"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.4.5
+NEOTERM_PKG_SRCURL=https://github.com/zevv/duc/releases/download/$NEOTERM_PKG_VERSION/duc-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=c69512ca85b443e42ffbb4026eedd5492307af612047afb9c469df923b468bfd
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="leveldb, ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+--disable-x11
+--with-db-backend=leveldb
+--disable-cairo"

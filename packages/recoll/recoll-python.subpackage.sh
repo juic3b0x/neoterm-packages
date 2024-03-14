@@ -1,0 +1,3 @@
+NEOTERM_SUBPKG_INCLUDE="lib/python*"
+NEOTERM_SUBPKG_DESCRIPTION="Python interface for Recoll"
+NEOTERM_SUBPKG_DEPENDS="python"

@@ -1,0 +1,15 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/labbots/google-drive-upload
+NEOTERM_PKG_DESCRIPTION="Bash scripts to upload files to google drive"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="4.5"
+NEOTERM_PKG_SRCURL=$NEOTERM_PKG_HOMEPAGE/archive/v$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=143bf7521fab80f5b8f5edf4180648043f900c8aa357f0b021f9ce8b06207df5
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_DEPENDS='bash, curl'
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+
+neoterm_step_make_install() {
+	install -D release/bash/* -t "$NEOTERM_PREFIX/bin"
+}

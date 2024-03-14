@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://www.tcsh.org
+NEOTERM_PKG_DESCRIPTION="TENEX C Shell, an enhanced version of Berkeley csh"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=6.24.10
+NEOTERM_PKG_SRCURL=https://github.com/tcsh-org/tcsh/archive/TCSH${NEOTERM_PKG_VERSION//./_}.tar.gz
+NEOTERM_PKG_SHA256=a5d18d38fcccb038bd0c978e69984927cb7711c5adb8fabcc347edc9a46ac76d
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_METHOD=repology
+NEOTERM_PKG_BUILD_DEPENDS="libcrypt, ncurses"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--enable-nls --disable-nls-catalogs"

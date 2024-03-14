@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/ros/console_bridge"
+NEOTERM_PKG_DESCRIPTION="A ROS-independent package for logging that seamlessly pipes into rosconsole/rosout for ROS-dependent packages"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="Pooya Moradi <pvonmoradi@gmail.com>"
+NEOTERM_PKG_VERSION="1.0.2"
+NEOTERM_PKG_SRCURL="https://github.com/ros/console_bridge/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256=303a619c01a9e14a3c82eb9762b8a428ef5311a6d46353872ab9a904358be4a4
+NEOTERM_PKG_DEPENDS="libc++"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true

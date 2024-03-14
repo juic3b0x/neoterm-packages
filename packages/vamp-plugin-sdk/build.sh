@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE=https://www.vamp-plugins.org/
+NEOTERM_PKG_DESCRIPTION="An API for audio analysis and feature extraction plugins"
+NEOTERM_PKG_LICENSE="MIT, BSD 3-Clause"
+NEOTERM_PKG_LICENSE_FILE="COPYING"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.10
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/c4dm/vamp-plugin-sdk/archive/refs/tags/vamp-plugin-sdk-v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=b552bc91817294c7f90ea07d70938642ebf15d5e3bafc81cf7d55efab9995399
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_METHOD=repology
+NEOTERM_PKG_DEPENDS="libc++, libsndfile"
+NEOTERM_PKG_BUILD_IN_SRC=true

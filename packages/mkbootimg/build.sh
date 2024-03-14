@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/osm0sis/mkbootimg
+NEOTERM_PKG_DESCRIPTION="Maintained fork with android's mkbootimg and unpackbootimg"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_LICENSE_FILE="NOTICE"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2022.11.09
+NEOTERM_PKG_SRCURL=https://github.com/osm0sis/mkbootimg/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=33c03adf318482b8ffa624b18c8c9ba605eba71a0cd9515409328b63e2add8b5
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_BUILD_IN_SRC=true

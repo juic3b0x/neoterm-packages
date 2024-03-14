@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gaia-gis.it/fossil/spatialite-tools
+NEOTERM_PKG_DESCRIPTION="Collection of tools supporting SpatiaLite"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=5.0.1
+NEOTERM_PKG_REVISION=3
+NEOTERM_PKG_SRCURL=https://www.gaia-gis.it/gaia-sins/spatialite-tools-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=9604c205e87f037789bc52302c66ccd1371c3e98c74e8ec4e29b0752de35171c
+NEOTERM_PKG_DEPENDS="libexpat, libiconv, libspatialite, libsqlite, libxml2"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-readosm --disable-minizip"

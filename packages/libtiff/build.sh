@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE=http://www.simplesystems.org/libtiff/ # Note that http://libtiff.org/ is hijacked
+NEOTERM_PKG_DESCRIPTION="Support for the Tag Image File Format (TIFF) for storing image data"
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="LICENSE.md"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="4.6.0"
+NEOTERM_PKG_SRCURL=https://download.osgeo.org/libtiff/tiff-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=e178649607d1e22b51cf361dd20a3753f244f022eefab1f2f218fc62ebaf87d2
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, libjpeg-turbo, liblzma, zlib, zstd"
+NEOTERM_PKG_BREAKS="libtiff-dev"
+NEOTERM_PKG_REPLACES="libtiff-dev"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--enable-cxx --disable-webp"

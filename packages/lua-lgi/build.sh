@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/lgi-devs/lgi
+NEOTERM_PKG_DESCRIPTION="Dynamic Lua binding to GObject libraries using GObject-Introspection"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.9.2
+NEOTERM_PKG_SRCURL=https://github.com/lgi-devs/lgi/archive/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=cfc4105482b4730b3a40097c9d9e7e35c46df2fb255370bdeb2f45a886548c4f
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="glib, gobject-introspection, libffi, liblua54"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_MAKE_ARGS="PREFIX=$NEOTERM_PREFIX"

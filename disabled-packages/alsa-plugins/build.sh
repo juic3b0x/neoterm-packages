@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE=https://www.alsa-project.org
+NEOTERM_PKG_DESCRIPTION="Extra ALSA plugins"
+NEOTERM_PKG_VERSION=1.1.1
+NEOTERM_PKG_LICENSE=LGPL-2.1
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_SRCURL=https://alsa-project.org/files/pub/plugins/alsa-plugins-$NEOTERM_PKG_VERSION.tar.bz2
+NEOTERM_PKG_SHA256=8ea4d1e082c36528a896a2581e5eb62d4dc2683238e353050d0d624e65f901f1
+NEOTERM_PKG_DEPENDS="pulseaudio"
+NEOTERM_PKG_EXTRA_MAKE_ARGS='SUBDIRS=pulse'
+
+neoterm_step_post_make_install() {
+    cp $NEOTERM_PKG_BUILDER_DIR/asound.conf $NEOTERM_PREFIX/etc
+}

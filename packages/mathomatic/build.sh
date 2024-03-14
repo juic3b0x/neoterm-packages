@@ -1,0 +1,17 @@
+NEOTERM_PKG_HOMEPAGE=https://en.wikipedia.org/wiki/Mathomatic
+NEOTERM_PKG_DESCRIPTION="Simple CAS and symbolic calculator"
+NEOTERM_PKG_LICENSE="LGPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=16.0.5
+NEOTERM_PKG_REVISION=6
+NEOTERM_PKG_SRCURL="https://fossies.org/linux/misc/old/mathomatic-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=7f525bdb2e13006549dd8f17906c26f926f5ac51174f02f074107c612491e05c
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_MAKE_ARGS="READLINE=1"
+NEOTERM_PKG_DEPENDS="readline"
+NEOTERM_PKG_RM_AFTER_INSTALL="share/applications/mathomatic.desktop share/pixmaps"
+
+neoterm_step_pre_configure() {
+	rm $NEOTERM_PKG_SRCDIR/CMakeLists.txt
+	CPPFLAGS+=" -DUSE_TGAMMA -DBOLD_COLOR"
+}

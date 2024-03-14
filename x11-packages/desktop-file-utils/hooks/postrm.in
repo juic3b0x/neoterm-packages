@@ -1,0 +1,10 @@
+#!@NEOTERM_PREFIX@/bin/sh
+
+if [ "${1}" = "remove" ]; then
+    if [ -d "@NEOTERM_PREFIX@/share/applications" ]; then
+        rm -f "@NEOTERM_PREFIX@/share/applications/mimeinfo.cache"
+        rmdir --ignore-fail-on-non-empty "@NEOTERM_PREFIX@/share/applications"
+    fi
+fi
+
+exit 0

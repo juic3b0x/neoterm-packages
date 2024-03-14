@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/baskerville/sxhkd"
+NEOTERM_PKG_DESCRIPTION="Simple X hotkey daemon"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@leapofazzam123"
+NEOTERM_PKG_VERSION=0.6.2
+NEOTERM_PKG_REVISION=4
+NEOTERM_PKG_SRCURL="https://github.com/baskerville/sxhkd/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256="1edc8b1a8b3631c10ba9cb9df1181830dacbbdf77adb558e31d5dd2029637386"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="libxcb, xcb-util-keysyms"
+NEOTERM_PKG_BUILD_DEPENDS="xcb-util"
+NEOTERM_PKG_BUILD_IN_SRC=true

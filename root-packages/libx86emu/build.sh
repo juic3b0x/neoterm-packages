@@ -1,0 +1,18 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/wfeldt/libx86emu
+NEOTERM_PKG_DESCRIPTION="x86 emulation library"
+# License: HPND
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="LICENSE, LICENSE_INFO"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=3.5
+NEOTERM_PKG_SRCURL=https://github.com/wfeldt/libx86emu/archive/$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=91da55f5da55017d5a80e2364de30f9520aa8df2744ff587a09ba58d6e3536c8
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_BREAKS="libx86emu-dev"
+NEOTERM_PKG_REPLACES="libx86emu-dev"
+NEOTERM_PKG_BUILD_IN_SRC=true
+
+neoterm_step_configure() {
+	echo 'touch changelog' > git2log
+}

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="LXQt Image Viewer"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="1.4.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/lximage-qt/releases/download/${NEOTERM_PKG_VERSION}/lximage-qt-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=0857650bdb32c5ba5befbd726fbff62137e45d2cf26bc88b0d32622e718cd34e
+NEOTERM_PKG_DEPENDS="glib, libc++, libexif, libfm-qt, libx11, libxfixes, qt5-qtbase, qt5-qtsvg, qt5-qtx11extras"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools, qt5-qtbase-cross-tools, qt5-qttools-cross-tools"
+NEOTERM_PKG_AUTO_UPDATE=true

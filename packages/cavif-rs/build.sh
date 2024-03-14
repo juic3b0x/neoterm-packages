@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE="https://lib.rs/cavif"
+NEOTERM_PKG_DESCRIPTION="AVIF image creator in pure Rust"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.5.5"
+NEOTERM_PKG_SRCURL=https://github.com/kornelski/cavif-rs/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=c4351947d9eacadddbbe45a4bf9d9a4d1ef9cd0dd32bc939b05196c0c47eba0a
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC=true

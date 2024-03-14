@@ -1,0 +1,17 @@
+NEOTERM_PKG_HOMEPAGE=https://biboumi.louiz.org/
+NEOTERM_PKG_DESCRIPTION="An XMPP gateway that connects to IRC servers and translates between the two protocols"
+NEOTERM_PKG_LICENSE="ZLIB"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=9.0
+NEOTERM_PKG_REVISION=3
+NEOTERM_PKG_SRCURL=https://github.com/louiz/biboumi/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=4d5bd5e21252ab4e79c14413afb922d69beba802519c9f38796f6c1372abac41
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="libc++, libexpat, libgcrypt, libiconv, libidn, libsqlite, libuuid"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+-DWITHOUT_BOTAN=ON
+-DWITHOUT_POSTGRESQL=ON
+-DWITHOUT_SYSTEMD=ON
+-DWITHOUT_UDNS=ON
+"

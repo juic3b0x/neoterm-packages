@@ -1,0 +1,9 @@
+{
+    "data-root": "@NEOTERM_PREFIX@/lib/docker",
+    "exec-root": "@NEOTERM_PREFIX@/var/run/docker",
+    "pidfile": "@NEOTERM_PREFIX@/var/run/docker.pid",
+    "hosts": [
+        "unix://@NEOTERM_PREFIX@/var/run/docker.sock"
+    ],
+    "storage-driver": "overlay2"
+}

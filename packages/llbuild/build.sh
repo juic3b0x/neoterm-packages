@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/apple/swift-llbuild
+NEOTERM_PKG_DESCRIPTION="A low-level build system, used by the Swift Package Manager"
+NEOTERM_PKG_LICENSE="Apache-2.0, NCSA"
+NEOTERM_PKG_MAINTAINER="@finagolfin"
+NEOTERM_PKG_VERSION=5.10
+NEOTERM_PKG_SRCURL=https://github.com/apple/swift-llbuild/archive/swift-${NEOTERM_PKG_VERSION}-RELEASE.tar.gz
+NEOTERM_PKG_SHA256=ae8962d59244abac157c02813d05e1c077915bbd6022fe9fb62040806ac8dc55
+NEOTERM_PKG_DEPENDS="libc++, libandroid-spawn, libsqlite"
+NEOTERM_PKG_NO_STATICSPLIT=true

@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://rizin.re
+NEOTERM_PKG_DESCRIPTION="UNIX-like reverse engineering framework and command-line toolset."
+NEOTERM_PKG_LICENSE="GPL-3.0, LGPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.7.2"
+NEOTERM_PKG_SRCURL=https://github.com/rizinorg/rizin/archive/v$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SUGGESTS="python, apk-tools, apktool, apksigner"
+NEOTERM_PKG_SHA256=fb8b6501cae5462f7139a3fe86b60b3db8a6f9af45b9ccba87c6710907c671de
+NEOTERM_PKG_AUTO_UPDATE=true

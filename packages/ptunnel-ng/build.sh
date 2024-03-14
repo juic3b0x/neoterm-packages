@@ -1,0 +1,8 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/lnslbrty/ptunnel-ng
+NEOTERM_PKG_DESCRIPTION="Tunnel TCP connections through ICMP"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.42
+NEOTERM_PKG_SRCURL=https://github.com/lnslbrty/ptunnel-ng/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=5ee6b101e4e252ea98e3337da6542d73b7f33de49a89014276cc98a70142ab10
+NEOTERM_PKG_AUTO_UPDATE=true

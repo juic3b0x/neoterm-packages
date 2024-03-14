@@ -1,0 +1,5 @@
+NEOTERM_SUBPKG_DESCRIPTION="Platform-independent data for httrack"
+NEOTERM_SUBPKG_PLATFORM_INDEPENDENT=true
+NEOTERM_SUBPKG_INCLUDE="share/httrack/"
+NEOTERM_SUBPKG_BREAKS="httrack (<< 3.49.3)"
+NEOTERM_SUBPKG_REPLACES="httrack (<< 3.49.3)"

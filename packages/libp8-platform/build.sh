@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/Pulse-Eight/platform
+NEOTERM_PKG_DESCRIPTION="Platform support library used by libCEC and binary add-ons for Kodi"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.1.0.1
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://github.com/Pulse-Eight/platform/archive/p8-platform-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=064f8d2c358895c7e0bea9ae956f8d46f3f057772cb97f2743a11d478a0f68a0
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_METHOD=repology
+NEOTERM_PKG_DEPENDS="libc++"

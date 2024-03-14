@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://zipios.sourceforge.io/
+NEOTERM_PKG_DESCRIPTION="A small C++ library for reading and writing zip files"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.3.2"
+NEOTERM_PKG_SRCURL=https://github.com/Zipios/Zipios/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=d78b86c83af32864f1d68ced31bc0b2c47c69be0df518dca02b6b5ddd668dfe5
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, zlib"

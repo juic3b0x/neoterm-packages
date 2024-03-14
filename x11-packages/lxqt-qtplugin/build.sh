@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="LXQt platform integration plugin for Qt 5"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="1.4.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/lxqt-qtplugin/releases/download/${NEOTERM_PKG_VERSION}/lxqt-qtplugin-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=2afd9af1de8cc07b276c160e9831bde6fbc9b65a367df8227a3aa7df5e856eae
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase, kwindowsystem, libqtxdg, libfm-qt, libexif, libdbusmenu-qt"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools, qt5-qtbase-cross-tools, qt5-qttools-cross-tools"
+NEOTERM_PKG_AUTO_UPDATE=true

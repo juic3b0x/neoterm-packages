@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://giflib.sourceforge.net/
+NEOTERM_PKG_DESCRIPTION="A library for reading and writing gif images"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="5.2.2"
+NEOTERM_PKG_SRCURL=https://downloads.sourceforge.net/project/giflib/giflib-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=be7ffbd057cadebe2aa144542fd90c6838c6a083b5e8a9048b8ee3b66b29d5fb
+NEOTERM_PKG_BREAKS="giflib-dev"
+NEOTERM_PKG_REPLACES="giflib-dev"
+NEOTERM_PKG_BUILD_IN_SRC=true

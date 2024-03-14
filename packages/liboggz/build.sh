@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://www.xiph.org/oggz/
+NEOTERM_PKG_DESCRIPTION="Command and library to inspect, tweak, edit and validate Ogg files"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.1.1
+NEOTERM_PKG_REVISION=5
+NEOTERM_PKG_SRCURL=https://downloads.xiph.org/releases/liboggz/liboggz-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=6bafadb1e0a9ae4ac83304f38621a5621b8e8e32927889e65a98706d213d415a
+NEOTERM_PKG_DEPENDS="libogg"
+NEOTERM_PKG_BREAKS="liboggz-dev"
+NEOTERM_PKG_REPLACES="liboggz-dev"

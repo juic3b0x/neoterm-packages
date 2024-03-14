@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.theora.org/
+NEOTERM_PKG_DESCRIPTION="An open video codec developed by the Xiph.org"
+NEOTERM_PKG_LICENSE="BSD"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.1.1
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://downloads.xiph.org/releases/theora/libtheora-${NEOTERM_PKG_VERSION}.tar.bz2
+NEOTERM_PKG_SHA256=b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc
+NEOTERM_PKG_DEPENDS="libogg, libvorbis"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-examples"

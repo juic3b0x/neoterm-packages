@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://rakshasa.github.io/rtorrent/
+NEOTERM_PKG_DESCRIPTION="Ncurses BitTorrent client based on libTorrent"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.9.8
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://github.com/rakshasa/rtorrent/releases/download/v${NEOTERM_PKG_VERSION}/rtorrent-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=9edf0304bf142215d3bc85a0771446b6a72d0ad8218efbe184b41e4c9c7542af
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, libcurl, libtorrent, ncurses"

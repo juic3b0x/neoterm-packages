@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/lxqt/qtxdg-tools"
+NEOTERM_PKG_DESCRIPTION="CLI tools for libqtxdg."
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="3.12.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/qtxdg-tools/archive/${NEOTERM_PKG_VERSION}.tar.gz"
+NEOTERM_PKG_SHA256=b49219e485b969a4fdcec14487859a07961e6d63f4456c0064bc1ca073e15b0f
+NEOTERM_PKG_DEPENDS="libc++, libqtxdg, qt5-qtbase"
+NEOTERM_PKG_AUTO_UPDATE=true

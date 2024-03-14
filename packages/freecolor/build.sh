@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=http://rkeene.org/oss/freecolor/
+NEOTERM_PKG_DESCRIPTION="Freecolor is a replacement for Linux that displays free memory graphically"
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="COPYING"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.9.3
+NEOTERM_PKG_SRCURL=http://rkeene.org/files/oss/freecolor/freecolor-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=58cda97d444405918f1e15b698a5cb2a72dd152a1d93e3ac23e001634690d6cf
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_BUILD_DEPENDS="procps"

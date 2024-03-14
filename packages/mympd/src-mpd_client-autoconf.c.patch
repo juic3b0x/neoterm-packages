@@ -1,0 +1,15 @@
+--- a/src/mpd_client/autoconf.c
++++ b/src/mpd_client/autoconf.c
+@@ -99,9 +99,9 @@
+     FREE_SDS(xdg_runtime_dir);
+ 
+     const char *test_sockets[] = {
+-        "/run/mpd/socket",
+-        "/var/run/mpd/socket",
+-        "/var/lib/mpd/socket", //Gentoo default
++        "@NEOTERM_PREFIX@/var/run/mpd.socket",
++        "@NEOTERM_PREFIX@/run/mpd.socket",
++        "@NEOTERM_PREFIX@/var/lib/mpd.socket", //Gentoo default
+         NULL
+     };
+ 

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://waterlan.home.xs4all.nl/dos2unix.html
+NEOTERM_PKG_DESCRIPTION="Converts between DOS and Unix text files"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_LICENSE_FILE="COPYING.txt"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=7.5.2
+NEOTERM_PKG_SRCURL=https://waterlan.home.xs4all.nl/dos2unix/dos2unix-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=264742446608442eb48f96c20af6da303cb3a92b364e72cb7e24f88239c4bf3a
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_DEPENDS="libandroid-support"

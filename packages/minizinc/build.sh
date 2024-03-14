@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/MiniZinc/libminizinc"
+NEOTERM_PKG_DESCRIPTION="A medium-level constraint modelling language"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_LICENSE="MPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.8.3"
+NEOTERM_PKG_SRCURL="https://github.com/MiniZinc/libminizinc/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256=151ec26165abfb13d709d89be92b3f9bbb5ba3873b8ecf9d88ac15f31042628f
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, zlib, gecode"

@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://dev.lovelyhq.com/libburnia
+NEOTERM_PKG_DESCRIPTION="Library for reading, mastering and writing optical discs"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.5.6
+NEOTERM_PKG_SRCURL=https://files.libburnia-project.org/releases/libburn-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=7295491b4be5eeac5e7a3fb2067e236e2955ffdc6bbd45f546466edee321644b
+NEOTERM_PKG_BREAKS="libburn-dev"
+NEOTERM_PKG_REPLACES="libburn-dev"

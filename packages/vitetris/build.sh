@@ -1,0 +1,19 @@
+NEOTERM_PKG_HOMEPAGE=http://victornils.net/tetris/
+NEOTERM_PKG_DESCRIPTION="Virtual terminal *tris clone"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_LICENSE_FILE="licence.txt"
+NEOTERM_PKG_VERSION=0.59.1
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://github.com/vicgeralds/vitetris/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=699443df03c8d4bf2051838c1015da72039bbbdd0ab0eede891c59c840bdf58d
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_REMOVE_AFTER_INSTALL="share/applications/vitetris.desktop"
+NEOTERM_PKG_GROUPS="games"
+
+neoterm_step_configure() {
+	"$NEOTERM_PKG_SRCDIR/configure" \
+		--prefix=$NEOTERM_PREFIX \
+		$NEOTERM_PKG_EXTRA_CONFIGURE_ARGS
+}

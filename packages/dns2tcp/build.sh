@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/alex-sector/dns2tcp"
+NEOTERM_PKG_DESCRIPTION="dns2tcp is a tool for relaying TCP connections over DNS"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="Marlin Sööse <marlin.soose@laro.se>"
+NEOTERM_PKG_VERSION=0.5.2
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/alex-sector/dns2tcp/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=4f6e0ed0f5a1aa079a4d377c6d2b16da8ddcffae7d1ddad1280c3e209ada410c
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC="true"

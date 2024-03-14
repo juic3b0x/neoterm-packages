@@ -1,0 +1,43 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/dvorka/mindforger
+NEOTERM_PKG_DESCRIPTION="Thinking Notebook & Markdown Editor"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.54.0
+NEOTERM_PKG_SRCURL=git+https://github.com/dvorka/mindforger
+NEOTERM_PKG_GIT_BRANCH=${NEOTERM_PKG_VERSION}
+NEOTERM_PKG_DEPENDS="hunspell, libc++, qt5-qtbase, qt5-qtwebengine, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+PREFIX=$NEOTERM_PREFIX
+CONFIG+=mfnocxx
+CONFIG+=mfwebengine
+"
+
+neoterm_step_pre_configure() {
+	neoterm_setup_ninja
+	neoterm_setup_cmake
+
+	local OLD_NEOTERM_PKG_SRCDIR="$NEOTERM_PKG_SRCDIR"
+	local OLD_NEOTERM_PKG_BUILDDIR="$NEOTERM_PKG_BUILDDIR"
+	local OLD_NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="$NEOTERM_PKG_EXTRA_CONFIGURE_ARGS"
+
+	NEOTERM_PKG_BUILDDIR="$NEOTERM_PKG_SRCDIR/deps/cmark-gfm/build"
+	NEOTERM_PKG_SRCDIR=".."
+	NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="-DCMARK_TESTS=OFF -DCMARK_SHARED=OFF"
+
+	mkdir -p "$NEOTERM_PKG_BUILDDIR"
+	cd "$NEOTERM_PKG_BUILDDIR"
+	neoterm_step_configure_cmake
+	cmake --build .
+
+	NEOTERM_PKG_SRCDIR="$OLD_NEOTERM_PKG_SRCDIR"
+	NEOTERM_PKG_BUILDDIR="$OLD_NEOTERM_PKG_BUILDDIR"
+	NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="$OLD_NEOTERM_PKG_EXTRA_CONFIGURE_ARGS"
+}
+
+neoterm_step_configure() {
+	"${NEOTERM_PREFIX}/opt/qt/cross/bin/qmake" \
+		-spec "${NEOTERM_PREFIX}/lib/qt/mkspecs/neoterm-cross" \
+		${NEOTERM_PKG_EXTRA_CONFIGURE_ARGS}
+}

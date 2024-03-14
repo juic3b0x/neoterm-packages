@@ -1,0 +1,5 @@
+NEOTERM_SUBPKG_DESCRIPTION="Vamp plugin for Rubber Band"
+NEOTERM_SUBPKG_INCLUDE="lib/vamp/"
+NEOTERM_SUBPKG_DEPENDS="vamp-plugin-sdk"
+NEOTERM_SUBPKG_BREAKS="rubberband (<< 3.1.2-1)"
+NEOTERM_SUBPKG_REPLACES="rubberband (<< 3.1.2-1)"

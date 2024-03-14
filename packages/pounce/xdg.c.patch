@@ -1,0 +1,19 @@
+--- a/xdg.c
++++ b/xdg.c
+@@ -49,14 +49,14 @@
+ 	.envHome = "XDG_CONFIG_HOME",
+ 	.envDirs = "XDG_CONFIG_DIRS",
+ 	.defHome = ".config",
+-	.defDirs = "/etc/xdg",
++	.defDirs = "@NEOTERM_PREFIX@/etc/xdg",
+ };
+ 
+ static const struct Base Data = {
+ 	.envHome = "XDG_DATA_HOME",
+ 	.envDirs = "XDG_DATA_DIRS",
+ 	.defHome = ".local/share",
+-	.defDirs = "/usr/local/share:/usr/share",
++	.defDirs = "@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share",
+ };
+ 
+ static char *basePath(

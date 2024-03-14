@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/seccomp/libseccomp
+NEOTERM_PKG_DESCRIPTION="Enhanced seccomp library"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.5.5"
+NEOTERM_PKG_REVISION=3
+NEOTERM_PKG_SRCURL=https://github.com/seccomp/libseccomp/releases/download/v${NEOTERM_PKG_VERSION}/libseccomp-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=248a2c8a4d9b9858aa6baf52712c34afefcf9c9e94b76dce02c1c9aa25fb3375
+NEOTERM_PKG_BREAKS="libseccomp-dev"
+NEOTERM_PKG_REPLACES="libseccomp-dev"

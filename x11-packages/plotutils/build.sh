@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://directory.fsf.org/wiki/Plotutils
+NEOTERM_PKG_DESCRIPTION="Set of utilities and libraries for plotting."
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.6
+NEOTERM_PKG_REVISION=30
+NEOTERM_PKG_SRCURL=http://ftp.gnu.org/pub/gnu/plotutils/plotutils-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=4f4222820f97ca08c7ea707e4c53e5a3556af4d8f1ab51e0da6ff1627ff433ab
+NEOTERM_PKG_DEPENDS="libice, libpng, libsm, libx11, libxaw, libxext, libxmu, libxt, zlib"

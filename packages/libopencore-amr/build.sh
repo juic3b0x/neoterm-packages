@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://sourceforge.net/projects/opencore-amr
+NEOTERM_PKG_DESCRIPTION="Open source implementation of the Adaptive Multi Rate (AMR) speech codec"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_LICENSE_FILE="LICENSE"
+NEOTERM_PKG_MAINTAINER="William Goodspeed @goodspeed34"
+NEOTERM_PKG_VERSION=0.1.6
+NEOTERM_PKG_SRCURL=https://sourceforge.net/projects/opencore-amr/files/opencore-amr/opencore-amr-${NEOTERM_PKG_VERSION}.tar.gz/download
+NEOTERM_PKG_SHA256=483eb4061088e2b34b358e47540b5d495a96cd468e361050fae615b1809dc4a1
+NEOTERM_PKG_BREAKS="libopencore-amr-dev"
+NEOTERM_PKG_REPLACES="libopencore-amr-dev"

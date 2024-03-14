@@ -1,0 +1,18 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/flexible-collision-library/fcl"
+NEOTERM_PKG_DESCRIPTION="Flexible collision library"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="Pooya Moradi <pvonmoradi@gmail.com>"
+NEOTERM_PKG_VERSION="0.7.0"
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL="https://github.com/flexible-collision-library/fcl/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256=90409e940b24045987506a6b239424a4222e2daf648c86dd146cbcb692ebdcbc
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_FORCE_CMAKE=true
+NEOTERM_PKG_BUILD_DEPENDS="eigen"
+NEOTERM_PKG_DEPENDS="libandroid-support, libc++, libccd, octomap-static"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+-DFCL_STATIC_LIBRARY=OFF
+-DFCL_USE_HOST_NATIVE_ARCH=OFF
+-DFCL_WITH_OCTOMAP=ON
+"

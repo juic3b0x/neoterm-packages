@@ -1,0 +1,21 @@
+NEOTERM_PKG_HOMEPAGE=https://www.midnight-commander.org/
+NEOTERM_PKG_DESCRIPTION="Midnight Commander - a powerful file manager"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="4.8.31"
+NEOTERM_PKG_SRCURL=http://ftp.midnight-commander.org/mc-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=24191cf8667675b8e31fc4a9d18a0a65bdc0598c2c5c4ea092494cd13ab4ab1a
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="glib, libandroid-support, libssh2, ncurses"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+ac_cv_lib_util_openpty=no
+ac_cv_path_PERL=$NEOTERM_PREFIX/bin/perl
+ac_cv_path_PERL_FOR_BUILD=/usr/bin/perl
+ac_cv_path_PYTHON=$NEOTERM_PREFIX/bin/python
+ac_cv_path_RUBY=$NEOTERM_PREFIX/bin/ruby
+ac_cv_path_UNZIP=$NEOTERM_PREFIX/bin/unzip
+ac_cv_path_ZIP=$NEOTERM_PREFIX/bin/zip
+--with-ncurses-includes=$NEOTERM_PREFIX/include
+--with-ncurses-libs=$NEOTERM_PREFIX/lib
+--with-screen=ncurses
+"

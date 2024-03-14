@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/krrishnarraj/clpeak
+NEOTERM_PKG_DESCRIPTION="A tool which profiles OpenCL devices to find their peak capacities"
+NEOTERM_PKG_LICENSE="Unlicense"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.1.2
+NEOTERM_PKG_REVISION=3
+NEOTERM_PKG_GIT_BRANCH=$NEOTERM_PKG_VERSION
+NEOTERM_PKG_SRCURL=git+https://github.com/krrishnarraj/clpeak
+NEOTERM_PKG_BUILD_DEPENDS="opencl-headers, opencl-clhpp"
+NEOTERM_PKG_DEPENDS="libc++, ocl-icd"

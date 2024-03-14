@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X.Org authorization settings program"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.1.2
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/app/xauth-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=78ba6afd19536ced1dddb3276cba6e9555a211b468a06f95f6a97c62ff8ee200
+NEOTERM_PKG_DEPENDS="libx11, libxau, libxext, libxmu"
+NEOTERM_PKG_BUILD_DEPENDS="xorg-util-macros"

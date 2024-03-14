@@ -1,0 +1,11 @@
+--- ./src/luarocks/core/cfg.lua	2022-11-01 02:42:26.659749921 +0530
++++ ./src/luarocks/core/cfg.lua	2022-11-01 02:39:51.899749980 +0530
+@@ -360,7 +360,7 @@
+       defaults.static_lib_extension = "a"
+       defaults.external_lib_extension = "so"
+       defaults.obj_extension = "o"
+-      defaults.external_deps_dirs = { "/usr/local", "/usr", "/" }
++      defaults.external_deps_dirs = { "@NEOTERM_PREFIX@/local", "@NEOTERM_PREFIX@" }
+
+       defaults.variables.CFLAGS = os.getenv("CFLAGS") or "-O2"
+       -- we pass -fPIC via CFLAGS because of old Makefile-based Lua projects

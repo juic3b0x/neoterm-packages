@@ -1,0 +1,21 @@
+--- a/paths
++++ b/paths
+@@ -64,13 +64,13 @@
+ # file <confpaths.h> (located in include/).
+ #
+ 
+-PATH_SENDMAIL	search:sendmail:/usr/sbin:/usr/lib:/etc /usr/sbin/sendmail
+-PATH_MAILDIR	d /var/mail /var/spool/mail
++PATH_SENDMAIL	search:sendmail:@NEOTERM_PREFIX@/bin:@NEOTERM_PREFIX@/lib:@NEOTERM_PREFIX@/etc @NEOTERM_PREFIX@/bin/sendmail
++PATH_MAILDIR	d @NEOTERM_PREFIX@/var/mail @NEOTERM_PREFIX@/var/spool/mail
+ PATH_DEV	d /dev/
+ # PATH_TTY_PFX is a prefix that's removed to get a tty device's name
+ PATH_TTY_PFX	<paths.h>:_PATH_DEV d /dev/
+ PATH_DEVNULL	c /dev/null
+-PATH_UTMP	<utmp.h> <utmp.h>:UTMP_FILE $(localstatedir)/run/utmp search:utmp:/var/run:/var/adm:/etc
+-PATH_UTMPX	<utmpx.h> <utmpx.h>:UTMPX_FILE $(localstatedir)/run/utmpx search:utmpx:/var/run:/var/adm:/etc
+-PATH_WTMP	<utmp.h> <utmp.h>:WTMP_FILE $(localstatedir)/log/wtmp search:wtmp:/var/log:/var/adm:/etc
++PATH_UTMP	<utmp.h> <utmp.h>:UTMP_FILE $(localstatedir)/run/utmp search:utmp:@NEOTERM_PREFIX@/var/run:@NEOTERM_PREFIX@/var/adm:@NEOTERM_PREFIX@/etc
++PATH_UTMPX	<utmpx.h> <utmpx.h>:UTMPX_FILE $(localstatedir)/run/utmpx search:utmpx:@NEOTERM_PREFIX@/var/run:@NEOTERM_PREFIX@/var/adm:@NEOTERM_PREFIX@/etc
++PATH_WTMP	<utmp.h> <utmp.h>:WTMP_FILE $(localstatedir)/log/wtmp search:wtmp:@NEOTERM_PREFIX@/var/log:@NEOTERM_PREFIX@/var/adm:@NEOTERM_PREFIX@/etc
+ PATH_TTY	c /dev/tty

@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://drobilla.net/software/sord.html
+NEOTERM_PKG_DESCRIPTION="A lightweight C library for storing RDF data in memory"
+NEOTERM_PKG_LICENSE="ISC"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.16.16"
+NEOTERM_PKG_SRCURL=https://download.drobilla.net/sord-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=257f876d756143da02ee84c9260af93559d6249dd87f317e70ab5fffcc975fd0
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="pcre, serd, libzix"

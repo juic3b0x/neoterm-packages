@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE="https://cmocka.org/"
+NEOTERM_PKG_DESCRIPTION="cmocka is an unit testing framework for C"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.1.7"
+NEOTERM_PKG_SRCURL="https://gitlab.com/cmocka/cmocka/-/archive/cmocka-${NEOTERM_PKG_VERSION}/cmocka-cmocka-${NEOTERM_PKG_VERSION}.tar.gz"
+NEOTERM_PKG_SHA256="243344de12f8df78fa639fb426dd02d4cb37eda61462e48e6a0e13a98b94602a"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.kokkonen.net/tjko/projects.html
+NEOTERM_PKG_DESCRIPTION="JPEG optimizer that recompresses image files to a smaller size, without losing any information"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.5.5"
+NEOTERM_PKG_SRCURL=https://github.com/tjko/jpegoptim/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=90a309d1c092de358bb411d702281ac3039b489d03adb0bc3c4ef04cf0067d38
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libjpeg-turbo"
+NEOTERM_PKG_BUILD_IN_SRC=true

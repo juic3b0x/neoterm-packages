@@ -1,0 +1,5 @@
+NEOTERM_SUBPKG_DESCRIPTION="Platform-independent data for speechd"
+NEOTERM_SUBPKG_PLATFORM_INDEPENDENT=true
+NEOTERM_SUBPKG_INCLUDE="share/speech-dispatcher/"
+NEOTERM_SUBPKG_BREAKS="speechd (<< 0.11.4-1)"
+NEOTERM_SUBPKG_REPLACES="speechd (<< 0.11.4-1)"

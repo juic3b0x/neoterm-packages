@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X-Resource extension client library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.2.2
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/lib/libXres-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=9a7446f3484b9b7538ac5ee30d2c1ce9e5b7fbbaf1440e02f6cca186a1fa745f
+NEOTERM_PKG_DEPENDS="libx11, libxext"
+NEOTERM_PKG_BUILD_DEPENDS="xorgproto"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--enable-malloc0returnsnull"

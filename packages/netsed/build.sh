@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://silicone.homelinux.org/projects/netsed/
+NEOTERM_PKG_DESCRIPTION="Alter the contents of packets forwarded through network in real time"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.3
+NEOTERM_PKG_REVISION=5
+NEOTERM_PKG_SRCURL=http://silicone.homelinux.org/release/netsed/netsed-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=f0891285442c9a4701e2b7fc7d28f2834a5352f94295649d1fdb60da1eca81aa
+NEOTERM_PKG_BUILD_IN_SRC=true

@@ -1,0 +1,14 @@
+NEOTERM_PKG_HOMEPAGE=http://goaccess.io
+NEOTERM_PKG_DESCRIPTION="An open source real-time web log analyzer and interactive viewer"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.9.1"
+NEOTERM_PKG_SRCURL=https://tar.goaccess.io/goaccess-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=eb7718b247962b5c763bce8c0135e915504bf812360133d0b67a1a4e869886f7
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="ncurses, openssl"
+NEOTERM_PKG_BUILD_IN_SRC=true
+
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+--enable-utf8
+--with-openssl"

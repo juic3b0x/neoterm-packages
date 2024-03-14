@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X11 Xinerama extension library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.1.5
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/lib/libXinerama-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=5094d1f0fcc1828cb1696d0d39d9e866ae32520c54d01f618f1a3c1e30c2085c
+NEOTERM_PKG_DEPENDS="libx11, libxext"
+NEOTERM_PKG_BUILD_DEPENDS="xorgproto"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--enable-malloc0returnsnull"

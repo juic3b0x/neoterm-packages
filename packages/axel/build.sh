@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/axel-download-accelerator/axel
+NEOTERM_PKG_DESCRIPTION="light command line download accelerator"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.17.13"
+NEOTERM_PKG_SRCURL=https://github.com/axel-download-accelerator/axel/releases/download/v${NEOTERM_PKG_VERSION}/axel-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=604ce7fbdb37500c462295d6c03fa59eb4dffb780fdf2fc3c41ffa75c8f6ec38
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="openssl"

@@ -1,0 +1,21 @@
+NEOTERM_PKG_HOMEPAGE=https://tintin.mudhalla.net
+NEOTERM_PKG_DESCRIPTION="Classic text-based MUD client"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.02.41"
+NEOTERM_PKG_SRCURL=https://github.com/scandum/tintin/releases/download/$NEOTERM_PKG_VERSION/tintin-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=b86b4af5a57b986d4ef5db41e64d38e027cf85004749479c9424f18df7642a49
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_file__dev_ptmx=no"
+NEOTERM_PKG_DEPENDS="pcre, libgnutls, zlib"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+
+neoterm_step_post_get_source() {
+	NEOTERM_PKG_SRCDIR+="/src"
+	NEOTERM_PKG_BUILDDIR="$NEOTERM_PKG_SRCDIR"
+}
+
+neoterm_step_pre_configure() {
+	CFLAGS+=" $CPPFLAGS"
+}

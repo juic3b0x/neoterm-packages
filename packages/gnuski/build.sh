@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://sourceforge.net/projects/gnuski
+NEOTERM_PKG_DESCRIPTION="Open source clone of Skifree, the old Windows game"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="Henrik Grimler @Grimler91"
+NEOTERM_PKG_VERSION=0.3
+NEOTERM_PKG_REVISION=6
+NEOTERM_PKG_SRCURL=https://sourceforge.net/projects/gnuski/files/gnuski/gnuski-${NEOTERM_PKG_VERSION}/gnuski-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=1b629bd29dd6ad362b56055ccdb4c7ad462ff39d7a0deb915753c2096f5f959d
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_GROUPS="games"

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/automake/
+NEOTERM_PKG_DESCRIPTION="Tool for automatically generating Makefile.in files"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.16.5
+NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/automake/automake-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469
+NEOTERM_PKG_DEPENDS="autoconf"
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_GROUPS="base-devel"

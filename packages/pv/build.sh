@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://www.ivarch.com/programs/pv.shtml
+NEOTERM_PKG_DESCRIPTION="Terminal-based tool for monitoring the progress of data through a pipeline"
+NEOTERM_PKG_LICENSE="Artistic-License-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.8.5"
+NEOTERM_PKG_SRCURL=http://www.ivarch.com/programs/sources/pv-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=d22948d06be06a5be37336318de540a2215be10ab0163f8cd23a20149647b780
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-ipc"

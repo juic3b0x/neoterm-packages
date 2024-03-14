@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="A library to query system information"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="0.4.6"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/libsysstat/releases/download/${NEOTERM_PKG_VERSION}/libsysstat-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=e6c6383d6d6e0e67791be812329cb245035eed35e201e01088515e3ffefb13be
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools, qt5-qtbase-cross-tools"
+NEOTERM_PKG_AUTO_UPDATE=true

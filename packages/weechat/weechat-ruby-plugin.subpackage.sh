@@ -1,0 +1,3 @@
+NEOTERM_SUBPKG_INCLUDE="lib/weechat/plugins/ruby.so"
+NEOTERM_SUBPKG_DESCRIPTION="WeeChat Ruby Plugin"
+NEOTERM_SUBPKG_DEPENDS="ruby"

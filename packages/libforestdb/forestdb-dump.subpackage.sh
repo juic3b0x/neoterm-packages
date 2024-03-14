@@ -1,0 +1,2 @@
+NEOTERM_SUBPKG_INCLUDE="bin/forestdb_dump"
+NEOTERM_SUBPKG_DESCRIPTION="ForestDB dump tool"

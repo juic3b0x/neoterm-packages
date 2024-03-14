@@ -1,0 +1,3 @@
+NEOTERM_SUBPKG_INCLUDE="lib/weechat/plugins/lua.so"
+NEOTERM_SUBPKG_DESCRIPTION="WeeChat Lua Plugin"
+NEOTERM_SUBPKG_DEPENDS="liblua53"

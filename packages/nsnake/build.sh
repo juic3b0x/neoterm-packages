@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/alexdantas/nSnake
+NEOTERM_PKG_DESCRIPTION="The classic snake game with textual interface"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=3.0.1
+NEOTERM_PKG_REVISION=6
+NEOTERM_PKG_SRCURL=https://github.com/alexdantas/nSnake/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=7240dafe35e17b01134591d7ae8f09f5a375cded8b01e43ba97ca3610a09ea61
+NEOTERM_PKG_DEPENDS="libc++, ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_GROUPS="games"

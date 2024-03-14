@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/imgflo/imgflo
+NEOTERM_PKG_DESCRIPTION="HTTP image processing server & Flowhub.io compatible runtime"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.4.2
+NEOTERM_PKG_REVISION=7
+NEOTERM_PKG_SRCURL=https://github.com/imgflo/imgflo/archive/$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=4dd5fc9d34f3cfc294fd69a14d50ed5401abeb829132f1b1ac316e28223fc393
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="gegl, libsoup, zlib"
+NEOTERM_PKG_BUILD_IN_SRC=true

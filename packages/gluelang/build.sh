@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://ryuichiueda.github.io/GlueLang/
+NEOTERM_PKG_DESCRIPTION="A programming language that has a strong nature to be a glue of commands"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.2.0
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/ryuichiueda/GlueLang/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=abd46b8b9e0c0082289470b7dc6ffb8125066308a6165e6a92a92ab539ca11c1
+NEOTERM_PKG_DEPENDS="libc++"
+NEOTERM_PKG_BUILD_IN_SRC=true

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="Qt port of volume control of sound server PulseAudio"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="1.4.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/pavucontrol-qt/releases/download/${NEOTERM_PKG_VERSION}/pavucontrol-qt-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=0d7ced3b9d215bcfae8fd5df5429aa07b0517984925cfa1cd020a9505749a994
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase, kwindowsystem, liblxqt, pulseaudio-glib"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools, qt5-qtbase-cross-tools, qt5-qttools-cross-tools"
+NEOTERM_PKG_AUTO_UPDATE=true

@@ -1,0 +1,18 @@
+NEOTERM_PKG_HOMEPAGE=http://michael.dipperstein.com/crypt/
+NEOTERM_PKG_DESCRIPTION="A crypt(3) implementation"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.2
+NEOTERM_PKG_REVISION=5
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_SKIP_SRC_EXTRACT=true
+NEOTERM_PKG_DEPENDS="openssl"
+NEOTERM_PKG_BREAKS="libcrypt-dev"
+NEOTERM_PKG_REPLACES="libcrypt-dev"
+
+neoterm_step_make_install() {
+	$CC $CFLAGS $CPPFLAGS $LDFLAGS -Wall -Wextra -fPIC -shared $NEOTERM_PKG_BUILDER_DIR/crypt3.c -lcrypto -o $NEOTERM_PREFIX/lib/libcrypt.so
+	mkdir -p $NEOTERM_PREFIX/include/
+	cp $NEOTERM_PKG_BUILDER_DIR/crypt.h $NEOTERM_PREFIX/include/
+	cp $NEOTERM_PKG_BUILDER_DIR/LICENSE $NEOTERM_PKG_SRCDIR/
+}

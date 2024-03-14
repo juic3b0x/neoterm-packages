@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://docs.xfce.org/xfce/thunar/archive
+NEOTERM_PKG_DESCRIPTION="This plugin allows one to extract and create archive from inside the Thunar file manager."
+NEOTERM_PKG_LICENSE="LGPL-2.0"
+NEOTERM_PKG_MAINTAINER="Yisus7u7 <dev.yisus@hotmail.com>"
+NEOTERM_PKG_VERSION="0.5.2"
+NEOTERM_PKG_SRCURL=https://archive.xfce.org/src/thunar-plugins/thunar-archive-plugin/${NEOTERM_PKG_VERSION%.*}/thunar-archive-plugin-${NEOTERM_PKG_VERSION}.tar.bz2
+NEOTERM_PKG_SHA256=6379f877bcfc0ea85db9f43723b6fb317893050c712bd03c2ae3232fb9d5ade3
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="atk, exo, gdk-pixbuf, glib, gtk3, harfbuzz, libcairo, libxfce4util, pango, thunar, zlib"
+NEOTERM_PKG_RECOMMENDS="file-roller"
+NEOTERM_PKG_BUILD_IN_SRC=true

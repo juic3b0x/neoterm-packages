@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://wireless.wiki.kernel.org/en/users/documentation/iw
+NEOTERM_PKG_DESCRIPTION="CLI configuration utility for wireless devices"
+NEOTERM_PKG_LICENSE="ISC"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=5.19
+NEOTERM_PKG_SRCURL=https://mirrors.edge.kernel.org/pub/software/network/iw/iw-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=f167bbe947dd53bb9ebc0c1dcef5db6ad73ac1d6084f2c6f9376c5c360cc4d4e
+NEOTERM_PKG_DEPENDS="libnl"
+NEOTERM_PKG_BUILD_IN_SRC=true

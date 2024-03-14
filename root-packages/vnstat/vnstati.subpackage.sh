@@ -1,0 +1,3 @@
+NEOTERM_SUBPKG_DESCRIPTION="Image output for vnstat"
+NEOTERM_SUBPKG_DEPENDS="libgd"
+NEOTERM_SUBPKG_INCLUDE="bin/vnstati"

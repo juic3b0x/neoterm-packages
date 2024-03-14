@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/rbsec/sslscan
+NEOTERM_PKG_DESCRIPTION="Utility to discover supported cipher suites on SSL/TLS enabled servers"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.1.3"
+NEOTERM_PKG_SRCURL=https://github.com/rbsec/sslscan/archive/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=6beec9345635b41fa2c1bbc5f0854f10014e4b2b4179e9e9a3bda6bdb9e1aa41
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="openssl"
+NEOTERM_PKG_BUILD_IN_SRC=true

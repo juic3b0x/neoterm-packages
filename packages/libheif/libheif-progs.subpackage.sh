@@ -1,0 +1,5 @@
+NEOTERM_SUBPKG_DESCRIPTION="Programs for manipulating HEIF (HEIC/AVIF) image files"
+NEOTERM_SUBPKG_INCLUDE="bin/ share/man/man1/"
+NEOTERM_SUBPKG_LICENSE="MIT"
+NEOTERM_SUBPKG_LICENSE_FILE="examples/COPYING"
+NEOTERM_SUBPKG_DEPENDS="libjpeg-turbo, libpng"

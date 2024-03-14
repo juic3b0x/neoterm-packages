@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://www.flameeyes.com/projects/unpaper
+NEOTERM_PKG_DESCRIPTION="A post-processing tool for scanned sheets of paper"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1:7.0.0
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/unpaper/unpaper/archive/refs/tags/unpaper-${NEOTERM_PKG_VERSION#*:}.tar.gz
+NEOTERM_PKG_SHA256=601b64b030edb4a734510a7bdcab371c7a33c4501f9a0e231e3d326df50e2313
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+NEOTERM_PKG_DEPENDS="ffmpeg"

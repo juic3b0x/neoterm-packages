@@ -1,0 +1,16 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/sahlberg/libnfs
+NEOTERM_PKG_DESCRIPTION="NFS client library"
+NEOTERM_PKG_LICENSE="LGPL-2.1, BSD 2-Clause, GPL-3.0"
+NEOTERM_PKG_LICENSE_FILE="LICENCE-LGPL-2.1.txt, LICENCE-BSD.txt, LICENCE-GPL-3.txt"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="5.0.3"
+NEOTERM_PKG_SRCURL=https://github.com/sahlberg/libnfs/archive/libnfs-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=d945cb4f4c8f82ee1f3640893a168810f794a28e1010bb007ec5add345e9df3e
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_METHOD=repology
+NEOTERM_PKG_BREAKS="libnfs-dev"
+NEOTERM_PKG_REPLACES="libnfs-dev"
+
+neoterm_step_pre_configure() {
+	autoreconf -fi
+}

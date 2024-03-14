@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://fmt.dev/latest/index.html
+NEOTERM_PKG_DESCRIPTION="Open-source formatting library for C++"
+NEOTERM_PKG_LICENSE="BSD"
+NEOTERM_PKG_LICENSE_FILE="LICENSE.rst"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1:9.1.0
+NEOTERM_PKG_SRCURL=https://github.com/fmtlib/fmt/archive/${NEOTERM_PKG_VERSION#*:}.tar.gz
+NEOTERM_PKG_SHA256=5dea48d1fcddc3ec571ce2058e13910a0d4a6bab4cc09a809d8b1dd1c88ae6f2
+# Avoid silently breaking build of revdeps:
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="-DFMT_TEST=OFF"
+NEOTERM_PKG_NO_STATICSPLIT=true

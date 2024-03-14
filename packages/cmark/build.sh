@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/commonmark/cmark
+NEOTERM_PKG_DESCRIPTION="CommonMark parsing and rendering program"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.31.0"
+NEOTERM_PKG_SRCURL=https://github.com/commonmark/cmark/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=bbcb8f8c03b5af33fcfcf11a74e9499f20a9043200b8552f78a6e8ba76e04d11
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BREAKS="cmark-dev"
+NEOTERM_PKG_REPLACES="cmark-dev"

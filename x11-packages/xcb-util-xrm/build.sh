@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/Airblader/xcb-util-xrm/
+NEOTERM_PKG_DESCRIPTION="XCB utility functions for the X resource manager"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.3
+NEOTERM_PKG_REVISION=27
+NEOTERM_PKG_SRCURL=https://github.com/Airblader/xcb-util-xrm/releases/download/v${NEOTERM_PKG_VERSION}/xcb-util-xrm-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=0129f74c327ae65e2f4ad4002f300b4f02c9aff78c00997f1f1c5a430f922f34
+NEOTERM_PKG_DEPENDS="libxcb, xcb-util"
+NEOTERM_PKG_BUILD_DEPENDS="libx11, xorgproto"

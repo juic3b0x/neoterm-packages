@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.libssh2.org
+NEOTERM_PKG_DESCRIPTION="Client-side library implementing the SSH2 protocol"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.11.0
+NEOTERM_PKG_SRCURL=https://www.libssh2.org/download/libssh2-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461
+NEOTERM_PKG_DEPENDS="openssl, zlib"
+NEOTERM_PKG_BREAKS="libssh2-dev"
+NEOTERM_PKG_REPLACES="libssh2-dev"

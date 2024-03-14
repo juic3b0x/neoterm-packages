@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://docs.xfce.org/panel-plugins/xfce4-clipman-plugin/start
+NEOTERM_PKG_DESCRIPTION="Clipman is a clipboard manager for Xfce"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.6.6"
+NEOTERM_PKG_SRCURL=https://archive.xfce.org/src/panel-plugins/xfce4-clipman-plugin/${NEOTERM_PKG_VERSION%.*}/xfce4-clipman-plugin-$NEOTERM_PKG_VERSION.tar.bz2
+NEOTERM_PKG_SHA256=08ad475b006f878df5dd20d83c98edc33ed21e69b414d0e5ff6d4accd64d7120
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="atk, gdk-pixbuf, glib, gtk3, harfbuzz, libcairo, libice, libqrencode, libsm, libx11, libxfce4ui, libxfce4util, libxtst, pango, xfce4-panel, xfconf, zlib"

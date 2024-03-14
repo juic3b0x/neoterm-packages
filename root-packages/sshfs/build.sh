@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/libfuse/sshfs
+NEOTERM_PKG_DESCRIPTION="FUSE client based on the SSH File Transfer Protocol"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=3.7.3
+NEOTERM_PKG_SRCURL=https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=52a1a1e017859dfe72a550e6fef8ad4f8703ce312ae165f74b579fd7344e3a26
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_SED_REGEXP='s/.*-//'
+NEOTERM_PKG_DEPENDS="libfuse3, glib, openssh | dropbear"

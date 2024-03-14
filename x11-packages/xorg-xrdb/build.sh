@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X server resource database utility"
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="COPYING"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.2.2
+NEOTERM_PKG_SRCURL=https://www.x.org/archive/individual/app/xrdb-$NEOTERM_PKG_VERSION.tar.xz
+NEOTERM_PKG_SHA256=31f5fcab231b38f255b00b066cf7ea3b496df712c9eb2d0d50c670b63e5033f4
+NEOTERM_PKG_DEPENDS="libx11, libxmu"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--with-cpp=/usr/bin/cpp"

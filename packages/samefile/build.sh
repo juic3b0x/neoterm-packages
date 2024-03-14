@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://www.schweikhardt.net/samefile/
+NEOTERM_PKG_DESCRIPTION="Finds files with identical contents, independent of file name"
+NEOTERM_PKG_LICENSE="BSD"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.15
+NEOTERM_PKG_REVISION=5
+NEOTERM_PKG_SRCURL=http://www.schweikhardt.net/samefile-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=26d322e3445ff7273867332311c33a90c8ef037cbd6b19d9468e1742833ea4b6
+NEOTERM_PKG_BUILD_IN_SRC=true

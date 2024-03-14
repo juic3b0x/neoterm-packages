@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://gtkwave.sourceforge.net/
+NEOTERM_PKG_DESCRIPTION="A wave viewer which reads LXT, LXT2, VZT, GHW and VCD/EVCD files"
+NEOTERM_PKG_LICENSE="GPL-2.0, MIT"
+NEOTERM_PKG_LICENSE_FILE="COPYING, LICENSE.TXT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="3.3.118"
+NEOTERM_PKG_SRCURL=https://downloads.sourceforge.net/gtkwave/gtkwave-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=416d037c1f5f6dfc8fe9d2da87b650d9ebb4e9a7e8714e558ab4ea818eebeaa0
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="gdk-pixbuf, glib, gtk2, libandroid-shmem, libbz2, libc++, liblzma, pango, zlib"
+NEOTERM_PKG_RECOMMENDS="desktop-file-utils"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-tcl --disable-mime-update"

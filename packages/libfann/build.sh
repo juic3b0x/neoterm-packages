@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE="http://leenissen.dk/fann/wp"
+NEOTERM_PKG_DESCRIPTION="Fast artificial neural network library"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.2.0"
+NEOTERM_PKG_SRCURL="https://github.com/libfann/fann/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256=f31c92c1589996f97d855939b37293478ac03d24b4e1c08ff21e0bd093449c3c
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag" # As of 2022-08-29T00:33:40 no github releases are available.

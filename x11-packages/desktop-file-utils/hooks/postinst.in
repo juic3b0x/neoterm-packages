@@ -1,0 +1,7 @@
+#!@NEOTERM_PREFIX@/bin/sh
+
+if [ -d "@NEOTERM_PREFIX@/share/applications" ]; then
+    update-desktop-database -q
+fi
+
+exit 0

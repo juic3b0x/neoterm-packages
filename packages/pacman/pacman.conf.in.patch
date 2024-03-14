@@ -1,0 +1,87 @@
+--- pacman-6.0.2/etc/pacman.conf.in	2023-03-10 01:31:38.207470241 +0300
++++ pacman-6.0.2/etc/pacman.conf.in.patch	2023-03-10 01:33:13.819470172 +0300
+@@ -9,17 +9,17 @@
+ [options]
+ # The following paths are commented out with their default values listed.
+ # If you wish to use different paths, uncomment and update the paths.
+-#RootDir     = @ROOTDIR@
++#RootDir     = /
+ #DBPath      = @localstatedir@/lib/pacman/
+ #CacheDir    = @localstatedir@/cache/pacman/pkg/
+ #LogFile     = @localstatedir@/log/pacman.log
+ #GPGDir      = @sysconfdir@/pacman.d/gnupg/
+ #HookDir     = @sysconfdir@/pacman.d/hooks/
+-HoldPkg     = pacman glibc
+-#XferCommand = /usr/bin/curl -L -C - -f -o %o %u
+-#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
++#XferCommand = @NEOTERM_PREFIX@/bin/curl -L -C - -f -o %o %u
++#XferCommand = @NEOTERM_PREFIX@/bin/wget --passive-ftp -c -O %o %u
++HoldPkg      = pacman
+ #CleanMethod = KeepInstalled
+-Architecture = auto
++Architecture = @NEOTERM_ARCH@
+ 
+ # Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
+ #IgnorePkg   =
+@@ -30,16 +30,17 @@
+ 
+ # Misc options
+ #UseSyslog
+-#Color
++Color
+ #NoProgressBar
+ CheckSpace
+ #VerbosePkgLists
+ ParallelDownloads = 5
+ 
+-# PGP signature checking
+-#SigLevel = Optional
+-#LocalFileSigLevel = Optional
+-#RemoteFileSigLevel = Optional
++# By default, pacman accepts packages signed by keys that its local keyring
++# trusts (see pacman-key and its man page), as well as unsigned packages.
++SigLevel    = DatabaseRequired
++LocalFileSigLevel = Optional
++#RemoteFileSigLevel = Required
+ 
+ #
+ # REPOSITORIES
+@@ -60,18 +61,23 @@
+ # uncommented to enable the repo.
+ #
+ 
+-# An example of a disabled remote package repository with multiple servers
+-# available. To enable, uncomment the following lines. You can add preferred
+-# servers immediately after the header and they will be used before the
+-# default mirrors.
+-#[core]
+-#SigLevel = Required
+-#Server = ftp://ftp.example.com/foobar/$repo/os/$arch/
+-# The file referenced here should contain a list of 'Server = ' lines.
+-#Include = @sysconfdir@/pacman.d/mirrorlist
+-
+-# An example of a custom package repository.  See the pacman manpage for
+-# tips on creating your own repositories.
+-#[custom]
+-#SigLevel = Optional TrustAll
+-#Server = file:///home/custompkgs
++[main]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++
++[x11]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++
++[root]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++
++[tur]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++
++[tur-continuous]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++
++[tur-multilib]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++
++[gpkg]
++Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist

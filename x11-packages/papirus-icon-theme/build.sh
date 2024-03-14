@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+NEOTERM_PKG_DESCRIPTION="Papirus is a free and open source icon theme, based on Paper Icon Set"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="20240201"
+NEOTERM_PKG_SRCURL=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=8ff3caded7862e5e6f531dbae54b213ff1cd3666d26f23357c6183173856f380
+NEOTERM_PKG_DEPENDS="hicolor-icon-theme"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_NO_SHEBANG_FIX=true
+NEOTERM_PKG_AUTO_UPDATE=true

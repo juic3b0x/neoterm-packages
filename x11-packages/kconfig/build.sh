@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.kde.org/
+NEOTERM_PKG_DESCRIPTION="Advanced configuration system (KDE)"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="5.112.0"
+NEOTERM_PKG_SRCURL="https://download.kde.org/stable/frameworks/${NEOTERM_PKG_VERSION%.*}/kconfig-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=86de26d25a4c135d60d8511b7fd9d00db26e03a27f1631d26f321e7146d91820
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase"
+NEOTERM_PKG_BUILD_DEPENDS="extra-cmake-modules, qt5-qtbase-cross-tools, qt5-qttools-cross-tools"

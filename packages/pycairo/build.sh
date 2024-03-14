@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.cairographics.org/pycairo/
+NEOTERM_PKG_DESCRIPTION="Python bindings for the cairo graphics library"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.26.0"
+NEOTERM_PKG_SRCURL=https://github.com/pygobject/pycairo/releases/download/v${NEOTERM_PKG_VERSION}/pycairo-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=2dddd0a874fbddb21e14acd9b955881ee1dc6e63b9c549a192d613a907f9cbeb
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libcairo, python"
+NEOTERM_PKG_PYTHON_COMMON_DEPS="wheel"

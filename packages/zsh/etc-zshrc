@@ -1,0 +1,5 @@
+emulate sh -c '. @NEOTERM_PREFIX@/etc/profile'
+command_not_found_handler() {
+	@NEOTERM_PREFIX@/libexec/neoterm/command-not-found $1
+}
+PS1='%# '

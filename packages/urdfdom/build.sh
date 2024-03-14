@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/ros/urdfdom"
+NEOTERM_PKG_DESCRIPTION="Unified Robot Description Format (URDF) parser library and tools"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="Pooya Moradi <pvonmoradi@gmail.com>"
+NEOTERM_PKG_VERSION="3.1.0"
+NEOTERM_PKG_SRCURL="https://github.com/ros/urdfdom/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256=fe3bbdfdedbc91359d1be8f094d6a544a941e664ccd6a0c08b061b714e32d216
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, libtinyxml, urdfdom-headers, console-bridge"
+NEOTERM_PKG_FORCE_CMAKE=true

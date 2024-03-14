@@ -1,0 +1,4 @@
+NEOTERM_SUBPKG_INCLUDE="lib/python*"
+NEOTERM_SUBPKG_DESCRIPTION="Python bindings for Unbound"
+NEOTERM_SUBPKG_DEPENDS="python"
+NEOTERM_SUBPKG_CONFLICTS="unbound (<< 1.15.0-1)"

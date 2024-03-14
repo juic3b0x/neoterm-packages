@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://ninvaders.sourceforge.net
+NEOTERM_PKG_DESCRIPTION="Space Invaders clone based on ncurses for ASCII output"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.1.2
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://github.com/sf-refugees/ninvaders/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=80fbdfd396efc3674c0a697e0d7c219647518cefd22e948d504bb3a677e58df3
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_GROUPS="games"

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/mtrojnar/osslsigncode
+NEOTERM_PKG_DESCRIPTION="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
+NEOTERM_PKG_LICENSE="GPL-3.0-or-later"
+NEOTERM_PKG_LICENSE_FILE="COPYING.txt, LICENSE.txt"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.8"
+NEOTERM_PKG_SRCURL=https://github.com/mtrojnar/osslsigncode/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=d275d86bf0a8094e2c2ea451065299f965238be3cfaf3af6aff276302d759354
+NEOTERM_PKG_DEPENDS="libcurl, openssl, zlib"
+NEOTERM_PKG_AUTO_UPDATE=true

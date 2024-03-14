@@ -1,0 +1,19 @@
+NEOTERM_PKG_HOMEPAGE=http://taglib.github.io/
+NEOTERM_PKG_DESCRIPTION="A Library for reading and editing the meta-data of several popular audio formats."
+# License: LGPL-2.1, MPL-1.1
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="COPYING.LGPL, COPYING.MPL"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.13.1
+NEOTERM_PKG_SRCURL=https://github.com/taglib/taglib/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=c8da2b10f1bfec2cd7dbfcd33f4a2338db0765d851a50583d410bacf055cfd0b
+NEOTERM_PKG_DEPENDS="libc++, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="boost, boost-headers"
+NEOTERM_PKG_BREAKS="taglib-dev"
+NEOTERM_PKG_REPLACES="taglib-dev"
+NEOTERM_PKG_INCLUDE_IN_DEVPACKAGE="bin/taglib-config"
+
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+-DBUILD_SHARED_LIBS=ON
+-DWITH_MP4=ON
+-DWITH_ASF=ON"

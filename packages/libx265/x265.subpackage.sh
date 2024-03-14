@@ -1,0 +1,2 @@
+NEOTERM_SUBPKG_INCLUDE="bin/x265"
+NEOTERM_SUBPKG_DESCRIPTION="H.265/HEVC video stream encoder tool"

@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/kiwix/libkiwix
+NEOTERM_PKG_DESCRIPTION="A library that contains a lot of things used by other kiwix programs"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="13.1.0"
+NEOTERM_PKG_SRCURL=https://github.com/kiwix/libkiwix/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=04d93f66b939f937df2c941af517966128d4c9872b707f9ed192177fe51364d3
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, libcurl, libicu, libmicrohttpd, libpugixml, libxapian, libzim, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="googletest, kainjow-mustache"

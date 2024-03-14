@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gnupg.org/related_software/libassuan/
+NEOTERM_PKG_DESCRIPTION="Library implementing the Assuan IPC protocol used between most newer GnuPG components"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.5.6
+NEOTERM_PKG_SRCURL=https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-${NEOTERM_PKG_VERSION}.tar.bz2
+NEOTERM_PKG_SHA256=e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426
+NEOTERM_PKG_DEPENDS="libgpg-error"
+NEOTERM_PKG_BREAKS="libassuan-dev"
+NEOTERM_PKG_REPLACES="libassuan-dev"

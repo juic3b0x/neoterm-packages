@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/juzzlin/Heimer
+NEOTERM_PKG_DESCRIPTION="Heimer is a simple cross-platform mind map, diagram, and note-taking tool written in Qt."
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="Yisus7u7 <dev.yisus@hotmail.com>"
+NEOTERM_PKG_VERSION="4.3.0"
+NEOTERM_PKG_SRCURL=https://github.com/juzzlin/Heimer/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=6431955e85a10cde22399247d57c937db51afd84677dab200093992f00353436
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase, qt5-qtsvg"
+NEOTERM_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools, qt5-qttools-cross-tools"

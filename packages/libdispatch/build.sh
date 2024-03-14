@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/apple/swift-corelibs-libdispatch
+NEOTERM_PKG_DESCRIPTION="The libdispatch project, for concurrency on multicore hardware"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@finagolfin"
+NEOTERM_PKG_VERSION="1:5.10"
+NEOTERM_PKG_SRCURL=https://github.com/apple/swift-corelibs-libdispatch/archive/swift-${NEOTERM_PKG_VERSION:2}-RELEASE.tar.gz
+NEOTERM_PKG_SHA256=16e088cf12654d22658879710b9694a6fad1c94d5e5d0c597741b71fbcb3e034
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="libc++, libblocksruntime"

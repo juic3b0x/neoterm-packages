@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://re2c.org/
+NEOTERM_PKG_DESCRIPTION="Lexer generator for C, C++ and Go."
+NEOTERM_PKG_LICENSE="Public Domain"
+NEOTERM_PKG_MAINTAINER="ian4hu <hu2008yinxiang@163.com>"
+NEOTERM_PKG_VERSION="3.1"
+NEOTERM_PKG_SRCURL=https://github.com/skvadrik/re2c/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=087c44de0400fb15caafde09fd72edc7381e688a35ef505ee65e0e3d2fac688b
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++"

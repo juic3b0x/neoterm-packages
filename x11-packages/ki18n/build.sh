@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.kde.org/
+NEOTERM_PKG_DESCRIPTION="KDE Gettext-based UI text internationalization"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="5.112.0"
+NEOTERM_PKG_SRCURL="https://download.kde.org/stable/frameworks/${NEOTERM_PKG_VERSION%.*}/ki18n-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=33d542e760c2bd5dd2d3511624cac3311c60187d7c7b155a4b968a7c6b7a961b
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="gettext, libc++, qt5-qtbase, qt5-qtdeclarative"
+NEOTERM_PKG_BUILD_DEPENDS="extra-cmake-modules, python, qt5-qtbase-cross-tools, qt5-qtdeclarative-cross-tools"

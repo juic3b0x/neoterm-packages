@@ -1,0 +1,56 @@
+--- pacman-6.0.2/etc/makepkg.conf.in	2023-03-10 01:35:19.647470082 +0300
++++ pacman-6.0.2/etc/makepkg.conf.in.patch	2023-03-10 01:37:36.035469985 +0300
+@@ -9,17 +9,17 @@
+ #
+ #-- The download utilities that makepkg should use to acquire sources
+ #  Format: 'protocol::agent'
+-DLAGENTS=('file::/usr/bin/curl -gqC - -o %o %u'
+-          'ftp::/usr/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
+-          'http::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+-          'https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
+-          'rsync::/usr/bin/rsync --no-motd -z %u %o'
+-          'scp::/usr/bin/scp -C %u %o')
++DLAGENTS=('file::@NEOTERM_PREFIX@/bin/curl -gqC - -o %o %u'
++          'ftp::@NEOTERM_PREFIX@/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
++          'http::@NEOTERM_PREFIX@/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
++          'https::@NEOTERM_PREFIX@/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
++          'rsync::@NEOTERM_PREFIX@/bin/rsync --no-motd -z %u %o'
++          'scp::@NEOTERM_PREFIX@/bin/scp -C %u %o')
+ 
+ # Other common tools:
+-# /usr/bin/snarf
+-# /usr/bin/lftpget -c
+-# /usr/bin/wget
++# @NEOTERM_PREFIX@/bin/snarf
++# @NEOTERM_PREFIX@/bin/lftpget -c0
++# @NEOTERM_PREFIX@/bin/wget
+ 
+ #-- The package required by makepkg to download VCS sources
+ #  Format: 'protocol::package'
+@@ -33,7 +33,7 @@
+ # ARCHITECTURE, COMPILE FLAGS
+ #########################################################################
+ #
+-CARCH="@CARCH@"
++CARCH="@NEOTERM_ARCH@"
+ CHOST="@CHOST@"
+ 
+ #-- Compiler and Linker Flags
+@@ -93,7 +93,7 @@
+ OPTIONS=(strip docs libtool staticlibs emptydirs zipman purge !debug !lto)
+ 
+ #-- File integrity checks to use. Valid: ck, md5, sha1, sha224, sha256, sha384, sha512, b2
+-INTEGRITY_CHECK=(ck)
++INTEGRITY_CHECK=(sha256)
+ #-- Options to be used when stripping binaries. See `man strip' for details.
+ STRIP_BINARIES="@STRIP_BINARIES@"
+ #-- Options to be used when stripping shared libraries. See `man strip' for details.
+@@ -107,7 +107,7 @@
+ #-- Files to be removed from all packages (if purge is specified)
+ PURGE_TARGETS=(usr/{,share}/info/dir .packlist *.pod)
+ #-- Directory to store source code in for debug packages
+-DBGSRCDIR="/usr/src/debug"
++DBGSRCDIR="@NEOTERM_PREFIX@/src/debug"
+ 
+ #########################################################################
+ # PACKAGE OUTPUT

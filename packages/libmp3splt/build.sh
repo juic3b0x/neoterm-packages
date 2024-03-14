@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://mp3splt.sourceforge.net
+NEOTERM_PKG_DESCRIPTION="Utility to split MP3, Ogg Vorbis and native FLAC files without decoding"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.9.2
+NEOTERM_PKG_REVISION=9
+NEOTERM_PKG_SRCURL=http://prdownloads.sourceforge.net/mp3splt/libmp3splt-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=30eed64fce58cb379b7cc6a0d8e545579cb99d0f0f31eb00b9acc8aaa1b035dc
+NEOTERM_PKG_DEPENDS="libflac, libid3tag, libltdl, libmad, libogg, libvorbis, pcre"
+NEOTERM_PKG_BREAKS="libmp3splt-dev"
+NEOTERM_PKG_REPLACES="libmp3splt-dev"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-cutter"

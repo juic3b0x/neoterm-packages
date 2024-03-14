@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://xcb.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="Utility libraries for XC Binding - client and window-manager helpers for ICCCM"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.4.2
+NEOTERM_PKG_SRCURL=https://xcb.freedesktop.org/dist/xcb-util-wm-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=62c34e21d06264687faea7edbf63632c9f04d55e72114aa4a57bb95e4f888a0b
+NEOTERM_PKG_DEPENDS="libxcb"
+NEOTERM_PKG_BUILD_DEPENDS="xorg-util-macros"

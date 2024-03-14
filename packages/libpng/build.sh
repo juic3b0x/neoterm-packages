@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=http://www.libpng.org/pub/png/libpng.html
+NEOTERM_PKG_DESCRIPTION="Official PNG reference library"
+NEOTERM_PKG_LICENSE="Libpng"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.6.43
+NEOTERM_PKG_SRCURL=https://download.sourceforge.net/libpng/libpng-$NEOTERM_PKG_VERSION.tar.xz
+NEOTERM_PKG_SHA256=6a5ca0652392a2d7c9db2ae5b40210843c0bbc081cbd410825ab00cc59f14a6c
+NEOTERM_PKG_DEPENDS="zlib"
+NEOTERM_PKG_BREAKS="libpng-dev"
+NEOTERM_PKG_REPLACES="libpng-dev"
+NEOTERM_PKG_RM_AFTER_INSTALL="bin/png-fix-itxt bin/pngfix"

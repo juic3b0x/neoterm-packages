@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE=https://osmcode.org/osmium-tool/
+NEOTERM_PKG_DESCRIPTION="A multipurpose command line tool based on the Osmium Library"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_LICENSE_FILE="LICENSE.txt"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.16.0"
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/osmcode/osmium-tool/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=f98454d9f901be42e0b6751aef40106d734887ee35190c224b174c2f27ef1c0f
+NEOTERM_PKG_DEPENDS="boost, libbz2, libc++, libexpat, liblz4, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="boost-headers, libosmium, libprotozero"
+NEOTERM_PKG_GROUPS="science"
+NEOTERM_PKG_AUTO_UPDATE=true

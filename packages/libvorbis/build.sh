@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://xiph.org/vorbis/
+NEOTERM_PKG_DESCRIPTION="Library for using the Ogg Vorbis compressed audio format"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.3.7
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=http://downloads.xiph.org/releases/vorbis/libvorbis-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b
+NEOTERM_PKG_DEPENDS="libogg"
+NEOTERM_PKG_BREAKS="libvorbis-dev"
+NEOTERM_PKG_REPLACES="libvorbis-dev"

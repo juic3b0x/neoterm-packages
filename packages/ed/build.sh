@@ -1,0 +1,7 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/ed/
+NEOTERM_PKG_DESCRIPTION="Classic UNIX line editor"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="Oliver Schmidhauser @Neo-Oli"
+NEOTERM_PKG_VERSION=1.19
+NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/ed/ed-${NEOTERM_PKG_VERSION}.tar.lz
+NEOTERM_PKG_SHA256=ce2f2e5c424790aa96d09dacb93d9bbfdc0b7eb6249c9cb7538452e8ec77cd48

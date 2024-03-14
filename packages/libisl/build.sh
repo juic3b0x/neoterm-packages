@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://libisl.sourceforge.io/
+NEOTERM_PKG_DESCRIPTION="Library for manipulating sets and relations of integer points bounded by linear constraints"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.26
+NEOTERM_PKG_SRCURL=https://libisl.sourceforge.io/isl-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=a0b5cb06d24f9fa9e77b55fabbe9a3c94a336190345c2555f9915bb38e976504
+NEOTERM_PKG_DEPENDS="libgmp"
+NEOTERM_PKG_BREAKS="libisl-dev"
+NEOTERM_PKG_REPLACES="libisl-dev"

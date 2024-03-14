@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/libsigsegv/
+NEOTERM_PKG_DESCRIPTION="GNU libsigsegv is a library for handling page faults in user mode"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.14
+NEOTERM_PKG_SRCURL=https://ftp.gnu.org/gnu/libsigsegv/libsigsegv-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=cdac3941803364cf81a908499beb79c200ead60b6b5b40cad124fd1e06caa295
+NEOTERM_PKG_BREAKS="libsigsegv-dev"
+NEOTERM_PKG_REPLACES="libsigsegv-dev"

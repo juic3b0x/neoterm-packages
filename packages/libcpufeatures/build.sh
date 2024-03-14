@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/google/cpu_features
+NEOTERM_PKG_DESCRIPTION="A cross-platform C library to retrieve CPU features (such as available instructions) at runtime"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.9.0"
+NEOTERM_PKG_SRCURL=https://github.com/google/cpu_features/archive/refs/tags/v$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=bdb3484de8297c49b59955c3b22dba834401bc2df984ef5cfc17acbe69c5018e
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_NO_STATICSPLIT=true

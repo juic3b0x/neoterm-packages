@@ -1,0 +1,13 @@
+NEOTERM_PKG_HOMEPAGE=https://otr.cypherpunks.ca
+NEOTERM_PKG_DESCRIPTION="Off-the-Record (OTR) Messaging allows you to have private conversations over instant messaging by providing: Encryption, Authentication, Deniability, Perfect forward secrecy"
+NEOTERM_PKG_LICENSE="LGPL-2.0"
+NEOTERM_PKG_VERSION=4.1.1
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_MAINTAINER="Oliver Schmidhauser @Neo-Oli"
+NEOTERM_PKG_SRCURL=https://otr.cypherpunks.ca/libotr-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=8b3b182424251067a952fb4e6c7b95a21e644fbb27fbd5f8af2b2ed87ca419f5
+NEOTERM_PKG_DEPENDS="libgcrypt"
+NEOTERM_PKG_BREAKS="libotr-dev"
+NEOTERM_PKG_REPLACES="libotr-dev"
+NEOTERM_PKG_BUILD_DEPENDS="libgpg-error"
+NEOTERM_PKG_BUILD_IN_SRC=true

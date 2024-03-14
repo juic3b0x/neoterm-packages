@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/ekzhang/bore
+NEOTERM_PKG_DESCRIPTION="Bore is a simple CLI tool for making tunnels to localhost"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.5.0"
+NEOTERM_PKG_SRCURL="https://github.com/ekzhang/bore/archive/v${NEOTERM_PKG_VERSION}.tar.gz"
+NEOTERM_PKG_SHA256=d084024cfa14b3b1df065fdf760fced511c228ff2441eda7874e3608f7563783
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true

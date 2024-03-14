@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://notroj.github.io/cadaver/
+NEOTERM_PKG_DESCRIPTION="A command-line WebDAV client for Unix"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.24
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://notroj.github.io/cadaver/cadaver-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=46cff2f3ebd32cd32836812ca47bcc75353fc2be757f093da88c0dd8f10fd5f6
+NEOTERM_PKG_DEPENDS="libneon, readline"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+--disable-nls
+"

@@ -1,0 +1,11 @@
+# X11 package
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X.Org Autotools macros"
+# Licenses: HPND, MIT
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="COPYING"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.20.0
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/util/util-macros-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=0b86b262dbe971edb4ff233bc370dfad9f241d09f078a3f6d5b7f4b8ea4430db
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true

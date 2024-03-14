@@ -1,0 +1,3 @@
+NEOTERM_SUBPKG_INCLUDE="bin/ share/man/man1/"
+NEOTERM_SUBPKG_DESCRIPTION="XZ-format compression tools"
+NEOTERM_SUBPKG_ESSENTIAL=true

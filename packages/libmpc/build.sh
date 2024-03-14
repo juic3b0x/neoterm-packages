@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=http://www.multiprecision.org/
+NEOTERM_PKG_DESCRIPTION="Library for the arithmetic of complex numbers with arbitrarily high precision"
+NEOTERM_PKG_LICENSE="LGPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.3.1
+NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/mpc/mpc-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=ab642492f5cf882b74aa0cb730cd410a81edcdbec895183ce930e706c1c759b8
+NEOTERM_PKG_DEPENDS="libgmp, libmpfr"
+NEOTERM_PKG_BREAKS="libmpc-dev"
+NEOTERM_PKG_REPLACES="libmpc-dev"

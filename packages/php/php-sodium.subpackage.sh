@@ -1,0 +1,3 @@
+NEOTERM_SUBPKG_INCLUDE="lib/php/sodium.so"
+NEOTERM_SUBPKG_DEPENDS="libsodium"
+NEOTERM_SUBPKG_DESCRIPTION="Sodium module for PHP"

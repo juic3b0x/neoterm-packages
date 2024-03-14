@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/libidn/#libidn2
+NEOTERM_PKG_DESCRIPTION="Free software implementation of IDNA2008, Punycode and TR46"
+NEOTERM_PKG_LICENSE="LGPL-3.0, GPL-2.0, GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.3.4
+NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/libidn/libidn2-$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SHA256=93caba72b4e051d1f8d4f5a076ab63c99b77faee019b72b9783b267986dbb45f
+NEOTERM_PKG_DEPENDS="libandroid-support, libiconv, libunistring"
+NEOTERM_PKG_BREAKS="libidn2-dev"
+NEOTERM_PKG_REPLACES="libidn2-dev"

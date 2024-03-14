@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://wayland.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="Wayland protocols library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.31
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/${NEOTERM_PKG_VERSION}/downloads/wayland-protocols-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=a07fa722ed87676ec020d867714bc9a2f24c464da73912f39706eeef5219e238
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+-Dtests=false
+"

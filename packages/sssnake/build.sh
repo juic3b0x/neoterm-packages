@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/AngelJumbo/sssnake
+NEOTERM_PKG_DESCRIPTION="cli snake game that plays itself"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.3.2
+NEOTERM_PKG_SRCURL=https://github.com/AngelJumbo/sssnake/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=ffd5f012ed664d4d72df03af858c8984c60985ef680b760bb3f37d4948f2a3c0
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_GROUPS="games"
