@@ -6,7 +6,7 @@ diff -uNr wireshark-2.6.1/wsutil/filesystem.c wireshark-2.6.1.mod/wsutil/filesys
      return get_datafile_dir();
  #else
 -    return "/etc";
-+    return "@NEOTERM_PREFIX@/etc";
++    return "@TERMUX_PREFIX@/etc";
  #endif
  }
  

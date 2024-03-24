@@ -5,7 +5,7 @@
  
  # the pid file when running as daemon
 -#pidfile = /var/run/snapserver/pid
-+#pidfile = @NEOTERM_PREFIX@/var/run/snapserver/pid
++#pidfile = @TERMUX_PREFIX@/var/run/snapserver/pid
  
  # the user to run as when daemonized
  #user = snapserver
@@ -14,7 +14,7 @@
  # directory where persistent data is stored (server.json)
  # if empty, data dir will be
 -#  - "/var/lib/snapserver/" when running as daemon
-+#  - "@NEOTERM_PREFIX@/var/lib/snapserver/" when running as daemon
++#  - "@TERMUX_PREFIX@/var/lib/snapserver/" when running as daemon
  #  - "$HOME/.config/snapserver/" when not running as daemon
  #datadir = 
  
@@ -23,7 +23,7 @@
  # serve a website from the doc_root location
  # disabled if commented or empty
 -doc_root = /usr/share/snapserver/snapweb
-+doc_root = @NEOTERM_PREFIX@/share/snapserver/snapweb
++doc_root = @TERMUX_PREFIX@/share/snapserver/snapweb
  
  # Hostname or IP under which clients can reach this host
  # used to serve cached cover art
@@ -32,7 +32,7 @@
  # alsa: alsa://?name=<name>&device=<alsa device>[&send_silence=false][&idle_threshold=100][&silence_threshold_percent=0.0]
  # meta: meta:///<name of source#1>/<name of source#2>/.../<name of source#N>?name=<name>
 -source = pipe:///tmp/snapfifo?name=default
-+source = pipe://@NEOTERM_PREFIX@/tmp/snapfifo?name=default
++source = pipe://@TERMUX_PREFIX@/tmp/snapfifo?name=default
  #source = tcp://127.0.0.1?name=mopidy_tcp
  
  # Default sample format: <sample rate>:<bits per sample>:<channels>

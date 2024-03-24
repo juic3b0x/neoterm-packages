@@ -43,7 +43,7 @@ PostgreSQL home page: <https://www.postgresql.org/>"
 }
 
 version=@POSTGRESQL_VERSION@
-prefix=@NEOTERM_PREFIX@
+prefix=@TERMUX_PREFIX@
 BINDIR="$prefix/bin"
 DOCDIR="$prefix/share/doc/postgresql"
 HTMLDIR="$prefix/share/doc/postgresql"
@@ -57,8 +57,8 @@ MANDIR="$prefix/share/man"
 SHAREDIR="$prefix/share/postgresql"
 SYSCONFDIR="$prefix/etc/postgresql"
 PGXS="$prefix/lib/postgresql/pgxs/src/makefiles/pgxs.mk"
-CONFIGURE="--disable-dependency-tracking --prefix=$prefix --libdir=$prefix/lib --sbindir=$prefix/bin --disable-rpath --disable-rpath-hack --host=@NEOTERM_HOST_PLATFORM@ pgac_cv_prog_cc_ldflags__Wl___as_needed=yes USE_UNNAMED_POSIX_SEMAPHORES=1 --with-icu --with-libxml --with-openssl --with-uuid=e2fs ZIC=/home/builder/.neoterm-build/postgresql/host-build/src/timezone/zic --disable-nls --enable-shared --enable-static --libexecdir=$prefix/libexec host_alias=@NEOTERM_HOST_PLATFORM@ CC=@NEOTERM_HOST_PLATFORM@-clang CFLAGS= -fstack-protector-strong -Oz LDFLAGS=-L$prefix/lib -Wl,-rpath=$prefix/lib -fopenmp -static-openmp -Wl,--enable-new-dtags -Wl,--as-needed -Wl,-z,relro,-z,now CPPFLAGS= -I$prefix/include CXX=@NEOTERM_HOST_PLATFORM@-clang++ CXXFLAGS= -fstack-protector-strong -Oz CPP=@NEOTERM_HOST_PLATFORM@-cpp PKG_CONFIG=/home/builder/.neoterm-build/_cache/android-r23b-api-24-v1/bin/pkg-config PKG_CONFIG_LIBDIR=$prefix/lib/pkgconfig"
-CC="@NEOTERM_HOST_PLATFORM@-clang"
+CONFIGURE="--disable-dependency-tracking --prefix=$prefix --libdir=$prefix/lib --sbindir=$prefix/bin --disable-rpath --disable-rpath-hack --host=@TERMUX_HOST_PLATFORM@ pgac_cv_prog_cc_ldflags__Wl___as_needed=yes USE_UNNAMED_POSIX_SEMAPHORES=1 --with-icu --with-libxml --with-openssl --with-uuid=e2fs ZIC=/home/builder/.termux-build/postgresql/host-build/src/timezone/zic --disable-nls --enable-shared --enable-static --libexecdir=$prefix/libexec host_alias=@TERMUX_HOST_PLATFORM@ CC=@TERMUX_HOST_PLATFORM@-clang CFLAGS= -fstack-protector-strong -Oz LDFLAGS=-L$prefix/lib -Wl,-rpath=$prefix/lib -fopenmp -static-openmp -Wl,--enable-new-dtags -Wl,--as-needed -Wl,-z,relro,-z,now CPPFLAGS= -I$prefix/include CXX=@TERMUX_HOST_PLATFORM@-clang++ CXXFLAGS= -fstack-protector-strong -Oz CPP=@TERMUX_HOST_PLATFORM@-cpp PKG_CONFIG=/home/builder/.termux-build/_cache/android-r23b-api-24-v1/bin/pkg-config PKG_CONFIG_LIBDIR=$prefix/lib/pkgconfig"
+CC="@TERMUX_HOST_PLATFORM@-clang"
 CPPFLAGS="-I$prefix/include -I$prefix/include -D_GNU_SOURCE -I$prefix/include/libxml2"
 CFLAGS="-Wall -Wmissing-prototypes -Wpointer-arith -Wdeclaration-after-statement -Werror=vla -Werror=unguarded-availability-new -Wendif-labels -Wmissing-format-attribute -Wformat-security -fno-strict-aliasing -fwrapv -Wno-unused-command-line-argument  -fstack-protector-strong -Oz"
 CFLAGS_SL="-fPIC"
@@ -71,7 +71,7 @@ VERSION="PostgreSQL $version"
 handle_args () {
 	case "${1##--}" in
 		bindir) echo "$BINDIR" ;;
-		cc) echo "@NEOTERM_HOST_PLATFORM@-clang" ;;
+		cc) echo "@TERMUX_HOST_PLATFORM@-clang" ;;
 		cflags) echo "$CFLAGS" ;;
 		cflags_sl) echo "$CFLAGS_SL" ;;
 		configure) echo "$CONFIGURE" ;;

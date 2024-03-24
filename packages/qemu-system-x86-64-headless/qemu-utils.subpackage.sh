@@ -1,8 +1,8 @@
-NEOTERM_SUBPKG_DESCRIPTION="A set of utilities for working with the QEMU emulators"
-NEOTERM_SUBPKG_DEPENDS="glib, libbz2, libcurl, libgmp, libgnutls, libnettle, libnfs, libpixman, libssh, zlib, zstd"
-NEOTERM_SUBPKG_DEPEND_ON_PARENT=no
+TERMUX_SUBPKG_DESCRIPTION="A set of utilities for working with the QEMU emulators"
+TERMUX_SUBPKG_DEPENDS="glib, libbz2, libcurl, libgmp, libgnutls, libnettle, libnfs, libpixman, libssh, zlib, zstd"
+TERMUX_SUBPKG_DEPEND_ON_PARENT=no
 
-NEOTERM_SUBPKG_INCLUDE="
+TERMUX_SUBPKG_INCLUDE="
 bin/elf2dmp
 bin/qemu-edid
 bin/qemu-img

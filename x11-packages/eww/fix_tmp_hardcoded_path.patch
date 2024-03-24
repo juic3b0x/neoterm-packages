@@ -5,7 +5,7 @@
          let ipc_socket_file = std::env::var("XDG_RUNTIME_DIR")
              .map(std::path::PathBuf::from)
 -            .unwrap_or_else(|_| std::path::PathBuf::from("/tmp"))
-+            .unwrap_or_else(|_| std::path::PathBuf::from("@NEOTERM_PREFIX@/tmp"))
++            .unwrap_or_else(|_| std::path::PathBuf::from("@TERMUX_PREFIX@/tmp"))
              .join(format!("eww-server_{}", daemon_id));
  
          // 100 as the limit isn't quite 108 everywhere (i.e 104 on BSD or mac)
@@ -16,6 +16,6 @@
              Ok(Self { name_span, name: VarName(name), command: script.to_string(), initial_value, command_span })
          })();
 -        result.note(r#"Expected format: `(deflisten name :initial "0" "tail -f /tmp/example")`"#)
-+        result.note(r#"Expected format: `(deflisten name :initial "0" "tail -f @NEOTERM_PREFIX@/tmp/example")`"#)
++        result.note(r#"Expected format: `(deflisten name :initial "0" "tail -f @TERMUX_PREFIX@/tmp/example")`"#)
      }
  }

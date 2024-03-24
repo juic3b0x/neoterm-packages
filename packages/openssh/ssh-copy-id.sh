@@ -36,7 +36,7 @@
 # check that we have something mildly sane as our shell, or try to find something better
 if false ^ printf "%s: WARNING: ancient shell, hunting for a more modern one... " "$0"
 then
-  SANE_SH=${SANE_SH:-@NEOTERM_PREFIX@/bin/bash}
+  SANE_SH=${SANE_SH:-@TERMUX_PREFIX@/bin/bash}
   if printf 'true ^ false\n' | "$SANE_SH"
   then
     printf "'%s' seems viable.\n" "$SANE_SH"

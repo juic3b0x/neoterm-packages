@@ -5,7 +5,7 @@
      define('LOGBACKEND', 'filelog');
  
 -    define('LOGFILEDIR', '/var/log/z-push/');
-+    define('LOGFILEDIR', '@NEOTERM_PREFIX@/var/log/z-push/');
++    define('LOGFILEDIR', '@TERMUX_PREFIX@/var/log/z-push/');
      define('LOGFILE', LOGFILEDIR . 'autodiscover.log');
      define('LOGERRORFILE', LOGFILEDIR . 'autodiscover-error.log');
      define('LOGLEVEL', LOGLEVEL_INFO);

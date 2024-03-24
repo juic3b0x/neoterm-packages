@@ -6,8 +6,8 @@
      } else {
 -      char buf[100];
 -      snprintf(buf, sizeof(buf), "/tmp/rocksdbtest-%d", int(geteuid()));
-+      char buf[] = "@NEOTERM_PREFIX@/tmp/rocksdbtest-XXXXXXXXXXX";
-+      snprintf(buf, sizeof(buf), "@NEOTERM_PREFIX@/tmp/rocksdbtest-%d", int(geteuid()));
++      char buf[] = "@TERMUX_PREFIX@/tmp/rocksdbtest-XXXXXXXXXXX";
++      snprintf(buf, sizeof(buf), "@TERMUX_PREFIX@/tmp/rocksdbtest-%d", int(geteuid()));
        *result = buf;
      }
      // Directory may already exist

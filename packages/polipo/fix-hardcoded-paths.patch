@@ -6,7 +6,7 @@ diff -uNr polipo-1.1.1/config.sample polipo-1.1.1.mod/config.sample
  # You should not need to use a configuration file; all configuration
  # variables have reasonable defaults.  If you want to use one, you
 -# can copy this to /etc/polipo/config or to ~/.polipo and modify.
-+# can copy this to @NEOTERM_PREFIX@/etc/polipo/config or to ~/.polipo and modify.
++# can copy this to @TERMUX_PREFIX@/etc/polipo/config or to ~/.polipo and modify.
  
  # This file only contains some of the configuration variables; see the
  # list given by ``polipo -v'' and the manual for more.
@@ -18,12 +18,12 @@ diff -uNr polipo-1.1.1/diskcache.c polipo-1.1.1.mod/diskcache.c
  
  #ifndef LOCAL_ROOT
 -#define LOCAL_ROOT "/usr/share/polipo/www/"
-+#define LOCAL_ROOT "@NEOTERM_PREFIX@/share/polipo/www/"
++#define LOCAL_ROOT "@TERMUX_PREFIX@/share/polipo/www/"
  #endif
  
  #ifndef DISK_CACHE_ROOT
 -#define DISK_CACHE_ROOT "/var/cache/polipo/"
-+#define DISK_CACHE_ROOT "@NEOTERM_PREFIX@/var/cache/polipo/"
++#define DISK_CACHE_ROOT "@TERMUX_PREFIX@/var/cache/polipo/"
  #endif
  
  static int maxDiskEntriesSetter(ConfigVariablePtr, void*);
@@ -35,7 +35,7 @@ diff -uNr polipo-1.1.1/dns.c polipo-1.1.1.mod/dns.c
  #ifndef NO_FANCY_RESOLVER
  #ifndef WIN32
 -    parseResolvConf("/etc/resolv.conf");
-+    parseResolvConf("@NEOTERM_PREFIX@/etc/resolv.conf");
++    parseResolvConf("@TERMUX_PREFIX@/etc/resolv.conf");
  #endif
      if(dnsNameServer == NULL || dnsNameServer->string[0] == '\0')
          dnsNameServer = internAtom("127.0.0.1");
@@ -48,8 +48,8 @@ diff -uNr polipo-1.1.1/forbidden.c polipo-1.1.1.mod/forbidden.c
      if(forbiddenFile == NULL) {
 -        if(access("/etc/polipo/forbidden", F_OK) >= 0)
 -            forbiddenFile = internAtom("/etc/polipo/forbidden");
-+        if(access("@NEOTERM_PREFIX@/etc/polipo/forbidden", F_OK) >= 0)
-+            forbiddenFile = internAtom("@NEOTERM_PREFIX@/etc/polipo/forbidden");
++        if(access("@TERMUX_PREFIX@/etc/polipo/forbidden", F_OK) >= 0)
++            forbiddenFile = internAtom("@TERMUX_PREFIX@/etc/polipo/forbidden");
      }
  
      parseDomainFile(forbiddenFile, &forbiddenDomains, &forbiddenRegex);
@@ -59,8 +59,8 @@ diff -uNr polipo-1.1.1/forbidden.c polipo-1.1.1.mod/forbidden.c
      if(uncachableFile == NULL) {
 -        if(access("/etc/polipo/uncachable", F_OK) >= 0)
 -            uncachableFile = internAtom("/etc/polipo/uncachable");
-+        if(access("@NEOTERM_PREFIX@/etc/polipo/uncachable", F_OK) >= 0)
-+            uncachableFile = internAtom("@NEOTERM_PREFIX@/etc/polipo/uncachable");
++        if(access("@TERMUX_PREFIX@/etc/polipo/uncachable", F_OK) >= 0)
++            uncachableFile = internAtom("@TERMUX_PREFIX@/etc/polipo/uncachable");
      }
  
      parseDomainFile(uncachableFile, &uncachableDomains, &uncachableRegex);
@@ -70,8 +70,8 @@ diff -uNr polipo-1.1.1/forbidden.c polipo-1.1.1.mod/forbidden.c
      if(forbiddenTunnelsFile == NULL) {
 -        if(access("/etc/polipo/forbiddenTunnels", F_OK) >= 0)
 -            forbiddenTunnelsFile = internAtom("/etc/polipo/forbiddenTunnels");
-+        if(access("@NEOTERM_PREFIX@/etc/polipo/forbiddenTunnels", F_OK) >= 0)
-+            forbiddenTunnelsFile = internAtom("@NEOTERM_PREFIX@/etc/polipo/forbiddenTunnels");
++        if(access("@TERMUX_PREFIX@/etc/polipo/forbiddenTunnels", F_OK) >= 0)
++            forbiddenTunnelsFile = internAtom("@TERMUX_PREFIX@/etc/polipo/forbiddenTunnels");
      }
      
      parseDomainFile(forbiddenTunnelsFile, &forbiddenTunnelsDomains, &forbiddenTunnelsRegex);
@@ -81,7 +81,7 @@ diff -uNr polipo-1.1.1/forbidden.sample polipo-1.1.1.mod/forbidden.sample
 @@ -1,5 +1,5 @@
  # Sample forbidden URLs file for polipo.  -*-sh-*-
 -# Put this in /etc/polipo/forbidden or in ~/.polipo-forbidden.
-+# Put this in @NEOTERM_PREFIX@/etc/polipo/forbidden or in ~/.polipo-forbidden.
++# Put this in @TERMUX_PREFIX@/etc/polipo/forbidden or in ~/.polipo-forbidden.
  
  # Forbid all hosts belonging to a given domain name:
  
@@ -93,7 +93,7 @@ diff -uNr polipo-1.1.1/log.c polipo-1.1.1.mod/log.c
      CONFIG_VARIABLE_SETTABLE(logLevel, CONFIG_HEX, configIntSetter,
                               "Logging level (max = " STR(LOGGING_MAX) ").");
 -    CONFIG_VARIABLE(logFile, CONFIG_ATOM, "Log file (stderr if empty and logSyslog is unset, /var/log/polipo if empty and daemonise is true).");
-+    CONFIG_VARIABLE(logFile, CONFIG_ATOM, "Log file (stderr if empty and logSyslog is unset, @NEOTERM_PREFIX@/var/log/polipo if empty and daemonise is true).");
++    CONFIG_VARIABLE(logFile, CONFIG_ATOM, "Log file (stderr if empty and logSyslog is unset, @TERMUX_PREFIX@/var/log/polipo if empty and daemonise is true).");
      CONFIG_VARIABLE(logFilePermissions, CONFIG_OCTAL,
                      "Access rights of the logFile.");
      CONFIG_VARIABLE_SETTABLE(scrubLogs, CONFIG_BOOLEAN, configIntSetter,
@@ -102,7 +102,7 @@ diff -uNr polipo-1.1.1/log.c polipo-1.1.1.mod/log.c
  {
      if(daemonise && logFile == NULL && !logSyslog)
 -        logFile = internAtom("/var/log/polipo");
-+        logFile = internAtom("@NEOTERM_PREFIX@/var/log/polipo");
++        logFile = internAtom("@TERMUX_PREFIX@/var/log/polipo");
  
      if(logFile != NULL && logFile->length > 0) {
          FILE *f;
@@ -115,8 +115,8 @@ diff -uNr polipo-1.1.1/main.c polipo-1.1.1.mod/main.c
      if(configFile == NULL) {
 -        if(access("/etc/polipo/config", F_OK) >= 0)
 -            configFile = internAtom("/etc/polipo/config");
-+        if(access("@NEOTERM_PREFIX@/etc/polipo/config", F_OK) >= 0)
-+            configFile = internAtom("@NEOTERM_PREFIX@/etc/polipo/config");
++        if(access("@TERMUX_PREFIX@/etc/polipo/config", F_OK) >= 0)
++            configFile = internAtom("@TERMUX_PREFIX@/etc/polipo/config");
          if(configFile && access(configFile->string, F_OK) < 0) {
              releaseAtom(configFile);
              configFile = NULL;
@@ -128,19 +128,19 @@ diff -uNr polipo-1.1.1/polipo.man polipo-1.1.1.mod/polipo.man
  .SH FILES
  .TP
 -.B /etc/polipo/config
-+.B @NEOTERM_PREFIX@/etc/polipo/config
++.B @TERMUX_PREFIX@/etc/polipo/config
  The default location of Polipo's configuration file.
  .TP
 -.B /etc/polipo/forbidden
-+.B @NEOTERM_PREFIX@/etc/polipo/forbidden
++.B @TERMUX_PREFIX@/etc/polipo/forbidden
  The default location of the list of forbidden URLs.
  .TP
 -.B /var/cache/polipo/
-+.B @NEOTERM_PREFIX@/var/cache/polipo/
++.B @TERMUX_PREFIX@/var/cache/polipo/
  The default location of the on-disk cache.
  .TP
 -.B /usr/share/polipo/www/
-+.B @NEOTERM_PREFIX@/share/polipo/www/
++.B @TERMUX_PREFIX@/share/polipo/www/
  The default root of the local web space.
  .SH SIGNALS
  .TP 
@@ -152,7 +152,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  (@pxref{Purging}).  The flag @option{-c} specifies the configuration
  file to use (by default @file{~/.polipo} or
 -@file{/etc/polipo/config}).  Finally, Polipo's configuration can be
-+@file{@NEOTERM_PREFIX@/etc/polipo/config}).  Finally, Polipo's configuration can be
++@file{@TERMUX_PREFIX@/etc/polipo/config}).  Finally, Polipo's configuration can be
  changed on the command line by assigning values to given configuration
  variables.
  
@@ -161,7 +161,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  
  The variable @code{logFile} defaults to empty if @code{daemonise} is
 -false, and to @samp{/var/log/polipo} otherwise.  The variable
-+false, and to @samp{@NEOTERM_PREFIX@/var/log/polipo} otherwise.  The variable
++false, and to @samp{@TERMUX_PREFIX@/var/log/polipo} otherwise.  The variable
  @code{logSyslog} defaults to @code{false}, and @code{logFacility}
  defaults to @samp{user}.
  
@@ -170,7 +170,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  The data for the local web server can be configured by setting
  @code{localDocumentRoot}, which defaults to
 -@file{/usr/share/polipo/www/}.  Setting this variable to @samp{""}
-+@file{@NEOTERM_PREFIX@/share/polipo/www/}.  Setting this variable to @samp{""}
++@file{@TERMUX_PREFIX@/share/polipo/www/}.  Setting this variable to @samp{""}
  will disable the local server.
  
  Polipo assumes that the local web tree doesn't change behind its back.
@@ -179,7 +179,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  
  The file pointed at by the variable @code{forbiddenFile} (defaults to
 -@file{~/.polipo-forbidden} or @file{/etc/polipo/forbidden}, whichever
-+@file{~/.polipo-forbidden} or @file{@NEOTERM_PREFIX@/etc/polipo/forbidden}, whichever
++@file{~/.polipo-forbidden} or @file{@TERMUX_PREFIX@/etc/polipo/forbidden}, whichever
  exists) specifies the set of URLs that should never be fetched.  If
  @code{forbiddenFile} is a directory, it will be recursively searched
  for files with forbidden URLs.
@@ -188,7 +188,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  
  The file pointed at by the variable @code{forbiddenTunnelsFile} (defaults to
 -@file{~/.polipo-forbiddenTunnels} or @file{/etc/polipo/forbiddenTunnels}, 
-+@file{~/.polipo-forbiddenTunnels} or @file{@NEOTERM_PREFIX@/etc/polipo/forbiddenTunnels}, 
++@file{~/.polipo-forbiddenTunnels} or @file{@TERMUX_PREFIX@/etc/polipo/forbiddenTunnels}, 
  whichever exists) specifies the set of tunnel specifications that should
  be blocked.
  
@@ -197,7 +197,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  If the internal DNS support is used, Polipo must be given a recursive
  name server to speak to.  By default, this information is taken from
 -the @samp{/etc/resolv.conf} file at startup; however, if you wish to use
-+the @samp{@NEOTERM_PREFIX@/etc/resolv.conf} file at startup; however, if you wish to use
++the @samp{@TERMUX_PREFIX@/etc/resolv.conf} file at startup; however, if you wish to use
  a different name server, you may set the variable @code{dnsNameServer}
  to an IP address@footnote{While Polipo does its own caching of DNS
  data, I recommend that you run a local caching name server.  I am very
@@ -206,7 +206,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  @code{forbiddenFile} (@pxref{Internal forbidden list}).  If not
  specified, its location defaults to @samp{~/.polipo-uncachable} or
 -@samp{/etc/polipo/uncachable}, whichever exists.
-+@samp{@NEOTERM_PREFIX@/etc/polipo/uncachable}, whichever exists.
++@samp{@TERMUX_PREFIX@/etc/polipo/uncachable}, whichever exists.
  
  @node Memory cache, Disk cache, Cache transparency, Caching
  @section The in-memory cache
@@ -215,7 +215,7 @@ diff -uNr polipo-1.1.1/polipo.texi polipo-1.1.1.mod/polipo.texi
  The on-disk cache consists in a filesystem subtree rooted at
  a location defined by the variable @code{diskCacheRoot}, by default
 -@code{"/var/cache/polipo/"}.  This directory should normally be
-+@code{"@NEOTERM_PREFIX@/var/cache/polipo/"}.  This directory should normally be
++@code{"@TERMUX_PREFIX@/var/cache/polipo/"}.  This directory should normally be
  writeable, readable and seekable by the user running Polipo.  While it
  is best to use a local filesystem for the on-disk cache, a NFSv3- or
  AFS-mounted filesystem should be safe in most implementations.  Do not

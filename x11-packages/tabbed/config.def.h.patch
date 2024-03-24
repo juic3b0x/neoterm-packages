@@ -5,7 +5,7 @@
  
  #define SETPROP(p) { \
 -        .v = (char *[]){ "/bin/sh", "-c", \
-+        .v = (char *[]){ "@NEOTERM_PREFIX@/bin/sh", "-c", \
++        .v = (char *[]){ "@TERMUX_PREFIX@/bin/sh", "-c", \
                  "prop=\"`xwininfo -children -id $1 | grep '^     0x' |" \
                  "sed -e's@^ *\\(0x[0-9a-f]*\\) \"\\([^\"]*\\)\".*@\\1 \\2@' |" \
                  "xargs -0 printf %b | dmenu -l 10 -w $1`\" &&" \

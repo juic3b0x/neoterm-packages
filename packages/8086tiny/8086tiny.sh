@@ -1,9 +1,9 @@
-#!@NEOTERM_PREFIX@/bin/bash
+#!@TERMUX_PREFIX@/bin/bash
 
 VERSION="@PACKAGE_VERSION@"
 
-PROGRAM="@NEOTERM_PREFIX@/libexec/8086tiny"
-BIOS_IMAGE="@NEOTERM_PREFIX@/share/8086tiny/bios.bin"
+PROGRAM="@TERMUX_PREFIX@/libexec/8086tiny"
+BIOS_IMAGE="@TERMUX_PREFIX@/share/8086tiny/bios.bin"
 FD_IMAGE=""
 HDD_IMAGE=""
 
@@ -58,7 +58,7 @@ while (( $# > 0 )); do
 done
 
 if [ -z "$FD_IMAGE" ]; then
-	FD_IMAGE="@NEOTERM_PREFIX@/share/8086tiny/dos.img"
+	FD_IMAGE="@TERMUX_PREFIX@/share/8086tiny/dos.img"
 fi
 
 clear

@@ -6,8 +6,8 @@
  
 -    sprintf(private_key,"/home/%s/.ssh/id_rsa",user);
 -    sprintf(public_key,"/home/%s/.ssh/id_rsa.pub",user);
-+    sprintf(private_key,"@NEOTERM_HOME@/.ssh/id_rsa",user);
-+    sprintf(public_key,"@NEOTERM_HOME@/.ssh/id_rsa.pub",user);
++    sprintf(private_key,"@TERMUX_HOME@/.ssh/id_rsa",user);
++    sprintf(public_key,"@TERMUX_HOME@/.ssh/id_rsa.pub",user);
  
      while ((optc = getopt_long (argc, argv, "a:s:p:u:P:k:K", long_options, NULL)) != -1) {
          switch (optc) {

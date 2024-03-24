@@ -5,7 +5,7 @@
  
  	    if( DEBUG && oldsfd )
 -		GFileWriteAll( "/tmp/old-lookup-table.sfd", oldsfd );
-+		GFileWriteAll( "@NEOTERM_PREFIX@/tmp/old-lookup-table.sfd", oldsfd );
++		GFileWriteAll( "@TERMUX_PREFIX@/tmp/old-lookup-table.sfd", oldsfd );
  	}
  
  	/* Then mark all the current things as unused */

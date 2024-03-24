@@ -6,7 +6,7 @@ diff -uNr bash-5.0/error.c bash-5.0.mod/error.c
  
    if (tracefp == NULL)
 -    tracefp = fopen("/tmp/bash-trace.log", "a+");
-+    tracefp = fopen("@NEOTERM_PREFIX@/tmp/bash-trace.log", "a+");
++    tracefp = fopen("@TERMUX_PREFIX@/tmp/bash-trace.log", "a+");
  
    if (tracefp == NULL)
      tracefp = stderr;

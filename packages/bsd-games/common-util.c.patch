@@ -5,7 +5,7 @@
      datahome = getenv ("TMPDIR");
      if (!datahome)
 -	datahome = "/tmp";
-+	datahome = "@NEOTERM_PREFIX@/tmp";
++	datahome = "@TERMUX_PREFIX@/tmp";
      snprintf (buf, bufsz, "%s", datahome);
      return buf;
  }

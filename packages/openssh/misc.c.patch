@@ -6,7 +6,7 @@ diff -uNr openssh-portable-V_9_5_P1/misc.c openssh-portable-V_9_5_P1.mod/misc.c
  			return;
  	}
 -	r = snprintf(s, len, "/tmp/ssh-XXXXXXXXXXXX");
-+	r = snprintf(s, len, "@NEOTERM_PREFIX@/tmp/ssh-XXXXXXXXXXXX");
++	r = snprintf(s, len, "@TERMUX_PREFIX@/tmp/ssh-XXXXXXXXXXXX");
  	if (r < 0 || (size_t)r >= len)
  		fatal_f("template string too short");
  }

@@ -6,9 +6,9 @@ unset JAVA_HOME
 # -7 for java 1.7 compatibility.
 dalvikvm -Xmx256m \
          -Xcompiler-option --compiler-filter=speed \
-         -cp @NEOTERM_PREFIX@/share/dex/ecj.jar \
+         -cp @TERMUX_PREFIX@/share/dex/ecj.jar \
          org.eclipse.jdt.internal.compiler.batch.Main \
          -proc:none \
          -7 \
-         -cp @NEOTERM_PREFIX@/share/java/android.jar \
+         -cp @TERMUX_PREFIX@/share/java/android.jar \
          "$@"

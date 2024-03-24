@@ -53,7 +53,7 @@ diff -uNr psmisc/src/killall.c psmisc.mod/src/killall.c
  }
  
 +#ifdef __ANDROID__
-+static inline void neoterm_disable_fdsan() {
++static inline void termux_disable_fdsan() {
 +	// For Android 11+.
 +	void *lib_handle = dlopen("libc.so", RTLD_LAZY);
 +	if (lib_handle) {
@@ -74,7 +74,7 @@ diff -uNr psmisc/src/killall.c psmisc.mod/src/killall.c
          {0,0,0,0 }};
  
 +#ifdef __ANDROID__
-+    neoterm_disable_fdsan();
++    termux_disable_fdsan();
 +#endif
  
      /* Setup the i18n */

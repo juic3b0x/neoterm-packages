@@ -5,7 +5,7 @@
  		ucr->pb_base_dir = getenv("TMPDIR");
  		if (!ucr->pb_base_dir)
 -			ucr->pb_base_dir = "/tmp";
-+			ucr->pb_base_dir = "@NEOTERM_PREFIX@/tmp";
++			ucr->pb_base_dir = "@TERMUX_PREFIX@/tmp";
  	}
  
  	int nevents;

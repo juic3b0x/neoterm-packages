@@ -4,7 +4,7 @@
    find_library(LIBMARISA NAMES marisa)
    if (LIBMARISA)
      message(STATUS "libmarisa found: ${LIBMARISA}")
-+    include_directories(@NEOTERM_PREFIX@/include)
++    include_directories(@TERMUX_PREFIX@/include)
    else()
      message(FATAL_ERROR "libmarisa not found.")
    endif()

@@ -5,7 +5,7 @@
      if (!f) f = gprc_chk(s); /* in . */
  #ifndef _WIN32
 -    if (!f) f = gprc_chk("/etc/gprc");
-+    if (!f) f = gprc_chk("@NEOTERM_PREFIX@/etc/gprc");
++    if (!f) f = gprc_chk("@TERMUX_PREFIX@/etc/gprc");
  #else
      if (!f)  /* in basedir */
      {

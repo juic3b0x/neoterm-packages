@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/18389
+https://github.com/termux/termux-packages/issues/18389
 
 --- a/src/affinity.c
 +++ b/src/affinity.c

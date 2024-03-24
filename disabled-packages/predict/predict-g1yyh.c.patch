@@ -22,7 +22,7 @@
  			   directed to a temporary file under /tmp */
  
 -			strcpy(tempname,"/tmp/XXXXXX\0");
-+			strcpy(tempname,"@NEOTERM_PREFIX@/tmp/XXXXXX\0");
++			strcpy(tempname,"@TERMUX_PREFIX@/tmp/XXXXXX\0");
  			i=mkstemp(tempname);
  
  			sprintf(buff,"%s -f %s -t %s -q %s -o %s\n",predict_name,satname,tlefile,qthfile,tempname);
@@ -31,7 +31,7 @@
  			   directed to a temporary file under /tmp */
  
 -			strcpy(tempname,"/tmp/XXXXXX\0");
-+			strcpy(tempname,"@NEOTERM_PREFIX@/tmp/XXXXXX\0");
++			strcpy(tempname,"@TERMUX_PREFIX@/tmp/XXXXXX\0");
  			i=mkstemp(tempname);
  
  			sprintf(buff,"%s -p %s -t %s -q %s -o %s\n",predict_name, satname,tlefile,qthfile,tempname);

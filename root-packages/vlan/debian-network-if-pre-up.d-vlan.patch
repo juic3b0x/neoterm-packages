@@ -5,7 +5,7 @@
  # Most of this stuff is to enable vlans
  
 -STATEDIR=/run/network/vlan
-+STATEDIR=@NEOTERM_PREFIX@/var/run/network/vlan
++STATEDIR=@TERMUX_PREFIX@/var/run/network/vlan
  
  case "$IFACE" in
    # Ignore any alias (#272891) which uses <interface>:<alabel>

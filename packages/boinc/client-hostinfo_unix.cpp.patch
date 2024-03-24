@@ -9,9 +9,9 @@ diff -uNr boinc/client/hostinfo_unix.cpp boinc.mod/client/hostinfo_unix.cpp
 +#include <sys/system_properties.h> // PROP_VALUE_MAX
 +#endif
 +
-+#ifdef __NEOTERM__
-+#ifndef NEOTERM_PKG_ANDROID_VERSION
-+#define NEOTERM_PKG_ANDROID_VERSION "7.0"
++#ifdef __TERMUX__
++#ifndef TERMUX_PKG_ANDROID_VERSION
++#define TERMUX_PKG_ANDROID_VERSION "7.0"
 +#endif
 +#endif
 +
@@ -44,8 +44,8 @@ diff -uNr boinc/client/hostinfo_unix.cpp boinc.mod/client/hostinfo_unix.cpp
 +    // which then process in client/gui_rpc_server_ops.cpp, handle_set_host_info()
 +    char android_version[PROP_VALUE_MAX];
 +    __system_property_get("ro.build.version.release", android_version);
-+#ifdef __NEOTERM__
-+    if (strlen(android_version) == 0) { safe_strcpy(android_version, NEOTERM_PKG_ANDROID_VERSION); }
++#ifdef __TERMUX__
++    if (strlen(android_version) == 0) { safe_strcpy(android_version, TERMUX_PKG_ANDROID_VERSION); }
 +#endif
 +    snprintf(os_version, sizeof(os_version), "%s (Android %s)", u.release, android_version);
 +#elif defined(__EMX__) // OS2: version is in u.version

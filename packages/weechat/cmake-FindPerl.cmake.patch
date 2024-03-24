@@ -13,9 +13,9 @@ diff -u -r ../weechat-2.7/cmake/FindPerl.cmake ./cmake/FindPerl.cmake
 -find_program(PERL_EXECUTABLE
 -  NAMES perl perl5
 -  PATHS /usr/bin /usr/local/bin /usr/pkg/bin
-+set(PERL_EXECUTABLE "@NEOTERM_PREFIX@/bin/perl")
-+set(PERL_INCLUDE_PATH "@NEOTERM_PREFIX@/include/perl/")
-+set(PERL_LIBRARY "@NEOTERM_PREFIX@/lib")
++set(PERL_EXECUTABLE "@TERMUX_PREFIX@/bin/perl")
++set(PERL_INCLUDE_PATH "@TERMUX_PREFIX@/include/perl/")
++set(PERL_LIBRARY "@TERMUX_PREFIX@/lib")
 +set(PERL_LFLAGS "-lperl")
 +set(PERL_FOUND TRUE)
 +

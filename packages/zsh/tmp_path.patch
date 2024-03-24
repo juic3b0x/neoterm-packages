@@ -6,7 +6,7 @@ diff -u -r ../zsh-5.0.5/config.h.in ./config.h.in
  
  /* The default prefix for temporary files */
 -#define DEFAULT_TMPPREFIX "/tmp/zsh"
-+#define DEFAULT_TMPPREFIX "@NEOTERM_PREFIX@/tmp/zsh"
++#define DEFAULT_TMPPREFIX "@TERMUX_PREFIX@/tmp/zsh"
  
  /***** end of user configuration section            *****/
  /***** shouldn't have to change anything below here *****/

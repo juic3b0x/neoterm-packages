@@ -5,11 +5,11 @@
  }
  elseif (CheckMapiExtVersion('7.2.0')) {
 -    define('MAPI_SERVER', 'file:///var/run/zarafad/server.sock');
-+    define('MAPI_SERVER', 'file://@NEOTERM_PREFIX@/var/run/zarafad/server.sock');
++    define('MAPI_SERVER', 'file://@TERMUX_PREFIX@/var/run/zarafad/server.sock');
  }
  else {
 -    define('MAPI_SERVER', 'file:///var/run/zarafa');
-+    define('MAPI_SERVER', 'file://@NEOTERM_PREFIX@/var/run/zarafa');
++    define('MAPI_SERVER', 'file://@TERMUX_PREFIX@/var/run/zarafa');
  }
  define('SSLCERT_FILE', null);
  define('SSLCERT_PASS', null);
@@ -18,7 +18,7 @@
      }
      else {
 -        echo "Usage:\nlistfolders.php [actions] [options]\n\nActions: [-l username]\n\t-l username\tlist folders of user, for public folder use 'SYSTEM'\n\nGlobal options: [-h path] [[-u remoteuser] [-p password]] [[-c certificate_path] [-p password]]\n\t-h path\t\tconnect through <path>, e.g. file:///var/run/socket or https://10.0.0.1:237/kopano\n\t-u remoteuser\tlogin as authenticated administration user\n\t-c certificate\tlogin with a ssl certificate located in this location, e.g. /etc/zarafa/ssl/client.pem\n\t-p password\tpassword of the remoteuser or certificate\n\n";
-+        echo "Usage:\nlistfolders.php [actions] [options]\n\nActions: [-l username]\n\t-l username\tlist folders of user, for public folder use 'SYSTEM'\n\nGlobal options: [-h path] [[-u remoteuser] [-p password]] [[-c certificate_path] [-p password]]\n\t-h path\t\tconnect through <path>, e.g. file://@NEOTERM_PREFIX@/var/run/socket or https://10.0.0.1:237/kopano\n\t-u remoteuser\tlogin as authenticated administration user\n\t-c certificate\tlogin with a ssl certificate located in this location, e.g. @NEOTERM_PREFIX@/etc/zarafa/ssl/client.pem\n\t-p password\tpassword of the remoteuser or certificate\n\n";
++        echo "Usage:\nlistfolders.php [actions] [options]\n\nActions: [-l username]\n\t-l username\tlist folders of user, for public folder use 'SYSTEM'\n\nGlobal options: [-h path] [[-u remoteuser] [-p password]] [[-c certificate_path] [-p password]]\n\t-h path\t\tconnect through <path>, e.g. file://@TERMUX_PREFIX@/var/run/socket or https://10.0.0.1:237/kopano\n\t-u remoteuser\tlogin as authenticated administration user\n\t-c certificate\tlogin with a ssl certificate located in this location, e.g. @TERMUX_PREFIX@/etc/zarafa/ssl/client.pem\n\t-p password\tpassword of the remoteuser or certificate\n\n";
      }
  }
  

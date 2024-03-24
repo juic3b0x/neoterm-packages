@@ -6,7 +6,7 @@ diff -uNr cairo-1.14.12/util/cairo-fdr/fdr.c cairo-1.14.12.mod/util/cairo-fdr/fd
      int n;
  
 -    ctx = DLCALL (cairo_script_create, "/tmp/fdr.trace");
-+    ctx = DLCALL (cairo_script_create, "@NEOTERM_PREFIX@/tmp/fdr.trace");
++    ctx = DLCALL (cairo_script_create, "@TERMUX_PREFIX@/tmp/fdr.trace");
  
      for (n = fdr_position; n < RINGBUFFER_SIZE; n++)
  	fdr_replay_to_script (fdr_ringbuffer[n], ctx);

@@ -9,7 +9,7 @@
 +#endif
  #ifndef P_tmpdir
 -# define P_tmpdir "/tmp"
-+# define P_tmpdir "@NEOTERM_PREFIX@/tmp"
++# define P_tmpdir "@TERMUX_PREFIX@/tmp"
  #endif
  #ifndef TMP_MAX
  # define TMP_MAX 238328
@@ -19,8 +19,8 @@
  	dir = P_tmpdir;
 -      else if (strcmp (P_tmpdir, "/tmp") != 0 && direxists ("/tmp"))
 -	dir = "/tmp";
-+      else if (strcmp (P_tmpdir, "@NEOTERM_PREFIX@/tmp") != 0 && direxists ("@NEOTERM_PREFIX@/tmp"))
-+	dir = "@NEOTERM_PREFIX@/tmp";
++      else if (strcmp (P_tmpdir, "@TERMUX_PREFIX@/tmp") != 0 && direxists ("@TERMUX_PREFIX@/tmp"))
++	dir = "@TERMUX_PREFIX@/tmp";
        else
  	{
  	  __set_errno (ENOENT);

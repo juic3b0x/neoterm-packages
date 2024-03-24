@@ -1,4 +1,4 @@
-#!@NEOTERM_PREFIX@/bin/bash
+#!@TERMUX_PREFIX@/bin/bash
 
 export PATH="${PATH}:/system/xbin:/system/bin"
 opts='rw,nosuid,nodev,noexec,relatime'
@@ -26,4 +26,4 @@ for cg in ${cgroups}; do
 done
 
 # start the docker daemon
-"@NEOTERM_PREFIX@/libexec/dockerd" $@
+"@TERMUX_PREFIX@/libexec/dockerd" $@

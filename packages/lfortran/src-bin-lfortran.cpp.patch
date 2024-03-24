@@ -16,7 +16,7 @@
      char *env_p = std::getenv("LFORTRAN_KOKKOS_DIR");
      if (env_p) return env_p;
 +#ifdef __ANDROID__
-+    static std::string lfortran_kokkos_dir_default = "@NEOTERM_PREFIX@";
++    static std::string lfortran_kokkos_dir_default = "@TERMUX_PREFIX@";
 +    if (access((lfortran_kokkos_dir_default + "/lib/libkokkoscore.so").c_str(), R_OK) == 0) {
 +        return lfortran_kokkos_dir_default;
 +    }

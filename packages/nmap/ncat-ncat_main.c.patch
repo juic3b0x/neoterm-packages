@@ -5,7 +5,7 @@
  #endif
  "  -C, --crlf                 Use CRLF for EOL sequence\n"
 -"  -c, --sh-exec <command>    Executes the given command via /bin/sh\n"
-+"  -c, --sh-exec <command>    Executes the given command via @NEOTERM_PREFIX@/bin/sh\n"
++"  -c, --sh-exec <command>    Executes the given command via @TERMUX_PREFIX@/bin/sh\n"
  "  -e, --exec <command>       Executes the given command\n"
  #ifdef HAVE_LUA
  "      --lua-exec <filename>  Executes the given Lua script\n"
@@ -15,8 +15,8 @@
      /* See if the shell is executable before we get deep into this */
 -    if (o.execmode == EXEC_SHELL && access("/bin/sh", X_OK) == -1)
 -        bye("/bin/sh is not executable, so `-c' won't work.");
-+    if (o.execmode == EXEC_SHELL && access("@NEOTERM_PREFIX@/bin/sh", X_OK) == -1)
-+        bye("@NEOTERM_PREFIX@/bin/sh is not executable, so `-c' won't work.");
++    if (o.execmode == EXEC_SHELL && access("@TERMUX_PREFIX@/bin/sh", X_OK) == -1)
++        bye("@TERMUX_PREFIX@/bin/sh is not executable, so `-c' won't work.");
  #endif
  
      if (targetaddrs->addr.storage.ss_family != AF_UNSPEC) {

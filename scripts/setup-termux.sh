@@ -2,9 +2,9 @@
 
 PACKAGES=""
 # Tier 1: requirements for the core build scripts in scripts/build/.
-PACKAGES+=" clang"				# Required for neoterm-elf-cleaner and C/C++ packages.
-PACKAGES+=" file"				# Used in neoterm_step_massage().
-PACKAGES+=" gnupg"				# Used in neoterm_get_repo_files() and build-package.sh.
+PACKAGES+=" clang"				# Required for termux-elf-cleaner and C/C++ packages.
+PACKAGES+=" file"				# Used in termux_step_massage().
+PACKAGES+=" gnupg"				# Used in termux_get_repo_files() and build-package.sh.
 PACKAGES+=" lzip"				# Used by tar to extract *.tar.lz source archives.
 PACKAGES+=" patch"				# Used for applying patches on source code.
 PACKAGES+=" python"				# Used buildorder.py core script.
@@ -46,15 +46,15 @@ PACKAGES+=" xmlto"                      # Needed by git's manpage generation
 PACKAGES+=" zip"
 
 # Definition of a package manager
-export NEOTERM_SCRIPTDIR=$(dirname "$(realpath "$0")")/../
+export TERMUX_SCRIPTDIR=$(dirname "$(realpath "$0")")/../
 . $(dirname "$(realpath "$0")")/properties.sh
-source "$NEOTERM_PREFIX/bin/neoterm-setup-package-manager" || true
+source "$TERMUX_PREFIX/bin/termux-setup-package-manager" || true
 
-if [ "$NEOTERM_APP_PACKAGE_MANAGER" = "apt" ]; then
+if [ "$TERMUX_APP_PACKAGE_MANAGER" = "apt" ]; then
 	apt update
 	apt dist-upgrade -y
 	apt install -y $PACKAGES
-elif [ "$NEOTERM_APP_PACKAGE_MANAGER" = "pacman" ]; then
+elif [ "$TERMUX_APP_PACKAGE_MANAGER" = "pacman" ]; then
 	pacman -Syu $PACKAGES --needed --noconfirm
 else
 	echo "Error: no package manager defined"

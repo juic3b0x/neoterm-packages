@@ -16,7 +16,7 @@
  
          /* try to run command */
 -        execle("/bin/sh", "sh", "-c", command, NULL, environ);
-+        execle("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", command, NULL, environ);
++        execle("@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL, environ);
          perror_s("execle(): /bin/sh");
          _exit(127);
      }

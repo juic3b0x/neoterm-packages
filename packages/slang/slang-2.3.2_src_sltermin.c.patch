@@ -13,9 +13,9 @@ diff -uNr slang-2.3.2/src/sltermin.c slang-2.3.2.mod/src/sltermin.c
 -   "/usr/lib/terminfo",
 -   "/usr/share/lib/terminfo",
 -   "/lib/terminfo",
-+   "@NEOTERM_PREFIX@/etc/terminfo",
-+   "@NEOTERM_PREFIX@/lib/terminfo",
-+   "@NEOTERM_PREFIX@/share/terminfo",
++   "@TERMUX_PREFIX@/etc/terminfo",
++   "@TERMUX_PREFIX@/lib/terminfo",
++   "@TERMUX_PREFIX@/share/terminfo",
     NULL,
  };
  

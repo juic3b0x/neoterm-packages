@@ -5,7 +5,7 @@
  
  cat <<EOF >run
 -#!/bin/sh
-+#!@NEOTERM_PREFIX@/bin/sh
++#!@TERMUX_PREFIX@/bin/sh
  exec env - PATH="\$PATH" envdir ./env nice --5 setuidgid "$USER" mp3log 2>&1
  EOF
  
@@ -13,7 +13,7 @@
  chown "$LOGUSER" log/main
  cat <<EOF_LOG_RUN >log/run
 -#!/bin/sh
-+#!@NEOTERM_PREFIX@/bin/sh
++#!@TERMUX_PREFIX@/bin/sh
  exec setuidgid "$LOGUSER" multilog t s99999 n2 ./main
  EOF_LOG_RUN
  
@@ -22,7 +22,7 @@
  echo 3 >env/N
  cat <<EOF >run
 -#!/bin/sh
-+#!@NEOTERM_PREFIX@/bin/sh
++#!@TERMUX_PREFIX@/bin/sh
  exec env - PATH="\$PATH" envdir ./env nice setuidgid "$USER" mp3dirclean
  EOF
  chmod +x run
@@ -33,7 +33,7 @@
  
  cat <<RUN_EOF >run || exit 1
 -#!/bin/sh
-+#!@NEOTERM_PREFIX@/bin/sh
++#!@TERMUX_PREFIX@/bin/sh
  exec env - PATH="\$PATH" envuidgid "$USER" envdir ./env sh <<'EOF'
    exec tcpserver -U -c 15 -vDR -l 0 "\$IP" "\$PORT" mp3http 2>&1
  'EOF'
@@ -42,7 +42,7 @@
  chown "$LOGUSER" log/main || exit 1
  cat <<EOF_LOG_RUN >log/run || exit 1
 -#!/bin/sh
-+#!@NEOTERM_PREFIX@/bin/sh
++#!@TERMUX_PREFIX@/bin/sh
  exec setuidgid "$LOGUSER" multilog t s99999 n2 ./main
  EOF_LOG_RUN
  

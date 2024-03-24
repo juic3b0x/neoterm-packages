@@ -7,7 +7,7 @@ index 08e5cde71..f33066f70 100755
  
  my $neomutt = $ENV{MUTT_CMDLINE} || 'neomutt';
 -my $opensslbin = "/usr/bin/openssl";
-+my $opensslbin = "@NEOTERM_PREFIX@/bin/openssl";
++my $opensslbin = "@TERMUX_PREFIX@/bin/openssl";
  my $tmpdir;
  
  # Get the directories neomutt uses for certificate/key storage.

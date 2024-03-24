@@ -6,7 +6,7 @@ diff -uNr LuaJIT-2.1.0-beta3/etc/luajit.pc LuaJIT-2.1.0-beta3.mod/etc/luajit.pc
  abiver=5.1
  
 -prefix=/usr/local
-+prefix=@NEOTERM_PREFIX@
++prefix=@TERMUX_PREFIX@
  multilib=lib
  exec_prefix=${prefix}
  libdir=${exec_prefix}/${multilib}

@@ -4,8 +4,8 @@
 #
 # .\scripts\update-docker.ps1
 
-Set-Variable -Name CONTAINER -Value "neoterm-package-builder"
-Set-Variable -Name IMAGE -Value "ghcr.io/neoterm/package-builder"
+Set-Variable -Name CONTAINER -Value "termux-package-builder"
+Set-Variable -Name IMAGE -Value "ghcr.io/termux/package-builder"
 
 docker pull $IMAGE
 

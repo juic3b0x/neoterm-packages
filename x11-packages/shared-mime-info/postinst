@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 set -e
-PREFIX="@NEOTERM_PREFIX@"
+PREFIX="@TERMUX_PREFIX@"
 
 if [ "${1}" = "triggered" ]; then
 	if [ -x "${PREFIX}/bin/update-mime-database" ]; then

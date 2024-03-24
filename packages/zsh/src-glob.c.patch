@@ -4,7 +4,7 @@ readable.
 This bug caused all full path globs to fail under the Termux folder when
 NO_CASE_GLOB was set, since /data is not readable on Android.
 
-Fixes https://github.com/neoterm/neoterm-packages/issues/1894
+Fixes https://github.com/termux/termux-packages/issues/1894
 
 diff -u -r zsh-5.8/Src/glob.c zsh-5.8.mod/Src/glob.c
 --- zsh-5.8/Src/glob.c	2021-01-12 22:21:35.761008130 -0500

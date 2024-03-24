@@ -7,7 +7,7 @@ index 0dbf818..671eb6a 100644
  #ifdef __linux__
  
 -#ifndef ANDROID
-+#if !defined(ANDROID) && !defined(NEOTERM)
++#if !defined(ANDROID) && !defined(TERMUX)
  
  static int
  linux_ioprio_set(int which, int who, int ioprio)
@@ -16,7 +16,7 @@ index 0dbf818..671eb6a 100644
  }
  
 -#endif /* !ANDROID */
-+#endif /* !ANDROID && !NEOTERM */
++#endif /* !ANDROID && !TERMUX */
  
  /**
   * Wrapper for the "sched_setscheduler" system call.  We don't use the
@@ -25,7 +25,7 @@ index 0dbf818..671eb6a 100644
  #endif
  
 -#ifndef ANDROID
-+#if !defined(ANDROID) && !defined(NEOTERM)
++#if !defined(ANDROID) && !defined(TERMUX)
  	/* this system call is forbidden via seccomp on Android 8 and
  	   leads to crash (SIGSYS) */
  	ioprio_set_idle();

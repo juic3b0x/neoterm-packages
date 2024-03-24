@@ -5,13 +5,13 @@
  # install
 -install(CODE "execute_process(COMMAND install -c -d /usr/local/bin)")
 -install(CODE "execute_process(COMMAND install -c ts /usr/local/bin)")
-+install(CODE "execute_process(COMMAND install -c -d @NEOTERM_PREFIX@/bin)")
-+install(CODE "execute_process(COMMAND install -c ts @NEOTERM_PREFIX@/bin)")
++install(CODE "execute_process(COMMAND install -c -d @TERMUX_PREFIX@/bin)")
++install(CODE "execute_process(COMMAND install -c ts @TERMUX_PREFIX@/bin)")
  install(CODE "execute_process(COMMAND ./makeman)")
 -install(CODE "execute_process(COMMAND install -c -d /usr/local/share/man/man1)")
 -install(CODE "execute_process(COMMAND install -c -m 644 ts.1 /usr/local/share/man/man1)")
-+install(CODE "execute_process(COMMAND install -c -d @NEOTERM_PREFIX@/share/man/man1)")
-+install(CODE "execute_process(COMMAND install -c -m 644 ./ts.1 @NEOTERM_PREFIX@/share/man/man1)")
++install(CODE "execute_process(COMMAND install -c -d @TERMUX_PREFIX@/share/man/man1)")
++install(CODE "execute_process(COMMAND install -c -m 644 ./ts.1 @TERMUX_PREFIX@/share/man/man1)")
 +++ a/env.c
 @@ -40,8 +40,8 @@
              if (p[1] != 1 && p[1] != 2)
@@ -19,8 +19,8 @@
              close(p[0]);
 -            execlp("/bin/sh", "/bin/sh", "-c", command, (char*)NULL);
 -            error("/bin/sh exec error");
-+            execlp("@NEOTERM_PREFIX@/bin/sh", "@NEOTERM_PREFIX@/bin/sh", "-c", command, (char*)NULL);
-+            error("@NEOTERM_PREFIX@/bin/sh exec error");
++            execlp("@TERMUX_PREFIX@/bin/sh", "@TERMUX_PREFIX@/bin/sh", "-c", command, (char*)NULL);
++            error("@TERMUX_PREFIX@/bin/sh exec error");
          case -1:
              error("Fork error");
          default:
@@ -30,7 +30,7 @@
          int lname;
          char *outfname_full;
 -        char *outdir = tmpdir == NULL ? "/tmp" : tmpdir;
-+        char *outdir = tmpdir == NULL ? "@NEOTERM_PREFIX@/tmp" : tmpdir;
++        char *outdir = tmpdir == NULL ? "@TERMUX_PREFIX@/tmp" : tmpdir;
  
          lname = strlen(outdir) + strlen(outfname) + 1 /* \0 */;
          outfname_full = (char *) malloc(lname);
@@ -40,7 +40,7 @@
  
      line = malloc(600);
 -    snprintf(line, 600, "#!/bin/sh\n# - task spooler (ts) job dump\n"
-+    snprintf(line, 600, "#!@NEOTERM_PREFIX@/bin/sh\n# - task spooler (ts) job dump\n"
++    snprintf(line, 600, "#!@TERMUX_PREFIX@/bin/sh\n# - task spooler (ts) job dump\n"
                          "# This file has been created because a SIGTERM killed\n"
                          "# your queue server.\n"
                          "# The finished commands are listed first.\n"
@@ -50,7 +50,7 @@
              close(p[1]);
              dup2(p[0], 0);
 -            execl("/usr/sbin/sendmail", "sendmail", "-oi", dest, NULL);
-+            execl("@NEOTERM_PREFIX@/bin/sendmail", "sendmail", "-oi", dest, NULL);
++            execl("@TERMUX_PREFIX@/bin/sendmail", "sendmail", "-oi", dest, NULL);
              error("run sendmail");
          case -1:
              error("fork sendmail");
@@ -60,7 +60,7 @@
                       ".B $USER\n"
                       "using\n"
 -                     ".B /usr/sbin/sendmail.\n"
-+                     ".B @NEOTERM_PREFIX@/bin/sendmail.\n"
++                     ".B @TERMUX_PREFIX@/bin/sendmail.\n"
                       "Look at\n"
                       ".B ENVIRONMENT.\n"
                       ".TP\n"
@@ -69,7 +69,7 @@
                       "Keep two different output files for the command stdout and stderr. stdout goes to\n"
                       "the file announced by ts (look at \\fB\\-o\\fR), and stderr goes to the stdout file\n"
 -                     "with an additional \".e\". For example, /tmp/ts-out.SKsDw8 and /tmp/ts-out.SKsDw8.e.\n"
-+                     "with an additional \".e\". For example, @NEOTERM_PREFIX@/tmp/ts-out.SKsDw8 and @NEOTERM_PREFIX@/tmp/ts-out.SKsDw8.e.\n"
++                     "with an additional \".e\". For example, @TERMUX_PREFIX@/tmp/ts-out.SKsDw8 and @TERMUX_PREFIX@/tmp/ts-out.SKsDw8.e.\n"
                       "Only the stdout file gets created with \\fBmkstemp\\fR, ensuring it does not overwrite\n"
                       "any other; the \".e\" will be overwritten if it existed.\n"
                       ".TP\n"
@@ -78,7 +78,7 @@
                       ".B TMPDIR\n"
                       "will be used if defined, or\n"
 -                     ".B /tmp\n"
-+                     ".B @NEOTERM_PREFIX@/tmp\n"
++                     ".B @TERMUX_PREFIX@/tmp\n"
                       "otherwise.\n"
                       ".TP\n"
                       ".B \"TS_SOCKET\"\n"
@@ -87,7 +87,7 @@
                       ".B nobody.\n"
                       "The system\n"
 -                     ".B /usr/sbin/sendmail\n"
-+                     ".B @NEOTERM_PREFIX@/bin/sendmail\n"
++                     ".B @TERMUX_PREFIX@/bin/sendmail\n"
                       "is used. The\n"
                       "job outputs are not sent as an attachment, so understand the consequences if you\n"
                       "use the\n"
@@ -96,13 +96,13 @@
                       ".B \"TS_ENV\"\n"
                       "This has a command to be run at enqueue time through\n"
 -                     "\\fB/bin/sh\\fR. The output of the command will be readable through the option\n"
-+                     "\\fB@NEOTERM_PREFIX@/bin/sh\\fR. The output of the command will be readable through the option\n"
++                     "\\fB@TERMUX_PREFIX@/bin/sh\\fR. The output of the command will be readable through the option\n"
                       "\\fB\\-i\\fR. You can use a command which shows relevant environment for the command run.\n"
                       "For example, you may use \\fBTS_ENV='pwd;set;mount'\\fR.\n"
                       ".SH FILES\n"
                       ".TP\n"
 -                     ".B /tmp/ts.error\n"
-+                     ".B @NEOTERM_PREFIX@/tmp/ts.error\n"
++                     ".B @TERMUX_PREFIX@/tmp/ts.error\n"
                       "if\n"
                       ".B ts\n"
                       "finds any internal problem, you should find an error report there.\n"
@@ -111,7 +111,7 @@
                       "\n"
                       "If an internal problem is found in runtime, a file\n"
 -                     ".B /tmp/ts.error\n"
-+                     ".B @NEOTERM_PREFIX@/tmp/ts.error\n"
++                     ".B @TERMUX_PREFIX@/tmp/ts.error\n"
                       "is created, which you can submit to the developer in order to fix the bug.\n"
                       "\n"
                       ".SH SEE ALSO\n"
@@ -120,7 +120,7 @@
                       ".B $USER\n"
                       "using\n"
 -                     ".B /usr/sbin/sendmail.\n"
-+                     ".B @NEOTERM_PREFIX@/bin/sendmail.\n"
++                     ".B @TERMUX_PREFIX@/bin/sendmail.\n"
                       "Look at\n"
                       ".B ENVIRONMENT.\n"
                       ".TP\n"
@@ -129,7 +129,7 @@
                       "Keep two different output files for the command stdout and stderr. stdout goes to\n"
                       "the file announced by ts (look at \\fB\\-o\\fR), and stderr goes to the stdout file\n"
 -                     "with an additional \".e\". For example, /tmp/ts-out.SKsDw8 and /tmp/ts-out.SKsDw8.e.\n"
-+                     "with an additional \".e\". For example, @NEOTERM_PREFIX@/tmp/ts-out.SKsDw8 and @NEOTERM_PREFIX@/tmp/ts-out.SKsDw8.e.\n"
++                     "with an additional \".e\". For example, @TERMUX_PREFIX@/tmp/ts-out.SKsDw8 and @TERMUX_PREFIX@/tmp/ts-out.SKsDw8.e.\n"
                       "Only the stdout file gets created with \\fBmkstemp\\fR, ensuring it does not overwrite\n"
                       "any other; the \".e\" will be overwritten if it existed.\n"
                       ".TP\n"
@@ -138,7 +138,7 @@
                       ".B TMPDIR\n"
                       "will be used if defined, or\n"
 -                     ".B /tmp\n"
-+                     ".B @NEOTERM_PREFIX@/tmp\n"
++                     ".B @TERMUX_PREFIX@/tmp\n"
                       "otherwise.\n"
                       ".TP\n"
                       ".B \"TS_SOCKET\"\n"
@@ -147,7 +147,7 @@
                       ".B nobody.\n"
                       "The system\n"
 -                     ".B /usr/sbin/sendmail\n"
-+                     ".B @NEOTERM_PREFIX@/bin/sendmail\n"
++                     ".B @TERMUX_PREFIX@/bin/sendmail\n"
                       "is used. The\n"
                       "job outputs are not sent as an attachment, so understand the consequences if you\n"
                       "use the\n"
@@ -156,13 +156,13 @@
                       ".B \"TS_ENV\"\n"
                       "This has a command to be run at enqueue time through\n"
 -                     "\\fB/bin/sh\\fR. The output of the command will be readable through the option\n"
-+                     "\\fB@NEOTERM_PREFIX@/bin/sh\\fR. The output of the command will be readable through the option\n"
++                     "\\fB@TERMUX_PREFIX@/bin/sh\\fR. The output of the command will be readable through the option\n"
                       "\\fB\\-i\\fR. You can use a command which shows relevant environment for the command run.\n"
                       "For example, you may use \\fBTS_ENV='pwd;set;mount'\\fR.\n"
                       ".SH FILES\n"
                       ".TP\n"
 -                     ".B /tmp/ts.error\n"
-+                     ".B @NEOTERM_PREFIX@/tmp/ts.error\n"
++                     ".B @TERMUX_PREFIX@/tmp/ts.error\n"
                       "if\n"
                       ".B ts\n"
                       "finds any internal problem, you should find an error report there.\n"
@@ -171,7 +171,7 @@
                       "\n"
                       "If an internal problem is found in runtime, a file\n"
 -                     ".B /tmp/ts.error\n"
-+                     ".B @NEOTERM_PREFIX@/tmp/ts.error\n"
++                     ".B @TERMUX_PREFIX@/tmp/ts.error\n"
                       "is created, which you can submit to the developer in order to fix the bug.\n"
                       "\n"
                       ".SH SEE ALSO\n"
@@ -181,7 +181,7 @@
      tmpdir = getenv("TMPDIR");
      if (tmpdir == NULL)
 -        tmpdir = "/tmp";
-+        tmpdir = "@NEOTERM_PREFIX@/tmp";
++        tmpdir = "@TERMUX_PREFIX@/tmp";
  
      sprintf(userid, "%u", (unsigned int) getuid());
  

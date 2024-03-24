@@ -5,7 +5,7 @@
      Char  **vp;
      bool    quoted;
 -    char   tmp[] = "/tmp/sh.XXXXXXXX";
-+    char   tmp[] = "@NEOTERM_PREFIX@/tmp/sh.XXXXXXXX";
++    char   tmp[] = "@TERMUX_PREFIX@/tmp/sh.XXXXXXXX";
  
      if (mkstemp(tmp) < 0)
  	stderror(ERR_SYSTEM, tmp, strerror(errno));

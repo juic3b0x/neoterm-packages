@@ -3,7 +3,7 @@ diff -uNr dmenu-4.9/dmenu_path dmenu-4.9.mod/dmenu_path
 +++ dmenu-4.9.mod/dmenu_path	2019-05-26 22:35:29.830530754 +0300
 @@ -1,4 +1,4 @@
 -#!/bin/sh
-+#!@NEOTERM_PREFIX@/bin/sh
++#!@TERMUX_PREFIX@/bin/sh
  
  cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
  cache="$cachedir/dmenu_run"
@@ -13,5 +13,5 @@ diff -uNr dmenu-4.9/dmenu_run dmenu-4.9.mod/dmenu_run
 @@ -1,2 +1,2 @@
 -#!/bin/sh
 -dmenu_path | dmenu "$@" | ${SHELL:-"/bin/sh"} &
-+#!@NEOTERM_PREFIX@/bin/sh
-+dmenu_path | dmenu "$@" | ${SHELL:-"@NEOTERM_PREFIX@/bin/sh"} &
++#!@TERMUX_PREFIX@/bin/sh
++dmenu_path | dmenu "$@" | ${SHELL:-"@TERMUX_PREFIX@/bin/sh"} &

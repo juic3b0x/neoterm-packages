@@ -14,13 +14,13 @@
 +int access(const char* __path, int __mode);
 +
 +static void android_setup_pwd(struct passwd* pw) {
-+       char const* result = "@NEOTERM_PREFIX@/bin/login";
++       char const* result = "@TERMUX_PREFIX@/bin/login";
 +       if (result == NULL || access(result, /*X_OK*/1) == -1) {
-+               pw->pw_shell = "@NEOTERM_PREFIX@/bin/bash";
++               pw->pw_shell = "@TERMUX_PREFIX@/bin/bash";
 +       } else {
 +               pw->pw_shell = (char*) result;
 +       }
-+       pw->pw_dir = "@NEOTERM_HOME@";
++       pw->pw_dir = "@TERMUX_HOME@";
 +       pw->pw_passwd = "*";
 +#ifdef __LP64__
 +       pw->pw_gecos = ""; /* Avoid NULL field. */

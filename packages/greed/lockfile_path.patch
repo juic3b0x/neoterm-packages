@@ -6,7 +6,7 @@ diff -u -r ../greed-3.9/greed.c ./greed.c
  #define rnd(x) (int) ((lrand48() % (x))+1)
  
 -#define LOCKPATH "/tmp/Greed.lock"	/* lock path for high score file */
-+#define LOCKPATH "@NEOTERM_PREFIX@/tmp/Greed.lock"	/* lock path for high score file */
++#define LOCKPATH "@TERMUX_PREFIX@/tmp/Greed.lock"	/* lock path for high score file */
  
  /* 
   * changing stuff in this struct

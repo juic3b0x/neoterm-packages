@@ -6,8 +6,8 @@
  DESTDIR ?= /
 -INCDIR ?= $(DESTDIR)/usr/include
 -INSTALLDIR ?= $(DESTDIR)/usr/lib
-+INCDIR ?= @NEOTERM_PREFIX@/include
-+INSTALLDIR ?= @NEOTERM_PREFIX@/lib
++INCDIR ?= @TERMUX_PREFIX@/include
++INSTALLDIR ?= @TERMUX_PREFIX@/lib
  
  # Converts cr/lf to just lf
  DOS2UNIX = dos2unix
@@ -19,7 +19,7 @@
  MODULES := $(MODULES:.cpp=.o)
 -CFLAGS ?= -O3 -fPIC -fexceptions -fvisibility=hidden
 +CFLAGS ?=
-+CFLAGS += -O3 -fPIC -fexceptions -fvisibility=hidden -DTEMP_DIRECTORY=@NEOTERM_PREFIX@/tmp
++CFLAGS += -O3 -fPIC -fexceptions -fvisibility=hidden -DTEMP_DIRECTORY=@TERMUX_PREFIX@/tmp
  # OpenJPEG
  CFLAGS += -DOPJ_STATIC
  # LibRaw

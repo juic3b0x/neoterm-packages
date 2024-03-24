@@ -5,12 +5,12 @@
      "    (ws://<i>host</i>:1780/stream), but it can also host simple web pages. To serve a web page, you must configure the"
      "    document root in the snapserver configuration file <b>snapserver.conf</b>, usually located in"
 -    "    <b>/etc/snapserver.conf</b>"
-+    "    <b>@NEOTERM_PREFIX@/etc/snapserver.conf</b>"
++    "    <b>@TERMUX_PREFIX@/etc/snapserver.conf</b>"
      "  </p>"
      "  <p>"
      "    The Snapserver installation should include a copy of <a href=\"https://github.com/badaix/snapweb\">Snapweb</a>,"
 -    "    located in <b>/usr/share/snapserver/snapweb/</b><br>"
-+    "    located in <b>@NEOTERM_PREFIX@/share/snapserver/snapweb/</b><br>"
++    "    located in <b>@TERMUX_PREFIX@/share/snapserver/snapweb/</b><br>"
      "    To activate it, please configure the <b>doc_root</b> as follows, and restart Snapserver to activate the changes:"
      "  </p>"
      "  <pre>"
@@ -19,7 +19,7 @@
      "\n"
      "# serve a website from the doc_root location\n"
 -    "doc_root = /usr/share/snapserver/snapweb/\n"
-+    "doc_root = @NEOTERM_PREFIX@/share/snapserver/snapweb/\n"
++    "doc_root = @TERMUX_PREFIX@/share/snapserver/snapweb/\n"
      "\n"
      "#\n"
      "################################################</pre>"
@@ -28,7 +28,7 @@
      if (settings_.doc_root.empty())
      {
 -        std::string default_page = "/usr/share/snapserver/index.html";
-+        std::string default_page = "@NEOTERM_PREFIX@/share/snapserver/index.html";
++        std::string default_page = "@TERMUX_PREFIX@/share/snapserver/index.html";
          struct stat buffer;
          if (stat(default_page.c_str(), &buffer) == 0)
              path = default_page;

@@ -6,7 +6,7 @@ index 7ebcdc070c1..5a6ed88182e 100644
  
          flags += '-sdk %s/sysroot ' % (android_toolchain_path)
          flags += '-tools-directory %s/bin' % (android_toolchain_path)
-+        flags += ' -Xlinker -rpath -Xlinker @NEOTERM_PREFIX@/lib'
++        flags += ' -Xlinker -rpath -Xlinker @TERMUX_PREFIX@/lib'
          return flags
  
      def cmake_options(self, args):
@@ -29,7 +29,7 @@ index 7ebcdc070c1..5a6ed88182e 100644
          spm_json += '    "-tools-directory", "%s/bin",\n' % (
                      self.ndk_toolchain_path(args))
          spm_json += '    "-Xcc", "-I%s/usr/include",\n' % args.cross_compile_deps_path
-+        spm_json += '    "-Xlinker", "-rpath", "-Xlinker", "@NEOTERM_PREFIX@/lib",\n'
++        spm_json += '    "-Xlinker", "-rpath", "-Xlinker", "@TERMUX_PREFIX@/lib",\n'
          spm_json += '    "-L%s/usr/lib"\n' % args.cross_compile_deps_path
          spm_json += '  ],\n'
  

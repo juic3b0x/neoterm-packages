@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 set -e
-PREFIX="@NEOTERM_PREFIX@"
+PREFIX="@TERMUX_PREFIX@"
 
 if [ -d "${PREFIX}/share/fonts" ]; then
     rm -f "${PREFIX}/share/fonts/.uuid"

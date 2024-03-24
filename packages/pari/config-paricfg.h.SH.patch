@@ -5,22 +5,22 @@
  fi
  
 -if test -n "$gzip"; then
-+if test -n "@NEOTERM_PREFIX@/bin/gzip"; then
++if test -n "@TERMUX_PREFIX@/bin/gzip"; then
    cat >> $file << EOT
  
  /*  Location of GNU gzip program (enables reading of .Z and .gz files). */
  #define GNUZCAT
 -#define ZCAT "$gzip -dc"
-+#define ZCAT "@NEOTERM_PREFIX@/bin/gzip -dc"
++#define ZCAT "@TERMUX_PREFIX@/bin/gzip -dc"
  
  EOT
 -else if test -n "$zcat"; then
-+else if test -n "@NEOTERM_PREFIX@/bin/zcat"; then
++else if test -n "@TERMUX_PREFIX@/bin/zcat"; then
    cat >> $file << EOT
  
  /*  Location of zcat program (enables reading of .Z files). */
 -#define ZCAT "$zcat"
-+#define ZCAT "@NEOTERM_PREFIX@/bin/zcat"
++#define ZCAT "@TERMUX_PREFIX@/bin/zcat"
  
  EOT
    fi

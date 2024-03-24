@@ -6,7 +6,7 @@ diff -uNr rsync-3.1.3/rsync.h rsync-3.1.3.mod/rsync.h
  #define RSYNCD_USERCONF "rsyncd.conf"
  
 -#define DEFAULT_LOCK_FILE "/var/run/rsyncd.lock"
-+#define DEFAULT_LOCK_FILE "@NEOTERM_PREFIX@/var/run/rsyncd.lock"
++#define DEFAULT_LOCK_FILE "@TERMUX_PREFIX@/var/run/rsyncd.lock"
  #define URL_PREFIX "rsync://"
  
  #define SYMLINK_PREFIX "/rsyncd-munged/"  /* This MUST have a trailing slash! */

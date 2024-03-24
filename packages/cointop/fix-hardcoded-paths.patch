@@ -5,7 +5,7 @@
  
  func (ct *Cointop) initlog() {
 -	filename := "/tmp/cointop.log"
-+	filename := "@NEOTERM_PREFIX@/tmp/cointop.log"
++	filename := "@TERMUX_PREFIX@/tmp/cointop.log"
  	debugFile := os.Getenv("DEBUG_FILE")
  	if debugFile != "" {
  		filename = pathutil.NormalizePath(debugFile)
@@ -16,7 +16,7 @@
  // TestNormalizePath checks that NormalizePath returns the correct directory
  func TestNormalizePath(t *testing.T) {
 -	os.Setenv("XDG_CONFIG_HOME", "/tmp/.config")
-+	os.Setenv("XDG_CONFIG_HOME", "@NEOTERM_PREFIX@/tmp/.config")
++	os.Setenv("XDG_CONFIG_HOME", "@TERMUX_PREFIX@/tmp/.config")
  
  	home, _ := os.UserHomeDir()
  	configDir, _ := os.UserConfigDir()
@@ -27,7 +27,7 @@
  
  			if configDirKey != "" {
 -				configDir = fmt.Sprintf("/tmp/cointop_config/%s", configDirKey)
-+				configDir = fmt.Sprintf("@NEOTERM_PREFIX@/tmp/cointop_config/%s", configDirKey)
++				configDir = fmt.Sprintf("@TERMUX_PREFIX@/tmp/cointop_config/%s", configDirKey)
  				err := os.MkdirAll(configDir, 0700)
  				if err != nil {
  					fmt.Println(err)

@@ -6,14 +6,14 @@ diff -uNr NXEngine-1.0.0.4-Rev4/graphics/font.cpp NXEngine-1.0.0.4-Rev4.mod/grap
  };
  
 -const char *bmpfontfile = "smalfont.bmp";
-+const char *bmpfontfile = "@NEOTERM_PREFIX@/share/nxengine/smalfont.bmp";
++const char *bmpfontfile = "@TERMUX_PREFIX@/share/nxengine/smalfont.bmp";
  
  #if defined(_320X240) || defined(_480X272)
 -const char *ttffontfile = "DroidSansMono.ttf";
-+const char *ttffontfile = "@NEOTERM_PREFIX@/share/nxengine/DroidSansMono.ttf";
++const char *ttffontfile = "@TERMUX_PREFIX@/share/nxengine/DroidSansMono.ttf";
  #else
 -const char *ttffontfile = "font.ttf";
-+const char *ttffontfile = "@NEOTERM_PREFIX@/share/nxengine/font.ttf";
++const char *ttffontfile = "@TERMUX_PREFIX@/share/nxengine/font.ttf";
  #endif
  
  static SDL_Surface *sdl_screen = NULL;
@@ -25,7 +25,7 @@ diff -uNr NXEngine-1.0.0.4-Rev4/graphics/sprites.cpp NXEngine-1.0.0.4-Rev4.mod/g
  	
  	// load sprites info--sheet positions, bounding boxes etc
 -	if (load_sif("sprites.sif"))
-+	if (load_sif("@NEOTERM_PREFIX@/share/nxengine/sprites.sif"))
++	if (load_sif("@TERMUX_PREFIX@/share/nxengine/sprites.sif"))
  		return 1;
  	
  	num_spritesheets = sheetfiles.CountItems();
@@ -37,7 +37,7 @@ diff -uNr NXEngine-1.0.0.4-Rev4/map.cpp NXEngine-1.0.0.4-Rev4.mod/map.cpp
  
  	stat("initmapfirsttime: loading tilekey.dat.");
 -	if (!(fp = fileopen("tilekey.dat", "rb")))
-+	if (!(fp = fileopen("@NEOTERM_PREFIX@/share/nxengine/tilekey.dat", "rb")))
++	if (!(fp = fileopen("@TERMUX_PREFIX@/share/nxengine/tilekey.dat", "rb")))
  	{
  		staterr("tilekey.dat is missing!");
  		return 1;
@@ -49,7 +49,7 @@ diff -uNr NXEngine-1.0.0.4-Rev4/settings.cpp NXEngine-1.0.0.4-Rev4.mod/settings.
  #include "settings.fdh"
  
 -const char *setfilename = "settings.dat";
-+const char *setfilename = "@NEOTERM_PREFIX@/share/nxengine/settings.dat";
++const char *setfilename = "@TERMUX_PREFIX@/share/nxengine/settings.dat";
  const uint16_t SETTINGS_VERSION = 0x1602;		// serves as both a version and magic
  
  Settings normal_settings;

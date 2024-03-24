@@ -6,7 +6,7 @@ diff -u -r ../Python-2.7.10/Lib/tempfile.py ./Lib/tempfile.py
          dirlist.extend([ r'c:\temp', r'c:\tmp', r'\temp', r'\tmp' ])
      else:
 -        dirlist.extend([ '/tmp', '/var/tmp', '/usr/tmp' ])
-+        dirlist.extend([ '@NEOTERM_PREFIX@/tmp' ])
++        dirlist.extend([ '@TERMUX_PREFIX@/tmp' ])
  
      # As a last resort, the current directory.
      try:

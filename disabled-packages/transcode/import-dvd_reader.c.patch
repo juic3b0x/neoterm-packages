@@ -5,7 +5,7 @@
  
  
 -static char lock_file[] = "/tmp/LCK..dvd";
-+static char lock_file[] = "@NEOTERM_PREFIX@/tmp/LCK..dvd";
++static char lock_file[] = "@TERMUX_PREFIX@/tmp/LCK..dvd";
  
  /*
   * lock - create a lock file for the device

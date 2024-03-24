@@ -5,7 +5,7 @@
  	 ACTIVEFILE=/var/lib/news/active \
  	 RSHPATH=/usr/bin/rcmd \
 -	 BASECFLAGS="$(GCCCFLAGS) -I/usr/include -L/lib" \
-+	 BASECFLAGS="$(GCCCFLAGS) -I@NEOTERM_PREFIX@/include -L@NEOTERM_PREFIX@/lib" \
++	 BASECFLAGS="$(GCCCFLAGS) -I@TERMUX_PREFIX@/include -L@TERMUX_PREFIX@/lib" \
  	 BASELDFLAGS="-lsocket -lprot -lx -ltinfo -lm" \
  	 RANLIB=true CC=gcc
  

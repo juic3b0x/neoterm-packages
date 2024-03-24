@@ -5,7 +5,7 @@
  #ifndef _WIN32
  
 -#define FILE_CACHE "/var/cache/mpdscribble/mpdscribble.cache"
-+#define FILE_CACHE "@NEOTERM_PREFIX@/var/cache/mpdscribble/mpdscribble.cache"
++#define FILE_CACHE "@TERMUX_PREFIX@/var/cache/mpdscribble/mpdscribble.cache"
  
  #endif
  

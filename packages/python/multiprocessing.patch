@@ -76,7 +76,7 @@ diff -uNr Python-3.10.1/Modules/_multiprocessing/posix-shm-extension.c Python-3.
 +#include <limits.h>    // NAME_MAX
 +#include <unistd.h>    // unlink()
 +
-+#define SHM_PREFIX "@NEOTERM_PREFIX@/tmp/shm."
++#define SHM_PREFIX "@TERMUX_PREFIX@/tmp/shm."
 +
 +static __inline__ char *__strchrnul(const char *s, int c)
 +{

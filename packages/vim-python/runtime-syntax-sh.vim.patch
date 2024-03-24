@@ -8,8 +8,8 @@
 -  let s:shell = resolve("/bin/sh")
 - elseif executable("/usr/bin/sh")
 -  let s:shell = resolve("/usr/bin/sh")
-+ if executable("@NEOTERM_PREFIX@/bin/sh")
-+  let s:shell = resolve("@NEOTERM_PREFIX@/bin/sh")
++ if executable("@TERMUX_PREFIX@/bin/sh")
++  let s:shell = resolve("@TERMUX_PREFIX@/bin/sh")
 + elseif executable("/system/bin/sh")
 +  let s:shell = resolve("/system/bin/sh")
   endif

@@ -9,8 +9,8 @@ decides to work on a write a proper patch for the same).
    // ADB doesn't propagate return code of shell execution - if
 -  // output starts with /system/bin/sh: most likely command failed.
 -  static const char *kShellPrefix = "/system/bin/sh:";
-+  // output starts with @NEOTERM_PREFIX@/bin/sh: most likely command failed.
-+  static const char *kShellPrefix = "@NEOTERM_PREFIX@/bin/sh:";
++  // output starts with @TERMUX_PREFIX@/bin/sh: most likely command failed.
++  static const char *kShellPrefix = "@TERMUX_PREFIX@/bin/sh:";
    if (output_buf.size() > strlen(kShellPrefix)) {
      if (!memcmp(&output_buf[0], kShellPrefix, strlen(kShellPrefix)))
        return Status("Shell command %s failed: %s", command,

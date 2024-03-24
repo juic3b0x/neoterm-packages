@@ -5,7 +5,7 @@
  #    echo Update desktop database: $mode
      if [ "$mode" = "system" ] ; then
 -        for x in `echo $PATH | sed 's/:/ /g'` /opt/gnome/bin; do
-+        for x in `echo $PATH | sed 's/:/ /g'` @NEOTERM_PREFIX@/opt/gnome/bin; do
++        for x in `echo $PATH | sed 's/:/ /g'` @TERMUX_PREFIX@/opt/gnome/bin; do
             if [ -x $x/update-desktop-database ] ; then
                DEBUG 1 "Running $x/update-desktop-database"
                eval '$x/update-desktop-database'$xdg_redirect_output
@@ -14,7 +14,7 @@
      for MIME in $mimetypes ; do
          xdg_default_dirs="$XDG_DATA_DIRS"
 -        [ -n "$xdg_default_dirs" ] || xdg_default_dirs=/usr/local/share/:/usr/share/
-+        [ -n "$xdg_default_dirs" ] || xdg_default_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++        [ -n "$xdg_default_dirs" ] || xdg_default_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
          if [ x"$mode" = x"user" ] ; then
              xdg_user_dir="$XDG_DATA_HOME"
              [ -n "$xdg_user_dir" ] || xdg_user_dir="$HOME/.local/share"
@@ -23,7 +23,7 @@
  
      xdg_system_dirs="$XDG_CONFIG_DIRS"
 -    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=/etc/xdg
-+    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/etc/xdg
++    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/etc/xdg
      xdg_global_dir=
      for x in `echo $xdg_system_dirs | sed 's/:/ /g'` ; do
          if [ -w $x/$xdg_dir_name ] ; then
@@ -32,7 +32,7 @@
      fi
  
 -    if [ $action = "install" ] && [ -f "/etc/xdg/menus/gnome-applications.menu" ] ; then
-+    if [ $action = "install" ] && [ -f "@NEOTERM_PREFIX@/etc/xdg/menus/gnome-applications.menu" ] ; then
++    if [ $action = "install" ] && [ -f "@TERMUX_PREFIX@/etc/xdg/menus/gnome-applications.menu" ] ; then
          # Work around for Debian Gnome
          gnome_xdg_dir=`echo "$xdg_dir" | sed -e 's^/applications-merged^/gnome-applications-merged^'`
          if [ ! -e "$gnome_xdg_dir" ] ; then
@@ -41,7 +41,7 @@
          fi
      fi
 -    if [ $action = "install" ] && [ -f "/etc/mandrake-release" ] ; then
-+    if [ $action = "install" ] && [ -f "@NEOTERM_PREFIX@/etc/mandrake-release" ] ; then
++    if [ $action = "install" ] && [ -f "@TERMUX_PREFIX@/etc/mandrake-release" ] ; then
          # Work around for Mandriva 2006
          mandrake_xdg_dir=`echo "$xdg_dir" | sed -e 's^/applications-merged^/applications-mdk-merged^'`
          if [ ! -e "$mandrake_xdg_dir" ] ; then
@@ -50,7 +50,7 @@
          fi
      fi
 -    if [ $action = "install" -a x"$mode" = x"user" ] && [ -d "/etc/xdg/menus/kde-applications-merged" ] ; then
-+    if [ $action = "install" -a x"$mode" = x"user" ] && [ -d "@NEOTERM_PREFIX@/etc/xdg/menus/kde-applications-merged" ] ; then
++    if [ $action = "install" -a x"$mode" = x"user" ] && [ -d "@TERMUX_PREFIX@/etc/xdg/menus/kde-applications-merged" ] ; then
          # Work around for Fedora Core 5 + patched KDE
          kde_xdg_dir=`echo "$xdg_dir" | sed -e 's^/applications-merged^/kde-applications-merged^'`
          if [ ! -e "$kde_xdg_dir" ] ; then
@@ -59,7 +59,7 @@
          fi
      fi
 -    if [ $action = "install" -a x"$mode" = x"system" ] && [ -d "/etc/xdg/menus/kde-applications-merged" ] && [ ! -d "/etc/xdg/menus/applications-merged" ] ; then
-+    if [ $action = "install" -a x"$mode" = x"system" ] && [ -d "@NEOTERM_PREFIX@/etc/xdg/menus/kde-applications-merged" ] && [ ! -d "@NEOTERM_PREFIX@/etc/xdg/menus/applications-merged" ] ; then
++    if [ $action = "install" -a x"$mode" = x"system" ] && [ -d "@TERMUX_PREFIX@/etc/xdg/menus/kde-applications-merged" ] && [ ! -d "@TERMUX_PREFIX@/etc/xdg/menus/applications-merged" ] ; then
          # Work around for Kubuntu 6.06
          kde_xdg_dir=`echo "$xdg_dir" | sed -e 's^/applications-merged^/kde-applications-merged^'`
          DEBUG 1 "Kubuntu Workaround: Link '$xdg_dir' to 'kde-applications-merged'"
@@ -68,7 +68,7 @@
      DEBUG 1 "Updating $orig_menu_file ($action)"
  
 -    test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+    test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++    test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
      tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
      orig_desktop_files=
      if [ -r "$orig_menu_file" ] ; then
@@ -77,7 +77,7 @@
      if [ -n "$new_desktop_files" ] ; then
          # Install/update
 -        test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+        test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++        test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
          tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
          (
              echo '<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"'
@@ -86,7 +86,7 @@
      # Uninstall .directory files only if no longer referenced
      if [ $action = "uninstall" ] ; then
 -        test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+        test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++        test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
          tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
          for menu_file in $xdg_dir/*; do
              if grep 'generated and managed by @NAME@' "$menu_file" > /dev/null 2> /dev/null; then
@@ -95,7 +95,7 @@
  
  xdg_system_dirs="$XDG_DATA_DIRS"
 -[ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
-+[ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++[ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
  xdg_global_dir=
  for x in `echo $xdg_system_dirs | sed 's/:/ /g'` ; do
      if [ -w $x/$xdg_dir_name ] ; then
@@ -104,7 +104,7 @@
  
  xdg_system_dirs="$XDG_DATA_DIRS"
 -[ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
-+[ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++[ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
  xdg_global_dir=
  for x in `echo $xdg_system_dirs | sed 's/:/ /g'` ; do
      if [ -w $x/$xdg_dir_name ] ; then
@@ -113,7 +113,7 @@
  
  gnome_user_dir="$HOME/.gnome/apps"
 -gnome_global_dir="/usr/share/gnome/apps"
-+gnome_global_dir="@NEOTERM_PREFIX@/share/gnome/apps"
++gnome_global_dir="@TERMUX_PREFIX@/share/gnome/apps"
  [ -w $gnome_global_dir ] || gnome_global_dir=
  
  DEBUG 3 "Install locations for *.desktop files:"
@@ -124,7 +124,7 @@
  
      GTK_UPDATE_ICON_CACHE="-"
 -    for x in `echo "$PATH:/opt/gnome/bin" | sed 's/:/ /g'`; do
-+    for x in `echo "$PATH:@NEOTERM_PREFIX@/opt/gnome/bin" | sed 's/:/ /g'`; do
++    for x in `echo "$PATH:@TERMUX_PREFIX@/opt/gnome/bin" | sed 's/:/ /g'`; do
          DEBUG 3 "Checking $x for gtk-update-icon-cache"
          if [ -x "$x/gtk-update-icon-cache" ] ; then
              DEBUG 1 "Found $x/gtk-update-icon-cache"
@@ -133,7 +133,7 @@
  xdg_global_prefix=
  xdg_system_dirs="$XDG_DATA_DIRS"
 -[ -n "$xdg_system_dirs" ] || xdg_system_dirs="/usr/local/share/:/usr/share/"
-+[ -n "$xdg_system_dirs" ] || xdg_system_dirs="@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/"
++[ -n "$xdg_system_dirs" ] || xdg_system_dirs="@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/"
  for x in `echo "$xdg_system_dirs" | sed 's/:/ /g'`; do
     if [ -w "$x/$xdg_dir_name" ] ; then
        xdg_global_prefix="$x/icons"
@@ -144,7 +144,7 @@
        fi
     fi
 -   for x in `echo "$PATH:/opt/gnome/bin" | sed 's/:/ /g'`; do
-+   for x in `echo "$PATH:@NEOTERM_PREFIX@/opt/gnome/bin" | sed 's/:/ /g'`; do
++   for x in `echo "$PATH:@TERMUX_PREFIX@/opt/gnome/bin" | sed 's/:/ /g'`; do
        if [ -x $x/update-mime-database ] ; then
           DEBUG 1 "Running $x/update-mime-database $1"
           eval '$x/update-mime-database $1'$xdg_redirect_output
@@ -153,7 +153,7 @@
      else
          DEBUG 1 "Running file --brief --dereference --mime-type \"$1\""
 -        /usr/bin/file --brief --dereference --mime-type "$1" 2> /dev/null
-+        @NEOTERM_PREFIX@/bin/file --brief --dereference --mime-type "$1" 2> /dev/null
++        @TERMUX_PREFIX@/bin/file --brief --dereference --mime-type "$1" 2> /dev/null
      fi
  
      if [ $? -eq 0 ]; then
@@ -162,7 +162,7 @@
  
      xdg_system_dirs="$XDG_DATA_DIRS"
 -    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
-+    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
  
      preference=-1
      desktop_file=""
@@ -171,12 +171,12 @@
      [ -n "$xdg_config_home" ] || xdg_config_home="$HOME/.config"
      xdg_config_dirs="$XDG_CONFIG_DIRS"
 -    [ -n "$xdg_config_dirs" ] || xdg_config_dirs="/etc/xdg"
-+    [ -n "$xdg_config_dirs" ] || xdg_config_dirs="@NEOTERM_PREFIX@/etc/xdg"
++    [ -n "$xdg_config_dirs" ] || xdg_config_dirs="@TERMUX_PREFIX@/etc/xdg"
      xdg_user_dir="$XDG_DATA_HOME"
      [ -n "$xdg_user_dir" ] || xdg_user_dir="$HOME/.local/share"
      xdg_system_dirs="$XDG_DATA_DIRS"
 -    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
-+    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++    [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
  
      local oldifs="$IFS" dir
  
@@ -185,7 +185,7 @@
  
      if [ x"$DE" = x"" ]; then
 -        if [ -x /usr/bin/file ]; then
-+        if [ -x @NEOTERM_PREFIX@/bin/file ]; then
++        if [ -x @TERMUX_PREFIX@/bin/file ]; then
              DE=generic
          fi
      fi
@@ -194,7 +194,7 @@
  
  xdg_system_dirs="$XDG_DATA_DIRS"
 -[ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
-+[ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++[ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
  for x in `echo $xdg_system_dirs | sed 's/:/ /g'`; do
      if [ -w $x/$xdg_dir_name ] ; then
          [ x"$mode" = x"system" ] && xdg_base_dir="$x/mime"
@@ -203,7 +203,7 @@
  # See http://forums.fedoraforum.org/showthread.php?t=26875
  gnome_user_dir="$HOME/.gnome/apps"
 -gnome_global_dir=/usr/share/gnome/apps
-+gnome_global_dir=@NEOTERM_PREFIX@/share/gnome/apps
++gnome_global_dir=@TERMUX_PREFIX@/share/gnome/apps
  [ -w $gnome_global_dir ] || gnome_global_dir=
  DEBUG 3 "gnome_user_dir: $gnome_user_dir"
  DEBUG 3 "gnome_global_dir: $gnome_global_dir"
@@ -215,8 +215,8 @@
          local printf=printf
 -        if [ -x /usr/bin/printf ]; then
 -            printf=/usr/bin/printf
-+        if [ -x @NEOTERM_PREFIX@/bin/printf ]; then
-+            printf=@NEOTERM_PREFIX@/bin/printf
++        if [ -x @TERMUX_PREFIX@/bin/printf ]; then
++            printf=@TERMUX_PREFIX@/bin/printf
          fi
          file=$($printf "$(echo "$file" | sed -e 's@%\([a-f0-9A-F]\{2\}\)@\\x\1@g')")
      fi
@@ -225,7 +225,7 @@
  
          xdg_system_dirs="$XDG_DATA_DIRS"
 -        [ -n "$xdg_system_dirs" ] || xdg_system_dirs=/usr/local/share/:/usr/share/
-+        [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/
++        [ -n "$xdg_system_dirs" ] || xdg_system_dirs=@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/
  
  DEBUG 3 "$xdg_user_dir:$xdg_system_dirs"
          for x in `echo "$xdg_user_dir:$xdg_system_dirs" | sed 's/:/ /g'`; do
@@ -236,7 +236,7 @@
     DEBUG 1 "mv -T available"
     MV="mv -T"
 -   screensaver_file="/tmp/xdg-screensaver-$USER-"`echo $DISPLAY | sed 's/:/-/g'`
-+   screensaver_file="@NEOTERM_PREFIX@/tmp/xdg-screensaver-$USER-"`echo $DISPLAY | sed 's/:/-/g'`
++   screensaver_file="@TERMUX_PREFIX@/tmp/xdg-screensaver-$USER-"`echo $DISPLAY | sed 's/:/-/g'`
  else
     # No secure moves available, use home dir
     DEBUG 1 "mv -T not available"
@@ -245,7 +245,7 @@
        # Save DPMS state
        if xset -q | grep 'DPMS is Enabled' > /dev/null 2> /dev/null; then
 -          test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+          test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++          test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
            tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
            $MV "$tmpfile" "$screensaver_file.dpms"
            # Disable DPMS
@@ -254,7 +254,7 @@
  {
    lockfile
 -  test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+  test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++  test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
    tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
    grep -v "$window_id:$xprop_pid\$" "$screensaver_file" > "$tmpfile" 2> /dev/null
    $MV "$tmpfile" "$screensaver_file"
@@ -263,7 +263,7 @@
    lockfile
  
 -  test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+  test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++  test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
    tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
    # Filter stale entries from the xdg-screensaver status file
    # Return if $window_id is being tracked already
@@ -272,7 +272,7 @@
  {
    lockfile
 -  test "${TMPDIR+set}" = set || TMPDIR=/tmp
-+  test "${TMPDIR+set}" = set || TMPDIR=@NEOTERM_PREFIX@/tmp
++  test "${TMPDIR+set}" = set || TMPDIR=@TERMUX_PREFIX@/tmp
    tmpfile=`mktemp $TMPDIR/tmp.XXXXXXXXXX`
    # Filter stale entries from the xdg-screensaver status file
    cat "$screensaver_file" 2> /dev/null | (
@@ -283,7 +283,7 @@
  get_browser_xfce()
  {
 -    search="${XDG_CONFIG_HOME:-$HOME/.config}:${XDG_CONFIG_DIRS:-/etc/xdg}"
-+    search="${XDG_CONFIG_HOME:-$HOME/.config}:${XDG_CONFIG_DIRS:-@NEOTERM_PREFIX@/etc/xdg}"
++    search="${XDG_CONFIG_HOME:-$HOME/.config}:${XDG_CONFIG_DIRS:-@TERMUX_PREFIX@/etc/xdg}"
      IFS=:
      for dir in $search; do
          unset IFS
@@ -292,7 +292,7 @@
      # "X-XFCE-Category" must be "WebBrowser" (for web browsers, anyway)
      # "X-XFCE-Commands" and "X-XFCE-CommandsWithParameter" must be set
 -    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-+    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share}"
++    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share}"
      IFS=:
      for dir in $search; do
          unset IFS
@@ -303,7 +303,7 @@
  binary_to_desktop_file()
  {
 -    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-+    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share}"
++    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share}"
      binary="`which "$1"`"
      binary="`readlink -f "$binary"`"
      base="`basename "$binary"`"
@@ -312,7 +312,7 @@
  desktop_file_to_binary()
  {
 -    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-+    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share}"
++    search="${XDG_DATA_HOME:-$HOME/.local/share}:${XDG_DATA_DIRS:-@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share}"
      desktop="`basename "$1"`"
      IFS=:
      for dir in $search; do

@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/termux/termux-packages/issues/15852
 Borrowed from https://github.com/gentoo/gentoo/blob/d5fca8d5622b376e09174784c91082357d8be597/x11-themes/gtk-engines-murrine/files/0.98.2-implicit-functions.patch
 
 --- a/src/murrine_rc_style.h

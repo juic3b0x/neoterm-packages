@@ -5,7 +5,7 @@
      # Don't flag an error for --with-python=auto (the default).
      have_python_config=yes
 -    python_includes=`${python_prog} ${srcdir}/python/python-config.py --includes`
-+    python_includes=`@NEOTERM_PREFIX@/bin/python-config --includes`
++    python_includes=`@TERMUX_PREFIX@/bin/python-config --includes`
      if test $? != 0; then
        have_python_config=failed
        if test "${with_python}" != auto; then
@@ -13,7 +13,7 @@
        fi
      fi
 -    python_libs=`${python_prog} ${srcdir}/python/python-config.py --ldflags`
-+    python_libs=`@NEOTERM_PREFIX@/bin/python-config --ldflags`
++    python_libs=`@TERMUX_PREFIX@/bin/python-config --ldflags`
      if test $? != 0; then
        have_python_config=failed
        if test "${with_python}" != auto; then
@@ -21,7 +21,7 @@
        fi
      fi
 -    python_prefix=`${python_prog} ${srcdir}/python/python-config.py --exec-prefix`
-+    python_prefix=`@NEOTERM_PREFIX@/bin/python-config --exec-prefix`
++    python_prefix=`@TERMUX_PREFIX@/bin/python-config --exec-prefix`
      if test $? != 0; then
        have_python_config=failed
        if test "${with_python}" != auto; then

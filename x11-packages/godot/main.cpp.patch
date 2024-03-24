@@ -5,7 +5,7 @@
  String tablet_driver = "";
  String text_driver = "";
 -String rendering_driver = "";
-+String rendering_driver = "opengl3"; // There are problems with the render method on neoterm
++String rendering_driver = "opengl3"; // There are problems with the render method on termux
  String rendering_method = "";
  static int text_driver_idx = -1;
  static int display_driver_idx = -1;

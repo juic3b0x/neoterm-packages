@@ -2,34 +2,34 @@
 # shellcheck disable=SC2039,SC2059
 
 # Title:         build-bootstrap.sh
-# Description:   A script to build bootstrap archives for the neoterm-app
+# Description:   A script to build bootstrap archives for the termux-app
 #                from local package sources instead of debs published in
 #                apt repo like done by generate-bootstrap.sh. It allows
-#                bootstrap archives to be easily built for (forked) neoterm
+#                bootstrap archives to be easily built for (forked) termux
 #                apps without having to publish an apt repo first.
 # Usage:         run "build-bootstrap.sh --help"
 version=0.1.0
 
 set -e
 
-NEOTERM_SCRIPTDIR=$(realpath "$(dirname "$0")/../")
+TERMUX_SCRIPTDIR=$(realpath "$(dirname "$0")/../")
 . $(dirname "$(realpath "$0")")/properties.sh
 
 BOOTSTRAP_TMPDIR=$(mktemp -d "${TMPDIR:-/tmp}/bootstrap-tmp.XXXXXXXX")
 
 # By default, bootstrap archives are compatible with Android >=7.0
 # and <10.
-BOOTSTRAP_ANDROID10_COMPATIBLE=false
+BOOTSTRAP_ANDROID10_COMPATIBLE=true
 
 # By default, bootstrap archives will be built for all architectures
 # supported by Termux application.
 # Override with option '--architectures'.
-NEOTERM_DEFAULT_ARCHITECTURES=("aarch64" "arm" "i686" "x86_64")
-NEOTERM_ARCHITECTURES=("${NEOTERM_DEFAULT_ARCHITECTURES[@]}")
+TERMUX_DEFAULT_ARCHITECTURES=("aarch64")
+TERMUX_ARCHITECTURES=("${TERMUX_DEFAULT_ARCHITECTURES[@]}")
 
-NEOTERM_PACKAGES_DIRECTORY="/home/builder/neoterm-packages"
-NEOTERM_BUILT_DEBS_DIRECTORY="$NEOTERM_PACKAGES_DIRECTORY/output"
-NEOTERM_BUILT_PACKAGES_DIRECTORY="/data/data/.built-packages"
+TERMUX_PACKAGES_DIRECTORY="/home/builder/termux-packages"
+TERMUX_BUILT_DEBS_DIRECTORY="$TERMUX_PACKAGES_DIRECTORY/output"
+TERMUX_BUILT_PACKAGES_DIRECTORY="/data/data/.built-packages"
 
 IGNORE_BUILD_SCRIPT_NOT_FOUND_ERROR=1
 FORCE_BUILD_PACKAGES=0
@@ -68,10 +68,10 @@ build_package() {
 
 	# Build package from source
 	# stderr will be redirected to stdout and both will be captured into variable and printed on screen
-	cd "$NEOTERM_PACKAGES_DIRECTORY"
+	cd "$TERMUX_PACKAGES_DIRECTORY"
 	echo $'\n\n\n'"[*] Building '$package_name'..."
 	exec 99>&1
-	build_output="$("$NEOTERM_PACKAGES_DIRECTORY"/build-package.sh "${BUILD_PACKAGE_OPTIONS[@]}" -a "$package_arch" "$package_name" 2>&1 | tee >(cat - >&99); exit ${PIPESTATUS[0]})";
+	build_output="$("$TERMUX_PACKAGES_DIRECTORY"/build-package.sh "${BUILD_PACKAGE_OPTIONS[@]}" -a "$package_arch" "$package_name" 2>&1 | tee >(cat - >&99); exit ${PIPESTATUS[0]})";
 	return_value=$?
 	echo "[*] Building '$package_name' exited with exit code $return_value"
 	exec 99>&-
@@ -101,7 +101,7 @@ extract_debs() {
 	local deb
 	local file
 
-	cd "$NEOTERM_BUILT_DEBS_DIRECTORY"
+	cd "$TERMUX_BUILT_DEBS_DIRECTORY"
 
 	if [ -z "$(ls -A)" ]; then
 		echo $'\n\n\n'"No debs found"
@@ -136,7 +136,7 @@ extract_debs() {
 
 		echo "[*] Extracting '$deb'..."
 		(cd "$package_tmpdir"
-			ar x "$NEOTERM_BUILT_DEBS_DIRECTORY/$deb"
+			ar x "$TERMUX_BUILT_DEBS_DIRECTORY/$deb"
 
 			# data.tar may have extension different from .xz
 			if [ -f "./data.tar.xz" ]; then
@@ -163,11 +163,11 @@ extract_debs() {
 
 			if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
 				# Register extracted files.
-				tar tf "$data_archive" | sed -E -e 's@^\./@/@' -e 's@^/$@/.@' -e 's@^([^./])@/\1@' > "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info/${current_package_name}.list"
+				tar tf "$data_archive" | sed -E -e 's@^\./@/@' -e 's@^/$@/.@' -e 's@^([^./])@/\1@' > "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info/${current_package_name}.list"
 
 				# Generate checksums (md5).
 				tar xf "$data_archive"
-				find data -type f -print0 | xargs -0 -r md5sum | sed 's@^\.$@@g' > "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info/${current_package_name}.md5sums"
+				find data -type f -print0 | xargs -0 -r md5sum | sed 's@^\.$@@g' > "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info/${current_package_name}.md5sums"
 
 				# Extract metadata.
 				tar xf "$control_archive"
@@ -175,12 +175,12 @@ extract_debs() {
 					cat control
 					echo "Status: install ok installed"
 					echo
-				} >> "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/status"
+				} >> "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/status"
 
 				# Additional data: conffiles & scripts
 				for file in conffiles postinst postrm preinst prerm; do
 					if [ -f "${PWD}/${file}" ]; then
-						cp "$file" "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info/${current_package_name}.${file}"
+						cp "$file" "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info/${current_package_name}.${file}"
 					fi
 				done
 			fi
@@ -195,7 +195,7 @@ extract_debs() {
 create_bootstrap_archive() {
 
 	echo $'\n\n\n'"[*] Creating 'bootstrap-${1}.zip'..."
-	(cd "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}"
+	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
 		# Do not store symlinks in bootstrap archive.
 		# Instead, put all information to SYMLINKS.txt
 		while read -r -d '' link; do
@@ -206,7 +206,7 @@ create_bootstrap_archive() {
 		zip -r9 "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" ./*
 	)
 
-	mv -f "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" "$NEOTERM_PACKAGES_DIRECTORY/"
+	mv -f "${BOOTSTRAP_TMPDIR}/bootstrap-${1}.zip" "$TERMUX_PACKAGES_DIRECTORY/"
 
 	echo "[*] Finished successfully (${1})."
 
@@ -230,7 +230,7 @@ build_bootstrap_trap() {
 	local build_bootstrap_trap_exit_code=$?
 	trap - EXIT
 
-	[ -h "$NEOTERM_BUILT_PACKAGES_DIRECTORY" ] && rm -f "$NEOTERM_BUILT_PACKAGES_DIRECTORY"
+	[ -h "$TERMUX_BUILT_PACKAGES_DIRECTORY" ] && rm -f "$TERMUX_BUILT_PACKAGES_DIRECTORY"
 	[ -d "$BOOTSTRAP_TMPDIR" ] && rm -rf "$BOOTSTRAP_TMPDIR"
 
 	[ -n "$1" ] && trap - "$1"; exit $build_bootstrap_trap_exit_code
@@ -242,9 +242,9 @@ show_usage() {
     cat <<'HELP_EOF'
 
 build-bootstraps.sh is a script to build bootstrap archives for the
-neoterm-app from local package sources instead of debs published in
+termux-app from local package sources instead of debs published in
 apt repo like done by generate-bootstrap.sh. It allows bootstrap archives
-to be easily built for (forked) neoterm apps without having to publish
+to be easily built for (forked) termux apps without having to publish
 an apt repo first.
 
 
@@ -268,7 +268,7 @@ Available command_options:
 
 
 The package name/prefix that the bootstrap is built for is defined by
-NEOTERM_APP_PACKAGE in 'scrips/properties.sh'. It defaults to 'com.neoterm'.
+TERMUX_APP_PACKAGE in 'scrips/properties.sh'. It defaults to 'io.neoterm'.
 If package name is changed, make sure to run
 `./scripts/run-docker.sh ./clean.sh` or pass '-f' to force rebuild of packages.
 
@@ -284,9 +284,9 @@ Build bootstrap archive with additionall openssh package for aarch64 arch only:
 ./scripts/run-docker.sh ./scripts/build-bootstraps.sh --architectures aarch64 --add openssh &> build.log
 HELP_EOF
 
-echo $'\n'"NEOTERM_APP_PACKAGE: \"$NEOTERM_APP_PACKAGE\""
-echo "NEOTERM_PREFIX: \"${NEOTERM_PREFIX[*]}\""
-echo "NEOTERM_ARCHITECTURES: \"${NEOTERM_ARCHITECTURES[*]}\""
+echo $'\n'"TERMUX_APP_PACKAGE: \"$TERMUX_APP_PACKAGE\""
+echo "TERMUX_PREFIX: \"${TERMUX_PREFIX[*]}\""
+echo "TERMUX_ARCHITECTURES: \"${TERMUX_ARCHITECTURES[*]}\""
 
 }
 
@@ -318,9 +318,9 @@ main() {
 				;;
 			--architectures)
 				if [ $# -gt 1 ] && [ -n "$2" ] && [[ $2 != -* ]]; then
-					NEOTERM_ARCHITECTURES=()
+					TERMUX_ARCHITECTURES=()
 					for arch in $(echo "$2" | tr ',' ' '); do
-						NEOTERM_ARCHITECTURES+=("$arch")
+						TERMUX_ARCHITECTURES+=("$arch")
 					done
 					unset arch
 					shift 1
@@ -345,32 +345,32 @@ main() {
 
 	set_build_bootstrap_traps
 
-	for package_arch in "${NEOTERM_ARCHITECTURES[@]}"; do
-		if [[ " ${NEOTERM_DEFAULT_ARCHITECTURES[*]} " != *" $package_arch "* ]]; then
-			echo "Unsupported architecture '$package_arch' for in architectures list: '${NEOTERM_ARCHITECTURES[*]}'" 1>&2
-			echo "Supported architectures: '${NEOTERM_DEFAULT_ARCHITECTURES[*]}'" 1>&2
+	for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
+		if [[ " ${TERMUX_DEFAULT_ARCHITECTURES[*]} " != *" $package_arch "* ]]; then
+			echo "Unsupported architecture '$package_arch' for in architectures list: '${TERMUX_ARCHITECTURES[*]}'" 1>&2
+			echo "Supported architectures: '${TERMUX_DEFAULT_ARCHITECTURES[*]}'" 1>&2
 			return 1
 		fi
 	done
 
-	for package_arch in "${NEOTERM_ARCHITECTURES[@]}"; do
+	for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 
-		# The neoterm_step_finish_build stores package version in .built-packages directory, but
+		# The termux_step_finish_build stores package version in .built-packages directory, but
 		# its not arch independent. So instead we create an arch specific one and symlink it
 		# to the .built-packages directory so that users can easily switch arches without having
 		# to rebuild packages
-		NEOTERM_BUILT_PACKAGES_DIRECTORY_FOR_ARCH="$NEOTERM_BUILT_PACKAGES_DIRECTORY-$package_arch"
-		mkdir -p "$NEOTERM_BUILT_PACKAGES_DIRECTORY_FOR_ARCH"
+		TERMUX_BUILT_PACKAGES_DIRECTORY_FOR_ARCH="$TERMUX_BUILT_PACKAGES_DIRECTORY-$package_arch"
+		mkdir -p "$TERMUX_BUILT_PACKAGES_DIRECTORY_FOR_ARCH"
 
-		if [ -f "$NEOTERM_BUILT_PACKAGES_DIRECTORY" ] || [ -d "$NEOTERM_BUILT_PACKAGES_DIRECTORY" ]; then
-			rm -rf "$NEOTERM_BUILT_PACKAGES_DIRECTORY"
+		if [ -f "$TERMUX_BUILT_PACKAGES_DIRECTORY" ] || [ -d "$TERMUX_BUILT_PACKAGES_DIRECTORY" ]; then
+			rm -rf "$TERMUX_BUILT_PACKAGES_DIRECTORY"
 		fi
 
-		ln -sf "$NEOTERM_BUILT_PACKAGES_DIRECTORY_FOR_ARCH" "$NEOTERM_BUILT_PACKAGES_DIRECTORY"
+		ln -sf "$TERMUX_BUILT_PACKAGES_DIRECTORY_FOR_ARCH" "$TERMUX_BUILT_PACKAGES_DIRECTORY"
 
 		if [[ $FORCE_BUILD_PACKAGES == "1" ]]; then
-			rm -f "$NEOTERM_BUILT_PACKAGES_DIRECTORY_FOR_ARCH"/*
-			rm -f "$NEOTERM_BUILT_DEBS_DIRECTORY"/*
+			rm -f "$TERMUX_BUILT_PACKAGES_DIRECTORY_FOR_ARCH"/*
+			rm -f "$TERMUX_BUILT_DEBS_DIRECTORY"/*
 		fi
 
 
@@ -378,18 +378,18 @@ main() {
 		BOOTSTRAP_ROOTFS="$BOOTSTRAP_TMPDIR/rootfs-${package_arch}"
 		BOOTSTRAP_PKGDIR="$BOOTSTRAP_TMPDIR/packages-${package_arch}"
 
-		# Create initial directories for $NEOTERM_PREFIX
+		# Create initial directories for $TERMUX_PREFIX
 		if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/etc/apt/apt.conf.d"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/etc/apt/preferences.d"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/triggers"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/updates"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/log/apt"
-			touch "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/available"
-			touch "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/status"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/apt.conf.d"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/preferences.d"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/triggers"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/updates"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/log/apt"
+			touch "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/available"
+			touch "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/status"
 		fi
-		mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/tmp"
+		mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/tmp"
 
 
 

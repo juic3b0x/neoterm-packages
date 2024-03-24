@@ -6,11 +6,11 @@ diff -uNr bash-5.0/pathnames.h.in bash-5.0.mod/pathnames.h.in
  
  /* The default file for hostname completion. */
 -#define DEFAULT_HOSTS_FILE "/etc/hosts"
-+#define DEFAULT_HOSTS_FILE "@NEOTERM_PREFIX@/etc/hosts"
++#define DEFAULT_HOSTS_FILE "@TERMUX_PREFIX@/etc/hosts"
  
  /* The default login shell startup file. */
 -#define SYS_PROFILE "/etc/profile"
-+#define SYS_PROFILE "@NEOTERM_PREFIX@/etc/profile"
++#define SYS_PROFILE "@TERMUX_PREFIX@/etc/profile"
  
  /* The default location of the bash debugger initialization/startup file. */
  #define DEBUGGER_START_FILE	"@DEBUGGER_START_FILE@"

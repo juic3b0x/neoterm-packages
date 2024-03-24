@@ -1,11 +1,11 @@
-NEOTERM_SUBPKG_DESCRIPTION="Perl modules for dpkg"
-NEOTERM_SUBPKG_INCLUDE="share/perl5"
-NEOTERM_SUBPKG_DEPENDS="perl, clang, make"
-NEOTERM_SUBPKG_PLATFORM_INDEPENDENT=true
+TERMUX_SUBPKG_DESCRIPTION="Perl modules for dpkg"
+TERMUX_SUBPKG_INCLUDE="share/perl5"
+TERMUX_SUBPKG_DEPENDS="perl, clang, make"
+TERMUX_SUBPKG_PLATFORM_INDEPENDENT=true
 
-neoterm_step_create_subpkg_debscripts() {
+termux_step_create_subpkg_debscripts() {
 	cat <<- POSTINST_EOF > ./postinst
-	#!$NEOTERM_PREFIX/bin/bash
+	#!$TERMUX_PREFIX/bin/bash
 	set -e
 
 	echo "Sideloading Perl Locale::gettext ..."

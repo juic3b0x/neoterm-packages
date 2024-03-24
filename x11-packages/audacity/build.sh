@@ -1,20 +1,20 @@
-NEOTERM_PKG_HOMEPAGE=https://www.audacityteam.org/
-NEOTERM_PKG_DESCRIPTION="An easy-to-use, multi-track audio editor and recorder"
-NEOTERM_PKG_LICENSE="GPL-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_HOMEPAGE=https://www.audacityteam.org/
+TERMUX_PKG_DESCRIPTION="An easy-to-use, multi-track audio editor and recorder"
+TERMUX_PKG_LICENSE="GPL-2.0"
+TERMUX_PKG_MAINTAINER="@termux"
 # Version 3.0.0 or higher does not work with vanilla wxWidgets.
-NEOTERM_PKG_VERSION=2.4.2
-NEOTERM_PKG_REVISION=9
+TERMUX_PKG_VERSION=2.4.2
+TERMUX_PKG_REVISION=9
 _FFMPEG_VERSION=4.4.3
-NEOTERM_PKG_SRCURL=(https://github.com/audacity/audacity/archive/Audacity-${NEOTERM_PKG_VERSION}.tar.gz
+TERMUX_PKG_SRCURL=(https://github.com/audacity/audacity/archive/Audacity-${TERMUX_PKG_VERSION}.tar.gz
                    https://www.ffmpeg.org/releases/ffmpeg-${_FFMPEG_VERSION}.tar.xz)
-NEOTERM_PKG_SHA256=(cdb4800c8e9d1d4ca19964caf8d24000f80286ebd8a4db566c2622449744c099
+TERMUX_PKG_SHA256=(cdb4800c8e9d1d4ca19964caf8d24000f80286ebd8a4db566c2622449744c099
                    6c5b6c195e61534766a0b5fe16acc919170c883362612816d0a1c7f4f947006e)
-NEOTERM_PKG_DEPENDS="gdk-pixbuf, glib, gtk3, libc++, libexpat, libflac, libmp3lame, libogg, libsndfile, libsoundtouch, libsoxr, libvorbis, wxwidgets"
+TERMUX_PKG_DEPENDS="gdk-pixbuf, glib, gtk3, libc++, libexpat, libflac, libmp3lame, libogg, libsndfile, libsoundtouch, libsoxr, libvorbis, wxwidgets"
 # Support for FFmpeg 5.0 is not backported:
 # https://github.com/audacity/audacity/issues/2445
-NEOTERM_PKG_SUGGESTS="audacity-ffmpeg"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_SUGGESTS="audacity-ffmpeg"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Daudacity_use_wxwidgets=system
 -Daudacity_use_expat=system
 -Daudacity_use_lame=system
@@ -37,26 +37,26 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -Daudacity_use_soundtouch=system
 -Daudacity_use_twolame=off
 "
-NEOTERM_PKG_RM_AFTER_INSTALL="
+TERMUX_PKG_RM_AFTER_INSTALL="
 opt/audacity/include
 opt/audacity/lib/pkgconfig
 opt/audacity/share
 "
 
-neoterm_step_pre_configure() {
-	local _FFMPEG_PREFIX=${NEOTERM_PREFIX}/opt/${NEOTERM_PKG_NAME}
+termux_step_pre_configure() {
+	local _FFMPEG_PREFIX=${TERMUX_PREFIX}/opt/${TERMUX_PKG_NAME}
 	LDFLAGS="-Wl,-rpath=${_FFMPEG_PREFIX}/lib ${LDFLAGS}"
 
 	local _ARCH
-	case ${NEOTERM_ARCH} in
+	case ${TERMUX_ARCH} in
 		arm ) _ARCH=armeabi-v7a ;;
 		i686 ) _ARCH=x86 ;;
-		* ) _ARCH=$NEOTERM_ARCH ;;
+		* ) _ARCH=$TERMUX_ARCH ;;
 	esac
 
 	mkdir -p _ffmpeg-${_FFMPEG_VERSION}
 	pushd _ffmpeg-${_FFMPEG_VERSION}
-	$NEOTERM_PKG_SRCDIR/ffmpeg-${_FFMPEG_VERSION}/configure \
+	$TERMUX_PKG_SRCDIR/ffmpeg-${_FFMPEG_VERSION}/configure \
 		--prefix=${_FFMPEG_PREFIX} \
 		--cc=${CC} \
 		--pkg-config=false \
@@ -73,13 +73,13 @@ neoterm_step_pre_configure() {
 		--enable-avcodec \
 		--enable-avformat \
 		--disable-asm
-	make -j ${NEOTERM_MAKE_PROCESSES}
+	make -j ${TERMUX_MAKE_PROCESSES}
 	make install
 	popd
 
 	local lib
 	for lib in libavcodec libavformat libavutil; do
-		local pc=${NEOTERM_PREFIX}/lib/pkgconfig/${lib}.pc
+		local pc=${TERMUX_PREFIX}/lib/pkgconfig/${lib}.pc
 		if [ -e ${pc} ]; then
 			mv ${pc}{,.tmp}
 		fi
@@ -90,34 +90,34 @@ neoterm_step_pre_configure() {
 	CPPFLAGS+=" -Dushort=u_short -Dulong=u_long"
 }
 
-neoterm_step_post_make_install() {
+termux_step_post_make_install() {
 	unset PKG_CONFIG_PATH
 	local lib
 	for lib in libavcodec libavformat libavutil; do
-		local pc=${NEOTERM_PREFIX}/lib/pkgconfig/${lib}.pc
+		local pc=${TERMUX_PREFIX}/lib/pkgconfig/${lib}.pc
 		if [ -e ${pc}.tmp ] && [ ! -e ${pc} ]; then
 			mv ${pc}{.tmp,}
 		fi
 	done
 
-	local _FFMPEG_DOCDIR=$NEOTERM_PREFIX/share/doc/audacity-ffmpeg
+	local _FFMPEG_DOCDIR=$TERMUX_PREFIX/share/doc/audacity-ffmpeg
 	mkdir -p ${_FFMPEG_DOCDIR}
-	ln -sfr ${NEOTERM_PREFIX}/share/LICENSES/LGPL-2.1.txt \
+	ln -sfr ${TERMUX_PREFIX}/share/LICENSES/LGPL-2.1.txt \
 		${_FFMPEG_DOCDIR}/LICENSE
 }
 
-neoterm_step_post_massage() {
+termux_step_post_massage() {
 	rm -rf lib/pkgconfig
 }
 
-neoterm_step_create_debscripts() {
+termux_step_create_debscripts() {
 	cat <<-EOF > ./postinst
-		#!$NEOTERM_PREFIX/bin/sh
+		#!$TERMUX_PREFIX/bin/sh
 		echo
 		echo "********"
 		echo "Audacity in this particular package does not (yet) support audio devices."
 		echo
-		echo "https://github.com/neoterm/neoterm-packages/issues/10412"
+		echo "https://github.com/termux/termux-packages/issues/10412"
 		echo "********"
 		echo
 	EOF

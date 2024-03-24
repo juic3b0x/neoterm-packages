@@ -1,13 +1,13 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/mayTermux/awesomeshot
-NEOTERM_PKG_DESCRIPTION="A command-line screenshot tool written in bash"
-NEOTERM_PKG_LICENSE="MIT"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION=1.1.0
-NEOTERM_PKG_SRCURL=https://github.com/mayTermux/awesomeshot/archive/refs/tags/v.${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=5daefb4c02743503e08764fb604e6a811e4ce09a301fafe7cd00a43418a687b1
-NEOTERM_PKG_DEPENDS="bash, bc, imagemagick, inotify-tools, neoterm-api"
-NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_EXTRA_MAKE_ARGS="PREFIX=$NEOTERM_PREFIX"
-NEOTERM_PKG_PLATFORM_INDEPENDENT=true
-NEOTERM_PKG_AUTO_UPDATE=false
-NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+TERMUX_PKG_HOMEPAGE=https://github.com/mayTermux/awesomeshot
+TERMUX_PKG_DESCRIPTION="A command-line screenshot tool written in bash"
+TERMUX_PKG_LICENSE="MIT"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION=1.1.0
+TERMUX_PKG_SRCURL=https://github.com/mayTermux/awesomeshot/archive/refs/tags/v.${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=5daefb4c02743503e08764fb604e6a811e4ce09a301fafe7cd00a43418a687b1
+TERMUX_PKG_DEPENDS="bash, bc, imagemagick, inotify-tools, termux-api"
+TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_EXTRA_MAKE_ARGS="PREFIX=$TERMUX_PREFIX"
+TERMUX_PKG_PLATFORM_INDEPENDENT=true
+TERMUX_PKG_AUTO_UPDATE=false
+TERMUX_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"

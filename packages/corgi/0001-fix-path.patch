@@ -5,7 +5,7 @@
  
  var shellType string
 -var TempHistFile = "/tmp/corgi.hist"
-+var TempHistFile = "@NEOTERM_PREFIX@/tmp/corgi.hist"
++var TempHistFile = "@TERMUX_PREFIX@/tmp/corgi.hist"
  
  func getFishHistoryPath(homeDir string) string {
  	var (

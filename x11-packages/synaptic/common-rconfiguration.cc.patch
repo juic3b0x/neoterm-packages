@@ -18,7 +18,7 @@
 -            aptfile << "APT::Install-Recommends \"true\";" << endl;
 -         else
 -            aptfile << "APT::Install-Recommends \"false\";" << endl;
-+   string aptConfPath = _config->FindDir("Dir::Etc::parts", "@NEOTERM_PREFIX@/etc/apt/apt.conf.d/")
++   string aptConfPath = _config->FindDir("Dir::Etc::parts", "@TERMUX_PREFIX@/etc/apt/apt.conf.d/")
 +                     + "99synaptic";
 +
 +   int old_umask = umask(0022);
@@ -53,7 +53,7 @@
 -   path = string(pwd->pw_dir) + "/.synaptic";
 -   //path = "/etc/synaptic";
 +   path = string(pwd->pw_dir) + "/.synaptic";*/
-+   path = "@NEOTERM_PREFIX@/etc/synaptic";
++   path = "@TERMUX_PREFIX@/etc/synaptic";
  
     if (stat(path.c_str(), &stbuf) < 0) {
        if (mkdir(path.c_str(), 0700) < 0) {
@@ -62,7 +62,7 @@
  {
     struct stat stbuf;
 -   static string tmpDir = RConfDir() + string("/tmp/");
-+   static string tmpDir = RConfDir() + string("@NEOTERM_PREFIX@/tmp/");
++   static string tmpDir = RConfDir() + string("@TERMUX_PREFIX@/tmp/");
     if (stat(tmpDir.c_str(), &stbuf) < 0) {
        if (mkdir(tmpDir.c_str(), 0700) < 0) {
  	 _error->Errno("mkdir",

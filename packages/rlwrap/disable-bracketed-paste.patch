@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/12282
+https://github.com/termux/termux-packages/issues/12282
 
 --- a/src/readline.c
 +++ b/src/readline.c

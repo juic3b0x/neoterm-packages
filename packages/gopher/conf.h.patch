@@ -5,7 +5,7 @@
  
  #ifndef MAIL_COMMAND
 -#define MAIL_COMMAND "/bin/mail"
-+#define MAIL_COMMAND "@NEOTERM_PREFIX@/bin/mail"
++#define MAIL_COMMAND "@TERMUX_PREFIX@/bin/mail"
  #endif
  
  #ifndef TELNET_COMMAND
@@ -14,7 +14,7 @@
  
  #ifndef PLAY_COMMAND
 -#define PLAY_COMMAND "/bin/false"
-+#define PLAY_COMMAND "@NEOTERM_PREFIX@/bin/false"
++#define PLAY_COMMAND "@TERMUX_PREFIX@/bin/false"
  #endif
  
  #ifndef MIME_COMMAND

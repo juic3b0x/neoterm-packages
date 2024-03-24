@@ -13,8 +13,8 @@
  
 -SSLDIR=/usr/local/ssl
 -SSLCERTS=$(SSLDIR)/certs
-+SSLDIR=@NEOTERM_PREFIX@
-+SSLCERTS=@NEOTERM_PREFIX@/etc/tls/certs
++SSLDIR=@TERMUX_PREFIX@
++SSLCERTS=@TERMUX_PREFIX@/etc/tls/certs
  SSLKEYS=$(SSLCERTS)
  SSLINCLUDE=$(SSLDIR)/include
  SSLLIB=$(SSLDIR)/lib
@@ -24,22 +24,22 @@
  CRXTYPE=std
 -ACTIVEFILE=/usr/lib/news/active
 -SPOOLDIR=/usr/spool
-+ACTIVEFILE=@NEOTERM_PREFIX@/var/lib/news/active
-+SPOOLDIR=@NEOTERM_PREFIX@/var/spool
++ACTIVEFILE=@TERMUX_PREFIX@/var/lib/news/active
++SPOOLDIR=@TERMUX_PREFIX@/var/spool
  MAILSPOOL=$(SPOOLDIR)/mail
  NEWSSPOOL=$(SPOOLDIR)/news
  RSHPATH=/usr/ucb/rsh
 -MD5PWD=/etc/cram-md5.pwd
-+MD5PWD=@NEOTERM_PREFIX@/etc/cram-md5.pwd
++MD5PWD=@TERMUX_PREFIX@/etc/cram-md5.pwd
  # Tries one of the test alternatives below if not specified.
  LOCKPGM=
  # Test alternatives if LOCKPGM not specified
 -LOCKPGM1=/usr/libexec/mlock
 -LOCKPGM2=/usr/sbin/mlock
 -LOCKPGM3=/etc/mlock
-+LOCKPGM1=@NEOTERM_PREFIX@/libexec/mlock
-+LOCKPGM2=@NEOTERM_PREFIX@/bin/mlock
-+LOCKPGM3=@NEOTERM_PREFIX@/etc/mlock
++LOCKPGM1=@TERMUX_PREFIX@/libexec/mlock
++LOCKPGM2=@TERMUX_PREFIX@/bin/mlock
++LOCKPGM3=@TERMUX_PREFIX@/etc/mlock
  
  
  # Default formats for creating new mailboxes and for empty mailboxes in the
@@ -50,9 +50,9 @@
 -	 SPOOLDIR=/var/spool \
 -	 ACTIVEFILE=/var/lib/news/active \
 -	 RSHPATH=/usr/bin/rsh \
-+	 SPOOLDIR=@NEOTERM_PREFIX@/var/spool \
-+	 ACTIVEFILE=@NEOTERM_PREFIX@/var/lib/news/active \
-+	 RSHPATH=@NEOTERM_PREFIX@/bin/rsh \
++	 SPOOLDIR=@TERMUX_PREFIX@/var/spool \
++	 ACTIVEFILE=@TERMUX_PREFIX@/var/lib/news/active \
++	 RSHPATH=@TERMUX_PREFIX@/bin/rsh \
  	 BASECFLAGS="$(GCCCFLAGS)" \
  	 BASELDFLAGS="-lcrypt"
  

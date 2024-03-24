@@ -10,8 +10,8 @@ diff -uNr gnupg-2.3.1/dirmngr/certcache.c gnupg-2.3.1.mod/dirmngr/certcache.c
 -    { "/etc/pki/tls/cert.pem" },
 -    { "/usr/local/share/certs/ca-root-nss.crt" },
 -    { "/etc/ssl/cert.pem" }
-+    { "@NEOTERM_PREFIX@/etc/tls/cert.pem" },
-+    { "@NEOTERM_PREFIX@/etc/ssl/cert.pem" }
++    { "@TERMUX_PREFIX@/etc/tls/cert.pem" },
++    { "@TERMUX_PREFIX@/etc/ssl/cert.pem" }
  #endif /*!DEFAULT_TRUST_STORE_FILE*/
    };
    int idx;
@@ -23,7 +23,7 @@ diff -uNr gnupg-2.3.1/dirmngr/dns.c gnupg-2.3.1.mod/dirmngr/dns.c
  		goto error;
  
 -	if ((error = dns_hosts_loadpath(hosts, "/etc/hosts")))
-+	if ((error = dns_hosts_loadpath(hosts, "@NEOTERM_PREFIX@/etc/hosts")))
++	if ((error = dns_hosts_loadpath(hosts, "@TERMUX_PREFIX@/etc/hosts")))
  		goto error;
  
  	return hosts;
@@ -32,7 +32,7 @@ diff -uNr gnupg-2.3.1/dirmngr/dns.c gnupg-2.3.1.mod/dirmngr/dns.c
  		goto error;
  
 -	if ((error = dns_resconf_loadpath(resconf, "/etc/resolv.conf"))) {
-+	if ((error = dns_resconf_loadpath(resconf, "@NEOTERM_PREFIX@/etc/resolv.conf"))) {
++	if ((error = dns_resconf_loadpath(resconf, "@TERMUX_PREFIX@/etc/resolv.conf"))) {
  		/*
  		 * NOTE: Both the glibc and BIND9 resolvers ignore a missing
  		 * /etc/resolv.conf, defaulting to a nameserver of
@@ -41,7 +41,7 @@ diff -uNr gnupg-2.3.1/dirmngr/dns.c gnupg-2.3.1.mod/dirmngr/dns.c
  	}
  
 -	if ((error = dns_nssconf_loadpath(resconf, "/etc/nsswitch.conf"))) {
-+	if ((error = dns_nssconf_loadpath(resconf, "@NEOTERM_PREFIX@/etc/nsswitch.conf"))) {
++	if ((error = dns_nssconf_loadpath(resconf, "@TERMUX_PREFIX@/etc/nsswitch.conf"))) {
  		if (error != ENOENT)
  			goto error;
  	}
@@ -50,7 +50,7 @@ diff -uNr gnupg-2.3.1/dirmngr/dns.c gnupg-2.3.1.mod/dirmngr/dns.c
  
  	if (!MAIN.resconf.count)
 -		MAIN.resconf.path[MAIN.resconf.count++]	= "/etc/resolv.conf";
-+		MAIN.resconf.path[MAIN.resconf.count++]	= "@NEOTERM_PREFIX@/etc/resolv.conf";
++		MAIN.resconf.path[MAIN.resconf.count++]	= "@TERMUX_PREFIX@/etc/resolv.conf";
  
  	for (i = 0; i < MAIN.resconf.count; i++) {
  		path	= MAIN.resconf.path[i];
@@ -59,12 +59,12 @@ diff -uNr gnupg-2.3.1/dirmngr/dns.c gnupg-2.3.1.mod/dirmngr/dns.c
  
  	if (!MAIN.hosts.count) {
 -		MAIN.hosts.path[MAIN.hosts.count++]	= "/etc/hosts";
-+		MAIN.hosts.path[MAIN.hosts.count++]	= "@NEOTERM_PREFIX@/etc/hosts";
++		MAIN.hosts.path[MAIN.hosts.count++]	= "@TERMUX_PREFIX@/etc/hosts";
  
  		/* Explicitly test dns_hosts_local() */
  		if (!(*hosts = dns_hosts_local(&error)))
 -			panic("%s: %s", "/etc/hosts", dns_strerror(error));
-+			panic("%s: %s", "@NEOTERM_PREFIX@/etc/hosts", dns_strerror(error));
++			panic("%s: %s", "@TERMUX_PREFIX@/etc/hosts", dns_strerror(error));
  
  		return *hosts;
  	}
@@ -76,7 +76,7 @@ diff -uNr gnupg-2.3.1/dirmngr/dns-stuff.c gnupg-2.3.1.mod/dirmngr/dns-stuff.c
  
  
 -#define RESOLV_CONF_NAME "/etc/resolv.conf"
-+#define RESOLV_CONF_NAME "@NEOTERM_PREFIX@/etc/resolv.conf"
++#define RESOLV_CONF_NAME "@TERMUX_PREFIX@/etc/resolv.conf"
  
  /* Two flags to enable verbose and debug mode.  */
  static int opt_verbose;
@@ -85,7 +85,7 @@ diff -uNr gnupg-2.3.1/dirmngr/dns-stuff.c gnupg-2.3.1.mod/dirmngr/dns-stuff.c
      xfree (hosts_path);
  #else
 -    derr = dns_hosts_loadpath (ld.hosts, "/etc/hosts");
-+    derr = dns_hosts_loadpath (ld.hosts, "@NEOTERM_PREFIX@/etc/hosts");
++    derr = dns_hosts_loadpath (ld.hosts, "@TERMUX_PREFIX@/etc/hosts");
  #endif
      if (derr)
        {
@@ -96,10 +96,10 @@ diff -uNr gnupg-2.3.1/dirmngr/dns-stuff.c gnupg-2.3.1.mod/dirmngr/dns-stuff.c
    if (dump_modlist)
      {
 -      dump = es_fopen("/tmp/modlist.txt", "w");
-+      dump = es_fopen("@NEOTERM_PREFIX@/tmp/modlist.txt", "w");
++      dump = es_fopen("@TERMUX_PREFIX@/tmp/modlist.txt", "w");
        if (! dump)
 -	log_error ("failed to open /tmp/modlist.txt: %s\n",
-+	log_error ("failed to open @NEOTERM_PREFIX@/tmp/modlist.txt: %s\n",
++	log_error ("failed to open @TERMUX_PREFIX@/tmp/modlist.txt: %s\n",
  		   gpg_strerror (gpg_error_from_syserror ()));
  
        if (dump)
@@ -111,7 +111,7 @@ diff -uNr gnupg-2.3.1/g10/photoid.c gnupg-2.3.1.mod/g10/photoid.c
        if (!(tmp = getenv ("TMPDIR"))
            && !(tmp = getenv ("TMP")))
 -        tmp = "/tmp";
-+        tmp = "@NEOTERM_PREFIX@/tmp";
++        tmp = "@TERMUX_PREFIX@/tmp";
  
        len += strlen (tmp);
        info->tempdir = xmalloc (len);
@@ -123,7 +123,7 @@ diff -uNr gnupg-2.3.1/g13/be-encfs.c gnupg-2.3.1.mod/g13/be-encfs.c
      goto leave;
  
 -  mountpoint = xtrystrdup ("/tmp/.#g13_XXXXXX");
-+  mountpoint = xtrystrdup ("@NEOTERM_PREFIX@/tmp/.#g13_XXXXXX");
++  mountpoint = xtrystrdup ("@TERMUX_PREFIX@/tmp/.#g13_XXXXXX");
    if (!mountpoint)
      {
        err = gpg_error_from_syserror ();
@@ -132,7 +132,7 @@ diff -uNr gnupg-2.3.1/g13/be-encfs.c gnupg-2.3.1.mod/g13/be-encfs.c
        err = gpg_error_from_syserror ();
        log_error (_("can't create directory '%s': %s\n"),
 -                 "/tmp/.#g13_XXXXXX", gpg_strerror (err));
-+                 "@NEOTERM_PREFIX@/tmp/.#g13_XXXXXX", gpg_strerror (err));
++                 "@TERMUX_PREFIX@/tmp/.#g13_XXXXXX", gpg_strerror (err));
        goto leave;
      }
  
@@ -144,7 +144,7 @@ diff -uNr gnupg-2.3.1/g13/mount.c gnupg-2.3.1.mod/g13/mount.c
    if (!mountpoint)
      {
 -      mountpoint_buffer = xtrystrdup ("/tmp/g13-XXXXXX");
-+      mountpoint_buffer = xtrystrdup ("@NEOTERM_PREFIX@/tmp/g13-XXXXXX");
++      mountpoint_buffer = xtrystrdup ("@TERMUX_PREFIX@/tmp/g13-XXXXXX");
        if (!mountpoint_buffer)
          return gpg_error_from_syserror ();
        if (!gnupg_mkdtemp (mountpoint_buffer))
@@ -152,7 +152,7 @@ diff -uNr gnupg-2.3.1/g13/mount.c gnupg-2.3.1.mod/g13/mount.c
            err = gpg_error_from_syserror ();
            log_error (_("can't create directory '%s': %s\n"),
 -                     "/tmp/g13-XXXXXX", gpg_strerror (err));
-+                     "@NEOTERM_PREFIX@/tmp/g13-XXXXXX", gpg_strerror (err));
++                     "@TERMUX_PREFIX@/tmp/g13-XXXXXX", gpg_strerror (err));
            xfree (mountpoint_buffer);
            return err;
          }
@@ -165,11 +165,11 @@ diff -uNr gnupg-2.3.1/scd/scdaemon.c gnupg-2.3.1.mod/scd/scdaemon.c
          {
 -          if (chdir("/tmp"))
 -            log_debug ("chdir to '/tmp' failed: %s\n", strerror (errno));
-+          if (chdir("@NEOTERM_PREFIX@/tmp"))
-+            log_debug ("chdir to '@NEOTERM_PREFIX@/tmp' failed: %s\n", strerror (errno));
++          if (chdir("@TERMUX_PREFIX@/tmp"))
++            log_debug ("chdir to '@TERMUX_PREFIX@/tmp' failed: %s\n", strerror (errno));
            else
 -            log_debug ("changed working directory to '/tmp'\n");
-+            log_debug ("changed working directory to '@NEOTERM_PREFIX@/tmp'\n");
++            log_debug ("changed working directory to '@TERMUX_PREFIX@/tmp'\n");
          }
  
        /* In multi server mode we need to listen on an additional
@@ -181,7 +181,7 @@ diff -uNr gnupg-2.3.1/tests/gpgscm/ffi.c gnupg-2.3.1.mod/tests/gpgscm/ffi.c
    FFI_RETURN_STRING (sc, buffer);
  #else
 -  FFI_RETURN_STRING (sc, "/tmp");
-+  FFI_RETURN_STRING (sc, "@NEOTERM_PREFIX@/tmp");
++  FFI_RETURN_STRING (sc, "@TERMUX_PREFIX@/tmp");
  #endif
  }
  
@@ -193,11 +193,11 @@ diff -uNr gnupg-2.3.1/tools/addgnupghome gnupg-2.3.1.mod/tools/addgnupghome
      fi
      for f in $filelist; do
 -        if [ -d /etc/skel/.gnupg/$f ]; then
-+        if [ -d @NEOTERM_PREFIX@/etc/skel/.gnupg/$f ]; then
++        if [ -d @TERMUX_PREFIX@/etc/skel/.gnupg/$f ]; then
              mkdir $f
          else
 -            cp /etc/skel/.gnupg/$f $f
-+            cp @NEOTERM_PREFIX@/etc/skel/.gnupg/$f $f
++            cp @TERMUX_PREFIX@/etc/skel/.gnupg/$f $f
          fi
          if ! chown $user $f ; then
              error "error changing ownership of \`$f'"
@@ -207,12 +207,12 @@ diff -uNr gnupg-2.3.1/tools/addgnupghome gnupg-2.3.1.mod/tools/addgnupghome
  
 -if [ ! -d /etc/skel/.gnupg ]; then
 -    error "skeleton directory \`/etc/skel/.gnupg' does not exist"
-+if [ ! -d @NEOTERM_PREFIX@/etc/skel/.gnupg ]; then
-+    error "skeleton directory \`@NEOTERM_PREFIX@/etc/skel/.gnupg' does not exist"
++if [ ! -d @TERMUX_PREFIX@/etc/skel/.gnupg ]; then
++    error "skeleton directory \`@TERMUX_PREFIX@/etc/skel/.gnupg' does not exist"
      exit 1
  fi
 -cd "/etc/skel/.gnupg" || (error "error cd-ing to \`/etc/skel/.gnupg'"; exit 1)
-+cd "@NEOTERM_PREFIX@/etc/skel/.gnupg" || (error "error cd-ing to \`@NEOTERM_PREFIX@/etc/skel/.gnupg'"; exit 1)
++cd "@TERMUX_PREFIX@/etc/skel/.gnupg" || (error "error cd-ing to \`@TERMUX_PREFIX@/etc/skel/.gnupg'"; exit 1)
  filelist=$(find . \( -type f -o -type d \) '!' -name '*~' '!' -name . -print)
  
  

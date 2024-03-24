@@ -1,14 +1,14 @@
-NEOTERM_PKG_HOMEPAGE=https://justine.lol/blinkenlights/
-NEOTERM_PKG_DESCRIPTION="Tiny x86-64 Linux emulator"
-NEOTERM_PKG_LICENSE="ISC"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="1:1.1.0"
-NEOTERM_PKG_SRCURL=https://github.com/jart/blink/archive/refs/tags/${NEOTERM_PKG_VERSION#*:}.tar.gz
-NEOTERM_PKG_SHA256=2649793e1ebf12027f5e240a773f452434cefd9494744a858cd8bff8792dba68
-NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_AUTO_UPDATE=true
+TERMUX_PKG_HOMEPAGE=https://justine.lol/blinkenlights/
+TERMUX_PKG_DESCRIPTION="Tiny x86-64 Linux emulator"
+TERMUX_PKG_LICENSE="ISC"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="1:1.1.0"
+TERMUX_PKG_SRCURL=https://github.com/jart/blink/archive/refs/tags/${TERMUX_PKG_VERSION#*:}.tar.gz
+TERMUX_PKG_SHA256=2649793e1ebf12027f5e240a773f452434cefd9494744a858cd8bff8792dba68
+TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_AUTO_UPDATE=true
 
-neoterm_step_pre_configure() {
+termux_step_pre_configure() {
 	# build system does not work with cross compilers
 	# https://github.com/jart/blink/issues/111
 
@@ -37,11 +37,11 @@ neoterm_step_pre_configure() {
 	export CFLAGS+=" -fcf-protection=none"
 }
 
-neoterm_step_configure() {
-	./configure --prefix="${NEOTERM_PREFIX}"
+termux_step_configure() {
+	./configure --prefix="${TERMUX_PREFIX}"
 }
 
-neoterm_step_post_configure() {
+termux_step_post_configure() {
 	# https://github.com/jart/blink/blob/master/config.h.in
 	# replace host generated config.h with our own
 	# please check with a real device
@@ -50,7 +50,7 @@ neoterm_step_post_configure() {
 
 	sed -e "s|^#define HAVE_SYSCTL|// #define HAVE_SYSCTL|" -i config.h
 
-	if [[ "${NEOTERM_ARCH_BITS}" == "32" ]]; then
+	if [[ "${TERMUX_ARCH_BITS}" == "32" ]]; then
 		sed -e "s|^#define HAVE_INT128|// #define HAVE_INT128|" -i config.h
 	fi
 

@@ -8,10 +8,10 @@
 -	inipaths << QLatin1String("/usr/local/etc/murmur.ini");
 -	inipaths << QLatin1String("/etc/mumble-server.ini");
 -	inipaths << QLatin1String("/etc/murmur.ini");
-+	inipaths << QLatin1String("@NEOTERM_PREFIX@/local/etc/mumble-server.ini");
-+	inipaths << QLatin1String("@NEOTERM_PREFIX@/local/etc/murmur.ini");
-+	inipaths << QLatin1String("@NEOTERM_PREFIX@/etc/mumble-server.ini");
-+	inipaths << QLatin1String("@NEOTERM_PREFIX@/etc/murmur.ini");
++	inipaths << QLatin1String("@TERMUX_PREFIX@/local/etc/mumble-server.ini");
++	inipaths << QLatin1String("@TERMUX_PREFIX@/local/etc/murmur.ini");
++	inipaths << QLatin1String("@TERMUX_PREFIX@/etc/mumble-server.ini");
++	inipaths << QLatin1String("@TERMUX_PREFIX@/etc/murmur.ini");
  
  	foreach (const QString &f, inipaths) {
  		QFileInfo fi(f);

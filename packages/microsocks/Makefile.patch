@@ -6,7 +6,7 @@ diff -uNr microsocks/Makefile microsocks-mod/Makefile
  # config.mak, which is gets included automatically if it exists.
 
 -prefix = /usr/local
-+prefix = @NEOTERM_PREFIX@
++prefix = @TERMUX_PREFIX@
  bindir = $(prefix)/bin
 
  PROG = microsocks

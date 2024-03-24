@@ -3,12 +3,12 @@
 # compile glibc-based binaries for Termux
 
 . $(dirname "$(realpath "$0")")/properties.sh
-. $(dirname "$(realpath "$0")")/build/neoterm_download.sh
+. $(dirname "$(realpath "$0")")/build/termux_download.sh
 
 set -e -u
 
 ARCH="x86_64"
-REPO_URL="https://service.neoterm-pacman.dev/gpkg-dev/${ARCH}"
+REPO_URL="https://service.termux-pacman.dev/gpkg-dev/${ARCH}"
 VERSION_OF_CBT="2.42-0"
 VERSION_OF_CGT="13.2.0-4"
 
@@ -22,8 +22,8 @@ declare -A CGCT=(
 	["cgt"]="cgt-${VERSION_OF_CGT}-${ARCH}.pkg.tar.xz" # Cross GCC for Termux
 )
 
-: "${NEOTERM_PKG_TMPDIR:="/tmp"}"
-TMPDIR_CGCT="${NEOTERM_PKG_TMPDIR}/cgct"
+: "${TERMUX_PKG_TMPDIR:="/tmp"}"
+TMPDIR_CGCT="${TERMUX_PKG_TMPDIR}/cgct"
 
 # Creating a directory for CGCT in tmp
 if [ ! -d "$TMPDIR_CGCT" ]; then
@@ -52,7 +52,7 @@ for pkgname in ${!CGCT[@]}; do
 		exit 1
 	fi
 	if [ ! -f "${TMPDIR_CGCT}/${filename}" ]; then
-		neoterm_download "${REPO_URL}/${filename}" \
+		termux_download "${REPO_URL}/${filename}" \
 			"${TMPDIR_CGCT}/${filename}" \
 			"$SHA256SUM"
 	fi

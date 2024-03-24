@@ -6,7 +6,7 @@ diff -uNr ntfs-3g-2022.10.3/ntfsprogs/mkntfs.c ntfs-3g-2022.10.3.mod/ntfsprogs/m
  			goto done;
  		}
 -		ntfs_log_warning("mkntfs forced anyway. Hope /etc/mtab is incorrect.\n");
-+		ntfs_log_warning("mkntfs forced anyway. Hope @NEOTERM_PREFIX@/etc/mtab is incorrect.\n");
++		ntfs_log_warning("mkntfs forced anyway. Hope @TERMUX_PREFIX@/etc/mtab is incorrect.\n");
  	}
  	result = TRUE;
  done:
@@ -18,7 +18,7 @@ diff -uNr ntfs-3g-2022.10.3/ntfsprogs/ntfscmp.c ntfs-3g-2022.10.3.mod/ntfsprogs/
  	if (ntfs_check_if_mounted(volume, &mntflag)) {
  		perr_println("Failed to check '%s' mount state", volume);
 -		printf("Probably /etc/mtab is missing. It's too risky to "
-+		printf("Probably @NEOTERM_PREFIX@/etc/mtab is missing. It's too risky to "
++		printf("Probably @TERMUX_PREFIX@/etc/mtab is missing. It's too risky to "
  		       "continue. You might try\nan another Linux distro.\n");
  		exit(1);
  	}
@@ -30,7 +30,7 @@ diff -uNr ntfs-3g-2022.10.3/ntfsprogs/ntfsfallocate.c ntfs-3g-2022.10.3.mod/ntfs
  		if (!opts.force)
  			err_exit((ntfs_volume*)NULL, "Refusing to run!\n");
 -		fprintf(stderr, "ntfsfallocate forced anyway. Hope /etc/mtab "
-+		fprintf(stderr, "ntfsfallocate forced anyway. Hope @NEOTERM_PREFIX@/etc/mtab "
++		fprintf(stderr, "ntfsfallocate forced anyway. Hope @TERMUX_PREFIX@/etc/mtab "
  				"is incorrect.\n");
  	}
  
@@ -42,7 +42,7 @@ diff -uNr ntfs-3g-2022.10.3/ntfsprogs/ntfsmftalloc.c ntfs-3g-2022.10.3.mod/ntfsp
  		if (!opts.force)
  			err_exit("Refusing to run!\n");
 -		ntfs_log_error("ntfsmftalloc forced anyway. Hope /etc/mtab "
-+		ntfs_log_error("ntfsmftalloc forced anyway. Hope @NEOTERM_PREFIX@/etc/mtab "
++		ntfs_log_error("ntfsmftalloc forced anyway. Hope @TERMUX_PREFIX@/etc/mtab "
  				"is incorrect.\n");
  	}
  	/* Mount the device. */
@@ -54,7 +54,7 @@ diff -uNr ntfs-3g-2022.10.3/ntfsprogs/ntfsresize.c ntfs-3g-2022.10.3.mod/ntfspro
  	if (ntfs_check_if_mounted(opt.volume, &mntflag)) {
  		perr_printf("Failed to check '%s' mount state", opt.volume);
 -		printf("Probably /etc/mtab is missing. It's too risky to "
-+		printf("Probably @NEOTERM_PREFIX@/etc/mtab is missing. It's too risky to "
++		printf("Probably @TERMUX_PREFIX@/etc/mtab is missing. It's too risky to "
  		       "continue. You might try\nan another Linux distro.\n");
  		exit(1);
  	}
@@ -66,7 +66,7 @@ diff -uNr ntfs-3g-2022.10.3/ntfsprogs/ntfstruncate.c ntfs-3g-2022.10.3.mod/ntfsp
  		if (!opts.force)
  			err_exit("Refusing to run!\n");
 -		fprintf(stderr, "ntfstruncate forced anyway. Hope /etc/mtab "
-+		fprintf(stderr, "ntfstruncate forced anyway. Hope @NEOTERM_PREFIX@/etc/mtab "
++		fprintf(stderr, "ntfstruncate forced anyway. Hope @TERMUX_PREFIX@/etc/mtab "
  				"is incorrect.\n");
  	}
  

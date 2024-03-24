@@ -6,7 +6,7 @@ diff -u -r ../newsboat-2.21/src/pbcontroller.cpp ./src/pbcontroller.cpp
  
  	try {
 -		cfgparser.parse_file("/etc/newsboat/config");
-+		cfgparser.parse_file("@NEOTERM_PREFIX@/etc/newsboat/config");
++		cfgparser.parse_file("@TERMUX_PREFIX@/etc/newsboat/config");
  		cfgparser.parse_file(config_file);
  	} catch (const ConfigException& ex) {
  		std::cout << ex.what() << std::endl;

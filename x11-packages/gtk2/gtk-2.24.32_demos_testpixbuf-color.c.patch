@@ -6,7 +6,7 @@ diff -uNr gtk-2.24.32/demos/testpixbuf-color.c gtk-2.24.32.mod/demos/testpixbuf-
  #include <gtk/gtk.h>
  
 -#define ICC_PROFILE             "/usr/share/color/icc/bluish.icc"
-+#define ICC_PROFILE             "@NEOTERM_PREFIX@/share/color/icc/bluish.icc"
++#define ICC_PROFILE             "@TERMUX_PREFIX@/share/color/icc/bluish.icc"
  #define ICC_PROFILE_SIZE        3966
  
  static gboolean

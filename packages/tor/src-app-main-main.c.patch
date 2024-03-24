@@ -6,7 +6,7 @@ diff -u -r ../tor-0.3.5.7/src/app/main/main.c ./src/app/main/main.c
    OPEN("/dev/urandom");
    OPEN("/dev/random");
 -  OPEN("/etc/hosts");
-+  OPEN("@NEOTERM_PREFIX@/etc/hosts");
++  OPEN("@TERMUX_PREFIX@/etc/hosts");
    OPEN("/proc/meminfo");
  
    if (options->BridgeAuthoritativeDir)
@@ -15,7 +15,7 @@ diff -u -r ../tor-0.3.5.7/src/app/main/main.c ./src/app/main/main.c
                                  tor_strdup(options->ServerDNSResolvConfFile));
    else
 -    sandbox_cfg_allow_open_filename(&cfg, tor_strdup("/etc/resolv.conf"));
-+    sandbox_cfg_allow_open_filename(&cfg, tor_strdup("@NEOTERM_PREFIX@/etc/resolv.conf"));
++    sandbox_cfg_allow_open_filename(&cfg, tor_strdup("@TERMUX_PREFIX@/etc/resolv.conf"));
  
    for (i = 0; i < 2; ++i) {
      if (get_torrc_fname(i)) {
@@ -24,7 +24,7 @@ diff -u -r ../tor-0.3.5.7/src/app/main/main.c ./src/app/main/main.c
      OPEN_DATADIR_SUFFIX("router-stability", ".tmp");
  
 -    OPEN("/etc/resolv.conf");
-+    OPEN("@NEOTERM_PREFIX@/etc/resolv.conf");
++    OPEN("@TERMUX_PREFIX@/etc/resolv.conf");
  
      RENAME_SUFFIX("fingerprint", ".tmp");
      RENAME_KEYDIR_SUFFIX("secret_onion_key_ntor", ".tmp");

@@ -6,12 +6,12 @@
 #include <sys/stat.h>
 #include <wayland-client.h>
 
-#ifndef NEOTERM_PREFIX
-# define NEOTERM_PREFIX "/data/data/com.neoterm/files/usr"
+#ifndef TERMUX_PREFIX
+# define TERMUX_PREFIX "/data/data/io.neoterm/files/usr"
 #endif
 
-#ifndef NEOTERM_X11_DIR
-# define NEOTERM_X11_DIR "/data/data/com.neoterm.x11/"
+#ifndef TERMUX_X11_DIR
+# define TERMUX_X11_DIR "/data/data/io.neoterm.x11/"
 #endif
 
 int dir_exists(const char *dir) {
@@ -54,18 +54,18 @@ int start_server(char *argv[]) {
 }
 
 void start_xwayland(char *argv[]) {
-	argv[0] = NEOTERM_PREFIX "/bin/Xwayland";
+	argv[0] = TERMUX_PREFIX "/bin/Xwayland";
 	execv(argv[0], argv);
 	perror("execv");
 }
 
 int main(int argc, char *argv[]) {
-	if (!dir_exists(NEOTERM_X11_DIR)) {
+	if (!dir_exists(TERMUX_X11_DIR)) {
 		printf("Termux:X11 is not installed\n");
 		return 1;
 	}
 
-	char *server_argv[] = {NEOTERM_PREFIX "/bin/am", "start", "-n", "com.neoterm.x11/.MainActivity", NULL};
+	char *server_argv[] = {TERMUX_PREFIX "/bin/am", "start", "-n", "io.neoterm.x11/.MainActivity", NULL};
 
 	if (!connection_exists()) {
 		if (start_server(server_argv) == -1) {

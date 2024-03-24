@@ -7,12 +7,12 @@
 -static const char lock_fmt[] = "/tmp/.X%d-lock";
 -static const char socket_dir[] = "/tmp/.X11-unix";
 -static const char socket_fmt[] = "/tmp/.X11-unix/X%d";
-+static const char lock_fmt[] = "@NEOTERM_PREFIX@/tmp/.X%d-lock";
-+static const char socket_dir[] = "@NEOTERM_PREFIX@/tmp/.X11-unix";
-+static const char socket_fmt[] = "@NEOTERM_PREFIX@/tmp/.X11-unix/X%d";
++static const char lock_fmt[] = "@TERMUX_PREFIX@/tmp/.X%d-lock";
++static const char socket_dir[] = "@TERMUX_PREFIX@/tmp/.X11-unix";
++static const char socket_fmt[] = "@TERMUX_PREFIX@/tmp/.X11-unix/X%d";
  #ifndef __linux__
 -static const char socket_fmt2[] = "/tmp/.X11-unix/X%d_";
-+static const char socket_fmt2[] = "@NEOTERM_PREFIX@/tmp/.X11-unix/X%d_";
++static const char socket_fmt2[] = "@TERMUX_PREFIX@/tmp/.X11-unix/X%d_";
  #endif
  
  bool set_cloexec(int fd, bool cloexec) {
@@ -22,11 +22,11 @@
  #include "sockets.h"
  #include "xwayland/config.h"
  
-+#ifdef __NEOTERM__
++#ifdef __TERMUX__
 +#ifdef XWAYLAND_PATH
 +#undef XWAYLAND_PATH
 +#endif
-+#define XWAYLAND_PATH "@NEOTERM_PREFIX@/bin/Xwayland"
++#define XWAYLAND_PATH "@TERMUX_PREFIX@/bin/Xwayland"
 +#endif
 +
  static void safe_close(int fd) {
@@ -39,7 +39,7 @@
  
  static int create_anonymous_file(off_t size) {
 -	char template[] = "/tmp/wlroots-shared-XXXXXX";
-+	char template[] = "@NEOTERM_PREFIX@/tmp/wlroots-shared-XXXXXX";
++	char template[] = "@TERMUX_PREFIX@/tmp/wlroots-shared-XXXXXX";
  	int fd = mkstemp(template);
  	if (fd < 0) {
  		return -1;

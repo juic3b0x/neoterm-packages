@@ -6,7 +6,7 @@ diff -uNr coreutils-8.32/lib/getusershell.c coreutils-8.32.mod/lib/getusershell.
  {
    ADDITIONAL_DEFAULT_SHELLS
 -  "/bin/sh", "/bin/csh", "/usr/bin/sh", "/usr/bin/csh", NULL
-+  "@NEOTERM_PREFIX@/bin/sh", "@NEOTERM_PREFIX@/bin/bash", "@NEOTERM_PREFIX@/bin/ash", "@NEOTERM_PREFIX@/bin/csh", NULL
++  "@TERMUX_PREFIX@/bin/sh", "@TERMUX_PREFIX@/bin/bash", "@TERMUX_PREFIX@/bin/ash", "@TERMUX_PREFIX@/bin/csh", NULL
  };
  
  /* Index of the next shell in 'default_shells' to return.
@@ -18,7 +18,7 @@ diff -uNr coreutils-9.2/lib/tmpdir.c coreutils-9.2.mod/lib/tmpdir.c
  #  define P_tmpdir _P_tmpdir
  # else
 -#  define P_tmpdir "/tmp"
-+#  define P_tmpdir "@NEOTERM_PREFIX@/tmp"
++#  define P_tmpdir "@TERMUX_PREFIX@/tmp"
  # endif
  #endif
  
@@ -28,8 +28,8 @@ diff -uNr coreutils-9.2/lib/tmpdir.c coreutils-9.2.mod/lib/tmpdir.c
          dir = P_tmpdir;
 -      else if (strcmp (P_tmpdir, "/tmp") != 0 && direxists ("/tmp"))
 -        dir = "/tmp";
-+      else if (strcmp (P_tmpdir, "@NEOTERM_PREFIX@/tmp") != 0 && direxists ("@NEOTERM_PREFIX@/tmp"))
-+        dir = "@NEOTERM_PREFIX@/tmp";
++      else if (strcmp (P_tmpdir, "@TERMUX_PREFIX@/tmp") != 0 && direxists ("@TERMUX_PREFIX@/tmp"))
++        dir = "@TERMUX_PREFIX@/tmp";
        else
          {
            __set_errno (ENOENT);
@@ -41,7 +41,7 @@ diff -uNr coreutils-8.32/src/mktemp.c coreutils-8.32.mod/src/mktemp.c
              dest_dir = dest_dir_arg;
            else
 -            dest_dir = "/tmp";
-+            dest_dir = "@NEOTERM_PREFIX@/tmp";
++            dest_dir = "@TERMUX_PREFIX@/tmp";
  
            if (last_component (template) != template)
              die (EXIT_FAILURE, 0,
@@ -50,7 +50,7 @@ diff -uNr coreutils-8.32/src/mktemp.c coreutils-8.32.mod/src/mktemp.c
              {
                char *env = getenv ("TMPDIR");
 -              dest_dir = (env && *env ? env : "/tmp");
-+              dest_dir = (env && *env ? env : "@NEOTERM_PREFIX@/tmp");
++              dest_dir = (env && *env ? env : "@TERMUX_PREFIX@/tmp");
              }
            if (IS_ABSOLUTE_FILE_NAME (template))
              die (EXIT_FAILURE, 0,
@@ -64,7 +64,7 @@ diff -uNr coreutils-8.32/src/sort.c coreutils-8.32.mod/src/sort.c
 -#ifndef DEFAULT_TMPDIR
 -# define DEFAULT_TMPDIR "/tmp"
 -#endif
-+#define DEFAULT_TMPDIR "@NEOTERM_PREFIX@/tmp"
++#define DEFAULT_TMPDIR "@TERMUX_PREFIX@/tmp"
  
  /* Maximum number of lines to merge every time a NODE is taken from
     the merge queue.  Node is at LEVEL in the binary merge tree,
@@ -76,7 +76,7 @@ diff -uNr coreutils-9.4/src/split.c coreutils-9.4.mod/src/split.c
        char const *shell_prog = getenv ("SHELL");
        if (shell_prog == nullptr)
 -        shell_prog = "/bin/sh";
-+        shell_prog = "@NEOTERM_PREFIX@/bin/sh";
++        shell_prog = "@TERMUX_PREFIX@/bin/sh";
        if (setenv ("FILE", name, 1) != 0)
          error (EXIT_FAILURE, errno,
                 _("failed to set FILE environment variable"));

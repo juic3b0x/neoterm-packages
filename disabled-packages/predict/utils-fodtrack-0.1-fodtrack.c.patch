@@ -6,8 +6,8 @@
  
 -#define PSEUDODEVICEFILE "/tmp/fodtrackdevice"
 -#define CONFIGFILE "/etc/fodtrack.conf"
-+#define PSEUDODEVICEFILE "@NEOTERM_PREFIX@/tmp/fodtrackdevice"
-+#define CONFIGFILE "@NEOTERM_PREFIX@/etc/fodtrack.conf"
++#define PSEUDODEVICEFILE "@TERMUX_PREFIX@/tmp/fodtrackdevice"
++#define CONFIGFILE "@TERMUX_PREFIX@/etc/fodtrack.conf"
  
  static int fodtrackfd;
  static int azimuthcorrection;

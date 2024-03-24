@@ -5,7 +5,7 @@ diff -uNr go/src/crypto/x509/root_linux.go go.mod/src/crypto/x509/root_linux.go
  
  // Possible certificate files; stop after finding one.
  var certFiles = []string{
-+	"@NEOTERM_PREFIX@/etc/tls/cert.pem",                  // Termux
++	"@TERMUX_PREFIX@/etc/tls/cert.pem",                  // Termux
  	"/etc/ssl/certs/ca-certificates.crt",                // Debian/Ubuntu/Gentoo etc.
  	"/etc/pki/tls/certs/ca-bundle.crt",                  // Fedora/RHEL 6
  	"/etc/ssl/ca-bundle.pem",                            // OpenSUSE

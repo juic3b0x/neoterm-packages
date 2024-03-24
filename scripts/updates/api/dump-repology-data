@@ -2,7 +2,7 @@
 
 # The MIT License (MIT)
 
-# Copyright (c) 2022 Aditya Alok <alok@neoterm.dev>
+# Copyright (c) 2022 Aditya Alok <alok@termux.dev>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +28,7 @@ from requests import get as requests_get
 
 def get_repology_data(last_project):
     repology_data = requests_get(
-        f"https://repology.org/api/v1/projects/{last_project}?inrepo=neoterm&outdated=True&families_newest=2-", timeout=60
+        f"https://repology.org/api/v1/projects/{last_project}?inrepo=termux&outdated=True&families_newest=2-", timeout=60
     ).json()  # NOTE: We are using `families_newest=2-` so that api will return a package as outdated if it is so in 2 or more
     # repo family. This helps us avoid false positives.
 
@@ -36,7 +36,7 @@ def get_repology_data(last_project):
 
 
 def get_outdated_packages():
-    neoterm_outdated_packages = {}
+    termux_outdated_packages = {}
     last_project = ""
 
     while True:
@@ -55,10 +55,10 @@ def get_outdated_packages():
 
         for package_name, package_data in repology_data.items():
             for repo_data in package_data:
-                if repo_data["repo"] == "neoterm":
+                if repo_data["repo"] == "termux":
                     package_name = repo_data["visiblename"]
                     break
-            if package_name in neoterm_outdated_packages:
+            if package_name in termux_outdated_packages:
                 # Skip if package is already in the dict.
                 continue
             newest_stable = None
@@ -73,14 +73,14 @@ def get_outdated_packages():
                     newest_devel = repo_data["version"]
 
             if newest_stable:
-                neoterm_outdated_packages[package_name] = newest_stable
+                termux_outdated_packages[package_name] = newest_stable
             elif newest_devel:
-                neoterm_outdated_packages[package_name] = newest_devel
+                termux_outdated_packages[package_name] = newest_devel
             else:
                 # If we don't find any version, skip the package.
                 continue
 
-    return neoterm_outdated_packages
+    return termux_outdated_packages
 
 
 if __name__ == "__main__":

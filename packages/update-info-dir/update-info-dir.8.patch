@@ -5,7 +5,7 @@
  .I dir
  of available documentation in
 -/usr/share/info/ (the default) or in given DIRECTORY. The
-+@NEOTERM_PREFIX@/share/info/ (the default) or in given DIRECTORY. The
++@TERMUX_PREFIX@/share/info/ (the default) or in given DIRECTORY. The
  index file
  .I info
  is the directory is usually presented by info browsers on startup.

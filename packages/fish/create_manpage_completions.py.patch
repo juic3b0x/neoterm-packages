@@ -6,7 +6,7 @@ diff -u -r ../fish-3.2.0/share/tools/create_manpage_completions.py ./share/tools
      # Return all the paths to man(1) and man(8) files in the manpath
  
 -    parent_paths = []
-+    parent_paths = ["@NEOTERM_PREFIX@/share/man"]
++    parent_paths = ["@TERMUX_PREFIX@/share/man"]
  
      # Most (GNU, macOS, Haiku) modern implementations of man support being called with `--path`.
      # Traditional implementations require a second `manpath` program: examples include FreeBSD and Solaris.

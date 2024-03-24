@@ -1,41 +1,41 @@
-NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/bash/
-NEOTERM_PKG_DESCRIPTION="A sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh)"
-NEOTERM_PKG_LICENSE="GPL-3.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_HOMEPAGE=https://www.gnu.org/software/bash/
+TERMUX_PKG_DESCRIPTION="A sh-compatible shell that incorporates useful features from the Korn shell (ksh) and C shell (csh)"
+TERMUX_PKG_LICENSE="GPL-3.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
 _MAIN_VERSION=5.2
 _PATCH_VERSION=26
-NEOTERM_PKG_VERSION=${_MAIN_VERSION}.${_PATCH_VERSION}
-NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/bash/bash-${_MAIN_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb
-NEOTERM_PKG_AUTO_UPDATE=false
-NEOTERM_PKG_DEPENDS="libandroid-support, libiconv, readline (>= 8.0), neoterm-tools"
-NEOTERM_PKG_RECOMMENDS="command-not-found, bash-completion"
-NEOTERM_PKG_BREAKS="bash-dev"
-NEOTERM_PKG_REPLACES="bash-dev"
-NEOTERM_PKG_ESSENTIAL=true
-NEOTERM_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_VERSION=${_MAIN_VERSION}.${_PATCH_VERSION}
+TERMUX_PKG_SRCURL=https://mirrors.kernel.org/gnu/bash/bash-${_MAIN_VERSION}.tar.gz
+TERMUX_PKG_SHA256=a139c166df7ff4471c5e0733051642ee5556c1cc8a4a78f145583c5c81ab32fb
+TERMUX_PKG_AUTO_UPDATE=false
+TERMUX_PKG_DEPENDS="libandroid-support, libiconv, readline (>= 8.0), neoterm-tools"
+TERMUX_PKG_RECOMMENDS="command-not-found, bash-completion"
+TERMUX_PKG_BREAKS="bash-dev"
+TERMUX_PKG_REPLACES="bash-dev"
+TERMUX_PKG_ESSENTIAL=true
+TERMUX_PKG_BUILD_IN_SRC=true
 
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--enable-multibyte --without-bash-malloc --with-installed-readline"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_job_control_missing=present"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_sys_siglist=yes"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_func_sigsetjmp=present"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_unusable_rtsigs=no"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_mbsnrtowcs=no"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--enable-multibyte --without-bash-malloc --with-installed-readline"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_job_control_missing=present"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_sys_siglist=yes"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_func_sigsetjmp=present"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_unusable_rtsigs=no"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_mbsnrtowcs=no"
 # Use bash_cv_dev_fd=whacky to use /proc/self/fd instead of /dev/fd.
 # After making this change process substitution such as in 'cat <(ls)' works.
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_dev_fd=whacky"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_dev_fd=whacky"
 # Bash assumes that getcwd is broken and provides a wrapper which
 # does not work when not all parent directories up to root are
 # accessible, which they are not under Android (/data). See
 # - http://permalink.gmane.org/gmane.linux.embedded.yocto.general/25204
-# - https://github.com/neoterm/neoterm-app/issues/200
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_getcwd_malloc=yes"
+# - https://github.com/termux/termux-app/issues/200
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_getcwd_malloc=yes"
 
-NEOTERM_PKG_CONFFILES="etc/bash.bashrc etc/profile"
+TERMUX_PKG_CONFFILES="etc/bash.bashrc etc/profile"
 
-NEOTERM_PKG_RM_AFTER_INSTALL="share/man/man1/bashbug.1 bin/bashbug"
+TERMUX_PKG_RM_AFTER_INSTALL="share/man/man1/bashbug.1 bin/bashbug"
 
-neoterm_step_pre_configure() {
+termux_step_pre_configure() {
 	declare -A PATCH_CHECKSUMS
 
 	PATCH_CHECKSUMS[001]=f42f2fee923bc2209f406a1892772121c467f44533bedfe00a176139da5d310a
@@ -66,8 +66,8 @@ neoterm_step_pre_configure() {
 	PATCH_CHECKSUMS[026]=96ee1f549aa0b530521e36bdc0ba7661602cfaee409f7023cac744dd42852eac
 
 	for PATCH_NUM in $(seq -f '%03g' ${_PATCH_VERSION}); do
-		PATCHFILE=$NEOTERM_PKG_CACHEDIR/bash_patch_${PATCH_NUM}.patch
-		neoterm_download \
+		PATCHFILE=$TERMUX_PKG_CACHEDIR/bash_patch_${PATCH_NUM}.patch
+		termux_download \
 			"https://mirrors.kernel.org/gnu/bash/bash-${_MAIN_VERSION}-patches/bash${_MAIN_VERSION/./}-$PATCH_NUM" \
 			$PATCHFILE \
 			${PATCH_CHECKSUMS[$PATCH_NUM]}
@@ -76,13 +76,13 @@ neoterm_step_pre_configure() {
 	unset PATCH_CHECKSUMS PATCHFILE PATCH_NUM
 }
 
-neoterm_step_post_make_install() {
-	sed -e "s|@NEOTERM_PREFIX@|$NEOTERM_PREFIX|g" \
-		-e "s|@NEOTERM_HOME@|$NEOTERM_ANDROID_HOME|g" \
-		$NEOTERM_PKG_BUILDER_DIR/etc-profile > $NEOTERM_PREFIX/etc/profile
+termux_step_post_make_install() {
+	sed -e "s|@TERMUX_PREFIX@|$TERMUX_PREFIX|g" \
+		-e "s|@TERMUX_HOME@|$TERMUX_ANDROID_HOME|g" \
+		$TERMUX_PKG_BUILDER_DIR/etc-profile > $TERMUX_PREFIX/etc/profile
 
 	# /etc/bash.bashrc - System-wide .bashrc file for interactive shells. (config-top.h in bash source, patched to enable):
-	sed -e "s|@NEOTERM_PREFIX@|$NEOTERM_PREFIX|g" \
-		-e "s|@NEOTERM_HOME@|$NEOTERM_ANDROID_HOME|g" \
-		$NEOTERM_PKG_BUILDER_DIR/etc-bash.bashrc > $NEOTERM_PREFIX/etc/bash.bashrc
+	sed -e "s|@TERMUX_PREFIX@|$TERMUX_PREFIX|g" \
+		-e "s|@TERMUX_HOME@|$TERMUX_ANDROID_HOME|g" \
+		$TERMUX_PKG_BUILDER_DIR/etc-bash.bashrc > $TERMUX_PREFIX/etc/bash.bashrc
 }

@@ -5,7 +5,7 @@
                  /* isn't time critical.                                 */
                  (void)snprintf(cmd_buf, sizeof(cmd_buf),
 -                               "/usr/bin/addr2line -f -e %s 0x%lx",
-+                               "@NEOTERM_PREFIX@/bin/addr2line -f -e %s 0x%lx",
++                               "@TERMUX_PREFIX@/bin/addr2line -f -e %s 0x%lx",
                                 exe_name, (unsigned long)info[i].ci_pc);
                  cmd_buf[sizeof(cmd_buf) - 1] = '\0';
                  old_preload = GETENV("LD_PRELOAD");

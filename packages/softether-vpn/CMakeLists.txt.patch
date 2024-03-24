@@ -7,7 +7,7 @@
 -  if(EXISTS "/lib/systemd/system")
 -    set(CMAKE_INSTALL_SYSTEMD_UNITDIR "/lib/systemd/system" CACHE STRING "Where to install systemd unit files")
 +  if(TRUE)
-+    set(CMAKE_INSTALL_SYSTEMD_UNITDIR "@NEOTERM_PREFIX@/lib/systemd/system" CACHE STRING "Where to install systemd unit files")
++    set(CMAKE_INSTALL_SYSTEMD_UNITDIR "@TERMUX_PREFIX@/lib/systemd/system" CACHE STRING "Where to install systemd unit files")
    endif()
  endif()
  

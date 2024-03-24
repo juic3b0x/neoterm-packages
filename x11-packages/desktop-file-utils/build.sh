@@ -1,18 +1,18 @@
-NEOTERM_PKG_HOMEPAGE=https://www.freedesktop.org/wiki/Software/desktop-file-utils
-NEOTERM_PKG_DESCRIPTION="Command line utilities for working with desktop entries"
-NEOTERM_PKG_LICENSE="GPL-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="0.27"
-NEOTERM_PKG_SRCURL=https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-${NEOTERM_PKG_VERSION}.tar.xz
-NEOTERM_PKG_SHA256=a0817df39ce385b6621880407c56f1f298168c040c2032cedf88d5b76affe836
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_DEPENDS="glib"
+TERMUX_PKG_HOMEPAGE=https://www.freedesktop.org/wiki/Software/desktop-file-utils
+TERMUX_PKG_DESCRIPTION="Command line utilities for working with desktop entries"
+TERMUX_PKG_LICENSE="GPL-2.0"
+TERMUX_PKG_MAINTAINER="@termux"
+TERMUX_PKG_VERSION="0.27"
+TERMUX_PKG_SRCURL=https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-${TERMUX_PKG_VERSION}.tar.xz
+TERMUX_PKG_SHA256=a0817df39ce385b6621880407c56f1f298168c040c2032cedf88d5b76affe836
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_DEPENDS="glib"
 
-neoterm_step_create_debscripts() {
+termux_step_create_debscripts() {
 	for i in postinst postrm triggers; do
 		sed \
-			"s|@NEOTERM_PREFIX@|${NEOTERM_PREFIX}|g" \
-			"${NEOTERM_PKG_BUILDER_DIR}/hooks/${i}.in" > ./${i}
+			"s|@TERMUX_PREFIX@|${TERMUX_PREFIX}|g" \
+			"${TERMUX_PKG_BUILDER_DIR}/hooks/${i}.in" > ./${i}
 		chmod 755 ./${i}
 	done
 	unset i

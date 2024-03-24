@@ -5,7 +5,7 @@
  #ifdef UNIX
  static char * txtdir[] = {
 +#ifdef __ANDROID__
-+    "@NEOTERM_PREFIX@/share/doc/",
++    "@TERMUX_PREFIX@/share/doc/",
 +#else
      "/usr/local/doc/",                  /* Linux, SunOS, ... */
      "/usr/share/lib/",                  /* HP-UX 10.xx... */

@@ -10,11 +10,11 @@
 -    } else if (stat("/bin/less", &st) == 0) {
 -	return "/bin/less";
 +#endif
-+    } else if (stat("@NEOTERM_PREFIX@/bin/less", &st) == 0) {
-+	return "@NEOTERM_PREFIX@/bin/less";
++    } else if (stat("@TERMUX_PREFIX@/bin/less", &st) == 0) {
++	return "@TERMUX_PREFIX@/bin/less";
      } else {
 -	return "/bin/more";
-+	return "@NEOTERM_PREFIX@/bin/more";
++	return "@TERMUX_PREFIX@/bin/more";
      }
  }
  

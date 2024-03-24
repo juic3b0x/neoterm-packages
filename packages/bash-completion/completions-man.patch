@@ -18,7 +18,7 @@ index b405f084..eaa5b811 100644
 -        manpath=${manpath//::/':/usr/share/man:/usr/local/share/man:'}
 -        manpath=${manpath:1:-1}
 -    fi
-+    local manpath="${MANPATH-@NEOTERM_PREFIX@/share/man}"
++    local manpath="${MANPATH-@TERMUX_PREFIX@/share/man}"
  
      # determine manual section to search
      local sect

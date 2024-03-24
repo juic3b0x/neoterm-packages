@@ -5,7 +5,7 @@
  		myfgets(protocol, 512, input);
  
 -		strncpy(filename, "/tmp/bitlbee-XXXXXX", 128);
-+		strncpy(filename, "@NEOTERM_PREFIX@/tmp/bitlbee-XXXXXX", 128);
++		strncpy(filename, "@TERMUX_PREFIX@/tmp/bitlbee-XXXXXX", 128);
  		tempfd = mkstemp(filename);
  		close(tempfd);
  

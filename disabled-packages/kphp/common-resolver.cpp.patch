@@ -12,7 +12,7 @@
  #include "common/options.h"
  
 -#define	HOSTS_FILE	"/etc/hosts"
-+#define	HOSTS_FILE	"@NEOTERM_PREFIX@/etc/hosts"
++#define	HOSTS_FILE	"@TERMUX_PREFIX@/etc/hosts"
  #define	MAX_HOSTS_SIZE	(1L << 24)
  
  int kdb_hosts_loaded;

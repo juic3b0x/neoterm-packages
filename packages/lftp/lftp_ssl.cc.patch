@@ -5,8 +5,8 @@ diff -uNr lftp-4.8.3/src/lftp_ssl.cc lftp-4.8.3.mod/src/lftp_ssl.cc
        "/usr/local/ssl/certs/ca-bundle.crt",
        "/etc/apache/ssl.crt/ca-bundle.crt",
        "/usr/share/curl/curl-ca-bundle.crt",
-+      "@NEOTERM_PREFIX@/etc/tls/cert.pem",
-+      "@NEOTERM_PREFIX@/etc/tls/ca-bundle.crt",
++      "@TERMUX_PREFIX@/etc/tls/cert.pem",
++      "@TERMUX_PREFIX@/etc/tls/ca-bundle.crt",
        0};
     for(int i=0; ca_file_location[i]; i++)
     {

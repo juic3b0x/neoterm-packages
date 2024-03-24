@@ -6,8 +6,8 @@
  #------------------------------------------------------------------------
 -LIBPATH = `pwd | sed 's/\(.*\)apps/\1lib/'`
 -MODELGEN = `pwd | sed 's/\(.*\)apps/\1modelgen/'`/gnucap-modelgen
-+LIBPATH = @NEOTERM_PKG_HOSTBUILD_DIR@/lib/O
-+MODELGEN = @NEOTERM_PKG_HOSTBUILD_DIR@/modelgen/O/gnucap-modelgen
++LIBPATH = @TERMUX_PKG_HOSTBUILD_DIR@/lib/O
++MODELGEN = @TERMUX_PKG_HOSTBUILD_DIR@/modelgen/O/gnucap-modelgen
  #------------------------------------------------------------------------
  %.h : %.model
  	(export LD_LIBRARY_PATH=$(LIBPATH); $(MODELGEN) -h $<)

@@ -6,8 +6,8 @@
  #else
 -     if (chdir("/tmp")!=0) {
 -	  CursesErrorMsg(Gtxt("Can't write to the /tmp directory!",70));
-+     if (chdir("@NEOTERM_PREFIX@/tmp")!=0) {
-+	  CursesErrorMsg(Gtxt("Can't write to the @NEOTERM_PREFIX@/tmp directory!",70));
++     if (chdir("@TERMUX_PREFIX@/tmp")!=0) {
++	  CursesErrorMsg(Gtxt("Can't write to the @TERMUX_PREFIX@/tmp directory!",70));
  	  return;
       }
  #endif

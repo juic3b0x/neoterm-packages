@@ -1,16 +1,16 @@
-NEOTERM_PKG_HOMEPAGE=https://grpc.io/
-NEOTERM_PKG_DESCRIPTION="High performance, open source, general RPC framework that puts mobile and HTTP/2 first"
-NEOTERM_PKG_LICENSE="Apache-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_SRCURL=git+https://github.com/grpc/grpc
-NEOTERM_PKG_VERSION="1.62.1"
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_DEPENDS="abseil-cpp, c-ares, ca-certificates, libc++, libprotobuf, libre2, openssl, protobuf, zlib"
-NEOTERM_PKG_BREAKS="libgrpc-dev"
-NEOTERM_PKG_REPLACES="libgrpc-dev"
-NEOTERM_PKG_BUILD_DEPENDS="gflags, gflags-static"
-NEOTERM_PKG_HOSTBUILD=true
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_HOMEPAGE=https://grpc.io/
+TERMUX_PKG_DESCRIPTION="High performance, open source, general RPC framework that puts mobile and HTTP/2 first"
+TERMUX_PKG_LICENSE="Apache-2.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_SRCURL=git+https://github.com/grpc/grpc
+TERMUX_PKG_VERSION="1.62.1"
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_DEPENDS="abseil-cpp, c-ares, ca-certificates, libc++, libprotobuf, libre2, openssl, protobuf, zlib"
+TERMUX_PKG_BREAKS="libgrpc-dev"
+TERMUX_PKG_REPLACES="libgrpc-dev"
+TERMUX_PKG_BUILD_DEPENDS="gflags, gflags-static"
+TERMUX_PKG_HOSTBUILD=true
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -DCMAKE_STRIP=$(command -v strip)
 -DGIT_EXECUTABLE=$(command -v git)
 -DBUILD_SHARED_LIBS=ON
@@ -24,12 +24,12 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DRUN_HAVE_POSIX_REGEX=0
 -DRUN_HAVE_STD_REGEX=0
 -DRUN_HAVE_STEADY_CLOCK=0
--DProtobuf_PROTOC_LIBRARY=$NEOTERM_PREFIX/lib/libprotoc.so
+-DProtobuf_PROTOC_LIBRARY=$TERMUX_PREFIX/lib/libprotoc.so
 "
 
-neoterm_step_host_build() {
-	neoterm_setup_cmake
-	neoterm_setup_ninja
+termux_step_host_build() {
+	termux_setup_cmake
+	termux_setup_ninja
 
 	export LD=gcc
 	export LDXX=g++
@@ -40,19 +40,19 @@ neoterm_step_host_build() {
 	# when building version 1.17.2:
 	CXXFLAGS="-Wno-error=class-memaccess" \
 		CFLAGS="-Wno-implicit-fallthrough" \
-		cmake -G Ninja "$NEOTERM_PKG_SRCDIR"
+		cmake -G Ninja "$TERMUX_PKG_SRCDIR"
 
 	ninja grpc_cpp_plugin
 }
 
-neoterm_step_pre_configure() {
-	neoterm_setup_protobuf
-	neoterm_setup_cmake
-	neoterm_setup_ninja
+termux_step_pre_configure() {
+	termux_setup_protobuf
+	termux_setup_cmake
+	termux_setup_ninja
 
-	export PATH=$NEOTERM_PKG_HOSTBUILD_DIR:$PATH
+	export PATH=$TERMUX_PKG_HOSTBUILD_DIR:$PATH
 	export GRPC_CROSS_COMPILE=true
 
 	CPPFLAGS+=" -DPROTOBUF_USE_DLLS"
-	LDFLAGS+=" $($NEOTERM_SCRIPTDIR/packages/libprotobuf/interface_link_libraries.sh)"
+	LDFLAGS+=" $($TERMUX_SCRIPTDIR/packages/libprotobuf/interface_link_libraries.sh)"
 }

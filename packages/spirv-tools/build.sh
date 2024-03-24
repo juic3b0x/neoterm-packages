@@ -1,20 +1,20 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/KhronosGroup/SPIRV-Tools
-NEOTERM_PKG_DESCRIPTION="SPIR-V Tools"
-NEOTERM_PKG_LICENSE="Apache-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="1.3.261.1"
-NEOTERM_PKG_SRCURL=https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=ead95c626ad482882a141d1aa0ce47b9453871f72c42c0b28d39c82f60a52008
-NEOTERM_PKG_DEPENDS="libc++"
-NEOTERM_PKG_BUILD_DEPENDS="spirv-headers (=${NEOTERM_PKG_VERSION})"
-NEOTERM_PKG_NO_STATICSPLIT=true
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
--DSPIRV-Headers_SOURCE_DIR=${NEOTERM_PREFIX}
+TERMUX_PKG_HOMEPAGE=https://github.com/KhronosGroup/SPIRV-Tools
+TERMUX_PKG_DESCRIPTION="SPIR-V Tools"
+TERMUX_PKG_LICENSE="Apache-2.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="1.3.261.1"
+TERMUX_PKG_SRCURL=https://github.com/KhronosGroup/SPIRV-Tools/archive/refs/tags/sdk-${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=ead95c626ad482882a141d1aa0ce47b9453871f72c42c0b28d39c82f60a52008
+TERMUX_PKG_DEPENDS="libc++"
+TERMUX_PKG_BUILD_DEPENDS="spirv-headers (=${TERMUX_PKG_VERSION})"
+TERMUX_PKG_NO_STATICSPLIT=true
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+-DSPIRV-Headers_SOURCE_DIR=${TERMUX_PREFIX}
 -DSPIRV_WERROR=OFF
 "
 
-neoterm_pkg_auto_update() {
+termux_pkg_auto_update() {
 	# use versions from sdk-* and not vYEAR.* to match spirv-headers
 	local e=0
 	local api_url="https://api.github.com/repos/KhronosGroup/SPIRV-Tools/git/refs/tags"
@@ -35,5 +35,5 @@ neoterm_pkg_auto_update() {
 		return
 	fi
 
-	neoterm_pkg_upgrade_version "${latest_version//sdk-}"
+	termux_pkg_upgrade_version "${latest_version//sdk-}"
 }

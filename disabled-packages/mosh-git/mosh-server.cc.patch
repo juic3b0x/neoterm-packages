@@ -7,8 +7,8 @@ diff -uNr mosh-1.3.2/src/frontend/mosh-server.cc mosh-1.3.2.mod/src/frontend/mos
        // But this seems less awful than build-time detection with autoconf.
 -      if (!print_motd("/run/motd.dynamic")) {
 -	print_motd("/var/run/motd.dynamic");
-+      if (!print_motd("@NEOTERM_PREFIX@/run/motd.dynamic")) {
-+	print_motd("@NEOTERM_PREFIX@/var/run/motd.dynamic");
++      if (!print_motd("@TERMUX_PREFIX@/run/motd.dynamic")) {
++	print_motd("@TERMUX_PREFIX@/var/run/motd.dynamic");
        }
        // Always print traditional /etc/motd.
        print_motd("/etc/motd");

@@ -6,7 +6,7 @@ diff --color -uNr src/3rdparty/breakpad/src/client/linux/crash_generation/crash_
      dump_dir_ = *dump_path;
    else
 -    dump_dir_ = "/tmp";
-+    dump_dir_ = "@NEOTERM_PREFIX@/tmp";
++    dump_dir_ = "@TERMUX_PREFIX@/tmp";
  }
  
  CrashGenerationServer::~CrashGenerationServer()
@@ -18,7 +18,7 @@ diff --color -uNr src/3rdparty/breakpad/src/client/linux/minidump_writer/minidum
  
      dirent.stream_type = MD_LINUX_LSB_RELEASE;
 -    if (!WriteFile(&dirent.location, "/etc/lsb-release"))
-+    if (!WriteFile(&dirent.location, "@NEOTERM_PREFIX@/etc/lsb-release"))
++    if (!WriteFile(&dirent.location, "@TERMUX_PREFIX@/etc/lsb-release"))
        NullifyDirectoryEntry(&dirent);
      dir.CopyIndex(dir_index++, &dirent);
  
@@ -31,8 +31,8 @@ diff --color -uNr src/3rdparty/libmimeapps/Tools.cpp src.mod/3rdparty/libmimeapp
  		defaultVariableValues["XDG_CONFIG_HOME"] = std::string("$HOME/.config");
 -		defaultVariableValues["XDG_DATA_DIRS"] = std::string("/usr/local/share/:/usr/share/");
 -		defaultVariableValues["XDG_CONFIG_DIRS"] = std::string("/etc/xdg");
-+		defaultVariableValues["XDG_DATA_DIRS"] = std::string("@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/");
-+		defaultVariableValues["XDG_CONFIG_DIRS"] = std::string("@NEOTERM_PREFIX@/etc/xdg");
++		defaultVariableValues["XDG_DATA_DIRS"] = std::string("@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/");
++		defaultVariableValues["XDG_CONFIG_DIRS"] = std::string("@TERMUX_PREFIX@/etc/xdg");
  
  		if (defaultVariableValues.find(name) != defaultVariableValues.end())
  		{
@@ -44,7 +44,7 @@ diff --color -uNr src/3rdparty/sonnet/src/plugins/hunspell/hunspellclient.cpp sr
      directories << QLatin1String("/System/Library/Spelling/");
  #else
 -    directories << QLatin1String("/usr/share/hunspell/") << QLatin1String("/usr/local/share/hunspell/") << QLatin1String("/usr/share/myspell/") << QLatin1String("/usr/share/myspell/dicts/") << QLatin1String("/usr/local/share/mozilla-dicts/");
-+    directories << QLatin1String("@NEOTERM_PREFIX@/share/hunspell/") << QLatin1String("@NEOTERM_PREFIX@/local/share/hunspell/") << QLatin1String("@NEOTERM_PREFIX@/share/myspell/") << QLatin1String("@NEOTERM_PREFIX@/share/myspell/dicts/") << QLatin1String("@NEOTERM_PREFIX@/local/share/mozilla-dicts/");
++    directories << QLatin1String("@TERMUX_PREFIX@/share/hunspell/") << QLatin1String("@TERMUX_PREFIX@/local/share/hunspell/") << QLatin1String("@TERMUX_PREFIX@/share/myspell/") << QLatin1String("@TERMUX_PREFIX@/share/myspell/dicts/") << QLatin1String("@TERMUX_PREFIX@/local/share/mozilla-dicts/");
  #endif
  
      const QString otterDirectory(qgetenv("OTTER_DICTIONARIES"));

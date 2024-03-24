@@ -7,7 +7,7 @@ diff -uNr at-3.2.1/daemon.c at-3.2.1.mod/daemon.c
  
 +#ifdef PIDFILE
 +#undef PIDFILE
-+#define PIDFILE "@NEOTERM_PREFIX@/var/run/atd.pid"
++#define PIDFILE "@TERMUX_PREFIX@/var/run/atd.pid"
 +#endif
 +
  static int

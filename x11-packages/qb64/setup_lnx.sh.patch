@@ -17,7 +17,7 @@ diff -uNr a/setup_lnx.sh b/setup_lnx.sh
    DISTRO=centos
  fi
  
-+DISTRO=neoterm
++DISTRO=termux
 +
  #Find and install packages
  if [ "$DISTRO" == "arch" ]; then
@@ -36,7 +36,7 @@ diff -uNr a/setup_lnx.sh b/setup_lnx.sh
    echo "Creating ./run_qb64.sh script..."
 -  _pwd=`pwd`
 -  echo "#!/bin/sh" > ./run_qb64.sh
-+  echo "#!@NEOTERM_PREFIX@/bin/sh" > ./run_qb64.sh
++  echo "#!@TERMUX_PREFIX@/bin/sh" > ./run_qb64.sh
    echo "cd $_pwd" >> ./run_qb64.sh
    echo "./qb64 &" >> ./run_qb64.sh
    
@@ -44,7 +44,7 @@ diff -uNr a/setup_lnx.sh b/setup_lnx.sh
    #chmod -R 777 ./
    echo "Adding QB64 menu entry..."
 -  cat > ~/.local/share/applications/qb64.desktop <<EOF
-+  cat > @NEOTERM_PREFIX@/share/applications/qb64.desktop <<EOF
++  cat > @TERMUX_PREFIX@/share/applications/qb64.desktop <<EOF
  [Desktop Entry]
  Name=QB64 Programming IDE
  GenericName=QB64 Programming IDE

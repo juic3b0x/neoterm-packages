@@ -5,7 +5,7 @@
  
  #define MAX_LIBRARY_NAME_LENGTH 250
 -#define LIBARY_NAME_BUFFER_LENGTH (MAX_LIBRARY_NAME_LENGTH + sizeof("/usr/lib/lib") + sizeof(ORX_SHARED_LIBRARY_EXT))
-+#define LIBARY_NAME_BUFFER_LENGTH (MAX_LIBRARY_NAME_LENGTH + sizeof("@NEOTERM_PREFIX@/lib/lib") + sizeof(ORX_SHARED_LIBRARY_EXT))
++#define LIBARY_NAME_BUFFER_LENGTH (MAX_LIBRARY_NAME_LENGTH + sizeof("@TERMUX_PREFIX@/lib/lib") + sizeof(ORX_SHARED_LIBRARY_EXT))
  
  SysLibrary::SysLibrary()
  {
@@ -14,7 +14,7 @@
      if (libraryHandle == NULL)
      {
 -        sprintf(nameBuffer, "/usr/lib/lib%s%s", name, ORX_SHARED_LIBRARY_EXT);
-+        sprintf(nameBuffer, "@NEOTERM_PREFIX@/lib/lib%s%s", name, ORX_SHARED_LIBRARY_EXT);
++        sprintf(nameBuffer, "@TERMUX_PREFIX@/lib/lib%s%s", name, ORX_SHARED_LIBRARY_EXT);
          libraryHandle = dlopen(nameBuffer, RTLD_LAZY);
          // still can't find it?
          if (libraryHandle == NULL)

@@ -7,8 +7,8 @@ diff -uNr wireshark-2.6.1/epan/dissectors/packet-snort.c wireshark-2.6.1.mod/epa
  #ifndef _WIN32
 -static const char *pref_snort_binary_filename = "/usr/sbin/snort";
 -static const char *pref_snort_config_filename = "/etc/snort/snort.conf";
-+static const char *pref_snort_binary_filename = "@NEOTERM_PREFIX@/bin/snort";
-+static const char *pref_snort_config_filename = "@NEOTERM_PREFIX@/etc/snort/snort.conf";
++static const char *pref_snort_binary_filename = "@TERMUX_PREFIX@/bin/snort";
++static const char *pref_snort_config_filename = "@TERMUX_PREFIX@/etc/snort/snort.conf";
  #else
  /* Default locations from Snort Windows installer */
  static const char *pref_snort_binary_filename = "C:\\Snort\\bin\\snort.exe";

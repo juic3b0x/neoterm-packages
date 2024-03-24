@@ -6,7 +6,7 @@ diff -uNr httping-2.5/gen.h httping-2.5.mod/gen.h
  #define RECV_BUFFER_SIZE (128 * 1024)
  
 -#define SPAM_FILE "/tmp/httping.dat"
-+#define SPAM_FILE "@NEOTERM_PREFIX@/tmp/httping.dat"
++#define SPAM_FILE "@TERMUX_PREFIX@/tmp/httping.dat"
  
  #define MAX_SHOW_SUPPRESSION 3
  

@@ -5,7 +5,7 @@
      return xstrdup(SYSCONFDIR);
  #else
 -    return xstrdup("/etc");
-+    return xstrdup("@NEOTERM_PREFIX@/etc");
++    return xstrdup("@TERMUX_PREFIX@/etc");
  #endif
  
  #endif

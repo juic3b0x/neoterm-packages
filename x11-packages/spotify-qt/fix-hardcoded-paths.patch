@@ -6,7 +6,7 @@ diff '--color=auto' -uNr spotify-qt-3.9/lib/thirdparty/include/thirdparty/filesy
          }
      }
 -    return path("/tmp");
-+    return path("@NEOTERM_PREFIX@/tmp");
++    return path("@TERMUX_PREFIX@/tmp");
  #endif
  }
  
@@ -18,14 +18,14 @@ diff '--color=auto' -uNr spotify-qt-3.9/src/spotifyclient/helper.cpp spotify-qt-
  auto SpotifyClient::Helper::running(const QString &path) -> bool
  {
 -	if (path.isEmpty() || !QFile("/usr/bin/ps").exists())
-+	if (path.isEmpty() || !QFile("@NEOTERM_PREFIX@/bin/ps").exists())
++	if (path.isEmpty() || !QFile("@TERMUX_PREFIX@/bin/ps").exists())
  	{
  		return false;
  	}
  
  	QProcess ps;
 -	ps.start("/usr/bin/ps", {"aux"});
-+	ps.start("@NEOTERM_PREFIX@/bin/ps", {"aux"});
++	ps.start("@TERMUX_PREFIX@/bin/ps", {"aux"});
  	ps.waitForFinished();
  	auto out = ps.readAllStandardOutput();
  	return QString(out).contains(path);
@@ -37,13 +37,13 @@ diff '--color=auto' -uNr spotify-qt-3.9/src/util/appinstalltype.cpp spotify-qt-3
  auto AppInstallType::getInstallType(const QString &path) -> InstallType
  {
 -	if (path.startsWith(QStringLiteral("/home/")))
-+	if (path.startsWith(QStringLiteral("@NEOTERM_HOME@/")))
++	if (path.startsWith(QStringLiteral("@TERMUX_HOME@/")))
  	{
  		return InstallType::User;
  	}
  
 -	if (path.startsWith(QStringLiteral("/usr/")))
-+	if (path.startsWith(QStringLiteral("@NEOTERM_PREFIX@/")))
++	if (path.startsWith(QStringLiteral("@TERMUX_PREFIX@/")))
  	{
  		return InstallType::System;
  	}

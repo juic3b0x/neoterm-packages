@@ -5,7 +5,7 @@
  {
  	struct stat	 sb1, sb2;
 -	char		 tfn[33], *cp1, *cp2;
-+	char		 tfn[sizeof("@NEOTERM_PREFIX@/tmp/mandocdb.XXXXXXXX")], *cp1, *cp2;
++	char		 tfn[sizeof("@TERMUX_PREFIX@/tmp/mandocdb.XXXXXXXX")], *cp1, *cp2;
  	off_t		 i;
  	int		 fd1, fd2;
  
@@ -14,7 +14,7 @@
  	 */
  
 -	(void)strlcpy(tfn, "/tmp/mandocdb.XXXXXXXX", sizeof(tfn));
-+	(void)strlcpy(tfn, "@NEOTERM_PREFIX@/tmp/mandocdb.XXXXXXXX", sizeof(tfn));
++	(void)strlcpy(tfn, "@TERMUX_PREFIX@/tmp/mandocdb.XXXXXXXX", sizeof(tfn));
  	if (mkdtemp(tfn) == NULL) {
  		exitcode = (int)MANDOCLEVEL_SYSERR;
  		say("", "&%s", tfn);

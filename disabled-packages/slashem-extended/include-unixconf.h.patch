@@ -19,11 +19,11 @@
 -#define FILE_AREA_SHARE		"/usr/share/games/slex/"
 -#define FILE_AREA_UNSHARE	"/usr/lib/games/slex/"
 -#define FILE_AREA_DOC		"/usr/share/doc/slex/"
-+#define FILE_AREA_VAR		"@NEOTERM_PREFIX@/var/games/slex/"
-+#define FILE_AREA_SAVE		"@NEOTERM_PREFIX@/var/games/slex/save/"
-+#define FILE_AREA_SHARE		"@NEOTERM_PREFIX@/share/games/slex/"
-+#define FILE_AREA_UNSHARE	"@NEOTERM_PREFIX@/var/games/slex/unshare/"
-+#define FILE_AREA_DOC		"@NEOTERM_PREFIX@/share/doc/slex/"
++#define FILE_AREA_VAR		"@TERMUX_PREFIX@/var/games/slex/"
++#define FILE_AREA_SAVE		"@TERMUX_PREFIX@/var/games/slex/save/"
++#define FILE_AREA_SHARE		"@TERMUX_PREFIX@/share/games/slex/"
++#define FILE_AREA_UNSHARE	"@TERMUX_PREFIX@/var/games/slex/unshare/"
++#define FILE_AREA_DOC		"@TERMUX_PREFIX@/share/doc/slex/"
  
  #define FILE_AREA_BONES		FILE_AREA_VAR
  #define FILE_AREA_LEVL		FILE_AREA_VAR

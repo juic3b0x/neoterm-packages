@@ -5,7 +5,7 @@
  
  	if (!tmpdir) {
 -		dir_template = mkstring("%s/XXXXXX", envdir ? envdir : "/tmp");
-+		dir_template = mkstring("%s/XXXXXX", envdir ? envdir : "@NEOTERM_PREFIX@/tmp");
++		dir_template = mkstring("%s/XXXXXX", envdir ? envdir : "@TERMUX_PREFIX@/tmp");
  		tmpdir = mkdtemp(dir_template);
  		if (!tmpdir)
  			fatal_errno();
@@ -16,9 +16,9 @@
 -		"/etc/mailcap",
 -		"/usr/share/etc/mailcap",
 -		"/usr/local/etc/mailcap",
-+		"@NEOTERM_PREFIX@/etc/mailcap",
-+		"@NEOTERM_PREFIX@/share/etc/mailcap",
-+		"@NEOTERM_PREFIX@/local/etc/mailcap",
++		"@TERMUX_PREFIX@/etc/mailcap",
++		"@TERMUX_PREFIX@/share/etc/mailcap",
++		"@TERMUX_PREFIX@/local/etc/mailcap",
  	};
  	char *homepath;
  	char *template = NULL;

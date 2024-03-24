@@ -1,23 +1,23 @@
-NEOTERM_PKG_HOMEPAGE=https://bitbucket.org/verateam/vera
-NEOTERM_PKG_DESCRIPTION="A programmable tool for verification, analysis and transformation of C++ source code"
-NEOTERM_PKG_LICENSE="BSL-1.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION=1.3.0
-NEOTERM_PKG_REVISION=5
-NEOTERM_PKG_SRCURL=https://github.com/verateam/vera/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=32d1d29be8ec96556fa0935d908d2627daffbf117abd1aa639f5a1c64ae10ceb
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
-NEOTERM_PKG_DEPENDS="boost, libc++, tcl"
-NEOTERM_PKG_BUILD_DEPENDS="boost-headers"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_HOMEPAGE=https://bitbucket.org/verateam/vera
+TERMUX_PKG_DESCRIPTION="A programmable tool for verification, analysis and transformation of C++ source code"
+TERMUX_PKG_LICENSE="BSL-1.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION=1.3.0
+TERMUX_PKG_REVISION=5
+TERMUX_PKG_SRCURL=https://github.com/verateam/vera/archive/refs/tags/v${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=32d1d29be8ec96556fa0935d908d2627daffbf117abd1aa639f5a1c64ae10ceb
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_UPDATE_TAG_TYPE="newest-tag"
+TERMUX_PKG_DEPENDS="boost, libc++, tcl"
+TERMUX_PKG_BUILD_DEPENDS="boost-headers"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -DVERA_LUA=OFF
 -DVERA_PYTHON=OFF
 -DVERA_USE_SYSTEM_BOOST=ON
 "
 
-neoterm_step_post_configure() {
-	if [ "$NEOTERM_CMAKE_BUILD" = "Ninja" ]; then
+termux_step_post_configure() {
+	if [ "$TERMUX_CMAKE_BUILD" = "Ninja" ]; then
 		sed -i 's:[^ ]*/src/vera++ :true :g' build.ninja
 	fi
 }

@@ -16,15 +16,15 @@ diff -uNr hollywood-1.20/lib/hollywood/hexdump hollywood-1.20.mod/lib/hollywood/
  while true; do
 -	for f in $(ls /usr/bin/ | sort -R); do
 -		head -c 4096 "/usr/bin/$f" | hexdump -C | ccze -A -c default=green -c dir="bold green"
-+	for f in $(ls @NEOTERM_PREFIX@/bin/ | sort -R); do
-+		if [ -d "@NEOTERM_PREFIX@/bin/$f" ]; then
++	for f in $(ls @TERMUX_PREFIX@/bin/ | sort -R); do
++		if [ -d "@TERMUX_PREFIX@/bin/$f" ]; then
 +			continue
 +		fi
 +
 +		if ${_HAS_CCZE}; then
-+			head -c 4096 "@NEOTERM_PREFIX@/bin/$f" | hexdump -C | ccze -A -c default=green -c dir="bold green"
++			head -c 4096 "@TERMUX_PREFIX@/bin/$f" | hexdump -C | ccze -A -c default=green -c dir="bold green"
 +		else
-+			head -c 4096 "@NEOTERM_PREFIX@/bin/$f" | hexdump -C
++			head -c 4096 "@TERMUX_PREFIX@/bin/$f" | hexdump -C
 +		fi
 +
  		sleep 0.7

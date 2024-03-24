@@ -5,13 +5,13 @@
    (cf-define 'PACKAGE_URL (S (~ p'url)))
  
 -  (cf-subst 'SHELL (or (sys-getenv "CONFIG_SHELL") "/bin/sh"))
-+  (cf-subst 'SHELL (or (sys-getenv "CONFIG_SHELL") "@NEOTERM_PREFIX@/bin/sh"))
++  (cf-subst 'SHELL (or (sys-getenv "CONFIG_SHELL") "@TERMUX_PREFIX@/bin/sh"))
    (cf-subst 'LIBOBJS "")
    (cf-subst 'MFLAGS "")
    (cf-subst 'MAKEFLAGS "")
  
 -  (cf-subst 'default_prefix "/usr/local")
-+  (cf-subst 'default_prefix "@NEOTERM_PREFIX@")
++  (cf-subst 'default_prefix "@TERMUX_PREFIX@")
    (cf-subst 'prefix "NONE")       ;will be replaced by cf-output
    (cf-subst 'exec_prefix "NONE")  ;will be replaced by cf-output
    (cf-subst 'bindir "${exec_prefix}/bin")
@@ -25,7 +25,7 @@
    (cf-subst 'localstatedir "${prefix}/var")
    (cf-subst 'includedir "${prefix}/include")
 -  (cf-subst 'oldincludedir "/usr/include")
-+  (cf-subst 'oldincludedir "@NEOTERM_PREFIX@/include")
++  (cf-subst 'oldincludedir "@TERMUX_PREFIX@/include")
    (cf-subst 'docdir "${datarootdir}/doc/${PACKAGE_TARNAME}")
    (cf-subst 'infodir "${datarootdir}/info")
    (cf-subst 'htmldir "${docdir}")

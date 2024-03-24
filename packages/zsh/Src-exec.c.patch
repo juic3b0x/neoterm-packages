@@ -6,7 +6,7 @@ diff -u -r ../zsh-5.6/Src/exec.c ./Src/exec.c
  			argv[-1] = "sh";
  			winch_unblock();
 -			execve("/bin/sh", argv - 1, newenvp);
-+			execve("@NEOTERM_PREFIX@/bin/sh", argv - 1, newenvp);
++			execve("@TERMUX_PREFIX@/bin/sh", argv - 1, newenvp);
  		    }
  		}
  	    } else

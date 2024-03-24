@@ -5,13 +5,13 @@
  
  # paths
 -PREFIX = /usr/local
-+PREFIX = @NEOTERM_PREFIX@
++PREFIX = @TERMUX_PREFIX@
  MANPREFIX = ${PREFIX}/share/man
  
 -X11INC = /usr/X11R6/include
 -X11LIB = /usr/X11R6/lib
-+X11INC = @NEOTERM_PREFIX@/include
-+X11LIB = @NEOTERM_PREFIX@/lib
++X11INC = @TERMUX_PREFIX@/include
++X11LIB = @TERMUX_PREFIX@/lib
  
  # Xinerama, comment if you don't want it
  XINERAMALIBS  = -lXinerama
@@ -20,7 +20,7 @@
  # freetype
  FREETYPELIBS = -lfontconfig -lXft
 -FREETYPEINC = /usr/include/freetype2
-+FREETYPEINC = @NEOTERM_PREFIX@/include/freetype2
++FREETYPEINC = @TERMUX_PREFIX@/include/freetype2
  # OpenBSD (uncomment)
  #FREETYPEINC = ${X11INC}/freetype2
  

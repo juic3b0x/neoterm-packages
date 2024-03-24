@@ -1,19 +1,19 @@
-NEOTERM_PKG_HOMEPAGE="https://dicom.offis.de/dcmtk"
-NEOTERM_PKG_DESCRIPTION="A collection of libraries and applications implementing large parts the DICOM standard"
-NEOTERM_PKG_GROUPS="science"
-NEOTERM_PKG_LICENSE="BSD 3-Clause"
-NEOTERM_PKG_LICENSE_FILE="COPYRIGHT"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="3.6.7"
-NEOTERM_PKG_REVISION=4
-NEOTERM_PKG_SRCURL="https://github.com/DCMTK/dcmtk/archive/refs/tags/DCMTK-$NEOTERM_PKG_VERSION.tar.gz"
-NEOTERM_PKG_SHA256=17705dcdb2047d1266bb4e92dbf4aa6d4967819e8e3e94f39b7df697661b4860
-NEOTERM_PKG_AUTO_UPDATE=false
-NEOTERM_PKG_DEPENDS="libc++, libiconv, libpng, libtiff, libxml2, openssl, zlib"
+TERMUX_PKG_HOMEPAGE="https://dicom.offis.de/dcmtk"
+TERMUX_PKG_DESCRIPTION="A collection of libraries and applications implementing large parts the DICOM standard"
+TERMUX_PKG_GROUPS="science"
+TERMUX_PKG_LICENSE="BSD 3-Clause"
+TERMUX_PKG_LICENSE_FILE="COPYRIGHT"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="3.6.7"
+TERMUX_PKG_REVISION=4
+TERMUX_PKG_SRCURL="https://github.com/DCMTK/dcmtk/archive/refs/tags/DCMTK-$TERMUX_PKG_VERSION.tar.gz"
+TERMUX_PKG_SHA256=17705dcdb2047d1266bb4e92dbf4aa6d4967819e8e3e94f39b7df697661b4860
+TERMUX_PKG_AUTO_UPDATE=false
+TERMUX_PKG_DEPENDS="libc++, libiconv, libpng, libtiff, libxml2, openssl, zlib"
 # As of 3.6.7, libsndfile and openjpeg are detected but not linked against
-NEOTERM_PKG_BUILD_DEPENDS="libsndfile, openjpeg"
-NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_BUILD_DEPENDS="libsndfile, openjpeg"
+TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -DDCMTK_NO_TRY_RUN=ON
 -DDCMTK_ICONV_FLAGS_ANALYZED=ON
 -DDCMTK_FIXED_ICONV_CONVERSION_FLAGS=ON
@@ -27,9 +27,9 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DDCMTK_WITH_SNDFILE=ON
 -DDCMTK_WITH_TIFF=ON
 -DDCMTK_WITH_ZLIB=ON
--DANDROID_TEMPORARY_FILES_LOCATION=$NEOTERM_PREFIX/tmp
+-DANDROID_TEMPORARY_FILES_LOCATION=$TERMUX_PREFIX/tmp
 "
 
-neoterm_step_pre_configure() {
-	cp $NEOTERM_PKG_BUILDER_DIR/arith.h/$NEOTERM_ARCH.h $NEOTERM_PKG_SRCDIR/config/include/dcmtk/config/arith.h
+termux_step_pre_configure() {
+	cp $TERMUX_PKG_BUILDER_DIR/arith.h/$TERMUX_ARCH.h $TERMUX_PKG_SRCDIR/config/include/dcmtk/config/arith.h
 }

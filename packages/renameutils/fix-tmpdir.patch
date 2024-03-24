@@ -6,7 +6,7 @@ diff -uNr renameutils-0.12.0/src/common/io-utils.c renameutils-0.12.0.mod/src/co
  			tmpdir = P_tmpdir;
  		if (tmpdir == NULL)
 -			tmpdir = "/tmp";
-+			tmpdir = "@NEOTERM_PREFIX@/tmp";
++			tmpdir = "@TERMUX_PREFIX@/tmp";
  		name = xasprintf("%s/%sXXXXXX", tmpdir, base);
  	} else {
  		name = xasprintf("%sXXXXXX", base);

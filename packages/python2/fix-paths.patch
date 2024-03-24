@@ -6,7 +6,7 @@ diff -uNr Python-2.7.13/Lib/aifc.py Python-2.7.13.mod/Lib/aifc.py
      import sys
      if not sys.argv[1:]:
 -        sys.argv.append('/usr/demos/data/audio/bach.aiff')
-+        sys.argv.append('@NEOTERM_PREFIX@/demos/data/audio/bach.aiff')
++        sys.argv.append('@TERMUX_PREFIX@/demos/data/audio/bach.aiff')
      fn = sys.argv[1]
      f = open(fn, 'r')
      try:
@@ -19,7 +19,7 @@ diff -uNr Python-2.7.13/Lib/mailcap.py Python-2.7.13.mod/Lib/mailcap.py
          mailcaps = [home + '/.mailcap', '/etc/mailcap',
 -                '/usr/etc/mailcap', '/usr/local/etc/mailcap']
 +                '/usr/etc/mailcap', '/usr/local/etc/mailcap',
-+                '@NEOTERM_PREFIX@/etc/mailcap']
++                '@TERMUX_PREFIX@/etc/mailcap']
      return mailcaps
  
  
@@ -30,7 +30,7 @@ diff -uNr Python-2.7.13/Lib/mimetypes.py Python-2.7.13.mod/Lib/mimetypes.py
      "/usr/local/lib/netscape/mime.types",
      "/usr/local/etc/httpd/conf/mime.types",     # Apache 1.2
      "/usr/local/etc/mime.types",                # Apache 1.3
-+    "@NEOTERM_PREFIX@/etc/mime.types",           # Termux
++    "@TERMUX_PREFIX@/etc/mime.types",           # Termux
      ]
  
  inited = False
@@ -42,7 +42,7 @@ diff -uNr Python-2.7.13/Lib/posixpath.py Python-2.7.13.mod/Lib/posixpath.py
  sep = '/'
  pathsep = ':'
 -defpath = ':/bin:/usr/bin'
-+defpath = ':@NEOTERM_PREFIX@/bin'
++defpath = ':@TERMUX_PREFIX@/bin'
  altsep = None
  devnull = '/dev/null'
  
@@ -54,7 +54,7 @@ diff -uNr Python-2.7.13/Lib/uuid.py Python-2.7.13.mod/Lib/uuid.py
      import os
      path = os.environ.get("PATH", os.defpath).split(os.pathsep)
 -    path.extend(('/sbin', '/usr/sbin'))
-+    path.extend(['@NEOTERM_PREFIX@/bin'])
++    path.extend(['@TERMUX_PREFIX@/bin'])
      for dir in path:
          executable = os.path.join(dir, command)
          if (os.path.exists(executable) and

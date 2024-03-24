@@ -5,7 +5,7 @@
  #else
  		if (!res) res = getenv("HOME");
 -		if (!res) res = "/home/";
-+		if (!res) res = "@NEOTERM_HOME@/";
++		if (!res) res = "@TERMUX_HOME@/";
  #endif
  		return JS_NewString(ctx, res);
  

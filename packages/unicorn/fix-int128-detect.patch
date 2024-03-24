@@ -6,7 +6,7 @@ diff -uNr unicorn-2.0.0/qemu/configure unicorn-2.0.0.mod/qemu/configure
  
  int128=no
 +
-+if [ "$NEOTERM_ARCH" = "aarch64" ] || [ "$NEOTERM_ARCH" = "x86_64" ]; then
++if [ "$TERMUX_ARCH" = "aarch64" ] || [ "$TERMUX_ARCH" = "x86_64" ]; then
  cat > $TMPC << EOF
  __int128_t a;
  __uint128_t b;

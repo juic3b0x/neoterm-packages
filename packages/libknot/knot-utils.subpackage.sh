@@ -1,6 +1,6 @@
-NEOTERM_SUBPKG_DESCRIPTION="Knot DNS utilities"
-NEOTERM_SUBPKG_INCLUDE="
+TERMUX_SUBPKG_DESCRIPTION="Knot DNS utilities"
+TERMUX_SUBPKG_INCLUDE="
 bin/
 share/man/man1/
 "
-NEOTERM_SUBPKG_DEPENDS="libedit, libidn2, libnghttp2, resolv-conf"
+TERMUX_SUBPKG_DEPENDS="libedit, libidn2, libnghttp2, resolv-conf"

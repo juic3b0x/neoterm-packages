@@ -5,7 +5,7 @@
      InitAppData(ConvertToLine(argc, argv));
      p = getenv("HOME");
 -    if (p == NULL) p = "/tmp";
-+    if (p == NULL) p = "@NEOTERM_PREFIX@/tmp";
++    if (p == NULL) p = "@TERMUX_PREFIX@/tmp";
      i = strlen(p) + strlen("/.xboardXXXXXx.pgn") + 1;
      gameCopyFilename = (char*) malloc(i);
      gamePasteFilename = (char*) malloc(i);
@@ -14,7 +14,7 @@
      {   // locate and read user logo
  	char buf[MSG_SIZ], name[MSG_SIZ];
 -	snprintf(name, MSG_SIZ, "/home/%s", UserName());
-+	snprintf(name, MSG_SIZ, "@NEOTERM_HOME@");
++	snprintf(name, MSG_SIZ, "@TERMUX_HOME@");
  	if(!FindLogo(name, ".logo", buf))
  	    FindLogo(appData.logoDir, name + 6, buf);
  	ASSIGN(userLogo, buf);
@@ -24,8 +24,8 @@
  	       !FindLogo(appData.directory[n], "logo", buf) && // then engine directory
 -	       !FindLogo("/usr/local/share/games/plugins/logos", cps->tidy, buf) ) // then system folders
 -		FindLogo("/usr/share/games/plugins/logos", cps->tidy, buf);
-+	       !FindLogo("@NEOTERM_PREFIX@/local/share/games/plugins/logos", cps->tidy, buf) ) // then system folders
-+		FindLogo("@NEOTERM_PREFIX@/share/games/plugins/logos", cps->tidy, buf);
++	       !FindLogo("@TERMUX_PREFIX@/local/share/games/plugins/logos", cps->tidy, buf) ) // then system folders
++		FindLogo("@TERMUX_PREFIX@/share/games/plugins/logos", cps->tidy, buf);
  	}
      }
      if(logoName[0])

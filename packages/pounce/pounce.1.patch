@@ -5,7 +5,7 @@
  .Ev $XDG_CONFIG_DIRS ,
  usually
 -.Pa /etc/xdg .
-+.Pa @NEOTERM_PREFIX@/etc/xdg .
++.Pa @TERMUX_PREFIX@/etc/xdg .
  .It Pa ~/.config/pounce
  The most likely location of configuration files.
  .

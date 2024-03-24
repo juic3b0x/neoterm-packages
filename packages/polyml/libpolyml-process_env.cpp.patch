@@ -5,7 +5,7 @@
              sigprocmask(SIG_SETMASK, &sigset, 0);
              // Reset other signals?
 -            execv("/bin/sh", argv);
-+            execv("@NEOTERM_PREFIX@/bin/sh", argv);
++            execv("@TERMUX_PREFIX@/bin/sh", argv);
              _exit(1);
          }
  #endif

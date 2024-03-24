@@ -5,7 +5,7 @@
  
  /* Mail interface.  (All MTAs should supply this command) */
 -#define SENDMAIL "/usr/sbin/sendmail"
-+#define SENDMAIL "@NEOTERM_PREFIX@/bin/sendmail"
++#define SENDMAIL "@TERMUX_PREFIX@/bin/sendmail"
  
  /* End of user-configurable section */
  

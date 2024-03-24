@@ -33,8 +33,8 @@ diff -uNr antiword-0.37/Makefile.Linux antiword-0.37.mod/Makefile.Linux
 
 -GLOBAL_INSTALL_DIR = /usr/local/bin
 -GLOBAL_RESOURCES_DIR = /usr/share/antiword
-+GLOBAL_INSTALL_DIR = @NEOTERM_PREFIX@/bin
-+GLOBAL_RESOURCES_DIR = @NEOTERM_PREFIX@/share/antiword
++GLOBAL_INSTALL_DIR = @TERMUX_PREFIX@/bin
++GLOBAL_RESOURCES_DIR = @TERMUX_PREFIX@/share/antiword
 
  all:		$(PROGS)
 

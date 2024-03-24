@@ -1,14 +1,14 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/KhronosGroup/SPIRV-Headers
-NEOTERM_PKG_DESCRIPTION="SPIR-V Headers"
-NEOTERM_PKG_LICENSE="Apache-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="1.3.261.1"
-NEOTERM_PKG_SRCURL=https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=32b4c6ae6a2fa9b56c2c17233c8056da47e331f76e117729925825ea3e77a739
-NEOTERM_PKG_PLATFORM_INDEPENDENT=true
-NEOTERM_PKG_AUTO_UPDATE=true
+TERMUX_PKG_HOMEPAGE=https://github.com/KhronosGroup/SPIRV-Headers
+TERMUX_PKG_DESCRIPTION="SPIR-V Headers"
+TERMUX_PKG_LICENSE="Apache-2.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="1.3.261.1"
+TERMUX_PKG_SRCURL=https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/sdk-${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=32b4c6ae6a2fa9b56c2c17233c8056da47e331f76e117729925825ea3e77a739
+TERMUX_PKG_PLATFORM_INDEPENDENT=true
+TERMUX_PKG_AUTO_UPDATE=true
 
-neoterm_pkg_auto_update() {
+termux_pkg_auto_update() {
 	local e=0
 	local api_url="https://api.github.com/repos/KhronosGroup/SPIRV-Headers/git/refs/tags"
 	local api_url_r=$(curl -s "${api_url}")
@@ -28,5 +28,5 @@ neoterm_pkg_auto_update() {
 		return
 	fi
 
-	neoterm_pkg_upgrade_version "${latest_version//sdk-}"
+	termux_pkg_upgrade_version "${latest_version//sdk-}"
 }

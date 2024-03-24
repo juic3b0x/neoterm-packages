@@ -1,5 +1,5 @@
 Checking uname sysname type: "Linux"
-Checking uname machine type: "@NEOTERM_ARCH@"
+Checking uname machine type: "@TERMUX_ARCH@"
 Checking uname release type: "dontcare"
 Checking uname version type: "dontcare"
 Checking simple C program: "hello world"

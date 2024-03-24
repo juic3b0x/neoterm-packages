@@ -9,10 +9,10 @@ It breaks `glxinfo` with `virglrenderer-android`.
     }
  
     res->res_handle = handle;
-+#ifndef __NEOTERM__
++#ifndef __TERMUX__
     if (map_front_private && res->ptr && res->dt) {
 +#else
-+   if (map_front_private && res->ptr && res->dt && getenv("NEOTERM_ENABLE_GLXCOPYSUBBUFFERMESA_FOR_VTEST")) {
++   if (map_front_private && res->ptr && res->dt && getenv("TERMUX_ENABLE_GLXCOPYSUBBUFFERMESA_FOR_VTEST")) {
 +#endif
        void *dt_map = vtws->sws->displaytarget_map(vtws->sws, res->dt, PIPE_MAP_READ_WRITE);
        uint32_t shm_stride = util_format_get_stride(res->format, res->width);

@@ -5,7 +5,7 @@
  	.envDirs = "XDG_CONFIG_DIRS",
  	.defHome = ".config",
 -	.defDirs = "/etc/xdg",
-+	.defDirs = "@NEOTERM_PREFIX@/etc/xdg",
++	.defDirs = "@TERMUX_PREFIX@/etc/xdg",
  };
  
  static const struct Base Data = {
@@ -13,7 +13,7 @@
  	.envDirs = "XDG_DATA_DIRS",
  	.defHome = ".local/share",
 -	.defDirs = "/usr/local/share:/usr/share",
-+	.defDirs = "@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share",
++	.defDirs = "@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share",
  };
  
  static char *basePath(

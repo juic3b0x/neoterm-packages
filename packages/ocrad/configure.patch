@@ -6,7 +6,7 @@ diff -u -r ../ocrad-0.23/configure ./configure
  export LC_ALL
  srcdir=
 -prefix=/usr/local
-+prefix=@NEOTERM_PREFIX@
++prefix=@TERMUX_PREFIX@
  exec_prefix='$(prefix)'
  bindir='$(exec_prefix)/bin'
  datarootdir='$(prefix)/share'

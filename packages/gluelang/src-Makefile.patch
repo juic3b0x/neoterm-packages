@@ -7,7 +7,7 @@
 -BINDIR	= /usr/local/bin
 -CXXFLAGS = -Wall -O2 --static -std=c++11
 -LDFLAGS = -lm
-+BINDIR	= @NEOTERM_PREFIX@/bin
++BINDIR	= @TERMUX_PREFIX@/bin
 +CXXFLAGS ?= -Wall -O2 --static -std=c++11
 +LDFLAGS ?= -lm
  SRCS := $(wildcard *.cc)

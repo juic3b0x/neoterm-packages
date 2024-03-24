@@ -7,8 +7,8 @@ diff -uNr rinetd-0.73/src/rinetd.h rinetd-0.73.mod/src/rinetd.h
  
 -#define RINETD_CONFIG_FILE "/etc/rinetd.conf"
 -#define RINETD_PID_FILE "/var/run/rinetd.pid"
-+#define RINETD_CONFIG_FILE "@NEOTERM_PREFIX@/etc/rinetd.conf"
-+#define RINETD_PID_FILE "@NEOTERM_PREFIX@/var/run/rinetd.pid"
++#define RINETD_CONFIG_FILE "@TERMUX_PREFIX@/etc/rinetd.conf"
++#define RINETD_PID_FILE "@TERMUX_PREFIX@/var/run/rinetd.pid"
  
  /* Global configuration */
  

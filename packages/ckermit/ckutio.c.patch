@@ -16,7 +16,7 @@
  #else
  #ifdef LINUXFSSTND
 -#define LOCK_DIR "/var/lock";
-+#define LOCK_DIR "@NEOTERM_PREFIX@/var/lock";
++#define LOCK_DIR "@TERMUX_PREFIX@/var/lock";
  #else
  #define LOCK_DIR "/usr/spool/locks"
  #endif /* LINUXFSSTND */

@@ -4,8 +4,8 @@
 #
 # .\scripts\run-docker.ps1 ./build-package.sh -a arm libandroid-support
 
-Set-Variable -Name IMAGE_NAME -Value "ghcr.io/neoterm/package-builder"
-Set-Variable -Name CONTAINER_NAME -Value "neoterm-package-builder"
+Set-Variable -Name IMAGE_NAME -Value "ghcr.io/termux/package-builder"
+Set-Variable -Name CONTAINER_NAME -Value "termux-package-builder"
 
 Write-Output "Running container ${CONTAINER_NAME} from image ${IMAGE_NAME}..."
 
@@ -16,7 +16,7 @@ if (-Not $?) {
     docker run `
         --detach `
         --name $CONTAINER_NAME `
-        --volume "${PWD}:/home/builder/neoterm-packages" `
+        --volume "${PWD}:/home/builder/termux-packages" `
         --tty `
         "$IMAGE_NAME"
 }

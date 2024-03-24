@@ -7,7 +7,7 @@
 +#ifdef __ANDROID__
 +#define bcopy(src,dest,n) memmove(dest,src,n)
 +#define L_SET SEEK_SET
-+#define _PATH_MAILDIR "@NEOTERM_PREFIX@/var/spool/mail"
++#define _PATH_MAILDIR "@TERMUX_PREFIX@/var/spool/mail"
 +#endif
 +
  #define	HBITS	8			/* number of bits in hash code */

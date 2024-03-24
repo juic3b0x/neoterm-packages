@@ -5,7 +5,7 @@
  void LogCpu(struct Machine *m) {
    static FILE *f;
 -  if (!f) f = fopen("/tmp/cpu.log", "w");
-+  if (!f) f = fopen("@NEOTERM_PREFIX@/tmp/cpu.log", "w");
++  if (!f) f = fopen("@TERMUX_PREFIX@/tmp/cpu.log", "w");
    fprintf(f,
            "\n"
            "IP %" PRIx64 "\n"
@@ -16,7 +16,7 @@
    _Static_assert(!(MAP_ANONYMOUS_ & MAP_PRIVATE), "");
    int tfd;
 -  char path[] = "/tmp/blink.dat.XXXXXX";
-+  char path[] = "@NEOTERM_PREFIX@/tmp/blink.dat.XXXXXX";
++  char path[] = "@TERMUX_PREFIX@/tmp/blink.dat.XXXXXX";
    if (~flags & MAP_ANONYMOUS_) {
      res = VfsMmap(addr, length, prot, flags, fd, offset);
    } else if ((tfd = mkstemp(path)) != -1) {
@@ -27,7 +27,7 @@
    LoadDebugSymbols(m->system);
    DisLoadElf(&g_dis, &m->system->elf);
 -  g_cod = VfsOpen(AT_FDCWD_LINUX, "/tmp/blink.s",
-+  g_cod = VfsOpen(AT_FDCWD_LINUX, "@NEOTERM_PREFIX@/tmp/blink.s",
++  g_cod = VfsOpen(AT_FDCWD_LINUX, "@TERMUX_PREFIX@/tmp/blink.s",
                    O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC, 0644);
    g_cod = VfsFcntl(g_cod, F_DUPFD_CLOEXEC, kMinBlinkFd);
  #endif

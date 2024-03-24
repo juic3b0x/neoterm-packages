@@ -5,7 +5,7 @@
  #include <unistd.h>
  
 -#define PREFIX "/var/tmp/abuild."
-+#define PREFIX "@NEOTERM_PREFIX@/var/tmp/abuild."
++#define PREFIX "@TERMUX_PREFIX@/var/tmp/abuild."
  
  static void fail() {
  	errx(1, "%s", strerror(errno));

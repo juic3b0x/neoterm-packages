@@ -6,7 +6,7 @@ diff -uNr chocolate-doom-chocolate-doom-3.0.1/src/m_misc.c chocolate-doom-chocol
      // In Unix, just use /tmp.
  
 -    tempdir = "/tmp";
-+    tempdir = "@NEOTERM_PREFIX@/tmp";
++    tempdir = "@TERMUX_PREFIX@/tmp";
  #endif
  
      return M_StringJoin(tempdir, DIR_SEPARATOR_S, s, NULL);
@@ -18,7 +18,7 @@ diff -uNr chocolate-doom-chocolate-doom-3.0.1/src/setup/execute.c chocolate-doom
      // In Unix, just use /tmp.
  
 -    tempdir = "/tmp";
-+    tempdir = "@NEOTERM_PREFIX@/tmp";
++    tempdir = "@TERMUX_PREFIX@/tmp";
  #endif
  
      return M_StringJoin(tempdir, DIR_SEPARATOR_S, s, NULL);

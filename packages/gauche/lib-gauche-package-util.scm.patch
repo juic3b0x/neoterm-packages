@@ -5,7 +5,7 @@
      (let1 p (run-process (cond-expand
                            [gauche.os.windows (shell-tokenize-string cmdline 'posix)]
 -                          [else `("/bin/sh" "-c" ,cmdline)])
-+                          [else `("@NEOTERM_PREFIX@/bin/sh" "-c" ,cmdline)])
++                          [else `("@TERMUX_PREFIX@/bin/sh" "-c" ,cmdline)])
                           :input (if stdin-string :pipe :null)
                           :wait #f)
        (when stdin-string

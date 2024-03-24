@@ -7,8 +7,8 @@ diff -uNr mtpaint/src/font.c mtpaint.mod/src/font.c
  
 -		if (!(fp = fopen("/etc/X11/xorg.conf", "r")))
 -			fp = fopen("/etc/X11/XF86Config", "r");
-+		if (!(fp = fopen("@NEOTERM_PREFIX@/etc/X11/xorg.conf", "r")))
-+			fp = fopen("@NEOTERM_PREFIX@/etc/X11/XF86Config", "r");
++		if (!(fp = fopen("@TERMUX_PREFIX@/etc/X11/xorg.conf", "r")))
++			fp = fopen("@TERMUX_PREFIX@/etc/X11/XF86Config", "r");
  
  		// If these files are not found the user will have to manually enter directories
  
@@ -17,7 +17,7 @@ diff -uNr mtpaint/src/font.c mtpaint.mod/src/font.c
  		}
  
 -		if (!new_dirs && (fp = fopen("/etc/fonts/fonts.conf", "r")))
-+		if (!new_dirs && (fp = fopen("@NEOTERM_PREFIX@/etc/fonts/fonts.conf", "r")))
++		if (!new_dirs && (fp = fopen("@TERMUX_PREFIX@/etc/fonts/fonts.conf", "r")))
  		{
  			char *s1, *s2;
  
@@ -29,7 +29,7 @@ diff -uNr mtpaint/src/main.c mtpaint.mod/src/main.c
  #endif
  	env = getenv("MTPAINT_INI");
 -	inifile_init("/etc/mtpaint/mtpaintrc", env ? env : "~/.mtpaint");
-+	inifile_init("@NEOTERM_PREFIX@/etc/mtpaint/mtpaintrc", env ? env : "~/.mtpaint");
++	inifile_init("@TERMUX_PREFIX@/etc/mtpaint/mtpaintrc", env ? env : "~/.mtpaint");
  
  #ifdef U_NLS
  #if GTK_MAJOR_VERSION == 1
@@ -42,7 +42,7 @@ diff -uNr mtpaint/src/spawn.c mtpaint.mod/src/spawn.c
  #define HANDBOOK_BROWSER "seamonkey"
 -#define HANDBOOK_LOCATION "/usr/doc/mtpaint/index.html"
 -#define HANDBOOK_LOCATION2 "/usr/share/doc/mtpaint/index.html"
-+#define HANDBOOK_LOCATION "@NEOTERM_PREFIX@/share/doc/mtpaint/index.html"
++#define HANDBOOK_LOCATION "@TERMUX_PREFIX@/share/doc/mtpaint/index.html"
  
  #endif
  

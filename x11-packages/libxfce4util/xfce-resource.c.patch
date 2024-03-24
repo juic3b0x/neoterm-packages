@@ -5,7 +5,7 @@
  
    /* XDG fallback */
 -  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], "/usr/share/pixmaps");
-+  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], "@NEOTERM_PREFIX@/share/pixmaps");
++  _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], "@TERMUX_PREFIX@/share/pixmaps");
  
    /* fallback for system which that don't install everything in /usr */
    _list[XFCE_RESOURCE_ICONS] = g_slist_append (_list[XFCE_RESOURCE_ICONS], "/usr/local/share/pixmaps");

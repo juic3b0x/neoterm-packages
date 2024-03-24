@@ -1,16 +1,16 @@
-NEOTERM_PKG_HOMEPAGE=https://www.dovecot.org
-NEOTERM_PKG_DESCRIPTION="Secure IMAP and POP3 email server"
-NEOTERM_PKG_LICENSE="LGPL-2.1"
-NEOTERM_PKG_MAINTAINER="Vishal Biswas @vishalbiswas"
-NEOTERM_PKG_VERSION=2.2.31
-NEOTERM_PKG_SRCURL=https://www.dovecot.org/releases/2.2/dovecot-$NEOTERM_PKG_VERSION.tar.gz
-NEOTERM_PKG_SHA256=034be40907748128d65088a4f59789b2f99ae7b33a88974eae0b6a68ece376a1
-NEOTERM_PKG_DEPENDS="openssl, libcrypt"
+TERMUX_PKG_HOMEPAGE=https://www.dovecot.org
+TERMUX_PKG_DESCRIPTION="Secure IMAP and POP3 email server"
+TERMUX_PKG_LICENSE="LGPL-2.1"
+TERMUX_PKG_MAINTAINER="Vishal Biswas @vishalbiswas"
+TERMUX_PKG_VERSION=2.2.31
+TERMUX_PKG_SRCURL=https://www.dovecot.org/releases/2.2/dovecot-$TERMUX_PKG_VERSION.tar.gz
+TERMUX_PKG_SHA256=034be40907748128d65088a4f59789b2f99ae7b33a88974eae0b6a68ece376a1
+TERMUX_PKG_DEPENDS="openssl, libcrypt"
 # turning on icu gives undefined reference to __cxa_call_unexpected
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --with-zlib
 --with-ssl=openssl
---with-ssldir=$NEOTERM_PREFIX/etc/tls
+--with-ssldir=$TERMUX_PREFIX/etc/tls
 --without-icu
 --without-shadow
 i_cv_epoll_works=yes
@@ -25,26 +25,26 @@ lib_cv_va_copy=yes
 lib_cv___va_copy=yes
 "
 
-neoterm_step_pre_configure() {
+termux_step_pre_configure() {
 	LDFLAGS="$LDFLAGS -llog"
 
-	for i in $(find $NEOTERM_PKG_SRCDIR/src/director -type f); do sed 's|\bstruct user\b|struct usertest|g' -i $i; done
+	for i in $(find $TERMUX_PKG_SRCDIR/src/director -type f); do sed 's|\bstruct user\b|struct usertest|g' -i $i; done
 
-	if [ "$NEOTERM_ARCH" == "aarch64" ]; then
-		NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+="lib_cv_va_val_copy=yes"
+	if [ "$TERMUX_ARCH" == "aarch64" ]; then
+		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+="lib_cv_va_val_copy=yes"
 	else
-		NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+="lib_cv_va_val_copy=no"
+		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+="lib_cv_va_val_copy=no"
 	fi
 }
 
-neoterm_step_post_make_install() {
+termux_step_post_make_install() {
 	for binary in doveadm doveconf; do
-		mv $NEOTERM_PREFIX/bin/$binary $NEOTERM_PREFIX/libexec/dovecot/$binary
-		cat > $NEOTERM_PREFIX/bin/$binary <<HERE
-#!$NEOTERM_PREFIX/bin/sh
-export LD_LIBRARY_PATH=$NEOTERM_PREFIX/lib/dovecot:\$LD_LIBRARY_PATH
-exec $NEOTERM_PREFIX/libexec/dovecot/$binary $@
+		mv $TERMUX_PREFIX/bin/$binary $TERMUX_PREFIX/libexec/dovecot/$binary
+		cat > $TERMUX_PREFIX/bin/$binary <<HERE
+#!$TERMUX_PREFIX/bin/sh
+export LD_LIBRARY_PATH=$TERMUX_PREFIX/lib/dovecot:\$LD_LIBRARY_PATH
+exec $TERMUX_PREFIX/libexec/dovecot/$binary $@
 HERE
-		chmod u+x $NEOTERM_PREFIX/bin/$binary
+		chmod u+x $TERMUX_PREFIX/bin/$binary
 	done
 }

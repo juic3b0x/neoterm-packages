@@ -5,7 +5,7 @@
    return WideToUtf8(ctmp);
  #else
 -  char _template_array[] = {"/tmp/libkiwix_XXXXXX"};
-+  char _template_array[] = {"@NEOTERM_PREFIX@/tmp/libkiwix_XXXXXX"};
++  char _template_array[] = {"@TERMUX_PREFIX@/tmp/libkiwix_XXXXXX"};
    std::string dir = mkdtemp(_template_array);
    return dir;
  #endif

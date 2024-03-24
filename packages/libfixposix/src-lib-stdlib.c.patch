@@ -23,7 +23,7 @@
 +#ifndef __ANDROID__
          return _lfp_default_path();
 +#else
-+        return "@NEOTERM_PREFIX@/bin";
++        return "@TERMUX_PREFIX@/bin";
 +#endif
      }
  }

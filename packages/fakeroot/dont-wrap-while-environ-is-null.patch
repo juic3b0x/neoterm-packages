@@ -1,4 +1,4 @@
-Workaround for https://github.com/neoterm/neoterm-packages/issues/3148.
+Workaround for https://github.com/termux/termux-packages/issues/3148.
 
 --- a/libfakeroot.c
 +++ b/libfakeroot.c

@@ -5,10 +5,10 @@
  
    if (nmap_fetchfile(filename, sizeof(filename), "nmap-services") != 1) {
 -    error("Unable to find nmap-services!  Resorting to /etc/services");
-+    error("Unable to find nmap-services!  Resorting to @NEOTERM_PREFIX@/etc/services");
++    error("Unable to find nmap-services!  Resorting to @TERMUX_PREFIX@/etc/services");
  #ifndef WIN32
 -    strcpy(filename, "/etc/services");
-+    strcpy(filename, "@NEOTERM_PREFIX@/etc/services");
++    strcpy(filename, "@TERMUX_PREFIX@/etc/services");
  #else
      int len = GetSystemDirectory(filename, 480);	//	be safe
      if(!len)

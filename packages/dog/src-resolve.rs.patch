@@ -6,7 +6,7 @@ diff -uNr dog-0.1.0/src/resolve.rs dog-0.1.0.mod/src/resolve.rs
      use std::fs::File;
  
 -    let f = File::open("/etc/resolv.conf")?;
-+    let f = File::open("@NEOTERM_PREFIX@/etc/resolv.conf")?;
++    let f = File::open("@TERMUX_PREFIX@/etc/resolv.conf")?;
      let reader = BufReader::new(f);
  
      let mut nameservers = Vec::new();

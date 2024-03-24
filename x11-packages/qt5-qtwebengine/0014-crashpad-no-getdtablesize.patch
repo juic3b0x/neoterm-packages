@@ -5,7 +5,7 @@
    int max_fd = implicit_cast<int>(sysconf(_SC_OPEN_MAX));
  
 -#if !defined(OS_ANDROID)
-+#if !defined(OS_ANDROID) && !defined(__NEOTERM__)
++#if !defined(OS_ANDROID) && !defined(__TERMUX__)
    // getdtablesize() was removed effective Android 5.0.0 (API 21). Since it
    // returns the same thing as the sysconf() above, just skip it. See
    // https://android.googlesource.com/platform/bionic/+/462abab12b074c62c0999859e65d5a32ebb41951.

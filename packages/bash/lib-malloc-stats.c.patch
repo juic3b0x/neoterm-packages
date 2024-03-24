@@ -6,7 +6,7 @@ diff -uNr bash-5.0/lib/malloc/stats.c bash-5.0.mod/lib/malloc/stats.c
  }
  
 -#define TRACEROOT "/var/tmp/maltrace/stats."
-+#define TRACEROOT "@NEOTERM_PREFIX@/var/tmp/maltrace/stats."
++#define TRACEROOT "@TERMUX_PREFIX@/var/tmp/maltrace/stats."
  
  void
  trace_malloc_stats (s, fn)

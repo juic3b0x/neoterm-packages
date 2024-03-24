@@ -6,7 +6,7 @@ diff -uNr k2pdfopt_v2.51/k2pdfoptlib/k2sys.c k2pdfopt_v2.51.mod/k2pdfoptlib/k2sy
  #include <stdarg.h>
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__NEOTERM__)
++#if defined(__ANDROID__) && !defined(__TERMUX__)
  #include <android/log.h>
  #endif
  
@@ -15,7 +15,7 @@ diff -uNr k2pdfopt_v2.51/k2pdfoptlib/k2sys.c k2pdfopt_v2.51.mod/k2pdfoptlib/k2sy
      else
  #endif
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__NEOTERM__)
++#if defined(__ANDROID__) && !defined(__TERMUX__)
      {
      char buf[1024];
      status=vsnprintf(buf,sizeof(buf),fmt,args);
@@ -27,7 +27,7 @@ diff -uNr k2pdfopt_v2.51/k2pdfoptlib/wrapbmp.c k2pdfopt_v2.51.mod/k2pdfoptlib/wr
      ** I got wrong results. It happens because 'wrmap' malformed during parsing.
      */
 -#if (defined(__ANDROID__) && defined(K2PDFOPT_KINDLEPDFVIEWER))
-+#if (defined(__ANDROID__) && defined(K2PDFOPT_KINDLEPDFVIEWER) && !defined(__NEOTERM__))
++#if (defined(__ANDROID__) && defined(K2PDFOPT_KINDLEPDFVIEWER) && !defined(__TERMUX__))
      {
      int dstmar_pixels[4];
      int i,w;

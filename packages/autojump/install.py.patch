@@ -6,8 +6,8 @@
      default_system_destdir = '/'
 -    default_system_prefix = '/usr/local'
 -    default_system_zshshare = '/usr/share/zsh/site-functions'
-+    default_system_prefix = '@NEOTERM_PREFIX@'
-+    default_system_zshshare = '@NEOTERM_PREFIX@/share/zsh/site-functions'
++    default_system_prefix = '@TERMUX_PREFIX@'
++    default_system_zshshare = '@TERMUX_PREFIX@/share/zsh/site-functions'
      default_clink_dir = os.path.join(os.getenv('LOCALAPPDATA', ''), 'clink')
  
      parser = ArgumentParser(

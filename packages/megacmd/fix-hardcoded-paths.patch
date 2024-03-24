@@ -5,11 +5,11 @@
      id->append(uuid_str);
  #else
 -    int fd = open("/etc/machine-id", O_RDONLY);
-+    int fd = open("@NEOTERM_PREFIX@/etc/machine-id", O_RDONLY);
++    int fd = open("@TERMUX_PREFIX@/etc/machine-id", O_RDONLY);
      if (fd < 0)
      {
 -        fd = open("/var/lib/dbus/machine-id", O_RDONLY);
-+        fd = open("@NEOTERM_PREFIX@/var/lib/dbus/machine-id", O_RDONLY);
++        fd = open("@TERMUX_PREFIX@/var/lib/dbus/machine-id", O_RDONLY);
          if (fd < 0)
          {
              return;
@@ -21,8 +21,8 @@
      MegaFileSystemAccess *fsAccess = new MegaFileSystemAccess();
 -    char csocketsFolder[34]; // enough to hold all numbers up to 64-bits
 -    sprintf(csocketsFolder, "/tmp/megaCMD_%d", getuid());
-+    char csocketsFolder[] = "@NEOTERM_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX"; // enough to hold all numbers up to 64-bits
-+    sprintf(csocketsFolder, "@NEOTERM_PREFIX@/tmp/megaCMD_%d", getuid());
++    char csocketsFolder[] = "@TERMUX_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX"; // enough to hold all numbers up to 64-bits
++    sprintf(csocketsFolder, "@TERMUX_PREFIX@/tmp/megaCMD_%d", getuid());
      LocalPath socketsFolder = LocalPath::fromPlatformEncodedAbsolute(csocketsFolder);
  
      fsAccess->setdefaultfolderpermissions(0700);
@@ -31,10 +31,10 @@
      addr.sun_family = AF_UNIX;
  
 -    char socketPath[60];
-+    char socketPath[] = "@NEOTERM_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX/srv";
++    char socketPath[] = "@TERMUX_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX/srv";
      bzero(socketPath, sizeof( socketPath ) * sizeof( *socketPath ));
 -    sprintf(socketPath, "/tmp/megaCMD_%d/srv", getuid());
-+    sprintf(socketPath, "@NEOTERM_PREFIX@/tmp/megaCMD_%d/srv", getuid());
++    sprintf(socketPath, "@TERMUX_PREFIX@/tmp/megaCMD_%d/srv", getuid());
  
      strncpy(addr.sun_path, socketPath, sizeof( addr.sun_path ) - 1);
  
@@ -43,7 +43,7 @@
  
          int clientsocket = socket(AF_UNIX, SOCK_STREAM, 0);
 -        char socket_path[60];
-+        char socket_path[] = "@NEOTERM_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX/srv";
++        char socket_path[] = "@TERMUX_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX/srv";
          if (clientsocket < 0 )
          {
              LOG_err << "ERROR opening client socket to exit select: " << errno;
@@ -52,7 +52,7 @@
              bzero(socket_path, sizeof( socket_path ) * sizeof( *socket_path ));
              {
 -                sprintf(socket_path, "/tmp/megaCMD_%d/srv", getuid() );
-+                sprintf(socket_path, "@NEOTERM_PREFIX@/tmp/megaCMD_%d/srv", getuid() );
++                sprintf(socket_path, "@TERMUX_PREFIX@/tmp/megaCMD_%d/srv", getuid() );
              }
  
              struct sockaddr_un addr;
@@ -63,7 +63,7 @@
          {
              cerr << "Couldnt get HOME folder" << endl;
 -            return "/tmp";
-+            return "@NEOTERM_PREFIX@/tmp";
++            return "@TERMUX_PREFIX@/tmp";
          }
          else
          {
@@ -72,7 +72,7 @@
      {
          SOCKET thesock = socket(AF_UNIX, SOCK_STREAM, 0);
 -        char socket_path[60];
-+        char socket_path[] = "@NEOTERM_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX/srv";
++        char socket_path[] = "@TERMUX_PREFIX@/tmp/megaCMD_XXXXXXXXXXXXXXXXXXXX/srv";
          if (!socketValid(thesock))
          {
              cerr << "ERROR opening socket: " << ERRNO << endl;
@@ -81,7 +81,7 @@
  
          bzero(socket_path, sizeof( socket_path ) * sizeof( *socket_path ));
 -        sprintf(socket_path, "/tmp/megaCMD_%d/srv", getuid() );
-+        sprintf(socket_path, "@NEOTERM_PREFIX@/tmp/megaCMD_%d/srv", getuid() );
++        sprintf(socket_path, "@TERMUX_PREFIX@/tmp/megaCMD_%d/srv", getuid() );
  
          struct sockaddr_un addr;
  

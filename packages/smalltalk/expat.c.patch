@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/termux/termux-packages/issues/15852
 
 --- a/packages/xml/expat/expat.c
 +++ b/packages/xml/expat/expat.c

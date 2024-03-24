@@ -1,22 +1,22 @@
-NEOTERM_PKG_HOMEPAGE=https://www.mpfr.org/
-NEOTERM_PKG_DESCRIPTION="C library for multiple-precision floating-point computations with correct rounding"
-NEOTERM_PKG_LICENSE="LGPL-3.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION=4.2.1
-_MAIN_VERSION=${NEOTERM_PKG_VERSION%-p*}
-NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/mpfr/mpfr-${_MAIN_VERSION}.tar.xz
-NEOTERM_PKG_SHA256=277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2
-NEOTERM_PKG_AUTO_UPDATE=false
-NEOTERM_PKG_DEPENDS="libgmp"
-NEOTERM_PKG_BREAKS="libmpfr-dev"
-NEOTERM_PKG_REPLACES="libmpfr-dev"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_header_locale_h=no"
+TERMUX_PKG_HOMEPAGE=https://www.mpfr.org/
+TERMUX_PKG_DESCRIPTION="C library for multiple-precision floating-point computations with correct rounding"
+TERMUX_PKG_LICENSE="LGPL-3.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION=4.2.1
+_MAIN_VERSION=${TERMUX_PKG_VERSION%-p*}
+TERMUX_PKG_SRCURL=https://mirrors.kernel.org/gnu/mpfr/mpfr-${_MAIN_VERSION}.tar.xz
+TERMUX_PKG_SHA256=277807353a6726978996945af13e52829e3abd7a9a5b7fb2793894e18f1fcbb2
+TERMUX_PKG_AUTO_UPDATE=false
+TERMUX_PKG_DEPENDS="libgmp"
+TERMUX_PKG_BREAKS="libmpfr-dev"
+TERMUX_PKG_REPLACES="libmpfr-dev"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_header_locale_h=no"
 
-neoterm_step_post_get_source() {
-	if ! [[ $NEOTERM_PKG_VERSION = *-p* ]]; then
+termux_step_post_get_source() {
+	if ! [[ $TERMUX_PKG_VERSION = *-p* ]]; then
 		return 0
 	fi
-	local _PATCH_VERSION=${NEOTERM_PKG_VERSION#*-p}
+	local _PATCH_VERSION=${TERMUX_PKG_VERSION#*-p}
 
 	declare -A PATCH_CHECKSUMS
 
@@ -31,8 +31,8 @@ neoterm_step_post_get_source() {
 	PATCH_CHECKSUMS[09]=3e9aed5bcea95d34d0bd179a61cd7acb712c89c9a745535f18f0ef619833ba3b
 
 	for PATCH_NUM in $(seq -f '%02g' ${_PATCH_VERSION}); do
-		PATCHFILE=$NEOTERM_PKG_CACHEDIR/mpfr-${_MAIN_VERSION}-patch${PATCH_NUM}.patch
-		neoterm_download \
+		PATCHFILE=$TERMUX_PKG_CACHEDIR/mpfr-${_MAIN_VERSION}-patch${PATCH_NUM}.patch
+		termux_download \
 			"https://www.mpfr.org/mpfr-${_MAIN_VERSION}/patch${PATCH_NUM}" \
 			$PATCHFILE \
 			${PATCH_CHECKSUMS[$PATCH_NUM]}

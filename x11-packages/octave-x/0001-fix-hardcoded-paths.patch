@@ -5,7 +5,7 @@
  #else
  
 -  return "/tmp";
-+  return "@NEOTERM_PREFIX@/tmp";
++  return "@TERMUX_PREFIX@/tmp";
  
  #endif
  }
@@ -16,7 +16,7 @@
  #else
    if (tempd.empty ())
 -    tempd = "/tmp";
-+    tempd = "@NEOTERM_PREFIX@/tmp";
++    tempd = "@TERMUX_PREFIX@/tmp";
  #endif
  
  #endif
@@ -27,7 +27,7 @@
  #else
    if (tempd.empty ())
 -    tempd = "/tmp";
-+    tempd = "@NEOTERM_PREFIX@/tmp";
++    tempd = "@TERMUX_PREFIX@/tmp";
  #endif
  
  #endif
@@ -38,7 +38,7 @@
      ## with junk files?  Using /dev/null won't work because asan
      ## appends the process ID to the file name.
 -    ASAN_OPTIONS="leak_check_at_exit=0:log_path=/tmp/oct-asan-log:verbosity=0"
-+    ASAN_OPTIONS="leak_check_at_exit=0:log_path=@NEOTERM_PREFIX@/tmp/oct-asan-log:verbosity=0"
++    ASAN_OPTIONS="leak_check_at_exit=0:log_path=@TERMUX_PREFIX@/tmp/oct-asan-log:verbosity=0"
    else
      ASAN_OPTIONS="$ADDRESS_SANITIZER_OPTIONS"
    fi

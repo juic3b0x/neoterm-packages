@@ -1,21 +1,21 @@
-NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/emacs/
-NEOTERM_PKG_DESCRIPTION="Extensible, customizable text editor-and more"
-NEOTERM_PKG_LICENSE="GPL-3.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_HOMEPAGE=https://www.gnu.org/software/emacs/
+TERMUX_PKG_DESCRIPTION="Extensible, customizable text editor-and more"
+TERMUX_PKG_LICENSE="GPL-3.0"
+TERMUX_PKG_MAINTAINER="@termux"
 # Update both emacs and emacs-x to the same version in one PR.
 _VERSION=29.2
-NEOTERM_PKG_VERSION=${_VERSION}
-NEOTERM_PKG_SRCURL=https://ftp.gnu.org/gnu/emacs/emacs-${_VERSION}.tar.xz
-if [[ $NEOTERM_PKG_VERSION == *-rc* ]]; then
-	NEOTERM_PKG_SRCURL=https://alpha.gnu.org/gnu/emacs/pretest/emacs-${NEOTERM_PKG_VERSION#*:}.tar.xz
+TERMUX_PKG_VERSION=${_VERSION}
+TERMUX_PKG_SRCURL=https://ftp.gnu.org/gnu/emacs/emacs-${_VERSION}.tar.xz
+if [[ $TERMUX_PKG_VERSION == *-rc* ]]; then
+	TERMUX_PKG_SRCURL=https://alpha.gnu.org/gnu/emacs/pretest/emacs-${TERMUX_PKG_VERSION#*:}.tar.xz
 fi
-NEOTERM_PKG_SHA256=7d3d2448988720bf4bf57ad77a5a08bf22df26160f90507a841ba986be2670dc
-NEOTERM_PKG_DEPENDS="fontconfig, freetype, gdk-pixbuf, giflib, glib, harfbuzz, libgmp, libgnutls, libice, libjansson, libjpeg-turbo, libpng, librsvg, libsm, libsqlite, libtiff, libtreesitter, libx11, libxaw, libxcb, libxext, libxfixes, libxft, libxinerama, libxml2, libxmu, libxpm, libxrandr, libxrender, libxt, littlecms, ncurses, zlib"
-NEOTERM_PKG_CONFLICTS="emacs"
-NEOTERM_PKG_REPLACES="emacs"
-NEOTERM_PKG_PROVIDES="emacs"
-NEOTERM_PKG_SERVICE_SCRIPT=("emacsd" 'exec emacs --fg-daemon 2>&1')
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_SHA256=7d3d2448988720bf4bf57ad77a5a08bf22df26160f90507a841ba986be2670dc
+TERMUX_PKG_DEPENDS="fontconfig, freetype, gdk-pixbuf, giflib, glib, harfbuzz, libgmp, libgnutls, libice, libjansson, libjpeg-turbo, libpng, librsvg, libsm, libsqlite, libtiff, libtreesitter, libx11, libxaw, libxcb, libxext, libxfixes, libxft, libxinerama, libxml2, libxmu, libxpm, libxrandr, libxrender, libxt, littlecms, ncurses, zlib"
+TERMUX_PKG_CONFLICTS="emacs"
+TERMUX_PKG_REPLACES="emacs"
+TERMUX_PKG_PROVIDES="emacs"
+TERMUX_PKG_SERVICE_SCRIPT=("emacsd" 'exec emacs --fg-daemon 2>&1')
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-autodepend
 --without-cairo
 --without-imagemagick
@@ -35,8 +35,8 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 --with-tree-sitter
 "
 
-if $NEOTERM_DEBUG_BUILD; then
-	NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+="
+if $TERMUX_DEBUG_BUILD; then
+	TERMUX_PKG_EXTRA_CONFIGURE_ARGS+="
 	--enable-checking=yes,glyphs
 	--enable-check-lisp-object-type
 	"
@@ -44,22 +44,22 @@ if $NEOTERM_DEBUG_BUILD; then
 fi
 
 # Avoid misdetection of sigaltstack with strict C99:
-# https://github.com/neoterm/neoterm-packages/issues/15852
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_alternate_stack=yes"
+# https://github.com/termux/termux-packages/issues/15852
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_alternate_stack=yes"
 # Ensure use of system malloc:
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_sanitize_address=yes"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_sanitize_address=yes"
 # Prevent configure from adding -nopie:
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_prog_cc_no_pie=no"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_prog_cc_no_pie=no"
 # Prevent linking against libelf:
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_lib_elf_elf_begin=no"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_lib_elf_elf_begin=no"
 # implemented using dup3(), which fails if oldfd == newfd
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" gl_cv_func_dup2_works=no"
-# disable setrlimit function to make neoterm-am work from within emacs
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_setrlimit=no"
-NEOTERM_PKG_HOSTBUILD=true
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" gl_cv_func_dup2_works=no"
+# disable setrlimit function to make termux-am work from within emacs
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_setrlimit=no"
+TERMUX_PKG_HOSTBUILD=true
 
 # Remove some irrelevant files:
-NEOTERM_PKG_RM_AFTER_INSTALL="
+TERMUX_PKG_RM_AFTER_INSTALL="
 bin/grep-changelog
 share/man/man1/grep-changelog.1.gz
 "
@@ -67,81 +67,81 @@ share/man/man1/grep-changelog.1.gz
 # Remove ctags from the emacs package to prevent conflicting with
 # the Universal Ctags from the 'ctags' package (the bin/etags
 # program still remain in the emacs package):
-NEOTERM_PKG_RM_AFTER_INSTALL+=" bin/ctags share/man/man1/ctags.1 share/man/man1/ctags.1.gz"
+TERMUX_PKG_RM_AFTER_INSTALL+=" bin/ctags share/man/man1/ctags.1 share/man/man1/ctags.1.gz"
 
-neoterm_step_post_get_source() {
+termux_step_post_get_source() {
 	# Certain packages are not safe to build on device because their
-	# build.sh script deletes specific files in $NEOTERM_PREFIX.
-	if $NEOTERM_ON_DEVICE_BUILD; then
-		neoterm_error_exit "Package '$NEOTERM_PKG_NAME' is not safe for on-device builds."
+	# build.sh script deletes specific files in $TERMUX_PREFIX.
+	if $TERMUX_ON_DEVICE_BUILD; then
+		termux_error_exit "Package '$TERMUX_PKG_NAME' is not safe for on-device builds."
 	fi
 
 	# Version guard
-	local ver_e=$(. $NEOTERM_SCRIPTDIR/packages/emacs/build.sh; echo ${NEOTERM_PKG_VERSION#*:})
-	local ver_x=${NEOTERM_PKG_VERSION#*:}
+	local ver_e=$(. $TERMUX_SCRIPTDIR/packages/emacs/build.sh; echo ${TERMUX_PKG_VERSION#*:})
+	local ver_x=${TERMUX_PKG_VERSION#*:}
 	if [ "${ver_e}" != "${ver_x}" ]; then
-		neoterm_error_exit "Version mismatch between emacs and emacs-x."
+		termux_error_exit "Version mismatch between emacs and emacs-x."
 	fi
 
 	# XXX: We have to start with new host build each time
 	#      to avoid build error when cross compiling.
-	rm -Rf $NEOTERM_PKG_HOSTBUILD_DIR
+	rm -Rf $TERMUX_PKG_HOSTBUILD_DIR
 
 	# Termux only use info pages for emacs. Remove the info directory
 	# to get a clean Info directory file dir.
-	rm -Rf $NEOTERM_PREFIX/share/info
+	rm -Rf $TERMUX_PREFIX/share/info
 }
 
-neoterm_step_host_build() {
-	local _VERSION=$(echo ${NEOTERM_PKG_VERSION#*:} | cut -d - -f 1)
-	# Build a bootstrap-emacs binary to be used in neoterm_step_post_configure.
-	local NATIVE_PREFIX=$NEOTERM_PKG_TMPDIR/emacs-native
+termux_step_host_build() {
+	local _VERSION=$(echo ${TERMUX_PKG_VERSION#*:} | cut -d - -f 1)
+	# Build a bootstrap-emacs binary to be used in termux_step_post_configure.
+	local NATIVE_PREFIX=$TERMUX_PKG_TMPDIR/emacs-native
 	mkdir -p $NATIVE_PREFIX/share/emacs/${_VERSION}
-	ln -s $NEOTERM_PKG_SRCDIR/lisp $NATIVE_PREFIX/share/emacs/${_VERSION}/lisp
-	( cd $NEOTERM_PKG_SRCDIR; ./autogen.sh )
-	$NEOTERM_PKG_SRCDIR/configure --prefix=$NATIVE_PREFIX --without-all --without-x
-	make -j $NEOTERM_MAKE_PROCESSES
+	ln -s $TERMUX_PKG_SRCDIR/lisp $NATIVE_PREFIX/share/emacs/${_VERSION}/lisp
+	( cd $TERMUX_PKG_SRCDIR; ./autogen.sh )
+	$TERMUX_PKG_SRCDIR/configure --prefix=$NATIVE_PREFIX --without-all --without-x
+	make -j $TERMUX_MAKE_PROCESSES
 }
 
-neoterm_step_post_configure() {
-	cp $NEOTERM_PKG_HOSTBUILD_DIR/src/bootstrap-emacs $NEOTERM_PKG_BUILDDIR/src/bootstrap-emacs
-	cp $NEOTERM_PKG_HOSTBUILD_DIR/lib-src/make-docfile $NEOTERM_PKG_BUILDDIR/lib-src/make-docfile
-	cp $NEOTERM_PKG_HOSTBUILD_DIR/lib-src/make-fingerprint $NEOTERM_PKG_BUILDDIR/lib-src/make-fingerprint
-	cp -r $NEOTERM_PKG_SRCDIR/lisp/* $NEOTERM_PKG_BUILDDIR/lisp
-	cp -r $NEOTERM_PKG_SRCDIR/etc $NEOTERM_PKG_BUILDDIR
+termux_step_post_configure() {
+	cp $TERMUX_PKG_HOSTBUILD_DIR/src/bootstrap-emacs $TERMUX_PKG_BUILDDIR/src/bootstrap-emacs
+	cp $TERMUX_PKG_HOSTBUILD_DIR/lib-src/make-docfile $TERMUX_PKG_BUILDDIR/lib-src/make-docfile
+	cp $TERMUX_PKG_HOSTBUILD_DIR/lib-src/make-fingerprint $TERMUX_PKG_BUILDDIR/lib-src/make-fingerprint
+	cp -r $TERMUX_PKG_SRCDIR/lisp/* $TERMUX_PKG_BUILDDIR/lisp
+	cp -r $TERMUX_PKG_SRCDIR/etc $TERMUX_PKG_BUILDDIR
 	# Update timestamps so that the binaries does not get rebuilt:
-	touch -d "next hour" $NEOTERM_PKG_BUILDDIR/src/bootstrap-emacs \
-		$NEOTERM_PKG_BUILDDIR/lib-src/make-docfile \
-		$NEOTERM_PKG_BUILDDIR/lib-src/make-fingerprint
+	touch -d "next hour" $TERMUX_PKG_BUILDDIR/src/bootstrap-emacs \
+		$TERMUX_PKG_BUILDDIR/lib-src/make-docfile \
+		$TERMUX_PKG_BUILDDIR/lib-src/make-fingerprint
 }
 
-neoterm_step_post_make_install() {
-	mkdir -p $NEOTERM_PREFIX/share/emacs/${_VERSION}/lisp/emacs-lisp/
-	local _VERSION=$(echo ${NEOTERM_PKG_VERSION#*:} | cut -d - -f 1)
-	cp $NEOTERM_PKG_BUILDER_DIR/site-init.el $NEOTERM_PREFIX/share/emacs/${_VERSION}/lisp/emacs-lisp/
+termux_step_post_make_install() {
+	mkdir -p $TERMUX_PREFIX/share/emacs/${_VERSION}/lisp/emacs-lisp/
+	local _VERSION=$(echo ${TERMUX_PKG_VERSION#*:} | cut -d - -f 1)
+	cp $TERMUX_PKG_BUILDER_DIR/site-init.el $TERMUX_PREFIX/share/emacs/${_VERSION}/lisp/emacs-lisp/
 }
 
-neoterm_step_create_debscripts() {
-	local _VERSION=$(echo ${NEOTERM_PKG_VERSION#*:} | cut -d - -f 1)
+termux_step_create_debscripts() {
+	local _VERSION=$(echo ${TERMUX_PKG_VERSION#*:} | cut -d - -f 1)
 	cat <<- EOF > ./postinst
-	#!$NEOTERM_PREFIX/bin/sh
+	#!$TERMUX_PREFIX/bin/sh
 	if [ "\$1" = "configure" ] || [ "\$1" = "abort-upgrade" ]; then
-		if [ -x "$NEOTERM_PREFIX/bin/update-alternatives" ]; then
+		if [ -x "$TERMUX_PREFIX/bin/update-alternatives" ]; then
 			update-alternatives --install \
-				$NEOTERM_PREFIX/bin/editor editor $NEOTERM_PREFIX/bin/emacs 40
+				$TERMUX_PREFIX/bin/editor editor $TERMUX_PREFIX/bin/emacs 40
 		fi
 	fi
 
-	cd $NEOTERM_PREFIX/share/emacs/${_VERSION}/lisp
-	LC_ALL=C $NEOTERM_PREFIX/bin/emacs -batch -l loadup --temacs=pdump
-	mv $NEOTERM_PREFIX/bin/emacs*.pdmp $NEOTERM_PREFIX/libexec/emacs/${_VERSION}/${NEOTERM_ARCH}-linux-android*/
+	cd $TERMUX_PREFIX/share/emacs/${_VERSION}/lisp
+	LC_ALL=C $TERMUX_PREFIX/bin/emacs -batch -l loadup --temacs=pdump
+	mv $TERMUX_PREFIX/bin/emacs*.pdmp $TERMUX_PREFIX/libexec/emacs/${_VERSION}/${TERMUX_ARCH}-linux-android*/
 	EOF
 
 	cat <<- EOF > ./prerm
-	#!$NEOTERM_PREFIX/bin/sh
+	#!$TERMUX_PREFIX/bin/sh
 	if [ "\$1" != "upgrade" ]; then
-		if [ -x "$NEOTERM_PREFIX/bin/update-alternatives" ]; then
-			update-alternatives --remove editor $NEOTERM_PREFIX/bin/emacs
+		if [ -x "$TERMUX_PREFIX/bin/update-alternatives" ]; then
+			update-alternatives --remove editor $TERMUX_PREFIX/bin/emacs
 		fi
 	fi
 	EOF

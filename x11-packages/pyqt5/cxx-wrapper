@@ -43,5 +43,5 @@ if test "${cfgtest}"; then
 fi
 
 libs=
-test "${shared}" && libs="-L@NEOTERM_PREFIX@/lib -lpython@PYTHON_VERSION@"
+test "${shared}" && libs="-L@TERMUX_PREFIX@/lib -lpython@PYTHON_VERSION@"
 exec @CXX@ "$@" ${libs}

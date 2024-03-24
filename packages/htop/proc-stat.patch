@@ -6,7 +6,7 @@ diff -uNr htop-3.0.5/linux/LinuxProcessList.h htop-3.0.5.mod/linux/LinuxProcessL
  
  #ifndef PROCSTATFILE
 -#define PROCSTATFILE PROCDIR "/stat"
-+#define PROCSTATFILE "@NEOTERM_PREFIX@/var/htop/stat"
++#define PROCSTATFILE "@TERMUX_PREFIX@/var/htop/stat"
  #endif
  
  #ifndef PROCMEMINFOFILE

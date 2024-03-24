@@ -10,9 +10,9 @@ installing through "pip". But for stable packages we cannot use it in
 postinst script to add missing dependencies.
 
 So if you decide to drop this patch:
-* Add python3-packaging to neoterm-packages.
+* Add python3-packaging to termux-packages.
 * Alternatively: create a postinst deb script (pip3 install packaging)
-  and move borgbackup to https://github.com/neoterm/unstable-packages
+  and move borgbackup to https://github.com/termux/unstable-packages
 ---
  setup.py             | 24 ++++++++----------------
  src/borg/__init__.py |  5 ++---

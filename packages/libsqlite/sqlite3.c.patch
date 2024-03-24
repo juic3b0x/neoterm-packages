@@ -7,7 +7,7 @@
 -       "/var/tmp",
 -       "/usr/tmp",
 -       "/tmp",
-+       "@NEOTERM_PREFIX@/tmp",
++       "@TERMUX_PREFIX@/tmp",
         ".",
         0        /* List terminator */
      };

@@ -5,7 +5,7 @@
  
  FileSpec HostInfoAndroid::GetDefaultShell() {
 -  return FileSpec("/system/bin/sh");
-+  return FileSpec("@NEOTERM_PREFIX@/bin/sh");
++  return FileSpec("@TERMUX_PREFIX@/bin/sh");
  }
  
  FileSpec HostInfoAndroid::ResolveLibraryPath(const std::string &module_path,
@@ -16,9 +16,9 @@
 -  static const char *const default_lib64_path[] = {"/vendor/lib64",
 -                                                   "/system/lib64", nullptr};
 +  static const char *const default_lib32_path[] = {
-+      "@NEOTERM_PREFIX@/lib", "/vendor/lib", "/system/lib", nullptr};
++      "@TERMUX_PREFIX@/lib", "/vendor/lib", "/system/lib", nullptr};
 +  static const char *const default_lib64_path[] = {
-+      "@NEOTERM_PREFIX@/lib", "/vendor/lib64", "/system/lib64", nullptr};
++      "@TERMUX_PREFIX@/lib", "/vendor/lib64", "/system/lib64", nullptr};
  
    if (module_path.empty() || module_path[0] == '/') {
      FileSpec file_spec(module_path.c_str());
@@ -27,7 +27,7 @@
    // correct at least in some cases (i.e., when running as shell user).
    if (!success || !FileSystem::Instance().Exists(file_spec))
 -    file_spec = FileSpec("/data/local/tmp");
-+    file_spec = FileSpec("@NEOTERM_PREFIX@/tmp");
++    file_spec = FileSpec("@TERMUX_PREFIX@/tmp");
  
    return FileSystem::Instance().Exists(file_spec);
  }

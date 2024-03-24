@@ -16,7 +16,7 @@
 -projectDir="$HOME/OpenFOAM/OpenFOAM-$WM_PROJECT_VERSION"
 -# projectDir="/opt/openfoam/OpenFOAM-$WM_PROJECT_VERSION"
 +# projectDir="$HOME/OpenFOAM/OpenFOAM-$WM_PROJECT_VERSION"
-+projectDir="@NEOTERM_PREFIX@/opt/OpenFOAM-$WM_PROJECT_VERSION"
++projectDir="@TERMUX_PREFIX@/opt/OpenFOAM-$WM_PROJECT_VERSION"
  # projectDir="/usr/local/OpenFOAM/OpenFOAM-$WM_PROJECT_VERSION"
  ################################################################################
  # Or optionally hard-coded (eg, with autoconfig)

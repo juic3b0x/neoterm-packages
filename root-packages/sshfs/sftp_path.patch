@@ -5,7 +5,7 @@
  #define RENAME_TEMP_CHARS 8
  
 -#define SFTP_SERVER_PATH "/usr/lib/sftp-server"
-+#define SFTP_SERVER_PATH "@NEOTERM_PREFIX@/lib/sftp-server"
++#define SFTP_SERVER_PATH "@TERMUX_PREFIX@/lib/sftp-server"
  
  /* Asynchronous readdir parameters */
  #define READDIR_START 2

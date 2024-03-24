@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/18954
+https://github.com/termux/termux-packages/issues/18954
 
 --- a/ui_curses.c
 +++ b/ui_curses.c
@@ -6,11 +6,11 @@ https://github.com/neoterm/neoterm-packages/issues/18954
  #include <math.h>
  #include <sys/time.h>
  
-+#ifdef __NEOTERM__
++#ifdef __TERMUX__
 +#include <android/fdsan.h>
 +#include <dlfcn.h>
 +
-+static inline void neoterm_disable_fdsan() {
++static inline void termux_disable_fdsan() {
 +	// For Android 11+.
 +	void *lib_handle = dlopen("libc.so", RTLD_LAZY);
 +	if (lib_handle) {
@@ -30,8 +30,8 @@ https://github.com/neoterm/neoterm-packages/issues/18954
  {
  	int list_plugins = 0;
  
-+#ifdef __NEOTERM__
-+	neoterm_disable_fdsan();
++#ifdef __TERMUX__
++	termux_disable_fdsan();
 +#endif
 +
  	program_name = argv[0];

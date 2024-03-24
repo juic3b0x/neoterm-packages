@@ -5,7 +5,7 @@
  # define GDB_PATH "/usr/local/bin/gdb"
  #else
 -# define GDB_PATH "/usr/bin/gdb"
-+# define GDB_PATH "@NEOTERM_PREFIX@/bin/gdb"
++# define GDB_PATH "@TERMUX_PREFIX@/bin/gdb"
  #endif
  
  
@@ -16,7 +16,7 @@
                  0
              };
 -            execv("/usr/bin/nice", (char* const*)argv);
-+            execv("@NEOTERM_PREFIX@/bin/nice", (char* const*)argv);
++            execv("@TERMUX_PREFIX@/bin/nice", (char* const*)argv);
              printf("Failed to start gdb: %s\n", strerror(errno));
              fflush(stdout);
              _exit(0);

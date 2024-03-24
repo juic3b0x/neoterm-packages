@@ -5,15 +5,15 @@ import sys
 import typing
 
 COMPLIER_PATH = "@COMPILER@"
-NEOTERM_PREFIX = "@NEOTERM_PREFIX@"
+TERMUX_PREFIX = "@TERMUX_PREFIX@"
 
 def main(argv: typing.List[str]):
   cwd = os.getcwd()
-  # Move `-I@NEOTERM_PREFIX@/include` to the last include param
+  # Move `-I@TERMUX_PREFIX@/include` to the last include param
   argv_new = []
   argv_last = []
   for arg in argv[1:]:
-    if arg.startswith("-I@NEOTERM_PREFIX@"):
+    if arg.startswith("-I@TERMUX_PREFIX@"):
       argv_last.append(arg)
     else:
       argv_new.append(arg)

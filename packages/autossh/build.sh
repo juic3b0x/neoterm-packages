@@ -1,11 +1,11 @@
-NEOTERM_PKG_HOMEPAGE=https://www.harding.motd.ca/autossh/
-NEOTERM_PKG_DESCRIPTION="Automatically restart SSH sessions and tunnels"
-NEOTERM_PKG_LICENSE="BSD"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION=1.4g
-NEOTERM_PKG_REVISION=3
-NEOTERM_PKG_SRCURL=https://fossies.org/linux/privat/autossh-${NEOTERM_PKG_VERSION}.tar.xz
-NEOTERM_PKG_SHA256=83766463763364a1be56d6bf1a75b40a59302586645bf0c4fa885188cf01ebfc
-NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_DEPENDS="openssh | dropbear"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--mandir=$NEOTERM_PREFIX/share/man ac_cv_path_ssh=$NEOTERM_PREFIX/bin/ssh"
+TERMUX_PKG_HOMEPAGE=https://www.harding.motd.ca/autossh/
+TERMUX_PKG_DESCRIPTION="Automatically restart SSH sessions and tunnels"
+TERMUX_PKG_LICENSE="BSD"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION=1.4g
+TERMUX_PKG_REVISION=3
+TERMUX_PKG_SRCURL=https://fossies.org/linux/privat/autossh-${TERMUX_PKG_VERSION}.tar.xz
+TERMUX_PKG_SHA256=83766463763364a1be56d6bf1a75b40a59302586645bf0c4fa885188cf01ebfc
+TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_DEPENDS="openssh | dropbear"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--mandir=$TERMUX_PREFIX/share/man ac_cv_path_ssh=$TERMUX_PREFIX/bin/ssh"

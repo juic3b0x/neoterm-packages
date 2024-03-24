@@ -1,38 +1,38 @@
-NEOTERM_PKG_HOMEPAGE="https://www.nongnu.org/simulavr"
-NEOTERM_PKG_DESCRIPTION="Simulator for Microchip AVR (formerly Atmel) microcontrollers"
-NEOTERM_PKG_LICENSE="GPL-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_HOMEPAGE="https://www.nongnu.org/simulavr"
+TERMUX_PKG_DESCRIPTION="Simulator for Microchip AVR (formerly Atmel) microcontrollers"
+TERMUX_PKG_LICENSE="GPL-2.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
 _VERSION_MAJOR=1
 _VERSION_MINOR=1
 _VERSION_PATCH=0
-NEOTERM_PKG_VERSION=1:${_VERSION_MAJOR}.${_VERSION_MINOR}.${_VERSION_PATCH}
-NEOTERM_PKG_REVISION=1
-NEOTERM_PKG_SRCURL="git+https://git.savannah.nongnu.org/git/simulavr"
-NEOTERM_PKG_GIT_BRANCH=release-${NEOTERM_PKG_VERSION#*:}
-NEOTERM_PKG_DEPENDS="libc++"
-NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS='
+TERMUX_PKG_VERSION=1:${_VERSION_MAJOR}.${_VERSION_MINOR}.${_VERSION_PATCH}
+TERMUX_PKG_REVISION=1
+TERMUX_PKG_SRCURL="git+https://git.savannah.nongnu.org/git/simulavr"
+TERMUX_PKG_GIT_BRANCH=release-${TERMUX_PKG_VERSION#*:}
+TERMUX_PKG_DEPENDS="libc++"
+TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS='
 -DBUILD_TCL=OFF
 -DBUILD_PYTHON=OFF
 -DBUILD_VERILOG=OFF
 -DCHECK_VALGRIND=OFF
 '
 
-neoterm_step_post_get_source() {
+termux_step_post_get_source() {
 	echo "Applying hardcode-version.diff"
 	sed \
 		-e "s|@VERSION_MAJOR@|${_VERSION_MAJOR}|g" \
 		-e "s|@VERSION_MINOR@|${_VERSION_MINOR}|g" \
 		-e "s|@VERSION_PATCH@|${_VERSION_PATCH}|g" \
-		$NEOTERM_PKG_BUILDER_DIR/hardcode-version.diff \
+		$TERMUX_PKG_BUILDER_DIR/hardcode-version.diff \
 		| patch --silent -p1
 }
 
-neoterm_step_post_make_install() {
-	mv "$NEOTERM_PREFIX/share/doc/common" "$NEOTERM_PREFIX/share/doc/simulavr"
+termux_step_post_make_install() {
+	mv "$TERMUX_PREFIX/share/doc/common" "$TERMUX_PREFIX/share/doc/simulavr"
 	# Headers are moved into their own subdirectory to prevent conflicts.
 	# Might cause issues when using them.
-	mv "$NEOTERM_PREFIX/include" "$NEOTERM_PREFIX/include-simulavr"
-	mkdir "$NEOTERM_PREFIX/include"
-	mv "$NEOTERM_PREFIX/include-simulavr" "$NEOTERM_PREFIX/include/simulavr"
+	mv "$TERMUX_PREFIX/include" "$TERMUX_PREFIX/include-simulavr"
+	mkdir "$TERMUX_PREFIX/include"
+	mv "$TERMUX_PREFIX/include-simulavr" "$TERMUX_PREFIX/include/simulavr"
 }

@@ -33,7 +33,7 @@ diff -uNr e2fsprogs-1.44.4/lib/ext2fs/ismounted.c e2fsprogs-1.44.4.mod/lib/ext2f
  
  #ifdef DEBUG
 -	retval = check_mntent_file("/tmp/mtab", file, mount_flags,
-+	retval = check_mntent_file("@NEOTERM_PREFIX@/tmp/mtab", file, mount_flags,
++	retval = check_mntent_file("@TERMUX_PREFIX@/tmp/mtab", file, mount_flags,
  				   mtpt, mtlen);
  	if (retval == 0)
  		return 0;

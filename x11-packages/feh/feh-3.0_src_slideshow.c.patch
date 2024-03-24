@@ -6,7 +6,7 @@ diff -uNr feh-3.0/src/slideshow.c feh-3.0.mod/src/slideshow.c
  					strncat(ret, filelist_tmppath, sizeof(ret) - strlen(ret) - 1);
  				} else {
 -					filelist_tmppath = feh_unique_filename("/tmp/","filelist");
-+					filelist_tmppath = feh_unique_filename("@NEOTERM_PREFIX@/tmp/","filelist");
++					filelist_tmppath = feh_unique_filename("@TERMUX_PREFIX@/tmp/","filelist");
  					feh_write_filelist(filelist, filelist_tmppath);
  					strncat(ret, filelist_tmppath, sizeof(ret) - strlen(ret) - 1);
  				}

@@ -5,7 +5,7 @@
  	strcpy(szCacheDir, "/data/data/com.gpac.Osmo4/cache");
  #else
 -	strcpy(szCacheDir, "/tmp");
-+	strcpy(szCacheDir, "@NEOTERM_PREFIX@/tmp");
++	strcpy(szCacheDir, "@TERMUX_PREFIX@/tmp");
  #endif
  
  	strcpy(root_tmp, szCacheDir);

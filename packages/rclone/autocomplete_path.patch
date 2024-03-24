@@ -6,7 +6,7 @@ diff -u -r ../rclone-v1.55.1/backend/hdfs/fs.go ./backend/hdfs/fs.go
  	configPath := os.Getenv("KRB5_CONFIG")
  	if configPath == "" {
 -		configPath = "/etc/krb5.conf"
-+		configPath = "@NEOTERM_PREFIX@/etc/krb5.conf"
++		configPath = "@TERMUX_PREFIX@/etc/krb5.conf"
  	}
  
  	cfg, err := config.Load(configPath)
@@ -18,7 +18,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_bash.go ./cmd/g
  Generates a bash shell autocompletion script for rclone.
  
 -This writes to /etc/bash_completion.d/rclone by default so will
-+This writes to @NEOTERM_PREFIX@/etc/bash_completion.d/rclone by default so will
++This writes to @TERMUX_PREFIX@/etc/bash_completion.d/rclone by default so will
  probably need to be run with sudo or as root, e.g.
  
      sudo rclone genautocomplete bash
@@ -27,7 +27,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_bash.go ./cmd/g
  them directly
  
 -    . /etc/bash_completion
-+    . @NEOTERM_PREFIX@/etc/bash_completion
++    . @TERMUX_PREFIX@/etc/bash_completion
  
  If you supply a command line argument the script will be written
  there.
@@ -36,7 +36,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_bash.go ./cmd/g
  	Run: func(command *cobra.Command, args []string) {
  		cmd.CheckArgs(0, 1, command, args)
 -		out := "/etc/bash_completion.d/rclone"
-+		out := "@NEOTERM_PREFIX@/etc/bash_completion.d/rclone"
++		out := "@TERMUX_PREFIX@/etc/bash_completion.d/rclone"
  		if len(args) > 0 {
  			if args[0] == "-" {
  				err := cmd.Root.GenBashCompletion(os.Stdout)
@@ -48,7 +48,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_fish.go ./cmd/g
  Generates a fish autocompletion script for rclone.
  
 -This writes to /etc/fish/completions/rclone.fish by default so will
-+This writes to @NEOTERM_PREFIX@/etc/fish/completions/rclone.fish by default so will
++This writes to @TERMUX_PREFIX@/etc/fish/completions/rclone.fish by default so will
  probably need to be run with sudo or as root, e.g.
  
      sudo rclone genautocomplete fish
@@ -57,7 +57,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_fish.go ./cmd/g
  them directly
  
 -    . /etc/fish/completions/rclone.fish
-+    . @NEOTERM_PREFIX@/etc/fish/completions/rclone.fish
++    . @TERMUX_PREFIX@/etc/fish/completions/rclone.fish
  
  If you supply a command line argument the script will be written
  there.
@@ -66,7 +66,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_fish.go ./cmd/g
  	Run: func(command *cobra.Command, args []string) {
  		cmd.CheckArgs(0, 1, command, args)
 -		out := "/etc/fish/completions/rclone.fish"
-+		out := "@NEOTERM_PREFIX@/etc/fish/completions/rclone.fish"
++		out := "@TERMUX_PREFIX@/etc/fish/completions/rclone.fish"
  		if len(args) > 0 {
  			if args[0] == "-" {
  				err := cmd.Root.GenFishCompletion(os.Stdout, true)
@@ -78,7 +78,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_zsh.go ./cmd/ge
  Generates a zsh autocompletion script for rclone.
  
 -This writes to /usr/share/zsh/vendor-completions/_rclone by default so will
-+This writes to @NEOTERM_PREFIX@/share/zsh/vendor-completions/_rclone by default so will
++This writes to @TERMUX_PREFIX@/share/zsh/vendor-completions/_rclone by default so will
  probably need to be run with sudo or as root, e.g.
  
      sudo rclone genautocomplete zsh
@@ -87,7 +87,7 @@ diff -u -r ../rclone-v1.55.1/cmd/genautocomplete/genautocomplete_zsh.go ./cmd/ge
  	Run: func(command *cobra.Command, args []string) {
  		cmd.CheckArgs(0, 1, command, args)
 -		out := "/usr/share/zsh/vendor-completions/_rclone"
-+		out := "@NEOTERM_PREFIX@/share/zsh/vendor-completions/_rclone"
++		out := "@TERMUX_PREFIX@/share/zsh/vendor-completions/_rclone"
  		if len(args) > 0 {
  			if args[0] == "-" {
  				err := cmd.Root.GenZshCompletion(os.Stdout)

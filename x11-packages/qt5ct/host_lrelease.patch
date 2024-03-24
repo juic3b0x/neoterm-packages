@@ -16,7 +16,7 @@
 -win32:exists($$[QT_INSTALL_BINS]/lrelease.exe){
 -LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease.exe
 -}
-+LRELEASE_EXECUTABLE = @NEOTERM_PREFIX@/opt/qt/cross/bin/lrelease
++LRELEASE_EXECUTABLE = @TERMUX_PREFIX@/opt/qt/cross/bin/lrelease
  
  
  isEmpty(LRELEASE_EXECUTABLE){

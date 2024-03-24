@@ -6,7 +6,7 @@ diff -u -r ../apk-tools-2.10.1/src/apk.c ./src/apk.c
  	apk_flags |= APK_PROGRESS;
  	if (!(apk_flags & APK_SIMULATE) &&
 -	    access("/etc/apk/interactive", F_OK) == 0)
-+	    access("@NEOTERM_PREFIX@/etc/apk/interactive", F_OK) == 0)
++	    access("@TERMUX_PREFIX@/etc/apk/interactive", F_OK) == 0)
  		apk_flags |= APK_INTERACTIVE;
  }
  

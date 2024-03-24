@@ -1,5 +1,5 @@
 --- pacman-6.0.1/scripts/makepkg.sh.in	2022-06-24 13:01:22.036039817 +0300
-+++ pacman-neoterm/scripts/makepkg.sh.in	2022-06-24 13:13:23.866039541 +0300
++++ pacman-termux/scripts/makepkg.sh.in	2022-06-24 13:13:23.866039541 +0300
 @@ -26,7 +26,7 @@
  
  # makepkg uses quite a few external programs during its execution. You
@@ -73,7 +73,7 @@
  run_single_packaging() {
  	local pkgdir="$pkgdirbase/$pkgname"
 -	mkdir "$pkgdir"
-+	local terdir="$pkgdir@NEOTERM_BASE_DIR@"
++	local terdir="$pkgdir@TERMUX_BASE_DIR@"
 +	mkdir -p "$terdir"
  	if [[ -n $1 ]] || (( PKGFUNC )); then
  		run_package $1
@@ -112,12 +112,12 @@
  # set pkgdir to something "sensible" for (not recommended) use during build()
  pkgdir="$pkgdirbase/$pkgbase"
  
-+# the second pkgdir but from the neoterm system directory
-+terdir="$pkgdir@NEOTERM_BASE_DIR@"
++# the second pkgdir but from the termux system directory
++terdir="$pkgdir@TERMUX_BASE_DIR@"
 +
 +# adding home and prefix to compile correctly
-+prefix="@NEOTERM_PREFIX@"
-+home="@NEOTERM_HOME@"
++prefix="@TERMUX_PREFIX@"
++home="@TERMUX_HOME@"
 +
  if (( GENINTEG )); then
  	mkdir -p "$srcdir"

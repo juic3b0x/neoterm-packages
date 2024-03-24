@@ -5,7 +5,7 @@
     name_pattern = dir.normalize(name_pattern)
 
 -   local template = (os.getenv("TMPDIR") or "/tmp") .. "/luarocks_" .. name_pattern:gsub("/", "_") .. "-XXXXXX"
-+   local template = (os.getenv("TMPDIR") or "@NEOTERM_PREFIX@/tmp") .. "/luarocks_" .. name_pattern:gsub("/", "_") .. "-XXXXXX"
++   local template = (os.getenv("TMPDIR") or "@TERMUX_PREFIX@/tmp") .. "/luarocks_" .. name_pattern:gsub("/", "_") .. "-XXXXXX"
     local pipe = io.popen(vars.MKTEMP.." -d "..fs.Q(template))
     local dirname = pipe:read("*l")
     pipe:close()

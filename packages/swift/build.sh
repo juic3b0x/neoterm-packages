@@ -1,33 +1,33 @@
-NEOTERM_PKG_HOMEPAGE=https://swift.org/
-NEOTERM_PKG_DESCRIPTION="Swift is a high-performance system programming language"
-NEOTERM_PKG_LICENSE="Apache-2.0, NCSA"
-NEOTERM_PKG_MAINTAINER="@finagolfin"
-NEOTERM_PKG_VERSION=5.10
+TERMUX_PKG_HOMEPAGE=https://swift.org/
+TERMUX_PKG_DESCRIPTION="Swift is a high-performance system programming language"
+TERMUX_PKG_LICENSE="Apache-2.0, NCSA"
+TERMUX_PKG_MAINTAINER="@finagolfin"
+TERMUX_PKG_VERSION=5.10
 SWIFT_RELEASE="RELEASE"
-NEOTERM_PKG_SRCURL=https://github.com/apple/swift/archive/swift-$NEOTERM_PKG_VERSION-$SWIFT_RELEASE.tar.gz
-NEOTERM_PKG_SHA256=874c3b6668fb138db35c9f1c63570dafacac8476a6094b17764a51a45a1b69a2
-NEOTERM_PKG_AUTO_UPDATE=false
-NEOTERM_PKG_HOSTBUILD=true
-NEOTERM_PKG_DEPENDS="clang, libandroid-glob, libandroid-posix-semaphore, libandroid-spawn, libcurl, libicu, libicu-static, libsqlite, libuuid, libxml2, libdispatch, llbuild, pkg-config, swift-sdk-${NEOTERM_ARCH/_/-}"
-NEOTERM_PKG_BUILD_DEPENDS="rsync"
-NEOTERM_PKG_BLACKLISTED_ARCHES="i686"
-NEOTERM_PKG_NO_STATICSPLIT=true
+TERMUX_PKG_SRCURL=https://github.com/apple/swift/archive/swift-$TERMUX_PKG_VERSION-$SWIFT_RELEASE.tar.gz
+TERMUX_PKG_SHA256=874c3b6668fb138db35c9f1c63570dafacac8476a6094b17764a51a45a1b69a2
+TERMUX_PKG_AUTO_UPDATE=false
+TERMUX_PKG_HOSTBUILD=true
+TERMUX_PKG_DEPENDS="clang, libandroid-glob, libandroid-posix-semaphore, libandroid-spawn, libcurl, libicu, libicu-static, libsqlite, libuuid, libxml2, libdispatch, llbuild, pkg-config, swift-sdk-${TERMUX_ARCH/_/-}"
+TERMUX_PKG_BUILD_DEPENDS="rsync"
+TERMUX_PKG_BLACKLISTED_ARCHES="i686"
+TERMUX_PKG_NO_STATICSPLIT=true
 # Building swift uses CMake, but the standard
-# neoterm_step_configure_cmake function is not used. Instead, we set
-# NEOTERM_PKG_FORCE_CMAKE to make the build system aware that CMake is
+# termux_step_configure_cmake function is not used. Instead, we set
+# TERMUX_PKG_FORCE_CMAKE to make the build system aware that CMake is
 # needed.
-NEOTERM_PKG_FORCE_CMAKE=true
-NEOTERM_CMAKE_BUILD=Ninja
+TERMUX_PKG_FORCE_CMAKE=true
+TERMUX_CMAKE_BUILD=Ninja
 
 SWIFT_COMPONENTS="autolink-driver;compiler;clang-resource-dir-symlink;swift-remote-mirror;license;sourcekit-inproc;static-mirror-lib;stdlib;sdk-overlay"
-SWIFT_TOOLCHAIN_FLAGS="-RA --llvm-targets-to-build='X86;ARM;AArch64' -j $NEOTERM_MAKE_PROCESSES --install-prefix=$NEOTERM_PREFIX"
+SWIFT_TOOLCHAIN_FLAGS="-RA --llvm-targets-to-build='X86;ARM;AArch64' -j $TERMUX_MAKE_PROCESSES --install-prefix=$TERMUX_PREFIX"
 SWIFT_PATH_FLAGS="--build-subdir=. --install-destdir=/"
 SWIFT_BUILD_FLAGS="$SWIFT_TOOLCHAIN_FLAGS $SWIFT_PATH_FLAGS"
 
-SWIFT_ARCH=$NEOTERM_ARCH
+SWIFT_ARCH=$TERMUX_ARCH
 test $SWIFT_ARCH == 'arm' && SWIFT_ARCH='armv7'
 
-neoterm_step_post_get_source() {
+termux_step_post_get_source() {
 	# The Swift build-script requires a particular organization of source
 	# directories, which the following downloads and sets up.
 	mkdir .temp
@@ -83,14 +83,14 @@ neoterm_step_post_get_source() {
 			TAR_NAME=$SRC_VERSION
 		else
 			SRC_VERSION=$SWIFT_RELEASE
-			TAR_NAME=swift-$NEOTERM_PKG_VERSION-$SWIFT_RELEASE
+			TAR_NAME=swift-$TERMUX_PKG_VERSION-$SWIFT_RELEASE
 		fi
 
-		neoterm_download \
+		termux_download \
 			https://github.com/$GH_ORG/$library/archive/$TAR_NAME.tar.gz \
-			$NEOTERM_PKG_CACHEDIR/$library-$SRC_VERSION.tar.gz \
+			$TERMUX_PKG_CACHEDIR/$library-$SRC_VERSION.tar.gz \
 			${library_checksums[$library]}
-		tar xf $NEOTERM_PKG_CACHEDIR/$library-$SRC_VERSION.tar.gz
+		tar xf $TERMUX_PKG_CACHEDIR/$library-$SRC_VERSION.tar.gz
 		mv $library-$TAR_NAME $library
 	done
 
@@ -100,10 +100,10 @@ neoterm_step_post_get_source() {
 	mv swift-package-manager swiftpm
 }
 
-neoterm_step_host_build() {
-	if [ "$NEOTERM_ON_DEVICE_BUILD" = "false" ]; then
-		neoterm_setup_cmake
-		neoterm_setup_ninja
+termux_step_host_build() {
+	if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
+		termux_setup_cmake
+		termux_setup_ninja
 
 		local CLANG=$(command -v clang)
 		local CLANGXX=$(command -v clang++)
@@ -116,48 +116,48 @@ neoterm_step_host_build() {
 		fi
 
 		# Natively compile llvm-tblgen and some other files needed later.
-		SWIFT_BUILD_ROOT=$NEOTERM_PKG_HOSTBUILD_DIR $NEOTERM_PKG_SRCDIR/swift/utils/build-script \
-		-R --no-assertions -j $NEOTERM_MAKE_PROCESSES $SWIFT_PATH_FLAGS \
+		SWIFT_BUILD_ROOT=$TERMUX_PKG_HOSTBUILD_DIR $TERMUX_PKG_SRCDIR/swift/utils/build-script \
+		-R --no-assertions -j $TERMUX_MAKE_PROCESSES $SWIFT_PATH_FLAGS \
 		--skip-build-cmark --skip-build-llvm --skip-build-swift --skip-early-swift-driver \
 		--skip-early-swiftsyntax --build-toolchain-only --host-cc=$CLANG --host-cxx=$CLANGXX
 	fi
 }
 
-neoterm_step_make() {
+termux_step_make() {
 	# The Swift compiler searches for the clang headers, so symlink against them using the clang major version.
-	export NEOTERM_CLANG_VERSION=$(. $NEOTERM_SCRIPTDIR/packages/libllvm/build.sh; echo $LLVM_MAJOR_VERSION)
+	export TERMUX_CLANG_VERSION=$(. $TERMUX_SCRIPTDIR/packages/libllvm/build.sh; echo $LLVM_MAJOR_VERSION)
 
-	if [ "$NEOTERM_ON_DEVICE_BUILD" = "false" ]; then
-	        neoterm_setup_swift
-		ln -sf $NEOTERM_PKG_HOSTBUILD_DIR/llvm-linux-x86_64 $NEOTERM_PKG_BUILDDIR/llvm-linux-x86_64
+	if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
+	        termux_setup_swift
+		ln -sf $TERMUX_PKG_HOSTBUILD_DIR/llvm-linux-x86_64 $TERMUX_PKG_BUILDDIR/llvm-linux-x86_64
 
 		SWIFT_BUILD_FLAGS="$SWIFT_BUILD_FLAGS --android
-		--android-ndk $NEOTERM_STANDALONE_TOOLCHAIN --android-arch $SWIFT_ARCH
+		--android-ndk $TERMUX_STANDALONE_TOOLCHAIN --android-arch $SWIFT_ARCH
 		--build-toolchain-only --skip-local-build --skip-local-host-install
 		--cross-compile-hosts=android-$SWIFT_ARCH
-		--cross-compile-deps-path=$(dirname $NEOTERM_PREFIX)
+		--cross-compile-deps-path=$(dirname $TERMUX_PREFIX)
 		--native-swift-tools-path=$SWIFT_BINDIR
 		--native-clang-tools-path=$SWIFT_BINDIR
 		--cross-compile-append-host-target-to-destdir=False"
 	fi
 
-	SWIFT_BUILD_ROOT=$NEOTERM_PKG_BUILDDIR $NEOTERM_PKG_SRCDIR/swift/utils/build-script \
+	SWIFT_BUILD_ROOT=$TERMUX_PKG_BUILDDIR $TERMUX_PKG_SRCDIR/swift/utils/build-script \
 	$SWIFT_BUILD_FLAGS --xctest -b -p --swift-driver --sourcekit-lsp \
-	--android-api-level $NEOTERM_PKG_API_LEVEL --build-swift-static-stdlib \
+	--android-api-level $TERMUX_PKG_API_LEVEL --build-swift-static-stdlib \
 	--swift-install-components=$SWIFT_COMPONENTS --llvm-install-components=IndexStore \
 	--install-llvm --install-swift --install-libdispatch --install-foundation \
 	--install-xctest --install-llbuild --install-swiftpm --install-swift-driver --install-sourcekit-lsp
 }
 
-neoterm_step_make_install() {
-	rm $NEOTERM_PREFIX/lib/swift/android/lib{dispatch,BlocksRuntime}.so
-	mv $NEOTERM_PREFIX/lib/swift/android/lib[^_]*.so $NEOTERM_PREFIX/opt/ndk-multilib/$NEOTERM_ARCH-linux-android*/lib
-	mv $NEOTERM_PREFIX/lib/swift/android/lib*.a $NEOTERM_PREFIX/lib/swift/android/$SWIFT_ARCH
-	mv $NEOTERM_PREFIX/lib/swift_static/android/lib*.a $NEOTERM_PREFIX/lib/swift_static/android/$SWIFT_ARCH
+termux_step_make_install() {
+	rm $TERMUX_PREFIX/lib/swift/android/lib{dispatch,BlocksRuntime}.so
+	mv $TERMUX_PREFIX/lib/swift/android/lib[^_]*.so $TERMUX_PREFIX/opt/ndk-multilib/$TERMUX_ARCH-linux-android*/lib
+	mv $TERMUX_PREFIX/lib/swift/android/lib*.a $TERMUX_PREFIX/lib/swift/android/$SWIFT_ARCH
+	mv $TERMUX_PREFIX/lib/swift_static/android/lib*.a $TERMUX_PREFIX/lib/swift_static/android/$SWIFT_ARCH
 
-	if [ "$NEOTERM_ON_DEVICE_BUILD" = "false" ]; then
-		rm $NEOTERM_PREFIX/swiftpm-android-$SWIFT_ARCH.json
-		mv $NEOTERM_PREFIX/glibc-native.modulemap \
-			$NEOTERM_PREFIX/lib/swift/android/$SWIFT_ARCH/glibc.modulemap
+	if [ "$TERMUX_ON_DEVICE_BUILD" = "false" ]; then
+		rm $TERMUX_PREFIX/swiftpm-android-$SWIFT_ARCH.json
+		mv $TERMUX_PREFIX/glibc-native.modulemap \
+			$TERMUX_PREFIX/lib/swift/android/$SWIFT_ARCH/glibc.modulemap
 	fi
 }

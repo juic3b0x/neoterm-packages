@@ -7,7 +7,7 @@ index 7d976ee..cd6411f 100644
      "",
      "    $ dlopen libc.so.6",
 -    "    $ dlcall lchown string:/tmp/foo int:$UID int:-1",
-+    "    $ dlcall lchown string:@NEOTERM_PREFIX@/tmp/foo int:$UID int:-1",
++    "    $ dlcall lchown string:@TERMUX_PREFIX@/tmp/foo int:$UID int:-1",
      "",
      "Options:",
      "    -a abi      Use the specified ABI rather than the default.",

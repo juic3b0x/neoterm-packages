@@ -6,7 +6,7 @@ diff -uNr samba-4.14.4/auth/credentials/credentials_krb5.c samba-4.14.4.mod/auth
  
  		if (lpcfg_parm_bool(lp_ctx, NULL, "credentials", "krb5_cc_file", false)) {
 -			ccache_name = talloc_asprintf(ccc, "FILE:/tmp/krb5_cc_samba_%u_%p", 
-+			ccache_name = talloc_asprintf(ccc, "FILE:@NEOTERM_PREFIX@/tmp/krb5_cc_samba_%u_%p",
++			ccache_name = talloc_asprintf(ccc, "FILE:@TERMUX_PREFIX@/tmp/krb5_cc_samba_%u_%p",
  						      (unsigned int)getpid(), ccc);
  		} else {
  			ccache_name = talloc_asprintf(ccc, "MEMORY:%p", 
@@ -18,7 +18,7 @@ diff -uNr samba-4.14.4/ctdb/tests/src/porting_tests.c samba-4.14.4.mod/ctdb/test
  	int socket;
  } globals = {
 -	.socketname = "/tmp/test.sock"
-+	.socketname = "@NEOTERM_PREFIX@/tmp/test.sock"
++	.socketname = "@TERMUX_PREFIX@/tmp/test.sock"
  };
  
  
@@ -30,7 +30,7 @@ diff -uNr samba-4.14.4/lib/ldb/tools/ldbedit.c samba-4.14.4.mod/lib/ldb/tools/ld
  	int fd, ret;
  	FILE *f;
 -	char file_template[] = "/tmp/ldbedit.XXXXXX";
-+	char file_template[] = "@NEOTERM_PREFIX@/tmp/ldbedit.XXXXXX";
++	char file_template[] = "@TERMUX_PREFIX@/tmp/ldbedit.XXXXXX";
  	char *cmd;
  	struct ldb_ldif *ldif;
  	struct ldb_message **msgs2 = NULL;
@@ -42,13 +42,13 @@ diff -uNr samba-4.14.4/lib/param/loadparm.c samba-4.14.4.mod/lib/param/loadparm.
  		tmp = lpcfg_parm_string(lp_ctx, NULL, "vlp", "tdbfile");
  		if (tmp == NULL) {
 -			tmp = "/tmp/vlp.tdb";
-+			tmp = "@NEOTERM_PREFIX@/tmp/vlp.tdb";
++			tmp = "@TERMUX_PREFIX@/tmp/vlp.tdb";
  		}
  
  		tdbfile = talloc_asprintf(tmp_ctx, "tdbfile=%s", tmp);
  		if (tdbfile == NULL) {
 -			tdbfile="tdbfile=/tmp/vlp.tdb";
-+			tdbfile="tdbfile=@NEOTERM_PREFIX@/tmp/vlp.tdb";
++			tdbfile="tdbfile=@TERMUX_PREFIX@/tmp/vlp.tdb";
  		}
  
  		tmp = talloc_asprintf(tmp_ctx, "vlp %s print %%p %%s",
@@ -61,8 +61,8 @@ diff -uNr samba-4.14.4/lib/replace/wscript samba-4.14.4.mod/lib/replace/wscript
                      struct stat st;
 -                    char tpl[20]="/tmp/test.XXXXXX";
 -                    char tpl2[20]="/tmp/test.XXXXXX";
-+                    char tpl[51]="@NEOTERM_PREFIX@/tmp/test.XXXXXX";
-+                    char tpl2[51]="@NEOTERM_PREFIX@/tmp/test.XXXXXX";
++                    char tpl[51]="@TERMUX_PREFIX@/tmp/test.XXXXXX";
++                    char tpl2[51]="@TERMUX_PREFIX@/tmp/test.XXXXXX";
                      int fd = mkstemp(tpl);
                      int fd2 = mkstemp(tpl2);
                      if (fd == -1) {
@@ -71,7 +71,7 @@ diff -uNr samba-4.14.4/lib/replace/wscript samba-4.14.4.mod/lib/replace/wscript
                      if (fstat(fd, &st) != 0) exit(1);
                      if ((st.st_mode & 0777) != 0600) exit(1);
 -                    if (strcmp(tpl, "/tmp/test.XXXXXX") == 0) {
-+                    if (strcmp(tpl, "@NEOTERM_PREFIX@/tmp/test.XXXXXX") == 0) {
++                    if (strcmp(tpl, "@TERMUX_PREFIX@/tmp/test.XXXXXX") == 0) {
                            exit(1);
                      }
                      if (strcmp(tpl, tpl2) == 0) {
@@ -83,7 +83,7 @@ diff -uNr samba-4.14.4/lib/util/util.c samba-4.14.4.mod/lib/util/util.c
  	if ((p = getenv("TMPDIR")))
  		return p;
 -	return "/tmp";
-+	return "@NEOTERM_PREFIX@/tmp";
++	return "@TERMUX_PREFIX@/tmp";
  }
  
  
@@ -95,7 +95,7 @@ diff -uNr samba-4.14.4/nsswitch/winbind_nss_aix.c samba-4.14.4.mod/nsswitch/winb
  		return;
  	}
 -	f = fopen("/tmp/WINBIND_DEBUG.log", "a");
-+	f = fopen("@NEOTERM_PREFIX@/tmp/WINBIND_DEBUG.log", "a");
++	f = fopen("@TERMUX_PREFIX@/tmp/WINBIND_DEBUG.log", "a");
  	if (!f) return;
  	va_start(ap, format);
  	vfprintf(f, format, ap);
@@ -107,7 +107,7 @@ diff -uNr samba-4.14.4/source3/client/smbspool_krb5_wrapper.c samba-4.14.4.mod/s
  
  	/* Fallback to a FILE ccache */
 -	snprintf(gen_cc, sizeof(gen_cc), "FILE:/tmp/krb5cc_%u", uid);
-+	snprintf(gen_cc, sizeof(gen_cc), "FILE:@NEOTERM_PREFIX@/tmp/krb5cc_%u", uid);
++	snprintf(gen_cc, sizeof(gen_cc), "FILE:@TERMUX_PREFIX@/tmp/krb5cc_%u", uid);
  
  create_env:
  	/*
@@ -119,7 +119,7 @@ diff -uNr samba-4.14.4/source3/lib/smbconf/testsuite.c samba-4.14.4.mod/source3/
  	sbcErr err;
  	bool ret = true;
 -	const char *filename = "/tmp/smb.conf.smbconf_testsuite";
-+	const char *filename = "@NEOTERM_PREFIX@/tmp/smb.conf.smbconf_testsuite";
++	const char *filename = "@TERMUX_PREFIX@/tmp/smb.conf.smbconf_testsuite";
  	struct smbconf_ctx *conf_ctx = NULL;
  	TALLOC_CTX *mem_ctx = talloc_stackframe();
  
@@ -131,7 +131,7 @@ diff -uNr samba-4.14.4/source3/modules/vfs_virusfilter.c samba-4.14.4.mod/source
  	quarantine_dir = lp_parm_const_string(
  		snum, "virusfilter", "quarantine directory",
 -		tmp ? tmp : "/tmp/.quarantine");
-+		tmp ? tmp : "@NEOTERM_PREFIX@/tmp/.quarantine");
++		tmp ? tmp : "@TERMUX_PREFIX@/tmp/.quarantine");
  	if (quarantine_dir != NULL) {
  		config->quarantine_dir = talloc_strdup(config, quarantine_dir);
  		if (config->quarantine_dir == NULL) {
@@ -143,7 +143,7 @@ diff -uNr samba-4.14.4/source3/modules/vfs_virusfilter_fsav.c samba-4.14.4.mod/s
  #  define VIRUSFILTER_DEFAULT_SOCKET_PATH	FSAV_DEFAULT_SOCKET_PATH
  #else
 -#  define VIRUSFILTER_DEFAULT_SOCKET_PATH	"/tmp/.fsav-0"
-+#  define VIRUSFILTER_DEFAULT_SOCKET_PATH	"@NEOTERM_PREFIX@/tmp/.fsav-0"
++#  define VIRUSFILTER_DEFAULT_SOCKET_PATH	"@TERMUX_PREFIX@/tmp/.fsav-0"
  #endif
  
  /* Default values for module-specific configuration variables */
@@ -155,7 +155,7 @@ diff -uNr samba-4.14.4/source3/registry/tests/test_regfio.c samba-4.14.4.mod/sou
  		test_ctx = talloc_get_type_abort(*state, struct test_ctx);
  
 -		test_ctx->tmp_regfile = talloc_strdup(test_ctx, "/tmp/regfio.XXXXXX");
-+		test_ctx->tmp_regfile = talloc_strdup(test_ctx, "@NEOTERM_PREFIX@/tmp/regfio.XXXXXX");
++		test_ctx->tmp_regfile = talloc_strdup(test_ctx, "@TERMUX_PREFIX@/tmp/regfio.XXXXXX");
  		assert_non_null(test_ctx->tmp_regfile);
  
  		test_ctx->tmp_regfile_fd = mkstemp(test_ctx->tmp_regfile);
@@ -173,7 +173,7 @@ diff -uNr samba-4.14.4/source3/smbd/notifyd/tests.c samba-4.14.4.mod/source3/smb
  		NTSTATUS status;
  
 -		len = snprintf(path, sizeof(path), "/tmp%u", i);
-+		len = snprintf(path, sizeof(path), "@NEOTERM_PREFIX@/tmp%u", i);
++		len = snprintf(path, sizeof(path), "@TERMUX_PREFIX@/tmp%u", i);
  
  		iov[0].iov_base = &msg;
  		iov[0].iov_len = offsetof(struct notify_rec_change_msg, path);
@@ -185,7 +185,7 @@ diff -uNr samba-4.14.4/source3/smbd/process.c samba-4.14.4.mod/source3/smbd/proc
  	for (i=1;i<100;i++) {
  		fname = talloc_asprintf(talloc_tos(),
 -				"/tmp/%s.%d.%s",
-+				"@NEOTERM_PREFIX@/tmp/%s.%d.%s",
++				"@TERMUX_PREFIX@/tmp/%s.%d.%s",
  				name,
  				i,
  				type ? "req" : "resp");
@@ -197,7 +197,7 @@ diff -uNr samba-4.14.4/source3/utils/interact.c samba-4.14.4.mod/source3/utils/i
  
  char* interact_edit(TALLOC_CTX* mem_ctx, const char* str) {
 -	char fname[] = "/tmp/net_idmap_check.XXXXXX";
-+	char fname[] = "@NEOTERM_PREFIX@/tmp/net_idmap_check.XXXXXX";
++	char fname[] = "@TERMUX_PREFIX@/tmp/net_idmap_check.XXXXXX";
  	char buf[128];
  	char* ret = NULL;
  	FILE* file;
@@ -209,7 +209,7 @@ diff -uNr samba-4.14.4/source3/utils/net_rpc_samsync.c samba-4.14.4.mod/source3/
  		   "\t\t no args puts accounts in local passdb from smb.conf\n"
  		   "\t\t ldif - put accounts in ldif format (file defaults to "
 -		   "/tmp/tmp.ldif)\n"
-+		   "@NEOTERM_PREFIX@/tmp/tmp.ldif)\n"
++		   "@TERMUX_PREFIX@/tmp/tmp.ldif)\n"
  		   "\t\t keytab - put account passwords in krb5 keytab "
  		   "(defaults to system keytab)\n"));
  
@@ -221,12 +221,12 @@ diff -uNr samba-4.14.4/source3/winbindd/winbindd_pam.c samba-4.14.4.mod/source3/
  		if (strequal(type, "FILE")) {
  			gen_cc = talloc_asprintf(
 -				mem_ctx, "FILE:/tmp/krb5cc_%d", uid);
-+				mem_ctx, "FILE:@NEOTERM_PREFIX@/tmp/krb5cc_%d", uid);
++				mem_ctx, "FILE:@TERMUX_PREFIX@/tmp/krb5cc_%d", uid);
  		}
  		if (strequal(type, "WRFILE")) {
  			gen_cc = talloc_asprintf(
 -				mem_ctx, "WRFILE:/tmp/krb5cc_%d", uid);
-+				mem_ctx, "WRFILE:@NEOTERM_PREFIX@/tmp/krb5cc_%d", uid);
++				mem_ctx, "WRFILE:@TERMUX_PREFIX@/tmp/krb5cc_%d", uid);
  		}
  		if (strequal(type, "KEYRING")) {
  			gen_cc = talloc_asprintf(
@@ -238,10 +238,10 @@ diff -uNr samba-4.14.4/source4/librpc/tests/binding_string.c samba-4.14.4.mod/so
  	"308FB580-1EB2-11CA-923B-08002B1075A7@ncacn_np:localhost",
  	"308FB580-1EB2-11CA-923B-08002B1075A7@ncacn_ip_tcp:127.0.0.1",
 -	"ncacn_unix_stream:[/tmp/epmapper]",
-+	"ncacn_unix_stream:[@NEOTERM_PREFIX@/tmp/epmapper]",
++	"ncacn_unix_stream:[@TERMUX_PREFIX@/tmp/epmapper]",
  	"ncalrpc:[IDENTIFIER]",
 -	"ncacn_unix_stream:[/tmp/epmapper,sign]",
-+	"ncacn_unix_stream:[@NEOTERM_PREFIX@/tmp/epmapper,sign]",
++	"ncacn_unix_stream:[@TERMUX_PREFIX@/tmp/epmapper,sign]",
  	"ncacn_ip_tcp:127.0.0.1[75,target_hostname=port75.example.com,target_principal=host/port75.example.com]",
  	"ncacn_ip_tcp:127.0.0.1[75,connect,target_hostname=port75.example.com,target_principal=host/port75.example.com,assoc_group_id=0x01234567]",
  	"ncacn_ip_tcp:127.0.0.1[75,packet,target_hostname=port75.example.com,target_principal=host/port75.example.com,assoc_group_id=0x01234567]",
@@ -253,7 +253,7 @@ diff -uNr samba-4.14.4/source4/param/tests/share.c samba-4.14.4.mod/source4/para
  	struct share_info inf[] = { 
  		{ SHARE_INFO_STRING, SHARE_TYPE, discard_const_p(void *, "IPC$") },
 -		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "/tmp/bla") }
-+		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "@NEOTERM_PREFIX@/tmp/bla") }
++		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "@TERMUX_PREFIX@/tmp/bla") }
  	};
  	NTSTATUS status;
  
@@ -262,7 +262,7 @@ diff -uNr samba-4.14.4/source4/param/tests/share.c samba-4.14.4.mod/source4/para
  	struct share_info inf[] = { 
  		{ SHARE_INFO_STRING, SHARE_TYPE, discard_const_p(void *, "IPC$") },
 -		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "/tmp/bla") }
-+		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "@NEOTERM_PREFIX@/tmp/bla") }
++		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "@TERMUX_PREFIX@/tmp/bla") }
  	};
  	NTSTATUS status;
  
@@ -271,7 +271,7 @@ diff -uNr samba-4.14.4/source4/param/tests/share.c samba-4.14.4.mod/source4/para
  	struct share_info inf[] = { 
  		{ SHARE_INFO_STRING, SHARE_TYPE, discard_const_p(void *, "IPC$") },
 -		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "/tmp/bla") }
-+		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "@NEOTERM_PREFIX@/tmp/bla") }
++		{ SHARE_INFO_STRING, SHARE_PATH, discard_const_p(void *, "@TERMUX_PREFIX@/tmp/bla") }
  	};
  	NTSTATUS status;
  
@@ -289,7 +289,7 @@ diff -uNr samba-4.14.4/testsuite/nsswitch/getgrent_r.c samba-4.14.4.mod/testsuit
      /* Open results file */
  
 -    sprintf(fname, "/tmp/getgrent_r-%s.out-%d", id, getpid());
-+    sprintf(fname, "@NEOTERM_PREFIX@/tmp/getgrent_r-%s.out-%d", id, getpid());
++    sprintf(fname, "@TERMUX_PREFIX@/tmp/getgrent_r-%s.out-%d", id, getpid());
  
      if ((fptr = fopen(fname, "w")) == NULL) {
          fprintf(stderr, "ERROR: could not open file %s: %s\n", fname,
@@ -307,7 +307,7 @@ diff -uNr samba-4.14.4/testsuite/nsswitch/getpwent_r.c samba-4.14.4.mod/testsuit
      /* Open results file */
  
 -    sprintf(fname, "/tmp/getpwent_r-%s.out-%d", id, getpid());
-+    sprintf(fname, "@NEOTERM_PREFIX@/tmp/getpwent_r-%s.out-%d", id, getpid());
++    sprintf(fname, "@TERMUX_PREFIX@/tmp/getpwent_r-%s.out-%d", id, getpid());
  
      if ((fptr = fopen(fname, "w")) == 0) {
          fprintf(stderr, "ERROR: could not open file %s: %s\n", fname,
@@ -319,7 +319,7 @@ diff -uNr samba-4.14.4/testsuite/unittests/test_krb5_samba.c samba-4.14.4.mod/te
  	krb5_keytab keytab = NULL;
  	krb5_error_code code;
 -	char keytab_template[] = "/tmp/keytab.XXXXXX";
-+	char keytab_template[] = "@NEOTERM_PREFIX@/tmp/keytab.XXXXXX";
++	char keytab_template[] = "@TERMUX_PREFIX@/tmp/keytab.XXXXXX";
  	int fd;
  
  	fd = mkstemp(keytab_template);
@@ -328,7 +328,7 @@ diff -uNr samba-4.14.4/testsuite/unittests/test_krb5_samba.c samba-4.14.4.mod/te
  	krb5_keytab keytab = NULL;
  	krb5_error_code code;
 -	char keytab_template[] = "/tmp/keytab.XXXXXX";
-+	char keytab_template[] = "@NEOTERM_PREFIX@/tmp/keytab.XXXXXX";
++	char keytab_template[] = "@TERMUX_PREFIX@/tmp/keytab.XXXXXX";
  	char keytab_file[6 + strlen(keytab_template)];
  	int fd;
  
@@ -340,7 +340,7 @@ diff -uNr samba-4.14.4/third_party/pam_wrapper/pam_wrapper.c samba-4.14.4.mod/th
  static void pwrap_init(void)
  {
 -	char tmp_config_dir[] = "/tmp/pam.X";
-+	char tmp_config_dir[] = "@NEOTERM_PREFIX@/tmp/pam.X";
++	char tmp_config_dir[] = "@TERMUX_PREFIX@/tmp/pam.X";
  	size_t len = strlen(tmp_config_dir);
  	const char *env;
  	struct stat sb;

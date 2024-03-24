@@ -5,7 +5,7 @@
  	      baseTempDirName = @"/var/tmp";
  #else
 -	      baseTempDirName = @"/tmp";
-+	      baseTempDirName = @"@NEOTERM_PREFIX@/tmp";
++	      baseTempDirName = @"@TERMUX_PREFIX@/tmp";
  #endif
  	    }
  	}

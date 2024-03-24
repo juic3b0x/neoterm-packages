@@ -16,7 +16,7 @@
  
  #ifndef XFERFILE
 -#define XFERFILE "/var/log/iksd.log"
-+#define XFERFILE "@NEOTERM_PREFIX@/var/log/iksd.log"
++#define XFERFILE "@TERMUX_PREFIX@/var/log/iksd.log"
  #endif /* XFERFILE */
  
  /* wtmp logging for IKSD... */
@@ -25,7 +25,7 @@
  #else
  #ifdef LINUX
 -#define WTMPFILE "/var/log/wtmp"
-+#define WTMPFILE "@NEOTERM_PREFIX@/var/log/wtmp"
++#define WTMPFILE "@TERMUX_PREFIX@/var/log/wtmp"
  #else
  #define WTMPFILE "/usr/adm/wtmp"
  #endif /* QNX */
@@ -34,7 +34,7 @@
          defshell = "/bin/rc";
  #else
 -        defshell = "/bin/sh";
-+        defshell = "@NEOTERM_PREFIX@/bin/sh";
++        defshell = "@TERMUX_PREFIX@/bin/sh";
  #endif /* Plan9 */
  #endif /* HPUX10 */
  #endif /* aegis */
@@ -43,7 +43,7 @@
  #ifdef aegis
          if ((shpath = getenv("SERVERSHELL")) == NULL)
 -          shpath = "/bin/sh";
-+          shpath = "@NEOTERM_PREFIX@/bin/sh";
++          shpath = "@TERMUX_PREFIX@/bin/sh";
  #else
          shpath = getenv("SHELL");       /* What shell? */
          if (shpath == NULL) {
@@ -53,8 +53,8 @@
  #else
 -    execl("/bin/sh","sh","-c",s,NULL);
 -    perror("/bin/sh");
-+    execl("@NEOTERM_PREFIX@/bin/sh","sh","-c",s,NULL);
-+    perror("@NEOTERM_PREFIX@/bin/sh");
++    execl("@TERMUX_PREFIX@/bin/sh","sh","-c",s,NULL);
++    perror("@TERMUX_PREFIX@/bin/sh");
  #endif /* Plan9 */
  #endif /* HPUX10 */
      _exit(255);
@@ -63,7 +63,7 @@
          char *defshell = "/bin/rc";
  #else
 -        char *defshell = "/bin/sh";
-+        char *defshell = "@NEOTERM_PREFIX@/bin/sh";
++        char *defshell = "@TERMUX_PREFIX@/bin/sh";
  #endif /* Plan9 */
  #endif /* HPUX10 */
          if (priv_can()) exit(1);        /* Turn off privs. */
@@ -72,11 +72,11 @@
  */
  #ifndef _PATH_BSHELL
 -#define _PATH_BSHELL    "/usr/bin/bash"
-+#define _PATH_BSHELL    "@NEOTERM_PREFIX@/bin/bash"
++#define _PATH_BSHELL    "@TERMUX_PREFIX@/bin/bash"
  #endif /* _PATH_BSHELL */
  #ifndef _PATH_FTPUSERS
 -#define _PATH_FTPUSERS  "/etc/ftpusers"
-+#define _PATH_FTPUSERS  "@NEOTERM_PREFIX@/etc/ftpusers"
++#define _PATH_FTPUSERS  "@TERMUX_PREFIX@/etc/ftpusers"
  #endif /* _PATH_FTPUSERS */
  
  /*

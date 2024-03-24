@@ -1,4 +1,4 @@
-#!@NEOTERM_PREFIX@/bin/bash
+#!@TERMUX_PREFIX@/bin/bash
 set -e
 
 # Lock terminal to prevent sending text input and special key
@@ -16,10 +16,10 @@ if [ "$(id -u)" = "0" ]; then
 fi
 
 # coincurve expects ldconfig to be available.
-mkdir -p "${TMPDIR:-@NEOTERM_PREFIX@/tmp}"/.ldconfig
-echo -e "#!@NEOTERM_PREFIX@/bin/bash\nexec true" > "${TMPDIR:-@NEOTERM_PREFIX@/tmp}"/.ldconfig/ldconfig
-chmod 700 "${TMPDIR:-@NEOTERM_PREFIX@/tmp}"/.ldconfig/ldconfig
-export PATH="$PATH:${TMPDIR:-@NEOTERM_PREFIX@/tmp}/.ldconfig"
+mkdir -p "${TMPDIR:-@TERMUX_PREFIX@/tmp}"/.ldconfig
+echo -e "#!@TERMUX_PREFIX@/bin/bash\nexec true" > "${TMPDIR:-@TERMUX_PREFIX@/tmp}"/.ldconfig/ldconfig
+chmod 700 "${TMPDIR:-@TERMUX_PREFIX@/tmp}"/.ldconfig/ldconfig
+export PATH="$PATH:${TMPDIR:-@TERMUX_PREFIX@/tmp}/.ldconfig"
 
 for module in gevent msgpack base58 merkletools rsa PySocks pyasn1 \
 	websocket_client gevent-websocket bencode.py coincurve python-bitcoinlib \
@@ -38,6 +38,6 @@ for module in gevent msgpack base58 merkletools rsa PySocks pyasn1 \
 done
 
 # Cleanup.
-rm -rf "${TMPDIR:-@NEOTERM_PREFIX@/tmp}"/.ldconfig
+rm -rf "${TMPDIR:-@TERMUX_PREFIX@/tmp}"/.ldconfig
 
 exit 0

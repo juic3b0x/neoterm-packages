@@ -6,7 +6,7 @@ diff -uNr calcurse-4.6.0/src/utils.c calcurse-4.6.0.mod/src/utils.c
  #endif
  	else
 -		return "/tmp";
-+		return "@NEOTERM_PREFIX@/tmp";
++		return "@TERMUX_PREFIX@/tmp";
  }
  
  /*

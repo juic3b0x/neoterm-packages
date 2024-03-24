@@ -14,7 +14,7 @@ diff -u -r ../git-2.19.0/config.c ./config.c
 + * file being unprotected, but proceed in order to allow git repositories
 + * to be cloned to shared storage accessible to other apps.
 + */
-+static void neoterm_warn_once_about_lockfile()
++static void termux_warn_once_about_lockfile()
 +{
 +	static int already_warned;
 +	if (!already_warned) {
@@ -32,7 +32,7 @@ diff -u -r ../git-2.19.0/config.c ./config.c
  
  		if (chmod(get_lock_file_path(&lock), st.st_mode & 07777) < 0) {
 +#ifdef __ANDROID__
-+			neoterm_warn_once_about_lockfile();
++			termux_warn_once_about_lockfile();
 +#else
  			error_errno(_("chmod on %s failed"), get_lock_file_path(&lock));
  			ret = CONFIG_NO_WRITE;
@@ -46,7 +46,7 @@ diff -u -r ../git-2.19.0/config.c ./config.c
  
  	if (chmod(get_lock_file_path(&lock), st.st_mode & 07777) < 0) {
 +#ifdef __ANDROID__
-+		neoterm_warn_once_about_lockfile();
++		termux_warn_once_about_lockfile();
 +#else
  		ret = error_errno(_("chmod on %s failed"),
  				  get_lock_file_path(&lock));

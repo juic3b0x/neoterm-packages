@@ -5,7 +5,7 @@
  
  const (
 -	soundfontPath = "/usr/share/sounds/sf2/FluidR3_GM.sf2"
-+	soundfontPath = "@NEOTERM_PREFIX@/share/soundfonts/FluidR3_GM.sf2"
++	soundfontPath = "@TERMUX_PREFIX@/share/soundfonts/FluidR3_GM.sf2"
  )
  
  // Play takes a given .midi file and plays it.

@@ -6,8 +6,8 @@
  
 -MANPATH_BASE="/usr/share/man:/usr/X11R6/man"
 -MANPATH_DEFAULT="/usr/share/man:/usr/X11R6/man:/usr/local/man"
-+MANPATH_BASE="@NEOTERM_PREFIX@/share/man"
-+MANPATH_DEFAULT="@NEOTERM_PREFIX@/share/man"
++MANPATH_BASE="@TERMUX_PREFIX@/share/man"
++MANPATH_DEFAULT="@TERMUX_PREFIX@/share/man"
  OSENUM=
  OSNAME=
  UTF8_LOCALE=
@@ -44,7 +44,7 @@
  
  echo
 -echo "#define MAN_CONF_FILE \"/etc/${MANM_MANCONF}\""
-+echo "#define MAN_CONF_FILE \"@NEOTERM_PREFIX@/etc/${MANM_MANCONF}\""
++echo "#define MAN_CONF_FILE \"@TERMUX_PREFIX@/etc/${MANM_MANCONF}\""
  echo "#define MANPATH_BASE \"${MANPATH_BASE}\""
  echo "#define MANPATH_DEFAULT \"${MANPATH_DEFAULT}\""
  echo "#define OSENUM ${OSENUM}"

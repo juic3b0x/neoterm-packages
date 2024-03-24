@@ -6,7 +6,7 @@ diff -uNr tinyemu-2019-12-21/fs_net.c tinyemu-2019-12-21.mod/fs_net.c
  #endif
  
 -#define DEFAULT_IMPORT_FILE_PATH "/tmp"
-+#define DEFAULT_IMPORT_FILE_PATH "@NEOTERM_PREFIX@/tmp"
++#define DEFAULT_IMPORT_FILE_PATH "@TERMUX_PREFIX@/tmp"
  
  FSDevice *fs_net_init(const char *url, void (*start_cb)(void *opaque),
                        void *start_opaque)
@@ -18,7 +18,7 @@ diff -uNr tinyemu-2019-12-21/riscv_cpu.c tinyemu-2019-12-21.mod/riscv_cpu.c
  {
      if (!log_file)
 -        log_file = fopen("/tmp/riscemu.log", "wb");
-+        log_file = fopen("@NEOTERM_PREFIX@/tmp/riscemu.log", "wb");
++        log_file = fopen("@TERMUX_PREFIX@/tmp/riscemu.log", "wb");
      vfprintf(log_file, fmt, ap);
  }
  #else
@@ -30,7 +30,7 @@ diff -uNr tinyemu-2019-12-21/riscv_machine.c tinyemu-2019-12-21.mod/riscv_machin
      {
          FILE *f;
 -        f = fopen("/tmp/riscvemu.dtb", "wb");
-+        f = fopen("@NEOTERM_PREFIX@/tmp/riscvemu.dtb", "wb");
++        f = fopen("@TERMUX_PREFIX@/tmp/riscvemu.dtb", "wb");
          fwrite(dst, 1, size, f);
          fclose(f);
      }
@@ -42,7 +42,7 @@ diff -uNr tinyemu-2019-12-21/slirp/slirp_config.h tinyemu-2019-12-21.mod/slirp/s
  #define MAX_PPP_INTERFACES 1
  
 -/* Define if you want slirp's socket in /tmp */
-+/* Define if you want slirp's socket in @NEOTERM_PREFIX@/tmp */
++/* Define if you want slirp's socket in @TERMUX_PREFIX@/tmp */
  /* XXXXXX Do this in ./configure */
  #undef USE_TMPSOCKET
  
@@ -54,7 +54,7 @@ diff -uNr tinyemu-2019-12-21/temu.c tinyemu-2019-12-21.mod/temu.c
          static FILE *f;
          if (!f)
 -            f = fopen("/tmp/read_sect.txt", "wb");
-+            f = fopen("@NEOTERM_PREFIX@/tmp/read_sect.txt", "wb");
++            f = fopen("@TERMUX_PREFIX@/tmp/read_sect.txt", "wb");
          fprintf(f, "%" PRId64 " %d\n", sector_num, n);
      }
  #endif

@@ -5,7 +5,7 @@
  {
      mySignal(SIGINT, SIG_DFL);
 -    execl("/bin/sh", "sh", "-c", command, NULL);
-+    execl("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", command, NULL);
++    execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL);
      exit(127);
  }
  
@@ -16,7 +16,7 @@
  	((tmp_dir = getenv("TMP")) == NULL || *tmp_dir == '\0') &&
  	((tmp_dir = getenv("TEMP")) == NULL || *tmp_dir == '\0'))
 -	tmp_dir = "/tmp";
-+	tmp_dir = "@NEOTERM_PREFIX@/tmp";
++	tmp_dir = "@TERMUX_PREFIX@/tmp";
  #ifdef HAVE_MKDTEMP
      tmp_dir = mkdtemp(Strnew_m_charp(tmp_dir, "/w3m-XXXXXX", NULL)->ptr);
      if (tmp_dir == NULL)
@@ -27,7 +27,7 @@
  
  @W3M = split(' ', $ENV{'W3MMAN_W3M'} || '@W3M@');
 -$ENV{'W3MMAN_MAN'} ||= '@MAN@';
-+$ENV{'W3MMAN_MAN'} ||= '@NEOTERM_PREFIX@/bin/man';
++$ENV{'W3MMAN_MAN'} ||= '@TERMUX_PREFIX@/bin/man';
  $SCRIPT = 'file:///$LIB/w3mman2html.cgi';
  
  sub usage {
@@ -43,9 +43,9 @@
 -	"/usr/X11/include",
 -	"/usr/X/include",
 -	"/usr/include/X11"
-+	"@NEOTERM_PREFIX@/include",
-+	"@NEOTERM_PREFIX@/local/include",
-+	"@NEOTERM_PREFIX@/include/X11"
++	"@TERMUX_PREFIX@/include",
++	"@TERMUX_PREFIX@/local/include",
++	"@TERMUX_PREFIX@/include/X11"
    ) {
      -f "$d/$_" && return "<a href=\"$CGI2$d/$_\">$_</a>";
    }

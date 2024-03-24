@@ -6,13 +6,13 @@ diff -u -r ../tar-1.29/src/system.c ./src/system.c
    char *argv[4];
  
 -  argv[0] = (char *) "/bin/sh";
-+  argv[0] = (char *) "@NEOTERM_PREFIX@/bin/sh";
++  argv[0] = (char *) "@TERMUX_PREFIX@/bin/sh";
    argv[1] = (char *) "-c";
    argv[2] = (char *) cmd;
    argv[3] = NULL;
  
 -  execv ("/bin/sh", argv);
-+  execv ("@NEOTERM_PREFIX@/bin/sh", argv);
++  execv ("@TERMUX_PREFIX@/bin/sh", argv);
    exec_fatal (cmd);
  }
  
@@ -21,7 +21,7 @@ diff -u -r ../tar-1.29/src/system.c ./src/system.c
    const char *shell = getenv ("SHELL");
    if (! shell)
 -    shell = "/bin/sh";
-+    shell = "@NEOTERM_PREFIX@/bin/sh";
++    shell = "@TERMUX_PREFIX@/bin/sh";
    child = xfork ();
    if (child == 0)
      {

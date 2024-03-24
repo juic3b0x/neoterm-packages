@@ -5,7 +5,7 @@
    if(WIN32)
      set(LFORTRAN_PATH "${CMAKE_BINARY_DIR}/src/bin/lfortran.exe")
 +  elseif(CMAKE_CROSSCOMPILING)
-+    set(LFORTRAN_PATH "@NEOTERM_PKG_HOSTBUILD_DIR@/src/bin/lfortran")
++    set(LFORTRAN_PATH "@TERMUX_PKG_HOSTBUILD_DIR@/src/bin/lfortran")
    else()
      set(LFORTRAN_PATH "${CMAKE_BINARY_DIR}/src/bin/lfortran")
    endif()

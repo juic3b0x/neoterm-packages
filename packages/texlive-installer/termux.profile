@@ -2,12 +2,12 @@
 # It will NOT be updated and reflects only the
 # installation profile at installation time.
 selected_scheme scheme-full
-TEXDIR @NEOTERM_PREFIX@/share/texlive
+TEXDIR @TERMUX_PREFIX@/share/texlive
 TEXMFCONFIG ~/.texlive@YEAR@/texmf-config
 TEXMFHOME ~/texmf
-TEXMFLOCAL @NEOTERM_PREFIX@/share/texlive/texmf-local
-TEXMFSYSCONFIG @NEOTERM_PREFIX@/share/texlive/texmf-config
-TEXMFSYSVAR @NEOTERM_PREFIX@/share/texlive/texmf-var
+TEXMFLOCAL @TERMUX_PREFIX@/share/texlive/texmf-local
+TEXMFSYSCONFIG @TERMUX_PREFIX@/share/texlive/texmf-config
+TEXMFSYSVAR @TERMUX_PREFIX@/share/texlive/texmf-var
 TEXMFVAR ~/.texlive@YEAR@/texmf-var
 instopt_adjustpath 0
 instopt_adjustrepo 1
@@ -23,6 +23,6 @@ tlpdbopt_generate_updmap 0
 tlpdbopt_install_docfiles 0
 tlpdbopt_install_srcfiles 0
 tlpdbopt_post_code 1
-tlpdbopt_sys_bin @NEOTERM_PREFIX@/bin
-tlpdbopt_sys_info @NEOTERM_PREFIX@/share/info
-tlpdbopt_sys_man @NEOTERM_PREFIX@/share/man
+tlpdbopt_sys_bin @TERMUX_PREFIX@/bin
+tlpdbopt_sys_info @TERMUX_PREFIX@/share/info
+tlpdbopt_sys_man @TERMUX_PREFIX@/share/man

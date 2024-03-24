@@ -6,7 +6,7 @@ THREAD_PRIORITY_SCHEDULING is introduced in API 28, but Termux compiles as API 2
  #endif
  #endif
  
-+#if defined(_POSIX_THREAD_PRIORITY_SCHEDULING) && defined(__NEOTERM__) && __ANDROID_API__ < 28
++#if defined(_POSIX_THREAD_PRIORITY_SCHEDULING) && defined(__TERMUX__) && __ANDROID_API__ < 28
 +#undef _POSIX_THREAD_PRIORITY_SCHEDULING
 +#endif
 +

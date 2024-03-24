@@ -5,7 +5,7 @@
  	return( copy(dir) );
  
 +#ifdef __ANDROID__
-+return( copy("@NEOTERM_HOME@") );
++return( copy("@TERMUX_HOME@") );
 +#else
      uid = getuid();
      while ( (pw=getpwent())!=NULL ) {
@@ -23,7 +23,7 @@
  return home;
  
 +#ifdef __ANDROID__
-+return( "@NEOTERM_HOME@" );
++return( "@TERMUX_HOME@" );
 +#else
  	uid = getuid();
  	while( (pw=getpwent())!=NULL ) {

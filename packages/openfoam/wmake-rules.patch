@@ -97,7 +97,7 @@ diff -u -r ../openfoam-OpenFOAM-v2212/wmake/rules/General/Clang/c wmake/rules/Ge
  SUFFIXES   += .c
  
 -cc         := clang$(COMPILER_VERSION)
-+cc         := @NEOTERM_COMPILER_PREFIX@-clang$(COMPILER_VERSION)
++cc         := @TERMUX_COMPILER_PREFIX@-clang$(COMPILER_VERSION)
  
  cARCH      :=
  cDBUG      :=
@@ -109,7 +109,7 @@ diff -u -r ../openfoam-OpenFOAM-v2212/wmake/rules/General/Clang/c++ wmake/rules/
  SUFFIXES   += .C .cc .cpp .cxx
  
 -CC         := clang++$(COMPILER_VERSION) -std=c++14
-+CC         := @NEOTERM_COMPILER_PREFIX@-clang++$(COMPILER_VERSION) -std=c++14
++CC         := @TERMUX_COMPILER_PREFIX@-clang++$(COMPILER_VERSION) -std=c++14
  
  c++ARCH    :=
  c++DBUG    :=
@@ -151,7 +151,7 @@ diff -u -r ../openfoam-OpenFOAM-v2212/wmake/rules/General/mplibSYSTEMOPENMPI wma
 +PFLAGS     = -DMPICH_SKIP_MPICXX -DOMPI_SKIP_MPICXX
 +PINC       = $(shell mpicc --showme:compile)
 +PLIBS      = $(shell mpicc --showme:link)
-+PINC       = -I@NEOTERM_PREFIX@/include
++PINC       = -I@TERMUX_PREFIX@/include
 +PLIBS      = -L$(MPI_ARCH_PATH)/lib $(LDFLAGS) -lmpi
 +
  #------------------------------------------------------------------------------

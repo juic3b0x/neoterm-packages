@@ -1,13 +1,13 @@
-NEOTERM_PKG_HOMEPAGE=https://computing.llnl.gov/projects/sundials
-NEOTERM_PKG_DESCRIPTION="SUite of Nonlinear and DIfferential/ALgebraic equation Solvers."
-NEOTERM_PKG_LICENSE="BSD 3-Clause"
-NEOTERM_PKG_MAINTAINER="@neoterm-user-repository"
-NEOTERM_PKG_VERSION="7.0.0"
-NEOTERM_PKG_SRCURL=https://github.com/LLNL/sundials/releases/download/v${NEOTERM_PKG_VERSION}/sundials-${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=d762a7950ef4097fbe9d289f67a8fb717a0b9f90f87ed82170eb5c36c0a07989
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_DEPENDS="suitesparse"
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+TERMUX_PKG_HOMEPAGE=https://computing.llnl.gov/projects/sundials
+TERMUX_PKG_DESCRIPTION="SUite of Nonlinear and DIfferential/ALgebraic equation Solvers."
+TERMUX_PKG_LICENSE="BSD 3-Clause"
+TERMUX_PKG_MAINTAINER="@neoterm-user-repository"
+TERMUX_PKG_VERSION="7.0.0"
+TERMUX_PKG_SRCURL=https://github.com/LLNL/sundials/releases/download/v${TERMUX_PKG_VERSION}/sundials-${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=d762a7950ef4097fbe9d289f67a8fb717a0b9f90f87ed82170eb5c36c0a07989
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_DEPENDS="suitesparse"
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -DCMAKE_SYSTEM_NAME=Linux
 -DBUILD_ARKODE=ON
 -DBUILD_CVODE=ON
@@ -19,16 +19,16 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DBUILD_STATIC_LIBS=ON
 -DBUILD_FORTRAN_MODULE_INTERFACE=OFF
 -DENABLE_KLU=ON
--DKLU_INCLUDE_DIR=$NEOTERM_PREFIX/include/suitesparse
--DKLU_LIBRARY_DIR=$NEOTERM_PREFIX/lib
+-DKLU_INCLUDE_DIR=$TERMUX_PREFIX/include/suitesparse
+-DKLU_LIBRARY_DIR=$TERMUX_PREFIX/lib
 -DENABLE_OPENMP=ON
 -DENABLE_PTHREAD=ON
 -DEXAMPLES_INSTALL=OFF
 "
-NEOTERM_PKG_BLACKLISTED_ARCHES="arm, i686"
-NEOTERM_PKG_RM_AFTER_INSTALL="examples/"
+TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686"
+TERMUX_PKG_RM_AFTER_INSTALL="examples/"
 
-neoterm_step_post_massage() {
+termux_step_post_massage() {
 	# Do not forget to bump revision of reverse dependencies and rebuild them
 	# after SOVERSION is changed.
 	local _SOVERSION_GUARD_FILES="
@@ -60,7 +60,7 @@ lib/libsundials_sunnonlinsolnewton.so.4
 	local f
 	for f in ${_SOVERSION_GUARD_FILES}; do
 		if [ ! -e "${f}" ]; then
-			neoterm_error_exit "SOVERSION guard check failed."
+			termux_error_exit "SOVERSION guard check failed."
 		fi
 	done
 }

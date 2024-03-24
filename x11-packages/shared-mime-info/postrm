@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/bash
+#!@TERMUX_PREFIX@/bin/bash
 set -e
-PREFIX="@NEOTERM_PREFIX@"
+PREFIX="@TERMUX_PREFIX@"
 
 if [ "${1}" = purge ]; then
 	MIMEDIR="${PREFIX}/share/mime"

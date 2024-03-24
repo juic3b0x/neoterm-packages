@@ -5,7 +5,7 @@
  
  DB	*dbase;
 -char	*dbname = "/var/lib/arpd/arpd.db";
-+char	*dbname = "@NEOTERM_PREFIX@/var/lib/arpd/arpd.db";
++char	*dbname = "@TERMUX_PREFIX@/var/lib/arpd/arpd.db";
  
  int	ifnum;
  int	*ifvec;

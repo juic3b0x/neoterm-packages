@@ -6,7 +6,7 @@ UnderrunHandlerLinux not working due to SELinux rules
  #include "audio_thread_priority.h"
  #include "nsDebug.h"
  
-+#ifndef __NEOTERM__
++#ifndef __TERMUX__
 +
  namespace mozilla {
  

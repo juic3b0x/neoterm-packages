@@ -5,10 +5,10 @@
      lock_hack()
      {
 -        char lockname[64];
-+        char lockname[] = "@NEOTERM_PREFIX@/tmp/lnav.XXXXXXXXXXXXXXXXXXXX.lck";
++        char lockname[] = "@TERMUX_PREFIX@/tmp/lnav.XXXXXXXXXXXXXXXXXXXX.lck";
  
 -        snprintf(lockname, sizeof(lockname), "/tmp/lnav.%d.lck", getpid());
-+        snprintf(lockname, sizeof(lockname), "@NEOTERM_PREFIX@/tmp/lnav.%d.lck", getpid());
++        snprintf(lockname, sizeof(lockname), "@TERMUX_PREFIX@/tmp/lnav.%d.lck", getpid());
          this->lh_fd = open(lockname, O_CREAT | O_RDWR, 0600);
          log_perror(fcntl(this->lh_fd, F_SETFD, FD_CLOEXEC));
          unlink(lockname);

@@ -5,7 +5,7 @@
  
  # You may comment out/uncomment any of these lines to change defaults.
 -PREFIX=/usr/local
-+PREFIX=@NEOTERM_PREFIX@/local
++PREFIX=@TERMUX_PREFIX@/local
  ENABLE_2P=y		# 2-player
  ENABLE_JS=y		# joystick
  ENABLE_NETWORK=y
@@ -14,7 +14,7 @@
  
  
 -DPREFIX=/usr
-+DPREFIX=@NEOTERM_PREFIX@
++DPREFIX=@TERMUX_PREFIX@
  if [ -n "$DJDIR" ]; then
  	echo "DJDIR is set to $DJDIR"
  	DPREFIX=$DJDIR
@@ -23,7 +23,7 @@
  
  in_inc_search() {
 -	if [ $DPREFIX = /usr ] && [ $path = /usr/include ]; then
-+	if [ $DPREFIX = @NEOTERM_PREFIX@ ] && [ $path = @NEOTERM_PREFIX@/include ]; then
++	if [ $DPREFIX = @TERMUX_PREFIX@ ] && [ $path = @TERMUX_PREFIX@/include ]; then
  		return 0
  	fi
  	for path in $INC_SEARCH 1; do
@@ -32,7 +32,7 @@
  
  add_path_ldflags() {
 -	if [ $DPREFIX = /usr ] && [ ${1#/usr} = /lib ]; then
-+	if [ $DPREFIX = @NEOTERM_PREFIX@ ] && [ ${1#@NEOTERM_PREFIX@} = /lib ]; then
++	if [ $DPREFIX = @TERMUX_PREFIX@ ] && [ ${1#@TERMUX_PREFIX@} = /lib ]; then
  		return 1
  	fi
  	libpath=-L$1
@@ -41,7 +41,7 @@
  		echo $n "checking for linux/joystick.h... $c"
  		linux_inc=
 -		for path in $INC_SEARCH /usr/include; do
-+		for path in $INC_SEARCH @NEOTERM_PREFIX@/include; do
++		for path in $INC_SEARCH @TERMUX_PREFIX@/include; do
  			if [ -d $path/linux ]; then
  				linux_inc=$path/linux
  				break
@@ -50,7 +50,7 @@
  	WITH_CURSES=
  	if [ $OS = unix ]; then
 -		search="/lib /usr/lib /usr/local/lib"
-+		search="/lib @NEOTERM_PREFIX@/lib @NEOTERM_PREFIX@/local/lib"
++		search="/lib @TERMUX_PREFIX@/lib @TERMUX_PREFIX@/local/lib"
  	else
  		search=$DPREFIX/lib
  	fi
@@ -59,7 +59,7 @@
  	echo $n "checking for curses.h... $c"
  	CURSES_INC=
 -	for path in $INC_SEARCH $DPREFIX/include /usr/local/include; do
-+	for path in $INC_SEARCH $DPREFIX/include @NEOTERM_PREFIX@/local/include; do
++	for path in $INC_SEARCH $DPREFIX/include @TERMUX_PREFIX@/local/include; do
  		if [ -f $path/ncurses/curses.h ]; then
  			path=$path/ncurses
  		fi
@@ -68,7 +68,7 @@
  	echo $n "checking for Xlib... $c"
  	WITH_X=
 -	xpath='/usr /usr/X11R6 /usr/X11 /usr/local /usr/X11R7'
-+	xpath='@NEOTERM_PREFIX@ @NEOTERM_PREFIX@/X11R6 @NEOTERM_PREFIX@/X11 @NEOTERM_PREFIX@/local @NEOTERM_PREFIX@/X11R7'
++	xpath='@TERMUX_PREFIX@ @TERMUX_PREFIX@/X11R6 @TERMUX_PREFIX@/X11 @TERMUX_PREFIX@/local @TERMUX_PREFIX@/X11R7'
  	search=$LIB_SEARCH
  	for path in $xpath; do
  		search="$search $path/lib"
@@ -77,7 +77,7 @@
  			echo found in $path
  			WITH_X=-lX11
 -			if [ $path != /usr ]; then
-+			if [ $path != @NEOTERM_PREFIX@ ]; then
++			if [ $path != @TERMUX_PREFIX@ ]; then
  				libpath=$path
  			fi
  			break
@@ -86,7 +86,7 @@
  if [ $OS = unix ] && [ -n "$ENABLE_NETWORK" ]; then
  	echo $n "checking for sys/un.h... $c"
 -	if [ -f /usr/include/sys/un.h ]
-+	if [ -f @NEOTERM_PREFIX@/include/sys/un.h ]
++	if [ -f @TERMUX_PREFIX@/include/sys/un.h ]
  	then echo yes ; TTY_SOCKET=y
  	else echo no
  	fi

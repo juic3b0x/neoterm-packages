@@ -14,12 +14,12 @@
 -HoldPkg     = pacman glibc
 -#XferCommand = /usr/bin/curl -L -C - -f -o %o %u
 -#XferCommand = /usr/bin/wget --passive-ftp -c -O %o %u
-+#XferCommand = @NEOTERM_PREFIX@/bin/curl -L -C - -f -o %o %u
-+#XferCommand = @NEOTERM_PREFIX@/bin/wget --passive-ftp -c -O %o %u
++#XferCommand = @TERMUX_PREFIX@/bin/curl -L -C - -f -o %o %u
++#XferCommand = @TERMUX_PREFIX@/bin/wget --passive-ftp -c -O %o %u
 +HoldPkg      = pacman
  #CleanMethod = KeepInstalled
 -Architecture = auto
-+Architecture = @NEOTERM_ARCH@
++Architecture = @TERMUX_ARCH@
  
  # Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
  #IgnorePkg   =
@@ -66,22 +66,22 @@
 -#SigLevel = Optional TrustAll
 -#Server = file:///home/custompkgs
 +[main]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist
 +
 +[x11]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist
 +
 +[root]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist
 +
 +[tur]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist
 +
 +[tur-continuous]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist
 +
 +[tur-multilib]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist
 +
 +[gpkg]
-+Include = @NEOTERM_PREFIX@/etc/pacman.d/serverlist
++Include = @TERMUX_PREFIX@/etc/pacman.d/serverlist

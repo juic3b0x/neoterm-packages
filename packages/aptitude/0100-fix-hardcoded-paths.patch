@@ -6,7 +6,7 @@ diff -uNr a/configure b/configure
  	fi
  else
 -  STATEDIR="/var/lib/aptitude"
-+  STATEDIR="@NEOTERM_PREFIX@/var/lib/aptitude"
++  STATEDIR="@TERMUX_PREFIX@/var/lib/aptitude"
  fi
  
  
@@ -15,7 +15,7 @@ diff -uNr a/configure b/configure
  	fi
  else
 -  LOCKFILE="/var/lock/aptitude"
-+  LOCKFILE="@NEOTERM_PREFIX@/var/lock/aptitude"
++  LOCKFILE="@TERMUX_PREFIX@/var/lock/aptitude"
  fi
  
  
@@ -27,7 +27,7 @@ diff -uNr a/configure.ac b/configure.ac
  	  STATEDIR="$enableval"
  	fi,
 -	STATEDIR="/var/lib/aptitude")
-+	STATEDIR="@NEOTERM_PREFIX@/var/lib/aptitude")
++	STATEDIR="@TERMUX_PREFIX@/var/lib/aptitude")
  
  AC_ARG_WITH(lock-loc,
  	AS_HELP_STRING([--with-lock-loc], [use the given location for storing state (default /var/lock/aptitude)]),
@@ -36,7 +36,7 @@ diff -uNr a/configure.ac b/configure.ac
  	  LOCKFILE="$enableval"
  	fi,
 -	LOCKFILE="/var/lock/aptitude")
-+	LOCKFILE="@NEOTERM_PREFIX@/var/lock/aptitude")
++	LOCKFILE="@TERMUX_PREFIX@/var/lock/aptitude")
  
  AC_ARG_ENABLE(aptitude,
  	AS_HELP_STRING([--disable-aptitude], [don't compile the program itself]),
@@ -48,7 +48,7 @@ diff -uNr a/src/apt_options.cc b/src/apt_options.cc
  		 "receive the log on standard input."),
  	      PACKAGE "::Log",
 -	      "/var/log/aptitude"),
-+	      "@NEOTERM_PREFIX@/var/log/aptitude"),
++	      "@TERMUX_PREFIX@/var/log/aptitude"),
    option_item(N_("Use localized messages and dates in the log"),
  	      N_("If this option is enabled, aptitude will use the "
  		 "user's locale for messages and dates in the log "
@@ -60,10 +60,10 @@ diff -uNr a/src/cmdline/cmdline_changelog.cc b/src/cmdline/cmdline_changelog.cc
                            const std::shared_ptr<terminal_metrics> &term_metrics)
  {
 -  const char *pager="/usr/bin/sensible-pager";
-+  const char *pager="@NEOTERM_PREFIX@/bin/sensible-pager";
++  const char *pager="@TERMUX_PREFIX@/bin/sensible-pager";
  
 -  if(access("/usr/bin/sensible-pager", X_OK)!=0)
-+  if(access("@NEOTERM_PREFIX@/bin/sensible-pager", X_OK)!=0)
++  if(access("@TERMUX_PREFIX@/bin/sensible-pager", X_OK)!=0)
      {
        _error->Warning(_("Can't execute sensible-pager, is this a working Debian system?"));
  
@@ -75,7 +75,7 @@ diff -uNr a/src/generic/apt/log.cc b/src/generic/apt/log.cc
    vector<string> logs;
  
 -  string main_log = aptcfg->Find(PACKAGE "::Log", "/var/log/" PACKAGE);
-+  string main_log = aptcfg->Find(PACKAGE "::Log", "@NEOTERM_PREFIX@/var/log/" PACKAGE);
++  string main_log = aptcfg->Find(PACKAGE "::Log", "@TERMUX_PREFIX@/var/log/" PACKAGE);
  
    if(!main_log.empty())
      logs.push_back(main_log);
@@ -87,7 +87,7 @@ diff -uNr a/src/generic/apt/matching/match.cc b/src/generic/apt/matching/match.c
              const std::string filename =
                aptcfg->FindFile("Apt-Xapian-Index::Index",
 -                               "/var/lib/apt-xapian-index/index");
-+                               "@NEOTERM_PREFIX@/var/lib/apt-xapian-index/index");
++                               "@TERMUX_PREFIX@/var/lib/apt-xapian-index/index");
              db.reset(new Xapian::Database(filename));
  	  }
  	catch(...)
@@ -99,7 +99,7 @@ diff -uNr a/src/generic/apt/pkg_changelog.cc b/src/generic/apt/pkg_changelog.cc
  				struct stat buf;
  
 -				std::string changelog_file = "/usr/share/doc/";
-+				std::string changelog_file = "@NEOTERM_PREFIX@/share/doc/";
++				std::string changelog_file = "@TERMUX_PREFIX@/share/doc/";
  				changelog_file += pkg.Name();
  				changelog_file += "/changelog.Debian";
  
@@ -111,7 +111,7 @@ diff -uNr a/src/generic/apt/resolver_manager.cc b/src/generic/apt/resolver_manag
  
  	  // Should I allow tar to be found on the path?
 -	  execl("/bin/tar", "/bin/tar", "czf",
-+	  execl("@NEOTERM_PREFIX@/bin/tar", "@NEOTERM_PREFIX@/bin/tar", "czf",
++	  execl("@TERMUX_PREFIX@/bin/tar", "@TERMUX_PREFIX@/bin/tar", "czf",
  		resolver_trace_file.c_str(),
  		"-C",
  		trace_dir.c_str(),
@@ -123,7 +123,7 @@ diff -uNr a/src/generic/apt/tags.cc b/src/generic/apt/tags.cc
  {
    const string filename(aptcfg->FindFile("Debtags::Package-Tags",
 -                                         "/var/lib/debtags/package-tags"));
-+                                         "@NEOTERM_PREFIX@/var/lib/debtags/package-tags"));
++                                         "@TERMUX_PREFIX@/var/lib/debtags/package-tags"));
    _error->PushToStack(); // Ignore no-such-file errors.
    FileFd F(filename, FileFd::ReadOnly);
    _error->RevertToStack();
@@ -132,7 +132,7 @@ diff -uNr a/src/generic/apt/tags.cc b/src/generic/apt/tags.cc
  
    _error->PushToStack(); // Ignore no-such-file errors.
 -  FileFd F(aptcfg->FindFile("DebTags::Vocabulary", "/var/lib/debtags/vocabulary"),
-+  FileFd F(aptcfg->FindFile("DebTags::Vocabulary", "@NEOTERM_PREFIX@/var/lib/debtags/vocabulary"),
++  FileFd F(aptcfg->FindFile("DebTags::Vocabulary", "@TERMUX_PREFIX@/var/lib/debtags/vocabulary"),
  	   FileFd::ReadOnly);
    _error->RevertToStack();
  
@@ -143,7 +143,7 @@ diff -uNr a/src/generic/apt/tasks.cc b/src/generic/apt/tasks.cc
    const char *descdirs[] =
      {"/usr/share/tasksel/descs",
       "/usr/local/share/tasksel/descs",
-+     "@NEOTERM_PREFIX@/share/tasksel/descs",
++     "@TERMUX_PREFIX@/share/tasksel/descs",
       NULL};
    vector<string> descfiles;
    for(const char **it = descdirs; *it != NULL; ++it)
@@ -155,7 +155,7 @@ diff -uNr a/src/gtk/changelog.cc b/src/gtk/changelog.cc
  
        std::vector<std::string> arguments;
 -      arguments.push_back("/usr/bin/sensible-browser");
-+      arguments.push_back("@NEOTERM_PREFIX@/bin/sensible-browser");
++      arguments.push_back("@TERMUX_PREFIX@/bin/sensible-browser");
        arguments.push_back(URL);
  
        Glib::spawn_async(".", arguments);
@@ -167,7 +167,7 @@ diff -uNr a/src/gtk/filesview.cc b/src/gtk/filesview.cc
        }
  
 -    Glib::ustring fileslistname = Glib::ustring("/var/lib/dpkg/info/")
-+    Glib::ustring fileslistname = Glib::ustring("@NEOTERM_PREFIX@/var/lib/dpkg/info/")
++    Glib::ustring fileslistname = Glib::ustring("@TERMUX_PREFIX@/var/lib/dpkg/info/")
      + Glib::ustring(ver.ParentPkg().Name()) + Glib::ustring(".list");
  
      std::ifstream fileslist(fileslistname.c_str());
@@ -179,7 +179,7 @@ diff -uNr a/src/gtk/gui.cc b/src/gtk/gui.cc
        {
  	std::vector<std::string> arguments;
 -	arguments.push_back("/usr/bin/diff");
-+	arguments.push_back("@NEOTERM_PREFIX@/bin/diff");
++	arguments.push_back("@TERMUX_PREFIX@/bin/diff");
  	arguments.push_back("-u");
  	arguments.push_back(existing_file);
  	arguments.push_back(new_file);

@@ -6,7 +6,7 @@ diff -uNr rc-1.7.4/history.c rc-1.7.4.mod/history.c
  			fprintf(stderr, "%s\n", s);
  		if (shell == NULL)
 -			shell = "/bin/sh";
-+			shell = "@NEOTERM_PREFIX@/bin/sh";
++			shell = "@TERMUX_PREFIX@/bin/sh";
  		execl(shell, rc_basename(shell), "-c", s, NULL);
  		perror(shell);
  		exit(1);

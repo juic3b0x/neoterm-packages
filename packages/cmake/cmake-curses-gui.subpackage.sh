@@ -1,3 +1,3 @@
-NEOTERM_SUBPKG_INCLUDE="bin/ccmake"
-NEOTERM_SUBPKG_DESCRIPTION="Curses based user interface for CMake (ccmake)"
-NEOTERM_SUBPKG_DEPENDS="ncurses-ui-libs"
+TERMUX_SUBPKG_INCLUDE="bin/ccmake"
+TERMUX_SUBPKG_DESCRIPTION="Curses based user interface for CMake (ccmake)"
+TERMUX_SUBPKG_DEPENDS="ncurses-ui-libs"

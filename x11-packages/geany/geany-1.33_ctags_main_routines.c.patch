@@ -6,7 +6,7 @@ diff -uNr geany-1.33/ctags/main/routines.c geany-1.33.mod/ctags/main/routines.c
  */
  #ifndef TMPDIR
 -# define TMPDIR "/tmp"
-+# define TMPDIR "@NEOTERM_PREFIX@/tmp"
++# define TMPDIR "@TERMUX_PREFIX@/tmp"
  #endif
  
  /*  File type tests.

@@ -5,17 +5,17 @@
  # invoke the right shell:
  
 -test -f /bin/ksh && test -z "$RUNNING_KSH" \
-+test -f @NEOTERM_PREFIX@/bin/ksh && test -z "$RUNNING_KSH" \
++test -f @TERMUX_PREFIX@/bin/ksh && test -z "$RUNNING_KSH" \
    && { UNAMES=`uname -s`; test "x$UNAMES" = xULTRIX; } 2>/dev/null \
 -  && { RUNNING_KSH=true; export RUNNING_KSH; exec /bin/ksh $0 ${1+"$@"}; }
-+  && { RUNNING_KSH=true; export RUNNING_KSH; exec @NEOTERM_PREFIX@/bin/ksh $0 ${1+"$@"}; }
++  && { RUNNING_KSH=true; export RUNNING_KSH; exec @TERMUX_PREFIX@/bin/ksh $0 ${1+"$@"}; }
  unset RUNNING_KSH
  
 -test -f /bin/bsh && test -z "$RUNNING_BSH" \
-+test -f @NEOTERM_PREFIX@/bin/bsh && test -z "$RUNNING_BSH" \
++test -f @TERMUX_PREFIX@/bin/bsh && test -z "$RUNNING_BSH" \
    && { UNAMES=`uname -s`; test "x$UNAMES" = xAIX; } 2>/dev/null \
 -  && { RUNNING_BSH=true; export RUNNING_BSH; exec /bin/bsh $0 ${1+"$@"}; }
-+  && { RUNNING_BSH=true; export RUNNING_BSH; exec @NEOTERM_PREFIX@/bin/bsh $0 ${1+"$@"}; }
++  && { RUNNING_BSH=true; export RUNNING_BSH; exec @TERMUX_PREFIX@/bin/bsh $0 ${1+"$@"}; }
  unset RUNNING_BSH
  
  # hack around a bug in zsh:
@@ -24,7 +24,7 @@
    TEXSOURCES TFMFONTS TRFONTS TTFONTS VFFONTS WEB2C WEBINPUTS
  "
 -tmpdir=${TMPDIR-${TEMP-${TMP-/tmp}}}/tctmp.$$
-+tmpdir=${TMPDIR-${TEMP-${TMP-@NEOTERM_PREFIX@/tmp}}}/tctmp.$$
++tmpdir=${TMPDIR-${TEMP-${TMP-@TERMUX_PREFIX@/tmp}}}/tctmp.$$
  needsCleanup=false
  lastUpdatedFile=
  
@@ -34,8 +34,8 @@
        FMT=fmt
 -      test ! -x /bin/fmt && test ! -f /usr/bin/fmt &&
 -        { test -x /bin/adjust || test -x /usr/bin/adjust; } && FMT=adjust
-+      test ! -x @NEOTERM_PREFIX@/bin/fmt && test ! -f @NEOTERM_PREFIX@/bin/fmt &&
-+        { test -x @NEOTERM_PREFIX@/bin/adjust || test -x @NEOTERM_PREFIX@/bin/adjust; } && FMT=adjust
++      test ! -x @TERMUX_PREFIX@/bin/fmt && test ! -f @TERMUX_PREFIX@/bin/fmt &&
++        { test -x @TERMUX_PREFIX@/bin/adjust || test -x @TERMUX_PREFIX@/bin/adjust; } && FMT=adjust
        ;;
      *)
        return

@@ -5,7 +5,7 @@
  
    if (xdg_data_dirs == NULL)
 -    xdg_data_dirs = "/usr/local/share/:/usr/share/";
-+    xdg_data_dirs = "@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/";
++    xdg_data_dirs = "@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/";
  
    /* Work out how many dirs we’re dealing with. */
    if (xdg_data_home != NULL || home != NULL)

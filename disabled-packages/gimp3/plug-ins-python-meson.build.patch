@@ -5,7 +5,7 @@
  if python.found()
    python_config = configuration_data()
 -  python_config.set('PYTHON_PATH', python.path())
-+  python_config.set('PYTHON_PATH', '@NEOTERM_PREFIX@/bin/python3')
++  python_config.set('PYTHON_PATH', '@TERMUX_PREFIX@/bin/python3')
  
    configure_file(
      input : 'pygimp.interp.in',

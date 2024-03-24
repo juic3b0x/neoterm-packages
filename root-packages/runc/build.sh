@@ -1,32 +1,32 @@
-NEOTERM_PKG_HOMEPAGE=https://www.opencontainers.org/
-NEOTERM_PKG_DESCRIPTION="A tool for spawning and running containers according to the OCI specification"
-NEOTERM_PKG_LICENSE="Apache-2.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="1.1.12"
-NEOTERM_PKG_SRCURL=https://github.com/opencontainers/runc/archive/v${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=be31b07d6a54a8f234016501c300ad04b6c428c56588e7eca8c3b663308db208
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_DEPENDS="libseccomp"
+TERMUX_PKG_HOMEPAGE=https://www.opencontainers.org/
+TERMUX_PKG_DESCRIPTION="A tool for spawning and running containers according to the OCI specification"
+TERMUX_PKG_LICENSE="Apache-2.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="1.1.12"
+TERMUX_PKG_SRCURL=https://github.com/opencontainers/runc/archive/v${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=be31b07d6a54a8f234016501c300ad04b6c428c56588e7eca8c3b663308db208
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_DEPENDS="libseccomp"
 
-neoterm_step_make() {
-	neoterm_setup_golang
+termux_step_make() {
+	termux_setup_golang
 
 	export GOPATH="${PWD}/go"
 
 	mkdir -p "${GOPATH}/src/github.com/opencontainers"
-	ln -sf "${NEOTERM_PKG_SRCDIR}" "${GOPATH}/src/github.com/opencontainers/runc"
+	ln -sf "${TERMUX_PKG_SRCDIR}" "${GOPATH}/src/github.com/opencontainers/runc"
 
 	cd "${GOPATH}/src/github.com/opencontainers/runc" && make
 }
 
-neoterm_step_make_install() {
+termux_step_make_install() {
 	cd "${GOPATH}/src/github.com/opencontainers/runc"
-	install -Dm755 runc "${NEOTERM_PREFIX}/bin/runc"
+	install -Dm755 runc "${TERMUX_PREFIX}/bin/runc"
 }
 
-neoterm_step_create_debscripts() {
+termux_step_create_debscripts() {
 	{
-		echo "#!$NEOTERM_PREFIX/bin/sh"
+		echo "#!$TERMUX_PREFIX/bin/sh"
 		echo "echo"
 		echo 'echo "RunC requires support for devices cgroup support in kernel."'
 		echo "echo"

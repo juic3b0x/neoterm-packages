@@ -5,7 +5,7 @@
  
    // Test Android platforms.
 -  test('android', true, '/system/bin/sh');
-+  test('android', true, '@NEOTERM_PREFIX@/bin/sh');
++  test('android', true, '@TERMUX_PREFIX@/bin/sh');
  
    // Test Windows platforms with a user specified shell.
    test('win32', 'powershell.exe', 'powershell.exe');

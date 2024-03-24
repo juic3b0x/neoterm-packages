@@ -5,7 +5,7 @@
  EXTRA_DIST = $(man5_MANS)
  
 -udev_rulesdir = /usr/lib/udev/rules.d/
-+udev_rulesdir = @NEOTERM_PREFIX@/lib/udev/rules.d/
++udev_rulesdir = @TERMUX_PREFIX@/lib/udev/rules.d/
  udev_rules_DATA = 99-nfs.rules
  
  99-nfs.rules: 99-nfs.rules.in $(builddefs)

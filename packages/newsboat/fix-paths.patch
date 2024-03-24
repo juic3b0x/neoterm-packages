@@ -6,7 +6,7 @@ diff -uNr newsboat-2.19/src/controller.cpp newsboat-2.19.mod/src/controller.cpp
  		snprintf(filename,
  			sizeof(filename),
 -			"/tmp/newsboat-article.XXXXXX");
-+			"@NEOTERM_PREFIX@/tmp/newsboat-article.XXXXXX");
++			"@TERMUX_PREFIX@/tmp/newsboat-article.XXXXXX");
  	}
  	int fd = mkstemp(filename);
  	if (fd != -1) {
@@ -18,7 +18,7 @@ diff -uNr newsboat-2.19/src/formaction.cpp newsboat-2.19.mod/src/formaction.cpp
  		} else {
  			const char* my_argv[4];
 -			my_argv[0] = "/bin/sh";
-+			my_argv[0] = "@NEOTERM_PREFIX@/bin/sh";
++			my_argv[0] = "@TERMUX_PREFIX@/bin/sh";
  			my_argv[1] = "-c";
  			my_argv[2] = cmdline.c_str();
  			my_argv[3] = nullptr;
@@ -30,7 +30,7 @@ diff -uNr newsboat-2.19/src/itemrenderer.cpp newsboat-2.19.mod/src/itemrenderer.
  	} else {
  		const char* argv[4];
 -		argv[0] = "/bin/sh";
-+		argv[0] = "@NEOTERM_PREFIX@/bin/sh";
++		argv[0] = "@TERMUX_PREFIX@/bin/sh";
  		argv[1] = "-c";
  		argv[2] = renderer.c_str();
  		argv[3] = nullptr;

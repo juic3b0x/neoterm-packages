@@ -4,7 +4,7 @@ Date: Thu, 17 Mar 2022 18:46:59 +0000
 Subject: [PATCH] 8280476: [macOS] : hotspot arm64 bug exposed by latest clang
 
 Backport-of: f5d6fddc6df8c5c5456a2544b131833d5227292b
-Bug: https://github.com/neoterm/neoterm-packages/issues/12338
+Bug: https://github.com/termux/termux-packages/issues/12338
 Origin: https://github.com/openjdk/jdk17u/commit/fbe05ec561e8d2a061be126c969c37c219b594f3
 ---
  src/hotspot/cpu/aarch64/immediate_aarch64.cpp | 11 ++++++++++-

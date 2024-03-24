@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/termux/termux-packages/issues/15852
 Borrowed from https://github.com/gentoo/gentoo/blob/d8d6bf974cfa15d18d473b7de3a24558fa001669/net-libs/c-client/files/c-client-2007f-implicit-declaration-fix.patch
 
 This patch solves build issues with -Werror=implicit-function-declaration

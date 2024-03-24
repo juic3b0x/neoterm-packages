@@ -5,17 +5,17 @@
      }
      tmp_1 = dup(1);
 -    outfd = open("/tmp/tclspice.tmp_out", O_WRONLY|O_CREAT|O_TRUNC, S_IRWXU);
-+    outfd = open("@NEOTERM_PREFIX@/tmp/tclspice.tmp_out", O_WRONLY|O_CREAT|O_TRUNC, S_IRWXU);
++    outfd = open("@TERMUX_PREFIX@/tmp/tclspice.tmp_out", O_WRONLY|O_CREAT|O_TRUNC, S_IRWXU);
      if (argc == 3) {
          tmp_2 = dup(2);
 -        outfd2 = open("/tmp/tclspice.tmp_err", O_WRONLY|O_CREAT|O_TRUNC, S_IRWXU);
-+        outfd2 = open("@NEOTERM_PREFIX@/tmp/tclspice.tmp_err", O_WRONLY|O_CREAT|O_TRUNC, S_IRWXU);
++        outfd2 = open("@TERMUX_PREFIX@/tmp/tclspice.tmp_err", O_WRONLY|O_CREAT|O_TRUNC, S_IRWXU);
      }
 -    freopen("/tmp/tclspice.tmp_out", "w", stdout);
-+    freopen("@NEOTERM_PREFIX@/tmp/tclspice.tmp_out", "w", stdout);
++    freopen("@TERMUX_PREFIX@/tmp/tclspice.tmp_out", "w", stdout);
      if (argc == 3)
 -        freopen("/tmp/tclspice.tmp_err", "w", stderr);
-+        freopen("@NEOTERM_PREFIX@/tmp/tclspice.tmp_err", "w", stderr);
++        freopen("@TERMUX_PREFIX@/tmp/tclspice.tmp_err", "w", stderr);
      dup2(outfd, 1);
      if (argc == 3)
          dup2(outfd2, 2);
@@ -24,7 +24,7 @@
      if (argc == 3)
          freopen("/dev/fd/2", "w", stderr);
 -    pipein = fopen("/tmp/tclspice.tmp_out", "r");
-+    pipein = fopen("@NEOTERM_PREFIX@/tmp/tclspice.tmp_out", "r");
++    pipein = fopen("@TERMUX_PREFIX@/tmp/tclspice.tmp_out", "r");
      if (pipein == NULL)
          fprintf(stderr, "pipein==NULL\n");
  
@@ -33,7 +33,7 @@
      fclose(pipein);
      if (argc == 3) {
 -        pipein = fopen("/tmp/tclspice.tmp_err", "r");
-+        pipein = fopen("@NEOTERM_PREFIX@/tmp/tclspice.tmp_err", "r");
++        pipein = fopen("@TERMUX_PREFIX@/tmp/tclspice.tmp_err", "r");
          Tcl_SetVar(interp, argv[2], "", 0);
          while (fgets(buf, 1024, pipein) != NULL)
              Tcl_SetVar(interp, argv[2], buf, TCL_APPEND_VALUE);

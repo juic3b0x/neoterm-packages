@@ -23,7 +23,7 @@ diff -u -r ../dropbear-2019.77/common-session.c ./common-session.c
  	/* an empty shell should be interpreted as "/bin/sh" */
  	if (ses.authstate.pw_shell[0] == '\0') {
 -		return "/bin/sh";
-+		return "@NEOTERM_PREFIX@/bin/sh";
++		return "@TERMUX_PREFIX@/bin/sh";
  	} else {
  		return ses.authstate.pw_shell;
  	}

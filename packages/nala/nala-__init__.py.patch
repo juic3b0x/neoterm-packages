@@ -1,15 +1,15 @@
 --- a/nala/__init__.py
 +++ b/nala/__init__.py
 @@ -30,9 +30,9 @@
- # ROOT = "@NEOTERM_PREFIX@"
- # USR = "@NEOTERM_PREFIX@"
- # NEOTERM = True
+ # ROOT = "@TERMUX_PREFIX@"
+ # USR = "@TERMUX_PREFIX@"
+ # TERMUX = True
 -ROOT = ""
 -USR = "/usr"
--NEOTERM = False
-+ROOT = "@NEOTERM_PREFIX@"
-+USR = "@NEOTERM_PREFIX@"
-+NEOTERM = True
+-TERMUX = False
++ROOT = "@TERMUX_PREFIX@"
++USR = "@TERMUX_PREFIX@"
++TERMUX = True
  
  # Before we import anything else we need to make sure that this is in our path
  # Else apt_pkg will give an import error. Conda is an example of this breaking

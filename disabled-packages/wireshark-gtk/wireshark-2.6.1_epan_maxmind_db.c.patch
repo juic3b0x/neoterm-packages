@@ -7,8 +7,8 @@ diff -uNr wireshark-2.6.1/epan/maxmind_db.c wireshark-2.6.1.mod/epan/maxmind_db.
  #else
 -    { "/usr/share/GeoIP" },
 -    { "/var/lib/GeoIP" },
-+    { "@NEOTERM_PREFIX@/share/GeoIP" },
-+    { "@NEOTERM_PREFIX@/var/lib/GeoIP" },
++    { "@TERMUX_PREFIX@/share/GeoIP" },
++    { "@TERMUX_PREFIX@/var/lib/GeoIP" },
  #endif
      { NULL }
  };

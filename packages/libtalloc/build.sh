@@ -1,28 +1,28 @@
-NEOTERM_PKG_HOMEPAGE=https://talloc.samba.org/talloc/doc/html/index.html
-NEOTERM_PKG_DESCRIPTION="Hierarchical, reference counted memory pool system with destructors"
-NEOTERM_PKG_LICENSE="GPL-3.0"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION=2.4.1
-NEOTERM_PKG_SRCURL=https://www.samba.org/ftp/talloc/talloc-${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=410a547f08557007be0e88194f218868358edc0ab98c98ba8c167930db3d33f9
-NEOTERM_PKG_BREAKS="libtalloc-dev"
-NEOTERM_PKG_REPLACES="libtalloc-dev"
-NEOTERM_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_HOMEPAGE=https://talloc.samba.org/talloc/doc/html/index.html
+TERMUX_PKG_DESCRIPTION="Hierarchical, reference counted memory pool system with destructors"
+TERMUX_PKG_LICENSE="GPL-3.0"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION=2.4.1
+TERMUX_PKG_SRCURL=https://www.samba.org/ftp/talloc/talloc-${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=410a547f08557007be0e88194f218868358edc0ab98c98ba8c167930db3d33f9
+TERMUX_PKG_BREAKS="libtalloc-dev"
+TERMUX_PKG_REPLACES="libtalloc-dev"
+TERMUX_PKG_BUILD_IN_SRC=true
 
-neoterm_step_configure() {
+termux_step_configure() {
 	# Certain packages are not safe to build on device because their
-	# build.sh script deletes specific files in $NEOTERM_PREFIX.
-	if $NEOTERM_ON_DEVICE_BUILD; then
-		neoterm_error_exit "Package '$NEOTERM_PKG_NAME' is not safe for on-device builds."
+	# build.sh script deletes specific files in $TERMUX_PREFIX.
+	if $TERMUX_ON_DEVICE_BUILD; then
+		termux_error_exit "Package '$TERMUX_PKG_NAME' is not safe for on-device builds."
 	fi
 
 	# Force fresh install:
-	rm -f $NEOTERM_PREFIX/include/talloc.h
+	rm -f $TERMUX_PREFIX/include/talloc.h
 
 	# Make sure symlinks are installed:
-	rm $NEOTERM_PREFIX/lib/libtalloc* || true
+	rm $TERMUX_PREFIX/lib/libtalloc* || true
 
-	cd $NEOTERM_PKG_SRCDIR
+	cd $TERMUX_PKG_SRCDIR
 
 	cat <<EOF > cross-answers.txt
 Checking uname sysname type: "Linux"
@@ -52,15 +52,15 @@ Checking for HAVE_INCOHERENT_MMAP: OK
 Checking getconf large file support flags work: OK
 EOF
 
-	./configure --prefix=$NEOTERM_PREFIX \
+	./configure --prefix=$TERMUX_PREFIX \
 		--disable-rpath \
 		--disable-python \
 		--cross-compile \
 		--cross-answers=cross-answers.txt
 }
 
-neoterm_step_post_make_install() {
-	cd $NEOTERM_PKG_SRCDIR/bin/default
+termux_step_post_make_install() {
+	cd $TERMUX_PKG_SRCDIR/bin/default
 	$AR rcu libtalloc.a talloc*.o
-	install -Dm600 libtalloc.a $NEOTERM_PREFIX/lib/libtalloc.a
+	install -Dm600 libtalloc.a $TERMUX_PREFIX/lib/libtalloc.a
 }

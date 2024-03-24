@@ -7,14 +7,14 @@ index 7dcdc8e..13e872c 100644
  
  #elif defined(UNIX_ENABLED)
 -		if (_autodetect_path("/usr/bin")) {
-+		if (_autodetect_path("@NEOTERM_PREFIX@/bin")) {
++		if (_autodetect_path("@TERMUX_PREFIX@/bin")) {
  			// Good.
 -		} else if (_autodetect_path("/usr/local/bin")) {
-+		} else if (_autodetect_path("@NEOTERM_PREFIX@/local/bin")) {
++		} else if (_autodetect_path("@TERMUX_PREFIX@/local/bin")) {
  			// Good
  		} else {
 -			_autodetect_path("/opt/blender/bin");
-+			_autodetect_path("@NEOTERM_PREFIX@/opt/blender/bin");
++			_autodetect_path("@TERMUX_PREFIX@/opt/blender/bin");
  		}
  #endif
  		if (auto_detected_path != "") {
@@ -27,14 +27,14 @@ index b437c7e..882b22c 100644
                  if (RuntimeInformation.OSArchitecture == Architecture.X64)
                  {
 -                    string dotnet_x64 = "/usr/local/share/dotnet/x64/dotnet"; // Look for x64 version, when running under Rosetta 2.
-+                    string dotnet_x64 = "@NEOTERM_PREFIX@/share/dotnet/x64/dotnet"; // Look for x64 version, when running under Rosetta 2.
++                    string dotnet_x64 = "@TERMUX_PREFIX@/share/dotnet/x64/dotnet"; // Look for x64 version, when running under Rosetta 2.
                      if (File.Exists(dotnet_x64))
                      {
                          return dotnet_x64;
                      }
                  }
 -                string dotnet = "/usr/local/share/dotnet/dotnet"; // Look for native version.
-+                string dotnet = "@NEOTERM_PREFIX@/share/dotnet/dotnet"; // Look for native version.
++                string dotnet = "@TERMUX_PREFIX@/share/dotnet/dotnet"; // Look for native version.
                  if (File.Exists(dotnet))
                  {
                      return dotnet;
@@ -47,7 +47,7 @@ index 786272b..2ddab17 100644
  	return true;
  #else
 -	r_dotnet_root = "/usr/share/dotnet";
-+	r_dotnet_root = "@NEOTERM_PREFIX@/share/dotnet";
++	r_dotnet_root = "@TERMUX_PREFIX@/share/dotnet";
  	return true;
  #endif
  }
@@ -60,17 +60,17 @@ index 1b0ef07..b1baded 100644
  
  #ifndef FALLBACK_CONFIG_DIRS
 -#define FALLBACK_CONFIG_DIRS "/etc/xdg"
-+#define FALLBACK_CONFIG_DIRS "@NEOTERM_PREFIX@/etc/xdg"
++#define FALLBACK_CONFIG_DIRS "@TERMUX_PREFIX@/etc/xdg"
  #endif  // !FALLBACK_CONFIG_DIRS
  
  #ifndef FALLBACK_DATA_DIRS
 -#define FALLBACK_DATA_DIRS "/usr/local/share:/usr/share"
-+#define FALLBACK_DATA_DIRS "@NEOTERM_PREFIX@/share"
++#define FALLBACK_DATA_DIRS "@TERMUX_PREFIX@/share"
  #endif  // !FALLBACK_DATA_DIRS
  
  #ifndef SYSCONFDIR
 -#define SYSCONFDIR "/etc"
-+#define SYSCONFDIR "@NEOTERM_PREFIX@/etc"
++#define SYSCONFDIR "@TERMUX_PREFIX@/etc"
  #endif  // !SYSCONFDIR
  
  #ifdef XR_USE_PLATFORM_ANDROID

@@ -5,7 +5,7 @@
  #include "clipboard.h"
  
 -char *clipboard = "/usr/bin/" CLIPBOARD_NAME;
-+char *clipboard = "@NEOTERM_PREFIX@/bin/" CLIPBOARD_NAME;
++char *clipboard = "@TERMUX_PREFIX@/bin/" CLIPBOARD_NAME;
  
  void send_to_clipboard_binary(char *what)
  {

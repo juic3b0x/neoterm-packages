@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 
-pkg_format="@NEOTERM_PACKAGE_FORMAT@"
+pkg_format="@TERMUX_PACKAGE_FORMAT@"
 pkg_arch=unknown
 case "$pkg_format" in
 	debian ) pkg_arch=$(dpkg --print-architecture) ;;
@@ -17,4 +17,4 @@ case "$pkg_arch" in
 esac
 
 swift_runtime_triple=@SWIFT_TRIPLE@
-install_path=@NEOTERM_PREFIX@
+install_path=@TERMUX_PREFIX@

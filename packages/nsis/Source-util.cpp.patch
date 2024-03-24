@@ -5,7 +5,7 @@
      tfpath = _tcsdup(buf);
  #else //! _WIN32
 -  char narrowpath[] = ("/tmp/makensisXXXXXX");
-+  char narrowpath[] = ("@NEOTERM_PREFIX@/tmp/makensisXXXXXX");
++  char narrowpath[] = ("@TERMUX_PREFIX@/tmp/makensisXXXXXX");
    const mode_t org_umask = umask(0077);
    int fd = mkstemp(narrowpath);
    umask(org_umask);

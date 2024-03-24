@@ -1,5 +1,5 @@
-#!@NEOTERM_PREFIX@/bin/sh
-PREFIX=@NEOTERM_PREFIX@
+#!@TERMUX_PREFIX@/bin/sh
+PREFIX=@TERMUX_PREFIX@
 
 check_cmd_status() {
 	[ -n "$(command -v "$1")" ] && echo 0 && return

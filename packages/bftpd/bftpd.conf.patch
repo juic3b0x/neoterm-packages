@@ -59,7 +59,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
    # Each day gets its own log file, to make it easier to rotate logs.
    # Please note, this directory must be created manually.
 -  # BANDWIDTH="/var/log/bftpd"
-+  # BANDWIDTH="@NEOTERM_PREFIX@/var/log/bftpd"
++  # BANDWIDTH="@TERMUX_PREFIX@/var/log/bftpd"
  
    #ROOTDIR specifies the root directory of the client. It defaults to %h
    #(user's home directory). %u is replaced by the user name.
@@ -68,7 +68,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
    #Name of the log file. Say "syslog" to log into syslog.
    #Say "" for no logging.
 -  LOGFILE="/var/log/bftpd.log"
-+  LOGFILE="@NEOTERM_PREFIX@/var/log/bftpd.log"
++  LOGFILE="@TERMUX_PREFIX@/var/log/bftpd.log"
  
    #Use %v for version, %h for the server FQDN and %i for the server IP address.
    # Note: If you use the "%h" option and you do an inital CHROOT, then
@@ -87,7 +87,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
    # Under no circumstances should anyone except root be
    # able to read the FILE_AUTH password file.
 -  #FILE_AUTH="/etc/ftpdpassword"
-+  #FILE_AUTH="@NEOTERM_PREFIX@/etc/ftpdpassword"
++  #FILE_AUTH="@TERMUX_PREFIX@/etc/ftpdpassword"
  
  
    #Enable this if you want the client's IP address to be resolved to a host
@@ -96,7 +96,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
  
    #Path to the message of the day, seen by all users before login.
 -  MOTD_GLOBAL="/etc/ftpmotd"
-+  MOTD_GLOBAL="@NEOTERM_PREFIX@/etc/ftpmotd"
++  MOTD_GLOBAL="@TERMUX_PREFIX@/etc/ftpmotd"
  
    #Path to the message of the day, seen after login, relative to the root
    #path of the user (see ROOTDIR).
@@ -119,7 +119,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
 -  #Enable this if you want to deny any user who has a shell which is not in
 -  #/etc/shells.
 -  AUTH_ETCSHELLS="no"
-+  PATH_FTPUSERS="@NEOTERM_PREFIX@/etc/ftpusers"
++  PATH_FTPUSERS="@TERMUX_PREFIX@/etc/ftpusers"
  
    #With the option ALLOWCOMMAND_XXXX, you can disable the command XXXX.
    #For example, if you don't want any user to delete files, you can do
@@ -128,7 +128,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
    # The location of the root directory can change when using DO_CHROOT.
    # The current working directory (cwd) is passed to the script you run.
 -  # PRE_WRITE_SCRIPT="/bin/true"
-+  # PRE_WRITE_SCRIPT="@NEOTERM_PREFIX@/bin/true"
++  # PRE_WRITE_SCRIPT="@TERMUX_PREFIX@/bin/true"
  
    # This option is enabled when the server should run
    # a script after writing to the file system. This should
@@ -137,7 +137,7 @@ diff -uNr bftpd/bftpd.conf bftpd.mod/bftpd.conf
    # The location of the root directory can change when using DO_CHROOT.
    # The current working directory (cwd) is passed to the script you run.
 -  # POST_WRITE_SCRIPT="/bin/false"
-+  # POST_WRITE_SCRIPT="@NEOTERM_PREFIX@/bin/false"
++  # POST_WRITE_SCRIPT="@TERMUX_PREFIX@/bin/false"
  
    # The GNU C library makes some assumptions about the local time zone
    # when run in a chroot environment. The Bftpd server tries to work

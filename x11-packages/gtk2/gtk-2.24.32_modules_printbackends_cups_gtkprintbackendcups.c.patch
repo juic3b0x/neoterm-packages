@@ -6,7 +6,7 @@ diff -uNr gtk-2.24.32/modules/printbackends/cups/gtkprintbackendcups.c gtk-2.24.
  /* Ordering matters for default preference */
  static const char *lpoptions_locations[] = {
 -  "/etc/cups/lpoptions",
-+  "@NEOTERM_PREFIX@/etc/cups/lpoptions",
++  "@TERMUX_PREFIX@/etc/cups/lpoptions",
    ".lpoptions", 
    ".cups/lpoptions"
  };

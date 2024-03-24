@@ -5,7 +5,7 @@
      int pidfile_fd;
      int ret = 1;
 -    char pidfile[] = "/tmp/.swtpm_setup.pidfile.XXXXXX";
-+    char pidfile[] = "@NEOTERM_PREFIX@/tmp/.swtpm_setup.pidfile.XXXXXX";
++    char pidfile[] = "@TERMUX_PREFIX@/tmp/.swtpm_setup.pidfile.XXXXXX";
  
      pidfile_fd = mkstemp(pidfile);
      if (pidfile_fd < 0) {

@@ -16,7 +16,7 @@ diff -uNr libevent-release-2.1.8-stable/evdns.c libevent-release-2.1.8-stable.mo
  	return path_out;
  #else
 -	return mm_strdup("/etc/hosts");
-+	return mm_strdup("@NEOTERM_PREFIX@/etc/hosts");
++	return mm_strdup("@TERMUX_PREFIX@/etc/hosts");
  #endif
  }
  

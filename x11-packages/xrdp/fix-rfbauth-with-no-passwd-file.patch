@@ -1,4 +1,4 @@
-Fixes https://github.com/neoterm/neoterm-packages/issues/10220.
+Fixes https://github.com/termux/termux-packages/issues/10220.
 
 --- a/sesman/session.c
 +++ b/sesman/session.c

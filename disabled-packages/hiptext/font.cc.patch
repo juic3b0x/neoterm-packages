@@ -5,7 +5,7 @@
  #include "hiptext/pixel.h"
  
 -DEFINE_string(font, "DejaVuSansMono.ttf",
-+DEFINE_string(font, "@NEOTERM_PREFIX@/share/hiptext/DejaVuSansMono.ttf",
++DEFINE_string(font, "@TERMUX_PREFIX@/share/hiptext/DejaVuSansMono.ttf",
                "The path to the font .ttf file to use.");
  DEFINE_int32(font_index, 0, "Index of face to use inside font .ttf file.");
  DEFINE_int32(font_size, 11, "The size of the font in points.");

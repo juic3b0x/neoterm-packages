@@ -16,8 +16,8 @@ diff -u -r ../daemonize-release-1.7.7/daemonize.c ./daemonize.c
 -static const char  *cwd        = "/";
 +/* Termux patch: Use a readable directory for e.g. runsvdir to work,
 +   as / is not readable starting from Android 7:
-+   https://github.com/neoterm/neoterm-packages/issues/614 */
-+static const char  *cwd        = "@NEOTERM_PREFIX@";
++   https://github.com/termux/termux-packages/issues/614 */
++static const char  *cwd        = "@TERMUX_PREFIX@";
  static int          null_fd    = -1;
  static int          out_fd     = -1;
  static int          err_fd     = -1;

@@ -5,7 +5,7 @@
          }
      }
 -    return path("/tmp");
-+    return path("@NEOTERM_PREFIX@/tmp");
++    return path("@TERMUX_PREFIX@/tmp");
  #endif
  }
  

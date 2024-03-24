@@ -5,7 +5,7 @@
  		}
  	} else {
 -		tmpdir.assign("/tmp");
-+		tmpdir.assign("@NEOTERM_PREFIX@/tmp");
++		tmpdir.assign("@TERMUX_PREFIX@/tmp");
  	}
  #endif
  	return tmpdir;

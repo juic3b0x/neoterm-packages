@@ -5,7 +5,7 @@
  
      # hardcoded paths are (unfortunately) more robust:
 -    INCLUDEPATH += /usr/include/hunspell
-+    INCLUDEPATH += @NEOTERM_PREFIX@/include/hunspell
++    INCLUDEPATH += @TERMUX_PREFIX@/include/hunspell
 -    LIBS += -lhunspell
 +    LIBS += -lhunspell-1.7
  

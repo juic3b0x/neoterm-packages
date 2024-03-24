@@ -1,5 +1,5 @@
 commit c1ae07116d9bebbe580b3df22f8c8f3a7cbeec44
-Author: Kevin Williams <admin@uneoterm.dev>
+Author: Kevin Williams <admin@utermux.dev>
 Date:   Sat Dec 23 16:47:56 2023 +0800
 
     Revert "cmake: only install public headers"

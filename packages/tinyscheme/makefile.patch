@@ -40,4 +40,4 @@ diff -u -r ../tinyscheme-1.41/makefile ./makefile
  	etags $(TAGS_SRCS)
 +
 +install: scheme
-+	cp scheme @NEOTERM_PREFIX@/bin/tinyscheme
++	cp scheme @TERMUX_PREFIX@/bin/tinyscheme

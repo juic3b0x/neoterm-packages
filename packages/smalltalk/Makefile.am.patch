@@ -16,7 +16,7 @@
  	$(mkdir_p) $(DESTDIR)$(imagedir)
  	cd $(DESTDIR)$(imagedir) && \
 -	  $(WINEWRAPPER) "$(abs_top_builddir)/gst$(EXEEXT)" --no-user-files -iS \
-+	  $(WINEWRAPPER) "@NEOTERM_PKG_HOSTBUILD_DIR@/.libs/gst" --no-user-files -iS \
++	  $(WINEWRAPPER) "@TERMUX_PKG_HOSTBUILD_DIR@/.libs/gst" --no-user-files -iS \
  	    --kernel-dir "$(DESTDIR)$(pkgdatadir)/kernel" \
  	    --image "$(DESTDIR)$(imagedir)/gst.im" \
  	    -f "@abs_top_srcdir@/scripts/Finish.st" \

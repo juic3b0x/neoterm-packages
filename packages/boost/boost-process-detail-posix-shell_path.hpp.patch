@@ -6,14 +6,14 @@ diff --color -uNr boost_1_80_0/boost/process/detail/posix/shell_path.hpp boost_1
  inline boost::process::filesystem::path shell_path()
  {
 -    return "/bin/sh";
-+    return "@NEOTERM_PREFIX@/bin/sh";
++    return "@TERMUX_PREFIX@/bin/sh";
  }
  
  inline boost::process::filesystem::path shell_path(std::error_code &ec)
  {
      ec.clear();
 -    return "/bin/sh";
-+    return "@NEOTERM_PREFIX@/bin/sh";
++    return "@TERMUX_PREFIX@/bin/sh";
  }
  
  }}}}

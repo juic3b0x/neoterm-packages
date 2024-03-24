@@ -1,12 +1,12 @@
 #!/bin/bash
 
 . $(dirname "$(realpath "$0")")/properties.sh
-source "$NEOTERM_PREFIX/bin/neoterm-setup-package-manager" || true
+source "$TERMUX_PREFIX/bin/termux-setup-package-manager" || true
 
-if [ "$NEOTERM_APP_PACKAGE_MANAGER" = "apt" ]; then
+if [ "$TERMUX_APP_PACKAGE_MANAGER" = "apt" ]; then
 	echo "Error: apt does not have glibc packages"
 	exit 1
-elif [ "$NEOTERM_APP_PACKAGE_MANAGER" = "pacman" ]; then
+elif [ "$TERMUX_APP_PACKAGE_MANAGER" = "pacman" ]; then
 	if $(pacman-conf -r gpkg-dev &> /dev/null); then
 		pacman -Syu gpkg-dev --needed --noconfirm
 	else

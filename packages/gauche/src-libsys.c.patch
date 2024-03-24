@@ -5,7 +5,7 @@
  
  #line 440 "libsys.scm"
 -{char nam[]="/tmp/fileXXXXXX";int fd;
-+{char nam[]="@NEOTERM_PREFIX@/tmp/fileXXXXXX";int fd;
++{char nam[]="@TERMUX_PREFIX@/tmp/fileXXXXXX";int fd;
  SCM_SYSCALL(fd,mkstemp(nam));
  if ((fd)<(0)){{Scm_SysError("mkstemp failed");}}
  close(fd);

@@ -6,7 +6,7 @@ diff -u -r ../pure-ftpd-1.0.45/src/ftpd_p.h ./src/ftpd_p.h
  # define getpwuid(A) fakegetpwnam(NULL)
  #endif
 -#define NON_ROOT_ANON_DIR "/ftp"
-+#define NON_ROOT_ANON_DIR "@NEOTERM_HOME@"
++#define NON_ROOT_ANON_DIR "@TERMUX_HOME@"
  
  #ifdef PROBE_RANDOM_AT_RUNTIME
  static const char *random_device;

@@ -6,7 +6,7 @@ diff -uNr openssh-portable-V_9_5_P1/defines.h openssh-portable-V_9_5_P1.mod/defi
  
  #ifndef _PATH_NOLOGIN
 -# define _PATH_NOLOGIN "/etc/nologin"
-+# define _PATH_NOLOGIN "@NEOTERM_PREFIX@/etc/nologin"
++# define _PATH_NOLOGIN "@TERMUX_PREFIX@/etc/nologin"
  #endif
  
  /* Define this to be the path of the xauth program. */
@@ -15,7 +15,7 @@ diff -uNr openssh-portable-V_9_5_P1/defines.h openssh-portable-V_9_5_P1.mod/defi
  #    define X_UNIX_PATH "/var/spool/sockets/X11/%u"
  #  else
 -#    define X_UNIX_PATH "/tmp/.X11-unix/X%u"
-+#    define X_UNIX_PATH "@NEOTERM_PREFIX@/tmp/.X11-unix/X%u"
++#    define X_UNIX_PATH "@TERMUX_PREFIX@/tmp/.X11-unix/X%u"
  #  endif
  #endif /* X_UNIX_PATH */
  #define _PATH_UNIX_X X_UNIX_PATH

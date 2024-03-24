@@ -5,12 +5,12 @@
     Define this to be NULL to disable checking for this file.  */
  #ifndef BOOT_TIME_FILE
 -#define BOOT_TIME_FILE "/var/run/random-seed"
-+#define BOOT_TIME_FILE "@NEOTERM_PREFIX@/var/run/random-seed"
++#define BOOT_TIME_FILE "@TERMUX_PREFIX@/var/run/random-seed"
  #endif
  
  #if !defined WTMP_FILE && !defined WINDOWSNT && defined BOOT_TIME
 -#define WTMP_FILE "/var/log/wtmp"
-+#define WTMP_FILE "@NEOTERM_PREFIX@/var/log/wtmp"
++#define WTMP_FILE "@TERMUX_PREFIX@/var/log/wtmp"
  #endif
  
  /* Normally use a symbolic link to represent a lock.

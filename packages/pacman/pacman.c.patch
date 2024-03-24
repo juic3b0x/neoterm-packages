@@ -1,6 +1,6 @@
-diff -uNr pacman-6.0.0/src/pacman/pacman.c pacman-neoterm/src/pacman/pacman.c
+diff -uNr pacman-6.0.0/src/pacman/pacman.c pacman-termux/src/pacman/pacman.c
 --- pacman-6.0.0/src/pacman/pacman.c	2021-05-20 06:38:45.964786500 +0300
-+++ pacman-neoterm/src/pacman/pacman.c	2021-10-04 16:00:39.000000000 +0300
++++ pacman-termux/src/pacman/pacman.c	2021-10-04 16:00:39.000000000 +0300
 @@ -1131,8 +1131,8 @@
  	}
  

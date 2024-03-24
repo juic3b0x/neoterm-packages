@@ -45,22 +45,22 @@ diff -uNr util-linux-2.36.1/include/pathnames.h util-linux-2.36.1.mod/include/pa
 +# undef _PATH_DEV_BYPARTUUID
 +# undef _PATH_ADJTIME
 +
-+# define _PATH_DEFPATH         "@NEOTERM_PREFIX@/bin"
++# define _PATH_DEFPATH         "@TERMUX_PREFIX@/bin"
 +# define _PATH_DEFPATH_ROOT    _PATH_DEFPATH
 +
 +// Unused and not needed in Termux.
-+# define _PATH_HUSHLOGINS      "@NEOTERM_PREFIX@/etc/hushlogins"
-+# define _PATH_NOLOGIN_TXT     "@NEOTERM_PREFIX@/etc/nologin.txt"
-+# define _PATH_NOLOGIN         "@NEOTERM_PREFIX@/etc/nologin"
-+# define _PATH_VAR_NOLOGIN     "@NEOTERM_PREFIX@/var/run/nologin"
++# define _PATH_HUSHLOGINS      "@TERMUX_PREFIX@/etc/hushlogins"
++# define _PATH_NOLOGIN_TXT     "@TERMUX_PREFIX@/etc/nologin.txt"
++# define _PATH_NOLOGIN         "@TERMUX_PREFIX@/etc/nologin"
++# define _PATH_VAR_NOLOGIN     "@TERMUX_PREFIX@/var/run/nologin"
 +
-+# define _PATH_MAILDIR         "@NEOTERM_PREFIX@/var/spool/mail"
-+# define _PATH_MOTDFILE        "@NEOTERM_PREFIX@/etc/motd"
-+# define _PATH_LOGIN           "@NEOTERM_PREFIX@/bin/login"
-+# define _PATH_SHUTDOWN        "@NEOTERM_PREFIX@/bin/shutdown"
-+# define _PATH_POWEROFF        "@NEOTERM_PREFIX@/bin/poweroff"
-+# define _PATH_VI              "@NEOTERM_PREFIX@/bin/vi"
-+# define _PATH_TERMCOLORS_DIR  "@NEOTERM_PREFIX@/etc/" _PATH_TERMCOLORS_DIRNAME
++# define _PATH_MAILDIR         "@TERMUX_PREFIX@/var/spool/mail"
++# define _PATH_MOTDFILE        "@TERMUX_PREFIX@/etc/motd"
++# define _PATH_LOGIN           "@TERMUX_PREFIX@/bin/login"
++# define _PATH_SHUTDOWN        "@TERMUX_PREFIX@/bin/shutdown"
++# define _PATH_POWEROFF        "@TERMUX_PREFIX@/bin/poweroff"
++# define _PATH_VI              "@TERMUX_PREFIX@/bin/vi"
++# define _PATH_TERMCOLORS_DIR  "@TERMUX_PREFIX@/etc/" _PATH_TERMCOLORS_DIRNAME
 +
 +// Termux doesn't support multiuser environment.
 +// Some Android versions support /etc/passwd and /etc/group but files
@@ -71,31 +71,31 @@ diff -uNr util-linux-2.36.1/include/pathnames.h util-linux-2.36.1.mod/include/pa
 +# define _PATH_SHADOW_PASSWD   "/system/etc/shadow"
 +
 +// Ignored in Termux.
-+# define _PATH_SHELLS          "@NEOTERM_PREFIX@/etc/shells"
++# define _PATH_SHELLS          "@TERMUX_PREFIX@/etc/shells"
 +
 +// btmp, (and utmp/wtmp) files are unsupported.
-+# define _PATH_BTMP            "@NEOTERM_PREFIX@/var/log/btmp"
++# define _PATH_BTMP            "@TERMUX_PREFIX@/var/log/btmp"
 +
-+# define _PATH_ISSUE           "@NEOTERM_PREFIX@/etc/issue"
++# define _PATH_ISSUE           "@TERMUX_PREFIX@/etc/issue"
 +# define _PATH_ISSUEDIR        _PATH_ISSUE ".d"
 +
 +// os release definition is not available in Termux.
-+# define _PATH_OS_RELEASE_ETC  "@NEOTERM_PREFIX@/etc/os-release"
-+# define _PATH_OS_RELEASE_USR  "@NEOTERM_PREFIX@/lib/os-release"
++# define _PATH_OS_RELEASE_ETC  "@TERMUX_PREFIX@/etc/os-release"
++# define _PATH_OS_RELEASE_USR  "@TERMUX_PREFIX@/lib/os-release"
 +
 +// login configuration is unsupported.
-+# define _PATH_LOGINDEFS       "@NEOTERM_PREFIX@/etc/login.defs"
++# define _PATH_LOGINDEFS       "@TERMUX_PREFIX@/etc/login.defs"
 +
-+# define _PATH_WORDS           "@NEOTERM_PREFIX@/share/dict/words"
-+# define _PATH_WORDS_ALT       "@NEOTERM_PREFIX@/share/dict/web2"
++# define _PATH_WORDS           "@TERMUX_PREFIX@/share/dict/words"
++# define _PATH_WORDS_ALT       "@TERMUX_PREFIX@/share/dict/web2"
 +
 +// Not available.
-+# define _PATH_FILESYSTEMS     "@NEOTERM_PREFIX@/etc/filesystems"
++# define _PATH_FILESYSTEMS     "@TERMUX_PREFIX@/etc/filesystems"
 +
 +# define _PATH_MOUNTED         "/proc/self/mounts"
 +
 +// Not available.
-+# define _PATH_MNTTAB          "@NEOTERM_PREFIX@/etc/fstab"
++# define _PATH_MNTTAB          "@TERMUX_PREFIX@/etc/fstab"
 +
 +# define _PATH_DEV_LOOP        "/dev/block/loop"
 +# define _PATH_DEV_BYLABEL     "/dev/block/by-label"
@@ -105,7 +105,7 @@ diff -uNr util-linux-2.36.1/include/pathnames.h util-linux-2.36.1.mod/include/pa
 +# define _PATH_DEV_BYPARTLABEL "/dev/block/by-name"
 +# define _PATH_DEV_BYPARTUUID  "/dev/block/by-partuuid"
 +
-+# define _PATH_ADJTIME         "@NEOTERM_PREFIX@/etc/adjtime"
++# define _PATH_ADJTIME         "@TERMUX_PREFIX@/etc/adjtime"
 +#endif
 +
  #endif /* PATHNAMES_H */
@@ -117,7 +117,7 @@ diff -uNr util-linux-2.36.1/lib/exec_shell.c util-linux-2.36.1.mod/lib/exec_shel
  #include "exec_shell.h"
  
 -#define DEFAULT_SHELL "/bin/sh"
-+#define DEFAULT_SHELL "@NEOTERM_PREFIX@/bin/sh"
++#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/sh"
  
  void __attribute__((__noreturn__)) exec_shell(void)
  {
@@ -149,7 +149,7 @@ diff -uNr util-linux-2.36.1/libblkid/src/blkidP.h util-linux-2.36.1.mod/libblkid
  
  /* config file */
 -#define BLKID_CONFIG_FILE	"/etc/blkid.conf"
-+#define BLKID_CONFIG_FILE	"@NEOTERM_PREFIX@/etc/blkid.conf"
++#define BLKID_CONFIG_FILE	"@TERMUX_PREFIX@/etc/blkid.conf"
  
  /* cache file on systemds with /run */
  #define BLKID_RUNTIME_TOPDIR	"/run"
@@ -158,7 +158,7 @@ diff -uNr util-linux-2.36.1/libblkid/src/blkidP.h util-linux-2.36.1.mod/libblkid
  
  /* old systems */
 -#define BLKID_CACHE_FILE_OLD	"/etc/blkid.tab"
-+#define BLKID_CACHE_FILE_OLD	"@NEOTERM_PREFIX@/etc/blkid.tab"
++#define BLKID_CACHE_FILE_OLD	"@TERMUX_PREFIX@/etc/blkid.tab"
  
  #define BLKID_PROBE_OK	 0
  #define BLKID_PROBE_NONE 1
@@ -172,8 +172,8 @@ diff -uNr util-linux-2.36.1/libblkid/src/topology/dm.c util-linux-2.36.1.mod/lib
 -		"/usr/local/sbin/dmsetup",
 -		"/usr/sbin/dmsetup",
 -		"/sbin/dmsetup"
-+		"@NEOTERM_PREFIX@/bin/dmsetup",
-+		"@NEOTERM_PREFIX@/sbin/dmsetup"
++		"@TERMUX_PREFIX@/bin/dmsetup",
++		"@TERMUX_PREFIX@/sbin/dmsetup"
  	};
  	int dmpipe[] = { -1, -1 }, stripes = 0, stripesize = 0;
  	const char *cmd = NULL;
@@ -187,8 +187,8 @@ diff -uNr util-linux-2.36.1/libblkid/src/topology/lvm.c util-linux-2.36.1.mod/li
 -		"/usr/local/sbin/lvdisplay",
 -		"/usr/sbin/lvdisplay",
 -		"/sbin/lvdisplay"
-+		"@NEOTERM_PREFIX@/bin/lvdisplay",
-+		"@NEOTERM_PREFIX@/sbin/lvdisplay"
++		"@TERMUX_PREFIX@/bin/lvdisplay",
++		"@TERMUX_PREFIX@/sbin/lvdisplay"
  	};
  	int lvpipe[] = { -1, -1 }, stripes = 0, stripesize = 0;
  	FILE *stream = NULL;
@@ -235,7 +235,7 @@ diff -uNr util-linux-2.36.1/libuuid/src/uuidP.h util-linux-2.36.1.mod/libuuid/sr
  #include "uuid.h"
  
 -#define LIBUUID_CLOCK_FILE	"/var/lib/libuuid/clock.txt"
-+#define LIBUUID_CLOCK_FILE	"@NEOTERM_PREFIX@/var/lib/libuuid/clock.txt"
++#define LIBUUID_CLOCK_FILE	"@TERMUX_PREFIX@/var/lib/libuuid/clock.txt"
  
  /*
   * Offset between 15-Oct-1582 and 1-Jan-70
@@ -247,7 +247,7 @@ diff -uNr util-linux-2.36.1/libuuid/src/uuidd.h util-linux-2.36.1.mod/libuuid/sr
  #define UUIDD_SOCKET_PATH	UUIDD_DIR "/request"
  #define UUIDD_PIDFILE_PATH	UUIDD_DIR "/uuidd.pid"
 -#define UUIDD_PATH		"/usr/sbin/uuidd"
-+#define UUIDD_PATH		"@NEOTERM_PREFIX@/bin/uuidd"
++#define UUIDD_PATH		"@TERMUX_PREFIX@/bin/uuidd"
  
  #define UUIDD_OP_GETPID			0
  #define UUIDD_OP_GET_MAXOP		1
@@ -259,7 +259,7 @@ diff -uNr util-linux-2.36.1/login-utils/su-common.c util-linux-2.36.1.mod/login-
  
  /* The shell to run if none is given in the user's passwd entry.  */
 -#define DEFAULT_SHELL "/bin/sh"
-+#define DEFAULT_SHELL "@NEOTERM_PREFIX@/bin/sh"
++#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/sh"
  
  /* The user to become if none is specified.  */
  #define DEFAULT_USER "root"
@@ -271,7 +271,7 @@ diff -uNr util-linux-2.36.1/login-utils/sulogin.c util-linux-2.36.1.mod/login-ut
  			su_shell = pwd->pw_shell;
  		else
 -			su_shell = "/bin/sh";
-+			su_shell = "@NEOTERM_PREFIX@/bin/sh";
++			su_shell = "@TERMUX_PREFIX@/bin/sh";
  	}
  	if ((p = strrchr(su_shell, '/')) == NULL)
  		p = su_shell;
@@ -282,9 +282,9 @@ diff -uNr util-linux-2.36.1/login-utils/sulogin.c util-linux-2.36.1.mod/login-ut
 -	xsetenv("SHELL", "/bin/sh", 1);
 -	execl("/bin/sh", profile ? "-sh" : "sh", (char *)NULL);
 -	warn(_("failed to execute %s"), "/bin/sh");
-+	xsetenv("SHELL", "@NEOTERM_PREFIX@/bin/sh", 1);
-+	execl("@NEOTERM_PREFIX@/bin/sh", profile ? "-sh" : "sh", (char *)NULL);
-+	warn(_("failed to execute %s"), "@NEOTERM_PREFIX@/bin/sh");
++	xsetenv("SHELL", "@TERMUX_PREFIX@/bin/sh", 1);
++	execl("@TERMUX_PREFIX@/bin/sh", profile ? "-sh" : "sh", (char *)NULL);
++	warn(_("failed to execute %s"), "@TERMUX_PREFIX@/bin/sh");
  }
  
  static void usage(void)
@@ -352,7 +352,7 @@ diff -uNr util-linux-2.36.1/misc-utils/whereis.c util-linux-2.36.1.mod/misc-util
 -	"/usr/share",
 -
 -	"/opt/*/bin",
-+	"@NEOTERM_PREFIX@/bin",
++	"@TERMUX_PREFIX@/bin",
  	NULL
  };
  
@@ -364,8 +364,8 @@ diff -uNr util-linux-2.36.1/misc-utils/whereis.c util-linux-2.36.1.mod/misc-util
 -	"/usr/TeX/man/*",
 -	"/usr/interviews/man/mann",
 -	"/usr/share/info",
-+	"@NEOTERM_PREFIX@/share/man/*",
-+	"@NEOTERM_PREFIX@/share/info",
++	"@TERMUX_PREFIX@/share/man/*",
++	"@TERMUX_PREFIX@/share/info",
  	NULL
  };
  
@@ -376,7 +376,7 @@ diff -uNr util-linux-2.36.1/misc-utils/whereis.c util-linux-2.36.1.mod/misc-util
 -	"/usr/src/ucb/pascal",
 -	"/usr/src/ucb/pascal/utilities",
 -	"/usr/src/undoc",
-+	"@NEOTERM_PREFIX@/src",
++	"@TERMUX_PREFIX@/src",
  	NULL
  };
  
@@ -388,7 +388,7 @@ diff -uNr util-linux-2.36.1/sys-utils/setarch.c util-linux-2.36.1.mod/sys-utils/
  		 * error message later if necessary */
  		if (strcmp(arch, "sparc32bash") == 0) {
 -			shell = "/bin/bash";
-+			shell = "@NEOTERM_PREFIX@/bin/bash";
++			shell = "@TERMUX_PREFIX@/bin/bash";
  			shell_arg = "";
  			goto set_arch;
  		}
@@ -397,7 +397,7 @@ diff -uNr util-linux-2.36.1/sys-utils/setarch.c util-linux-2.36.1.mod/sys-utils/
  
  	if (!argc) {
 -		shell = "/bin/sh";
-+		shell = "@NEOTERM_PREFIX@/bin/sh";
++		shell = "@TERMUX_PREFIX@/bin/sh";
  		shell_arg = "-sh";
  	}
  	if (verbose) {
@@ -409,7 +409,7 @@ diff -uNr util-linux-2.36.1/sys-utils/setpriv.c util-linux-2.36.1.mod/sys-utils/
  
  /* The shell to set SHELL env.variable if none is given in the user's passwd entry.  */
 -#define DEFAULT_SHELL "/bin/sh"
-+#define DEFAULT_SHELL "@NEOTERM_PREFIX@/bin/sh"
++#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/sh"
  
  static gid_t get_group(const char *s, const char *err);
  
@@ -432,7 +432,7 @@ diff -uNr util-linux-2.36.1/text-utils/pg.c util-linux-2.36.1.mod/text-utils/pg.
  						const char *sh = getenv("SHELL");
  						if (!sh)
 -							sh = "/bin/sh";
-+							sh = "@NEOTERM_PREFIX@/bin/sh";
++							sh = "@TERMUX_PREFIX@/bin/sh";
  						if (!nobuf)
  							fclose(fbuf);
  						fclose(find);

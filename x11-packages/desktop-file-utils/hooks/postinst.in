@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 
-if [ -d "@NEOTERM_PREFIX@/share/applications" ]; then
+if [ -d "@TERMUX_PREFIX@/share/applications" ]; then
     update-desktop-database -q
 fi
 

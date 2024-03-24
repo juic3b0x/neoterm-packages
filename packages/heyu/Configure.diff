@@ -7,9 +7,9 @@
 -BIN = /usr/local/bin
 -MAN = /usr/local/man/man1
 -MAN5 = /usr/local/man/man5
-+BIN = @NEOTERM_PREFIX@/bin
-+MAN = @NEOTERM_PREFIX@/share/man/man1
-+MAN5 = @NEOTERM_PREFIX@/share/man/man5
++BIN = @TERMUX_PREFIX@/bin
++MAN = @TERMUX_PREFIX@/share/man/man1
++MAN5 = @TERMUX_PREFIX@/share/man/man5
  
  #       set DFLAGS equal to:
  #          -DSYSV       if using SYSTEM V
@@ -18,7 +18,7 @@
  fi
  
 -CC=gcc  #Set default for later
-+CC="@NEOTERM_CC@"  #Set default for later
++CC="@TERMUX_CC@"  #Set default for later
  
  echo "#This makefile is built for $SYS" >> Makefile
  case "$SYS" in

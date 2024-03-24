@@ -2,7 +2,7 @@
 +++ b/Makefile
 @@ -1,11 +1,11 @@
 -PREFIX=/usr/local
-+PREFIX=@NEOTERM_PREFIX@
++PREFIX=@TERMUX_PREFIX@
  BINDIR=${PREFIX}/bin
 -MANDIR=${PREFIX}/man
 +MANDIR=${PREFIX}/share/man

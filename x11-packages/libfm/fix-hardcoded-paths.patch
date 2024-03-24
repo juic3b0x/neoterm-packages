@@ -7,7 +7,7 @@ diff -uNr libfm-1.3.2/src/base/fm-file-info.c libfm-1.3.2.mod/src/base/fm-file-i
                     otherwise it is a link to a file under menu:// */
 -                if (!g_str_has_prefix(fi->target, "/usr/share/") &&
 -                    !g_str_has_prefix(fi->target, "/usr/local/share/"))
-+                if (!g_str_has_prefix(fi->target, "@NEOTERM_PREFIX@/share/"))
++                if (!g_str_has_prefix(fi->target, "@TERMUX_PREFIX@/share/"))
                  {
                      FmPath *target = fm_path_new_for_str(fi->target);
                      gboolean is_native = fm_path_is_native(target);
@@ -19,7 +19,7 @@ diff -uNr libfm-1.3.2/src/gtk/fm-app-chooser-dlg.c libfm-1.3.2.mod/src/gtk/fm-ap
          GTK_FILE_FILTER_FILENAME|GTK_FILE_FILTER_MIME_TYPE, exec_filter_func, NULL, NULL);
      /* gtk_file_filter_set_name(filter, _("Executable files")); */
 -    file = fm_select_file(GTK_WINDOW(data->dlg), NULL, "/usr/bin", TRUE, FALSE, filter, NULL);
-+    file = fm_select_file(GTK_WINDOW(data->dlg), NULL, "@NEOTERM_PREFIX@/bin", TRUE, FALSE, filter, NULL);
++    file = fm_select_file(GTK_WINDOW(data->dlg), NULL, "@TERMUX_PREFIX@/bin", TRUE, FALSE, filter, NULL);
  
      if (file == NULL)
          return;
@@ -31,7 +31,7 @@ diff -uNr libfm-1.3.2/src/modules/gtk-fileprop-x-desktop.c libfm-1.3.2.mod/src/m
                                            GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                            GTK_STOCK_OPEN, GTK_RESPONSE_OK, NULL);
 -    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(chooser), "/usr/bin");
-+    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(chooser), "@NEOTERM_PREFIX@/bin");
++    gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER(chooser), "@TERMUX_PREFIX@/bin");
      filter = gtk_file_filter_new();
      gtk_file_filter_set_name(GTK_FILE_FILTER(filter), _("Executable files") );
      gtk_file_filter_add_custom(GTK_FILE_FILTER(filter), GTK_FILE_FILTER_FILENAME,

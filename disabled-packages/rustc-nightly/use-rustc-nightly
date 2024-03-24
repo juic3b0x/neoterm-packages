@@ -1,2 +1,2 @@
-#!/data/data/com.neoterm/files/usr/bin/sh
-export PATH=/data/data/com.neoterm/files/usr/opt/rustc-nightly/bin:$PATH
+#!/data/data/io.neoterm/files/usr/bin/sh
+export PATH=/data/data/io.neoterm/files/usr/opt/rustc-nightly/bin:$PATH

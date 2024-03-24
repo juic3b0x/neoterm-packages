@@ -1,13 +1,13 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/dimkr/loksh
-NEOTERM_PKG_DESCRIPTION="A Linux port of OpenBSD's ksh"
-NEOTERM_PKG_LICENSE="Public Domain"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="7.4"
-NEOTERM_PKG_SRCURL=git+https://github.com/dimkr/loksh
-NEOTERM_PKG_GIT_BRANCH=$NEOTERM_PKG_VERSION
-NEOTERM_PKG_DEPENDS="ncurses"
+TERMUX_PKG_HOMEPAGE=https://github.com/dimkr/loksh
+TERMUX_PKG_DESCRIPTION="A Linux port of OpenBSD's ksh"
+TERMUX_PKG_LICENSE="Public Domain"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="7.4"
+TERMUX_PKG_SRCURL=git+https://github.com/dimkr/loksh
+TERMUX_PKG_GIT_BRANCH=$TERMUX_PKG_VERSION
+TERMUX_PKG_DEPENDS="ncurses"
 
-neoterm_step_post_get_source() {
+termux_step_post_get_source() {
 	pushd subprojects/lolibc
 	mv include _include_lolibc
 	mkdir include

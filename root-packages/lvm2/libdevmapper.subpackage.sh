@@ -1,7 +1,7 @@
-NEOTERM_SUBPKG_DESCRIPTION="A device-mapper library"
-NEOTERM_SUBPKG_DEPENDS="libandroid-support"
-NEOTERM_SUBPKG_DEPEND_ON_PARENT=no
-NEOTERM_SUBPKG_INCLUDE="
+TERMUX_SUBPKG_DESCRIPTION="A device-mapper library"
+TERMUX_SUBPKG_DEPENDS="libandroid-support"
+TERMUX_SUBPKG_DEPEND_ON_PARENT=no
+TERMUX_SUBPKG_INCLUDE="
 include/libdevmapper.h
 bin/dmstats
 bin/dmsetup

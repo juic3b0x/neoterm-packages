@@ -6,7 +6,7 @@ diff -u -r ../racket-6.6/collects/racket/system.rkt ./collects/racket/system.rkt
  (define (shell-path/args who argstr)
    (case (system-type)
 -    [(unix macosx) (append '("/bin/sh" "-c") (list argstr))]
-+    [(unix macosx) (append '("@NEOTERM_PREFIX@/bin/sh" "-c") (list argstr))]
++    [(unix macosx) (append '("@TERMUX_PREFIX@/bin/sh" "-c") (list argstr))]
      [(windows) (let ([cmd
                        (let ([d (find-system-path 'sys-dir)])
                          (let ([cmd (build-path d "cmd.exe")])

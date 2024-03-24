@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/termux/termux-packages/issues/15852
 Borrowed from https://github.com/gentoo/gentoo/blob/52c6387234ecf60c8605cf23093e82d8f384249c/net-ftp/ncftp/files/ncftp-3.2.6-fix-clang.patch
 
 Fix compilation with clang-16

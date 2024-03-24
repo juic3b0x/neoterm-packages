@@ -5,7 +5,7 @@
    (cond [(string? command)
           (rc (cond-expand [gauche.os.windows `("cmd.exe" "/c" ,command)]
 -                          [else              `("/bin/sh" "-c" ,command)]))]
-+                          [else              `("@NEOTERM_PREFIX@/bin/sh" "-c" ,command)]))]
++                          [else              `("@TERMUX_PREFIX@/bin/sh" "-c" ,command)]))]
          [(and (list? command) (every list? command))
           (apply run-pipeline command
                  :input stdin :output stdout

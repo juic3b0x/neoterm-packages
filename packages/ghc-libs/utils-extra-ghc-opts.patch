@@ -7,7 +7,7 @@
 +ifneq "$3" "0"
 +ifneq (,$(findstring utils/,$1))
 +# Found a package that needs to be built in the utils directory
-+$1_$2_MORE_HC_OPTS += -optl-Wl,-rpath=@NEOTERM_PREFIX@/lib
++$1_$2_MORE_HC_OPTS += -optl-Wl,-rpath=@TERMUX_PREFIX@/lib
 +$1_$2_MORE_HC_OPTS += -optl-Wl,--enable-new-dtags
 +endif
 +endif

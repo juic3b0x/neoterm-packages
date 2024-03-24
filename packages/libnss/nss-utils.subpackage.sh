@@ -1,4 +1,4 @@
-NEOTERM_SUBPKG_INCLUDE="
+TERMUX_SUBPKG_INCLUDE="
 bin/addbuiltin
 bin/atob
 bin/baddbdir
@@ -60,5 +60,5 @@ bin/validation
 bin/vfychain
 bin/vfyserv
 "
-NEOTERM_SUBPKG_DESCRIPTION="Tools for NSS"
-NEOTERM_SUBPKG_DEPENDS="zlib"
+TERMUX_SUBPKG_DESCRIPTION="Tools for NSS"
+TERMUX_SUBPKG_DEPENDS="zlib"

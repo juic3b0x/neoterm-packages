@@ -5,7 +5,7 @@
        FString temp;
        NDir::MyGetTempPath(temp);
 -      if (!temp.IsEqualTo(STRING_PATH_SEPARATOR "tmp" STRING_PATH_SEPARATOR))
-+      if (!temp.IsEqualTo("@NEOTERM_PREFIX@/tmp/"))
++      if (!temp.IsEqualTo("@TERMUX_PREFIX@/tmp/"))
          *so << " temp_path:" << temp;
      }
    }
@@ -16,11 +16,11 @@
    
    // FIXME: improve that code
 -  path = STRING_PATH_SEPARATOR "tmp";
-+  path = "@NEOTERM_PREFIX@/tmp";
++  path = "@TERMUX_PREFIX@/tmp";
    const char *s;
    if (NFind::DoesDirExist_FollowLink(path))
 -    s = STRING_PATH_SEPARATOR "tmp" STRING_PATH_SEPARATOR;
-+    s = "@NEOTERM_PREFIX@/tmp/";
++    s = "@TERMUX_PREFIX@/tmp/";
    else
      s = "." STRING_PATH_SEPARATOR;
    path = s;

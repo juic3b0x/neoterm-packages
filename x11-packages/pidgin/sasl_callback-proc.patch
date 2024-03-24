@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/termux/termux-packages/issues/15852
 
 --- a/libpurple/protocols/irc/msgs.c
 +++ b/libpurple/protocols/irc/msgs.c

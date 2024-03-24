@@ -6,7 +6,7 @@ diff '--color=auto' -uNr gomp/config/config.go gomp.mod/config/config.go
  func ParseMPDConfig() {
  	uwconf := ConfigDir + "/mpd/mpd.conf"
 -	swconf := "/etc/mpd.conf"
-+	swconf := "@NEOTERM_PREFIX@/etc/mpd.conf"
++	swconf := "@TERMUX_PREFIX@/etc/mpd.conf"
  	set_defaults := func(path string) {
  		m := conf.GenerateMap(path)
  		if val, ok := m["music_directory"]; ok {

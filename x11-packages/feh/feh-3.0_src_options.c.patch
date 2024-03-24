@@ -6,7 +6,7 @@ diff -uNr feh-3.0/src/options.c feh-3.0.mod/src/options.c
  	free(oldrcpath);
  
 -	if (!fp && ((fp = fopen("/etc/feh/themes", "r")) == NULL))
-+	if (!fp && ((fp = fopen("@NEOTERM_PREFIX@/etc/feh/themes", "r")) == NULL))
++	if (!fp && ((fp = fopen("@TERMUX_PREFIX@/etc/feh/themes", "r")) == NULL))
  		return;
  
  	/* Oooh. We have an options file :) */

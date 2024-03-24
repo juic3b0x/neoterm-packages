@@ -5,7 +5,7 @@
  *								    *
  *********************************************************************/
 -#define NCXSERVER_SOCKNAME   "/tmp/ncxserver.sock"
-+#define NCXSERVER_SOCKNAME   "@NEOTERM_PREFIX@/tmp/ncxserver.sock"
++#define NCXSERVER_SOCKNAME   "@TERMUX_PREFIX@/tmp/ncxserver.sock"
  
  /********************************************************************
  *								    *

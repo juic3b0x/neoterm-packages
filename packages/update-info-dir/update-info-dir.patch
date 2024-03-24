@@ -5,7 +5,7 @@
  # GPLv2
  
 -INFODIR=/usr/share/info
-+INFODIR=@NEOTERM_PREFIX@/share/info
++INFODIR=@TERMUX_PREFIX@/share/info
  
  set -e
  
@@ -29,7 +29,7 @@
  
  (re-)creates the index of available documentation in info format
 -(the file /usr/share/info/dir) which is usually presented by info browsers
-+(the file @NEOTERM_PREFIX@/share/info/dir) which is usually presented by info browsers
++(the file @TERMUX_PREFIX@/share/info/dir) which is usually presented by info browsers
  on startup."
  
      exit 0

@@ -7,13 +7,13 @@ index 06bc1e0..127bb39 100644
  
  	mod.AddParam(session.NewStringParameter("https.proxy.certificate",
 -		"~/.bettercap-ca.cert.pem",
-+		"@NEOTERM_HOME@/.bettercap-ca.cert.pem",
++		"@TERMUX_HOME@/.bettercap-ca.cert.pem",
  		"",
  		"HTTPS proxy certification authority TLS certificate file."))
  
  	mod.AddParam(session.NewStringParameter("https.proxy.key",
 -		"~/.bettercap-ca.key.pem",
-+		"@NEOTERM_HOME@/.bettercap-ca.key.pem",
++		"@TERMUX_HOME@/.bettercap-ca.key.pem",
  		"",
  		"HTTPS proxy certification authority TLS key file."))
  
@@ -26,13 +26,13 @@ index 0d9ff80..3e49996 100644
  
  	mod.AddParam(session.NewStringParameter("https.server.certificate",
 -		"~/.bettercap-httpd.cert.pem",
-+		"@NEOTERM_HOME@/.bettercap-httpd.cert.pem",
++		"@TERMUX_HOME@/.bettercap-httpd.cert.pem",
  		"",
  		"TLS certificate file (will be auto generated if filled but not existing)."))
  
  	mod.AddParam(session.NewStringParameter("https.server.key",
 -		"~/.bettercap-httpd.key.pem",
-+		"@NEOTERM_HOME@/.bettercap-httpd.key.pem",
++		"@TERMUX_HOME@/.bettercap-httpd.key.pem",
  		"",
  		"TLS key file (will be auto generated if filled but not existing)."))
  

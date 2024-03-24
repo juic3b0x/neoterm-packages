@@ -7,7 +7,7 @@ Fix SIGBUS error on Arm. Also apply to other arches just in case.
  using namespace std;
  
 -#if __sparc__
-+#if __sparc__ || __NEOTERM__
++#if __sparc__ || __TERMUX__
  #include <string.h>
  static inline uint64 UNALIGNED_LOAD64(const char *p) {
    uint64 val;

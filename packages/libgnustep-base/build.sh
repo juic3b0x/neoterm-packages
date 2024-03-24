@@ -1,17 +1,17 @@
-NEOTERM_PKG_HOMEPAGE=http://www.gnustep.org
-NEOTERM_PKG_DESCRIPTION="A library of general-purpose, non-graphical Objective C objects"
-NEOTERM_PKG_LICENSE="GPL-2.0, LGPL-2.1"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION=1.29.0
-NEOTERM_PKG_REVISION=4
-NEOTERM_PKG_SRCURL=https://github.com/gnustep/libs-base/releases/download/base-${NEOTERM_PKG_VERSION//./_}/gnustep-base-${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=fa58eda665c3e0b9c420dc32bb3d51247a407c944d82e5eed1afe8a2b943ef37
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_UPDATE_VERSION_REGEXP='(?<=-).+'
-NEOTERM_PKG_DEPENDS="gnustep-make, libc++, libffi, libgmp, libgnutls, libiconv, libicu, libxml2, libxslt, zlib"
-NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
---with-default-config=$NEOTERM_PREFIX/etc/GNUstep/GNUstep.conf
+TERMUX_PKG_HOMEPAGE=http://www.gnustep.org
+TERMUX_PKG_DESCRIPTION="A library of general-purpose, non-graphical Objective C objects"
+TERMUX_PKG_LICENSE="GPL-2.0, LGPL-2.1"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION=1.29.0
+TERMUX_PKG_REVISION=4
+TERMUX_PKG_SRCURL=https://github.com/gnustep/libs-base/releases/download/base-${TERMUX_PKG_VERSION//./_}/gnustep-base-${TERMUX_PKG_VERSION}.tar.gz
+TERMUX_PKG_SHA256=fa58eda665c3e0b9c420dc32bb3d51247a407c944d82e5eed1afe8a2b943ef37
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_UPDATE_VERSION_REGEXP='(?<=-).+'
+TERMUX_PKG_DEPENDS="gnustep-make, libc++, libffi, libgmp, libgnutls, libiconv, libicu, libxml2, libxslt, zlib"
+TERMUX_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+--with-default-config=$TERMUX_PREFIX/etc/GNUstep/GNUstep.conf
 --enable-procfs
 --disable-procfs-psinfo
 iswindows=no
@@ -39,8 +39,8 @@ cross_objc2_runtime=1
 ac_cv_func_setpgrp_void=yes
 "
 
-neoterm_step_pre_configure() {
-	local bin="$NEOTERM_PKG_BUILDDIR/bin"
+termux_step_pre_configure() {
+	local bin="$TERMUX_PKG_BUILDDIR/bin"
 	mkdir -p "$bin"
 	local sh="$(command -v sh)"
 	for cmd in CC CPP CXX; do

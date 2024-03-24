@@ -1,4 +1,4 @@
-#!@NEOTERM_PREFIX@/bin/env perl
+#!@TERMUX_PREFIX@/bin/env perl
 #
 #  Copyright (C) 2009-2010 D. R. Commander.  All Rights Reserved.
 #  Copyright (C) 2005-2006 Sun Microsystems, Inc.  All Rights Reserved.
@@ -45,13 +45,13 @@ $vncClasses = "";
 $geometry = "1024x768";
 #$depth = 16;
 $vncJavaFiles = (((-d "$vncClasses") && "$vncClasses") ||
-                 ((-d "@NEOTERM_PREFIX@/share/vnc/classes") && "@NEOTERM_PREFIX@/share/vnc/classes") ||
-                 ((-d "@NEOTERM_PREFIX@/vnc/classes") && "@NEOTERM_PREFIX@/vnc/classes"));
+                 ((-d "@TERMUX_PREFIX@/share/vnc/classes") && "@TERMUX_PREFIX@/share/vnc/classes") ||
+                 ((-d "@TERMUX_PREFIX@/vnc/classes") && "@TERMUX_PREFIX@/vnc/classes"));
 
 $vncUserDir = "$ENV{HOME}/.vnc";
 $vncUserConfig = "$vncUserDir/config";
 
-$vncSystemConfigDir = "@NEOTERM_PREFIX@/etc/tigervnc";
+$vncSystemConfigDir = "@TERMUX_PREFIX@/etc/tigervnc";
 $vncSystemConfigDefaultsFile = "$vncSystemConfigDir/vncserver-config-defaults";
 $vncSystemConfigMandatoryFile = "$vncSystemConfigDir/vncserver-config-mandatory";
 
@@ -60,7 +60,7 @@ $xauthorityFile = "$ENV{XAUTHORITY}" || "$ENV{HOME}/.Xauthority";
 
 $xstartupFile = $vncUserDir . "/xstartup";
 $defaultXStartup
-    = ("#!@NEOTERM_PREFIX@/bin/sh\n".
+    = ("#!@TERMUX_PREFIX@/bin/sh\n".
        "## This file is executed during VNC server\n".
        "## startup.\n\n".
        "# Launch terminal emulator Aterm.\n".
@@ -83,15 +83,15 @@ $defaultConfig
 
 chop($host = `uname -n`);
 
-if (-d "@NEOTERM_PREFIX@/etc/X11/fontpath.d") {
-    $fontPath = "catalogue:@NEOTERM_PREFIX@/etc/X11/fontpath.d";
+if (-d "@TERMUX_PREFIX@/etc/X11/fontpath.d") {
+    $fontPath = "catalogue:@TERMUX_PREFIX@/etc/X11/fontpath.d";
 }
 
-@fontpaths = ('@NEOTERM_PREFIX@/share/X11/fonts', '@NEOTERM_PREFIX@/share/fonts', '@NEOTERM_PREFIX@/share/fonts/X11/');
-if (! -l "@NEOTERM_PREFIX@/lib/X11") {push(@fontpaths, '@NEOTERM_PREFIX@/lib/X11/fonts');}
-if (! -l "@NEOTERM_PREFIX@/X11") {push(@fontpaths, '@NEOTERM_PREFIX@X11/lib/X11/fonts');}
-if (! -l "@NEOTERM_PREFIX@/X11R6") {push(@fontpaths, '@NEOTERM_PREFIX@/X11R6/lib/X11/fonts');}
-push(@fontpaths, '@NEOTERM_PREFIX@/share/fonts/default');
+@fontpaths = ('@TERMUX_PREFIX@/share/X11/fonts', '@TERMUX_PREFIX@/share/fonts', '@TERMUX_PREFIX@/share/fonts/X11/');
+if (! -l "@TERMUX_PREFIX@/lib/X11") {push(@fontpaths, '@TERMUX_PREFIX@/lib/X11/fonts');}
+if (! -l "@TERMUX_PREFIX@/X11") {push(@fontpaths, '@TERMUX_PREFIX@X11/lib/X11/fonts');}
+if (! -l "@TERMUX_PREFIX@/X11R6") {push(@fontpaths, '@TERMUX_PREFIX@/X11R6/lib/X11/fonts');}
+push(@fontpaths, '@TERMUX_PREFIX@/share/fonts/default');
 
 @fonttypes = ('misc',
              '75dpi',
@@ -317,7 +317,7 @@ foreach my $k (sort keys %default_opts) {
 }
 
 # Add color database stuff here, e.g.:
-# $cmd .= " -co @NEOTERM_PREFIX@/lib/X11/rgb";
+# $cmd .= " -co @TERMUX_PREFIX@/lib/X11/rgb";
 
 foreach $arg (@ARGV) {
   $cmd .= " " . &quotedString($arg);
@@ -389,8 +389,8 @@ warn "Log file is $desktopLog\n\n";
 # If the unix domain socket exists then use that (DISPLAY=:n) otherwise use
 # TCP (DISPLAY=host:n)
 
-if (-e "@NEOTERM_PREFIX@/tmp/.X11-unix/X$displayNumber" ||
-    -e "@NEOTERM_PREFIX@/spool/sockets/X11/$displayNumber")
+if (-e "@TERMUX_PREFIX@/tmp/.X11-unix/X$displayNumber" ||
+    -e "@TERMUX_PREFIX@/spool/sockets/X11/$displayNumber")
 {
     $ENV{DISPLAY}= ":$displayNumber";
 } else {
@@ -531,21 +531,21 @@ sub CheckDisplayNumber
     }
     close(S);
 
-    if (-e "@NEOTERM_PREFIX@/tmp/.X$n-lock") {
-	warn "\nWarning: $host:$n is taken because of @NEOTERM_PREFIX@/tmp/.X$n-lock\n";
+    if (-e "@TERMUX_PREFIX@/tmp/.X$n-lock") {
+	warn "\nWarning: $host:$n is taken because of @TERMUX_PREFIX@/tmp/.X$n-lock\n";
 	warn "Remove this file if there is no X server $host:$n\n";
 	return 0;
     }
 
-    if (-e "@NEOTERM_PREFIX@/tmp/.X11-unix/X$n") {
-	warn "\nWarning: $host:$n is taken because of @NEOTERM_PREFIX@/tmp/.X11-unix/X$n\n";
+    if (-e "@TERMUX_PREFIX@/tmp/.X11-unix/X$n") {
+	warn "\nWarning: $host:$n is taken because of @TERMUX_PREFIX@/tmp/.X11-unix/X$n\n";
 	warn "Remove this file if there is no X server $host:$n\n";
 	return 0;
     }
 
-    if (-e "@NEOTERM_PREFIX@/spool/sockets/X11/$n") {
+    if (-e "@TERMUX_PREFIX@/spool/sockets/X11/$n") {
 	warn("\nWarning: $host:$n is taken because of ".
-             "@NEOTERM_PREFIX@/spool/sockets/X11/$n\n");
+             "@TERMUX_PREFIX@/spool/sockets/X11/$n\n");
 	warn "Remove this file if there is no X server $host:$n\n";
 	return 0;
     }
@@ -745,15 +745,15 @@ sub Kill
 	warn "Xvnc process ID $pid already killed\n";
 	$opt{'-kill'} =~ s/://;
 
-	if (-e "@NEOTERM_PREFIX@/tmp/.X11-unix/X$opt{'-kill'}") {
+	if (-e "@TERMUX_PREFIX@/tmp/.X11-unix/X$opt{'-kill'}") {
 	    print "Xvnc did not appear to shut down cleanly.";
-	    print " Removing @NEOTERM_PREFIX@/tmp/.X11-unix/X$opt{'-kill'}\n";
-	    unlink "@NEOTERM_PREFIX@/tmp/.X11-unix/X$opt{'-kill'}";
+	    print " Removing @TERMUX_PREFIX@/tmp/.X11-unix/X$opt{'-kill'}\n";
+	    unlink "@TERMUX_PREFIX@/tmp/.X11-unix/X$opt{'-kill'}";
 	}
-	if (-e "@NEOTERM_PREFIX@/tmp/.X$opt{'-kill'}-lock") {
+	if (-e "@TERMUX_PREFIX@/tmp/.X$opt{'-kill'}-lock") {
 	    print "Xvnc did not appear to shut down cleanly.";
-	    print " Removing @NEOTERM_PREFIX@/tmp/.X$opt{'-kill'}-lock\n";
-	    unlink "@NEOTERM_PREFIX@/tmp/.X$opt{'-kill'}-lock";
+	    print " Removing @TERMUX_PREFIX@/tmp/.X$opt{'-kill'}-lock\n";
+	    unlink "@TERMUX_PREFIX@/tmp/.X$opt{'-kill'}-lock";
 	}
     }
 
@@ -862,7 +862,7 @@ sub SanityCheck
     # eval, and if it fails we try 'require "sys/socket.ph"'.  If this fails,
     # we just guess at the values.  If you find perl moaning here, just
     # hard-code the values of AF_INET and SOCK_STREAM.  You can find these out
-    # for your platform by looking in @NEOTERM_PREFIX@/include/sys/socket.h and related
+    # for your platform by looking in @TERMUX_PREFIX@/include/sys/socket.h and related
     # files.
     #
 

@@ -1,4 +1,4 @@
-NEOTERM_SUBPKG_DESCRIPTION="QEMU Linux user mode emulator"
-NEOTERM_SUBPKG_DEPENDS="glib, libandroid-shmem, libgnutls, libpixman"
-NEOTERM_SUBPKG_DEPEND_ON_PARENT=no
-NEOTERM_SUBPKG_INCLUDE="bin/qemu-m68k"
+TERMUX_SUBPKG_DESCRIPTION="QEMU Linux user mode emulator"
+TERMUX_SUBPKG_DEPENDS="glib, libandroid-shmem, libgnutls, libpixman"
+TERMUX_SUBPKG_DEPEND_ON_PARENT=no
+TERMUX_SUBPKG_INCLUDE="bin/qemu-m68k"

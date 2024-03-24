@@ -6,7 +6,7 @@ diff -u -r ../tmate-2.2.1/tmux.h ./tmux.h
  
  /* Default global configuration file. */
 -#define TMUX_CONF "/etc/tmux.conf"
-+#define TMUX_CONF "@NEOTERM_PREFIX@/etc/tmux.conf"
++#define TMUX_CONF "@TERMUX_PREFIX@/etc/tmux.conf"
  
  /*
   * Minimum layout cell size, NOT including separator line. The scroll region

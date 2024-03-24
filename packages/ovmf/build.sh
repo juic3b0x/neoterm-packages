@@ -1,15 +1,15 @@
-NEOTERM_PKG_HOMEPAGE=https://www.tianocore.org/
-NEOTERM_PKG_DESCRIPTION="Open Virtual Machine Firmware"
-NEOTERM_PKG_LICENSE="custom"
-NEOTERM_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_HOMEPAGE=https://www.tianocore.org/
+TERMUX_PKG_DESCRIPTION="Open Virtual Machine Firmware"
+TERMUX_PKG_LICENSE="custom"
+TERMUX_PKG_MAINTAINER="@neoterm"
 _ED2K_VERSION=20231122
 _FEDORA_REPO_VERSION=16.fc40
-NEOTERM_PKG_VERSION=$_ED2K_VERSION-$_FEDORA_REPO_VERSION
-NEOTERM_PKG_SKIP_SRC_EXTRACT=true
-NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+TERMUX_PKG_VERSION=$_ED2K_VERSION-$_FEDORA_REPO_VERSION
+TERMUX_PKG_SKIP_SRC_EXTRACT=true
+TERMUX_PKG_PLATFORM_INDEPENDENT=true
 
-neoterm_step_post_get_source() {
-	# Borrowed from neoterm/neoterm-packages@840024d1d1446b36cc90ecce2aa0d8fb67368d8a
+termux_step_post_get_source() {
+	# Borrowed from termux/termux-packages@840024d1d1446b36cc90ecce2aa0d8fb67368d8a
 	# Array of strings of the form "NAME_SUFFIX RPM_SHA256":
 	local _RPMS=()
 	# Example:
@@ -28,34 +28,34 @@ neoterm_step_post_get_source() {
 	for i in $(seq 0 $((_NUM_RPMS-1))); do
 		local _name_suffix=$(echo ${_RPMS[i]} | cut -d ' ' -f 1)
 		local _rpm_sha256=$(echo ${_RPMS[i]} | cut -d ' ' -f 2)
-		local _rpm_filename="edk2-$_name_suffix-$NEOTERM_PKG_VERSION.noarch.rpm"
-		neoterm_download \
+		local _rpm_filename="edk2-$_name_suffix-$TERMUX_PKG_VERSION.noarch.rpm"
+		termux_download \
 			"https://kojipkgs.fedoraproject.org/packages/edk2/$_ED2K_VERSION/$_FEDORA_REPO_VERSION/noarch/$_rpm_filename" \
-			"$NEOTERM_PKG_CACHEDIR/${_rpm_filename}" \
+			"$TERMUX_PKG_CACHEDIR/${_rpm_filename}" \
 			"${_rpm_sha256}"
 	done
 }
 
-neoterm_step_make_install() {
+termux_step_make_install() {
 	local _file
-	for _file in ${NEOTERM_PKG_CACHEDIR}/*.rpm; do
-		bsdtar xf $_file -C $NEOTERM_PREFIX/../
+	for _file in ${TERMUX_PKG_CACHEDIR}/*.rpm; do
+		bsdtar xf $_file -C $TERMUX_PREFIX/../
 	done
 
-	for _file in $NEOTERM_PREFIX/share/qemu/firmware/*.json; do
-		sed -i "s@/usr@$NEOTERM_PREFIX@g" $_file
+	for _file in $TERMUX_PREFIX/share/qemu/firmware/*.json; do
+		sed -i "s@/usr@$TERMUX_PREFIX@g" $_file
 	done
 
-	mkdir -p $NEOTERM_PREFIX/share/doc/$NEOTERM_PKG_NAME
-	mv $NEOTERM_PREFIX/share/doc/edk2-ovmf/* $NEOTERM_PREFIX/share/doc/$NEOTERM_PKG_NAME/
-	mv $NEOTERM_PREFIX/share/doc/edk2-experimental/* $NEOTERM_PREFIX/share/doc/$NEOTERM_PKG_NAME/
+	mkdir -p $TERMUX_PREFIX/share/doc/$TERMUX_PKG_NAME
+	mv $TERMUX_PREFIX/share/doc/edk2-ovmf/* $TERMUX_PREFIX/share/doc/$TERMUX_PKG_NAME/
+	mv $TERMUX_PREFIX/share/doc/edk2-experimental/* $TERMUX_PREFIX/share/doc/$TERMUX_PKG_NAME/
 }
 
-neoterm_step_install_license() {
-	mkdir -p $NEOTERM_PREFIX/share/doc/$NEOTERM_PKG_NAME
-	mv $NEOTERM_PREFIX/share/licenses/edk2-ovmf/* $NEOTERM_PREFIX/share/doc/$NEOTERM_PKG_NAME/
+termux_step_install_license() {
+	mkdir -p $TERMUX_PREFIX/share/doc/$TERMUX_PKG_NAME
+	mv $TERMUX_PREFIX/share/licenses/edk2-ovmf/* $TERMUX_PREFIX/share/doc/$TERMUX_PKG_NAME/
 }
 
-neoterm_step_post_massage() {
+termux_step_post_massage() {
 	rm -rf share/licenses
 }

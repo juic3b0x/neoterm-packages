@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 
-PREFIX="@NEOTERM_PREFIX@"
+PREFIX="@TERMUX_PREFIX@"
 
 if [ `uname -o` = 'Android' ]; then
     echo "Patching Qt installation configuration files ..."

@@ -7,13 +7,13 @@ index 91d0e2c..6e6ac0c 100644
  # startlxqt script
  set(PREDEF_XDG_DATA_DIRS "$XDG_DATA_HOME")
 -if(NOT("${LXQT_DATA_DIR}" MATCHES "^/usr(/local)?/share$"))
-+if(NOT("${LXQT_DATA_DIR}" MATCHES "^@NEOTERM_PREFIX@(/local)?/share$"))
++if(NOT("${LXQT_DATA_DIR}" MATCHES "^@TERMUX_PREFIX@(/local)?/share$"))
      set(PREDEF_XDG_DATA_DIRS "${PREDEF_XDG_DATA_DIRS}:${LXQT_DATA_DIR}")
  endif()
 -set(PREDEF_XDG_DATA_DIRS "${PREDEF_XDG_DATA_DIRS}:/usr/local/share:/usr/share")
 -set(PREDEF_XDG_CONFIG_DIRS "/etc:${LXQT_ETC_XDG_DIR}:/usr/share")
-+set(PREDEF_XDG_DATA_DIRS "${PREDEF_XDG_DATA_DIRS}:@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share")
-+set(PREDEF_XDG_CONFIG_DIRS "@NEOTERM_PREFIX@/etc:${LXQT_ETC_XDG_DIR}:@NEOTERM_PREFIX@/share")
++set(PREDEF_XDG_DATA_DIRS "${PREDEF_XDG_DATA_DIRS}:@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share")
++set(PREDEF_XDG_CONFIG_DIRS "@TERMUX_PREFIX@/etc:${LXQT_ETC_XDG_DIR}:@TERMUX_PREFIX@/share")
  configure_file(startlxqt.in startlxqt @ONLY)
  install(PROGRAMS
      "${CMAKE_CURRENT_BINARY_DIR}/startlxqt"
@@ -26,7 +26,7 @@ index 58078f9..a54f256 100644
  void AutoStartEdit::browse()
  {
 -    QString filePath = QFileDialog::getOpenFileName(this, tr("Select Application"), QSL("/usr/bin/"));
-+    QString filePath = QFileDialog::getOpenFileName(this, tr("Select Application"), QSL("@NEOTERM_PREFIX@/bin/"));
++    QString filePath = QFileDialog::getOpenFileName(this, tr("Select Application"), QSL("@TERMUX_PREFIX@/bin/"));
      if (!filePath.isEmpty())
          ui->commandEdit->setText(filePath);
  }
@@ -39,7 +39,7 @@ index 2079a12..704ccde 100644
                                             )
  {
 -    QString fname = QFileDialog::getOpenFileName(cb, prompt, QSL("/usr/bin/"));
-+    QString fname = QFileDialog::getOpenFileName(cb, prompt, QSL("@NEOTERM_PREFIX@/bin/"));
++    QString fname = QFileDialog::getOpenFileName(cb, prompt, QSL("@TERMUX_PREFIX@/bin/"));
      if (fname.isEmpty())
          return;
  
@@ -52,7 +52,7 @@ index 921ba0e..5e2320b 100644
          return;
  
 -    QString fname = QFileDialog::getOpenFileName(this, QString(), QSL("/usr/bin/"));
-+    QString fname = QFileDialog::getOpenFileName(this, QString(), QSL("@NEOTERM_PREFIX@/bin/"));
++    QString fname = QFileDialog::getOpenFileName(this, QString(), QSL("@TERMUX_PREFIX@/bin/"));
      if (fname.isEmpty())
          return;
  

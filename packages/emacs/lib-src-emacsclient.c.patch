@@ -27,7 +27,7 @@ index 73c8e45a8653..a6c548f05306 100644
 -		tmpdirlen = snprintf (sockname, socknamesize, "/tmp");
 -	    }
 +	    if (tmpdirlen < 0)
-+	      tmpdirlen = snprintf (sockname, socknamesize, "@NEOTERM_PREFIX@/var/run");
++	      tmpdirlen = snprintf (sockname, socknamesize, "@TERMUX_PREFIX@/var/run");
  	  sock_status = local_sockname (s, sockname, tmpdirlen,
  					uid, server_name);
  	  tmpdir_used = true;
@@ -36,7 +36,7 @@ index 73c8e45a8653..a6c548f05306 100644
  	  char sockdirname[socknamesize];
  	  int sockdirnamelen = snprintf (sockdirname, sizeof sockdirname,
 -					 "/run/user/%"PRIuMAX, id);
-+					 "@NEOTERM_PREFIX@/var/run/user/%"PRIuMAX, id);
++					 "@TERMUX_PREFIX@/var/run/user/%"PRIuMAX, id);
  	  if (0 <= sockdirnamelen && sockdirnamelen < sizeof sockdirname
  	      && faccessat (AT_FDCWD, sockdirname, X_OK, AT_EACCESS) == 0)
  	    message

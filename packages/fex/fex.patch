@@ -6,7 +6,7 @@ index 97a879a03..436fd16ee 100644
  
  #include <bitset>
  #include <cstddef>
--#ifdef NEOTERM_BUILD
+-#ifdef TERMUX_BUILD
 +
  #ifdef __has_include
  #if __has_include(<memory_resource>)
@@ -112,8 +112,8 @@ index 357d16cd0..08c836886 100644
      add_subdirectory(FEXConfig/)
    endif()
  
--  if (NOT NEOTERM_BUILD)
-+  #if (NOT NEOTERM_BUILD)
+-  if (NOT TERMUX_BUILD)
++  #if (NOT TERMUX_BUILD)
      # Disable FEXRootFSFetcher on Termux, it doesn't even work there
      add_subdirectory(FEXRootFSFetcher/)
 -  endif()
@@ -165,10 +165,10 @@ index db49bc7dc..99638dbec 100644
  #endif
  
 +/*
-+/home/builder/.neoterm-build/fex/src/Source/Tools/FEXLoader/LinuxSyscalls/SignalDelegator.cpp:931:24: error: expected unqualified-id
++/home/builder/.termux-build/fex/src/Source/Tools/FEXLoader/LinuxSyscalls/SignalDelegator.cpp:931:24: error: expected unqualified-id
 +    constexpr uint32_t SA_RESTORER = 0x04000000;
 +                       ^
-+/home/builder/.neoterm-build/_cache/android-r26b-api-24-v0/sysroot/usr/include/aarch64-linux-android/asm/signal.h:21:21: note: expanded from macro 'SA_RESTORER'
++/home/builder/.termux-build/_cache/android-r26b-api-24-v0/sysroot/usr/include/aarch64-linux-android/asm/signal.h:21:21: note: expanded from macro 'SA_RESTORER'
 +#define SA_RESTORER 0x04000000
 +                    ^
 +*/

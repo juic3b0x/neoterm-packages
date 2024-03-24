@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -z $NEOTERM_ORIGINAL_CMAKE ]; then
+if [ -z $TERMUX_ORIGINAL_CMAKE ]; then
     SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-    NEOTERM_ORIGINAL_CMAKE="$SCRIPTPATH/cmake.orig"
+    TERMUX_ORIGINAL_CMAKE="$SCRIPTPATH/cmake.orig"
 fi
 
 # Need to move --build argument to first due to following error:
@@ -16,7 +16,7 @@ for arg in "$@"; do
 done
 
 if ! $HAS_BUILD; then
-    $NEOTERM_ORIGINAL_CMAKE "$@"
+    $TERMUX_ORIGINAL_CMAKE "$@"
     exit $?
 fi
 
@@ -74,4 +74,4 @@ update_cmake_cache
 trap undo_update_cmake_cache EXIT
 
 
-$NEOTERM_ORIGINAL_CMAKE "${NEW_ARGS[@]}"
+$TERMUX_ORIGINAL_CMAKE "${NEW_ARGS[@]}"

@@ -21,7 +21,7 @@
 -      return false;
 -   // no permission
 -   if (getuid() != 0)
-+   if(!FileExists("@NEOTERM_PREFIX@/bin/update-apt-xapian-index"))
++   if(!FileExists("@TERMUX_PREFIX@/bin/update-apt-xapian-index"))
        return false;
  
     // if we make it to this point, we need a xapian update
@@ -31,9 +31,9 @@
 -   const char *argp[] = {"/usr/bin/nice",
 -		   "/usr/bin/ionice","-c3",
 -		   "/usr/sbin/update-apt-xapian-index", 
-+   const char *argp[] = {"@NEOTERM_PREFIX@/bin/nice",
-+		   "@NEOTERM_PREFIX@/bin/ionice","-c3",
-+		   "@NEOTERM_PREFIX@/bin/update-apt-xapian-index", 
++   const char *argp[] = {"@TERMUX_PREFIX@/bin/nice",
++		   "@TERMUX_PREFIX@/bin/ionice","-c3",
++		   "@TERMUX_PREFIX@/bin/update-apt-xapian-index", 
  		   "--update", "-q",
  		   NULL};
     if(g_spawn_async(NULL, const_cast<char **>(argp), NULL, 
@@ -42,7 +42,7 @@
  #endif
     
 -   if(!FileExists(_config->Find("Synaptic::taskHelperProg","/usr/bin/tasksel")))
-+   if(!FileExists(_config->Find("Synaptic::taskHelperProg","@NEOTERM_PREFIX@/bin/tasksel")))
++   if(!FileExists(_config->Find("Synaptic::taskHelperProg","@TERMUX_PREFIX@/bin/tasksel")))
        gtk_widget_hide(GTK_WIDGET(gtk_builder_get_object(_builder, "menu_tasks")));
  
     button = GTK_WIDGET(gtk_builder_get_object(_builder, "button_update"));
@@ -51,7 +51,7 @@
  #ifdef WITH_EPT
     if(!_lister->xapiandatabase() ||
 -      !FileExists("/usr/sbin/update-apt-xapian-index")) {
-+      !FileExists("@NEOTERM_PREFIX@/bin/update-apt-xapian-index")) {
++      !FileExists("@TERMUX_PREFIX@/bin/update-apt-xapian-index")) {
        gtk_widget_hide(GTK_WIDGET(
              gtk_builder_get_object(_builder, "toolitem_fast_search")));
        gtk_box_set_center_widget(GTK_BOX(
@@ -103,7 +103,7 @@
     bool ForceReload = _config->FindB("Synaptic::UpdateAfterSrcChange",false);
     
 -   if(!g_file_test("/usr/bin/software-properties-gtk", 
-+   if(!g_file_test("@NEOTERM_PREFIX@/bin/software-properties-gtk", 
++   if(!g_file_test("@TERMUX_PREFIX@/bin/software-properties-gtk", 
  		   G_FILE_TEST_IS_EXECUTABLE) 
        || _config->FindB("Synaptic::dontUseGnomeSoftwareProperties", false)) 
     {
@@ -112,7 +112,7 @@
        int status;
        const char *argv[5];
 -      argv[0] = "/usr/bin/software-properties-gtk";
-+      argv[0] = "@NEOTERM_PREFIX@/bin/software-properties-gtk";
++      argv[0] = "@TERMUX_PREFIX@/bin/software-properties-gtk";
        argv[1] = "-n";
        argv[2] = "-t";
        argv[3] = g_strdup_printf("%lu", GDK_WINDOW_XID(gtk_widget_get_window(me->_win)));
@@ -121,7 +121,7 @@
        cmd.push_back("ghelp:synaptic");
     } else {
 -      cmd.push_back("/usr/bin/xdg-open");
-+      cmd.push_back("@NEOTERM_PREFIX@/bin/xdg-open");
++      cmd.push_back("@TERMUX_PREFIX@/bin/xdg-open");
        cmd.push_back(PACKAGE_DATA_DIR "/synaptic/html/index.html");
     }
  
@@ -130,7 +130,7 @@
  
     me->setStatusText(_("Starting package configuration tool..."));
 -   const gchar *cmd[] = { "/usr/sbin/dpkg-reconfigure",
-+   const gchar *cmd[] = { "@NEOTERM_PREFIX@/bin/dpkg-reconfigure",
++   const gchar *cmd[] = { "@TERMUX_PREFIX@/bin/dpkg-reconfigure",
                      "-fgnome",
                      me->selectedPackage()->name(),
                      NULL };
@@ -139,7 +139,7 @@
        cmd[1] = me->selectedPackage()->name();
        cmd[2] = NULL;
 -      g_spawn_async("/tmp", const_cast<gchar **>(cmd), NULL, (GSpawnFlags)0, NULL, NULL, NULL, NULL);
-+      g_spawn_async("@NEOTERM_PREFIX@/tmp", const_cast<gchar **>(cmd), NULL, (GSpawnFlags)0, NULL, NULL, NULL, NULL);
++      g_spawn_async("@TERMUX_PREFIX@/tmp", const_cast<gchar **>(cmd), NULL, (GSpawnFlags)0, NULL, NULL, NULL, NULL);
     } else {
        me->_userDialog->error(_("You have to install the package \"dwww\" "
  			       "to browse the documentation of a package"));

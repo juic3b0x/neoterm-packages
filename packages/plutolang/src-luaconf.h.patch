@@ -7,7 +7,7 @@ index 5c80b94..1affdec 100644
  #else			/* }{ */
  
 -#define LUA_ROOT	"/usr/local/"
-+#define LUA_ROOT	"@NEOTERM_PREFIX@/"
++#define LUA_ROOT	"@TERMUX_PREFIX@/"
  #define LUA_LDIR	LUA_ROOT "share/lua/" LUA_VDIR "/"
  #define LUA_CDIR	LUA_ROOT "lib/lua/" LUA_VDIR "/"
  

@@ -1,6 +1,6 @@
-#!@NEOTERM_PREFIX@/bin/env bash
+#!@TERMUX_PREFIX@/bin/env bash
 
-NEOTERM_PREFIX="@NEOTERM_PREFIX@"
+TERMUX_PREFIX="@TERMUX_PREFIX@"
 
 cleanup_module_files() {
     local _modules=(
@@ -21,8 +21,8 @@ cleanup_module_files() {
     local file
     for file in ${_modules[@]}; do
         echo "Removing ${file}.mod..."
-        rm "$NEOTERM_PREFIX"/include/flang/"$file".mod
-        rm "$NEOTERM_PREFIX"/include/flang/"$file".f18.mod
+        rm "$TERMUX_PREFIX"/include/flang/"$file".mod
+        rm "$TERMUX_PREFIX"/include/flang/"$file".f18.mod
     done
 }
 

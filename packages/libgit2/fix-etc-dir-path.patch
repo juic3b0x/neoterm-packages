@@ -6,7 +6,7 @@ diff -uNr libgit2-1.5.0/src/libgit2/sysdir.c libgit2-1.5.0.mod/src/libgit2/sysdi
  	return git_win32__find_system_dirs(out, "etc");
  #else
 -	return git_str_sets(out, "/etc");
-+	return git_str_sets(out, "@NEOTERM_PREFIX@/etc");
++	return git_str_sets(out, "@TERMUX_PREFIX@/etc");
  #endif
  }
  

@@ -6,6 +6,6 @@
  # check global install
 -elif [ -s /usr/local/share/autojump/autojump.${shell} ]; then
 -    source /usr/local/share/autojump/autojump.${shell}
-+elif [ -s @NEOTERM_PREFIX@/share/autojump/autojump.${shell} ]; then
-+    source @NEOTERM_PREFIX@/share/autojump/autojump.${shell}
++elif [ -s @TERMUX_PREFIX@/share/autojump/autojump.${shell} ]; then
++    source @TERMUX_PREFIX@/share/autojump/autojump.${shell}
  fi

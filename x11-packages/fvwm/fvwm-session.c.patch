@@ -15,7 +15,7 @@ diff -uNr fvwm-2.6.9/fvwm/session.c fvwm-2.6.9.mod/fvwm/session.c
  
 -	pwd = getpwuid (getuid());
 -	user_id = pwd->pw_name;
-+	user_id = "neoterm";
++	user_id = "termux";
  
  	prop1.name = FSmProgram;
  	prop1.type = FSmARRAY8;

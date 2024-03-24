@@ -6,7 +6,7 @@ diff -uNr bash-5.0/lib/sh/tmpfile.c bash-5.0.mod/lib/sh/tmpfile.c
  #endif
  
 -  sys_tmpdir = "/tmp";
-+  sys_tmpdir = "@NEOTERM_PREFIX@/tmp";
++  sys_tmpdir = "@TERMUX_PREFIX@/tmp";
    if (file_iswdir (sys_tmpdir))
      return sys_tmpdir;
  
@@ -15,7 +15,7 @@ diff -uNr bash-5.0/lib/sh/tmpfile.c bash-5.0.mod/lib/sh/tmpfile.c
 -    return sys_tmpdir;
 -
 -  sys_tmpdir = "/usr/tmp";
-+  sys_tmpdir = "@NEOTERM_PREFIX@/var/tmp";
++  sys_tmpdir = "@TERMUX_PREFIX@/var/tmp";
    if (file_iswdir (sys_tmpdir))
      return sys_tmpdir;
  

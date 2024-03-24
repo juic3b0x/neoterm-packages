@@ -5,7 +5,7 @@
  const static char FONT_ROOT[] = "c:/WINDOWS/Fonts";  // for debug only
  #elif __linux__ == 1
 -const static char FONT_ROOT[] = "/usr/share/fonts/";
-+const static char FONT_ROOT[] = "@NEOTERM_PREFIX@/share/fonts/";
++const static char FONT_ROOT[] = "@TERMUX_PREFIX@/share/fonts/";
  #elif defined(__APPLE__) && defined(__MACH__)
  const static char FONT_ROOT[] = "/System/Library/Fonts/";
  #endif

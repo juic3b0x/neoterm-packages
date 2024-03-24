@@ -6,7 +6,7 @@ diff -uNr tt/src/system.c tt.mod/src/system.c
  			sprintf(temp, "exec %s", arg2);
  			argv[2] = temp;
 -			execv("/bin/sh", argv);
-+			execv("@NEOTERM_PREFIX@/bin/sh", argv);
++			execv("@TERMUX_PREFIX@/bin/sh", argv);
  			break;
  
  		default:

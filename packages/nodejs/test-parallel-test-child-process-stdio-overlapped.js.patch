@@ -9,7 +9,7 @@
  const exeExtension = process.platform === 'win32' ? '.exe' : '';
  const exe = 'overlapped-checker' + exeExtension;
 -const exePath = path.join(path.dirname(process.execPath), exe);
-+const exePath = path.join(mkdtempSync(process.env.TMPDIR + '/' || '@NEOTERM_PREFIX@/tmp/'), exe);
++const exePath = path.join(mkdtempSync(process.env.TMPDIR + '/' || '@TERMUX_PREFIX@/tmp/'), exe);
 +
 +child_process.spawnSync('clang', ['-O3', 'test/overlapped-checker/main_unix.c', '-o', exePath]);
  

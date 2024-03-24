@@ -6,7 +6,7 @@ diff -uNr hub-2.12.1/utils/utils.go hub-2.12.1.mod/utils/utils.go
  	browser := os.Getenv("BROWSER")
  	if browser == "" {
 -		browser = searchBrowserLauncher(runtime.GOOS)
-+		browser = "neoterm-open"
++		browser = "termux-open"
  	} else {
  		browser = os.ExpandEnv(browser)
  	}

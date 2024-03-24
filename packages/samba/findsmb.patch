@@ -5,7 +5,7 @@
  #
  
 -$SAMBABIN = "/usr/bin";
-+$SAMBABIN = "@NEOTERM_PREFIX@/bin";
++$SAMBABIN = "@TERMUX_PREFIX@/bin";
  
  for ($i = 0; $i < 2; $i++) {	# test for -d and -r options
  	$_ = shift;

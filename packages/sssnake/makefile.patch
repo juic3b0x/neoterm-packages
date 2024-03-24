@@ -2,7 +2,7 @@
 +++ sssnake-0.2.0.mod/makefile	2022-09-22 16:18:04.176494029 +0530
 @@ -1,8 +1,8 @@
 -PREFIX = /usr/local
-+PREFIX = @NEOTERM_PREFIX@
++PREFIX = @TERMUX_PREFIX@
  MANDIR = $(PREFIX)/share/man
  
  sssnake: main.c autopilot.c xymap.c structs.c snake.c draw.c 

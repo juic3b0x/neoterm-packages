@@ -1,21 +1,21 @@
-NEOTERM_PKG_HOMEPAGE=https://min.io/
-NEOTERM_PKG_DESCRIPTION="Multi-Cloud Object Storage"
-NEOTERM_PKG_LICENSE="AGPL-V3"
-NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="2024.03.10.02.53.48"
-_VERSION=$(sed 's/\./T/3;s/\./-/g' <<< $NEOTERM_PKG_VERSION)
-NEOTERM_PKG_SRCURL=https://github.com/minio/minio/archive/refs/tags/RELEASE.${_VERSION}Z.tar.gz
-NEOTERM_PKG_SHA256=8ee8fc38029a43d7bf170c14661af6e7541b729466c939a9123914ef8474975e
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_UPDATE_VERSION_SED_REGEXP='s/T/-/g;s/[^0-9-]//g;s/-/./g'
-NEOTERM_PKG_DEPENDS="resolv-conf"
-NEOTERM_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_HOMEPAGE=https://min.io/
+TERMUX_PKG_DESCRIPTION="Multi-Cloud Object Storage"
+TERMUX_PKG_LICENSE="AGPL-V3"
+TERMUX_PKG_MAINTAINER="@neoterm"
+TERMUX_PKG_VERSION="2024.03.10.02.53.48"
+_VERSION=$(sed 's/\./T/3;s/\./-/g' <<< $TERMUX_PKG_VERSION)
+TERMUX_PKG_SRCURL=https://github.com/minio/minio/archive/refs/tags/RELEASE.${_VERSION}Z.tar.gz
+TERMUX_PKG_SHA256=8ee8fc38029a43d7bf170c14661af6e7541b729466c939a9123914ef8474975e
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_UPDATE_VERSION_SED_REGEXP='s/T/-/g;s/[^0-9-]//g;s/-/./g'
+TERMUX_PKG_DEPENDS="resolv-conf"
+TERMUX_PKG_BUILD_IN_SRC=true
 
-neoterm_step_pre_configure() {
-	neoterm_setup_golang
+termux_step_pre_configure() {
+	termux_setup_golang
 }
 
-neoterm_step_make() {
+termux_step_make() {
 	local _COMMITID=$(git ls-remote https://github.com/minio/minio refs/tags/RELEASE.${_VERSION}Z | cut -f1)
 	local _SHORTCOMMITID=$(git ls-remote https://github.com/minio/minio refs/tags/RELEASE.${_VERSION}Z | head -c 12)
 
@@ -31,6 +31,6 @@ neoterm_step_make() {
 	"
 	CGO_ENABLED=0 go build -tags kqueue -trimpath --ldflags="$MINIOLDFLAGS" -o minio
 }
-neoterm_step_make_install() {
-	install -Dm700 -t "${NEOTERM_PREFIX}"/bin minio
+termux_step_make_install() {
+	install -Dm700 -t "${TERMUX_PREFIX}"/bin minio
 }

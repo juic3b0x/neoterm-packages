@@ -5,5 +5,5 @@
  read* = %INSTALLDIR%/../../etc
  read* = %HOME%
 -read+write* = /tmp
-+read+write* = @NEOTERM_PREFIX@/tmp
++read+write* = @TERMUX_PREFIX@/tmp
  read+write  = .

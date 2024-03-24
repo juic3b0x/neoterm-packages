@@ -5,7 +5,7 @@
  #endif
  #ifndef TMUX_SOCK
 -#define TMUX_SOCK "$TMUX_TMPDIR:" _PATH_TMP
-+#define TMUX_SOCK "$TMUX_TMPDIR:@NEOTERM_PREFIX@/var/run"
++#define TMUX_SOCK "$TMUX_TMPDIR:@TERMUX_PREFIX@/var/run"
  #endif
  #ifndef TMUX_TERM
  #define TMUX_TERM "screen"

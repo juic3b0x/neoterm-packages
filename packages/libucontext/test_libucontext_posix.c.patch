@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/termux/termux-packages/issues/15852
 
 --- a/test_libucontext_posix.c
 +++ b/test_libucontext_posix.c

@@ -6,5 +6,5 @@
   */
 -#define	_PATH_FINGER	"/usr/bin/finger"
 -#define _PATH_UPTIME	"/usr/bin/uptime"
-+#define	_PATH_FINGER	"@NEOTERM_PREFIX@/bin/finger"
-+#define _PATH_UPTIME	"@NEOTERM_PREFIX@/bin/uptime"
++#define	_PATH_FINGER	"@TERMUX_PREFIX@/bin/finger"
++#define _PATH_UPTIME	"@TERMUX_PREFIX@/bin/uptime"

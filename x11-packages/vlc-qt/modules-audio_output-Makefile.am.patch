@@ -5,7 +5,7 @@
  libandroid_audiotrack_plugin_la_CFLAGS = $(AM_CFLAGS)
  
 -if HAVE_ANDROID
-+if HAVE_ANDROID_NO_NEOTERM
++if HAVE_ANDROID_NO_TERMUX
  aout_LTLIBRARIES += libandroid_audiotrack_plugin.la libopensles_android_plugin.la
  endif
  

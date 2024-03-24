@@ -9,7 +9,7 @@ diff --color -uNr zpaq-7.15/Makefile zpaq-7.15.mod/Makefile
 -PREFIX=/usr/local
 +# CPPFLAGS+=-Dunix
 +# CPPFLAGS+=-DNOJIT
-+PREFIX=@NEOTERM_PREFIX@
++PREFIX=@TERMUX_PREFIX@
  BINDIR=$(PREFIX)/bin
  MANDIR=$(PREFIX)/share/man
  

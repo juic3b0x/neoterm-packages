@@ -6,7 +6,7 @@ diff -u -r ../mc-4.8.20/lib/utilunix.c ./lib/utilunix.c
  {
      mc_pipe_t *p;
 -    const char *const argv[] = { "/bin/sh", "sh", "-c", command, NULL };
-+    const char *const argv[] = { "@NEOTERM_PREFIX@/bin/sh", "sh", "-c", command, NULL };
++    const char *const argv[] = { "@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL };
  
      p = g_try_new (mc_pipe_t, 1);
      if (p == NULL)

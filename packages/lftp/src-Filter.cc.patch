@@ -6,7 +6,7 @@ diff -u -r ../lftp-4.8.0/src/Filter.cc ./src/Filter.cc
        else
        {
 -	 execl("/bin/sh","sh","-c",name.get(),NULL);
-+	 execl("@NEOTERM_PREFIX@/bin/sh","sh","-c",name.get(),NULL);
++	 execl("@TERMUX_PREFIX@/bin/sh","sh","-c",name.get(),NULL);
  	 fprintf(stderr,_("execl(/bin/sh) failed: %s\n"),strerror(errno));
        }
        fflush(stderr);

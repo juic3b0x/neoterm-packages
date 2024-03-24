@@ -12,8 +12,8 @@ done
 includes=
 libs=
 if test "${shared}"; then
-	libs="-L@NEOTERM_PREFIX@/lib -lpython@PYTHON_VERSION@"
+	libs="-L@TERMUX_PREFIX@/lib -lpython@PYTHON_VERSION@"
 else
-	includes="-I@NEOTERM_PREFIX@/include/QtPrintSupport -I@NEOTERM_PREFIX@/include/QtWebChannel"
+	includes="-I@TERMUX_PREFIX@/include/QtPrintSupport -I@TERMUX_PREFIX@/include/QtWebChannel"
 fi
 exec @CXX@ "$@" ${includes} ${libs}

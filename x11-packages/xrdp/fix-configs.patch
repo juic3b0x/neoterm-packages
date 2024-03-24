@@ -10,11 +10,11 @@ diff -uNr xrdp-0.9.16/sesman/sesman.ini xrdp-0.9.16.mod/sesman/sesman.ini
  UserWindowManager=startwm.sh
 -; Give in full path or relative path to /etc/xrdp
 +
-+; Give in full path or relative path to @NEOTERM_PREFIX@/etc/xrdp
++; Give in full path or relative path to @TERMUX_PREFIX@/etc/xrdp
  DefaultWindowManager=startwm.sh
 -; Give in full path or relative path to /etc/xrdp
 +
-+; Give in full path or relative path to @NEOTERM_PREFIX@/etc/xrdp
++; Give in full path or relative path to @TERMUX_PREFIX@/etc/xrdp
  ReconnectScript=reconnectwm.sh
  
  [Security]
@@ -40,7 +40,7 @@ diff -uNr xrdp-0.9.16/sesman/sesman.ini xrdp-0.9.16.mod/sesman/sesman.ini
  
  [SessionVariables]
 -PULSE_SCRIPT=/etc/xrdp/pulse/default.pa
-+PULSE_SCRIPT=@NEOTERM_PREFIX@/etc/xrdp/pulse/default.pa
++PULSE_SCRIPT=@TERMUX_PREFIX@/etc/xrdp/pulse/default.pa
 diff -uNr xrdp-0.9.16/sesman/startwm.sh xrdp-0.9.16.mod/sesman/startwm.sh
 --- xrdp-0.9.16/sesman/startwm.sh	2020-12-28 14:03:43.000000000 +0000
 +++ xrdp-0.9.16.mod/sesman/startwm.sh	2021-05-05 22:52:27.069387793 +0000
@@ -50,8 +50,8 @@ diff -uNr xrdp-0.9.16/sesman/startwm.sh xrdp-0.9.16.mod/sesman/startwm.sh
  {
 -  if [ -r /etc/profile ]; then
 -    . /etc/profile
-+  if [ -r @NEOTERM_PREFIX@/etc/profile ]; then
-+    . @NEOTERM_PREFIX@/etc/profile
++  if [ -r @TERMUX_PREFIX@/etc/profile ]; then
++    . @TERMUX_PREFIX@/etc/profile
    fi
    if [ -r ~/.bash_profile ]; then
      . ~/.bash_profile
@@ -59,7 +59,7 @@ diff -uNr xrdp-0.9.16/sesman/startwm.sh xrdp-0.9.16.mod/sesman/startwm.sh
  #start the window manager
  wm_start()
  {
-+  if ! [ -d "@NEOTERM_PREFIX@" ]; then # !Termux
++  if ! [ -d "@TERMUX_PREFIX@" ]; then # !Termux
    if [ -r /etc/default/locale ]; then
      . /etc/default/locale
      export LANG LANGUAGE
@@ -108,7 +108,7 @@ diff -uNr xrdp-0.9.16/xrdp/xrdp.ini xrdp-0.9.16.mod/xrdp/xrdp.ini
  
  ; for debugging xrdp, in section xrdp1, change port=-1 to this:
 -#port=/tmp/.xrdp/xrdp_display_10
-+#port=@NEOTERM_PREFIX@/tmp/.xrdp/xrdp_display_10
++#port=@TERMUX_PREFIX@/tmp/.xrdp/xrdp_display_10
  
  
  ;

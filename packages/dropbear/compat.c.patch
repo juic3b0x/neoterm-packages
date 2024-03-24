@@ -6,7 +6,7 @@ diff -uNr dropbear-2018.76/compat.c dropbear-2018.76.mod/compat.c
  		free(strings);
  	strings = NULL;
 -	if ((fp = fopen("/etc/shells", "rc")) == NULL)
-+	if ((fp = fopen("@NEOTERM_PREFIX@/etc/shells", "rc")) == NULL)
++	if ((fp = fopen("@TERMUX_PREFIX@/etc/shells", "rc")) == NULL)
  		return (char **) okshells;
  	if (fstat(fileno(fp), &statb) == -1) {
  		(void)fclose(fp);

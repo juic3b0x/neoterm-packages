@@ -5,7 +5,7 @@
          if (daemonOption->is_set())
          {
 -            string pidFile = "/var/run/snapclient/pid";
-+            string pidFile = "@NEOTERM_PREFIX@/var/run/snapclient/pid";
++            string pidFile = "@TERMUX_PREFIX@/var/run/snapclient/pid";
              if (settings.instance != 1)
                  pidFile += "." + cpt::to_string(settings.instance);
              string user;

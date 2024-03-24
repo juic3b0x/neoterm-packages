@@ -5,7 +5,7 @@
  #endif /* OS2ORUNIX */
  #ifdef UNIX                             /* Systems that have a standard */
 -                p = "/tmp/";            /* temporary directory... */
-+                p = "@NEOTERM_PREFIX@/tmp/";            /* temporary directory... */
++                p = "@TERMUX_PREFIX@/tmp/";            /* temporary directory... */
  #else
  #ifdef datageneral
              p = ":TMP:";

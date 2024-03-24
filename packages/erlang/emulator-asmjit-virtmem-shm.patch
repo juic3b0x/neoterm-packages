@@ -7,7 +7,7 @@ index a1b0f95..d1eb1ad 100644
  static const char* VirtMem_getTmpDir() noexcept {
    const char* tmpDir = getenv("TMPDIR");
 -  return tmpDir ? tmpDir : "/tmp";
-+  return tmpDir ? tmpDir : "@NEOTERM_PREFIX@/tmp";
++  return tmpDir ? tmpDir : "@TERMUX_PREFIX@/tmp";
  }
  #endif
  

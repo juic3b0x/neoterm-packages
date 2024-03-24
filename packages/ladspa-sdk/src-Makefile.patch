@@ -7,9 +7,9 @@
 -INSTALL_PLUGINS_DIR	=	/usr/lib/ladspa/
 -INSTALL_INCLUDE_DIR	=	/usr/include/
 -INSTALL_BINARY_DIR	=	/usr/bin/
-+INSTALL_PLUGINS_DIR	=	@NEOTERM_PREFIX@/lib/ladspa/
-+INSTALL_INCLUDE_DIR	=	@NEOTERM_PREFIX@/include/
-+INSTALL_BINARY_DIR	=	@NEOTERM_PREFIX@/bin/
++INSTALL_PLUGINS_DIR	=	@TERMUX_PREFIX@/lib/ladspa/
++INSTALL_INCLUDE_DIR	=	@TERMUX_PREFIX@/include/
++INSTALL_BINARY_DIR	=	@TERMUX_PREFIX@/bin/
  
  ###############################################################################
  #

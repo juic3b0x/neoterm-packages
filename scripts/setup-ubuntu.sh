@@ -239,7 +239,7 @@ PACKAGES+=" sqlite3"
 PACKAGES+=" cvs"
 PACKAGES+=" python3-yaml"
 
-# Needed by gobject-introspection (neoterm_setup_gir).
+# Needed by gobject-introspection (termux_setup_gir).
 PACKAGES+=" bash-static"
 
 # Needed by apt.
@@ -342,6 +342,6 @@ $SUDO locale-gen --purge en_US.UTF-8
 echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' | $SUDO tee -a /etc/default/locale
 
 . $(dirname "$(realpath "$0")")/properties.sh
-$SUDO mkdir -p $NEOTERM_PREFIX
+$SUDO mkdir -p $TERMUX_PREFIX
 $SUDO chown -R $(whoami) /data
-$SUDO ln -s /data/data/com.neoterm/files/usr/opt/bionic-host /system
+$SUDO ln -s /data/data/io.neoterm/files/usr/opt/bionic-host /system

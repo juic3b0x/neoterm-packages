@@ -25,7 +25,7 @@ index 4776f07..f159ee5 100644
    endpwent ();
    if (str_empty (home_directory)) { home_directory = tstrdup ("."); }
 +#else
-+  home_directory = tstrdup ("@NEOTERM_HOME@");
++  home_directory = tstrdup ("@TERMUX_HOME@");
 +#endif
    return home_directory;
  }
@@ -54,7 +54,7 @@ index 4776f07..f159ee5 100644
    tgl_set_rsa_key (TLS, "/usr/local/etc/" PROG_NAME "/server.pub");
    #else
 -  tgl_set_rsa_key (TLS, "/etc/" PROG_NAME "/server.pub");
-+  tgl_set_rsa_key (TLS, "@NEOTERM_PREFIX@/etc/" PROG_NAME "/server.pub");
++  tgl_set_rsa_key (TLS, "@TERMUX_PREFIX@/etc/" PROG_NAME "/server.pub");
    #endif
    tgl_set_rsa_key (TLS, "tg-server.pub");
  

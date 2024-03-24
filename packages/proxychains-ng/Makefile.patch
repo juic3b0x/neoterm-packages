@@ -6,7 +6,7 @@ diff -uNr proxychains-ng-4.13/Makefile proxychains-ng-4.13.mod/Makefile
  bindir = $(exec_prefix)/bin
  
 -prefix = /usr/local/
-+prefix = @NEOTERM_PREFIX@
++prefix = @TERMUX_PREFIX@
  includedir = $(prefix)/include
  libdir = $(prefix)/lib
  sysconfdir=$(prefix)/etc

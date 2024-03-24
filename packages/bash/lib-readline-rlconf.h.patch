@@ -6,7 +6,7 @@ diff -uNr bash-5.0/lib/readline/rlconf.h bash-5.0.mod/lib/readline/rlconf.h
  
  /* The ultimate last-ditch filename for an init file -- system-wide. */
 -#define SYS_INPUTRC "/etc/inputrc"
-+#define SYS_INPUTRC "@NEOTERM_PREFIX@/etc/inputrc"
++#define SYS_INPUTRC "@TERMUX_PREFIX@/etc/inputrc"
  
  /* If defined, expand tabs to spaces. */
  #define DISPLAY_TABS

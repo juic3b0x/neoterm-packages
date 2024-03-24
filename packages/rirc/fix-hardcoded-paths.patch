@@ -12,7 +12,7 @@
  	"/etc/pki/tls/cacert.pem",
  	"/etc/pki/tls/certs/ca-bundle.crt",
 +#else
-+	"@NEOTERM_PREFIX@/etc/tls/cert.pem",
++	"@TERMUX_PREFIX@/etc/tls/cert.pem",
 +#endif
  };
  

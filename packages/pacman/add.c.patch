@@ -1,6 +1,6 @@
-diff -uNr pacman-6.0.0/lib/libalpm/add.c pacman-neoterm/lib/libalpm/add.c
+diff -uNr pacman-6.0.0/lib/libalpm/add.c pacman-termux/lib/libalpm/add.c
 --- pacman-6.0.0/lib/libalpm/add.c	2021-05-20 06:38:45.938120000 +0300
-+++ pacman-neoterm/lib/libalpm/add.c	2021-10-04 16:00:39.000000000 +0300
++++ pacman-termux/lib/libalpm/add.c	2021-10-04 16:00:39.000000000 +0300
 @@ -132,6 +132,9 @@
  		return 1;
  	}

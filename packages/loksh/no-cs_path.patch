@@ -23,7 +23,7 @@ diff -uNr loksh-6.3/main.c loksh-6.3.mod/main.c
  
  	if (Flag(FPRIVILEGED))
 -		include("/etc/suid_profile", 0, NULL, 1);
-+		include("@NEOTERM_PREFIX@/etc/suid_profile", 0, NULL, 1);
++		include("@TERMUX_PREFIX@/etc/suid_profile", 0, NULL, 1);
  	else if (Flag(FTALKING)) {
  		char *env_file;
  

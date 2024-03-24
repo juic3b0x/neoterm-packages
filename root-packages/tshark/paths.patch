@@ -4,7 +4,7 @@
  }
  
 -const char *network_manager_path = "/usr/sbin/NetworkManager"; /* Is this correct? */
-+const char *network_manager_path = "@NEOTERM_PREFIX@/bin/NetworkManager"; /* Is this correct? */
++const char *network_manager_path = "@TERMUX_PREFIX@/bin/NetworkManager"; /* Is this correct? */
  const char *ws80211_get_helper_path(void) {
  	if (g_file_test(network_manager_path, G_FILE_TEST_IS_EXECUTABLE)) {
  		return network_manager_path;
@@ -15,8 +15,8 @@
  #ifndef _WIN32
 -static const char *pref_snort_binary_filename = "/usr/sbin/snort";
 -static const char *pref_snort_config_filename = "/etc/snort/snort.conf";
-+static const char *pref_snort_binary_filename = "@NEOTERM_PREFIX@/sbin/snort";
-+static const char *pref_snort_config_filename = "@NEOTERM_PREFIX@/etc/snort/snort.conf";
++static const char *pref_snort_binary_filename = "@TERMUX_PREFIX@/sbin/snort";
++static const char *pref_snort_config_filename = "@TERMUX_PREFIX@/etc/snort/snort.conf";
  #else
  /* Default locations from Snort Windows installer */
  static const char *pref_snort_binary_filename = "C:\\Snort\\bin\\snort.exe";
@@ -27,8 +27,8 @@
  #else
 -    { "/usr/share/GeoIP" },
 -    { "/var/lib/GeoIP" },
-+    { "@NEOTERM_PREFIX@/share/GeoIP" },
-+    { "@NEOTERM_PREFIX@/var/lib/GeoIP" },
++    { "@TERMUX_PREFIX@/share/GeoIP" },
++    { "@TERMUX_PREFIX@/var/lib/GeoIP" },
  #endif
      { NULL }
  };
@@ -38,7 +38,7 @@
  	g_free (path);
  #else
 -	g_string_append(path_str, "/usr/share/snmp/mibs");
-+	g_string_append(path_str, "@NEOTERM_PREFIX@/share/snmp/mibs");
++	g_string_append(path_str, "@TERMUX_PREFIX@/share/snmp/mibs");
  	if (!smi_init_done)
  		smiInit(NULL);
  	path = smiGetPath();
@@ -48,7 +48,7 @@
    }else{
      pathlist = getenv("PATH");
 -    if( pathlist==0 ) pathlist = ".:/bin:/usr/bin";
-+    if( pathlist==0 ) pathlist = ".:@NEOTERM_PREFIX@/bin:@NEOTERM_PREFIX@/bin/applets";
++    if( pathlist==0 ) pathlist = ".:@TERMUX_PREFIX@/bin:@TERMUX_PREFIX@/bin/applets";
      pathbuf = (char *) malloc( lemonStrlen(pathlist) + 1 );
      path = (char *)malloc( lemonStrlen(pathlist)+lemonStrlen(name)+2 );
      MemoryCheck(pathbuf); MemoryCheck(path);  /* Fail on allocation failure. */
@@ -58,7 +58,7 @@
      return get_datafile_dir();
  #else
 -    return "/etc";
-+    return "@NEOTERM_PREFIX@/etc";
++    return "@TERMUX_PREFIX@/etc";
  #endif
  }
  

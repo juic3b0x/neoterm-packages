@@ -1,10 +1,10 @@
 ```
 [ 61%] Building C object tests/CMakeFiles/mariadb-client-test.dir/mysql_client_test.c.o
- In file included from /home/builder/.neoterm-build/mariadb/src/tests/mysql_client_test.c:38:
- /home/builder/.neoterm-build/mariadb/src/tests/mysql_client_fw.c:1438:3: error: 'compile_time_assert' declared as an array with a negative size
+ In file included from /home/builder/.termux-build/mariadb/src/tests/mysql_client_test.c:38:
+ /home/builder/.termux-build/mariadb/src/tests/mysql_client_fw.c:1438:3: error: 'compile_time_assert' declared as an array with a negative size
    compile_time_assert(sizeof(MYSQL) == 77*sizeof(void*)+656);
    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- /home/builder/.neoterm-build/mariadb/src/include/my_global.h:384:38: note: expanded from macro 'compile_time_assert'
+ /home/builder/.termux-build/mariadb/src/include/my_global.h:384:38: note: expanded from macro 'compile_time_assert'
      typedef char compile_time_assert[(X) ? 1 : -1] __attribute__((unused)); \
                                       ^~~~~~~~~~~~
  1 error generated.

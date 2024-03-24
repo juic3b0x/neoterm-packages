@@ -7,7 +7,7 @@
  	if (runtime_dir == NULL)
  		runtime_dir = getenv("USERPROFILE");
 +	if (runtime_dir == NULL) {
-+		runtime_dir = "@NEOTERM_PREFIX@/tmp";
++		runtime_dir = "@TERMUX_PREFIX@/tmp";
 +	}
  	return runtime_dir;
  }
@@ -18,7 +18,7 @@
  		dir = "pulse";
  	}
  	if (runtime_dir == NULL) {
-+		runtime_dir = "@NEOTERM_PREFIX@/tmp";
++		runtime_dir = "@TERMUX_PREFIX@/tmp";
 +	}
 +	if (runtime_dir == NULL) {
  		pw_log_error("could not find a suitable runtime directory in"
@@ -32,7 +32,7 @@
  	if (runtime_dir == NULL)
  		runtime_dir = getenv("USERPROFILE");
 +	if (runtime_dir == NULL){
-+		runtime_dir = "@NEOTERM_PREFIX@/tmp";
++		runtime_dir = "@TERMUX_PREFIX@/tmp";
 +	}
  	return runtime_dir;
  }

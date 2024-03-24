@@ -5,7 +5,7 @@
  
  pub fn read_system_conf() -> io::Result<(ResolverConfig, ResolverOpts)> {
 -    read_resolv_conf("/etc/resolv.conf")
-+    read_resolv_conf("@NEOTERM_PREFIX@/etc/resolv.conf")
++    read_resolv_conf("@TERMUX_PREFIX@/etc/resolv.conf")
  }
  
  fn read_resolv_conf<P: AsRef<Path>>(path: P) -> io::Result<(ResolverConfig, ResolverOpts)> {

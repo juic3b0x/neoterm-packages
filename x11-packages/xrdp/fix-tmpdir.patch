@@ -6,17 +6,17 @@ diff -uNr xrdp-0.9.16/sesman/sesman.c xrdp-0.9.16.mod/sesman/sesman.c
  
      /* make sure the /tmp/.X11-unix directory exists */
 -    if (!g_directory_exist("/tmp/.X11-unix"))
-+    if (!g_directory_exist("@NEOTERM_PREFIX@/tmp/.X11-unix"))
++    if (!g_directory_exist("@TERMUX_PREFIX@/tmp/.X11-unix"))
      {
 -        if (!g_create_dir("/tmp/.X11-unix"))
-+        if (!g_create_dir("@NEOTERM_PREFIX@/tmp/.X11-unix"))
++        if (!g_create_dir("@TERMUX_PREFIX@/tmp/.X11-unix"))
          {
              LOG(LOG_LEVEL_ERROR,
 -                "sesman.c: error creating dir /tmp/.X11-unix");
-+                "sesman.c: error creating dir @NEOTERM_PREFIX@/tmp/.X11-unix");
++                "sesman.c: error creating dir @TERMUX_PREFIX@/tmp/.X11-unix");
          }
 -        g_chmod_hex("/tmp/.X11-unix", 0x1777);
-+        g_chmod_hex("@NEOTERM_PREFIX@/tmp/.X11-unix", 0x1777);
++        g_chmod_hex("@TERMUX_PREFIX@/tmp/.X11-unix", 0x1777);
      }
  
      g_snprintf(text, 255, "xrdp_sesman_%8.8x_main_term", g_pid);
@@ -28,14 +28,14 @@ diff -uNr xrdp-0.9.16/sesman/session.c xrdp-0.9.16.mod/sesman/session.c
      int sck;
  
 -    g_sprintf(text, "/tmp/.X11-unix/X%d", display);
-+    g_sprintf(text, "@NEOTERM_PREFIX@/tmp/.X11-unix/X%d", display);
++    g_sprintf(text, "@TERMUX_PREFIX@/tmp/.X11-unix/X%d", display);
      x_running = g_file_exist(text);
  
      if (!x_running)
      {
          LOG(LOG_LEVEL_DEBUG, "Did not find a running X server at %s", text);
 -        g_sprintf(text, "/tmp/.X%d-lock", display);
-+        g_sprintf(text, "@NEOTERM_PREFIX@/tmp/.X%d-lock", display);
++        g_sprintf(text, "@TERMUX_PREFIX@/tmp/.X%d-lock", display);
          x_running = g_file_exist(text);
      }
  
@@ -44,14 +44,14 @@ diff -uNr xrdp-0.9.16/sesman/session.c xrdp-0.9.16.mod/sesman/session.c
      int x_running;
  
 -    g_sprintf(text, "/tmp/.X11-unix/X%d", display);
-+    g_sprintf(text, "@NEOTERM_PREFIX@/tmp/.X11-unix/X%d", display);
++    g_sprintf(text, "@TERMUX_PREFIX@/tmp/.X11-unix/X%d", display);
      x_running = g_file_exist(text);
  
      if (!x_running)
      {
          LOG(LOG_LEVEL_DEBUG, "Did not find a running X server at %s", text);
 -        g_sprintf(text, "/tmp/.X%d-lock", display);
-+        g_sprintf(text, "@NEOTERM_PREFIX@/tmp/.X%d-lock", display);
++        g_sprintf(text, "@TERMUX_PREFIX@/tmp/.X%d-lock", display);
          x_running = g_file_exist(text);
      }
  
@@ -63,7 +63,7 @@ diff -uNr xrdp-0.9.16/xrdp/xrdp_mm.c xrdp-0.9.16.mod/xrdp/xrdp_mm.c
      if (ii == 0)
      {
 -        ii = g_file_open("/tmp/jpeg.beef.bin");
-+        ii = g_file_open("@NEOTERM_PREFIX@/tmp/jpeg.beef.bin");
++        ii = g_file_open("@TERMUX_PREFIX@/tmp/jpeg.beef.bin");
          if (ii == -1)
          {
              ii = 0;

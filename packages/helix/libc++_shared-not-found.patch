@@ -4,8 +4,8 @@
      } else {
          command
              .arg("-shared")
-+            .arg("-L@NEOTERM_PREFIX@/lib")
-+            .arg("-Wl,-rpath=@NEOTERM_PREFIX@/lib")
++            .arg("-L@TERMUX_PREFIX@/lib")
++            .arg("-Wl,-rpath=@TERMUX_PREFIX@/lib")
 +            .arg("-Wno-error=implicit-int")
              .arg("-fPIC")
              .arg("-fno-exceptions")

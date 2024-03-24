@@ -5,7 +5,7 @@
  
  function fs_lua.system_temp_dir()
 -   return os.getenv("TMPDIR") or os.getenv("TEMP") or "/tmp"
-+   return os.getenv("TMPDIR") or os.getenv("TEMP") or "@NEOTERM_PREFIX@/tmp"
++   return os.getenv("TMPDIR") or os.getenv("TEMP") or "@TERMUX_PREFIX@/tmp"
  end
  
  ---------------------------------------------------------------------

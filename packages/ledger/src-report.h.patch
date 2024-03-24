@@ -9,8 +9,8 @@ index 6c33889c..6722fbf6 100644
 -         if (exists(path("/opt/local/bin/less")) ||
 -             exists(path("/usr/local/bin/less")) ||
 -             exists(path("/usr/bin/less")))
-+         if (exists(path("@NEOTERM_PREFIX@/bin/less")) ||
-+             exists(path("@NEOTERM_PREFIX@/local/bin/less")))
++         if (exists(path("@TERMUX_PREFIX@/bin/less")) ||
++             exists(path("@TERMUX_PREFIX@/local/bin/less")))
             have_less = true;
  
           if (have_less) {

@@ -1,4 +1,4 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 
 gtk-query-immodules-3.0 --update-cache
 

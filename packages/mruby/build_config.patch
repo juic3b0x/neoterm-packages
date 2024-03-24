@@ -1,7 +1,7 @@
---- a/build_config/android-neoterm.rb
-+++ b/build_config/android-neoterm.rb
+--- a/build_config/android-termux.rb
++++ b/build_config/android-termux.rb
 @@ -0,0 +1,13 @@
-+MRuby::CrossBuild.new('android-neoterm') do |conf|
++MRuby::CrossBuild.new('android-termux') do |conf|
 +  params = {
 +    :toolchain => :clang,
 +  }

@@ -1,3 +1,3 @@
-NEOTERM_SUBPKG_DESCRIPTION="Platform-independent data for ardour"
-NEOTERM_SUBPKG_PLATFORM_INDEPENDENT=true
-NEOTERM_SUBPKG_INCLUDE="share/ardour*"
+TERMUX_SUBPKG_DESCRIPTION="Platform-independent data for ardour"
+TERMUX_SUBPKG_PLATFORM_INDEPENDENT=true
+TERMUX_SUBPKG_INCLUDE="share/ardour*"

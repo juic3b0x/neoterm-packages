@@ -5,7 +5,7 @@
  var (
  	DefaultPath          string
 -	DefaultUnixAdminPath = "/run/soju/admin"
-+	DefaultUnixAdminPath = "@NEOTERM_PREFIX@/var/run/soju/admin"
++	DefaultUnixAdminPath = "@TERMUX_PREFIX@/var/run/soju/admin"
  )
  
  type IPSet []*net.IPNet

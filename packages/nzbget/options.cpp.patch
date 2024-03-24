@@ -10,7 +10,7 @@ index f41bd824..50fa8dd9 100644
 -		"/usr/etc/nzbget.conf",
 -		"/usr/local/etc/nzbget.conf",
 -		"/opt/etc/nzbget.conf",
-+		"@NEOTERM_PREFIX@/etc/nzbget.conf",
++		"@TERMUX_PREFIX@/etc/nzbget.conf",
  		nullptr
  	};
  #endif

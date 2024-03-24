@@ -5,10 +5,10 @@
    if (found)
      {
 -      TIZ_LOG (TIZ_PRIORITY_TRACE, "Trying /etc/xdg");
-+      TIZ_LOG (TIZ_PRIORITY_TRACE, "Trying @NEOTERM_PREFIX@/etc/xdg");
++      TIZ_LOG (TIZ_PRIORITY_TRACE, "Trying @TERMUX_PREFIX@/etc/xdg");
        snprintf (rcfile, FILE_PATH_MAX,
 -                "/etc/xdg/tizonia/tizonia.conf");
-+                "@NEOTERM_PREFIX@/etc/xdg/tizonia/tizonia.conf");
++                "@TERMUX_PREFIX@/etc/xdg/tizonia/tizonia.conf");
        found = try_open_file (rcfile);
      }
  

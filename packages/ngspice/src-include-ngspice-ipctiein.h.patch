@@ -7,7 +7,7 @@ diff -uNr ngspice-37/src/include/ngspice/ipctiein.h ngspice-37.mod/src/include/n
 
 -#define  IPC_STDOUT_FILE_NAME  "/usr/tmp/atesse_xspice.out"
 -#define  IPC_STDERR_FILE_NAME  "/usr/tmp/atesse_xspice.err"
-+#define  IPC_STDOUT_FILE_NAME  "@NEOTERM_PREFIX@/tmp/atesse_xspice.out"
-+#define  IPC_STDERR_FILE_NAME  "@NEOTERM_PREFIX@/tmp/atesse_xspice.err"
++#define  IPC_STDOUT_FILE_NAME  "@TERMUX_PREFIX@/tmp/atesse_xspice.out"
++#define  IPC_STDERR_FILE_NAME  "@TERMUX_PREFIX@/tmp/atesse_xspice.err"
 
  /*

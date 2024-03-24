@@ -1,5 +1,5 @@
 #define PCI_CONFIG_H
-#define PCI_ARCH_@NEOTERM_ARCH@
+#define PCI_ARCH_@TERMUX_ARCH@
 #define PCI_OS_LINUX
 #define PCI_HAVE_PM_LINUX_SYSFS
 #define PCI_HAVE_PM_LINUX_PROC
@@ -15,6 +15,6 @@
 #define PCI_HAVE_PM_DUMP
 #define PCI_COMPRESSED_IDS
 #define PCI_IDS "pci.ids.gz"
-#define PCI_PATH_IDS_DIR "@NEOTERM_PREFIX@/share"
+#define PCI_PATH_IDS_DIR "@TERMUX_PREFIX@/share"
 #define PCI_SHARED_LIB
 #define PCILIB_VERSION "3.10.0"

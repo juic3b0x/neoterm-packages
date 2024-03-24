@@ -6,7 +6,7 @@ index e8fd5b9e..59f4c6d3 100644
  int
  is_xterm(void)
  {
-+#ifndef __NEOTERM__
++#ifndef __TERMUX__
  	static int xt = -1;
  
  	if (xt == -1) {

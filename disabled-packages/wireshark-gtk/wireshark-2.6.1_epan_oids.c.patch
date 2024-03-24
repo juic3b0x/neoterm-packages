@@ -6,7 +6,7 @@ diff -uNr wireshark-2.6.1/epan/oids.c wireshark-2.6.1.mod/epan/oids.c
  	g_free (path);
  #else
 -	g_string_append(path_str, "/usr/share/snmp/mibs");
-+	g_string_append(path_str, "@NEOTERM_PREFIX@/share/snmp/mibs");
++	g_string_append(path_str, "@TERMUX_PREFIX@/share/snmp/mibs");
  	if (!smi_init_done)
  		smiInit(NULL);
  	path = smiGetPath();

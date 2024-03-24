@@ -6,7 +6,7 @@ diff -uNr signify-31/signify.c signify-31.mod/signify.c
      const char *sigcomment, const char *keytype)
  {
 -	const char *safepath = "/etc/signify";
-+	const char *safepath = "@NEOTERM_PREFIX@/etc/signify";
++	const char *safepath = "@TERMUX_PREFIX@/etc/signify";
  	char keypath[PATH_MAX];
  
  	if (!pubkeyfile) {

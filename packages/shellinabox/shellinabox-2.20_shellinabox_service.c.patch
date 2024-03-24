@@ -19,7 +19,7 @@ diff -uNr shellinabox-2.20/shellinabox/service.c shellinabox-2.20.mod/shellinabo
      check(service->cwd                      = strdup("/"));
 -    check(service->cmdline                  = strdup(
 -                                                  "/bin/login -p -h ${peer}"));
-+    check(service->cmdline                  = strdup("@NEOTERM_PREFIX@/bin/pwlogin"));
++    check(service->cmdline                  = strdup("@TERMUX_PREFIX@/bin/pwlogin"));
    } else
  #endif
    if (!strcmp(arg, "SSH") || !strncmp(arg, "SSH:", 4)) {

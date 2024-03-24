@@ -1,16 +1,16 @@
-#!@NEOTERM_PREFIX@/bin/sh
+#!@TERMUX_PREFIX@/bin/sh
 
 _additional_ld_lib_path=""
 
 case "$1" in
 	--angle-gl)
-		_additional_ld_lib_path="@NEOTERM_PREFIX@/opt/angle-android/gl"
+		_additional_ld_lib_path="@TERMUX_PREFIX@/opt/angle-android/gl"
 	;;
 	--angle-vulkan)
-		_additional_ld_lib_path="@NEOTERM_PREFIX@/opt/angle-android/vulkan"
+		_additional_ld_lib_path="@TERMUX_PREFIX@/opt/angle-android/vulkan"
 	;;
 	--angle-vulkan-null)
-		_additional_ld_lib_path="@NEOTERM_PREFIX@/opt/angle-android/vulkan-null"
+		_additional_ld_lib_path="@TERMUX_PREFIX@/opt/angle-android/vulkan-null"
 	;;
 esac
 
@@ -19,4 +19,4 @@ if [ x"$_additional_ld_lib_path" != x"" ]; then
 	export EPOXY_USE_ANGLE=1
 fi
 
-exec @NEOTERM_PREFIX@/opt/virglrenderer-android/bin/virgl_test_server
+exec @TERMUX_PREFIX@/opt/virglrenderer-android/bin/virgl_test_server

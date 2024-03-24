@@ -9,7 +9,7 @@ diff -uNr libxklavier-libxklavier-5.4/libxklavier/xklavier_config_xkb.c libxklav
 +  static char buf[L_tmpnam];
 +  if (!s) s = buf;
 +  const char* dir = getenv("TMPDIR");
-+  if (!dir) dir = "@NEOTERM_PREFIX@";
++  if (!dir) dir = "@TERMUX_PREFIX@";
 +  snprintf(s, L_tmpnam, "%s/tmpnam.XXXXXXXXXX", dir);
 +  return mktemp(s);
 +}

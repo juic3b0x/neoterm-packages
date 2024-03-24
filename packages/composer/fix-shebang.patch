@@ -7,7 +7,7 @@ index a31aff946..8398862a1 100644
      {
          $stub = <<<'EOF'
 -#!/usr/bin/env php
-+#!@NEOTERM_PREFIX@/bin/env php
++#!@TERMUX_PREFIX@/bin/env php
  <?php
  /*
   * This file is part of Composer.

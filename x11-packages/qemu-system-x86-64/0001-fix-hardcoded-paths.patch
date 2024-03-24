@@ -6,7 +6,7 @@ diff -uNr qemu-6.1.0/block.c qemu-6.1.0.mod/block.c
       */
      if (!g_strcmp0(tmpdir, "/tmp")) {
 -        tmpdir = "/var/tmp";
-+        tmpdir = "@NEOTERM_PREFIX@/tmp";
++        tmpdir = "@TERMUX_PREFIX@/tmp";
      }
  #endif
  
@@ -18,22 +18,22 @@ diff -uNr qemu-6.1.0/hw/hppa/machine.c qemu-6.1.0.mod/hw/hppa/machine.c
  
      val = cpu_to_le64(MIN_SEABIOS_HPPA_VERSION);
 -    fw_cfg_add_file(fw_cfg, "/etc/firmware-min-version",
-+    fw_cfg_add_file(fw_cfg, "@NEOTERM_PREFIX@/etc/firmware-min-version",
++    fw_cfg_add_file(fw_cfg, "@TERMUX_PREFIX@/etc/firmware-min-version",
                      g_memdup(&val, sizeof(val)), sizeof(val));
  
      val = cpu_to_le64(HPPA_TLB_ENTRIES);
 -    fw_cfg_add_file(fw_cfg, "/etc/cpu/tlb_entries",
-+    fw_cfg_add_file(fw_cfg, "@NEOTERM_PREFIX@/etc/cpu/tlb_entries",
++    fw_cfg_add_file(fw_cfg, "@TERMUX_PREFIX@/etc/cpu/tlb_entries",
                      g_memdup(&val, sizeof(val)), sizeof(val));
  
      val = cpu_to_le64(HPPA_BTLB_ENTRIES);
 -    fw_cfg_add_file(fw_cfg, "/etc/cpu/btlb_entries",
-+    fw_cfg_add_file(fw_cfg, "@NEOTERM_PREFIX@/etc/cpu/btlb_entries",
++    fw_cfg_add_file(fw_cfg, "@TERMUX_PREFIX@/etc/cpu/btlb_entries",
                      g_memdup(&val, sizeof(val)), sizeof(val));
  
      val = cpu_to_le64(HPA_POWER_BUTTON);
 -    fw_cfg_add_file(fw_cfg, "/etc/power-button-addr",
-+    fw_cfg_add_file(fw_cfg, "@NEOTERM_PREFIX@/etc/power-button-addr",
++    fw_cfg_add_file(fw_cfg, "@TERMUX_PREFIX@/etc/power-button-addr",
                      g_memdup(&val, sizeof(val)), sizeof(val));
  
      fw_cfg_add_i16(fw_cfg, FW_CFG_BOOT_DEVICE, ms->boot_order[0]);
@@ -45,7 +45,7 @@ diff -uNr qemu-6.1.0/hw/usb/ccid-card-emulated.c qemu-6.1.0.mod/hw/usb/ccid-card
  }
  
 -#define CERTIFICATES_DEFAULT_DB "/etc/pki/nssdb"
-+#define CERTIFICATES_DEFAULT_DB "@NEOTERM_PREFIX@/etc/pki/nssdb"
++#define CERTIFICATES_DEFAULT_DB "@TERMUX_PREFIX@/etc/pki/nssdb"
  #define CERTIFICATES_ARGS_TEMPLATE\
      "db=\"%s\" use_hw=no soft=(,Virtual Reader,CAC,,%s,%s,%s)"
  
@@ -56,7 +56,7 @@ diff -uNr qemu-6.1.0/hw/usb/ccid-card-emulated.c qemu-6.1.0.mod/hw/usb/ccid-card
              tmpdir = getenv("TMPDIR");
              if (!tmpdir)
 -                tmpdir = "/tmp";
-+                tmpdir = "@NEOTERM_PREFIX@/tmp";
++                tmpdir = "@TERMUX_PREFIX@/tmp";
              snprintf(filename, sizeof(filename), "%s/qemu-open.XXXXXX", tmpdir);
              fd = mkstemp(filename);
              if (fd < 0) {
@@ -68,7 +68,7 @@ diff -uNr qemu-6.1.0/migration/exec.c qemu-6.1.0.mod/migration/exec.c
      const char *argv[] = { exec_get_cmd_path(), "/c", command, NULL };
  #else
 -    const char *argv[] = { "/bin/sh", "-c", command, NULL };
-+    const char *argv[] = { "@NEOTERM_PREFIX@/bin/sh", "-c", command, NULL };
++    const char *argv[] = { "@TERMUX_PREFIX@/bin/sh", "-c", command, NULL };
  #endif
  
      trace_migration_exec_outgoing(command);
@@ -77,7 +77,7 @@ diff -uNr qemu-6.1.0/migration/exec.c qemu-6.1.0.mod/migration/exec.c
      const char *argv[] = { exec_get_cmd_path(), "/c", command, NULL };
  #else
 -    const char *argv[] = { "/bin/sh", "-c", command, NULL };
-+    const char *argv[] = { "@NEOTERM_PREFIX@/bin/sh", "-c", command, NULL };
++    const char *argv[] = { "@TERMUX_PREFIX@/bin/sh", "-c", command, NULL };
  #endif
  
      trace_migration_exec_incoming(command);
@@ -89,7 +89,7 @@ diff -uNr qemu-6.1.0/net/tap.c qemu-6.1.0.mod/net/tap.c
              *parg++ = NULL;
  
 -            execv("/bin/sh", args);
-+            execv("@NEOTERM_PREFIX@/bin/sh", args);
++            execv("@TERMUX_PREFIX@/bin/sh", args);
              g_free(helper_cmd);
          } else {
              /* assume helper is just the executable path name */
@@ -109,7 +109,7 @@ diff -uNr qemu-6.1.0/qemu-nbd.c qemu-6.1.0.mod/qemu-nbd.c
  "  -b, --bind=IFACE          interface to bind to (default `0.0.0.0')\n"
  "  -k, --socket=PATH         path to the unix socket\n"
 -"                            (default '"SOCKET_PATH"')\n"
-+"                            (default '@NEOTERM_PREFIX@/tmp/nbd-%s')\n"
++"                            (default '@TERMUX_PREFIX@/tmp/nbd-%s')\n"
  "  -e, --shared=NUM          device can be shared by NUM clients (default '1')\n"
  "  -t, --persistent          don't exit on the last connection\n"
  "  -v, --verbose             display extra debugging information\n"
@@ -118,7 +118,7 @@ diff -uNr qemu-6.1.0/qemu-nbd.c qemu-6.1.0.mod/qemu-nbd.c
      if (device != NULL && sockpath == NULL) {
          sockpath = g_malloc(128);
 -        snprintf(sockpath, 128, SOCKET_PATH, basename(device));
-+        snprintf(sockpath, 128, "@NEOTERM_PREFIX@/tmp/nbd-%s", basename(device));
++        snprintf(sockpath, 128, "@TERMUX_PREFIX@/tmp/nbd-%s", basename(device));
      }
  
      server = qio_net_listener_new();
@@ -130,7 +130,7 @@ diff -uNr qemu-6.1.0/util/module.c qemu-6.1.0.mod/util/module.c
                               G_CSET_A_2_Z G_CSET_a_2_z G_CSET_DIGITS "+-.~",
                               '_');
 -    dirs[n_dirs++] = g_strdup_printf("/var/run/qemu/%s", version_dir);
-+    dirs[n_dirs++] = g_strdup_printf("@NEOTERM_PREFIX@/var/run/qemu/%s", version_dir);
++    dirs[n_dirs++] = g_strdup_printf("@TERMUX_PREFIX@/var/run/qemu/%s", version_dir);
  #endif
  
      assert(n_dirs <= ARRAY_SIZE(dirs));

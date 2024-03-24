@@ -31,7 +31,7 @@
  macos_PREFIX:=Resources
  ios_PREFIX:=.
 -linux_PREFIX:=/usr/local
-+linux_PREFIX:=@NEOTERM_PREFIX@
++linux_PREFIX:=@TERMUX_PREFIX@
  PREFIX:=$($(OS)_PREFIX)
  
  # Root directory to place files when creating packages.
@@ -86,7 +86,7 @@
  ios_MAGIC_SDL_LIBS:=$(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL2_image -lSDL2_ttf $(SDL_MIXER_LIB)
  beos_MAGIC_SDL_LIBS:=-L/usr/local/lib $(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL2_image -lSDL2_ttf $(SDL_MIXER_LIB)
 -linux_MAGIC_SDL_LIBS:=-L/usr/local/lib $(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL2_image -lSDL2_ttf $(SDL_MIXER_LIB)
-+linux_MAGIC_SDL_LIBS:=-L@NEOTERM_PREFIX@/lib $(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL2_image -lSDL2_ttf $(SDL_MIXER_LIB)
++linux_MAGIC_SDL_LIBS:=-L@TERMUX_PREFIX@/lib $(shell $(PKG_CONFIG) $(SDL_PCNAME) --libs) -lSDL2_image -lSDL2_ttf $(SDL_MIXER_LIB)
  MAGIC_SDL_LIBS:=$($(OS)_MAGIC_SDL_LIBS)
  
  windows_MAGIC_ARCH_LINKS=-lintl $(PNG)

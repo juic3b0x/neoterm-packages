@@ -6,7 +6,7 @@ diff -uNr bash-5.0/lib/readline/util.c bash-5.0.mod/lib/readline/util.c
      x = ".";
  #else
 -  x = "/var/tmp";
-+  x = "@NEOTERM_PREFIX@/var/tmp";
++  x = "@TERMUX_PREFIX@/var/tmp";
  #endif
    snprintf (fnbuf, sizeof (fnbuf), "%s/rltrace.%ld", x, (long)getpid());
    unlink(fnbuf);

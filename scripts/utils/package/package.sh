@@ -8,7 +8,7 @@
 
 ##
 # Check if package on device builds are supported by checking
-# `$NEOTERM_PKG_ON_DEVICE_BUILD_NOT_SUPPORTED` value in its `build.sh`
+# `$TERMUX_PKG_ON_DEVICE_BUILD_NOT_SUPPORTED` value in its `build.sh`
 # file.
 # .
 # .
@@ -22,7 +22,7 @@
 # package__is_package_on_device_build_supported `package_dir`
 ##
 package__is_package_on_device_build_supported() {
-	[ $(. "${1}/build.sh"; echo "$NEOTERM_PKG_ON_DEVICE_BUILD_NOT_SUPPORTED") != "true" ]
+	[ $(. "${1}/build.sh"; echo "$TERMUX_PKG_ON_DEVICE_BUILD_NOT_SUPPORTED") != "true" ]
 	return $?
 }
 
@@ -30,7 +30,7 @@ package__is_package_on_device_build_supported() {
 
 ##
 # Check if a specific version of a package has been built by checking
-# the `$NEOTERM_BUILT_PACKAGES_DIRECTORY/<package_name>` file.
+# the `$TERMUX_BUILT_PACKAGES_DIRECTORY/<package_name>` file.
 # .
 # .
 # **Parameters:**
@@ -44,7 +44,7 @@ package__is_package_on_device_build_supported() {
 # package__is_package_version_built `package_name` `package_version`
 ##
 package__is_package_version_built() {
-	[ -e "$NEOTERM_BUILT_PACKAGES_DIRECTORY/$1" ] && [ "$(cat "$NEOTERM_BUILT_PACKAGES_DIRECTORY/$1")" = "$2" ]
+	[ -e "$TERMUX_BUILT_PACKAGES_DIRECTORY/$1" ] && [ "$(cat "$TERMUX_BUILT_PACKAGES_DIRECTORY/$1")" = "$2" ]
 	return $?
 }
 
@@ -102,7 +102,7 @@ package__add_prefix_glibc_to_package_name() {
 # .
 # .
 # **Parameters:**
-# `package_list` - List of package names (eg `NEOTERM_PKG_DEPENDS`).
+# `package_list` - List of package names (eg `TERMUX_PKG_DEPENDS`).
 # .
 # **Returns:**
 # Returns a modified list of package names.

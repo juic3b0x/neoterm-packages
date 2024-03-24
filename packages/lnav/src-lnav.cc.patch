@@ -5,7 +5,7 @@
  
  #ifndef SYSCONFDIR
 -#    define SYSCONFDIR "/usr/etc"
-+#    define SYSCONFDIR "@NEOTERM_PREFIX@/etc"
++#    define SYSCONFDIR "@TERMUX_PREFIX@/etc"
  #endif
  
  using namespace std::literals::chrono_literals;
@@ -14,7 +14,7 @@
                                       SYSCONFDIR "/lnav");
      lnav_data.ld_config_paths.insert(lnav_data.ld_config_paths.begin(),
 -                                     "/etc/lnav");
-+                                     "@NEOTERM_PREFIX@/etc/lnav");
++                                     "@TERMUX_PREFIX@/etc/lnav");
  
      if (lnav_data.ld_debug_log_name != DEFAULT_DEBUG_LOG) {
          lnav_log_level = lnav_log_level_t::TRACE;
@@ -23,7 +23,7 @@
       */
      setenv("TERMINFO_DIRS",
 -           "/usr/share/terminfo:/lib/terminfo:/usr/share/lib/terminfo",
-+           "@NEOTERM_PREFIX@/share/terminfo:@NEOTERM_PREFIX@/lib/terminfo:@NEOTERM_PREFIX@/etc/terminfo",
++           "@TERMUX_PREFIX@/share/terminfo:@TERMUX_PREFIX@/lib/terminfo:@TERMUX_PREFIX@/etc/terminfo",
             0);
  
      {

@@ -6,8 +6,8 @@
     usb_incdir_found="no"
 -   for _incdir in "" "/usr/include/libusb-1.0" \
 -       "/usr/local/include/libusb-1.0" "/usr/pkg/include/libusb-1.0"; do
-+   for _incdir in "" "@NEOTERM_PREFIX@/include/libusb-1.0" \
-+       "@NEOTERM_PREFIX@/local/include/libusb-1.0" "@NEOTERM_PREFIX@/pkg/include/libusb-1.0"; do
++   for _incdir in "" "@TERMUX_PREFIX@/include/libusb-1.0" \
++       "@TERMUX_PREFIX@/local/include/libusb-1.0" "@TERMUX_PREFIX@/pkg/include/libusb-1.0"; do
       _libusb_save_cppflags=$CPPFLAGS
       if test -n "${_incdir}"; then
         CPPFLAGS="-I${_incdir} ${CPPFLAGS}"

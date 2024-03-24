@@ -5,10 +5,10 @@
    char ipaddr[INET6_ADDRSTRLEN+1];
  
 -  fp = fopen("/etc/resolv.conf", "r");
-+  fp = fopen("@NEOTERM_PREFIX@/etc/resolv.conf", "r");
++  fp = fopen("@TERMUX_PREFIX@/etc/resolv.conf", "r");
    if (fp == NULL) {
 -    if (firstrun) gh_perror("mass_dns: warning: Unable to open /etc/resolv.conf. Try using --system-dns or specify valid servers with --dns-servers");
-+    if (firstrun) gh_perror("mass_dns: warning: Unable to open @NEOTERM_PREFIX@/etc/resolv.conf. Try using --system-dns or specify valid servers with --dns-servers");
++    if (firstrun) gh_perror("mass_dns: warning: Unable to open @TERMUX_PREFIX@/etc/resolv.conf. Try using --system-dns or specify valid servers with --dns-servers");
      return;
    }
  
@@ -17,7 +17,7 @@
  
  #else
 -  parse_etchosts("/etc/hosts");
-+  parse_etchosts("@NEOTERM_PREFIX@/etc/hosts");
++  parse_etchosts("@TERMUX_PREFIX@/etc/hosts");
  #endif // WIN32
  }
  

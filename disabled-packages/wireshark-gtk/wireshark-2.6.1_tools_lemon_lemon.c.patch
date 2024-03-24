@@ -6,7 +6,7 @@ diff -uNr wireshark-2.6.1/tools/lemon/lemon.c wireshark-2.6.1.mod/tools/lemon/le
    }else{
      pathlist = getenv("PATH");
 -    if( pathlist==0 ) pathlist = ".:/bin:/usr/bin";
-+    if( pathlist==0 ) pathlist = ".:@NEOTERM_PREFIX@/bin:@NEOTERM_PREFIX@/bin/applets";
++    if( pathlist==0 ) pathlist = ".:@TERMUX_PREFIX@/bin:@TERMUX_PREFIX@/bin/applets";
      pathbuf = (char *) malloc( lemonStrlen(pathlist) + 1 );
      if( pathbuf == 0 )
        return NULL;

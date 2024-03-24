@@ -1,23 +1,23 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/extrawurst/gitui
-NEOTERM_PKG_DESCRIPTION="Blazing fast terminal-ui for git written in rust"
-NEOTERM_PKG_LICENSE="MIT"
-NEOTERM_PKG_LICENSE_FILE="LICENSE.md"
-NEOTERM_PKG_MAINTAINER="@PeroSar"
-NEOTERM_PKG_VERSION="0.25.1"
-NEOTERM_PKG_SRCURL=https://github.com/extrawurst/gitui/archive/v$NEOTERM_PKG_VERSION.tar.gz
-NEOTERM_PKG_SHA256=78d31ba66de1521477aef1642c798a385106ff4858f59e79775ba08a694d0ae4
-NEOTERM_PKG_AUTO_UPDATE=true
-NEOTERM_PKG_DEPENDS="git, libgit2, libssh2, openssl"
-NEOTERM_PKG_BUILD_IN_SRC=true
+TERMUX_PKG_HOMEPAGE=https://github.com/extrawurst/gitui
+TERMUX_PKG_DESCRIPTION="Blazing fast terminal-ui for git written in rust"
+TERMUX_PKG_LICENSE="MIT"
+TERMUX_PKG_LICENSE_FILE="LICENSE.md"
+TERMUX_PKG_MAINTAINER="@PeroSar"
+TERMUX_PKG_VERSION="0.25.1"
+TERMUX_PKG_SRCURL=https://github.com/extrawurst/gitui/archive/v$TERMUX_PKG_VERSION.tar.gz
+TERMUX_PKG_SHA256=78d31ba66de1521477aef1642c798a385106ff4858f59e79775ba08a694d0ae4
+TERMUX_PKG_AUTO_UPDATE=true
+TERMUX_PKG_DEPENDS="git, libgit2, libssh2, openssl"
+TERMUX_PKG_BUILD_IN_SRC=true
 
-neoterm_step_pre_configure() {
+termux_step_pre_configure() {
 	CPPFLAGS+=" -Dindex=strchr"
 	export OPENSSL_NO_VENDOR=1
 	export LIBGIT2_SYS_USE_PKG_CONFIG=1
 	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 
-	neoterm_setup_rust
+	termux_setup_rust
 	: "${CARGO_HOME:=$HOME/.cargo}"
 	export CARGO_HOME
 
@@ -29,13 +29,13 @@ neoterm_step_pre_configure() {
 	done
 }
 
-neoterm_step_make() {
+termux_step_make() {
 	cargo build --release \
-		--jobs "$NEOTERM_MAKE_PROCESSES" \
+		--jobs "$TERMUX_MAKE_PROCESSES" \
 		--target "$CARGO_TARGET_NAME" \
 		--locked
 }
 
-neoterm_step_make_install() {
-	install -Dm700 target/"${CARGO_TARGET_NAME}"/release/gitui "$NEOTERM_PREFIX"/bin/
+termux_step_make_install() {
+	install -Dm700 target/"${CARGO_TARGET_NAME}"/release/gitui "$TERMUX_PREFIX"/bin/
 }

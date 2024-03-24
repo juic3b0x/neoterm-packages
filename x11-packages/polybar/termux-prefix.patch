@@ -6,7 +6,7 @@ diff -uNr polybar-3.6.3/CMakeLists.txt polybar-3.6.3.mod/CMakeLists.txt
  if(BUILD_CONFIG)
    install(FILES ${CMAKE_SOURCE_DIR}/doc/config.ini
 -    DESTINATION /etc/${PROJECT_NAME}
-+    DESTINATION @NEOTERM_PREFIX@/etc/${PROJECT_NAME}
++    DESTINATION @TERMUX_PREFIX@/etc/${PROJECT_NAME}
      COMPONENT config)
  endif()
  
@@ -17,7 +17,7 @@ diff -uNr polybar-3.6.3/cmake/02-opts.cmake polybar-3.6.3.mod/cmake/02-opts.cmak
  set(SETTING_ALSA_SOUNDCARD "default"
    CACHE STRING "Name of the ALSA soundcard driver")
 -set(SETTING_BSPWM_SOCKET_PATH "/tmp/bspwm_0_0-socket"
-+set(SETTING_BSPWM_SOCKET_PATH "@NEOTERM_PREFIX@/tmp/bspwm_0_0-socket"
++set(SETTING_BSPWM_SOCKET_PATH "@TERMUX_PREFIX@/tmp/bspwm_0_0-socket"
    CACHE STRING "Path to bspwm socket")
  set(SETTING_BSPWM_STATUS_PREFIX "W"
    CACHE STRING "Prefix prepended to the bspwm status line")
@@ -26,7 +26,7 @@ diff -uNr polybar-3.6.3/cmake/02-opts.cmake polybar-3.6.3.mod/cmake/02-opts.cmak
  set(SETTING_PATH_MEMORY_INFO "/proc/meminfo"
    CACHE STRING "Path to file containing memory info")
 -set(SETTING_PATH_MESSAGING_FIFO "/tmp/polybar_mqueue.%pid%"
-+set(SETTING_PATH_MESSAGING_FIFO "@NEOTERM_PREFIX@/tmp/polybar_mqueue.%pid%"
++set(SETTING_PATH_MESSAGING_FIFO "@TERMUX_PREFIX@/tmp/polybar_mqueue.%pid%"
    CACHE STRING "Path to file containing the current temperature")
  set(SETTING_PATH_TEMPERATURE_INFO "/sys/class/thermal/thermal_zone%zone%/temp"
    CACHE STRING "Path to file containing the current temperature")

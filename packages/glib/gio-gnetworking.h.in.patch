@@ -5,7 +5,7 @@
  
  #ifndef _PATH_RESCONF
 -#define _PATH_RESCONF "/etc/resolv.conf"
-+#define _PATH_RESCONF "@NEOTERM_PREFIX@/etc/resolv.conf"
++#define _PATH_RESCONF "@TERMUX_PREFIX@/etc/resolv.conf"
  #endif
  
  #ifndef CMSG_LEN
