@@ -1,7 +1,7 @@
 # Build with:
-#	docker build -t ghcr.io/neoterm/package-builder .
+#	docker build -t ghcr.io/juic3b0x/package-builder .
 # Push to GitHub registry with:
-#	docker push ghcr.io/neoterm/package-builder
+#	docker push ghcr.io/juic3b0x/package-builder
 # This is done after changing this file or any of the
 # scripts/setup-{ubuntu,android-sdk,cgct}.sh setup scripts.
 FROM ubuntu:22.04

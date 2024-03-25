@@ -1,10 +1,10 @@
 # First, build the base image (see Dockerfile) if necessary
 # - if that is not built locally, the remote image will be pulled.
 # Then, build with:
-#	docker build -t ghcr.io/neoterm/package-builder-cgct --file Dockerfile.cgct .
+#	docker build -t ghcr.io/juic3b0x/package-builder-cgct --file Dockerfile.cgct .
 # Push to GitHub registry with:
-#	docker push ghcr.io/neoterm/package-builder-cgct
+#	docker push ghcr.io/juic3b0x/package-builder-cgct
 # This is done after changing this file or any of the
 # scripts/setup-{ubuntu,android-sdk,cgct}.sh setup scripts.
-FROM ghcr.io/neoterm/package-builder
+FROM ghcr.io/juic3b0x/package-builder
 RUN /tmp/setup-cgct.sh
