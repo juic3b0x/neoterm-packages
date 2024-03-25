@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-exec
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/neoterm-exec
 NEOTERM_PKG_DESCRIPTION="An execve() wrapper to make /bin and /usr/bin shebangs work"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="@neoterm"

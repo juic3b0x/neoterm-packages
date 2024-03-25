@@ -1,6 +1,6 @@
 # Skeleton build.sh script for new package.
 # For reference about available fields, check the NeoTerm Developer's Wiki page:
-# https://github.com/neoterm/neoterm-packages/wiki/Creating-new-package
+# https://github.com/juic3b0x/neoterm-packages/wiki/Creating-new-package
 
 NEOTERM_PKG_HOMEPAGE=
 NEOTERM_PKG_DESCRIPTION=""

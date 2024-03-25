@@ -36,7 +36,7 @@ neoterm_step_create_debscripts() {
 		echo "********"
 		echo "McFly does not support Bash on Android."
 		echo
-		echo "https://github.com/neoterm/neoterm-packages/issues/8722"
+		echo "https://github.com/juic3b0x/neoterm-packages/issues/8722"
 		echo "https://github.com/cantino/mcfly/issues/215"
 		echo "********"
 		echo

@@ -8,7 +8,7 @@ NEOTERM_PKG_SRCURL=https://nodejs.org/dist/v${NEOTERM_PKG_VERSION}/node-v${NEOTE
 NEOTERM_PKG_SHA256=77813edbf3f7f16d2d35d3353443dee4e61d5ee84d9e3138c7538a3c0ca5209e
 # Note that we do not use a shared libuv to avoid an issue with the Android
 # linker, which does not use symbols of linked shared libraries when resolving
-# symbols on dlopen(). See https://github.com/neoterm/neoterm-packages/issues/462.
+# symbols on dlopen(). See https://github.com/juic3b0x/neoterm-packages/issues/462.
 NEOTERM_PKG_DEPENDS="libc++, openssl, c-ares, libicu, zlib"
 NEOTERM_PKG_CONFLICTS="nodejs, nodejs-current"
 NEOTERM_PKG_BREAKS="nodejs-dev"

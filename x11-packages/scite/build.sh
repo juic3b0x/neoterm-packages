@@ -23,7 +23,7 @@ neoterm_extract_src_archive() {
 }
 
 neoterm_step_pre_configure() {
-	# https://github.com/neoterm/neoterm-packages/issues/18810
+	# https://github.com/juic3b0x/neoterm-packages/issues/18810
 	LDFLAGS+=" -Wl,--undefined-version"
 }
 

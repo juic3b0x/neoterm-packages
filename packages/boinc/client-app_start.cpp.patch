@@ -47,7 +47,7 @@ diff -uNr boinc/client/app_start.cpp boinc.mod/client/app_start.cpp
 +            // fix NeoTerm 32bit compatibility on 64bit devices
 +            // should be no longer required as its fixed on
 +            // neoterm-exec side, kept for references
-+            // https://github.com/neoterm/neoterm-exec/pull/17
++            // https://github.com/juic3b0x/neoterm-exec/pull/17
 +            argv[0] = buf;
 +            parse_command_line(cmdline, argv+1);
 +            // backup and unset LD_PRELOAD var

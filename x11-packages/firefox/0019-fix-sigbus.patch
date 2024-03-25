@@ -1,6 +1,6 @@
 Fix SIGBUS Firefox error on Arm. Also apply to other arches just in case.
 
-https://github.com/neoterm/neoterm-packages/issues/15901
+https://github.com/juic3b0x/neoterm-packages/issues/15901
 https://github.com/mozilla/gecko-dev/commit/d7ba2cef0e9b74addedda4bc7f57daf10599a5dc
 https://github.com/google/cityhash/blob/master/src/city.cc
 

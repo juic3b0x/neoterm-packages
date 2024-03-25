@@ -10,7 +10,7 @@ NEOTERM_PKG_SHA256=191294d445d1e6800359acc8174529b1e18e102147dc5f596030d3dce9693
 NEOTERM_PKG_AUTO_UPDATE=false
 # Note that we do not use a shared libuv to avoid an issue with the Android
 # linker, which does not use symbols of linked shared libraries when resolving
-# symbols on dlopen(). See https://github.com/neoterm/neoterm-packages/issues/462.
+# symbols on dlopen(). See https://github.com/juic3b0x/neoterm-packages/issues/462.
 NEOTERM_PKG_DEPENDS="libc++, openssl, c-ares, libicu, zlib"
 NEOTERM_PKG_CONFLICTS="nodejs-lts, nodejs-current"
 NEOTERM_PKG_BREAKS="nodejs-dev"

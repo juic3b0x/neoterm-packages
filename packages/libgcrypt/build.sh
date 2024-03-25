@@ -46,7 +46,7 @@ neoterm_step_pre_configure() {
 	fi
 
 	# Fix build with lld 17, for more information, see the following links:
-	# https://github.com/neoterm/neoterm-packages/issues/18761#issuecomment-1868896237
-	# https://github.com/neoterm/neoterm-packages/issues/18810
+	# https://github.com/juic3b0x/neoterm-packages/issues/18761#issuecomment-1868896237
+	# https://github.com/juic3b0x/neoterm-packages/issues/18810
 	LDFLAGS+=" -Wl,--undefined-version"
 }

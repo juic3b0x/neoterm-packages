@@ -27,7 +27,7 @@ neoterm_step_make_install() {
 	fi
 	cd $NEOTERM_PKG_SRCDIR/src
 	# Unset PKG_CONFIG to avoid the path being hardcoded into src/cmd/cgo/zdefaultcc.go,
-	# see https://github.com/neoterm/neoterm-packages/issues/3505.
+	# see https://github.com/juic3b0x/neoterm-packages/issues/3505.
 	env CC_FOR_TARGET=$CC \
 	    CXX_FOR_TARGET=$CXX \
 	    CC=gcc \

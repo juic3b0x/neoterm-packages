@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-packages
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/neoterm-packages
 NEOTERM_PKG_DESCRIPTION="Fake ldd command"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="@neoterm"

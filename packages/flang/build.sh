@@ -10,7 +10,7 @@ NEOTERM_PKG_SHA256=58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0
 NEOTERM_PKG_AUTO_UPDATE=false
 NEOTERM_PKG_HOSTBUILD=true
 # `flang-new` should be rebuilt when libllvm bumps version.
-# See https://github.com/neoterm/neoterm-packages/issues/19362
+# See https://github.com/juic3b0x/neoterm-packages/issues/19362
 NEOTERM_PKG_DEPENDS="libc++, libllvm (= $NEOTERM_PKG_VERSION), clang (= $NEOTERM_PKG_VERSION), lld (= $NEOTERM_PKG_VERSION), mlir (= $NEOTERM_PKG_VERSION)"
 NEOTERM_PKG_BUILD_DEPENDS="libllvm-static"
 

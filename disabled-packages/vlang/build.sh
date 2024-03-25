@@ -1,5 +1,5 @@
 # Known issues:
-#   https://github.com/neoterm/neoterm-packages/issues/7191
+#   https://github.com/juic3b0x/neoterm-packages/issues/7191
 NEOTERM_PKG_HOMEPAGE=https://github.com/vlang/v
 NEOTERM_PKG_DESCRIPTION="Simple, fast, safe, compiled language for developing maintainable software"
 NEOTERM_PKG_LICENSE="MIT"

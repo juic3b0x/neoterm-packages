@@ -9,5 +9,5 @@ NEOTERM_SUBPKG_DEPENDS="clang, libc++, libedit, libxml2, python, ncurses-ui-libs
 NEOTERM_SUBPKG_BREAKS="lldb-dev, lldb-static"
 NEOTERM_SUBPKG_REPLACES="lldb-dev, lldb-static"
 
-# https://github.com/neoterm/neoterm-packages/issues/8880
+# https://github.com/juic3b0x/neoterm-packages/issues/8880
 NEOTERM_SUBPKG_EXCLUDED_ARCHES="arm, i686"

@@ -7,7 +7,7 @@ diff -uNr qemu-5.2.0/linux-user/main.c qemu-5.2.0.mod/linux-user/main.c
      if (mmap_min_addr == 0) {
 +#ifdef __ANDROID__
 +        // Go with 8 pages (32768 bytes) as default value for Android (NeoTerm).
-+        // Issue https://github.com/neoterm/neoterm-packages/issues/6172.
++        // Issue https://github.com/juic3b0x/neoterm-packages/issues/6172.
 +        mmap_min_addr = qemu_host_page_size * 8;
 +#else
          mmap_min_addr = qemu_host_page_size;

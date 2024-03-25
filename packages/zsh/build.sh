@@ -72,17 +72,17 @@ neoterm_step_post_configure() {
 	# and you will need to edit config.modules to make any other modules available."
 	# Since we build zsh non-dynamically (since dynamic loading doesn't work on Android when enabled),
 	# we need to explicitly enable the additional modules we want.
-	# - The files module is needed by `compinstall` (https://github.com/neoterm/neoterm-packages/issues/61).
+	# - The files module is needed by `compinstall` (https://github.com/juic3b0x/neoterm-packages/issues/61).
 	# - The regex module seems to be used by several extensions.
 	# - The curses, socket and zprof modules was desired by BrainDamage on IRC (#neoterm).
-	# - The deltochar and mathfunc modules is used by grml-zshrc (https://github.com/neoterm/neoterm-packages/issues/494).
-	# - The system module is needed by zplug (https://github.com/neoterm/neoterm-packages/issues/659).
-	# - The zpty module is needed by zsh-async (https://github.com/neoterm/neoterm-packages/issues/672).
-	# - The stat module is needed by zui (https://github.com/neoterm/neoterm-packages/issues/2829).
-	# - The mapfile module was requested in https://github.com/neoterm/neoterm-packages/issues/3116.
-	# - The zselect module is used by multiple plugins (https://github.com/neoterm/neoterm-packages/issues/4939)
-	# - The param_private module was requested in https://github.com/neoterm/neoterm-packages/issues/7391.
-	# - The cap module was requested in https://github.com/neoterm/neoterm-packages/issues/3102.
+	# - The deltochar and mathfunc modules is used by grml-zshrc (https://github.com/juic3b0x/neoterm-packages/issues/494).
+	# - The system module is needed by zplug (https://github.com/juic3b0x/neoterm-packages/issues/659).
+	# - The zpty module is needed by zsh-async (https://github.com/juic3b0x/neoterm-packages/issues/672).
+	# - The stat module is needed by zui (https://github.com/juic3b0x/neoterm-packages/issues/2829).
+	# - The mapfile module was requested in https://github.com/juic3b0x/neoterm-packages/issues/3116.
+	# - The zselect module is used by multiple plugins (https://github.com/juic3b0x/neoterm-packages/issues/4939)
+	# - The param_private module was requested in https://github.com/juic3b0x/neoterm-packages/issues/7391.
+	# - The cap module was requested in https://github.com/juic3b0x/neoterm-packages/issues/3102.
 	for module in cap curses deltochar files mapfile mathfunc pcre regex \
 		socket stat system zprof zpty zselect param_private
 	do

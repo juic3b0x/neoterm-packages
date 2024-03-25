@@ -1,10 +1,10 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-x11
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/neoterm-x11
 NEOTERM_PKG_DESCRIPTION="NeoTerm X11 add-on application. Still in early development."
 NEOTERM_PKG_LICENSE="GPL-3.0"
 NEOTERM_PKG_MAINTAINER="Twaik Yont @twaik"
 NEOTERM_PKG_VERSION=1.03.00
 NEOTERM_PKG_REVISION=3
-NEOTERM_PKG_SRCURL=https://github.com/neoterm/neoterm-x11/archive/a50f18ef2d148a299387435edbde8fe690e9c504.tar.gz
+NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/neoterm-x11/archive/a50f18ef2d148a299387435edbde8fe690e9c504.tar.gz
 NEOTERM_PKG_SHA256=040ac1d57f610263d374b105ee7c5cd20099f98e3d8e43cb9bd203b803a93684
 NEOTERM_PKG_AUTO_UPDATE=false
 NEOTERM_PKG_PLATFORM_INDEPENDENT=true

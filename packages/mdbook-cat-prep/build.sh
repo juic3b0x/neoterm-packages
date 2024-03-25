@@ -10,7 +10,7 @@ NEOTERM_PKG_AUTO_UPDATE=false
 NEOTERM_PKG_GIT_BRANCH=master
 NEOTERM_PKG_BUILD_IN_SRC=true
 
-# https://github.com/neoterm/neoterm-packages/issues/16756
+# https://github.com/juic3b0x/neoterm-packages/issues/16756
 NEOTERM_RUST_VERSION=1.68.2
 
 neoterm_step_post_get_source() {

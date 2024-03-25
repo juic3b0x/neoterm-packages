@@ -99,7 +99,7 @@ neoterm_step_start_build() {
 			local NEOTERM_ELF_CLEANER_VERSION
 			NEOTERM_ELF_CLEANER_VERSION=$(bash -c ". $NEOTERM_SCRIPTDIR/packages/neoterm-elf-cleaner/build.sh; echo \$NEOTERM_PKG_VERSION")
 			neoterm_download \
-				"https://github.com/neoterm/neoterm-elf-cleaner/releases/download/v${NEOTERM_ELF_CLEANER_VERSION}/neoterm-elf-cleaner" \
+				"https://github.com/juic3b0x/neoterm-elf-cleaner/releases/download/v${NEOTERM_ELF_CLEANER_VERSION}/neoterm-elf-cleaner" \
 				"$NEOTERM_ELF_CLEANER" \
 				2c57aa961e25dfe44feb87030da3b0e54d314c110b8be6ffede39806ac356cd6
 			chmod u+x "$NEOTERM_ELF_CLEANER"

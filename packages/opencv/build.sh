@@ -8,7 +8,7 @@ NEOTERM_PKG_SRCURL=https://github.com/opencv/opencv/archive/${NEOTERM_PKG_VERSIO
 NEOTERM_PKG_SHA256=ddf76f9dffd322c7c3cb1f721d0887f62d747b82059342213138dc190f28bc6c
 NEOTERM_PKG_DEPENDS="abseil-cpp, ffmpeg, libc++, libjpeg-turbo, libopenblas, libpng, libtiff, libwebp, openjpeg, openjpeg-tools, zlib"
 # For static libprotobuf see
-# https://github.com/neoterm/neoterm-packages/issues/16979
+# https://github.com/juic3b0x/neoterm-packages/issues/16979
 NEOTERM_PKG_BUILD_DEPENDS="libutf8-range, protobuf-static, python-numpy-static"
 NEOTERM_PKG_PYTHON_COMMON_DEPS="Cython, wheel"
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="

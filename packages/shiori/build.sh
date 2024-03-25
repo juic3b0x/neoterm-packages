@@ -17,7 +17,7 @@ neoterm_step_make() {
 	cd "$GOPATH"/src/github.com/go-shiori/shiori/
 	go get -d -v
 
-	# https://github.com/neoterm/neoterm-packages/issues/18395
+	# https://github.com/juic3b0x/neoterm-packages/issues/18395
 	# https://gitlab.com/cznic/libc/-/blob/master/libc_linux.go
 	if [[ "${NEOTERM_ARCH_BITS}" == "32" ]]; then
 		local libc_version=$(grep modernc.org/libc go.mod | awk '{print $2}')

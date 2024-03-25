@@ -51,7 +51,7 @@ neoterm_step_configure() {
 	# https://bugs.chromium.org/p/webm/issues/detail?id=800
 	# "The issue is that on android we soft enable realtime only.
 	#  [..] You can enable non-realtime by setting --disable-realtime-only"
-	# Discovered in https://github.com/neoterm/neoterm-packages/issues/554
+	# Discovered in https://github.com/juic3b0x/neoterm-packages/issues/554
 	#CROSS=${NEOTERM_HOST_PLATFORM}- CC=clang CXX=clang++ $NEOTERM_PKG_SRCDIR/configure \
 	$NEOTERM_PKG_SRCDIR/configure \
 		$_CONFIGURE_TARGET \

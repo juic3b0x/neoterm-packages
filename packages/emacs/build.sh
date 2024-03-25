@@ -45,7 +45,7 @@ if $NEOTERM_DEBUG_BUILD; then
 fi
 
 # Avoid misdetection of sigaltstack with strict C99:
-# https://github.com/neoterm/neoterm-packages/issues/15852
+# https://github.com/juic3b0x/neoterm-packages/issues/15852
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_alternate_stack=yes"
 # Ensure use of system malloc:
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_sanitize_address=yes"
@@ -59,7 +59,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" gl_cv_func_dup2_works=no"
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_setrlimit=no"
 if [ "$NEOTERM_ARCH" == "arm" ] || [ "$NEOTERM_ARCH" == "i686" ]; then
 	# setjmp does not work properly on 32bit android:
-	# https://github.com/neoterm/neoterm-packages/issues/2599
+	# https://github.com/juic3b0x/neoterm-packages/issues/2599
 	NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_func__setjmp=no"
 	NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_func_sigsetjmp=no"
 fi

@@ -49,7 +49,7 @@ neoterm_step_make() {
 }
 
 neoterm_step_pre_configure() {
-	# Oz flag causes problems. See https://github.com/neoterm/neoterm-packages/issues/1680:
+	# Oz flag causes problems. See https://github.com/juic3b0x/neoterm-packages/issues/1680:
 	CFLAGS=${CFLAGS/-Oz/-Os}
 	LDFLAGS+=" $($CC -print-libgcc-file-name)"
 }

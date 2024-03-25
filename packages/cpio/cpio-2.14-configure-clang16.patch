@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/juic3b0x/neoterm-packages/issues/15852
 Borrowed from https://github.com/gentoo/gentoo/blob/496cb065e413016d6f788c26f485d55349b1c46b/app-arch/cpio/files/cpio-2.13-sysmacros-glibc-2.26.patch
 
 --- a/am/ax_compile_check_rettype.m4

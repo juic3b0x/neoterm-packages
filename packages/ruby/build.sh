@@ -19,7 +19,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_func_setgroups=no ac_cv_func_setresuid=n
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_lib_crypt_crypt=no"
 # Fix DEPRECATED_TYPE macro clang compatibility:
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" rb_cv_type_deprecated=x"
-# getresuid(2) does not work on ChromeOS - https://github.com/neoterm/neoterm-app/issues/147:
+# getresuid(2) does not work on ChromeOS - https://github.com/juic3b0x/neoterm-app/issues/147:
 # NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_getresuid=no"
 NEOTERM_PKG_HOSTBUILD=true
 NEOTERM_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS="

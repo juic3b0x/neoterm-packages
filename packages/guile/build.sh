@@ -15,7 +15,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_type_complex_double=no ac_cv_search_cloc
 NEOTERM_PKG_HOSTBUILD=true
 NEOTERM_PKG_BUILD_IN_SRC=true
 
-# https://github.com/neoterm/neoterm-packages/issues/14806
+# https://github.com/juic3b0x/neoterm-packages/issues/14806
 NEOTERM_PKG_NO_STRIP=true
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+="
 LIBS=-landroid-spawn

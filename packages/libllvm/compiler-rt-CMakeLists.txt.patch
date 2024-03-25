@@ -23,7 +23,7 @@
  
  if (COMPILER_RT_USE_BUILTINS_LIBRARY)
    string(REPLACE "-Wl,-z,defs" "" CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
-+  # https://github.com/neoterm/neoterm-packages/issues/15950
++  # https://github.com/juic3b0x/neoterm-packages/issues/15950
 +  if (ANDROID)
 +    list(APPEND SANITIZER_COMMON_LINK_FLAGS -l:libunwind.a)
 +  endif()

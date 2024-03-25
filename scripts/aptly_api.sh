@@ -6,7 +6,7 @@ CURL_COMMON_OPTIONS=(
   --silent
   --retry 2
   --retry-delay 3
-  --user-agent 'NeoTerm-Packages/1.0\ (https://github.com/neoterm/neoterm-packages)'
+  --user-agent 'NeoTerm-Packages/1.0\ (https://github.com/juic3b0x/neoterm-packages)'
   --user "${APTLY_API_AUTH}"
   --write-out "|%{http_code}"
 )

@@ -1,9 +1,9 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/libandroid-shmem
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/libandroid-shmem
 NEOTERM_PKG_DESCRIPTION="System V shared memory emulation on Android using ashmem"
 NEOTERM_PKG_LICENSE="BSD 3-Clause"
 NEOTERM_PKG_MAINTAINER="@neoterm"
 NEOTERM_PKG_VERSION=0.4
-NEOTERM_PKG_SRCURL=https://github.com/neoterm/libandroid-shmem/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/libandroid-shmem/archive/v${NEOTERM_PKG_VERSION}.tar.gz
 NEOTERM_PKG_SHA256=2563197a468a25275cc75c2379c10d358c315bafbea511a86d324cbd09983dd0
 NEOTERM_PKG_BREAKS="libandroid-shmem-dev"
 NEOTERM_PKG_REPLACES="libandroid-shmem-dev"

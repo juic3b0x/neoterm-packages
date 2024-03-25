@@ -18,7 +18,7 @@ neoterm_step_create_debscripts() {
 	echo "touch \$DIR/scores.dat" >> postinst
 	chmod 0755 postinst
 
-	# https://github.com/neoterm/neoterm-packages/issues/1401
+	# https://github.com/juic3b0x/neoterm-packages/issues/1401
 	echo "#!$NEOTERM_PREFIX/bin/sh" > prerm
 	echo "cd $NEOTERM_PREFIX/lib/games/moria || exit" >> prerm
 	echo "case \$1 in" >> prerm

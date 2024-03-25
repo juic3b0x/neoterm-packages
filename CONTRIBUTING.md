@@ -4,7 +4,7 @@ NeoTerm is an open source application and it is built on users' contributions.
 However, most of work is done by NeoTerm maintainers on their spare time and
 therefore only priority tasks are being completed.
 
-Developer's wiki is available at https://github.com/neoterm/neoterm-packages/wiki.
+Developer's wiki is available at https://github.com/juic3b0x/neoterm-packages/wiki.
 
 ## How you can contribute to NeoTerm project
 
@@ -32,17 +32,17 @@ Developer's wiki is available at https://github.com/neoterm/neoterm-packages/wik
   dependencies, unprefixed hardcoded FHS paths, crashes, etc.
 
   If you can't submit a pull request with patches fixing the problem, you can
-  open new [issue](https://github.com/neoterm/neoterm-packages/issues/new/choose).
+  open new [issue](https://github.com/juic3b0x/neoterm-packages/issues/new/choose).
 
 - **Fixing known bugs**
 
-  Take a look at https://github.com/neoterm/neoterm-packages/issues. There many
+  Take a look at https://github.com/juic3b0x/neoterm-packages/issues. There many
   issue tickets having tag `bug report` or `help wanted`. They all are waiting
   to be resolved.
 
 - **Submitting new packages**
 
-  There are lots of unresolved [package requests](https://github.com/neoterm/neoterm-packages/issues?q=is%3Aissue+is%3Aopen+label%3A%22package+request%22).
+  There are lots of unresolved [package requests](https://github.com/juic3b0x/neoterm-packages/issues?q=is%3Aissue+is%3Aopen+label%3A%22package+request%22).
   Pay attention to tickets having tag `help wanted`.
 
 - **Keeping existing packages up-to-date**
@@ -60,14 +60,14 @@ Developer's wiki is available at https://github.com/neoterm/neoterm-packages/wik
 
 - **Donate**
 
-  See https://github.com/neoterm/neoterm-packages/wiki/Donate for details.
+  See https://github.com/juic3b0x/neoterm-packages/wiki/Donate for details.
 
 ## Requesting new package
 
 If you are looking for specific package and didn't find it included in our
 repositories, you can request it.
 
-Open a new [issue](https://github.com/neoterm/neoterm-packages/issues/new/choose)
+Open a new [issue](https://github.com/juic3b0x/neoterm-packages/issues/new/choose)
 filling the `package request` template. You will need to provide at least
 package description and its home page and URL to source repository. Remember
 that your request will not be processed immediately.
@@ -147,7 +147,7 @@ remove functionality requiring root from packages if it interfere with
 non-root usage or cause build time issues.
 
 Packages that do not comply with this policy may be requested in User Repository:
-https://github.com/neoterm-user-repository/tur
+https://github.com/juic3b0x-user-repository/tur
 
 ## Submitting pull requests
 
@@ -160,7 +160,7 @@ but that DOES NOT mean they will do all work instead of you.
 - Experience with Linux distribution like Debian (preferred), Arch, Fedora, etc.
 - Experience with compiling software from source.
 - Good shell scripting skills.
-- You have read https://github.com/neoterm/neoterm-packages/wiki.
+- You have read https://github.com/juic3b0x/neoterm-packages/wiki.
 
 If you never used Linux distribution or NeoTerm was your first experience with
 Linux environment, we strongly recommending to NOT send pull requests since
@@ -171,7 +171,7 @@ new package, as your pull request will be closed without merge.
 
 Do not send disruptive changes, like without reason reverting commits or
 deleting files, creating spam content, etc. Authors of such pull requests may
-be blocked from contributing to [NeoTerm](https://github.com/neoterm) project.
+be blocked from contributing to [NeoTerm](https://github.com/juic3b0x) project.
 
 ### Submitting new packages: checklist
 
@@ -500,7 +500,7 @@ separated by commas.
 `NEOTERM_PKG_SRCURL` should contain URL only for the official source bundle.
 Use of forks is allowed only under a good reason.
 
-More about `build.sh` variables you can read on [developer's wiki](https://github.com/neoterm/neoterm-packages/wiki/Creating-new-package#table-of-available-package-control-fields).
+More about `build.sh` variables you can read on [developer's wiki](https://github.com/juic3b0x/neoterm-packages/wiki/Creating-new-package#table-of-available-package-control-fields).
 
 ### Creating patch files
 

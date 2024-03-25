@@ -44,12 +44,12 @@ neoterm_step_pre_configure() {
 	ln -sf $NEOTERM_STANDALONE_TOOLCHAIN/sysroot/usr/lib/$NEOTERM_HOST_PLATFORM/libc++_static.a \
 		$RUST_LIBDIR/libc++_shared.a
 
-	# https://github.com/neoterm/neoterm-packages/issues/18379
+	# https://github.com/juic3b0x/neoterm-packages/issues/18379
 	# NDK r26 multiple ld.lld: error: undefined symbol: __cxa_*
 	ln -fst "${RUST_LIBDIR}" "${NEOTERM_PREFIX}"/lib/libc++_shared.so
 
-	# https://github.com/neoterm/neoterm-packages/issues/11640
-	# https://github.com/neoterm/neoterm-packages/issues/11658
+	# https://github.com/juic3b0x/neoterm-packages/issues/11640
+	# https://github.com/juic3b0x/neoterm-packages/issues/11658
 	# The build system somehow tries to link binaries against a wrong libc,
 	# leading to build failures for arm and runtime errors for others.
 	# The following command is equivalent to
@@ -65,7 +65,7 @@ neoterm_step_pre_configure() {
 	mv $NEOTERM_PREFIX/lib/libz.so $NEOTERM_PREFIX/lib/libz.so.tmp
 	mv $NEOTERM_PREFIX/lib/liblzma.so.$LZMA_VERSION $NEOTERM_PREFIX/lib/liblzma.so.tmp
 
-	# https://github.com/neoterm/neoterm-packages/issues/11427
+	# https://github.com/juic3b0x/neoterm-packages/issues/11427
 	# Fresh build conflict: liblzma -> rust
 	# ld: error: /data/data/io.neoterm/files/usr/lib/liblzma.a(liblzma_la-common.o) is incompatible with elf64-x86-64
 	mv "${NEOTERM_PREFIX}"/lib/liblzma.a{,.tmp} || :

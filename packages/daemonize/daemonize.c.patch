@@ -16,7 +16,7 @@ diff -u -r ../daemonize-release-1.7.7/daemonize.c ./daemonize.c
 -static const char  *cwd        = "/";
 +/* NeoTerm patch: Use a readable directory for e.g. runsvdir to work,
 +   as / is not readable starting from Android 7:
-+   https://github.com/neoterm/neoterm-packages/issues/614 */
++   https://github.com/juic3b0x/neoterm-packages/issues/614 */
 +static const char  *cwd        = "@NEOTERM_PREFIX@";
  static int          null_fd    = -1;
  static int          out_fd     = -1;

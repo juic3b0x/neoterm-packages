@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm-user-repository/tur
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x-user-repository/tur
 NEOTERM_PKG_DESCRIPTION="A single and trusted place for all unofficial/less popular neoterm packages"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="@neoterm-user-repository"

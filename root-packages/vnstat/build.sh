@@ -8,7 +8,7 @@ NEOTERM_PKG_SHA256=b7386b12fc1fc6f47fab31f208b12eda61862e63e229e84e95a6fa80406d2
 NEOTERM_PKG_DEPENDS="libsqlite"
 NEOTERM_PKG_SERVICE_SCRIPT=("vnstat" "exec su -c \"PATH=\$PATH $NEOTERM_PREFIX/bin/vnstatd -n 2>&1\"")
 
-# from docker root package: https://github.com/neoterm/neoterm-packages/blob/master/root-packages/docker/build.sh
+# from docker root package: https://github.com/juic3b0x/neoterm-packages/blob/master/root-packages/docker/build.sh
 neoterm_step_post_make_install() {
 	mkdir -p $NEOTERM_PREFIX/var/service/vnstat/
 	{

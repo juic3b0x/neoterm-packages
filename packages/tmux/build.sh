@@ -9,7 +9,7 @@ NEOTERM_PKG_SRCURL=git+https://github.com/tmux/tmux
 NEOTERM_PKG_SHA256=b61189533139bb84bdc0e96546a5420c183d7ba946a559e891d313c1c32d953d
 NEOTERM_PKG_GIT_BRANCH=master
 NEOTERM_PKG_AUTO_UPDATE=false
-# Link against libandroid-support for wcwidth(), see https://github.com/neoterm/neoterm-packages/issues/224
+# Link against libandroid-support for wcwidth(), see https://github.com/juic3b0x/neoterm-packages/issues/224
 NEOTERM_PKG_DEPENDS="ncurses, libevent, libandroid-support, libandroid-glob"
 # Set default TERM to screen-256color, see: https://raw.githubusercontent.com/tmux/tmux/3.3/CHANGES
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-static --with-TERM=screen-256color"

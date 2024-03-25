@@ -78,7 +78,7 @@ diff -uNr abuild-3.4.0/functions.sh.in abuild-3.4.0.mod/functions.sh.in
 +		fi
 +
 +		# Originally set in build-package.sh script in NeoTerm build environment.
-+		# https://github.com/neoterm/neoterm-packages/blob/master/build-package.sh
++		# https://github.com/juic3b0x/neoterm-packages/blob/master/build-package.sh
 +		export ac_cv_func_getpwent=no
 +		export ac_cv_func_getpwnam=no
 +		export ac_cv_func_getpwuid=no

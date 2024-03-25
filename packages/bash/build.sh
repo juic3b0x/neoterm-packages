@@ -28,7 +28,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_dev_fd=whacky"
 # does not work when not all parent directories up to root are
 # accessible, which they are not under Android (/data). See
 # - http://permalink.gmane.org/gmane.linux.embedded.yocto.general/25204
-# - https://github.com/neoterm/neoterm-app/issues/200
+# - https://github.com/juic3b0x/neoterm-app/issues/200
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" bash_cv_getcwd_malloc=yes"
 
 NEOTERM_PKG_CONFFILES="etc/bash.bashrc etc/profile"

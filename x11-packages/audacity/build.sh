@@ -117,7 +117,7 @@ neoterm_step_create_debscripts() {
 		echo "********"
 		echo "Audacity in this particular package does not (yet) support audio devices."
 		echo
-		echo "https://github.com/neoterm/neoterm-packages/issues/10412"
+		echo "https://github.com/juic3b0x/neoterm-packages/issues/10412"
 		echo "********"
 		echo
 	EOF

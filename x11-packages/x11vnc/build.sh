@@ -8,7 +8,7 @@ NEOTERM_PKG_SRCURL=https://github.com/LibVNC/x11vnc/archive/${NEOTERM_PKG_VERSIO
 NEOTERM_PKG_SHA256=885e5b5f5f25eec6f9e4a1e8be3d0ac71a686331ee1cfb442dba391111bd32bd
 NEOTERM_PKG_DEPENDS="libandroid-shmem, libcairo, libvncserver, libx11, libxcomposite, libxcursor, libxdamage, libxext, libxfixes, libxi, libxinerama, libxrandr, libxtst, openssl, xorg-xdpyinfo"
 
-# https://github.com/neoterm/neoterm-packages/issues/15240
+# https://github.com/juic3b0x/neoterm-packages/issues/15240
 NEOTERM_PKG_RM_AFTER_INSTALL="bin/Xdummy"
 
 neoterm_step_pre_configure() {

@@ -30,7 +30,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 --with-nghttp3
 "
 
-# https://github.com/neoterm/neoterm-packages/issues/15889
+# https://github.com/juic3b0x/neoterm-packages/issues/15889
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_getpwuid=yes"
 
 # Starting with version 7.62 curl started enabling http/2 by default.

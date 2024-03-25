@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-packages
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/neoterm-packages
 NEOTERM_PKG_DESCRIPTION="A metapackage that installs at-spi2-core"
 NEOTERM_PKG_LICENSE="Public Domain"
 NEOTERM_PKG_MAINTAINER="@neoterm"

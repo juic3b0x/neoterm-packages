@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/x11-packages
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/x11-packages
 NEOTERM_PKG_DESCRIPTION="Utility to start X11 NeoTerm add-on"
 NEOTERM_PKG_LICENSE="GPL-3.0" # same as NeoTerm:X11 add-on app
 NEOTERM_PKG_MAINTAINER="@neoterm"

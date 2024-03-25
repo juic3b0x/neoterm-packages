@@ -8,7 +8,7 @@ NEOTERM_PKG_SHA256=2e49a10f1b14666d4f740e9a22a588d44b137c3fca0932afc50ded0280450
 NEOTERM_PKG_DEPENDS="openssl-1.1"
 NEOTERM_PKG_BUILD_IN_SRC=true
 
-# https://github.com/neoterm/neoterm-packages/issues/12824
+# https://github.com/juic3b0x/neoterm-packages/issues/12824
 NEOTERM_RUST_VERSION=1.73.0
 
 neoterm_step_pre_configure() {

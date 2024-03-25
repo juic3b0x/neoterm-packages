@@ -1,5 +1,5 @@
-See https://github.com/neoterm/neoterm-packages/issues/15666#issuecomment-1479663622
-and https://github.com/neoterm/neoterm-packages/issues/15666#issuecomment-1482340986
+See https://github.com/juic3b0x/neoterm-packages/issues/15666#issuecomment-1479663622
+and https://github.com/juic3b0x/neoterm-packages/issues/15666#issuecomment-1482340986
 
 --- a/cmake/Codegen.cmake.orig
 +++ b/cmake/Codegen.cmake

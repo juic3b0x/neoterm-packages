@@ -40,6 +40,6 @@ neoterm_step_pre_configure() {
 }
 
 neoterm_step_post_configure() {
-	# https://github.com/neoterm/neoterm-packages/issues/12458
+	# https://github.com/juic3b0x/neoterm-packages/issues/12458
 	mkdir -p trans
 }

@@ -169,7 +169,7 @@ neoterm_step_massage() {
 
 	# Check so that package is not affected by
 	# https://github.com/android/ndk/issues/1614, or
-	# https://github.com/neoterm/neoterm-packages/issues/9944
+	# https://github.com/juic3b0x/neoterm-packages/issues/9944
 	if [ "$NEOTERM_PACKAGE_LIBRARY" = "bionic" ] && [ -d "lib" ]; then
 		SYMBOLS="$($READELF -s $($NEOTERM_HOST_PLATFORM-clang -print-libgcc-file-name) | grep "FUNC    GLOBAL HIDDEN" | awk '{print $8}')"
 		SYMBOLS+=" $(echo libandroid_{sem_{open,close,unlink},shm{ctl,get,at,dt}})"

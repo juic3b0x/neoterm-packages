@@ -82,7 +82,7 @@ neoterm_step_pre_configure() {
 
 neoterm_step_post_massage() {
 	# ld(1)ing with `-lSDL2` won't work without this:
-	# https://github.com/neoterm/x11-packages/issues/633
+	# https://github.com/juic3b0x/x11-packages/issues/633
 	cd ${NEOTERM_PKG_MASSAGEDIR}/${NEOTERM_PREFIX}/lib || exit 1
 	if [ ! -e "./libSDL2.so" ]; then
 		ln -sf libSDL2-2.0.so libSDL2.so

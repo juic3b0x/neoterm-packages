@@ -28,7 +28,7 @@ ARGS="--kill-on-exit"
 ARGS="$ARGS -b /system:/system"
 
 # On some devices /vendor is required for neoterm packages to work correctly
-# See https://github.com/neoterm/proot/issues/2#issuecomment-303995382
+# See https://github.com/juic3b0x/proot/issues/2#issuecomment-303995382
 ARGS="$ARGS -b /vendor:/vendor"
 
 # Bind /data to include system folders such as /data/misc. Also $PREFIX
@@ -44,7 +44,7 @@ if [ -d /sbin ] && [ -d /root ]; then
 fi
 
 # Android 10 needs /apex for /system/bin/linker:
-# https://github.com/neoterm/proot/issues/95#issuecomment-584779998
+# https://github.com/juic3b0x/proot/issues/95#issuecomment-584779998
 if [ -d /apex ]; then
 	ARGS="$ARGS -b /apex:/apex"
 fi
@@ -55,7 +55,7 @@ if [ -e "/linkerconfig/ld.config.txt" ]; then
 fi
 
 if [ -f /property_contexts ]; then
-	# Used by getprop (see https://github.com/neoterm/neoterm-packages/issues/1076)
+	# Used by getprop (see https://github.com/juic3b0x/neoterm-packages/issues/1076)
 	# but does not exist on Android 8.
 	ARGS="$ARGS -b /property_contexts:/property_contexts"
 fi

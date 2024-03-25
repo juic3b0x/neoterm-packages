@@ -109,7 +109,7 @@ neoterm_step_make_install() {
 }
 
 neoterm_step_post_make_install() {
-	# https://github.com/neoterm/neoterm-packages/issues/18429
+	# https://github.com/juic3b0x/neoterm-packages/issues/18429
 	# https://phabricator.services.mozilla.com/D181687
 	# Android 8.x and older not support "-z pack-relative-relocs" / DT_RELR
 	local r=$("${READELF}" -d "${NEOTERM_PREFIX}/bin/firefox")

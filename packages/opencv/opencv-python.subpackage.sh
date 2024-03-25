@@ -9,7 +9,7 @@ neoterm_step_create_subpkg_debscripts() {
 	#!$NEOTERM_PREFIX/bin/sh
 	INSTALLED_NUMPY_VERSION=\$(dpkg --list python-numpy | grep python-numpy | awk '{print \$3; exit;}')
 	if [ "\${INSTALLED_NUMPY_VERSION%%-*}" != "$_NUMPY_VERSION" ]; then
-		echo "WARNING: opencv-python is compiled with numpy $_NUMPY_VERSION, but numpy \${INSTALLED_NUMPY_VERSION%%-*} is installed. Please report it to https://github.com/neoterm/neoterm-packages if any bug happens."
+		echo "WARNING: opencv-python is compiled with numpy $_NUMPY_VERSION, but numpy \${INSTALLED_NUMPY_VERSION%%-*} is installed. Please report it to https://github.com/juic3b0x/neoterm-packages if any bug happens."
 	fi
 	EOF
 }

@@ -52,7 +52,7 @@ neoterm_setup_toolchain_26b() {
 		# From $NDK/docs/CPU-ARCH-ABIS.html:
 		CFLAGS+=" -march=i686 -msse3 -mstackrealign -mfpmath=sse"
 		# i686 seem to explicitly require -fPIC, see
-		# https://github.com/neoterm/neoterm-packages/issues/7215#issuecomment-906154438
+		# https://github.com/juic3b0x/neoterm-packages/issues/7215#issuecomment-906154438
 		CFLAGS+=" -fPIC"
 		export GOARCH=386
 		export GO386=sse2

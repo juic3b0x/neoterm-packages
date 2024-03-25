@@ -226,7 +226,7 @@ neoterm_step_host_build() {
 }
 
 neoterm_step_pre_configure() {
-	# https://github.com/neoterm/neoterm-packages/issues/16358
+	# https://github.com/juic3b0x/neoterm-packages/issues/16358
 	# TODO libclang-cpp.so* is not affected
 	if [[ "${NEOTERM_ON_DEVICE_BUILD}" == "true" ]]; then
 		echo "WARN: ld.lld wrapper is not working for on-device builds. Skipping."

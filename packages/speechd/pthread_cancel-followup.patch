@@ -1,4 +1,4 @@
-Mitigates https://github.com/neoterm/neoterm-packages/issues/15425
+Mitigates https://github.com/juic3b0x/neoterm-packages/issues/15425
 
 --- a/config/speechd.conf
 +++ b/config/speechd.conf

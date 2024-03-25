@@ -17,7 +17,7 @@ neoterm_step_pre_configure() {
 	# https://github.com/rust-lang/compiler-builtins#unimplemented-functions
 	# https://github.com/rust-lang/rfcs/issues/2629
 	# https://github.com/rust-lang/rust/issues/46651
-	# https://github.com/neoterm/neoterm-packages/issues/8029
+	# https://github.com/juic3b0x/neoterm-packages/issues/8029
 	RUSTFLAGS+=" -C link-arg=$(${CC} -print-libgcc-file-name)"
 	export WASMER_INSTALL_PREFIX="${NEOTERM_PREFIX}"
 	neoterm_setup_rust

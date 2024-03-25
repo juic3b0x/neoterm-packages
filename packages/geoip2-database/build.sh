@@ -10,7 +10,7 @@ NEOTERM_PKG_BUILD_IN_SRC=true
 # Reusing files from the our last build (2019.12.21).
 NEOTERM_PKG_VERSION=20191221
 NEOTERM_PKG_REVISION=2
-NEOTERM_PKG_SRCURL=https://github.com/neoterm/distfiles/releases/download/2021.01.04/geolite2-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/distfiles/releases/download/2021.01.04/geolite2-${NEOTERM_PKG_VERSION}.tar.xz
 NEOTERM_PKG_SHA256=7afd73d90325d4a8aa3707c0c4a34f89a4b469fe43b4f3a3d69da23884af1e70
 
 neoterm_step_make_install() {

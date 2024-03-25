@@ -7,7 +7,7 @@ NEOTERM_PKG_REVISION=4
 # Build from specific revision until patches are merged upstream, or
 # we decide to maintain a fork
 _COMMIT=831e300e3d75a9618963bbefbaad49bf37e2cf3c
-NEOTERM_PKG_SRCURL=https://github.com/neoterm/tergent/archive/${_COMMIT}.tar.gz
+NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/tergent/archive/${_COMMIT}.tar.gz
 NEOTERM_PKG_SHA256=8979504a0e705fca35a6ae81ba1665c5bafebe218008ee50b6dc4f8a8d611cec
 NEOTERM_PKG_AUTO_UPDATE=false
 NEOTERM_PKG_DEPENDS="neoterm-api"

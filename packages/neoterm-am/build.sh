@@ -1,9 +1,9 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/NeoTermAm
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/NeoTermAm
 NEOTERM_PKG_DESCRIPTION="Android Oreo-compatible am command reimplementation"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="Michal Bednarski @michalbednarski"
 NEOTERM_PKG_VERSION=0.8.0
-NEOTERM_PKG_SRCURL=https://github.com/neoterm/NeoTermAm/archive/v$NEOTERM_PKG_VERSION.tar.gz
+NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/NeoTermAm/archive/v$NEOTERM_PKG_VERSION.tar.gz
 NEOTERM_PKG_SHA256=7d4cfa2bfff93d5fc89fc89e537d2c072e08918276b140b7ed48ea45ebfbe8f3
 NEOTERM_PKG_PLATFORM_INDEPENDENT=true
 NEOTERM_PKG_BUILD_IN_SRC=true

@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/x11-packages
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/x11-packages
 NEOTERM_PKG_DESCRIPTION="A metapackage that installs all parts of the LXQt desktop environment"
 NEOTERM_PKG_LICENSE="Public Domain"
 NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"

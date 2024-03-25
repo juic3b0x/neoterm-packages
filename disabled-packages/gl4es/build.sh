@@ -37,7 +37,7 @@ neoterm_pkg_auto_update() {
 	local latest_commit_date=$(echo "${latest_commit_date_tz}" | sed -e 's|\(.*\)T\(.*\)Z|\1|' -e 's|\-||g')
 	local latest_commit_time=$(echo "${latest_commit_date_tz}" | sed -e 's|\(.*\)T\(.*\)Z|\2|' -e 's|\:||g')
 
-	# https://github.com/neoterm/neoterm-packages/issues/11827
+	# https://github.com/juic3b0x/neoterm-packages/issues/11827
 	# really fix it by including longer date time info into versioning
 	# always check this in case upstream change the version format
 	local latest_version="1.1.4.${latest_commit_date}.${latest_commit_time}g${latest_commit:0:8}"

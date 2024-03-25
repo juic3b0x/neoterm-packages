@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-root-packages
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/neoterm-root-packages
 NEOTERM_PKG_DESCRIPTION="Package repository containing programs for rooted devices"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="Henrik Grimler @Grimler91"

@@ -5,7 +5,7 @@ From: Tee KOBAYASHI <xtkoba@gmail.com>
 Date: Sat, 5 Mar 2022 09:05:16 +0900
 Subject: [PATCH] Fix deadlock in initializer
 
-Downstream issue: https://github.com/neoterm/neoterm-packages/issues/8464
+Downstream issue: https://github.com/juic3b0x/neoterm-packages/issues/8464
 ---
  src/lib/close.c    |  2 +-
  src/lib/torsocks.c | 13 ++++++++++++-

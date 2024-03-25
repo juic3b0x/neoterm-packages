@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x
 NEOTERM_PKG_DESCRIPTION="GPG public keys for the official Neoterm repositories"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="@neoterm"

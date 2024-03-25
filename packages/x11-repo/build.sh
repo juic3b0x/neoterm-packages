@@ -1,4 +1,4 @@
-NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/x11-packages
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/x11-packages
 NEOTERM_PKG_DESCRIPTION="Package repository containing X11 programs and libraries"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="@neoterm"

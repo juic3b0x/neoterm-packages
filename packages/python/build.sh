@@ -16,7 +16,7 @@ NEOTERM_PKG_REPLACES="python-dev"
 # Let "python3" will be alias to this package.
 NEOTERM_PKG_PROVIDES="python3"
 
-# https://github.com/neoterm/neoterm-packages/issues/15908
+# https://github.com/juic3b0x/neoterm-packages/issues/15908
 NEOTERM_MAKE_PROCESSES=1
 
 _MAJOR_VERSION="${NEOTERM_PKG_VERSION%.*}"
@@ -34,7 +34,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_linkat=no"
 # Do not assume getaddrinfo is buggy when cross compiling:
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_buggy_getaddrinfo=no"
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" --enable-loadable-sqlite-extensions"
-# Fix https://github.com/neoterm/neoterm-packages/issues/2236:
+# Fix https://github.com/juic3b0x/neoterm-packages/issues/2236:
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_little_endian_double=yes"
 # Force enable posix semaphores.
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_posix_semaphores_enabled=yes"

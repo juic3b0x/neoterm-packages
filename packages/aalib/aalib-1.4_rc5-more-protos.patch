@@ -1,4 +1,4 @@
-https://github.com/neoterm/neoterm-packages/issues/15852
+https://github.com/juic3b0x/neoterm-packages/issues/15852
 Borrowed from https://github.com/gentoo/gentoo/blob/f6cb32864291febd8151f8418971fe57efcd2c66/media-libs/aalib/files/aalib-1.4_rc5-more-protos.patch
 
 diff --git a/src/aakbdreg.c b/src/aakbdreg.c

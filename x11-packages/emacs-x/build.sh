@@ -44,7 +44,7 @@ if $NEOTERM_DEBUG_BUILD; then
 fi
 
 # Avoid misdetection of sigaltstack with strict C99:
-# https://github.com/neoterm/neoterm-packages/issues/15852
+# https://github.com/juic3b0x/neoterm-packages/issues/15852
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_alternate_stack=yes"
 # Ensure use of system malloc:
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" emacs_cv_sanitize_address=yes"

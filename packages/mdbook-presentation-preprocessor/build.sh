@@ -8,7 +8,7 @@ NEOTERM_PKG_SHA256=477eb3104bfe216ebd2067bad97cc3e5a2116ae37bd3819cf523771d31573
 NEOTERM_PKG_AUTO_UPDATE=true
 NEOTERM_PKG_BUILD_IN_SRC=true
 
-# https://github.com/neoterm/neoterm-packages/issues/16755
+# https://github.com/juic3b0x/neoterm-packages/issues/16755
 NEOTERM_RUST_VERSION=1.68.2
 
 neoterm_step_make() {

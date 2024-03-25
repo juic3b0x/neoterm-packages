@@ -21,7 +21,7 @@ NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" --without-guile"
 neoterm_step_pre_configure() {
 	if [ "$NEOTERM_ARCH" = arm ]; then
 		# Fix issue with make on arm hanging at least under cmake:
-		# https://github.com/neoterm/neoterm-packages/issues/2983
+		# https://github.com/juic3b0x/neoterm-packages/issues/2983
 		NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" ac_cv_func_pselect=no"
 	fi
 }

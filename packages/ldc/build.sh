@@ -188,7 +188,7 @@ neoterm_step_make() {
 	export DFLAGS="$DFLAGS -linker=bfd -L-L$NEOTERM_PKG_BUILDDIR/ldc-build-runtime.tmp/lib"
 	if [ $NEOTERM_ARCH = arm ]; then export DFLAGS="$DFLAGS -L--fix-cortex-a8"; fi
 
-	# https://github.com/neoterm/neoterm-packages/issues/7188
+	# https://github.com/juic3b0x/neoterm-packages/issues/7188
 	DFLAGS+=" -L-rpath=$NEOTERM_PREFIX/lib"
 
 	cd  $NEOTERM_PKG_SRCDIR/dlang-tools

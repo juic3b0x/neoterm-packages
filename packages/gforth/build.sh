@@ -45,7 +45,7 @@ neoterm_step_post_configure() {
 
 neoterm_step_post_massage() {
 	# Alignment of magic can be broken by shebang fix:
-	# https://github.com/neoterm/neoterm-packages/issues/14648
+	# https://github.com/juic3b0x/neoterm-packages/issues/14648
 	local f
 	for f in $(find ./lib/gforth ./share/gforth -type f -name '*.fi'); do
 		if [ $(head -c 2 "${f}") != '#!' ]; then
