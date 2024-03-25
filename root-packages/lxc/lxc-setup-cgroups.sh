@@ -1,4 +1,4 @@
-#!@TERMUX_PREFIX@/bin/sh
+#!@NEOTERM_PREFIX@/bin/sh
 set -e
 
 export PATH=$PATH:/system/xbin:/system/bin

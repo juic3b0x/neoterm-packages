@@ -1,4 +1,4 @@
-Mitigates https://github.com/termux/termux-packages/issues/15425
+Mitigates https://github.com/neoterm/neoterm-packages/issues/15425
 
 --- a/config/speechd.conf
 +++ b/config/speechd.conf
@@ -6,7 +6,7 @@ Mitigates https://github.com/termux/termux-packages/issues/15425
  # By default, Speech Dispatcher is configured to shut itself down after a period of
  # time if no clients are connected. The timeout value is in seconds, and is started when
  # the last client disconnects. A value of 0 disables the timeout.
-+# Note for Termux: timeout is disabled by default, for a reason.
++# Note for NeoTerm: timeout is disabled by default, for a reason.
  
 -# Timeout 5
 +# Timeout 0

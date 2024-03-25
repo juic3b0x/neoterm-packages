@@ -5,7 +5,7 @@
             Windows -> do windowsProgramFilesDir <- getWindowsProgramFilesDir
                           return (windowsProgramFilesDir </> "Haskell")
 -           _       -> return "/usr/local"
-+           _       -> return "@TERMUX_PREFIX@"
++           _       -> return "@NEOTERM_PREFIX@"
    installLibDir <-
        case buildOS of
        Windows -> return "$prefix"

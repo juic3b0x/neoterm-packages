@@ -6,7 +6,7 @@ diff -uNr sc-im-0.7.0/src/clipboard.c sc-im-0.7.0.mod/src/clipboard.c
  
      // create tmp file
 -    char template[] = "/tmp/sc-im-clipboardXXXXXX";
-+    char template[] = "@TERMUX_PREFIX@/tmp/sc-im-clipboardXXXXXX";
++    char template[] = "@NEOTERM_PREFIX@/tmp/sc-im-clipboardXXXXXX";
      int fd = mkstemp(template);
      if (fd == -1) {
          sc_error("Error while pasting from clipboard");

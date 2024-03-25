@@ -5,12 +5,12 @@
  		IO *o;
  
 -		MakeDir("/tmp");
-+		MakeDir("@TERMUX_PREFIX@/tmp");
++		MakeDir("@NEOTERM_PREFIX@/tmp");
  
  		Format(tmp2, sizeof(tmp2), "%I64u", now);
  
 -		Format(tmp, sizeof(tmp), "/tmp/.%s", tmp2);
-+		Format(tmp, sizeof(tmp), "@TERMUX_PREFIX@/tmp/.%s", tmp2);
++		Format(tmp, sizeof(tmp), "@NEOTERM_PREFIX@/tmp/.%s", tmp2);
  
  		o = FileCreate(tmp);
  		if (o == NULL)
@@ -19,7 +19,7 @@
  			if (o == NULL)
  			{
 -				Print("Unable to use /tmp.\n\n");
-+				Print("Unable to use @TERMUX_PREFIX@/tmp.\n\n");
++				Print("Unable to use @NEOTERM_PREFIX@/tmp.\n\n");
  				exit(0);
  			}
  		}

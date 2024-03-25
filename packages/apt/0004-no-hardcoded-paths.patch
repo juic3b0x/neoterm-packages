@@ -10,11 +10,11 @@ diff -uNr apt-2.1.11/apt-pkg/aptconfiguration.cc apt-2.1.11.mod/apt-pkg/aptconfi
 -	_config->CndSet("Dir::Bin::xz", "/usr/bin/xz");
 -	_config->CndSet("Dir::Bin::lz4", "/usr/bin/lz4");
 -	_config->CndSet("Dir::Bin::zstd", "/usr/bin/zstd");
-+	_config->CndSet("Dir::Bin::gzip", "@TERMUX_PREFIX@/bin/gzip");
-+	_config->CndSet("Dir::Bin::bzip2", "@TERMUX_PREFIX@/bin/bzip2");
-+	_config->CndSet("Dir::Bin::xz", "@TERMUX_PREFIX@/bin/xz");
-+	_config->CndSet("Dir::Bin::lz4", "@TERMUX_PREFIX@/bin/lz4");
-+	_config->CndSet("Dir::Bin::zstd", "@TERMUX_PREFIX@/bin/zstd");
++	_config->CndSet("Dir::Bin::gzip", "@NEOTERM_PREFIX@/bin/gzip");
++	_config->CndSet("Dir::Bin::bzip2", "@NEOTERM_PREFIX@/bin/bzip2");
++	_config->CndSet("Dir::Bin::xz", "@NEOTERM_PREFIX@/bin/xz");
++	_config->CndSet("Dir::Bin::lz4", "@NEOTERM_PREFIX@/bin/lz4");
++	_config->CndSet("Dir::Bin::zstd", "@NEOTERM_PREFIX@/bin/zstd");
  	if (FileExists(_config->Find("Dir::Bin::xz")) == true) {
  		_config->Set("Dir::Bin::lzma", _config->Find("Dir::Bin::xz"));
  		_config->Set("APT::Compressor::lzma::Binary", "xz");
@@ -23,7 +23,7 @@ diff -uNr apt-2.1.11/apt-pkg/aptconfiguration.cc apt-2.1.11.mod/apt-pkg/aptconfi
  		}
  	} else {
 -		_config->CndSet("Dir::Bin::lzma", "/usr/bin/lzma");
-+		_config->CndSet("Dir::Bin::lzma", "@TERMUX_PREFIX@/bin/lzma");
++		_config->CndSet("Dir::Bin::lzma", "@NEOTERM_PREFIX@/bin/lzma");
  		if (_config->Exists("APT::Compressor::lzma::CompressArg") == false) {
  			_config->Set("APT::Compressor::lzma::CompressArg::", "--suffix=");
  			_config->Set("APT::Compressor::lzma::CompressArg::", "-6");
@@ -47,7 +47,7 @@ diff -uNr apt-2.1.11/apt-pkg/contrib/fileutl.cc apt-2.1.11.mod/apt-pkg/contrib/f
        }
  
 -      if (chdir("/tmp/") != 0)
-+      if (chdir("@TERMUX_PREFIX@/tmp/") != 0)
++      if (chdir("@NEOTERM_PREFIX@/tmp/") != 0)
  	 _exit(100);
  	 
        unsigned int Count = 1;
@@ -56,11 +56,11 @@ diff -uNr apt-2.1.11/apt-pkg/contrib/fileutl.cc apt-2.1.11.mod/apt-pkg/contrib/f
     if (!tmpdir || strlen(tmpdir) == 0 || // tmpdir is set
  	 stat(tmpdir, &st) != 0 || (st.st_mode & S_IFDIR) == 0) // exists and is directory
 -      tmpdir = "/tmp";
-+      tmpdir = "@TERMUX_PREFIX@/tmp";
++      tmpdir = "@NEOTERM_PREFIX@/tmp";
     else if (geteuid() != 0 && // root can do everything anyway
  	 faccessat(AT_FDCWD, tmpdir, R_OK | W_OK | X_OK, AT_EACCESS) != 0) // current user has rwx access to directory
 -      tmpdir = "/tmp";
-+      tmpdir = "@TERMUX_PREFIX@/tmp";
++      tmpdir = "@NEOTERM_PREFIX@/tmp";
  
     return string(tmpdir);
  }
@@ -69,7 +69,7 @@ diff -uNr apt-2.1.11/apt-pkg/contrib/fileutl.cc apt-2.1.11.mod/apt-pkg/contrib/f
        auto const shell = flNotDir(pw->pw_shell);
        if (shell == "false" || shell == "nologin")
 -	 setenv("SHELL", "/bin/sh", 1);
-+	 setenv("SHELL", "@TERMUX_PREFIX@/bin/sh", 1);
++	 setenv("SHELL", "@NEOTERM_PREFIX@/bin/sh", 1);
        else
  	 setenv("SHELL", pw->pw_shell, 1);
        auto const apt_setenv_tmp = [](char const * const env) {
@@ -81,7 +81,7 @@ diff -uNr apt-2.1.11/apt-pkg/deb/dpkgpm.cc apt-2.1.11.mod/apt-pkg/deb/dpkgpm.cc
  static bool ionice(int PID)
  {
 -   if (!FileExists("/usr/bin/ionice"))
-+   if (!FileExists("@TERMUX_PREFIX@/bin/ionice"))
++   if (!FileExists("@NEOTERM_PREFIX@/bin/ionice"))
        return false;
     pid_t Process = ExecFork();
     if (Process == 0)
@@ -90,7 +90,7 @@ diff -uNr apt-2.1.11/apt-pkg/deb/dpkgpm.cc apt-2.1.11.mod/apt-pkg/deb/dpkgpm.cc
        snprintf(buf, sizeof(buf), "-p%d", PID);
        const char *Args[4];
 -      Args[0] = "/usr/bin/ionice";
-+      Args[0] = "@TERMUX_PREFIX@/bin/ionice";
++      Args[0] = "@NEOTERM_PREFIX@/bin/ionice";
        Args[1] = "-c3";
        Args[2] = buf;
        Args[3] = 0;
@@ -99,7 +99,7 @@ diff -uNr apt-2.1.11/apt-pkg/deb/dpkgpm.cc apt-2.1.11.mod/apt-pkg/deb/dpkgpm.cc
  	 debSystem::DpkgChrootDirectory();
  	 const char *Args[4];
 -	 Args[0] = "/bin/sh";
-+	 Args[0] = "@TERMUX_PREFIX@/bin/sh";
++	 Args[0] = "@NEOTERM_PREFIX@/bin/sh";
  	 Args[1] = "-c";
  	 Args[2] = Opts->Value.c_str();
  	 Args[3] = 0;
@@ -108,11 +108,11 @@ diff -uNr apt-2.1.11/apt-pkg/deb/dpkgpm.cc apt-2.1.11.mod/apt-pkg/deb/dpkgpm.cc
  
     // attach dmesg log (to learn about segfaults)
 -   if (FileExists("/bin/dmesg"))
-+   if (FileExists("@TERMUX_PREFIX@/bin/dmesg"))
++   if (FileExists("@NEOTERM_PREFIX@/bin/dmesg"))
     {
        fprintf(report, "Dmesg:\n");
 -      FILE *log = popen("/bin/dmesg","r");
-+      FILE *log = popen("@TERMUX_PREFIX@/bin/dmesg","r");
++      FILE *log = popen("@NEOTERM_PREFIX@/bin/dmesg","r");
        if(log != NULL)
        {
  	 char buf[1024];
@@ -121,12 +121,12 @@ diff -uNr apt-2.1.11/apt-pkg/deb/dpkgpm.cc apt-2.1.11.mod/apt-pkg/deb/dpkgpm.cc
  
     // attach df -l log (to learn about filesystem status)
 -   if (FileExists("/bin/df"))
-+   if (FileExists("@TERMUX_PREFIX@/bin/df"))
++   if (FileExists("@NEOTERM_PREFIX@/bin/df"))
     {
  
        fprintf(report, "Df:\n");
 -      FILE *log = popen("/bin/df -l -x squashfs","r");
-+      FILE *log = popen("@TERMUX_PREFIX@/bin/df","r");
++      FILE *log = popen("@NEOTERM_PREFIX@/bin/df","r");
        if(log != NULL)
        {
  	 char buf[1024];
@@ -138,7 +138,7 @@ diff -uNr apt-2.1.11/apt-pkg/init.cc apt-2.1.11.mod/apt-pkg/init.cc
  
  
 -   Cnf.CndSet("DPkg::Path", "/usr/sbin:/usr/bin:/sbin:/bin");
-+   Cnf.CndSet("DPkg::Path", "@TERMUX_PREFIX@/bin");
++   Cnf.CndSet("DPkg::Path", "@NEOTERM_PREFIX@/bin");
  
     // Read an alternate config file
     _error->PushToStack();
@@ -150,7 +150,7 @@ diff -uNr apt-2.1.11/apt-private/private-json-hooks.cc apt-2.1.11.mod/apt-privat
  	 DpkgChrootDirectory();
  	 const char *Args[4];
 -	 Args[0] = "/bin/sh";
-+	 Args[0] = "@TERMUX_PREFIX@/bin/sh";
++	 Args[0] = "@NEOTERM_PREFIX@/bin/sh";
  	 Args[1] = "-c";
  	 Args[2] = Opts->Value.c_str();
  	 Args[3] = 0;
@@ -162,7 +162,7 @@ diff -uNr apt-2.1.11/cmdline/apt-dump-solver.cc apt-2.1.11.mod/cmdline/apt-dump-
  	 EDSP::WriteError("ERR_NO_FILENAME", "You have to set the environment variable APT_EDSP_DUMP_FILENAME\n"
  	       "to a valid filename to store the dump of EDSP solver input in.\n"
 -	       "For example with: export APT_EDSP_DUMP_FILENAME=/tmp/dump.edsp", stdoutfd);
-+	       "For example with: export APT_EDSP_DUMP_FILENAME=@TERMUX_PREFIX@/tmp/dump.edsp", stdoutfd);
++	       "For example with: export APT_EDSP_DUMP_FILENAME=@NEOTERM_PREFIX@/tmp/dump.edsp", stdoutfd);
  	 return 0;
        }
     }
@@ -171,7 +171,7 @@ diff -uNr apt-2.1.11/cmdline/apt-key.in apt-2.1.11.mod/cmdline/apt-key.in
 +++ apt-2.1.11.mod/cmdline/apt-key.in	2020-11-05 15:43:52.271502576 +0200
 @@ -1,4 +1,4 @@
 -#!/bin/sh
-+#!@TERMUX_PREFIX@/bin/sh
++#!@NEOTERM_PREFIX@/bin/sh
  
  set -e
  unset GREP_OPTIONS GPGHOMEDIR CURRENTTRAP
@@ -180,7 +180,7 @@ diff -uNr apt-2.1.11/cmdline/apt-key.in apt-2.1.11.mod/cmdline/apt-key.in
  	    $ACTION "$TRUSTEDFILE" "$@"
  	fi
 -	local TRUSTEDPARTS="/etc/apt/trusted.gpg.d"
-+	local TRUSTEDPARTS="@TERMUX_PREFIX@/etc/apt/trusted.gpg.d"
++	local TRUSTEDPARTS="@NEOTERM_PREFIX@/etc/apt/trusted.gpg.d"
  	eval "$(apt-config shell TRUSTEDPARTS Dir::Etc::TrustedParts/d)"
  	if [ -d "$TRUSTEDPARTS" ]; then
  	    TRUSTEDPARTS="$(readlink -f "$TRUSTEDPARTS")"
@@ -189,7 +189,7 @@ diff -uNr apt-2.1.11/cmdline/apt-key.in apt-2.1.11.mod/cmdline/apt-key.in
  	FORCED_KEYRING="${GPGHOMEDIR}/forcedkeyid.gpg"
  	TRUSTEDFILE="${FORCED_KEYRING}"
 -	echo "#!/bin/sh
-+	echo "#!@TERMUX_PREFIX@/bin/sh
++	echo "#!@NEOTERM_PREFIX@/bin/sh
  exec sh '($(escape_shell "${GPG}")' --keyring '$(escape_shell "${TRUSTEDFILE}")' \"\$@\"" > "${GPGHOMEDIR}/gpg.1.sh"
  	GPG="${GPGHOMEDIR}/gpg.1.sh"
  	# ignore error as this "just" means we haven't found the forced keyid and the keyring will be empty
@@ -198,14 +198,14 @@ diff -uNr apt-2.1.11/cmdline/apt-key.in apt-2.1.11.mod/cmdline/apt-key.in
  	   touch "${GPGHOMEDIR}/pubring.gpg" "${GPGHOMEDIR}/pubring.orig.gpg"
  	fi
 -	echo "#!/bin/sh
-+	echo "#!@TERMUX_PREFIX@/bin/sh
++	echo "#!@NEOTERM_PREFIX@/bin/sh
  exec sh '$(escape_shell "${GPG}")' --keyring '$(escape_shell "${GPGHOMEDIR}/pubring.gpg")' \"\$@\"" > "${GPGHOMEDIR}/gpg.1.sh"
  	GPG="${GPGHOMEDIR}/gpg.1.sh"
      else
  	TRUSTEDFILE="$(dearmor_filename "$FORCED_KEYRING")"
  	create_new_keyring "$TRUSTEDFILE"
 -	echo "#!/bin/sh
-+	echo "#!@TERMUX_PREFIX@/bin/sh
++	echo "#!@NEOTERM_PREFIX@/bin/sh
  exec sh '$(escape_shell "${GPG}")' --keyring '$(escape_shell "${TRUSTEDFILE}")' \"\$@\"" > "${GPGHOMEDIR}/gpg.1.sh"
  	GPG="${GPGHOMEDIR}/gpg.1.sh"
      fi
@@ -214,7 +214,7 @@ diff -uNr apt-2.1.11/cmdline/apt-key.in apt-2.1.11.mod/cmdline/apt-key.in
  
  if [ -z "$TRUSTEDFILE" ]; then
 -   TRUSTEDFILE="/etc/apt/trusted.gpg"
-+   TRUSTEDFILE="@TERMUX_PREFIX@/etc/apt/trusted.gpg"
++   TRUSTEDFILE="@NEOTERM_PREFIX@/etc/apt/trusted.gpg"
     eval $(apt-config shell TRUSTEDFILE Apt::GPGV::TrustedKeyring)
     eval $(apt-config shell TRUSTEDFILE Dir::Etc::Trusted/f)
  fi
@@ -223,7 +223,7 @@ diff -uNr apt-2.1.11/cmdline/apt-key.in apt-2.1.11.mod/cmdline/apt-key.in
  
      # now tell gpg that it shouldn't try to maintain this trustdb file
 -    echo "#!/bin/sh
-+    echo "#!@TERMUX_PREFIX@/bin/sh
++    echo "#!@NEOTERM_PREFIX@/bin/sh
  exec '$(escape_shell "${GPG_EXE}")' --ignore-time-conflict --no-options --no-default-keyring \\
  --homedir '$(escape_shell "${GPGHOMEDIR}")' --no-auto-check-trustdb --trust-model always \"\$@\"" > "${GPGHOMEDIR}/gpg.0.sh"
      GPG_SH="${GPGHOMEDIR}/gpg.0.sh"

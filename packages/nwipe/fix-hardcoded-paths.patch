@@ -6,13 +6,13 @@
      char readlink_command[] = "readlink /sys/block/%s";
 -    char readlink_command2[] = "/usr/bin/readlink /sys/block/%s";
 -    char readlink_command3[] = "/sbin/readlink /sys/block/%s";
-+    char readlink_command2[] = "@TERMUX_PREFIX@/bin/readlink /sys/block/%s";
-+    char readlink_command3[] = "@TERMUX_PREFIX@/local/bin/readlink /sys/block/%s";
++    char readlink_command2[] = "@NEOTERM_PREFIX@/bin/readlink /sys/block/%s";
++    char readlink_command3[] = "@NEOTERM_PREFIX@/local/bin/readlink /sys/block/%s";
      char smartctl_command[] = "smartctl -i %s";
 -    char smartctl_command2[] = "/sbin/smartctl -i %s";
 -    char smartctl_command3[] = "/usr/bin/smartctl -i %s";
-+    char smartctl_command2[] = "@TERMUX_PREFIX@/local/bin/smartctl -i %s";
-+    char smartctl_command3[] = "@TERMUX_PREFIX@/bin/smartctl -i %s";
++    char smartctl_command2[] = "@NEOTERM_PREFIX@/local/bin/smartctl -i %s";
++    char smartctl_command3[] = "@NEOTERM_PREFIX@/bin/smartctl -i %s";
      char device_shortform[50];
      char result[512];
      char final_cmd_readlink[sizeof( readlink_command ) + sizeof( device_shortform )];
@@ -24,10 +24,10 @@
 +    if( system( "command -v readlink > /dev/null 2>&1" ) )
      {
 -        if( system( "which /sbin/readlink > /dev/null 2>&1" ) )
-+        if( system( "command -v @TERMUX_PREFIX@/local/bin/readlink > /dev/null 2>&1" ) )
++        if( system( "command -v @NEOTERM_PREFIX@/local/bin/readlink > /dev/null 2>&1" ) )
          {
 -            if( system( "which /usr/bin/readlink > /dev/null 2>&1" ) )
-+            if( system( "command -v @TERMUX_PREFIX@/bin/readlink > /dev/null 2>&1" ) )
++            if( system( "command -v @NEOTERM_PREFIX@/bin/readlink > /dev/null 2>&1" ) )
              {
                  nwipe_log( NWIPE_LOG_WARNING, "Command not found. Install readlink !" );
                  set_return_value = 2;
@@ -39,10 +39,10 @@
 +    if( system( "command -v smartctl > /dev/null 2>&1" ) )
      {
 -        if( system( "which /sbin/smartctl > /dev/null 2>&1" ) )
-+        if( system( "command -v @TERMUX_PREFIX@/local/bin/smartctl > /dev/null 2>&1" ) )
++        if( system( "command -v @NEOTERM_PREFIX@/local/bin/smartctl > /dev/null 2>&1" ) )
          {
 -            if( system( "which /usr/bin/smartctl > /dev/null 2>&1" ) )
-+            if( system( "command -v @TERMUX_PREFIX@/bin/smartctl > /dev/null 2>&1" ) )
++            if( system( "command -v @NEOTERM_PREFIX@/bin/smartctl > /dev/null 2>&1" ) )
              {
                  nwipe_log( NWIPE_LOG_WARNING, "Command not found. Install smartmontools !" );
              }
@@ -54,8 +54,8 @@
      char dmidecode_command[] = "dmidecode -s %s";
 -    char dmidecode_command2[] = "/sbin/dmidecode -s %s";
 -    char dmidecode_command3[] = "/usr/bin/dmidecode -s %s";
-+    char dmidecode_command2[] = "@TERMUX_PREFIX@/local/bin/dmidecode -s %s";
-+    char dmidecode_command3[] = "@TERMUX_PREFIX@/bin/dmidecode -s %s";
++    char dmidecode_command2[] = "@NEOTERM_PREFIX@/local/bin/dmidecode -s %s";
++    char dmidecode_command3[] = "@NEOTERM_PREFIX@/bin/dmidecode -s %s";
      char* p_dmidecode_command;
  
      char cmd[sizeof( dmidecode_keywords ) + sizeof( dmidecode_command2 )];
@@ -67,10 +67,10 @@
 +    if( system( "command -v dmidecode > /dev/null 2>&1" ) )
      {
 -        if( system( "which /sbin/dmidecode > /dev/null 2>&1" ) )
-+        if( system( "command -v @TERMUX_PREFIX@/local/bin/dmidecode > /dev/null 2>&1" ) )
++        if( system( "command -v @NEOTERM_PREFIX@/local/bin/dmidecode > /dev/null 2>&1" ) )
          {
 -            if( system( "which /usr/bin/dmidecode > /dev/null 2>&1" ) )
-+            if( system( "command -v @TERMUX_PREFIX@/bin/dmidecode > /dev/null 2>&1" ) )
++            if( system( "command -v @NEOTERM_PREFIX@/bin/dmidecode > /dev/null 2>&1" ) )
              {
                  nwipe_log( NWIPE_LOG_WARNING, "Command not found. Install dmidecode !" );
              }
@@ -82,8 +82,8 @@
      char modprobe_command[] = "modprobe %s";
 -    char modprobe_command2[] = "/sbin/modprobe %s";
 -    char modprobe_command3[] = "/usr/sbin/modprobe %s";
-+    char modprobe_command2[] = "@TERMUX_PREFIX@/local/bin/modprobe %s";
-+    char modprobe_command3[] = "@TERMUX_PREFIX@/bin/modprobe %s";
++    char modprobe_command2[] = "@NEOTERM_PREFIX@/local/bin/modprobe %s";
++    char modprobe_command3[] = "@NEOTERM_PREFIX@/bin/modprobe %s";
      char module_shortform[50];
      char final_cmd_modprobe[sizeof( modprobe_command ) + sizeof( module_shortform )];
  
@@ -95,10 +95,10 @@
 +    if( system( "command -v modprobe > /dev/null 2>&1" ) )
      {
 -        if( system( "which /sbin/modprobe > /dev/null 2>&1" ) )
-+        if( system( "command -v @TERMUX_PREFIX@/local/bin/modprobe > /dev/null 2>&1" ) )
++        if( system( "command -v @NEOTERM_PREFIX@/local/bin/modprobe > /dev/null 2>&1" ) )
          {
 -            if( system( "which /usr/sbin/modprobe > /dev/null 2>&1" ) )
-+            if( system( "command -v @TERMUX_PREFIX@/bin/modprobe > /dev/null 2>&1" ) )
++            if( system( "command -v @NEOTERM_PREFIX@/bin/modprobe > /dev/null 2>&1" ) )
              {
                  nwipe_log( NWIPE_LOG_WARNING, "modprobe command not found. Install kmod package (modprobe)) !" );
                  nwipe_log( NWIPE_LOG_WARNING, "Most temperature monitoring may be unavailable as module drivetemp" );

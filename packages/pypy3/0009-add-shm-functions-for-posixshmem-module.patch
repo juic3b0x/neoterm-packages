@@ -7,7 +7,7 @@
 -#include <sys/mman.h>
 -#include <sys/stat.h>        /* For mode constants */
 -#include <fcntl.h>           /* For O_* constants */
-+/* This file is a port of posix shared memory for Python3 on Termux Android, 
++/* This file is a port of posix shared memory for Python3 on NeoTerm Android, 
 +   based on musl-libc which is licensed under the following standard MIT 
 +   license. The ported files are listed as following.
 +
@@ -41,7 +41,7 @@
 +#include <limits.h>    // NAME_MAX
 +#include <unistd.h>    // unlink()
 +
-+#define SHM_PREFIX "@TERMUX_PREFIX@/tmp/shm."
++#define SHM_PREFIX "@NEOTERM_PREFIX@/tmp/shm."
 +
 +static __inline__ char *__strchrnul(const char *s, int c)
 +{

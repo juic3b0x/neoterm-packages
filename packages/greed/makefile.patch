@@ -6,10 +6,10 @@ diff -u -r ../greed-3.9/Makefile ./Makefile
  VERS=3.9
  
 -SFILE=/usr/games/lib/greed.hs
-+SFILE=@TERMUX_PREFIX@/var/greed.hs
++SFILE=@NEOTERM_PREFIX@/var/greed.hs
  # Location of game executable
 -BIN=/usr/games
-+BIN=@TERMUX_PREFIX@/bin
++BIN=@NEOTERM_PREFIX@/bin
  
  greed: greed.c
 -	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -DSCOREFILE=\"$(SFILE)\" -DRELEASE=\"$(VERS)\" -o greed greed.c -O3 -lcurses
@@ -22,8 +22,8 @@ diff -u -r ../greed-3.9/Makefile ./Makefile
  install: greed.6 uninstall
  	cp greed $(BIN)
 -	cp greed.6 /usr/share/man/man6/greed.6
-+	mkdir -p @TERMUX_PREFIX@/share/man/man6
-+	cp greed.6 @TERMUX_PREFIX@/share/man/man6/greed.6
++	mkdir -p @NEOTERM_PREFIX@/share/man/man6
++	cp greed.6 @NEOTERM_PREFIX@/share/man/man6/greed.6
  
  uninstall:
  	rm -f $(BIN)/install /usr/share/man/man6/greed.6

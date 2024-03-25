@@ -5,7 +5,7 @@
  	codec/omxil/qcom.c codec/omxil/qcom.h \
  	codec/omxil/omxil.c codec/omxil/omxil.h codec/omxil/omxil_core.c codec/omxil/omxil_core.h
 -if HAVE_ANDROID
-+if HAVE_ANDROID_NO_TERMUX
++if HAVE_ANDROID_NO_NEOTERM
  libomxil_plugin_la_SOURCES += video_output/android/utils.c video_output/android/utils.h \
  	video_output/android/display.h
  endif
@@ -14,7 +14,7 @@
  codec_LTLIBRARIES += $(LTLIBomxil) $(LTLIBomxil_vout)
  EXTRA_LTLIBRARIES += libomxil_plugin.la libomxil_vout_plugin.la
 -if HAVE_ANDROID
-+if HAVE_ANDROID_NO_TERMUX
++if HAVE_ANDROID_NO_NEOTERM
  codec_LTLIBRARIES += libiomx_plugin.la libmediacodec_plugin.la
  endif
  

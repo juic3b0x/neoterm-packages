@@ -5,7 +5,7 @@
  define binexp "$bin"
  
 -define libpth "/lib /usr/lib /usr/local/lib"
-+define libpth "@TERMUX_PREFIX@/lib @TERMUX_PREFIX@/local/lib"
++define libpth "@NEOTERM_PREFIX@/lib @NEOTERM_PREFIX@/local/lib"
  define glibpth "$libpth"
  define plibpth
  

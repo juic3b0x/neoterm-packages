@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/chmln/sd
-TERMUX_PKG_DESCRIPTION="An intuitive find & replace CLI"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.0.0"
-TERMUX_PKG_SRCURL=git+https://github.com/chmln/sd
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://github.com/chmln/sd
+NEOTERM_PKG_DESCRIPTION="An intuitive find & replace CLI"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.0.0"
+NEOTERM_PKG_SRCURL=git+https://github.com/chmln/sd
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_make() {
-	termux_setup_rust
-	cargo build --jobs $TERMUX_MAKE_PROCESSES --target $CARGO_TARGET_NAME --release
+neoterm_step_make() {
+	neoterm_setup_rust
+	cargo build --jobs $NEOTERM_MAKE_PROCESSES --target $CARGO_TARGET_NAME --release
 }
 
-termux_step_make_install() {
-	install -Dm700 -t $TERMUX_PREFIX/bin target/${CARGO_TARGET_NAME}/release/sd
+neoterm_step_make_install() {
+	install -Dm700 -t $NEOTERM_PREFIX/bin target/${CARGO_TARGET_NAME}/release/sd
 }

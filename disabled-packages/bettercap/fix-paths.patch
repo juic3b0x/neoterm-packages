@@ -7,7 +7,7 @@ index 9ba8706..fd12078 100644
  		return filepath.Join(os.Getenv("ALLUSERSPROFILE"), "bettercap")
  	}
 -	return "/usr/local/share/bettercap/"
-+	return "@TERMUX_PREFIX@/share/bettercap/"
++	return "@NEOTERM_PREFIX@/share/bettercap/"
  }
  
  func getUserHomeDir() string {
@@ -20,7 +20,7 @@ index 7bc5270..9a5476a 100644
  		return filepath.Join(os.Getenv("ALLUSERSPROFILE"), "bettercap")
  	}
 -	return "/usr/local/share/bettercap/"
-+	return "@TERMUX_PREFIX@/share/bettercap/"
++	return "@NEOTERM_PREFIX@/share/bettercap/"
  }
  
  func NewUIModule(s *session.Session) *UIModule {

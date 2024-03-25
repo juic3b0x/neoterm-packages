@@ -9,11 +9,11 @@
 +                reqs_index = reqs_list.index("pip")
 +                if len(reqs)-reqs_list.count("pip") == 0:
 +                    raise CommandError(
-+                       "Installing pip is forbidden, this will break the python-pip package (termux)."
++                       "Installing pip is forbidden, this will break the python-pip package (neoterm)."
 +                    )
 +                elif reqs_list.count("pip") == 1:
 +                    logger.warning(
-+                       "Skip installing pip, this will break the python-pip package (termux)."
++                       "Skip installing pip, this will break the python-pip package (neoterm)."
 +                    )
 +                del reqs_list[reqs_index]
 +                del reqs[reqs_index]

@@ -4,7 +4,7 @@
  }
  
  detect_container () {
-+	#termux
++	#neoterm
 +	return
 +
  	if [ "$container" = lxc ]; then
@@ -52,7 +52,7 @@
  conditional_cp () {
 -	if [ ! -e "$2/$1" ]; then
 +	local dst
-+	dst="${2}/$(echo "$1" | sed 's|^@TERMUX_PREFIX@||g')"
++	dst="${2}/$(echo "$1" | sed 's|^@NEOTERM_PREFIX@||g')"
 +
 +	if [ ! -e "$dst" ]; then
  		if [ -L "$1" ] && [ -e "$1" ]; then
@@ -70,8 +70,8 @@
  
 -	conditional_cp /etc/resolv.conf "$TARGET"
 -	conditional_cp /etc/hostname "$TARGET"
-+	conditional_cp @TERMUX_PREFIX@/etc/resolv.conf "$TARGET"
-+	conditional_cp @TERMUX_PREFIX@/etc/hostname "$TARGET"
++	conditional_cp @NEOTERM_PREFIX@/etc/resolv.conf "$TARGET"
++	conditional_cp @NEOTERM_PREFIX@/etc/hostname "$TARGET"
  }
  
  UMOUNT_DIRS=

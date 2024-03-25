@@ -18,7 +18,7 @@ elliott10 updated it for Samba 4:
 https://github.com/elliott10/samba-4.5.1
 
 I've made the following changes:
-* Use Termux values for root user
+* Use NeoTerm values for root user
 * _Naively_ (really - I know volatile won't help much) prevent
   getpwent inf. loops
 * Wrap getgrnam and getgrgid, thanks
@@ -128,8 +128,8 @@ index 0000000..ac75cb7
 +		.pw_passwd = "x",
 +		.pw_uid = AID_ROOT,
 +		.pw_gid = AID_ROOT,
-+		.pw_dir = "@TERMUX_HOME@",
-+		.pw_shell = "@TERMUX_PREFIX@/bin/login"
++		.pw_dir = "@NEOTERM_HOME@",
++		.pw_shell = "@NEOTERM_PREFIX@/bin/login"
 +	 };
 +	return &pw;
 +#endif

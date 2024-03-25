@@ -6,13 +6,13 @@ diff -uNr bind-9.16.1/lib/irs/context.c bind-9.16.1.mod/lib/irs/context.c
  #ifndef RESOLV_CONF
  /*% location of resolve.conf */
 -#define RESOLV_CONF "/etc/resolv.conf"
-+#define RESOLV_CONF "@TERMUX_PREFIX@/etc/resolv.conf"
++#define RESOLV_CONF "@NEOTERM_PREFIX@/etc/resolv.conf"
  #endif /* ifndef RESOLV_CONF */
  
  #ifndef DNS_CONF
  /*% location of dns.conf */
 -#define DNS_CONF "/etc/dns.conf"
-+#define DNS_CONF "@TERMUX_PREFIX@/etc/dns.conf"
++#define DNS_CONF "@NEOTERM_PREFIX@/etc/dns.conf"
  #endif /* ifndef DNS_CONF */
  
  ISC_THREAD_LOCAL irs_context_t *irs_context = NULL;

@@ -5,7 +5,7 @@
    // once.
    ProcessResult result = Process.runSync(
 -      "/bin/sh", ["-c", "printf '%s' '$TERMINAL_CAPABILITIES' | tput -S"]);
-+      "@TERMUX_PREFIX@/bin/sh", ["-c", "printf '%s' '$TERMINAL_CAPABILITIES' | tput -S"]);
++      "@NEOTERM_PREFIX@/bin/sh", ["-c", "printf '%s' '$TERMINAL_CAPABILITIES' | tput -S"]);
 
    if (result.exitCode != 0) {
      printEnableColorsReason("Not enabling colors, running tput failed.");
@@ -16,7 +16,7 @@
        return 'cmd.exe';
      }
 -    return '/bin/sh';
-+    return '@TERMUX_PREFIX@/bin/sh';
++    return '@NEOTERM_PREFIX@/bin/sh';
    }
 
    static List<String> _getShellArguments(

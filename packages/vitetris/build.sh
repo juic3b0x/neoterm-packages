@@ -1,19 +1,19 @@
-TERMUX_PKG_HOMEPAGE=http://victornils.net/tetris/
-TERMUX_PKG_DESCRIPTION="Virtual terminal *tris clone"
-TERMUX_PKG_LICENSE="BSD 2-Clause"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_LICENSE_FILE="licence.txt"
-TERMUX_PKG_VERSION=0.59.1
-TERMUX_PKG_REVISION=2
-TERMUX_PKG_SRCURL=https://github.com/vicgeralds/vitetris/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=699443df03c8d4bf2051838c1015da72039bbbdd0ab0eede891c59c840bdf58d
-TERMUX_PKG_DEPENDS="ncurses"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_REMOVE_AFTER_INSTALL="share/applications/vitetris.desktop"
-TERMUX_PKG_GROUPS="games"
+NEOTERM_PKG_HOMEPAGE=http://victornils.net/tetris/
+NEOTERM_PKG_DESCRIPTION="Virtual terminal *tris clone"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_LICENSE_FILE="licence.txt"
+NEOTERM_PKG_VERSION=0.59.1
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://github.com/vicgeralds/vitetris/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=699443df03c8d4bf2051838c1015da72039bbbdd0ab0eede891c59c840bdf58d
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_REMOVE_AFTER_INSTALL="share/applications/vitetris.desktop"
+NEOTERM_PKG_GROUPS="games"
 
-termux_step_configure() {
-	"$TERMUX_PKG_SRCDIR/configure" \
-		--prefix=$TERMUX_PREFIX \
-		$TERMUX_PKG_EXTRA_CONFIGURE_ARGS
+neoterm_step_configure() {
+	"$NEOTERM_PKG_SRCDIR/configure" \
+		--prefix=$NEOTERM_PREFIX \
+		$NEOTERM_PKG_EXTRA_CONFIGURE_ARGS
 }

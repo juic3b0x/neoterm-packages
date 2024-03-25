@@ -38,7 +38,7 @@ diff -uNr pypy3.7-v7.3.7-src/lib-python/3/smtpd.py pypy3.7-v7.3.7-src.mod/lib-py
          This program generally tries to setuid `nobody', unless this flag is
          set.  The setuid call will fail if this program is not run as root (in
 -        which case, use this flag).
-+        which case, use this flag). Ignored in Termux as no setuid done on this
++        which case, use this flag). Ignored in NeoTerm as no setuid done on this
 +        platform.
 
      --version
@@ -96,7 +96,7 @@ diff -uNr pypy3.6-v7.3.2-src/pypy/module/pwd/interp_pwd.py pypy3.6-v7.3.2-src.mo
 -c_setpwent = external("setpwent", [], lltype.Void)
 -c_getpwent = external("getpwent", [], passwd_p)
 -c_endpwent = external("endpwent", [], lltype.Void)
-+# Android bionic libc doesn't have these functions until API 26, but termux compiles on API 23/24.
++# Android bionic libc doesn't have these functions until API 26, but neoterm compiles on API 23/24.
 +# c_setpwent = external("setpwent", [], lltype.Void)
 +# c_getpwent = external("getpwent", [], passwd_p)
 +# c_endpwent = external("endpwent", [], lltype.Void)
@@ -166,7 +166,7 @@ diff -uNr pypy3.7-v7.3.7-src/rpython/rlib/rvmprof/cintf.py pypy3.7-v7.3.7-src.mo
      pass
 
 -# vmprof works only on x86 for now
-+# vmprof cannot compile on termux due to no dlinfo on Bionic Libc
++# vmprof cannot compile on neoterm due to no dlinfo on Bionic Libc
  IS_SUPPORTED = False
 -if sys.platform in ('darwin', 'linux', 'linux2') or sys.platform.startswith('freebsd'):
 -    try:

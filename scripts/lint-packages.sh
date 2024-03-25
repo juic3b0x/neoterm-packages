@@ -2,7 +2,7 @@
 
 set -e -u
 
-TERMUX_SCRIPTDIR=$(realpath "$(dirname "$0")/../")
+NEOTERM_SCRIPTDIR=$(realpath "$(dirname "$0")/../")
 
 check_package_license() {
 	local pkg_licenses=$1
@@ -112,19 +112,19 @@ lint_package() {
 
 		# Certain fields may be API-specific.
 		# Using API 24 here.
-		TERMUX_PKG_API_LEVEL=24
+		NEOTERM_PKG_API_LEVEL=24
 
-		if [ -f "$TERMUX_SCRIPTDIR/scripts/properties.sh" ]; then
-			. "$TERMUX_SCRIPTDIR/scripts/properties.sh"
+		if [ -f "$NEOTERM_SCRIPTDIR/scripts/properties.sh" ]; then
+			. "$NEOTERM_SCRIPTDIR/scripts/properties.sh"
 		fi
 
 		. "$package_script"
 
 		pkg_lint_error=false
 
-		echo -n "TERMUX_PKG_HOMEPAGE: "
-		if [ -n "$TERMUX_PKG_HOMEPAGE" ]; then
-			if ! grep -qP '^https://.+' <<< "$TERMUX_PKG_HOMEPAGE"; then
+		echo -n "NEOTERM_PKG_HOMEPAGE: "
+		if [ -n "$NEOTERM_PKG_HOMEPAGE" ]; then
+			if ! grep -qP '^https://.+' <<< "$NEOTERM_PKG_HOMEPAGE"; then
 				echo "NON-HTTPS (acceptable)"
 			else
 				echo "PASS"
@@ -134,9 +134,9 @@ lint_package() {
 			pkg_lint_error=true
 		fi
 
-		echo -n "TERMUX_PKG_DESCRIPTION: "
-		if [ -n "$TERMUX_PKG_DESCRIPTION" ]; then
-			str_length=$(($(wc -c <<< "$TERMUX_PKG_DESCRIPTION") - 1))
+		echo -n "NEOTERM_PKG_DESCRIPTION: "
+		if [ -n "$NEOTERM_PKG_DESCRIPTION" ]; then
+			str_length=$(($(wc -c <<< "$NEOTERM_PKG_DESCRIPTION") - 1))
 
 			if [ $str_length -gt 100 ]; then
 				echo "TOO LONG (allowed: 100 characters max)"
@@ -150,14 +150,14 @@ lint_package() {
 			pkg_lint_error=true
 		fi
 
-		echo -n "TERMUX_PKG_LICENSE: "
-		if [ -n "$TERMUX_PKG_LICENSE" ]; then
-			if [ "$TERMUX_PKG_LICENSE" = "custom" ]; then
+		echo -n "NEOTERM_PKG_LICENSE: "
+		if [ -n "$NEOTERM_PKG_LICENSE" ]; then
+			if [ "$NEOTERM_PKG_LICENSE" = "custom" ]; then
 				echo "CUSTOM"
-			elif [ "$TERMUX_PKG_LICENSE" = "non-free" ]; then
+			elif [ "$NEOTERM_PKG_LICENSE" = "non-free" ]; then
 				echo "NON-FREE"
 			else
-				if check_package_license "$TERMUX_PKG_LICENSE"; then
+				if check_package_license "$NEOTERM_PKG_LICENSE"; then
 					echo "PASS"
 				else
 					echo "INVALID"
@@ -169,19 +169,19 @@ lint_package() {
 			pkg_lint_error=true
 		fi
 
-		echo -n "TERMUX_PKG_MAINTAINER: "
-		if [ -n "$TERMUX_PKG_MAINTAINER" ]; then
+		echo -n "NEOTERM_PKG_MAINTAINER: "
+		if [ -n "$NEOTERM_PKG_MAINTAINER" ]; then
 			echo "PASS"
 		else
 			echo "NOT SET"
 			pkg_lint_error=true
 		fi
 
-		if [ -n "$TERMUX_PKG_API_LEVEL" ]; then
-			echo -n "TERMUX_PKG_API_LEVEL: "
+		if [ -n "$NEOTERM_PKG_API_LEVEL" ]; then
+			echo -n "NEOTERM_PKG_API_LEVEL: "
 
-			if grep -qP '^[1-9][0-9]$' <<< "$TERMUX_PKG_API_LEVEL"; then
-				if [ $TERMUX_PKG_API_LEVEL -lt 24 ] || [ $TERMUX_PKG_API_LEVEL -gt 28 ]; then
+			if grep -qP '^[1-9][0-9]$' <<< "$NEOTERM_PKG_API_LEVEL"; then
+				if [ $NEOTERM_PKG_API_LEVEL -lt 24 ] || [ $NEOTERM_PKG_API_LEVEL -gt 28 ]; then
 					echo "INVALID (allowed: number in range 24 - 28)"
 					pkg_lint_error=true
 				else
@@ -193,9 +193,9 @@ lint_package() {
 			fi
 		fi
 
-		echo -n "TERMUX_PKG_VERSION: "
-		if [ -n "$TERMUX_PKG_VERSION" ]; then
-			if grep -qiP '^([0-9]+\:)?[0-9][0-9a-z+\-\.\~]*$' <<< "${TERMUX_PKG_VERSION}"; then
+		echo -n "NEOTERM_PKG_VERSION: "
+		if [ -n "$NEOTERM_PKG_VERSION" ]; then
+			if grep -qiP '^([0-9]+\:)?[0-9][0-9a-z+\-\.\~]*$' <<< "${NEOTERM_PKG_VERSION}"; then
 				echo "PASS"
 			else
 				echo "INVALID (contains characters that are not allowed)"
@@ -206,10 +206,10 @@ lint_package() {
 			pkg_lint_error=true
 		fi
 
-		if [ -n "$TERMUX_PKG_REVISION" ]; then
-			echo -n "TERMUX_PKG_REVISION: "
+		if [ -n "$NEOTERM_PKG_REVISION" ]; then
+			echo -n "NEOTERM_PKG_REVISION: "
 
-			if grep -qP '^[1-9](\d{1,8})?$' <<< "$TERMUX_PKG_REVISION"; then
+			if grep -qP '^[1-9](\d{1,8})?$' <<< "$NEOTERM_PKG_REVISION"; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: number in range 1 - 999999999)"
@@ -217,10 +217,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_SKIP_SRC_EXTRACT" ]; then
-			echo -n "TERMUX_PKG_SKIP_SRC_EXTRACT: "
+		if [ -n "$NEOTERM_PKG_SKIP_SRC_EXTRACT" ]; then
+			echo -n "NEOTERM_PKG_SKIP_SRC_EXTRACT: "
 
-			if [ "$TERMUX_PKG_SKIP_SRC_EXTRACT" = "true" ] || [ "$TERMUX_PKG_SKIP_SRC_EXTRACT" = "false" ]; then
+			if [ "$NEOTERM_PKG_SKIP_SRC_EXTRACT" = "true" ] || [ "$NEOTERM_PKG_SKIP_SRC_EXTRACT" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -228,11 +228,11 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_SRCURL" ]; then
-			echo -n "TERMUX_PKG_SRCURL: "
+		if [ -n "$NEOTERM_PKG_SRCURL" ]; then
+			echo -n "NEOTERM_PKG_SRCURL: "
 
 			urls_ok=true
-			for url in "${TERMUX_PKG_SRCURL[@]}"; do
+			for url in "${NEOTERM_PKG_SRCURL[@]}"; do
 				if [ -n "$url" ]; then
 					if ! grep -qP '^git\+https://.+' <<< "$url" && ! grep -qP '^https://.+' <<< "$url"; then
 						echo "NON-HTTPS (acceptable)"
@@ -253,12 +253,12 @@ lint_package() {
 			fi
 			unset urls_ok
 
-			echo -n "TERMUX_PKG_SHA256: "
-			if [ -n "$TERMUX_PKG_SHA256" ]; then
-				if [ "${#TERMUX_PKG_SRCURL[@]}" -eq "${#TERMUX_PKG_SHA256[@]}" ]; then
+			echo -n "NEOTERM_PKG_SHA256: "
+			if [ -n "$NEOTERM_PKG_SHA256" ]; then
+				if [ "${#NEOTERM_PKG_SRCURL[@]}" -eq "${#NEOTERM_PKG_SHA256[@]}" ]; then
 					sha256_ok=true
 
-					for sha256 in "${TERMUX_PKG_SHA256[@]}"; do
+					for sha256 in "${NEOTERM_PKG_SHA256[@]}"; do
 						if ! grep -qP '^[0-9a-fA-F]{64}$' <<< "${sha256}" && [ "$sha256" != "SKIP_CHECKSUM" ]; then
 							echo "MALFORMED (SHA-256 should contain 64 hexadecimal numbers)"
 							sha256_ok=false
@@ -273,26 +273,26 @@ lint_package() {
 					fi
 					unset sha256_ok
 				else
-					echo "LENGTHS OF 'TERMUX_PKG_SRCURL' AND 'TERMUX_PKG_SHA256' ARE NOT EQUAL"
+					echo "LENGTHS OF 'NEOTERM_PKG_SRCURL' AND 'NEOTERM_PKG_SHA256' ARE NOT EQUAL"
 					pkg_lint_error=true
 				fi
-			elif [ "${TERMUX_PKG_SRCURL:0:4}" == "git+" ]; then
-				echo "NOT SET (acceptable since TERMUX_PKG_SRCURL is git repo)"
+			elif [ "${NEOTERM_PKG_SRCURL:0:4}" == "git+" ]; then
+				echo "NOT SET (acceptable since NEOTERM_PKG_SRCURL is git repo)"
 			else
 				echo "NOT SET"
 				pkg_lint_error=true
 			fi
 		else
-			if [ "$TERMUX_PKG_SKIP_SRC_EXTRACT" != "true" ] && ! declare -F termux_step_extract_package > /dev/null 2>&1; then
-				echo "TERMUX_PKG_SRCURL: NOT SET (set TERMUX_PKG_SKIP_SRC_EXTRACT to 'true' if no sources downloaded)"
+			if [ "$NEOTERM_PKG_SKIP_SRC_EXTRACT" != "true" ] && ! declare -F neoterm_step_extract_package > /dev/null 2>&1; then
+				echo "NEOTERM_PKG_SRCURL: NOT SET (set NEOTERM_PKG_SKIP_SRC_EXTRACT to 'true' if no sources downloaded)"
 				pkg_lint_error=true
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_METAPACKAGE" ]; then
-			echo -n "TERMUX_PKG_METAPACKAGE: "
+		if [ -n "$NEOTERM_PKG_METAPACKAGE" ]; then
+			echo -n "NEOTERM_PKG_METAPACKAGE: "
 
-			if [ "$TERMUX_PKG_METAPACKAGE" = "true" ] || [ "$TERMUX_PKG_METAPACKAGE" = "false" ]; then
+			if [ "$NEOTERM_PKG_METAPACKAGE" = "true" ] || [ "$NEOTERM_PKG_METAPACKAGE" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -300,9 +300,9 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_ESSENTIAL" ]; then
-			echo -n "TERMUX_PKG_ESSENTIAL: "
-			if [ "$TERMUX_PKG_ESSENTIAL" = "true" ] || [ "$TERMUX_PKG_ESSENTIAL" = "false" ]; then
+		if [ -n "$NEOTERM_PKG_ESSENTIAL" ]; then
+			echo -n "NEOTERM_PKG_ESSENTIAL: "
+			if [ "$NEOTERM_PKG_ESSENTIAL" = "true" ] || [ "$NEOTERM_PKG_ESSENTIAL" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -310,10 +310,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_NO_STATICSPLIT" ]; then
-			echo -n "TERMUX_PKG_NO_STATICSPLIT: "
+		if [ -n "$NEOTERM_PKG_NO_STATICSPLIT" ]; then
+			echo -n "NEOTERM_PKG_NO_STATICSPLIT: "
 
-			if [ "$TERMUX_PKG_NO_STATICSPLIT" = "true" ] || [ "$TERMUX_PKG_NO_STATICSPLIT" = "false" ]; then
+			if [ "$NEOTERM_PKG_NO_STATICSPLIT" = "true" ] || [ "$NEOTERM_PKG_NO_STATICSPLIT" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -321,10 +321,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_BUILD_IN_SRC" ]; then
-			echo -n "TERMUX_PKG_BUILD_IN_SRC: "
+		if [ -n "$NEOTERM_PKG_BUILD_IN_SRC" ]; then
+			echo -n "NEOTERM_PKG_BUILD_IN_SRC: "
 
-			if [ "$TERMUX_PKG_BUILD_IN_SRC" = "true" ] || [ "$TERMUX_PKG_BUILD_IN_SRC" = "false" ]; then
+			if [ "$NEOTERM_PKG_BUILD_IN_SRC" = "true" ] || [ "$NEOTERM_PKG_BUILD_IN_SRC" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -332,10 +332,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_HAS_DEBUG" ]; then
-			echo -n "TERMUX_PKG_HAS_DEBUG: "
+		if [ -n "$NEOTERM_PKG_HAS_DEBUG" ]; then
+			echo -n "NEOTERM_PKG_HAS_DEBUG: "
 
-			if [ "$TERMUX_PKG_HAS_DEBUG" = "true" ] || [ "$TERMUX_PKG_HAS_DEBUG" = "false" ]; then
+			if [ "$NEOTERM_PKG_HAS_DEBUG" = "true" ] || [ "$NEOTERM_PKG_HAS_DEBUG" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -343,10 +343,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_PLATFORM_INDEPENDENT" ]; then
-			echo -n "TERMUX_PKG_PLATFORM_INDEPENDENT: "
+		if [ -n "$NEOTERM_PKG_PLATFORM_INDEPENDENT" ]; then
+			echo -n "NEOTERM_PKG_PLATFORM_INDEPENDENT: "
 
-			if [ "$TERMUX_PKG_PLATFORM_INDEPENDENT" = "true" ] || [ "$TERMUX_PKG_PLATFORM_INDEPENDENT" = "false" ]; then
+			if [ "$NEOTERM_PKG_PLATFORM_INDEPENDENT" = "true" ] || [ "$NEOTERM_PKG_PLATFORM_INDEPENDENT" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -354,10 +354,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_HOSTBUILD" ]; then
-			echo -n "TERMUX_PKG_HOSTBUILD: "
+		if [ -n "$NEOTERM_PKG_HOSTBUILD" ]; then
+			echo -n "NEOTERM_PKG_HOSTBUILD: "
 
-			if [ "$TERMUX_PKG_HOSTBUILD" = "true" ] || [ "$TERMUX_PKG_HOSTBUILD" = "false" ]; then
+			if [ "$NEOTERM_PKG_HOSTBUILD" = "true" ] || [ "$NEOTERM_PKG_HOSTBUILD" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -365,10 +365,10 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_FORCE_CMAKE" ]; then
-			echo -n "TERMUX_PKG_FORCE_CMAKE: "
+		if [ -n "$NEOTERM_PKG_FORCE_CMAKE" ]; then
+			echo -n "NEOTERM_PKG_FORCE_CMAKE: "
 
-			if [ "$TERMUX_PKG_FORCE_CMAKE" = "true" ] || [ "$TERMUX_PKG_FORCE_CMAKE" = "false" ]; then
+			if [ "$NEOTERM_PKG_FORCE_CMAKE" = "true" ] || [ "$NEOTERM_PKG_FORCE_CMAKE" = "false" ]; then
 				echo "PASS"
 			else
 				echo "INVALID (allowed: true / false)"
@@ -376,8 +376,8 @@ lint_package() {
 			fi
 		fi
 
-		if [ -n "$TERMUX_PKG_RM_AFTER_INSTALL" ]; then
-			echo -n "TERMUX_PKG_RM_AFTER_INSTALL: "
+		if [ -n "$NEOTERM_PKG_RM_AFTER_INSTALL" ]; then
+			echo -n "NEOTERM_PKG_RM_AFTER_INSTALL: "
 			file_path_ok=true
 
 			while read -r file_path; do
@@ -389,7 +389,7 @@ lint_package() {
 					pkg_lint_error=true
 					break
 				fi
-			done <<< "$TERMUX_PKG_RM_AFTER_INSTALL"
+			done <<< "$NEOTERM_PKG_RM_AFTER_INSTALL"
 			unset file_path
 
 			if $file_path_ok; then
@@ -398,8 +398,8 @@ lint_package() {
 			unset file_path_ok
 		fi
 
-		if [ -n "$TERMUX_PKG_CONFFILES" ]; then
-			echo -n "TERMUX_PKG_CONFFILES: "
+		if [ -n "$NEOTERM_PKG_CONFFILES" ]; then
+			echo -n "NEOTERM_PKG_CONFFILES: "
 			file_path_ok=true
 
 			while read -r file_path; do
@@ -411,7 +411,7 @@ lint_package() {
 					pkg_lint_error=true
 					break
 				fi
-			done <<< "$TERMUX_PKG_CONFFILES"
+			done <<< "$NEOTERM_PKG_CONFFILES"
 			unset file_path
 
 			if $file_path_ok; then
@@ -420,11 +420,11 @@ lint_package() {
 			unset file_path_ok
 		fi
 
-		if [ -n "$TERMUX_PKG_SERVICE_SCRIPT" ]; then
-			echo -n "TERMUX_PKG_SERVICE_SCRIPT: "
-			array_length=${#TERMUX_PKG_SERVICE_SCRIPT[@]}
+		if [ -n "$NEOTERM_PKG_SERVICE_SCRIPT" ]; then
+			echo -n "NEOTERM_PKG_SERVICE_SCRIPT: "
+			array_length=${#NEOTERM_PKG_SERVICE_SCRIPT[@]}
 			if [ $(( $array_length & 1 )) -eq 1 ]; then
-				echo "INVALID (TERMUX_PKG_SERVICE_SCRIPT has to be an array of even length)"
+				echo "INVALID (NEOTERM_PKG_SERVICE_SCRIPT has to be an array of even length)"
 				pkg_lint_error=true
 			else
 				echo "PASS"
@@ -462,7 +462,7 @@ linter_main() {
 	if $problems_found; then
 		echo "================================================================"
 		echo
-		echo "A problem has been found in '$(realpath --relative-to="$TERMUX_SCRIPTDIR" "$package_script")'."
+		echo "A problem has been found in '$(realpath --relative-to="$NEOTERM_SCRIPTDIR" "$package_script")'."
 		echo "Checked $package_counter packages before the first error was detected."
 		echo
 		echo "================================================================"
@@ -481,7 +481,7 @@ linter_main() {
 }
 
 if [ $# -eq 0 ]; then
-	for repo_dir in $(jq --raw-output 'del(.pkg_format) | keys | .[]' $TERMUX_SCRIPTDIR/repo.json); do
+	for repo_dir in $(jq --raw-output 'del(.pkg_format) | keys | .[]' $NEOTERM_SCRIPTDIR/repo.json); do
 		linter_main $repo_dir/*/build.sh
 	done || exit 1
 else

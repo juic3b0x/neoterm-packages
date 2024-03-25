@@ -5,7 +5,7 @@
  
  #ifndef XKB_RULES_XML_FILE
 -#define XKB_RULES_XML_FILE "/usr/share/X11/xkb/rules/evdev.xml"
-+#define XKB_RULES_XML_FILE "@TERMUX_PREFIX@/share/X11/xkb/rules/evdev.xml"
++#define XKB_RULES_XML_FILE "@NEOTERM_PREFIX@/share/X11/xkb/rules/evdev.xml"
  #endif
  
  namespace fcitx {

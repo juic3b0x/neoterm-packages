@@ -53,7 +53,7 @@ fi
 $SUDO pacman -Syq --needed --noconfirm $PACKAGES
 
 . $(dirname "$(realpath "$0")")/properties.sh
-$SUDO mkdir -p $TERMUX_PREFIX
+$SUDO mkdir -p $NEOTERM_PREFIX
 $SUDO chown -R $(whoami) /data
 
 echo "Please also install the following packages from the AUR before continuing"

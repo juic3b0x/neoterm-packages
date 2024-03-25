@@ -1,4 +1,4 @@
-Qt build on Termux doesn't have accessibility feature. It needs to be removed.
+Qt build on NeoTerm doesn't have accessibility feature. It needs to be removed.
 diff -uNr kirigami2-5.100.0/src/controls/Avatar.qml kirigami2-5.100.0.mod/src/controls/Avatar.qml
 --- kirigami2-5.100.0/src/controls/Avatar.qml	2022-11-05 20:28:40.000000000 +0800
 +++ kirigami2-5.100.0.mod/src/controls/Avatar.qml	2022-12-03 12:57:42.000000000 +0800

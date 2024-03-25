@@ -6,7 +6,7 @@ diff -uNr tar-1.33/src/xheader.c tar-1.33.mod/src/xheader.c
        const char *tmp = getenv ("TMPDIR");
        if (!tmp)
 -	tmp = "/tmp";
-+	tmp = "@TERMUX_PREFIX@/tmp";
++	tmp = "@NEOTERM_PREFIX@/tmp";
        len = strlen (tmp) + strlen (global_header_template) + 1;
        globexthdr_name = xmalloc (len);
        strcpy(globexthdr_name, tmp);

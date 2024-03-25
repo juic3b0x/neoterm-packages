@@ -5,7 +5,7 @@
    // probably use the appropriate directory from the Android API,
    // probably what File.createTempFile uses.
 -  const char* kAndroidTempDir = "/data/local/tmp";
-+  const char* kAndroidTempDir = "@TERMUX_PREFIX@/tmp";
++  const char* kAndroidTempDir = "@NEOTERM_PREFIX@/tmp";
    struct stat st;
    if (stat(kAndroidTempDir, &st) != 0) {
      mkdir(kAndroidTempDir, 0777);
@@ -16,7 +16,7 @@
      }
      intptr_t pid = getpid();
 -    char* filename = OS::SCreate(nullptr, "/tmp/perf-%" Pd ".map", pid);
-+    char* filename = OS::SCreate(nullptr, "@TERMUX_PREFIX@/tmp/perf-%" Pd ".map", pid);
++    char* filename = OS::SCreate(nullptr, "@NEOTERM_PREFIX@/tmp/perf-%" Pd ".map", pid);
      out_file_ = (*file_open)(filename, true);
      free(filename);
    }

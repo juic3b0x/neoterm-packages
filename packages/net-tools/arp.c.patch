@@ -6,7 +6,7 @@ diff -uNr net-tools-2.10/arp.c net-tools-2.10.mod/arp.c
      fprintf(fp, _("        -D, --use-device         read <hwaddr> from given device\n"));
      fprintf(fp, _("        -A, -p, --protocol       specify protocol family\n"));
 -    fprintf(fp, _("        -f, --file               read new entries from file or from /etc/ethers\n\n"));
-+    fprintf(fp, _("        -f, --file               read new entries from file or from @TERMUX_PREFIX@/etc/ethers\n\n"));
++    fprintf(fp, _("        -f, --file               read new entries from file or from @NEOTERM_PREFIX@/etc/ethers\n\n"));
  
      fprintf(fp, _("  <HW>=Use '-H <hw>' to specify hardware address type. Default: %s\n"), DFLT_HW);
      fprintf(fp, _("  List of possible hardware types (which support ARP):\n"));
@@ -15,7 +15,7 @@ diff -uNr net-tools-2.10/arp.c net-tools-2.10.mod/arp.c
  
      case 2:			/* process an EtherFile */
 -	what = arp_file(argv[optind] ? argv[optind] : "/etc/ethers");
-+	what = arp_file(argv[optind] ? argv[optind] : "@TERMUX_PREFIX@/etc/ethers");
++	what = arp_file(argv[optind] ? argv[optind] : "@NEOTERM_PREFIX@/etc/ethers");
  	break;
  
      case 3:			/* delete an ARP entry from the cache */

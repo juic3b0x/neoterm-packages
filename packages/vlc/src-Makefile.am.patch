@@ -9,7 +9,7 @@
  	linux/cpu.c \
  	linux/dirs.c \
  	linux/thread.c
-+if HAVE_ANDROID_NO_TERMUX
++if HAVE_ANDROID_NO_NEOTERM
 +libvlccore_la_SOURCES += \
 +	android/specific.c
 +else

@@ -6,7 +6,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  
  .nf
 -wpa_supplicant -B -c/etc/wpa_supplicant.conf -iwlan0
-+wpa_supplicant -B -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -iwlan0
++wpa_supplicant -B -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -iwlan0
  .fi
  .RE
  .PP
@@ -15,7 +15,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  
  .nf
 -wpa_supplicant -c/etc/wpa_supplicant.conf -iwlan0 -d
-+wpa_supplicant -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -iwlan0 -d
++wpa_supplicant -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -iwlan0 -d
  .fi
  .RE
  .PP
@@ -24,7 +24,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  
  .nf
 -wpa_supplicant -Dnl80211,wext -c/etc/wpa_supplicant.conf -iwlan0
-+wpa_supplicant -Dnl80211,wext -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -iwlan0
++wpa_supplicant -Dnl80211,wext -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -iwlan0
  .fi
  .RE
  .PP
@@ -33,7 +33,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  .PP
  First, make a configuration file, e.g.
 -\fI/etc/wpa_supplicant.conf\fR, that describes the networks
-+\fI@TERMUX_PREFIX@/etc/wpa_supplicant.conf\fR, that describes the networks
++\fI@NEOTERM_PREFIX@/etc/wpa_supplicant.conf\fR, that describes the networks
  you are interested in.  See \fBwpa_supplicant.conf\fR(5)
  for details.
  .PP
@@ -42,7 +42,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  
  .nf
 -wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -d
-+wpa_supplicant -iwlan0 -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -d
++wpa_supplicant -iwlan0 -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -d
      
  .fi
  .RE
@@ -51,7 +51,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  
  .nf
 -wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -B
-+wpa_supplicant -iwlan0 -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -B
++wpa_supplicant -iwlan0 -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -B
      
  .fi
  .RE
@@ -60,19 +60,19 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  .PP
  Add MODE="Managed" and WPA="y" to the network scheme in
 -\fI/etc/pcmcia/wireless.opts\fR\&.
-+\fI@TERMUX_PREFIX@/etc/pcmcia/wireless.opts\fR\&.
++\fI@NEOTERM_PREFIX@/etc/pcmcia/wireless.opts\fR\&.
  .PP
  Add the following block to the end of \fBstart\fR
 -action handler in \fI/etc/pcmcia/wireless\fR:
-+action handler in \fI@TERMUX_PREFIX@/etc/pcmcia/wireless\fR:
++action handler in \fI@NEOTERM_PREFIX@/etc/pcmcia/wireless\fR:
  .sp
  .RS
  
  .nf
 -if [ "$WPA" = "y" -a -x /usr/local/bin/wpa_supplicant ]; then
 -    /usr/local/bin/wpa_supplicant -B -c/etc/wpa_supplicant.conf -i$DEVICE
-+if [ "$WPA" = "y" -a -x @TERMUX_PREFIX@/bin/wpa_supplicant ]; then
-+    @TERMUX_PREFIX@/bin/wpa_supplicant -B -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -i$DEVICE
++if [ "$WPA" = "y" -a -x @NEOTERM_PREFIX@/bin/wpa_supplicant ]; then
++    @NEOTERM_PREFIX@/bin/wpa_supplicant -B -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -i$DEVICE
  fi
      
  .fi
@@ -81,13 +81,13 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.8 ./wpa_supplicant/
  Add the following block to the end of \fBstop\fR
  action handler (may need to be separated from other actions) in
 -\fI/etc/pcmcia/wireless\fR:
-+\fI@TERMUX_PREFIX@/etc/pcmcia/wireless\fR:
++\fI@NEOTERM_PREFIX@/etc/pcmcia/wireless\fR:
  .sp
  .RS
  
  .nf
 -if [ "$WPA" = "y" -a -x /usr/local/bin/wpa_supplicant ]; then
-+if [ "$WPA" = "y" -a -x @TERMUX_PREFIX@/bin/wpa_supplicant ]; then
++if [ "$WPA" = "y" -a -x @NEOTERM_PREFIX@/bin/wpa_supplicant ]; then
      killall wpa_supplicant
  fi
      
@@ -99,7 +99,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.5 ./wpa_suppli
  file that lists all accepted networks and security policies,
  including pre-shared keys. See the example configuration file,
 -probably in \fB/usr/share/doc/wpa_supplicant/\fR, for
-+probably in \fB@TERMUX_PREFIX@/share/doc/wpa_supplicant/\fR, for
++probably in \fB@NEOTERM_PREFIX@/share/doc/wpa_supplicant/\fR, for
  detailed information about the configuration format and supported
  fields.
  .PP
@@ -110,9 +110,9 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.5 ./wpa_suppli
 -	ca_cert="/etc/cert/ca.pem"
 -	client_cert="/etc/cert/user.pem"
 -	private_key="/etc/cert/user.prv"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
-+	client_cert="@TERMUX_PREFIX@/etc/cert/user.pem"
-+	private_key="@TERMUX_PREFIX@/etc/cert/user.prv"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
++	client_cert="@NEOTERM_PREFIX@/etc/cert/user.pem"
++	private_key="@NEOTERM_PREFIX@/etc/cert/user.prv"
  	private_key_passwd="password"
  }
  .fi
@@ -121,7 +121,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.5 ./wpa_suppli
  	identity="user@example.com"
  	password="foobar"
 -	ca_cert="/etc/cert/ca.pem"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
  	phase1="peaplabel=0"
  	phase2="auth=MSCHAPV2"
  }
@@ -130,7 +130,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.5 ./wpa_suppli
  	anonymous_identity="anonymous@example.com"
  	password="foobar"
 -	ca_cert="/etc/cert/ca.pem"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
  	phase2="auth=MD5"
  }
  .fi
@@ -141,9 +141,9 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.5 ./wpa_suppli
 -	ca_cert="/etc/cert/ca.pem"
 -	client_cert="/etc/cert/user.pem"
 -	private_key="/etc/cert/user.prv"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
-+	client_cert="@TERMUX_PREFIX@/etc/cert/user.pem"
-+	private_key="@TERMUX_PREFIX@/etc/cert/user.prv"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
++	client_cert="@NEOTERM_PREFIX@/etc/cert/user.pem"
++	private_key="@NEOTERM_PREFIX@/etc/cert/user.prv"
  	private_key_passwd="password"
  	eapol_flags=3
  }
@@ -154,17 +154,17 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.5 ./wpa_suppli
 -	ca_cert="/etc/cert/ca.pem"
 -	client_cert="/etc/cert/user.pem"
 -	private_key="/etc/cert/user.prv"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
-+	client_cert="@TERMUX_PREFIX@/etc/cert/user.pem"
-+	private_key="@TERMUX_PREFIX@/etc/cert/user.prv"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
++	client_cert="@NEOTERM_PREFIX@/etc/cert/user.pem"
++	private_key="@NEOTERM_PREFIX@/etc/cert/user.prv"
  	private_key_passwd="password"
  	phase1="peaplabel=0"
 -	ca_cert2="/etc/cert/ca2.pem"
 -	client_cert2="/etc/cer/user.pem"
 -	private_key2="/etc/cer/user.prv"
-+	ca_cert2="@TERMUX_PREFIX@/etc/cert/ca2.pem"
-+	client_cert2="@TERMUX_PREFIX@/etc/cer/user.pem"
-+	private_key2="@TERMUX_PREFIX@/etc/cer/user.prv"
++	ca_cert2="@NEOTERM_PREFIX@/etc/cert/ca2.pem"
++	client_cert2="@NEOTERM_PREFIX@/etc/cer/user.pem"
++	private_key2="@NEOTERM_PREFIX@/etc/cer/user.prv"
  	private_key2_passwd="password"
  }
  .fi
@@ -176,7 +176,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.sgml ./wpa_sup
      file that lists all accepted networks and security policies,
      including pre-shared keys. See the example configuration file,
 -    probably in <command>/usr/share/doc/wpa_supplicant/</command>, for
-+    probably in <command>@TERMUX_PREFIX@/share/doc/wpa_supplicant/</command>, for
++    probably in <command>@NEOTERM_PREFIX@/share/doc/wpa_supplicant/</command>, for
      detailed information about the configuration format and supported
      fields.</para>
  
@@ -187,9 +187,9 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.sgml ./wpa_sup
 -	ca_cert="/etc/cert/ca.pem"
 -	client_cert="/etc/cert/user.pem"
 -	private_key="/etc/cert/user.prv"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
-+	client_cert="@TERMUX_PREFIX@/etc/cert/user.pem"
-+	private_key="@TERMUX_PREFIX@/etc/cert/user.prv"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
++	client_cert="@NEOTERM_PREFIX@/etc/cert/user.pem"
++	private_key="@NEOTERM_PREFIX@/etc/cert/user.prv"
  	private_key_passwd="password"
  }
  </programlisting></blockquote>   
@@ -198,7 +198,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.sgml ./wpa_sup
  	identity="user@example.com"
  	password="foobar"
 -	ca_cert="/etc/cert/ca.pem"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
  	phase1="peaplabel=0"
  	phase2="auth=MSCHAPV2"
  }
@@ -207,7 +207,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.sgml ./wpa_sup
  	anonymous_identity="anonymous@example.com"
  	password="foobar"
 -	ca_cert="/etc/cert/ca.pem"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
  	phase2="auth=MD5"
  }
  </programlisting></blockquote>
@@ -218,9 +218,9 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.sgml ./wpa_sup
 -	ca_cert="/etc/cert/ca.pem"
 -	client_cert="/etc/cert/user.pem"
 -	private_key="/etc/cert/user.prv"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
-+	client_cert="@TERMUX_PREFIX@/etc/cert/user.pem"
-+	private_key="@TERMUX_PREFIX@/etc/cert/user.prv"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
++	client_cert="@NEOTERM_PREFIX@/etc/cert/user.pem"
++	private_key="@NEOTERM_PREFIX@/etc/cert/user.prv"
  	private_key_passwd="password"
  	eapol_flags=3
  }
@@ -231,17 +231,17 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.conf.sgml ./wpa_sup
 -	ca_cert="/etc/cert/ca.pem"
 -	client_cert="/etc/cert/user.pem"
 -	private_key="/etc/cert/user.prv"
-+	ca_cert="@TERMUX_PREFIX@/etc/cert/ca.pem"
-+	client_cert="@TERMUX_PREFIX@/etc/cert/user.pem"
-+	private_key="@TERMUX_PREFIX@/etc/cert/user.prv"
++	ca_cert="@NEOTERM_PREFIX@/etc/cert/ca.pem"
++	client_cert="@NEOTERM_PREFIX@/etc/cert/user.pem"
++	private_key="@NEOTERM_PREFIX@/etc/cert/user.prv"
  	private_key_passwd="password"
  	phase1="peaplabel=0"
 -	ca_cert2="/etc/cert/ca2.pem"
 -	client_cert2="/etc/cer/user.pem"
 -	private_key2="/etc/cer/user.prv"
-+	ca_cert2="@TERMUX_PREFIX@/etc/cert/ca2.pem"
-+	client_cert2="@TERMUX_PREFIX@/etc/cer/user.pem"
-+	private_key2="@TERMUX_PREFIX@/etc/cer/user.prv"
++	ca_cert2="@NEOTERM_PREFIX@/etc/cert/ca2.pem"
++	client_cert2="@NEOTERM_PREFIX@/etc/cer/user.pem"
++	private_key2="@NEOTERM_PREFIX@/etc/cer/user.prv"
  	private_key2_passwd="password"
  }
  </programlisting></blockquote>
@@ -253,7 +253,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
  <blockquote><programlisting>
 -wpa_supplicant -B -c/etc/wpa_supplicant.conf -iwlan0
-+wpa_supplicant -B -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -iwlan0
++wpa_supplicant -B -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -iwlan0
  </programlisting></blockquote>
  
      <para>This makes the process fork into background.</para>
@@ -262,7 +262,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
  <blockquote><programlisting>
 -wpa_supplicant -c/etc/wpa_supplicant.conf -iwlan0 -d
-+wpa_supplicant -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -iwlan0 -d
++wpa_supplicant -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -iwlan0 -d
  </programlisting></blockquote>
  
      <para>If the specific driver wrapper is not known beforehand, it is
@@ -271,7 +271,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
  <blockquote><programlisting>
 -wpa_supplicant -Dnl80211,wext -c/etc/wpa_supplicant.conf -iwlan0
-+wpa_supplicant -Dnl80211,wext -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -iwlan0
++wpa_supplicant -Dnl80211,wext -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -iwlan0
  </programlisting></blockquote>
  
      <para><command>wpa_supplicant</command> can control multiple
@@ -280,7 +280,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
      <para>First, make a configuration file, e.g.
 -    <filename>/etc/wpa_supplicant.conf</filename>, that describes the networks
-+    <filename>@TERMUX_PREFIX@/etc/wpa_supplicant.conf</filename>, that describes the networks
++    <filename>@NEOTERM_PREFIX@/etc/wpa_supplicant.conf</filename>, that describes the networks
      you are interested in.  See <citerefentry>
  	<refentrytitle>wpa_supplicant.conf</refentrytitle>
  	<manvolnum>5</manvolnum>
@@ -289,7 +289,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
      <blockquote><programlisting>
 -wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -d
-+wpa_supplicant -iwlan0 -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -d
++wpa_supplicant -iwlan0 -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -d
      </programlisting></blockquote>
  
      <para>Assuming everything goes fine, you can start using following
@@ -298,7 +298,7 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
      <blockquote><programlisting>
 -wpa_supplicant -iwlan0 -c/etc/wpa_supplicant.conf -B
-+wpa_supplicant -iwlan0 -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -B
++wpa_supplicant -iwlan0 -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -B
      </programlisting></blockquote>
  
      <para>Please note that if you included more than one driver
@@ -307,17 +307,17 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
  
      <para>Add MODE="Managed" and WPA="y" to the network scheme in
 -    <filename>/etc/pcmcia/wireless.opts</filename>.</para>
-+    <filename>@TERMUX_PREFIX@/etc/pcmcia/wireless.opts</filename>.</para>
++    <filename>@NEOTERM_PREFIX@/etc/pcmcia/wireless.opts</filename>.</para>
  
      <para>Add the following block to the end of <emphasis>start</emphasis>
 -    action handler in <filename>/etc/pcmcia/wireless</filename>:</para>
-+    action handler in <filename>@TERMUX_PREFIX@/etc/pcmcia/wireless</filename>:</para>
++    action handler in <filename>@NEOTERM_PREFIX@/etc/pcmcia/wireless</filename>:</para>
  
      <blockquote><programlisting>
 -if [ "$WPA" = "y" -a -x /usr/local/bin/wpa_supplicant ]; then
 -    /usr/local/bin/wpa_supplicant -B -c/etc/wpa_supplicant.conf -i$DEVICE
-+if [ "$WPA" = "y" -a -x @TERMUX_PREFIX@/bin/wpa_supplicant ]; then
-+    @TERMUX_PREFIX@/bin/wpa_supplicant -B -c@TERMUX_PREFIX@/etc/wpa_supplicant.conf -i$DEVICE
++if [ "$WPA" = "y" -a -x @NEOTERM_PREFIX@/bin/wpa_supplicant ]; then
++    @NEOTERM_PREFIX@/bin/wpa_supplicant -B -c@NEOTERM_PREFIX@/etc/wpa_supplicant.conf -i$DEVICE
  fi
      </programlisting></blockquote>
  
@@ -325,11 +325,11 @@ diff -u -r ../wpa_supplicant-doc.orig/docbook/wpa_supplicant.sgml ./wpa_supplica
      <para>Add the following block to the end of <emphasis>stop</emphasis>
      action handler (may need to be separated from other actions) in
 -    <filename>/etc/pcmcia/wireless</filename>:</para>
-+    <filename>@TERMUX_PREFIX@/etc/pcmcia/wireless</filename>:</para>
++    <filename>@NEOTERM_PREFIX@/etc/pcmcia/wireless</filename>:</para>
  
      <blockquote><programlisting>
 -if [ "$WPA" = "y" -a -x /usr/local/bin/wpa_supplicant ]; then
-+if [ "$WPA" = "y" -a -x @TERMUX_PREFIX@/bin/wpa_supplicant ]; then
++if [ "$WPA" = "y" -a -x @NEOTERM_PREFIX@/bin/wpa_supplicant ]; then
      killall wpa_supplicant
  fi
      </programlisting></blockquote>

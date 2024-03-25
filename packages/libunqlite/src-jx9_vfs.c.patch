@@ -7,7 +7,7 @@
 -     "/var/tmp", 
 -     "/usr/tmp", 
 -	 "/usr/local/tmp"
-+     "@TERMUX_PREFIX@/var/tmp"
++     "@NEOTERM_PREFIX@/var/tmp"
    };
    unsigned int i;
    struct stat buf;
@@ -16,7 +16,7 @@
    }
    /* Default temp dir */
 -  jx9_result_string(pCtx, "/tmp", (int)sizeof("/tmp")-1);
-+  jx9_result_string(pCtx, "@TERMUX_PREFIX@/tmp", (int)sizeof("@TERMUX_PREFIX@/tmp")-1);
++  jx9_result_string(pCtx, "@NEOTERM_PREFIX@/tmp", (int)sizeof("@NEOTERM_PREFIX@/tmp")-1);
  }
  /* unsigned int (*xProcessId)(void) */
  static unsigned int UnixVfs_ProcessId(void)

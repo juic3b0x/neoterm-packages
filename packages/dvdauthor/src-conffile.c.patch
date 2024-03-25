@@ -5,7 +5,7 @@
      if (result == 0)
        {
 -        result = "/etc";
-+        result = "@TERMUX_PREFIX@/etc";
++        result = "@NEOTERM_PREFIX@/etc";
            /* note spec actually says default should be /etc/xdg, but /etc is the
              conventional location for system config files. */
        } /*if*/

@@ -5,7 +5,7 @@
   */
      define('STATE_MACHINE', 'FILE');
 -    define('STATE_DIR', '/var/lib/z-push/');
-+    define('STATE_DIR', '@TERMUX_PREFIX@/var/lib/z-push/');
++    define('STATE_DIR', '@NEOTERM_PREFIX@/var/lib/z-push/');
  
  /**********************************************************************************
   *  IPC - InterProcessCommunication
@@ -14,7 +14,7 @@
  
      // Filelog settings
 -    define('LOGFILEDIR', '/var/log/z-push/');
-+    define('LOGFILEDIR', '@TERMUX_PREFIX@/var/log/z-push/');
++    define('LOGFILEDIR', '@NEOTERM_PREFIX@/var/log/z-push/');
      define('LOGFILE', LOGFILEDIR . 'z-push.log');
      define('LOGERRORFILE', LOGFILEDIR . 'z-push-error.log');
  

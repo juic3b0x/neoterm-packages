@@ -5,7 +5,7 @@
      // begins at API level 21.
      let api_level =
 -        if triple.contains("aarch64") || triple.contains("x86_64") { "21" } else { "19" };
-+        "@TERMUX_PKG_API_LEVEL@";
++        "@NEOTERM_PKG_API_LEVEL@";
      let compiler = format!("{}{}-{}", triple_translated, api_level, compiler.clang());
      let host_tag = if cfg!(target_os = "macos") {
          // The NDK uses universal binaries, so this is correct even on ARM.

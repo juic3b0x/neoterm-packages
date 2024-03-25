@@ -1,7 +1,7 @@
-TERMUX_SUBPKG_DESCRIPTION="Utilities for handling universally unique identifiers"
-TERMUX_SUBPKG_DEPENDS="libsmartcols, libuuid"
-TERMUX_SUBPKG_DEPEND_ON_PARENT="no"
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_DESCRIPTION="Utilities for handling universally unique identifiers"
+NEOTERM_SUBPKG_DEPENDS="libsmartcols, libuuid"
+NEOTERM_SUBPKG_DEPEND_ON_PARENT="no"
+NEOTERM_SUBPKG_INCLUDE="
 share/man/man3/uuid_copy.3.gz
 share/man/man3/uuid_generate.3.gz
 share/man/man3/uuid.3.gz

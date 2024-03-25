@@ -7,9 +7,9 @@
 -pub const BELOW_DEFAULT_CONF: &str = "/etc/below/below.conf";
 -const BELOW_DEFAULT_LOG: &str = "/var/log/below";
 -const BELOW_DEFAULT_STORE: &str = "/var/log/below/store";
-+pub const BELOW_DEFAULT_CONF: &str = "@TERMUX_PREFIX@/etc/below/below.conf";
-+const BELOW_DEFAULT_LOG: &str = "@TERMUX_PREFIX@/var/log/below";
-+const BELOW_DEFAULT_STORE: &str = "@TERMUX_PREFIX@/var/log/below/store";
++pub const BELOW_DEFAULT_CONF: &str = "@NEOTERM_PREFIX@/etc/below/below.conf";
++const BELOW_DEFAULT_LOG: &str = "@NEOTERM_PREFIX@/var/log/below";
++const BELOW_DEFAULT_STORE: &str = "@NEOTERM_PREFIX@/var/log/below/store";
  
  /// Global below config
  pub static BELOW_CONFIG: OnceCell<BelowConfig> = OnceCell::new();

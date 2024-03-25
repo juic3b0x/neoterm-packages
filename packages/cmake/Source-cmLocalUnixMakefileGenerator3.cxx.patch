@@ -6,7 +6,7 @@ diff -u -r ../cmake-3.2.2/Source/cmLocalUnixMakefileGenerator3.cxx ./Source/cmLo
        makefileStream
          << "# The shell in which to execute make rules.\n"
 -        << "SHELL = /bin/sh\n"
-+        << "SHELL = @TERMUX_PREFIX@/bin/sh\n"
++        << "SHELL = @NEOTERM_PREFIX@/bin/sh\n"
          << "\n";
  #endif
      }

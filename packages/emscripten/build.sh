@@ -1,20 +1,20 @@
-TERMUX_PKG_HOMEPAGE=https://emscripten.org
-TERMUX_PKG_DESCRIPTION="Emscripten: An LLVM-to-WebAssembly Compiler"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="3.1.55"
-TERMUX_PKG_SRCURL=git+https://github.com/emscripten-core/emscripten
-TERMUX_PKG_GIT_BRANCH=${TERMUX_PKG_VERSION}
-TERMUX_PKG_PLATFORM_INDEPENDENT=true
-TERMUX_PKG_DEPENDS="emscripten-binaryen, emscripten-llvm"
-TERMUX_PKG_RECOMMENDS="nodejs-lts | nodejs, python"
-TERMUX_PKG_HOSTBUILD=true
-TERMUX_PKG_NO_STATICSPLIT=true
-TERMUX_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_HOMEPAGE=https://emscripten.org
+NEOTERM_PKG_DESCRIPTION="Emscripten: An LLVM-to-WebAssembly Compiler"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="3.1.55"
+NEOTERM_PKG_SRCURL=git+https://github.com/emscripten-core/emscripten
+NEOTERM_PKG_GIT_BRANCH=${NEOTERM_PKG_VERSION}
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_DEPENDS="emscripten-binaryen, emscripten-llvm"
+NEOTERM_PKG_RECOMMENDS="nodejs-lts | nodejs, python"
+NEOTERM_PKG_HOSTBUILD=true
+NEOTERM_PKG_NO_STATICSPLIT=true
+NEOTERM_PKG_AUTO_UPDATE=true
 
 # remove files according to emsdk/upstream directory after running
 # ./emsdk install latest
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_RM_AFTER_INSTALL="
 opt/emscripten-llvm/bin/amdgpu-arch
 opt/emscripten-llvm/bin/clang-check
 opt/emscripten-llvm/bin/clang-cl
@@ -70,9 +70,9 @@ _LLVM_BUILD_ARGS="
 -DCMAKE_BUILD_TYPE=MinSizeRel
 -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
 -DCMAKE_CROSSCOMPILING=ON
--DCMAKE_INSTALL_PREFIX=${TERMUX_PREFIX}/opt/emscripten-llvm
+-DCMAKE_INSTALL_PREFIX=${NEOTERM_PREFIX}/opt/emscripten-llvm
 
--DDEFAULT_SYSROOT=$(dirname ${TERMUX_PREFIX})
+-DDEFAULT_SYSROOT=$(dirname ${NEOTERM_PREFIX})
 -DGENERATOR_IS_MULTI_CONFIG=ON
 -DLLVM_ENABLE_ASSERTIONS=ON
 -DLLVM_ENABLE_BINDINGS=OFF
@@ -88,7 +88,7 @@ _LLVM_BUILD_ARGS="
 -DLLVM_INCLUDE_UTILS=OFF
 -DLLVM_INSTALL_TOOLCHAIN_ONLY=ON
 -DLLVM_LINK_LLVM_DYLIB=ON
--DLLVM_NATIVE_TOOL_DIR=${TERMUX_PKG_HOSTBUILD_DIR}/bin
+-DLLVM_NATIVE_TOOL_DIR=${NEOTERM_PKG_HOSTBUILD_DIR}/bin
 
 -DCLANG_DEFAULT_LINKER=lld
 -DCLANG_ENABLE_ARCMT=OFF
@@ -105,22 +105,22 @@ _LLVM_BUILD_ARGS="
 
 # https://github.com/WebAssembly/binaryen/blob/main/CMakeLists.txt
 _BINARYEN_BUILD_ARGS="
--DCMAKE_INSTALL_PREFIX=${TERMUX_PREFIX}/opt/emscripten-binaryen
+-DCMAKE_INSTALL_PREFIX=${NEOTERM_PREFIX}/opt/emscripten-binaryen
 -DBUILD_TESTS=OFF
 -DBYN_ENABLE_LTO=ON
 "
 
-# based on scripts/updates/internal/termux_github_auto_update.sh
-termux_pkg_auto_update() {
+# based on scripts/updates/internal/neoterm_github_auto_update.sh
+neoterm_pkg_auto_update() {
 	local latest_tag
-	latest_tag=$(termux_github_api_get_tag "${TERMUX_PKG_SRCURL}" "${TERMUX_PKG_UPDATE_TAG_TYPE}")
+	latest_tag=$(neoterm_github_api_get_tag "${NEOTERM_PKG_SRCURL}" "${NEOTERM_PKG_UPDATE_TAG_TYPE}")
 
 	if [[ -z "${latest_tag}" ]]; then
-		termux_error_exit "ERROR: Unable to get tag from ${TERMUX_PKG_SRCURL}"
+		neoterm_error_exit "ERROR: Unable to get tag from ${NEOTERM_PKG_SRCURL}"
 	fi
 
-	if [[ "${latest_tag}" == "${TERMUX_PKG_VERSION}" ]]; then
-		echo "INFO: No update needed. Already at version '${TERMUX_PKG_VERSION}'."
+	if [[ "${latest_tag}" == "${NEOTERM_PKG_VERSION}" ]]; then
+		echo "INFO: No update needed. Already at version '${NEOTERM_PKG_VERSION}'."
 		return
 	fi
 
@@ -146,7 +146,7 @@ termux_pkg_auto_update() {
 	_BINARYEN_COMMIT ${binaryen_commit} = ${binaryen_tgz_sha256}
 	EOL
 
-	sed -i "${TERMUX_PKG_BUILDER_DIR}/build.sh" \
+	sed -i "${NEOTERM_PKG_BUILDER_DIR}/build.sh" \
 		-e "s|^_LLVM_COMMIT=.*|_LLVM_COMMIT=${llvm_commit}|" \
 		-e "s|^_LLVM_TGZ_SHA256=.*|_LLVM_TGZ_SHA256=${llvm_tgz_sha256}|" \
 		-e "s|^_BINARYEN_COMMIT=.*|_BINARYEN_COMMIT=${binaryen_commit}|" \
@@ -154,24 +154,24 @@ termux_pkg_auto_update() {
 
 	rm -fr "${tmpdir}"
 
-	termux_pkg_upgrade_version "$latest_tag"
+	neoterm_pkg_upgrade_version "$latest_tag"
 }
 
-termux_step_post_get_source() {
-	termux_download \
+neoterm_step_post_get_source() {
+	neoterm_download \
 		"https://github.com/llvm/llvm-project/archive/${_LLVM_COMMIT}.tar.gz" \
-		"${TERMUX_PKG_CACHEDIR}/llvm.tar.gz" \
+		"${NEOTERM_PKG_CACHEDIR}/llvm.tar.gz" \
 		"${_LLVM_TGZ_SHA256}"
-	termux_download \
+	neoterm_download \
 		"https://github.com/WebAssembly/binaryen/archive/${_BINARYEN_COMMIT}.tar.gz" \
-		"${TERMUX_PKG_CACHEDIR}/binaryen.tar.gz" \
+		"${NEOTERM_PKG_CACHEDIR}/binaryen.tar.gz" \
 		"${_BINARYEN_TGZ_SHA256}"
-	tar -xf "${TERMUX_PKG_CACHEDIR}/llvm.tar.gz" -C "${TERMUX_PKG_CACHEDIR}"
-	tar -xf "${TERMUX_PKG_CACHEDIR}/binaryen.tar.gz" -C "${TERMUX_PKG_CACHEDIR}"
+	tar -xf "${NEOTERM_PKG_CACHEDIR}/llvm.tar.gz" -C "${NEOTERM_PKG_CACHEDIR}"
+	tar -xf "${NEOTERM_PKG_CACHEDIR}/binaryen.tar.gz" -C "${NEOTERM_PKG_CACHEDIR}"
 
-	local llvm_patches=$(find "${TERMUX_PKG_BUILDER_DIR}" -mindepth 1 -maxdepth 1 -type f -name 'llvm-project-*.patch.diff')
+	local llvm_patches=$(find "${NEOTERM_PKG_BUILDER_DIR}" -mindepth 1 -maxdepth 1 -type f -name 'llvm-project-*.patch.diff')
 	if [[ -n "${llvm_patches}" ]]; then
-		pushd "${TERMUX_PKG_CACHEDIR}/llvm-project-${_LLVM_COMMIT}"
+		pushd "${NEOTERM_PKG_CACHEDIR}/llvm-project-${_LLVM_COMMIT}"
 		for patch in ${llvm_patches}; do
 			patch -p1 -i "${patch}" || :
 		done
@@ -182,14 +182,14 @@ termux_step_post_get_source() {
 				echo -e "\n\n${rej}"
 				cat "${rej}"
 			done
-			termux_error_exit "Patch failed! Please check patch errors above!"
+			neoterm_error_exit "Patch failed! Please check patch errors above!"
 		fi
 		popd
 	fi
 
-	local binaryen_patches=$(find "${TERMUX_PKG_BUILDER_DIR}" -mindepth 1 -maxdepth 1 -type f -name 'binaryen-*.patch.diff')
+	local binaryen_patches=$(find "${NEOTERM_PKG_BUILDER_DIR}" -mindepth 1 -maxdepth 1 -type f -name 'binaryen-*.patch.diff')
 	if [[ -n "${binaryen_patches}" ]]; then
-		pushd "${TERMUX_PKG_CACHEDIR}/binaryen-${_BINARYEN_COMMIT}"
+		pushd "${NEOTERM_PKG_CACHEDIR}/binaryen-${_BINARYEN_COMMIT}"
 		for patch in ${binaryen_patches}; do
 			patch -p1 -i "${patch}" || :
 		done
@@ -200,19 +200,19 @@ termux_step_post_get_source() {
 				echo -e "\n\n${rej}"
 				cat "${rej}"
 			done
-			termux_error_exit "Patch failed! Please check patch errors above!"
+			neoterm_error_exit "Patch failed! Please check patch errors above!"
 		fi
 		popd
 	fi
 }
 
-termux_step_host_build() {
-	termux_setup_cmake
-	termux_setup_ninja
+neoterm_step_host_build() {
+	neoterm_setup_cmake
+	neoterm_setup_ninja
 
 	cmake \
 		-G Ninja \
-		-S "${TERMUX_PKG_CACHEDIR}/llvm-project-${_LLVM_COMMIT}/llvm" \
+		-S "${NEOTERM_PKG_CACHEDIR}/llvm-project-${_LLVM_COMMIT}/llvm" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DLLVM_ENABLE_PROJECTS=clang \
 		-DLLVM_INCLUDE_BENCHMARKS=OFF \
@@ -220,47 +220,47 @@ termux_step_host_build() {
 		-DLLVM_INCLUDE_TESTS=OFF \
 		-DLLVM_INCLUDE_UTILS=OFF
 	ninja \
-		-C "${TERMUX_PKG_HOSTBUILD_DIR}" \
-		-j "${TERMUX_MAKE_PROCESSES}" \
+		-C "${NEOTERM_PKG_HOSTBUILD_DIR}" \
+		-j "${NEOTERM_MAKE_PROCESSES}" \
 		llvm-tblgen clang-tblgen
 }
 
-termux_step_pre_configure() {
-	# https://github.com/termux/termux-packages/issues/16358
+neoterm_step_pre_configure() {
+	# https://github.com/neoterm/neoterm-packages/issues/16358
 	# TODO libclang-cpp.so* is not affected
-	if [[ "${TERMUX_ON_DEVICE_BUILD}" == "true" ]]; then
+	if [[ "${NEOTERM_ON_DEVICE_BUILD}" == "true" ]]; then
 		echo "WARN: ld.lld wrapper is not working for on-device builds. Skipping."
 		return
 	fi
 
-	local _WRAPPER_BIN=${TERMUX_PKG_BUILDDIR}/_wrapper/bin
+	local _WRAPPER_BIN=${NEOTERM_PKG_BUILDDIR}/_wrapper/bin
 	mkdir -p "${_WRAPPER_BIN}"
-	ln -fs "${TERMUX_STANDALONE_TOOLCHAIN}/bin/lld" "${_WRAPPER_BIN}/ld.lld"
+	ln -fs "${NEOTERM_STANDALONE_TOOLCHAIN}/bin/lld" "${_WRAPPER_BIN}/ld.lld"
 	cat <<- EOF > "${_WRAPPER_BIN}/ld.lld.sh"
 	#!/bin/bash
 	tmpfile=\$(mktemp)
-	python ${TERMUX_PKG_BUILDER_DIR}/fix-rpath.py -rpath=${TERMUX_PREFIX}/lib \$@ > \${tmpfile}
+	python ${NEOTERM_PKG_BUILDER_DIR}/fix-rpath.py -rpath=${NEOTERM_PREFIX}/lib \$@ > \${tmpfile}
 	args=\$(cat \${tmpfile})
 	rm -f \${tmpfile}
 	${_WRAPPER_BIN}/ld.lld \${args}
 	EOF
 	chmod +x "${_WRAPPER_BIN}/ld.lld.sh"
-	rm -f "${TERMUX_STANDALONE_TOOLCHAIN}/bin/ld.lld"
-	ln -fs "${_WRAPPER_BIN}/ld.lld.sh" "${TERMUX_STANDALONE_TOOLCHAIN}/bin/ld.lld"
+	rm -f "${NEOTERM_STANDALONE_TOOLCHAIN}/bin/ld.lld"
+	ln -fs "${_WRAPPER_BIN}/ld.lld.sh" "${NEOTERM_STANDALONE_TOOLCHAIN}/bin/ld.lld"
 }
 
-termux_step_make() {
-	termux_setup_cmake
-	termux_setup_ninja
+neoterm_step_make() {
+	neoterm_setup_cmake
+	neoterm_setup_ninja
 
 	# from packages/libllvm/build.sh
-	local _LLVM_TARGET_TRIPLE=${TERMUX_HOST_PLATFORM/-/-unknown-}${TERMUX_PKG_API_LEVEL}
+	local _LLVM_TARGET_TRIPLE=${NEOTERM_HOST_PLATFORM/-/-unknown-}${NEOTERM_PKG_API_LEVEL}
 	local _LLVM_TARGET_ARCH
-	case "${TERMUX_ARCH}" in
+	case "${NEOTERM_ARCH}" in
 	aarch64) _LLVM_TARGET_ARCH=AArch64 ;;
 	arm) _LLVM_TARGET_ARCH=ARM ;;
 	i686|x86_64) _LLVM_TARGET_ARCH=X86 ;;
-	*) termux_error_exit "Invalid arch: ${TERMUX_ARCH}" ;;
+	*) neoterm_error_exit "Invalid arch: ${NEOTERM_ARCH}" ;;
 	esac
 	_LLVM_BUILD_ARGS+="
 	-DLLVM_HOST_TRIPLE=${_LLVM_TARGET_TRIPLE}
@@ -270,72 +270,72 @@ termux_step_make() {
 
 	cmake \
 		-G Ninja \
-		-S "${TERMUX_PKG_CACHEDIR}/llvm-project-${_LLVM_COMMIT}/llvm" \
-		-B "${TERMUX_PKG_BUILDDIR}/build-llvm" \
+		-S "${NEOTERM_PKG_CACHEDIR}/llvm-project-${_LLVM_COMMIT}/llvm" \
+		-B "${NEOTERM_PKG_BUILDDIR}/build-llvm" \
 		${_LLVM_BUILD_ARGS}
 	ninja \
-		-C "${TERMUX_PKG_BUILDDIR}/build-llvm" \
-		-j "${TERMUX_MAKE_PROCESSES}" \
+		-C "${NEOTERM_PKG_BUILDDIR}/build-llvm" \
+		-j "${NEOTERM_MAKE_PROCESSES}" \
 		install
 
 	cmake \
 		-G Ninja \
-		-S "${TERMUX_PKG_CACHEDIR}/binaryen-${_BINARYEN_COMMIT}" \
-		-B "${TERMUX_PKG_BUILDDIR}/build-binaryen" \
+		-S "${NEOTERM_PKG_CACHEDIR}/binaryen-${_BINARYEN_COMMIT}" \
+		-B "${NEOTERM_PKG_BUILDDIR}/build-binaryen" \
 		${_BINARYEN_BUILD_ARGS}
 	ninja \
-		-C "${TERMUX_PKG_BUILDDIR}/build-binaryen" \
-		-j "${TERMUX_MAKE_PROCESSES}" \
+		-C "${NEOTERM_PKG_BUILDDIR}/build-binaryen" \
+		-j "${NEOTERM_MAKE_PROCESSES}" \
 		install
 }
 
-termux_step_make_install() {
-	pushd "${TERMUX_PKG_SRCDIR}"
+neoterm_step_make_install() {
+	pushd "${NEOTERM_PKG_SRCDIR}"
 
 	# https://github.com/emscripten-core/emscripten/pull/15840
-	sed -e "s|-git||" -i "${TERMUX_PKG_SRCDIR}/emscripten-version.txt"
+	sed -e "s|-git||" -i "${NEOTERM_PKG_SRCDIR}/emscripten-version.txt"
 
 	# skip using Makefile which does host npm install
-	rm -fr "${TERMUX_PREFIX}/opt/emscripten"
-	./tools/install.py "${TERMUX_PREFIX}/opt/emscripten"
+	rm -fr "${NEOTERM_PREFIX}/opt/emscripten"
+	./tools/install.py "${NEOTERM_PREFIX}/opt/emscripten"
 
 	# subpackage optional third party test suite files
-	cp -fr "${TERMUX_PKG_SRCDIR}/test/third_party" "${TERMUX_PREFIX}/opt/emscripten/test/third_party"
+	cp -fr "${NEOTERM_PKG_SRCDIR}/test/third_party" "${NEOTERM_PREFIX}/opt/emscripten/test/third_party"
 
 	# first run generates .emscripten and exits immediately
-	rm -f "${TERMUX_PKG_SRCDIR}/.emscripten"
+	rm -f "${NEOTERM_PKG_SRCDIR}/.emscripten"
 	./emcc --generate-config
 	sed -i .emscripten \
-		-e "s|^EMSCRIPTEN_ROOT.*|EMSCRIPTEN_ROOT = '${TERMUX_PREFIX}/opt/emscripten' # directory|" \
-		-e "s|^LLVM_ROOT.*|LLVM_ROOT = '${TERMUX_PREFIX}/opt/emscripten-llvm/bin' # directory|" \
-		-e "s|^BINARYEN_ROOT.*|BINARYEN_ROOT = '${TERMUX_PREFIX}/opt/emscripten-binaryen' # directory|" \
-		-e "s|^NODE_JS.*|NODE_JS = '${TERMUX_PREFIX}/bin/node' # executable|"
-	grep "${TERMUX_PREFIX}" "${TERMUX_PKG_SRCDIR}/.emscripten"
-	install -Dm644 "${TERMUX_PKG_SRCDIR}/.emscripten" "${TERMUX_PREFIX}/opt/emscripten/.emscripten"
+		-e "s|^EMSCRIPTEN_ROOT.*|EMSCRIPTEN_ROOT = '${NEOTERM_PREFIX}/opt/emscripten' # directory|" \
+		-e "s|^LLVM_ROOT.*|LLVM_ROOT = '${NEOTERM_PREFIX}/opt/emscripten-llvm/bin' # directory|" \
+		-e "s|^BINARYEN_ROOT.*|BINARYEN_ROOT = '${NEOTERM_PREFIX}/opt/emscripten-binaryen' # directory|" \
+		-e "s|^NODE_JS.*|NODE_JS = '${NEOTERM_PREFIX}/bin/node' # executable|"
+	grep "${NEOTERM_PREFIX}" "${NEOTERM_PKG_SRCDIR}/.emscripten"
+	install -Dm644 "${NEOTERM_PKG_SRCDIR}/.emscripten" "${NEOTERM_PREFIX}/opt/emscripten/.emscripten"
 
 	# add emscripten directory to PATH var
-	cat <<- EOF > "${TERMUX_PKG_TMPDIR}/emscripten.sh"
-	#!${TERMUX_PREFIX}/bin/sh
-	export PATH=\${PATH}:${TERMUX_PREFIX}/opt/emscripten
+	cat <<- EOF > "${NEOTERM_PKG_TMPDIR}/emscripten.sh"
+	#!${NEOTERM_PREFIX}/bin/sh
+	export PATH=\${PATH}:${NEOTERM_PREFIX}/opt/emscripten
 	EOF
-	install -Dm644 "${TERMUX_PKG_TMPDIR}/emscripten.sh" "${TERMUX_PREFIX}/etc/profile.d/emscripten.sh"
+	install -Dm644 "${NEOTERM_PKG_TMPDIR}/emscripten.sh" "${NEOTERM_PREFIX}/etc/profile.d/emscripten.sh"
 
 	# add useful tools not installed by LLVM_INSTALL_TOOLCHAIN_ONLY=ON
 	for tool in llvm-{addr2line,dwarfdump,dwp,link,nm,objdump,ranlib,readobj,size,strings}; do
-		install -Dm755 "${TERMUX_PKG_BUILDDIR}/build-llvm/bin/${tool}" "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/${tool}"
+		install -Dm755 "${NEOTERM_PKG_BUILDDIR}/build-llvm/bin/${tool}" "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/${tool}"
 	done
 
 	# wasm32 triplets
-	rm -fr "${TERMUX_PREFIX}"/opt/emscripten-llvm/bin/wasm32-{clang,clang++,wasi-clang,wasi-clang++}
-	rm -fr "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/wasm-ld"
-	ln -fs "clang"   "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/wasm32-clang"
-	ln -fs "clang++" "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/wasm32-clang++"
-	ln -fs "clang"   "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/wasm32-wasi-clang"
-	ln -fs "clang++" "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/wasm32-wasi-clang++"
-	ln -fs "lld"     "${TERMUX_PREFIX}/opt/emscripten-llvm/bin/wasm-ld"
+	rm -fr "${NEOTERM_PREFIX}"/opt/emscripten-llvm/bin/wasm32-{clang,clang++,wasi-clang,wasi-clang++}
+	rm -fr "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/wasm-ld"
+	ln -fs "clang"   "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/wasm32-clang"
+	ln -fs "clang++" "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/wasm32-clang++"
+	ln -fs "clang"   "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/wasm32-wasi-clang"
+	ln -fs "clang++" "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/wasm32-wasi-clang++"
+	ln -fs "lld"     "${NEOTERM_PREFIX}/opt/emscripten-llvm/bin/wasm-ld"
 
-	# termux_step_massage strip does not cover opt dir
-	find "${TERMUX_PREFIX}/opt" \( \
+	# neoterm_step_massage strip does not cover opt dir
+	find "${NEOTERM_PREFIX}/opt" \( \
 		-path "*/emscripten-llvm/bin/*" -o \
 		-path "*/emscripten-llvm/lib/*" -o \
 		-path "*/emscripten-binaryen/bin/*" -o \
@@ -347,13 +347,13 @@ termux_step_make_install() {
 	popd
 }
 
-termux_step_create_debscripts() {
+neoterm_step_create_debscripts() {
 	# emscripten's package-lock.json is generated with nodejs v12.13.0
 	# which comes with npm v6 which used lockfile version 1
 	# which isn't compatible with lockfile version 2 used in npm v7 and v8
 	cat <<- EOF > postinst
-	#!${TERMUX_PREFIX}/bin/sh
-	DIR="${TERMUX_PREFIX}/opt/emscripten"
+	#!${NEOTERM_PREFIX}/bin/sh
+	DIR="${NEOTERM_PREFIX}/opt/emscripten"
 	cd "\${DIR}"
 	if [ -n "\$(command -v npm)" ]; then
 	if [ -n "\$(npm --version | grep "^6.")" ]; then
@@ -383,10 +383,10 @@ termux_step_create_debscripts() {
 	EOF
 
 	cat <<- EOF > postrm
-	#!${TERMUX_PREFIX}/bin/sh
+	#!${NEOTERM_PREFIX}/bin/sh
 	case "\$1" in
 	purge|remove)
-	rm -fr "${TERMUX_PREFIX}/opt/emscripten"
+	rm -fr "${NEOTERM_PREFIX}/opt/emscripten"
 	esac
 	EOF
 }

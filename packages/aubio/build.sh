@@ -1,29 +1,29 @@
-TERMUX_PKG_HOMEPAGE=https://aubio.org/
-TERMUX_PKG_DESCRIPTION="A library to label music and sounds"
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=0.4.9
-TERMUX_PKG_REVISION=2
-TERMUX_PKG_SRCURL=https://aubio.org/pub/aubio-${TERMUX_PKG_VERSION}.tar.bz2
-TERMUX_PKG_SHA256=d48282ae4dab83b3dc94c16cf011bcb63835c1c02b515490e1883049c3d1f3da
-TERMUX_PKG_DEPENDS="ffmpeg, libsamplerate, libsndfile"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://aubio.org/
+NEOTERM_PKG_DESCRIPTION="A library to label music and sounds"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.4.9
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=https://aubio.org/pub/aubio-${NEOTERM_PKG_VERSION}.tar.bz2
+NEOTERM_PKG_SHA256=d48282ae4dab83b3dc94c16cf011bcb63835c1c02b515490e1883049c3d1f3da
+NEOTERM_PKG_DEPENDS="ffmpeg, libsamplerate, libsndfile"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	CPPFLAGS+=" -DFF_API_LAVF_AVCTX"
 }
 
-termux_step_configure() {
+neoterm_step_configure() {
 	./waf configure \
-		--prefix=$TERMUX_PREFIX \
+		--prefix=$NEOTERM_PREFIX \
 		LINKFLAGS="$LDFLAGS" \
-		$TERMUX_PKG_EXTRA_CONFIGURE_ARGS
+		$NEOTERM_PKG_EXTRA_CONFIGURE_ARGS
 }
 
-termux_step_make() {
+neoterm_step_make() {
 	./waf
 }
 
-termux_step_make_install() {
+neoterm_step_make_install() {
 	./waf install
 }

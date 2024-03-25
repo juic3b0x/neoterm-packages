@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e -u
 
-TERMUX_SCRIPTDIR=$(cd "$(realpath "$(dirname "$0")")"; cd ..; pwd)
+NEOTERM_SCRIPTDIR=$(cd "$(realpath "$(dirname "$0")")"; cd ..; pwd)
 
 CONTAINER_HOME_DIR=/home/builder
 UNAME=$(uname)
@@ -18,23 +18,23 @@ fi
 # To reset, use "restorecon -Fr ."
 # To check, use "ls -Z ."
 if [ -n "$(command -v getenforce)" ] && [ "$(getenforce)" = Enforcing ]; then
-	VOLUME=$REPOROOT:$CONTAINER_HOME_DIR/termux-packages:z
+	VOLUME=$REPOROOT:$CONTAINER_HOME_DIR/neoterm-packages:z
 else
-	VOLUME=$REPOROOT:$CONTAINER_HOME_DIR/termux-packages
+	VOLUME=$REPOROOT:$CONTAINER_HOME_DIR/neoterm-packages
 fi
 
-: ${TERMUX_BUILDER_IMAGE_NAME:=ghcr.io/termux/package-builder}
-: ${CONTAINER_NAME:=termux-package-builder}
+: ${NEOTERM_BUILDER_IMAGE_NAME:=ghcr.io/neoterm/package-builder}
+: ${CONTAINER_NAME:=neoterm-package-builder}
 
 USER=builder
 
-if [ -n "${TERMUX_DOCKER_USE_SUDO-}" ]; then
+if [ -n "${NEOTERM_DOCKER_USE_SUDO-}" ]; then
 	SUDO="sudo"
 else
 	SUDO=""
 fi
 
-echo "Running container '$CONTAINER_NAME' from image '$TERMUX_BUILDER_IMAGE_NAME'..."
+echo "Running container '$CONTAINER_NAME' from image '$NEOTERM_BUILDER_IMAGE_NAME'..."
 
 # Check whether attached to tty and adjust docker flags accordingly.
 if [ -t 1 ]; then
@@ -52,7 +52,7 @@ $SUDO docker start $CONTAINER_NAME >/dev/null 2>&1 || {
 		--volume $VOLUME \
 		$SEC_OPT \
 		--tty \
-		$TERMUX_BUILDER_IMAGE_NAME
+		$NEOTERM_BUILDER_IMAGE_NAME
 	if [ "$UNAME" != Darwin ]; then
 		if [ $(id -u) -ne 1001 -a $(id -u) -ne 0 ]; then
 			echo "Changed builder uid/gid... (this may take a while)"
@@ -65,7 +65,7 @@ $SUDO docker start $CONTAINER_NAME >/dev/null 2>&1 || {
 }
 
 # Set traps to ensure that the process started with docker exec and all its children are killed. 
-. "$TERMUX_SCRIPTDIR/scripts/utils/docker/docker.sh"; docker__setup_docker_exec_traps
+. "$NEOTERM_SCRIPTDIR/scripts/utils/docker/docker.sh"; docker__setup_docker_exec_traps
 
 if [ "$#" -eq "0" ]; then
 	set -- bash

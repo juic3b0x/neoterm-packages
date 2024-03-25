@@ -5,7 +5,7 @@
          {
              struct stat s;
 -            path = "/tmp/";
-+            path = "@TERMUX_PREFIX@/tmp/";
++            path = "@NEOTERM_PREFIX@/tmp/";
              if (stat (path.c_str(), &s) == 0  &&  S_ISDIR (s.st_mode)  &&  (s.st_mode & S_IRWXU) == S_IRWXU)
                  return path;
              path = unix_getcwd();

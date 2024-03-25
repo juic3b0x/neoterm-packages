@@ -10,7 +10,7 @@
    common.skip('Oversized buffer make the FreeBSD CI runner crash');
  
 +if(platform() === 'android')
-+  common.skip('Android will kill heavy memory using processes sometimes crashing Termux');
++  common.skip('Android will kill heavy memory using processes sometimes crashing NeoTerm');
 +
  try {
    new Blob([new Uint8Array(kMaxLength), [1]]);

@@ -5,13 +5,13 @@
  .El
  .Sh FILES
 -.Bl -tag -width "/etc/man.conf" -compact
-+.Bl -tag -width "@TERMUX_PREFIX@/etc/man.conf" -compact
++.Bl -tag -width "@NEOTERM_PREFIX@/etc/man.conf" -compact
  .It Pa mandoc.db
  name of the
  .Xr makewhatis 8
  keyword database
 -.It Pa /etc/man.conf
-+.It Pa @TERMUX_PREFIX@/etc/man.conf
++.It Pa @NEOTERM_PREFIX@/etc/man.conf
  default
  .Xr man 1
  configuration file
@@ -22,7 +22,7 @@
  This file is portable across architectures and systems, so long as the
  manpage hierarchy it indexes does not change.
 -.It Pa /etc/man.conf
-+.It Pa @TERMUX_PREFIX@/etc/man.conf
++.It Pa @NEOTERM_PREFIX@/etc/man.conf
  The default
  .Xr man 1
  configuration file.
@@ -33,7 +33,7 @@
  .Xr man.conf 5
  file, or with
 -.Pa /usr/share/man : Ns Pa /usr/X11R6/man : Ns Pa /usr/local/man
-+.Pa @TERMUX_PREFIX@/share/man
++.Pa @NEOTERM_PREFIX@/share/man
  by default.
  Within each of these, directories are searched in the order provided.
  Within each directory, the search proceeds according to the following
@@ -43,8 +43,8 @@
  .Sh FILES
 -.Bl -tag -width /etc/man.conf -compact
 -.It Pa /etc/man.conf
-+.Bl -tag -width @TERMUX_PREFIX@/etc/man.conf -compact
-+.It Pa @TERMUX_PREFIX@/etc/man.conf
++.Bl -tag -width @NEOTERM_PREFIX@/etc/man.conf -compact
++.It Pa @NEOTERM_PREFIX@/etc/man.conf
  default
  .Nm
  configuration file
@@ -55,7 +55,7 @@
  .Sh FILES
  .Bl -tag -width /etc/examples/man.conf -compact
 -.It Pa /etc/man.conf
-+.It Pa @TERMUX_PREFIX@/etc/man.conf
++.It Pa @NEOTERM_PREFIX@/etc/man.conf
  .El
  .Sh EXAMPLES
  The following configuration file reproduces the defaults:
@@ -66,7 +66,7 @@
 -manpath /usr/share/man
 -manpath /usr/X11R6/man
 -manpath /usr/local/man
-+manpath @TERMUX_PREFIX@/share/man
++manpath @NEOTERM_PREFIX@/share/man
  .Ed
  .Sh SEE ALSO
  .Xr apropos 1 ,
@@ -77,7 +77,7 @@
  .Fl W Cm base ,
  the search is restricted to the base system, by default to
 -.Pa /usr/share/man : Ns Pa /usr/X11R6/man .
-+.Pa @TERMUX_PREFIX@/share/man .
++.Pa @NEOTERM_PREFIX@/share/man .
  This path can be configured at compile time using the
  .Dv MANPATH_BASE
  preprocessor macro.
@@ -86,7 +86,7 @@
  .Xr man.conf 5
  file and falling back to the default of
 -.Pa /usr/share/man : Ns Pa /usr/X11R6/man : Ns Pa /usr/local/man ,
-+.Pa @TERMUX_PREFIX@/share/man ,
++.Pa @NEOTERM_PREFIX@/share/man ,
  also configurable at compile time using the
  .Dv MANPATH_DEFAULT
  preprocessor macro.
@@ -98,8 +98,8 @@
  .Sh FILES
 -.Bl -tag -width /usr/share/man/mandoc.db -compact
 -.It Pa /usr/share/man/mandoc.db
-+.Bl -tag -width @TERMUX_PREFIX@/share/man/mandoc.db -compact
-+.It Pa @TERMUX_PREFIX@/share/man/mandoc.db
++.Bl -tag -width @NEOTERM_PREFIX@/share/man/mandoc.db -compact
++.It Pa @NEOTERM_PREFIX@/share/man/mandoc.db
  The manual page database for the base system.
 -.It Pa /usr/X11R6/man/mandoc.db
 -The same for the

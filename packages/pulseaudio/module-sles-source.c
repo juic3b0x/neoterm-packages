@@ -198,9 +198,9 @@ static int pa_init_sles_record(struct userdata *u, pa_sample_spec *ss) {
         SLresult r = (*u->EngineObject)->Realize(u->EngineObject, SL_BOOLEAN_FALSE);
         if (r == SL_RESULT_CONTENT_UNSUPPORTED)
             pa_log(
-                "Failed to initialize OpenSL ES; did you grant Termux the "
-                "RECORD_AUDIO permission (you can use termux-microphone-record "
-                "from Termux:API for this)?"
+                "Failed to initialize OpenSL ES; did you grant NeoTerm the "
+                "RECORD_AUDIO permission (you can use neoterm-microphone-record "
+                "from NeoTerm:API for this)?"
             );
         r;
     }));

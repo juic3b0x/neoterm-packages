@@ -5,7 +5,7 @@
  #  undef max   // clashes with std::max
  #else
 -#  define DICT "/usr/share/dict/words"
-+#  define DICT "@TERMUX_PREFIX@/share/dict/words"
++#  define DICT "@NEOTERM_PREFIX@/share/dict/words"
  #endif
  
  //

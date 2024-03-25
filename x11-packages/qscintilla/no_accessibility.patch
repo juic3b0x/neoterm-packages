@@ -1,4 +1,4 @@
-qt5-qtbase in Termux doesn't build accessibility
+qt5-qtbase in NeoTerm doesn't build accessibility
 --- src/src/qscintilla.pro	2021-05-09 12:23:05.233865021 +0000
 +++ src.mod/src/qscintilla.pro	2021-05-09 12:22:58.033891538 +0000
 @@ -23,6 +23,8 @@

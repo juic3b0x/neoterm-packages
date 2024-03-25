@@ -1,10 +1,10 @@
-TERMUX_SUBPKG_DESCRIPTION="Apache 2.0 Handler module for PHP"
-TERMUX_SUBPKG_DEPENDS="apache2, apr-util"
-TERMUX_SUBPKG_INCLUDE="libexec/apache2/libphp.so"
+NEOTERM_SUBPKG_DESCRIPTION="Apache 2.0 Handler module for PHP"
+NEOTERM_SUBPKG_DEPENDS="apache2, apr-util"
+NEOTERM_SUBPKG_INCLUDE="libexec/apache2/libphp.so"
 
-termux_step_create_subpkg_debscripts() {
+neoterm_step_create_subpkg_debscripts() {
 	cat <<- EOF > ./postinst
-	#!$TERMUX_PREFIX/bin/sh
+	#!$NEOTERM_PREFIX/bin/sh
 	echo
 	echo "    Extensions for PHP/Apache are packaged under the name of 'php-apache-*'"
 	echo "    and are installed under the directory '\\\$PREFIX/lib/php-apache/'."

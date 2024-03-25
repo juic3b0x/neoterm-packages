@@ -5,7 +5,7 @@
         */
        
 -      path = "/bin:/usr/bin:.";
-+      path = "@TERMUX_PREFIX@/bin:.";
++      path = "@NEOTERM_PREFIX@/bin:.";
      }
  #else
    n = GetModuleFileNameW (NULL, wfilename, MAXPATHLEN);
@@ -14,7 +14,7 @@
          {
            g_free (tmp);
 -          tmp = g_strdup ("/tmp");
-+          tmp = g_strdup ("@TERMUX_PREFIX@/tmp");
++          tmp = g_strdup ("@NEOTERM_PREFIX@/tmp");
          }
  #endif /* !G_OS_WIN32 */
  
@@ -23,7 +23,7 @@
      return NULL;
  #elif defined (G_OS_UNIX)
 -  const gchar * const os_release_files[] = { "/etc/os-release", "/usr/lib/os-release" };
-+  const gchar * const os_release_files[] = { "@TERMUX_PREFIX@/etc/os-release", "@TERMUX_PREFIX@/lib/os-release" };
++  const gchar * const os_release_files[] = { "@NEOTERM_PREFIX@/etc/os-release", "@NEOTERM_PREFIX@/lib/os-release" };
    gsize i;
    gchar *buffer = NULL;
    gchar *result = NULL;
@@ -32,7 +32,7 @@
  #ifndef G_OS_WIN32
    if (!data_dirs || !data_dirs[0])
 -    data_dirs = "/usr/local/share/:/usr/share/";
-+    data_dirs = "@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/";
++    data_dirs = "@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/";
  
    data_dir_vector = g_strsplit (data_dirs, G_SEARCHPATH_SEPARATOR_S, 0);
  #else

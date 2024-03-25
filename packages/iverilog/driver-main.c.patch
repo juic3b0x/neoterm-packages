@@ -6,7 +6,7 @@ diff -uNr iverilog-10_2/driver/main.c iverilog-10_2.mod/driver/main.c
  #else
        if (tmpdir == 0)
 -	    tmpdir = "/tmp";
-+	    tmpdir = "@TERMUX_PREFIX@/tmp";
++	    tmpdir = "@NEOTERM_PREFIX@/tmp";
  #endif
  
        assert(tmpdir);

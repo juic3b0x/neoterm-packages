@@ -1,27 +1,27 @@
-TERMUX_PKG_HOMEPAGE=https://ffmpeg.org
-TERMUX_PKG_DESCRIPTION="FFplay media player"
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="@termux"
+NEOTERM_PKG_HOMEPAGE=https://ffmpeg.org
+NEOTERM_PKG_DESCRIPTION="FFplay media player"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
 # Please align the version with `ffmpeg` package.
-TERMUX_PKG_VERSION="6.1.1"
-TERMUX_PKG_SRCURL=https://www.ffmpeg.org/releases/ffmpeg-${TERMUX_PKG_VERSION}.tar.xz
-TERMUX_PKG_SHA256=8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
-TERMUX_PKG_DEPENDS="ffmpeg, libandroid-shmem, libx11, libxcb, libxext, libxv, pulseaudio, sdl2"
+NEOTERM_PKG_VERSION="6.1.1"
+NEOTERM_PKG_SRCURL=https://www.ffmpeg.org/releases/ffmpeg-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=8684f4b00f94b85461884c3719382f1261f0d9eb3d59640a1f4ac0873616f968
+NEOTERM_PKG_DEPENDS="ffmpeg, libandroid-shmem, libx11, libxcb, libxext, libxv, pulseaudio, sdl2"
 
-termux_step_pre_configure() {
-	_FFPLAY_PREFIX="$TERMUX_PREFIX/opt/$TERMUX_PKG_NAME"
+neoterm_step_pre_configure() {
+	_FFPLAY_PREFIX="$NEOTERM_PREFIX/opt/$NEOTERM_PKG_NAME"
 	LDFLAGS="-Wl,-rpath=${_FFPLAY_PREFIX}/lib $LDFLAGS -landroid-shmem"
 }
 
-termux_step_configure() {
+neoterm_step_configure() {
 	local _ARCH
-	case "$TERMUX_ARCH" in
+	case "$NEOTERM_ARCH" in
 		arm ) _ARCH=armeabi-v7a ;;
 		i686 ) _ARCH=x86 ;;
-		* ) _ARCH="$TERMUX_ARCH" ;;
+		* ) _ARCH="$NEOTERM_ARCH" ;;
 	esac
 
-	$TERMUX_PKG_SRCDIR/configure \
+	$NEOTERM_PKG_SRCDIR/configure \
 		--prefix="${_FFPLAY_PREFIX}" \
 		--cc="$CC" \
 		--pkg-config="$PKG_CONFIG" \
@@ -45,13 +45,13 @@ termux_step_configure() {
 		--enable-ffplay
 }
 
-termux_step_post_make_install() {
-	mkdir -p $TERMUX_PREFIX/bin
-	ln -sfr "${_FFPLAY_PREFIX}/bin/ffplay" "$TERMUX_PREFIX/bin/"
+neoterm_step_post_make_install() {
+	mkdir -p $NEOTERM_PREFIX/bin
+	ln -sfr "${_FFPLAY_PREFIX}/bin/ffplay" "$NEOTERM_PREFIX/bin/"
 }
 
-termux_step_post_massage() {
-	cd "$TERMUX_PKG_MASSAGEDIR/${_FFPLAY_PREFIX}" || exit 1
+neoterm_step_post_massage() {
+	cd "$NEOTERM_PKG_MASSAGEDIR/${_FFPLAY_PREFIX}" || exit 1
 	find . ! -type d \
 		! -wholename "./bin/ffplay" \
 		! -wholename "./lib/libavdevice.so*" \

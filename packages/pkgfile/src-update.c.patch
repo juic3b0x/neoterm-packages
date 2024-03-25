@@ -5,7 +5,7 @@
    tmpdir = getenv("TMPDIR");
    if (tmpdir == NULL) {
 -    tmpdir = "/tmp";
-+    tmpdir = "@TERMUX_PREFIX@/tmp";
++    tmpdir = "@NEOTERM_PREFIX@/tmp";
    }
  
  #ifdef O_TMPFILE

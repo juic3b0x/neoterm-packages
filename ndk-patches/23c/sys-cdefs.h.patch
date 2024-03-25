@@ -4,6 +4,6 @@
  #if __has_include(<android/ndk-version.h>)
  #include <android/ndk-version.h>
  #endif
-+#define __TERMUX__ 1
-+#define __TERMUX_PREFIX__ "@TERMUX_PREFIX@"
++#define __NEOTERM__ 1
++#define __NEOTERM_PREFIX__ "@NEOTERM_PREFIX@"
 +

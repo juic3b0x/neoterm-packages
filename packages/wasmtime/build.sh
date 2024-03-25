@@ -1,13 +1,13 @@
-TERMUX_PKG_HOMEPAGE=https://wasmtime.dev/
-TERMUX_PKG_DESCRIPTION="A standalone runtime for WebAssembly"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_LICENSE_FILE="LICENSE"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="18.0.3"
-TERMUX_PKG_SRCURL=git+https://github.com/bytecodealliance/wasmtime
-TERMUX_PKG_GIT_BRANCH="v${TERMUX_PKG_VERSION}"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_HOMEPAGE=https://wasmtime.dev/
+NEOTERM_PKG_DESCRIPTION="A standalone runtime for WebAssembly"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_LICENSE_FILE="LICENSE"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="18.0.3"
+NEOTERM_PKG_SRCURL=git+https://github.com/bytecodealliance/wasmtime
+NEOTERM_PKG_GIT_BRANCH="v${NEOTERM_PKG_VERSION}"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true
 
 # arm:
 # ```
@@ -27,16 +27,16 @@ TERMUX_PKG_AUTO_UPDATE=true
 # 14 |         (stat.st_mode & libc::S_IFMT) == libc::S_IFSOCK
 #    |                         ^^^^^^^^^^^^ expected `u32`, found `u16`
 # ```
-TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686"
+NEOTERM_PKG_BLACKLISTED_ARCHES="arm, i686"
 
-termux_pkg_auto_update() {
+neoterm_pkg_auto_update() {
 	local e=0
 	local api_url="https://api.github.com/repos/bytecodealliance/wasmtime/git/refs/tags"
 	local api_url_r=$(curl -s "${api_url}")
 	local r1=$(echo "${api_url_r}" | jq .[].ref | sed -ne "s|.*/\(v.*\)\"|\1|p")
 	local latest_version=$(echo "${r1}" | sed -nE 's|(^v[0-9]+)|\1|p' | sort -V | tail -n1)
-	if [[ "${latest_version}" == "v${TERMUX_PKG_VERSION}" ]]; then
-		echo "INFO: No update needed. Already at version '${TERMUX_PKG_VERSION}'."
+	if [[ "${latest_version}" == "v${NEOTERM_PKG_VERSION}" ]]; then
+		echo "INFO: No update needed. Already at version '${NEOTERM_PKG_VERSION}'."
 		return
 	fi
 	[[ -z "${api_url_r}" ]] && e=1
@@ -53,17 +53,17 @@ termux_pkg_auto_update() {
 		return
 	fi
 
-	termux_pkg_upgrade_version "${latest_version/v/}"
+	neoterm_pkg_upgrade_version "${latest_version/v/}"
 }
 
-termux_step_pre_configure() {
-	termux_setup_rust
+neoterm_step_pre_configure() {
+	neoterm_setup_rust
 }
 
-termux_step_make() {
-	cargo build --jobs "${TERMUX_MAKE_PROCESSES}" --target "${CARGO_TARGET_NAME}" --release
+neoterm_step_make() {
+	cargo build --jobs "${NEOTERM_MAKE_PROCESSES}" --target "${CARGO_TARGET_NAME}" --release
 }
 
-termux_step_make_install() {
-	install -Dm755 -t "${TERMUX_PREFIX}/bin" "target/${CARGO_TARGET_NAME}/release/wasmtime"
+neoterm_step_make_install() {
+	install -Dm755 -t "${NEOTERM_PREFIX}/bin" "target/${CARGO_TARGET_NAME}/release/wasmtime"
 }

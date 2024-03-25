@@ -5,7 +5,7 @@
          input : pc + '.pc.in',
          output : pc + '.pc',
 -        install_dir : get_option('datadir') + '/pkgconfig',
-+        install_dir : '@TERMUX_PREFIX@/lib/pkgconfig',
++        install_dir : '@NEOTERM_PREFIX@/lib/pkgconfig',
          configuration : pc_data,
      )
  endforeach
@@ -14,7 +14,7 @@
              input : pc + '.pc.in',
              output : pc + '.pc',
 -            install_dir : get_option('datadir') + '/pkgconfig',
-+            install_dir : '@TERMUX_PREFIX@/lib/pkgconfig',
++            install_dir : '@NEOTERM_PREFIX@/lib/pkgconfig',
              configuration : pc_data,
          )
      endforeach

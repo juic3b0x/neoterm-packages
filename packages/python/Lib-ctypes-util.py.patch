@@ -14,7 +14,7 @@
  
              try:
 -                proc = subprocess.Popen(('/sbin/ldconfig', '-r'),
-+                proc = subprocess.Popen(('@TERMUX_PREFIX@/bin/ldconfig', '-r'),
++                proc = subprocess.Popen(('@NEOTERM_PREFIX@/bin/ldconfig', '-r'),
                                          stdout=subprocess.PIPE,
                                          stderr=subprocess.DEVNULL)
              except OSError:  # E.g. command not found

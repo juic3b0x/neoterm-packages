@@ -5,7 +5,7 @@
     if (_enabled == true) {
        string FileName = _config->Find("Synaptic::ReducedViewFile",
 -                                      "/etc/apt/metadata");
-+                                      "@TERMUX_PREFIX@/etc/apt/metadata");
++                                      "@NEOTERM_PREFIX@/etc/apt/metadata");
        if (FileExists(FileName))
           addFile(FileName);
     }

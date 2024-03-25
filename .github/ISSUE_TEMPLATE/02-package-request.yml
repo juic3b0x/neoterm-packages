@@ -12,7 +12,7 @@ body:
   - type: textarea
     attributes:
       label: Why is it worth to add this package?
-      description: Provide us a detailed explanation how do you plan to use the requested package and why it would be a nice addition to the Termux repository.
+      description: Provide us a detailed explanation how do you plan to use the requested package and why it would be a nice addition to the NeoTerm repository.
     validations:
       required: true
   - type: input
@@ -29,7 +29,7 @@ body:
       label: Packaging policy acknowledgement
       description: We reject packages that are used for Hacking or fall under certain other conditions described in [Packaging Policy](https://github.com/neoterm/neoterm-packages/blob/master/CONTRIBUTING.md#packaging-policy). Please READ this policy document!
       options:
-        - label: I certify that I have read [Termux Packaging Policy](https://github.com/neoterm/neoterm-packages/blob/master/CONTRIBUTING.md#packaging-policy) and understand that my request will be denied in case of violation.
+        - label: I certify that I have read [NeoTerm Packaging Policy](https://github.com/neoterm/neoterm-packages/blob/master/CONTRIBUTING.md#packaging-policy) and understand that my request will be denied in case of violation.
           required: true
   - type: textarea
     attributes:

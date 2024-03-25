@@ -6,7 +6,7 @@ diff -uNr ffmpeg-4.1.1/libavutil/file_open.c ffmpeg-4.1.1.mod/libavutil/file_ope
      free(ptr);
  #else
 -    size_t len = strlen(prefix) + 12; /* room for "/tmp/" and "XXXXXX\0" */
-+    size_t len = strlen(prefix) + strlen("@TERMUX_PREFIX@/tmp/") + 7; /* room for "@TERMUX_PREFIX@/tmp/" and "XXXXXX\0" */
++    size_t len = strlen(prefix) + strlen("@NEOTERM_PREFIX@/tmp/") + 7; /* room for "@NEOTERM_PREFIX@/tmp/" and "XXXXXX\0" */
      *filename  = av_malloc(len);
  #endif
      /* -----common section-----*/
@@ -15,7 +15,7 @@ diff -uNr ffmpeg-4.1.1/libavutil/file_open.c ffmpeg-4.1.1.mod/libavutil/file_ope
      fd = open(*filename, O_RDWR | O_BINARY | O_CREAT | O_EXCL, 0600);
  #else
 -    snprintf(*filename, len, "/tmp/%sXXXXXX", prefix);
-+    snprintf(*filename, len, "@TERMUX_PREFIX@/tmp/%sXXXXXX", prefix);
++    snprintf(*filename, len, "@NEOTERM_PREFIX@/tmp/%sXXXXXX", prefix);
      fd = mkstemp(*filename);
  #if defined(_WIN32) || defined (__ANDROID__)
      if (fd < 0) {

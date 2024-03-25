@@ -7,7 +7,7 @@ index 96c2353..dac466c 100644
  
  QT       += core gui
 -
-+DEFINES += USE_TERMUX_PATH
++DEFINES += USE_NEOTERM_PATH
  greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
  
  QMAKE_CXXFLAGS += -std=c++11

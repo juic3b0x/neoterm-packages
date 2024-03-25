@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://sourceforge.net/projects/nsis/
-TERMUX_PKG_DESCRIPTION="A professional open source system to create Windows installers"
+NEOTERM_PKG_HOMEPAGE=https://sourceforge.net/projects/nsis/
+NEOTERM_PKG_DESCRIPTION="A professional open source system to create Windows installers"
 # Licenses: zlib/libpng, bzip2, CPL-1.0
-TERMUX_PKG_LICENSE="custom"
-TERMUX_PKG_LICENSE_FILE="COPYING"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="3.09"
-TERMUX_PKG_SRCURL=https://prdownloads.sourceforge.net/nsis/nsis-${TERMUX_PKG_VERSION}-src.tar.bz2
-TERMUX_PKG_SHA256=0cd846c6e9c59068020a87bfca556d4c630f2c5d554c1098024425242ddc56e2
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="libandroid-support, libc++, libiconv, nsis-stubs, zlib"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="COPYING"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="3.09"
+NEOTERM_PKG_SRCURL=https://prdownloads.sourceforge.net/nsis/nsis-${NEOTERM_PKG_VERSION}-src.tar.bz2
+NEOTERM_PKG_SHA256=0cd846c6e9c59068020a87bfca556d4c630f2c5d554c1098024425242ddc56e2
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libandroid-support, libc++, libiconv, nsis-stubs, zlib"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_make_install() {
+neoterm_step_make_install() {
 	scons \
 		CC="$(command -v $CC)" \
 		CXX="$(command -v $CXX)" \
@@ -22,17 +22,17 @@ termux_step_make_install() {
 		SKIPUTILS=all \
 		SKIPMISC=all \
 		NSIS_CONFIG_CONST_DATA_PATH=no \
-		PREFIX="$TERMUX_PREFIX/opt/nsis/nsis" \
+		PREFIX="$NEOTERM_PREFIX/opt/nsis/nsis" \
 		install-compiler
 }
 
-termux_step_post_make_install() {
-	ln -sfr $TERMUX_PREFIX/opt/nsis/nsis/makensis $TERMUX_PREFIX/bin/
+neoterm_step_post_make_install() {
+	ln -sfr $NEOTERM_PREFIX/opt/nsis/nsis/makensis $NEOTERM_PREFIX/bin/
 
 	rm -rf _nsis-stubs
 	mkdir -p _nsis-stubs
 	pushd _nsis-stubs
-	tar xf $TERMUX_PKG_BUILDER_DIR/nsis-stubs.tar.xz --strip-components=1
-	install -Dm600 -t $TERMUX_PREFIX/opt/nsis/Stubs *
+	tar xf $NEOTERM_PKG_BUILDER_DIR/nsis-stubs.tar.xz --strip-components=1
+	install -Dm600 -t $NEOTERM_PREFIX/opt/nsis/Stubs *
 	popd
 }

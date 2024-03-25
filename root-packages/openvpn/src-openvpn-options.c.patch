@@ -6,7 +6,7 @@ diff -uNr openvpn-2.4.7/src/openvpn/options.c openvpn-2.4.7.mod/src/openvpn/opti
      if (!o->tmp_dir)
      {
 -        o->tmp_dir = "/tmp";
-+        o->tmp_dir = "@TERMUX_PREFIX@/tmp";
++        o->tmp_dir = "@NEOTERM_PREFIX@/tmp";
      }
  #endif /* _WIN32 */
  #endif /* P2MP_SERVER */

@@ -7,10 +7,10 @@ index 535343f..1ae444d 100644
  
  #ifdef Q_OS_SOLARIS
 -#define FSTAB "/etc/vfstab"
-+#define FSTAB "@TERMUX_PREFIX@/etc/vfstab"
++#define FSTAB "@NEOTERM_PREFIX@/etc/vfstab"
  #else
 -#define FSTAB "/etc/fstab"
-+#define FSTAB "@TERMUX_PREFIX@/etc/fstab"
++#define FSTAB "@NEOTERM_PREFIX@/etc/fstab"
  #endif
  
  typedef QMultiHash<QString, QString> QStringMultiHash;
@@ -19,7 +19,7 @@ index 535343f..1ae444d 100644
  {
      QStringList env = QProcess::systemEnvironment();
 -    env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=/sbin:/bin:/usr/sbin/:/usr/bin");
-+    env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=@TERMUX_PREFIX@/bin:@TERMUX_PREFIX@/local/bin");
++    env.replaceInStrings(QRegExp("^PATH=(.*)", Qt::CaseInsensitive), "PATH=@NEOTERM_PREFIX@/bin:@NEOTERM_PREFIX@/local/bin");
  
      QProcess *process = new QProcess(obj);
  
@@ -32,13 +32,13 @@ index d6ba5a0..3bae748 100644
    if ( qstrncmp( "data", resource, 4 ) == 0 ) {
      if ( instance()->mDataDirs.isEmpty() ) {
 -      instance()->mDataDirs = instance()->systemPathList( "XDG_DATA_DIRS", "/usr/local/share:/usr/share" );
-+      instance()->mDataDirs = instance()->systemPathList( "XDG_DATA_DIRS", "@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share" );
++      instance()->mDataDirs = instance()->systemPathList( "XDG_DATA_DIRS", "@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share" );
      }
      return instance()->mDataDirs;
    } else if ( qstrncmp( "config", resource, 6 ) == 0 ) {
      if ( instance()->mConfigDirs.isEmpty() ) {
 -      instance()->mConfigDirs = instance()->systemPathList( "XDG_CONFIG_DIRS", "/etc/xdg" );
-+      instance()->mConfigDirs = instance()->systemPathList( "XDG_CONFIG_DIRS", "@TERMUX_PREFIX@/etc/xdg" );
++      instance()->mConfigDirs = instance()->systemPathList( "XDG_CONFIG_DIRS", "@NEOTERM_PREFIX@/etc/xdg" );
      }
      return instance()->mConfigDirs;
    }
@@ -51,7 +51,7 @@ index 5c77961..82906ee 100644
      MpdDefaults()
          : host("localhost")
 -        , dir("/var/lib/mpd/music/")
-+        , dir("@TERMUX_PREFIX@/var/lib/mpd/music/")
++        , dir("@NEOTERM_PREFIX@/var/lib/mpd/music/")
          , port(6600) {
      }
  
@@ -60,7 +60,7 @@ index 5c77961..82906ee 100644
  
      void read() {
 -        QFile f("/etc/mpd.conf");
-+        QFile f("@TERMUX_PREFIX@/etc/mpd.conf");
++        QFile f("@NEOTERM_PREFIX@/etc/mpd.conf");
  
          if (f.open(QIODevice::ReadOnly|QIODevice::Text)) {
              int details=0;
@@ -74,8 +74,8 @@ index 110f65a..800bb46 100755
  # #####################################
 -$filesDir="/var/lib/mpd/dynamic";
 -$pidFile="/var/run/cantata-dynamic/pid";
-+$filesDir="@TERMUX_PREFIX@/var/lib/mpd/dynamic";
-+$pidFile="@TERMUX_PREFIX@/var/run/cantata-dynamic/pid";
++$filesDir="@NEOTERM_PREFIX@/var/lib/mpd/dynamic";
++$pidFile="@NEOTERM_PREFIX@/var/run/cantata-dynamic/pid";
  
  sub encodeString() {
      my $str=shift;
@@ -84,11 +84,11 @@ index 110f65a..800bb46 100755
      my $config=shift;
      if (!$config || ($config=~ m/^(default)/)) {
 -        $config="/etc/cantata-dynamic.conf";
-+        $config="@TERMUX_PREFIX@/etc/cantata-dynamic.conf";
++        $config="@NEOTERM_PREFIX@/etc/cantata-dynamic.conf";
      }
      open(my $fileHandle, $config)  || die "ERROR: Failed to load config $config - $!\n";
 -    $activeFile="/var/run/cantata-dynamic/rules";
-+    $activeFile="@TERMUX_PREFIX@/var/run/cantata-dynamic/rules";
++    $activeFile="@NEOTERM_PREFIX@/var/run/cantata-dynamic/rules";
      if (tell($fileHandle) != -1) {
          my @lines = <$fileHandle>; # Read into an array...
          close($fileHandle);
@@ -102,8 +102,8 @@ index 53ebc41..1a91512 100755
  Type=forking
 -ExecStart=/usr/share/cantata/scripts/cantata-dynamic server /etc/cantata-dynamic.conf
 -ExecStop=/usr/share/cantata/scripts/cantata-dynamic stopserver /etc/cantata-dynamic.conf
-+ExecStart=@TERMUX_PREFIX@/share/cantata/scripts/cantata-dynamic server @TERMUX_PREFIX@/etc/cantata-dynamic.conf
-+ExecStop=@TERMUX_PREFIX@/share/cantata/scripts/cantata-dynamic stopserver @TERMUX_PREFIX@/etc/cantata-dynamic.conf
++ExecStart=@NEOTERM_PREFIX@/share/cantata/scripts/cantata-dynamic server @NEOTERM_PREFIX@/etc/cantata-dynamic.conf
++ExecStop=@NEOTERM_PREFIX@/share/cantata/scripts/cantata-dynamic stopserver @NEOTERM_PREFIX@/etc/cantata-dynamic.conf
  RuntimeDirectory=cantata-dynamic
  PIDFile=/run/cantata-dynamic/pid
  

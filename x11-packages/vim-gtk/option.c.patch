@@ -6,7 +6,7 @@ diff -uNr vim-9.0.1300/src/option.c vim-9.0.1300.mod/src/option.c
  	    p = (char_u *)"/private/tmp";
  # else
 -	p = (char_u *)"/tmp";
-+	p = (char_u *)"@TERMUX_PREFIX@/tmp";
++	p = (char_u *)"@NEOTERM_PREFIX@/tmp";
  # endif
  	else
  #endif

@@ -9,9 +9,9 @@ index d09a124..931271b 100644
 -#define GLOBALICONS "/usr/share/icons"
 -#define GLOBALTHEMES "/usr/share/themes"
 -#define GLOBALWALLPAPERS "/usr/share/backgrounds/xfce"
-+#define GLOBALICONS "@TERMUX_PREFIX@/share/icons"
-+#define GLOBALTHEMES "@TERMUX_PREFIX@/share/themes"
-+#define GLOBALWALLPAPERS "@TERMUX_PREFIX@/share/backgrounds/xfce"
++#define GLOBALICONS "@NEOTERM_PREFIX@/share/icons"
++#define GLOBALTHEMES "@NEOTERM_PREFIX@/share/themes"
++#define GLOBALWALLPAPERS "@NEOTERM_PREFIX@/share/backgrounds/xfce"
  
  //new props defines
  #define XSETTINGS "xsettings"

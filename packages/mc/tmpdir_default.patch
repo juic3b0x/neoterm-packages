@@ -6,7 +6,7 @@ diff -u -r ../mc-4.8.11/lib/global.h ./lib/global.h
  #define PATH_SEP_STR "/"
  #define PATH_ENV_SEP ':'
 -#define TMPDIR_DEFAULT "/tmp"
-+#define TMPDIR_DEFAULT "@TERMUX_PREFIX@/tmp"
++#define TMPDIR_DEFAULT "@NEOTERM_PREFIX@/tmp"
  #define SCRIPT_SUFFIX ""
  #define get_default_editor() "vi"
  #define OS_SORT_CASE_SENSITIVE_DEFAULT 1

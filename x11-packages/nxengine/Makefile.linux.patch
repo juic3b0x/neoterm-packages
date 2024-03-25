@@ -20,11 +20,11 @@ diff -uNr NXEngine-1.0.0.4-Rev4/Makefile.linux NXEngine-1.0.0.4-Rev4.mod/Makefil
 -STRIP         = strip
 +CFLAGS        ?= -pipe -O2 $(DEFINES)
 +CXXFLAGS      ?= -pipe -O2 $(DEFINES)
-+INCPATH       = -I@TERMUX_PREFIX@/include -I@TERMUX_PREFIX@/include/SDL -I.
++INCPATH       = -I@NEOTERM_PREFIX@/include -I@NEOTERM_PREFIX@/include/SDL -I.
 +LINK          ?= g++
 +LFLAGS        ?= -Wl,-O1
 +LIBS_SHARED   = -lSDL -lSDL_ttf
-+LIBS_STATIC   = @TERMUX_PREFIX@/lib/libSDLmain.a @TERMUX_PREFIX@/lib/libSDL.a @TERMUX_PREFIX@/lib/libSDL_ttf.a -ldl -lpthread -lfreetype
++LIBS_STATIC   = @NEOTERM_PREFIX@/lib/libSDLmain.a @NEOTERM_PREFIX@/lib/libSDL.a @NEOTERM_PREFIX@/lib/libSDL_ttf.a -ldl -lpthread -lfreetype
 +STRIP         ?= strip
  DEL_FILE      = rm -f
  

@@ -1,11 +1,11 @@
-# PowerShell script to update Termux Package Builder Docker Image
+# PowerShell script to update NeoTerm Package Builder Docker Image
 #
 # Usage example:
 #
 # .\scripts\update-docker.ps1
 
-Set-Variable -Name CONTAINER -Value "termux-package-builder"
-Set-Variable -Name IMAGE -Value "ghcr.io/termux/package-builder"
+Set-Variable -Name CONTAINER -Value "neoterm-package-builder"
+Set-Variable -Name IMAGE -Value "ghcr.io/neoterm/package-builder"
 
 docker pull $IMAGE
 

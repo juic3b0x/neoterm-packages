@@ -7,7 +7,7 @@ index c0f4380..7a4a043 100644
  	s = webkit_get_default_session();
  	g_object_set(G_OBJECT(s), "ssl-ca-file",
 -		     "/etc/ssl/certs/ca-certificates.crt", NULL);
-+		     "@TERMUX_PREFIX@/etc/tls/cert.pem", NULL);
++		     "@NEOTERM_PREFIX@/etc/tls/cert.pem", NULL);
  	if (ignore_tls)
  		g_object_set(G_OBJECT(s), "ssl-strict", FALSE, NULL);
  #endif /* USE_WEBKIT2 */

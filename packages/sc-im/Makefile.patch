@@ -5,7 +5,7 @@
  
  # The base directory where everything should be installed.
 -prefix  = /usr/local
-+prefix  = @TERMUX_PREFIX@
++prefix  = @NEOTERM_PREFIX@
  
  EXDIR   = $(prefix)/bin
  HELPDIR = $(prefix)/share/$(name)

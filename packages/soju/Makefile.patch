@@ -6,11 +6,11 @@
  MANDIR ?= share/man
 -SYSCONFDIR ?= /etc
 -RUNDIR ?= /run
-+SYSCONFDIR = @TERMUX_PREFIX@/etc
-+RUNDIR = @TERMUX_PREFIX@/var/run
++SYSCONFDIR = @NEOTERM_PREFIX@/etc
++RUNDIR = @NEOTERM_PREFIX@/var/run
  
 -sharedstatedir := /var/lib
-+sharedstatedir := @TERMUX_PREFIX@/var/lib
++sharedstatedir := @NEOTERM_PREFIX@/var/lib
  config_path := $(SYSCONFDIR)/soju/config
  admin_socket_path := $(RUNDIR)/soju/admin
  goflags := $(GOFLAGS) -ldflags=" \

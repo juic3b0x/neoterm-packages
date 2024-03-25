@@ -14,7 +14,7 @@
        };
 +#else
 +      const std::array<std::string, 1> cert_files = {
-+          "@TERMUX_PREFIX@/etc/tls/cert.pem"
++          "@NEOTERM_PREFIX@/etc/tls/cert.pem"
 +      };
 +#endif
  

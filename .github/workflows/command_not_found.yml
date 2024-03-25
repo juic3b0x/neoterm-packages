@@ -24,7 +24,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.NEOTERMBOT2_TOKEN }}
         run: |
-          git config --global user.name "Termux Github Actions"
+          git config --global user.name "NeoTerm Github Actions"
           git config --global user.email "contact@neoterm.dev"
 
           ./scripts/bin/revbump command-not-found

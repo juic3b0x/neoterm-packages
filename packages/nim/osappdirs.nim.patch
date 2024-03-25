@@ -6,7 +6,7 @@ diff '--color=auto' -ruN nim-2.0.0/lib/std/private/osappdirs.nim nim-2.0.0.mod/l
            if getTempPath(size, buffer) > 0:
              result = $buffer
 -      elif defined(android): result = "/data/local/tmp"
-+      elif defined(android): result = "@TERMUX_PREFIX@/tmp"
++      elif defined(android): result = "@NEOTERM_PREFIX@/tmp"
        else:
          getTempDirImpl(result)
      if result.len == 0:

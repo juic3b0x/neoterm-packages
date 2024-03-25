@@ -34,7 +34,7 @@ diff -uNr shellinabox-2.20/shellinabox/launcher.c shellinabox-2.20.mod/shellinab
      check(!service->cmdline);
 -    service->cmdline           = strdup(*pw->pw_shell ?
 -                                        pw->pw_shell : "/bin/sh");
-+    service->cmdline           = strdup("@TERMUX_PREFIX@/bin/bash");
++    service->cmdline           = strdup("@NEOTERM_PREFIX@/bin/bash");
    }
  
    if (restricted &&
@@ -53,7 +53,7 @@ diff -uNr shellinabox-2.20/shellinabox/launcher.c shellinabox-2.20.mod/shellinab
    check(
    (*environment)[numEnvVars++] = strdup(
 -                              "PATH=/usr/local/bin:/usr/bin:/bin:/usr/games"));
-+                              "PATH=@TERMUX_PREFIX@/bin"));
++                              "PATH=@NEOTERM_PREFIX@/bin"));
    (*environment)[numEnvVars++] = stringPrintf(NULL, "LOGNAME=%s",
                                                service->user);
    (*environment)[numEnvVars++] = stringPrintf(NULL, "USER=%s", service->user);
@@ -91,7 +91,7 @@ diff -uNr shellinabox-2.20/shellinabox/launcher.c shellinabox-2.20.mod/shellinab
 -           (void *)0, environment);
 -    execle("/usr/bin/login", "login", "-p", "-h", remoteHost,
 -           (void *)0, environment);
-+    execle("@TERMUX_PREFIX@/bin/pwlogin", "pwlogin", (void *)0, environment);
++    execle("@NEOTERM_PREFIX@/bin/pwlogin", "pwlogin", (void *)0, environment);
    } else {
      // Launch user provied service
      execService(width, height, service, peerName, realIP, environment, url);

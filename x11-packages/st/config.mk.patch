@@ -6,13 +6,13 @@ diff -uNr st-0.8.2/config.mk st-0.8.2.mod/config.mk
  
  # paths
 -PREFIX = /usr/local
-+PREFIX = @TERMUX_PREFIX@
++PREFIX = @NEOTERM_PREFIX@
  MANPREFIX = $(PREFIX)/share/man
  
 -X11INC = /usr/X11R6/include
 -X11LIB = /usr/X11R6/lib
-+X11INC = @TERMUX_PREFIX@/include/X11
-+X11LIB = @TERMUX_PREFIX@/lib
++X11INC = @NEOTERM_PREFIX@/include/X11
++X11LIB = @NEOTERM_PREFIX@/lib
  
  PKG_CONFIG = pkg-config
  

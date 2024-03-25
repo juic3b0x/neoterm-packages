@@ -31,7 +31,7 @@
   *   RES_NINIT
   ***************************************************************************/
  
-+static const char *const resolv_conf_default = "@TERMUX_PREFIX@/etc/resolv.conf";
++static const char *const resolv_conf_default = "@NEOTERM_PREFIX@/etc/resolv.conf";
 +
  static int rwrap_res_ninit(struct __res_state *state)
  {

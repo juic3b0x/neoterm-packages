@@ -1,4 +1,4 @@
-https://github.com/termux/termux-packages/issues/15852
+https://github.com/neoterm/neoterm-packages/issues/15852
 
 --- a/src/bftextview2_autocomp.c
 +++ b/src/bftextview2_autocomp.c

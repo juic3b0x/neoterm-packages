@@ -6,7 +6,7 @@ diff -uNr libtorrent-0.13.8/scripts/ax_check_zlib.m4 libtorrent-0.13.8.mod/scrip
  #
  [AC_MSG_CHECKING(if zlib is wanted)
 -zlib_places="/usr/local /usr /opt/local /sw"
-+zlib_places="@TERMUX_PREFIX@"
++zlib_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([zlib],
  [  --with-zlib=DIR         root directory path of zlib installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@

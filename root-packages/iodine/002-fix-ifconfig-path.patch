@@ -6,7 +6,7 @@ diff -uNr iodine-0.7.0/src/tun.c iodine-0.7.0.mod/src/tun.c
  
  #ifndef IFCONFIGPATH
 -#define IFCONFIGPATH "PATH=/sbin:/bin "
-+#define IFCONFIGPATH "PATH=@TERMUX_PREFIX@/bin:@TERMUX_PREFIX@/bin/applets "
++#define IFCONFIGPATH "PATH=@NEOTERM_PREFIX@/bin:@NEOTERM_PREFIX@/bin/applets "
  #endif
  
  #ifdef WINDOWS32

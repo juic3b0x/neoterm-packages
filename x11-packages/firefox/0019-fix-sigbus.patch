@@ -1,6 +1,6 @@
 Fix SIGBUS Firefox error on Arm. Also apply to other arches just in case.
 
-https://github.com/termux/termux-packages/issues/15901
+https://github.com/neoterm/neoterm-packages/issues/15901
 https://github.com/mozilla/gecko-dev/commit/d7ba2cef0e9b74addedda4bc7f57daf10599a5dc
 https://github.com/google/cityhash/blob/master/src/city.cc
 
@@ -11,7 +11,7 @@ https://github.com/google/cityhash/blob/master/src/city.cc
  using namespace std;
  
 -#if __sparc__
-+#if __sparc__ || __TERMUX__
++#if __sparc__ || __NEOTERM__
  #include <string.h>
  static inline uint64 UNALIGNED_LOAD64(const char *p) {
    uint64 val;

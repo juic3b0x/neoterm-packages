@@ -5,7 +5,7 @@
  #endif
  #if defined(linux) && !defined(HAVE_LIBRPM)
 -#define	_PATH_HRSW_directory	"/var/cache/hrmib"
-+#define	_PATH_HRSW_directory	"@TERMUX_PREFIX@/var/cache/hrmib"
++#define	_PATH_HRSW_directory	"@NEOTERM_PREFIX@/var/cache/hrmib"
  #endif
  
  void

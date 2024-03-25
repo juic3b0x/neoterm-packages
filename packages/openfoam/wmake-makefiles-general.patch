@@ -6,8 +6,8 @@
  
 -SYS_INC         =
 -SYS_LIBS        =
-+SYS_INC         = -I@TERMUX_PREFIX@/include
-+SYS_LIBS        = -L@TERMUX_PREFIX@/lib
++SYS_INC         = -I@NEOTERM_PREFIX@/include
++SYS_LIBS        = -L@NEOTERM_PREFIX@/lib
  
  # Add linkage for openmp into the system libraries
  ifneq (,$(findstring +openmp,$(WM_COMPILE_CONTROL)))
@@ -17,8 +17,8 @@
  # These are set by Make/options
 -EXE_INC         =
 -EXE_LIBS        =
-+EXE_INC         = -I@TERMUX_PREFIX@/include
-+EXE_LIBS        = -L@TERMUX_PREFIX@/lib
++EXE_INC         = -I@NEOTERM_PREFIX@/include
++EXE_LIBS        = -L@NEOTERM_PREFIX@/lib
  LIB_LIBS        =
  
  # Project include/libraries

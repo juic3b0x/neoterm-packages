@@ -17,7 +17,7 @@ diff -u -r ../dropbear-2019.77/svr-authpasswd.c ./svr-authpasswd.c
 -
 -	return constant_time_memcmp(a, b, la);
 -}
-+#include <termux-auth.h>
++#include <neoterm-auth.h>
  
  /* Process a password auth request, sending success or failure messages as
   * appropriate */
@@ -47,7 +47,7 @@ diff -u -r ../dropbear-2019.77/svr-authpasswd.c ./svr-authpasswd.c
  	if (constant_time_strcmp(testcrypt, passwdcrypt) == 0) {
 +#else /* __ANDROID__ */
 +	/* check if password is valid */
-+	if (termux_auth(ses.authstate.pw_name, password)) {
++	if (neoterm_auth(ses.authstate.pw_name, password)) {
 +		if (!ses.authstate.pw_name) {
 +			dropbear_log(LOG_WARNING, "Login name is NULL");
 +			send_msg_userauth_failure(0, 1);

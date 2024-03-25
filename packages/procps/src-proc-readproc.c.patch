@@ -5,7 +5,7 @@ diff -u -r ../orig-src/proc/readproc.c ./proc/readproc.c
        p->wchan = (KLONG)~0ull;
      }
  
-+    // Termux patch to use argv0 instead of executable name,
++    // NeoTerm patch to use argv0 instead of executable name,
 +    // since that will soon (at time of writing) always be
 +    // /system/bin/linker64.
 +    char** cmdline_vec = file2strvec(path, "cmdline");

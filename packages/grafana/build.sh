@@ -1,19 +1,19 @@
-TERMUX_PKG_HOMEPAGE=https://grafana.com/
-TERMUX_PKG_DESCRIPTION="The open-source platform for monitoring and observability"
-TERMUX_PKG_LICENSE="AGPL-V3"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=8.5.27
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=git+https://github.com/grafana/grafana
-TERMUX_PKG_BUILD_DEPENDS="yarn"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_MAKE_ARGS="SPEC_TARGET= MERGED_SPEC_TARGET="
+NEOTERM_PKG_HOMEPAGE=https://grafana.com/
+NEOTERM_PKG_DESCRIPTION="The open-source platform for monitoring and observability"
+NEOTERM_PKG_LICENSE="AGPL-V3"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=8.5.27
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=git+https://github.com/grafana/grafana
+NEOTERM_PKG_BUILD_DEPENDS="yarn"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_MAKE_ARGS="SPEC_TARGET= MERGED_SPEC_TARGET="
 
-termux_step_pre_configure() {
-	termux_setup_golang
-	termux_setup_nodejs
+neoterm_step_pre_configure() {
+	neoterm_setup_golang
+	neoterm_setup_nodejs
 
-	local bin=$TERMUX_PKG_BUILDDIR/_bin
+	local bin=$NEOTERM_PKG_BUILDDIR/_bin
 	mkdir -p $bin
 	GOOS=linux GOARCH=amd64 go build build.go
 	mv build $bin/_build
@@ -28,7 +28,7 @@ termux_step_pre_configure() {
 	local yarn=$bin/yarn
 	cat > $yarn <<-EOF
 		#!$(command -v sh)
-		exec sh $TERMUX_PREFIX/bin/yarn "\$@"
+		exec sh $NEOTERM_PREFIX/bin/yarn "\$@"
 		EOF
 	chmod 0755 $yarn
 
@@ -40,15 +40,15 @@ termux_step_pre_configure() {
 	yarn set version 3.2.4
 }
 
-termux_step_make() {
-	make $TERMUX_PKG_EXTRA_MAKE_ARGS build-go
-	make $TERMUX_PKG_EXTRA_MAKE_ARGS deps-js
-	make $TERMUX_PKG_EXTRA_MAKE_ARGS build-js
+neoterm_step_make() {
+	make $NEOTERM_PKG_EXTRA_MAKE_ARGS build-go
+	make $NEOTERM_PKG_EXTRA_MAKE_ARGS deps-js
+	make $NEOTERM_PKG_EXTRA_MAKE_ARGS build-js
 }
 
-termux_step_make_install() {
-	install -Dm700 -t $TERMUX_PREFIX/bin bin/*/grafana-server bin/*/grafana-cli
-	local sharedir=$TERMUX_PREFIX/share/grafana
+neoterm_step_make_install() {
+	install -Dm700 -t $NEOTERM_PREFIX/bin bin/*/grafana-server bin/*/grafana-cli
+	local sharedir=$NEOTERM_PREFIX/share/grafana
 	mkdir -p $sharedir
 	for d in conf public; do
 		cp -rT $d $sharedir/$d

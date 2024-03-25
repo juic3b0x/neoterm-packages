@@ -6,7 +6,7 @@ diff -uNr pinentry-1.1.0/pinentry/pinentry-emacs.c pinentry-1.1.0.mod/pinentry/p
        else
  #endif
 -	tmpdir = "/tmp";
-+	tmpdir = "@TERMUX_PREFIX@/tmp";
++	tmpdir = "@NEOTERM_PREFIX@/tmp";
      }
  
    socket_name_storage = malloc (strlen (tmpdir)

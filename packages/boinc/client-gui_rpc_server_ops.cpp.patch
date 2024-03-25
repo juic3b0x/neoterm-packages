@@ -5,7 +5,7 @@ diff -uNr boinc/client/gui_rpc_server_ops.cpp boinc.mod/client/gui_rpc_server_op
                  safe_strcpy(gstate.host_info.os_name, hi.os_name);
              }
  
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
              // We already have the Linux kernel version;
              // append the Android version.
              //

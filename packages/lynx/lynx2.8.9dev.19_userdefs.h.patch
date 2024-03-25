@@ -6,7 +6,7 @@ diff -uNr lynx2.8.9dev.19/userdefs.h lynx2.8.9dev.19.mod/userdefs.h
   * variable.
   */
 -#define TEMP_SPACE "/tmp/"
-+#define TEMP_SPACE "@TERMUX_PREFIX@/tmp/"
++#define TEMP_SPACE "@NEOTERM_PREFIX@/tmp/"
  
  /********************************
   * Comment this line out to disable code that implements command logging

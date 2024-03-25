@@ -6,7 +6,7 @@
  
 -#ifdef __ANDROID__
 -#define inline static
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +#define inline static inline
  #endif
  
@@ -19,7 +19,7 @@
  
 -#ifdef __ANDROID__
 -#define inline static
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +#define inline static inline
  #endif
  
@@ -32,7 +32,7 @@
  
 -#ifdef __ANDROID__
 -#define inline static
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +#define inline static inline
  #endif
  
@@ -45,7 +45,7 @@
  
 -#ifdef __ANDROID__
 -#define inline static
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +#define inline static inline
  #endif
  

@@ -22,9 +22,9 @@
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    fd = open(fname, oflag, mode);
 +    if (fd != -1) {

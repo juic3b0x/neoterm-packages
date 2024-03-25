@@ -18,9 +18,9 @@
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    return unlink(fname);
 +}
@@ -40,9 +40,9 @@
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    fd = open(fname, oflag, mode);
 +    if (fd != -1) {
@@ -71,7 +71,7 @@
  
  #  if !defined(HAVE_MEMFD_CREATE) && defined(OS_LINUX) && \
 -      defined(SYS_memfd_create)
-+      defined(SYS_memfd_create) && !defined(__TERMUX__)
++      defined(SYS_memfd_create) && !defined(__NEOTERM__)
  
  // Older libc versions (e.g., glibc before 2.27) don't have the
  // wrapper, but we can supply our own; see `linux_memfd_defs.h`.

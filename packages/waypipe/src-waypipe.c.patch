@@ -6,8 +6,8 @@
  		"  -s, --socket S       set the socket path to either create or connect to:\n"
 -		"                         server default: /tmp/waypipe-server.sock\n"
 -		"                         client default: /tmp/waypipe-client.sock\n"
-+		"                         server default: @TERMUX_PREFIX@/tmp/waypipe-server.sock\n"
-+		"                         client default: @TERMUX_PREFIX@/tmp/waypipe-client.sock\n"
++		"                         server default: @NEOTERM_PREFIX@/tmp/waypipe-server.sock\n"
++		"                         client default: @NEOTERM_PREFIX@/tmp/waypipe-client.sock\n"
  		"                         ssh: sets the prefix for the socket path\n"
  		"      --version        print waypipe version and exit\n"
  		"      --allow-tiled    allow gpu buffers (DMABUFs) with format modifiers\n"
@@ -16,7 +16,7 @@
  			struct socket_path client_sock_path;
  			client_sock_path.folder =
 -					socketpath ? socketpath : "/tmp/";
-+					socketpath ? socketpath : "@TERMUX_PREFIX@/tmp/";
++					socketpath ? socketpath : "@NEOTERM_PREFIX@/tmp/";
  			client_sock_path.filename = &sockaddr;
  			if (!socketpath) {
  				sockaddr.sun_family = AF_UNIX;
@@ -25,7 +25,7 @@
  			struct socket_path server_sock_path;
  			server_sock_path.folder =
 -					socketpath ? socketpath : "/tmp/";
-+					socketpath ? socketpath : "@TERMUX_PREFIX@/tmp/";
++					socketpath ? socketpath : "@NEOTERM_PREFIX@/tmp/";
  			server_sock_path.filename = &sockaddr;
  			if (!socketpath) {
  				sockaddr.sun_family = AF_UNIX;
@@ -35,8 +35,8 @@
  			strcpy(clientsock.sun_path, "waypipe");
 -			strcpy(socket_folder, "/tmp/");
 -			socketpath = "/tmp/waypipe";
-+			strcpy(socket_folder, "@TERMUX_PREFIX@/tmp/");
-+			socketpath = "@TERMUX_PREFIX@/tmp/waypipe";
++			strcpy(socket_folder, "@NEOTERM_PREFIX@/tmp/");
++			socketpath = "@NEOTERM_PREFIX@/tmp/waypipe";
  		}
  		if (strlen(clientsock.sun_path) +
  						sizeof("-server-88888888.sock") >=

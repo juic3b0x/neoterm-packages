@@ -1,4 +1,4 @@
-Qt on Termux doesn't have OpenGL. This dirty patch comments out all OpenGL related code so
+Qt on NeoTerm doesn't have OpenGL. This dirty patch comments out all OpenGL related code so
 it can be compiled. However, this means the Kirigami 2 might not function completely or
 correctly.
 diff -uNr kirigami2-5.99.0/src/scenegraph/shadowedborderrectanglematerial.cpp kirigami2-5.99.0.mod/src/scenegraph/shadowedborderrectanglematerial.cpp

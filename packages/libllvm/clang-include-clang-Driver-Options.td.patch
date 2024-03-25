@@ -6,10 +6,10 @@ index 59e1337599b2..656545555349 100644
  defm stack_check : BooleanFFlag<"stack-check">, Group<clang_ignored_f_Group>;
  defm strength_reduce :
      BooleanFFlag<"strength-reduce">, Group<clang_ignored_gcc_optimization_f_Group>;
-+defm termux_rpath : BoolFOption<"termux-rpath",
++defm neoterm_rpath : BoolFOption<"neoterm-rpath",
 +  LangOpts<"OpenMP">, DefaultTrue,
 +  NegFlag<SetFalse, [], "Disable">, PosFlag<SetTrue, [], "Enable">,
-+  BothFlags<[], " setting rpaths for the Termux environment">>;
++  BothFlags<[], " setting rpaths for the NeoTerm environment">>;
  defm tls_model : BooleanFFlag<"tls-model">, Group<clang_ignored_f_Group>;
  defm tracer : BooleanFFlag<"tracer">, Group<clang_ignored_gcc_optimization_f_Group>;
  defm tree_dce : BooleanFFlag<"tree-dce">, Group<clang_ignored_gcc_optimization_f_Group>;

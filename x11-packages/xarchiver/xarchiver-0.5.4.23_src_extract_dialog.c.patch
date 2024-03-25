@@ -5,7 +5,7 @@
  		{
  			g_free(path);
 -			path = g_strdup("/tmp");
-+			path = g_strdup("@TERMUX_PREFIX@/tmp");
++			path = g_strdup("@NEOTERM_PREFIX@/tmp");
  		}
  
  		gtk_entry_set_text(GTK_ENTRY(multi_extract->destination_path_entry), path);

@@ -5,7 +5,7 @@
  ##############################
  
 -prefix='/usr/local/'
-+prefix='@TERMUX_PREFIX@/'
++prefix='@NEOTERM_PREFIX@/'
  bindir='$prefix/bin/'
 -sbindir='$prefix/sbin/'
 +sbindir='$prefix/bin/'
@@ -25,7 +25,7 @@
  ipcsocket=''
  pcdir='$prefix/lib/pkgconfig'
 -systemlibdirs="/lib64 /usr/lib64 /usr/local/lib64 /lib /usr/lib /usr/local/lib"
-+systemlibdirs="@TERMUX_PREFIX@/lib"
++systemlibdirs="@NEOTERM_PREFIX@/lib"
  sysroot=''
  
  configure_args="$@"

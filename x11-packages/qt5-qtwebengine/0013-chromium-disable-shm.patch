@@ -5,7 +5,7 @@
  // This is implemented in file_util_android.cc for that platform.
  bool GetShmemTempDir(bool executable, FilePath* path) {
 -#if defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_AIX)
-+#if (defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_AIX)) && !defined(__TERMUX__)
++#if (defined(OS_LINUX) || defined(OS_CHROMEOS) || defined(OS_AIX)) && !defined(__NEOTERM__)
    bool disable_dev_shm = false;
  #if !defined(OS_CHROMEOS) && !BUILDFLAG(IS_LACROS)
    disable_dev_shm = CommandLine::ForCurrentProcess()->HasSwitch(

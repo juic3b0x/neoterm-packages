@@ -25,7 +25,7 @@ diff -uNr netpbm-10.73.31/buildtools/installnetpbm.pl netpbm-10.73.31.mod/buildt
      }
  
 -    my $response = prompt("install prefix", $default);
-+    my $response = "@TERMUX_PREFIX@";
++    my $response = "@NEOTERM_PREFIX@";
  
      my $prefix;
  

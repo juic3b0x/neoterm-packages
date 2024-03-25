@@ -6,7 +6,7 @@ diff -uNr e2fsprogs-1.44.4/debugfs/debugfs.c e2fsprogs-1.44.4.mod/debugfs/debugf
  	tdb_dir = ss_safe_getenv("E2FSPROGS_UNDO_DIR");
  	if (!tdb_dir)
 -		tdb_dir = "/var/lib/e2fsprogs";
-+		tdb_dir = "@TERMUX_PREFIX@/var/lib/e2fsprogs";
++		tdb_dir = "@NEOTERM_PREFIX@/var/lib/e2fsprogs";
  
  	if (!strcmp(tdb_dir, "none") || (tdb_dir[0] == 0) ||
  	    access(tdb_dir, W_OK))
@@ -18,7 +18,7 @@ diff -uNr e2fsprogs-1.44.4/debugfs/util.c e2fsprogs-1.44.4.mod/debugfs/util.c
  
  static const char *pager_search_list[] = { "pager", "more", "less", 0 };
 -static const char *pager_dir_list[] = { "/usr/bin", "/bin", 0 };
-+static const char *pager_dir_list[] = { "@TERMUX_PREFIX@/bin", 0 };
++static const char *pager_dir_list[] = { "@NEOTERM_PREFIX@/bin", 0 };
  
  static const char *find_pager(char *buf)
  {
@@ -30,7 +30,7 @@ diff -uNr e2fsprogs-1.44.4/e2fsck/e2fsck.h e2fsprogs-1.44.4.mod/e2fsck/e2fsck.h
  #endif
  #ifndef LOCALEDIR
 -#define LOCALEDIR "/usr/share/locale"
-+#define LOCALEDIR "@TERMUX_PREFIX@/share/locale"
++#define LOCALEDIR "@NEOTERM_PREFIX@/share/locale"
  #endif
  #else
  #define _(a) (a)
@@ -42,7 +42,7 @@ diff -uNr e2fsprogs-1.44.4/e2fsck/unix.c e2fsprogs-1.44.4.mod/e2fsck/unix.c
  }
  
 -#define PATH_SET "PATH=/sbin"
-+#define PATH_SET "PATH=@TERMUX_PREFIX@/bin"
++#define PATH_SET "PATH=@NEOTERM_PREFIX@/bin"
  
  /*
   * Make sure 0,1,2 file descriptors are open, so that we don't open
@@ -51,7 +51,7 @@ diff -uNr e2fsprogs-1.44.4/e2fsck/unix.c e2fsprogs-1.44.4.mod/e2fsck/unix.c
  	if (!tdb_dir) {
  		profile_get_string(ctx->profile, "defaults",
 -				   "undo_dir", 0, "/var/lib/e2fsprogs",
-+				   "undo_dir", 0, "@TERMUX_PREFIX@/var/lib/e2fsprogs",
++				   "undo_dir", 0, "@NEOTERM_PREFIX@/var/lib/e2fsprogs",
  				   &tdb_dir);
  		free_tdb_dir = 1;
  	}
@@ -64,8 +64,8 @@ diff -uNr e2fsprogs-1.44.4/ext2ed/init.c e2fsprogs-1.44.4.mod/ext2ed/init.c
  
 -	if ( (fp=fopen ("/etc/mtab","rt"))==NULL) {
 -		wprintw (command_win,"Error - Failed to open /etc/mtab. Assuming filesystem is mounted.\n");
-+	if ( (fp=fopen ("@TERMUX_PREFIX@/etc/mtab","rt"))==NULL) {
-+		wprintw (command_win,"Error - Failed to open @TERMUX_PREFIX@/etc/mtab. Assuming filesystem is mounted.\n");
++	if ( (fp=fopen ("@NEOTERM_PREFIX@/etc/mtab","rt"))==NULL) {
++		wprintw (command_win,"Error - Failed to open @NEOTERM_PREFIX@/etc/mtab. Assuming filesystem is mounted.\n");
  		refresh_command_win ();mounted=1;return;
  	};
  
@@ -77,7 +77,7 @@ diff -uNr e2fsprogs-1.44.4/lib/blkid/blkidP.h e2fsprogs-1.44.4.mod/lib/blkid/blk
  extern char *blkid_strndup(const char *s, const int length);
  
 -#define BLKID_CACHE_FILE "/etc/blkid.tab"
-+#define BLKID_CACHE_FILE "@TERMUX_PREFIX@/etc/blkid.tab"
++#define BLKID_CACHE_FILE "@NEOTERM_PREFIX@/etc/blkid.tab"
  
  #define BLKID_ERR_IO	 5
  #define BLKID_ERR_PROC	 9
@@ -89,7 +89,7 @@ diff -uNr e2fsprogs-1.44.4/lib/support/nls-enable.h e2fsprogs-1.44.4.mod/lib/sup
  #endif
  #ifndef LOCALEDIR
 -#define LOCALEDIR "/usr/share/locale"
-+#define LOCALEDIR "@TERMUX_PREFIX@/share/locale"
++#define LOCALEDIR "@NEOTERM_PREFIX@/share/locale"
  #endif
  #else
  #define _(a) (a)
@@ -101,7 +101,7 @@ diff -uNr e2fsprogs-1.44.4/lib/uuid/gen_uuid.c e2fsprogs-1.44.4.mod/lib/uuid/gen
  	if (state_fd == -2) {
  		save_umask = umask(0);
 -		state_fd = open("/var/lib/libuuid/clock.txt",
-+		state_fd = open("@TERMUX_PREFIX@/var/lib/libuuid/clock.txt",
++		state_fd = open("@NEOTERM_PREFIX@/var/lib/libuuid/clock.txt",
  				O_RDWR|O_CREAT, 0660);
  		(void) umask(save_umask);
  		if (state_fd >= 0) {
@@ -140,11 +140,11 @@ diff -uNr e2fsprogs-1.44.4/lib/uuid/uuidd.h e2fsprogs-1.44.4.mod/lib/uuid/uuidd.
  #define _UUID_UUIDD_H
  
 -#define UUIDD_DIR		"/var/lib/libuuid"
-+#define UUIDD_DIR		"@TERMUX_PREFIX@/var/lib/libuuid"
++#define UUIDD_DIR		"@NEOTERM_PREFIX@/var/lib/libuuid"
  #define UUIDD_SOCKET_PATH	UUIDD_DIR "/request"
  #define UUIDD_PIDFILE_PATH	UUIDD_DIR "/uuidd.pid"
 -#define UUIDD_PATH		"/usr/sbin/uuidd"
-+#define UUIDD_PATH		"@TERMUX_PREFIX@/bin/uuidd"
++#define UUIDD_PATH		"@NEOTERM_PREFIX@/bin/uuidd"
  
  #define UUIDD_OP_GETPID			0
  #define UUIDD_OP_GET_MAXOP		1
@@ -156,7 +156,7 @@ diff -uNr e2fsprogs-1.44.4/misc/badblocks.c e2fsprogs-1.44.4.mod/misc/badblocks.
  		if (force) {
  			fputs(_("badblocks forced anyway.  "
 -				"Hope /etc/mtab is incorrect.\n"), stderr);
-+				"Hope @TERMUX_PREFIX@/etc/mtab is incorrect.\n"), stderr);
++				"Hope @NEOTERM_PREFIX@/etc/mtab is incorrect.\n"), stderr);
  			return;
  		}
  	abort_badblocks:
@@ -168,7 +168,7 @@ diff -uNr e2fsprogs-1.44.4/misc/blkid.c e2fsprogs-1.44.4.mod/misc/blkid.c
  		"usage:\t%s [-c <file>] [-ghlLv] [-o format] "
  		"[-s <tag>] [-t <token>]\n    [-w <file>] [dev ...]\n"
 -		"\t-c\tcache file (default: /etc/blkid.tab, /dev/null = none)\n"
-+		"\t-c\tcache file (default: @TERMUX_PREFIX@/etc/blkid.tab, /dev/null = none)\n"
++		"\t-c\tcache file (default: @NEOTERM_PREFIX@/etc/blkid.tab, /dev/null = none)\n"
  		"\t-h\tprint this usage message and exit\n"
  		"\t-g\tgarbage collect the blkid cache\n"
  		"\t-s\tshow specified tag(s) (default show all tags)\n"
@@ -199,7 +199,7 @@ diff -uNr e2fsprogs-1.44.4/misc/e2undo.c e2fsprogs-1.44.4.mod/misc/e2undo.c
  	tdb_dir = getenv("E2FSPROGS_UNDO_DIR");
  	if (!tdb_dir)
 -		tdb_dir = "/var/lib/e2fsprogs";
-+		tdb_dir = "@TERMUX_PREFIX@/var/lib/e2fsprogs";
++		tdb_dir = "@NEOTERM_PREFIX@/var/lib/e2fsprogs";
  
  	if (!strcmp(tdb_dir, "none") || (tdb_dir[0] == 0) ||
  	    access(tdb_dir, W_OK))
@@ -211,7 +211,7 @@ diff -uNr e2fsprogs-1.44.4/misc/e4crypt.c e2fsprogs-1.44.4.mod/misc/e4crypt.c
  static void get_default_salts(void)
  {
 -	FILE	*f = setmntent("/etc/mtab", "r");
-+	FILE	*f = setmntent("@TERMUX_PREFIX@/etc/mtab", "r");
++	FILE	*f = setmntent("@NEOTERM_PREFIX@/etc/mtab", "r");
  	struct mntent *mnt;
  
  	while (f && ((mnt = getmntent(f)) != NULL)) {
@@ -223,7 +223,7 @@ diff -uNr e2fsprogs-1.44.4/misc/e4defrag.c e2fsprogs-1.44.4.mod/misc/e4defrag.c
  	fp = setmntent(mtab, "r");
  	if (fp == NULL) {
 -		perror("Couldn't access /etc/mtab");
-+		perror("Couldn't access @TERMUX_PREFIX@/etc/mtab");
++		perror("Couldn't access @NEOTERM_PREFIX@/etc/mtab");
  		return -1;
  	}
  
@@ -232,7 +232,7 @@ diff -uNr e2fsprogs-1.44.4/misc/e4defrag.c e2fsprogs-1.44.4.mod/misc/e4defrag.c
  	fp = setmntent(mtab, "r");
  	if (fp == NULL) {
 -		perror("Couldn't access /etc/mtab");
-+		perror("Couldn't access @TERMUX_PREFIX@/etc/mtab");
++		perror("Couldn't access @NEOTERM_PREFIX@/etc/mtab");
  		return -1;
  	}
  
@@ -244,7 +244,7 @@ diff -uNr e2fsprogs-1.44.4/misc/fsck.c e2fsprogs-1.44.4.mod/misc/fsck.c
  
  #ifndef _PATH_MNTTAB
 -#define	_PATH_MNTTAB	"/etc/fstab"
-+#define	_PATH_MNTTAB	"@TERMUX_PREFIX@/etc/fstab"
++#define	_PATH_MNTTAB	"@NEOTERM_PREFIX@/etc/fstab"
  #endif
  
  static const char *ignored_types[] = {
@@ -253,7 +253,7 @@ diff -uNr e2fsprogs-1.44.4/misc/fsck.c e2fsprogs-1.44.4.mod/misc/fsck.c
  static struct fs_info *filesys_info = NULL, *filesys_last = NULL;
  static struct fsck_instance *instance_list;
 -static const char *fsck_prefix_path = "/sbin:/sbin/fs.d:/sbin/fs:/etc/fs:/etc";
-+static const char *fsck_prefix_path = "@TERMUX_PREFIX@/bin";
++static const char *fsck_prefix_path = "@NEOTERM_PREFIX@/bin";
  static char *fsck_path = 0;
  static blkid_cache cache = NULL;
  
@@ -262,10 +262,10 @@ diff -uNr e2fsprogs-1.44.4/misc/fsck.c e2fsprogs-1.44.4.mod/misc/fsck.c
  		fputs("\007\007\007", stderr);
  		fputs(_(
 -		"WARNING: Your /etc/fstab does not contain the fsck passno\n"
-+		"WARNING: Your @TERMUX_PREFIX@/etc/fstab does not contain the fsck passno\n"
++		"WARNING: Your @NEOTERM_PREFIX@/etc/fstab does not contain the fsck passno\n"
  		"	field.  I will kludge around things for you, but you\n"
 -		"	should fix your /etc/fstab file as soon as you can.\n\n"), stderr);
-+		"	should fix your @TERMUX_PREFIX@/etc/fstab file as soon as you can.\n\n"), stderr);
++		"	should fix your @NEOTERM_PREFIX@/etc/fstab file as soon as you can.\n\n"), stderr);
  
  		for (fs = filesys_info; fs; fs = fs->next) {
  			fs->passno = 1;
@@ -274,7 +274,7 @@ diff -uNr e2fsprogs-1.44.4/misc/fsck.c e2fsprogs-1.44.4.mod/misc/fsck.c
  	if (opt_in_list("bind", fs->opts)) {
  		fprintf(stderr,
 -			_("%s: skipping bad line in /etc/fstab: bind mount with nonzero fsck pass number\n"),
-+			_("%s: skipping bad line in @TERMUX_PREFIX@/etc/fstab: bind mount with nonzero fsck pass number\n"),
++			_("%s: skipping bad line in @NEOTERM_PREFIX@/etc/fstab: bind mount with nonzero fsck pass number\n"),
  			fs->mountpt);
  		return 1;
  	}
@@ -286,7 +286,7 @@ diff -uNr e2fsprogs-1.44.4/misc/fuse2fs.c e2fsprogs-1.44.4.mod/misc/fuse2fs.c
  #endif
  #ifndef LOCALEDIR
 -#define LOCALEDIR "/usr/share/locale"
-+#define LOCALEDIR "@TERMUX_PREFIX@/share/locale"
++#define LOCALEDIR "@NEOTERM_PREFIX@/share/locale"
  #endif
  #else
  #define _(a) (a)
@@ -317,7 +317,7 @@ diff -uNr e2fsprogs-1.44.4/misc/ismounted.c e2fsprogs-1.44.4.mod/misc/ismounted.
  		return 1;
  #endif /* __linux__ */
 -	retval = check_mntent_file("/etc/mtab", file, &mount_flags);
-+	retval = check_mntent_file("@TERMUX_PREFIX@/etc/mtab", file, &mount_flags);
++	retval = check_mntent_file("@NEOTERM_PREFIX@/etc/mtab", file, &mount_flags);
  	if (retval)
  		return 0;
  	return (mount_flags);
@@ -329,7 +329,7 @@ diff -uNr e2fsprogs-1.44.4/misc/mke2fs.c e2fsprogs-1.44.4.mod/misc/mke2fs.c
  }
  
 -#define PATH_SET "PATH=/sbin"
-+#define PATH_SET "PATH=@TERMUX_PREFIX@/bin"
++#define PATH_SET "PATH=@NEOTERM_PREFIX@/bin"
  
  static void parse_extended_opts(struct ext2_super_block *param,
  				const char *opts)
@@ -338,7 +338,7 @@ diff -uNr e2fsprogs-1.44.4/misc/mke2fs.c e2fsprogs-1.44.4.mod/misc/mke2fs.c
  	if (!tdb_dir) {
  		profile_get_string(profile, "defaults",
 -				   "undo_dir", 0, "/var/lib/e2fsprogs",
-+				   "undo_dir", 0, "@TERMUX_PREFIX@/var/lib/e2fsprogs",
++				   "undo_dir", 0, "@NEOTERM_PREFIX@/var/lib/e2fsprogs",
  				   &tdb_dir);
  		free_tdb_dir = 1;
  	}
@@ -350,7 +350,7 @@ diff -uNr e2fsprogs-1.44.4/misc/tune2fs.c e2fsprogs-1.44.4.mod/misc/tune2fs.c
  	tdb_dir = getenv("E2FSPROGS_UNDO_DIR");
  	if (!tdb_dir)
 -		tdb_dir = "/var/lib/e2fsprogs";
-+		tdb_dir = "@TERMUX_PREFIX@/var/lib/e2fsprogs";
++		tdb_dir = "@NEOTERM_PREFIX@/var/lib/e2fsprogs";
  
  	if (!strcmp(tdb_dir, "none") || (tdb_dir[0] == 0) ||
  	    access(tdb_dir, W_OK))
@@ -362,7 +362,7 @@ diff -uNr e2fsprogs-1.44.4/misc/util.c e2fsprogs-1.44.4.mod/misc/util.c
  		fprintf(stderr, _("%s is mounted; "), device);
  		if (force >= 2) {
 -			fputs(_("mke2fs forced anyway.  Hope /etc/mtab is "
-+			fputs(_("mke2fs forced anyway.  Hope @TERMUX_PREFIX@/etc/mtab is "
++			fputs(_("mke2fs forced anyway.  Hope @NEOTERM_PREFIX@/etc/mtab is "
  				"incorrect.\n"), stderr);
  			return;
  		}
@@ -374,7 +374,7 @@ diff -uNr e2fsprogs-1.44.4/resize/main.c e2fsprogs-1.44.4.mod/resize/main.c
  	tdb_dir = getenv("E2FSPROGS_UNDO_DIR");
  	if (!tdb_dir)
 -		tdb_dir = "/var/lib/e2fsprogs";
-+		tdb_dir = "@TERMUX_PREFIX@/var/lib/e2fsprogs";
++		tdb_dir = "@NEOTERM_PREFIX@/var/lib/e2fsprogs";
  
  	if (!strcmp(tdb_dir, "none") || (tdb_dir[0] == 0) ||
  	    access(tdb_dir, W_OK))
@@ -386,7 +386,7 @@ diff -uNr e2fsprogs-1.44.4/resize/resize2fs.h e2fsprogs-1.44.4.mod/resize/resize
  #endif
  #ifndef LOCALEDIR
 -#define LOCALEDIR "/usr/share/locale"
-+#define LOCALEDIR "@TERMUX_PREFIX@/share/locale"
++#define LOCALEDIR "@NEOTERM_PREFIX@/share/locale"
  #endif
  #else
  #define _(a) (a)
@@ -398,7 +398,7 @@ diff -uNr e2fsprogs-1.44.4/util/android_config.h e2fsprogs-1.44.4.mod/util/andro
  #endif
  
 -#define ROOT_SYSCONFDIR "/etc"
-+#define ROOT_SYSCONFDIR "@TERMUX_PREFIX@/etc"
++#define ROOT_SYSCONFDIR "@NEOTERM_PREFIX@/etc"
  
  #define ENABLE_LIBSPARSE 1
  

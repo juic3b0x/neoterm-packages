@@ -5,7 +5,7 @@
        zTemp = "\\tmp";
  #else
 -      zTemp = "/tmp";
-+      zTemp = "@TERMUX_PREFIX@/tmp";
++      zTemp = "@NEOTERM_PREFIX@/tmp";
  #endif
      }
      p->zTempFile = sqlite3_mprintf("%s/temp%llx.%s", zTemp, r, zSuffix);

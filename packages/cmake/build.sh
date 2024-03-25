@@ -1,16 +1,16 @@
-TERMUX_PKG_HOMEPAGE=https://cmake.org/
-TERMUX_PKG_DESCRIPTION="Family of tools designed to build, test and package software"
-TERMUX_PKG_LICENSE="BSD 3-Clause"
-TERMUX_PKG_MAINTAINER="@neoterm"
-# When updating version here, please update termux_setup_cmake.sh as well.
-TERMUX_PKG_VERSION="3.28.3"
-TERMUX_PKG_SRCURL=https://www.cmake.org/files/v${TERMUX_PKG_VERSION:0:4}/cmake-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=72b7570e5c8593de6ac4ab433b73eab18c5fb328880460c86ce32608141ad5c1
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="libarchive, libc++, libcurl, libexpat, jsoncpp, libuv, rhash, zlib"
-TERMUX_PKG_RECOMMENDS="clang, make"
-TERMUX_PKG_FORCE_CMAKE=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=https://cmake.org/
+NEOTERM_PKG_DESCRIPTION="Family of tools designed to build, test and package software"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+# When updating version here, please update neoterm_setup_cmake.sh as well.
+NEOTERM_PKG_VERSION="3.28.3"
+NEOTERM_PKG_SRCURL=https://www.cmake.org/files/v${NEOTERM_PKG_VERSION:0:4}/cmake-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=72b7570e5c8593de6ac4ab433b73eab18c5fb328880460c86ce32608141ad5c1
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libarchive, libc++, libcurl, libexpat, jsoncpp, libuv, rhash, zlib"
+NEOTERM_PKG_RECOMMENDS="clang, make"
+NEOTERM_PKG_FORCE_CMAKE=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DSPHINX_MAN=ON
 -DCMAKE_MAN_DIR=share/man
 -DCMAKE_DOC_DIR=share/doc/cmake

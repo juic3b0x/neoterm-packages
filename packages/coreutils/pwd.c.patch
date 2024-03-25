@@ -6,7 +6,7 @@ diff -u -r ../coreutils-8.23/src/pwd.c ./src/pwd.c
      error (0, 0, _("ignoring non-option arguments"));
  
 -  if (logical)
-+  if (true) /* Termux: Always try logical, to avoid permission denied on /data/data */
++  if (true) /* NeoTerm: Always try logical, to avoid permission denied on /data/data */
      {
        wd = logical_getcwd ();
        if (wd)

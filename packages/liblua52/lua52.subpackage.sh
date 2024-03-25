@@ -1,26 +1,26 @@
-TERMUX_SUBPKG_DESCRIPTION="Simple, extensible, embeddable programming language"
-TERMUX_SUBPKG_DEPENDS="readline"
-TERMUX_SUBPKG_INCLUDE="bin/ share/man/man1/"
+NEOTERM_SUBPKG_DESCRIPTION="Simple, extensible, embeddable programming language"
+NEOTERM_SUBPKG_DEPENDS="readline"
+NEOTERM_SUBPKG_INCLUDE="bin/ share/man/man1/"
 
-termux_step_create_subpkg_debscripts() {
+neoterm_step_create_subpkg_debscripts() {
 	cat <<- EOF > ./postinst
-	#!$TERMUX_PREFIX/bin/sh
-	if [ "$TERMUX_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" = "configure" ] || [ "\$1" = "abort-upgrade" ]; then
-		if [ -x "$TERMUX_PREFIX/bin/update-alternatives" ]; then
+	#!$NEOTERM_PREFIX/bin/sh
+	if [ "$NEOTERM_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" = "configure" ] || [ "\$1" = "abort-upgrade" ]; then
+		if [ -x "$NEOTERM_PREFIX/bin/update-alternatives" ]; then
 			update-alternatives --install \
-				$TERMUX_PREFIX/bin/lua lua $TERMUX_PREFIX/bin/lua5.2 120
+				$NEOTERM_PREFIX/bin/lua lua $NEOTERM_PREFIX/bin/lua5.2 120
 			update-alternatives --install \
-				$TERMUX_PREFIX/bin/luac luac $TERMUX_PREFIX/bin/luac5.2 120
+				$NEOTERM_PREFIX/bin/luac luac $NEOTERM_PREFIX/bin/luac5.2 120
 		fi
 	fi
 	EOF
 
 	cat <<- EOF > ./prerm
-	#!$TERMUX_PREFIX/bin/sh
-	if [ "$TERMUX_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" != "upgrade" ]; then
-		if [ -x "$TERMUX_PREFIX/bin/update-alternatives" ]; then
-			update-alternatives --remove lua $TERMUX_PREFIX/bin/lua
-			update-alternatives --remove luac $TERMUX_PREFIX/bin/luac
+	#!$NEOTERM_PREFIX/bin/sh
+	if [ "$NEOTERM_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" != "upgrade" ]; then
+		if [ -x "$NEOTERM_PREFIX/bin/update-alternatives" ]; then
+			update-alternatives --remove lua $NEOTERM_PREFIX/bin/lua
+			update-alternatives --remove luac $NEOTERM_PREFIX/bin/luac
 		fi
 	fi
 	EOF

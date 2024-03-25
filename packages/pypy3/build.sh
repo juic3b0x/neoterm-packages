@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://pypy.org
-TERMUX_PKG_DESCRIPTION="A fast, compliant alternative implementation of Python 3"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@licy183"
+NEOTERM_PKG_HOMEPAGE=https://pypy.org
+NEOTERM_PKG_DESCRIPTION="A fast, compliant alternative implementation of Python 3"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@licy183"
 _MAJOR_VERSION=3.9
-TERMUX_PKG_VERSION=7.3.13
-TERMUX_PKG_SRCURL=https://downloads.python.org/pypy/pypy$_MAJOR_VERSION-v$TERMUX_PKG_VERSION-src.tar.bz2
-TERMUX_PKG_SHA256=bc6147268105e7cb3bd57b401e6d97f66aa4ede269104b2712a7cdd9f02f68cd
-TERMUX_PKG_DEPENDS="gdbm, libandroid-posix-semaphore, libandroid-support, libbz2, libcrypt, libexpat, libffi, liblzma, libsqlite, ncurses, ncurses-ui-libs, openssl, zlib"
-TERMUX_PKG_BUILD_DEPENDS="binutils, clang, dash, make, ndk-multilib, pkg-config, python2, tk, xorgproto"
-TERMUX_PKG_RECOMMENDS="clang, make, pkg-config"
-TERMUX_PKG_SUGGESTS="pypy3-tkinter"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_VERSION=7.3.13
+NEOTERM_PKG_SRCURL=https://downloads.python.org/pypy/pypy$_MAJOR_VERSION-v$NEOTERM_PKG_VERSION-src.tar.bz2
+NEOTERM_PKG_SHA256=bc6147268105e7cb3bd57b401e6d97f66aa4ede269104b2712a7cdd9f02f68cd
+NEOTERM_PKG_DEPENDS="gdbm, libandroid-posix-semaphore, libandroid-support, libbz2, libcrypt, libexpat, libffi, liblzma, libsqlite, ncurses, ncurses-ui-libs, openssl, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="binutils, clang, dash, make, ndk-multilib, pkg-config, python2, tk, xorgproto"
+NEOTERM_PKG_RECOMMENDS="clang, make, pkg-config"
+NEOTERM_PKG_SUGGESTS="pypy3-tkinter"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_RM_AFTER_INSTALL="
 opt/pypy3/lib/pypy$_MAJOR_VERSION/test
 opt/pypy3/lib/pypy$_MAJOR_VERSION/*/test
 opt/pypy3/lib/pypy$_MAJOR_VERSION/*/tests
@@ -29,47 +29,47 @@ _qemu_arm_static_url=https://github.com/multiarch/qemu-user-static/releases/down
 _qemu_arm_static_checksums=9f07762a3cd0f8a199cb5471a92402a4765f8e2fcb7fe91a87ee75da9616a806
 
 # Skip due to we use proot to get dependencies
-termux_step_get_dependencies() {
+neoterm_step_get_dependencies() {
 	echo "Skip due to we use proot to get dependencies"
 }
 
-termux_step_override_config_scripts() {
+neoterm_step_override_config_scripts() {
 	:
 }
 
-termux_step_pre_configure() {
-	if $TERMUX_ON_DEVICE_BUILD; then
-		termux_error_exit "Package '$TERMUX_PKG_NAME' is not safe for on-device builds."
+neoterm_step_pre_configure() {
+	if $NEOTERM_ON_DEVICE_BUILD; then
+		neoterm_error_exit "Package '$NEOTERM_PKG_NAME' is not safe for on-device builds."
 	fi
 
-	local p="$TERMUX_PKG_BUILDER_DIR/9998-link-against-pypy3-on-testcapi.diff"
+	local p="$NEOTERM_PKG_BUILDER_DIR/9998-link-against-pypy3-on-testcapi.diff"
 	echo "Applying $(basename "${p}")"
-	sed 's|@TERMUX_PYPY_MAJOR_VERSION@|'"${_MAJOR_VERSION}"'|g' "${p}" \
+	sed 's|@NEOTERM_PYPY_MAJOR_VERSION@|'"${_MAJOR_VERSION}"'|g' "${p}" \
 		| patch --silent -p1
 
-	local p="$TERMUX_PKG_BUILDER_DIR/9999-add-ANDROID_API_LEVEL-for-sysconfigdata.diff"
+	local p="$NEOTERM_PKG_BUILDER_DIR/9999-add-ANDROID_API_LEVEL-for-sysconfigdata.diff"
 	echo "Applying $(basename "${p}")"
-	sed 's|@TERMUX_PKG_API_LEVEL@|'"${TERMUX_PKG_API_LEVEL}"'|g' "${p}" \
+	sed 's|@NEOTERM_PKG_API_LEVEL@|'"${NEOTERM_PKG_API_LEVEL}"'|g' "${p}" \
 		| patch --silent -p1
 
-	DOCKER_PULL="python $TERMUX_PKG_CACHEDIR/docker_pull.py"
-	UNDOCKER="python $TERMUX_PKG_CACHEDIR/undocker.py"
-	PROOT="$TERMUX_PKG_CACHEDIR/proot"
+	DOCKER_PULL="python $NEOTERM_PKG_CACHEDIR/docker_pull.py"
+	UNDOCKER="python $NEOTERM_PKG_CACHEDIR/undocker.py"
+	PROOT="$NEOTERM_PKG_CACHEDIR/proot"
 
 	# Get docker_pull.py
-	termux_download \
+	neoterm_download \
 		$_docker_pull_url \
-		$TERMUX_PKG_CACHEDIR/docker_pull.py \
+		$NEOTERM_PKG_CACHEDIR/docker_pull.py \
 		$_docker_pull_checksums
 
 	# Get undocker.py
-	termux_download \
+	neoterm_download \
 		$_undocker_url \
-		$TERMUX_PKG_CACHEDIR/undocker.py \
+		$NEOTERM_PKG_CACHEDIR/undocker.py \
 		$_undocker_checksums
 	
 	# Get proot
-	termux_download \
+	neoterm_download \
 		$_proot_url \
 		$PROOT \
 		$_proot_checksums
@@ -77,170 +77,170 @@ termux_step_pre_configure() {
 	chmod +x $PROOT
 
 	# Get qemu-aarch64-static
-	termux_download \
+	neoterm_download \
 		$_qemu_aarch64_static_url \
-		$TERMUX_PKG_CACHEDIR/qemu-aarch64-static \
+		$NEOTERM_PKG_CACHEDIR/qemu-aarch64-static \
 		$_qemu_aarch64_static_checksums
 
-	chmod +x $TERMUX_PKG_CACHEDIR/qemu-aarch64-static
+	chmod +x $NEOTERM_PKG_CACHEDIR/qemu-aarch64-static
 
 	# Get qemu-arm-static
-	termux_download \
+	neoterm_download \
 		$_qemu_arm_static_url \
-		$TERMUX_PKG_CACHEDIR/qemu-arm-static \
+		$NEOTERM_PKG_CACHEDIR/qemu-arm-static \
 		$_qemu_arm_static_checksums
 
-	chmod +x $TERMUX_PKG_CACHEDIR/qemu-arm-static
+	chmod +x $NEOTERM_PKG_CACHEDIR/qemu-arm-static
 
 	# Pick up host platform arch.
-	HOST_ARCH=$TERMUX_ARCH
-	if [ $TERMUX_ARCH = "arm" ]; then
+	HOST_ARCH=$NEOTERM_ARCH
+	if [ $NEOTERM_ARCH = "arm" ]; then
 		HOST_ARCH="i686"
-	elif [ $TERMUX_ARCH = "aarch64" ]; then
+	elif [ $NEOTERM_ARCH = "aarch64" ]; then
 		HOST_ARCH="x86_64"
 	fi
 
 	# Get host platform rootfs tar if needed.
-	if [ ! -f "$TERMUX_PKG_CACHEDIR/termux_termux-docker_$HOST_ARCH.tar" ]; then
+	if [ ! -f "$NEOTERM_PKG_CACHEDIR/neoterm_neoterm-docker_$HOST_ARCH.tar" ]; then
 		(
-			cd $TERMUX_PKG_CACHEDIR
-			$DOCKER_PULL ghcr.io/termux-user-repository/termux-docker:$HOST_ARCH
-			mv termux-user-repository_termux-docker.tar termux_termux-docker_$HOST_ARCH.tar
+			cd $NEOTERM_PKG_CACHEDIR
+			$DOCKER_PULL ghcr.io/neoterm-user-repository/neoterm-docker:$HOST_ARCH
+			mv neoterm-user-repository_neoterm-docker.tar neoterm_neoterm-docker_$HOST_ARCH.tar
 		)
 	fi
 
 	# Get target platform rootfs tar if needed.
-	if [ $HOST_ARCH != $TERMUX_ARCH ]; then
+	if [ $HOST_ARCH != $NEOTERM_ARCH ]; then
 		# Check qemu version, must greater than 6.0.0, since qemu 4/5 cannot run python
-		# inside the termux rootfs and will cause a segmentation fault, and qemu 6 hangs
+		# inside the neoterm rootfs and will cause a segmentation fault, and qemu 6 hangs
 		# on clang++
-		QEMU_VERSION=$($TERMUX_PKG_CACHEDIR/qemu-$TERMUX_ARCH-static --version | grep "version" | sed -E "s/.*?version (.*?)/\1/g")
+		QEMU_VERSION=$($NEOTERM_PKG_CACHEDIR/qemu-$NEOTERM_ARCH-static --version | grep "version" | sed -E "s/.*?version (.*?)/\1/g")
 		QEMU_MAJOR_VERSION=${QEMU_VERSION%%.*}
 		if [ $QEMU_MAJOR_VERSION -lt '7' ]; then
-			termux_error_exit "qemu-user-static's version must be greater than 7.0.0"
+			neoterm_error_exit "qemu-user-static's version must be greater than 7.0.0"
 		fi
-		if [ ! -f "$TERMUX_PKG_CACHEDIR/termux_termux-docker_$TERMUX_ARCH.tar" ]; then
+		if [ ! -f "$NEOTERM_PKG_CACHEDIR/neoterm_neoterm-docker_$NEOTERM_ARCH.tar" ]; then
 			(
-				cd $TERMUX_PKG_CACHEDIR
-				$DOCKER_PULL ghcr.io/termux-user-repository/termux-docker:$TERMUX_ARCH
-				mv termux-user-repository_termux-docker.tar termux_termux-docker_$TERMUX_ARCH.tar
+				cd $NEOTERM_PKG_CACHEDIR
+				$DOCKER_PULL ghcr.io/neoterm-user-repository/neoterm-docker:$NEOTERM_ARCH
+				mv neoterm-user-repository_neoterm-docker.tar neoterm_neoterm-docker_$NEOTERM_ARCH.tar
 			)
 		fi
 	fi
 }
 
-termux_step_configure() {
-	PYPY_USESSION_DIR=$TERMUX_ANDROID_HOME/tmp
-	PYPY_SRC_DIR=$TERMUX_ANDROID_HOME/src
+neoterm_step_configure() {
+	PYPY_USESSION_DIR=$NEOTERM_ANDROID_HOME/tmp
+	PYPY_SRC_DIR=$NEOTERM_ANDROID_HOME/src
 
 	# Bootstrap a proot rootfs for the host platform
-	HOST_ROOTFS_BASE=$TERMUX_PKG_TMPDIR/host-rootfs
-	cat "$TERMUX_PKG_CACHEDIR/termux_termux-docker_$HOST_ARCH.tar" | $UNDOCKER -o $HOST_ROOTFS_BASE
+	HOST_ROOTFS_BASE=$NEOTERM_PKG_TMPDIR/host-rootfs
+	cat "$NEOTERM_PKG_CACHEDIR/neoterm_neoterm-docker_$HOST_ARCH.tar" | $UNDOCKER -o $HOST_ROOTFS_BASE
 
 	# Add build dependicies for pypy on the host platform rootfs
 	# Build essential
 	BUILD_DEP="binutils binutils-gold clang file patch pkg-config "
 	# Build dependencies for pypy
-	BUILD_DEP+=${TERMUX_PKG_DEPENDS//,/}
+	BUILD_DEP+=${NEOTERM_PKG_DEPENDS//,/}
 	BUILD_DEP+=" "
-	BUILD_DEP+=${TERMUX_PKG_BUILD_DEPENDS//,/}
+	BUILD_DEP+=${NEOTERM_PKG_BUILD_DEPENDS//,/}
 
-	# Environment variables for termux
-	TERMUX_RUNTIME_ENV_VARS="ANDROID_DATA=/data
+	# Environment variables for neoterm
+	NEOTERM_RUNTIME_ENV_VARS="ANDROID_DATA=/data
 			ANDROID_ROOT=/system
-			HOME=$TERMUX_ANDROID_HOME
+			HOME=$NEOTERM_ANDROID_HOME
 			LANG=en_US.UTF-8
-			PATH=$TERMUX_PREFIX/bin:/usr/bin
-			PREFIX=$TERMUX_PREFIX
-			TMPDIR=$TERMUX_PREFIX/tmp
+			PATH=$NEOTERM_PREFIX/bin:/usr/bin
+			PREFIX=$NEOTERM_PREFIX
+			TMPDIR=$NEOTERM_PREFIX/tmp
 			TZ=UTC"
-	ln -s $HOST_ROOTFS_BASE/$TERMUX_ANDROID_HOME/ $TERMUX_ANDROID_HOME
-	ln -s $TERMUX_PKG_SRCDIR $PYPY_SRC_DIR
+	ln -s $HOST_ROOTFS_BASE/$NEOTERM_ANDROID_HOME/ $NEOTERM_ANDROID_HOME
+	ln -s $NEOTERM_PKG_SRCDIR $PYPY_SRC_DIR
 	PROOT_HOST="env -i PROOT_NO_SECCOMP=1
-						$TERMUX_RUNTIME_ENV_VARS
+						$NEOTERM_RUNTIME_ENV_VARS
 						$PROOT 
 						-b /proc -b /dev -b /sys
 						-b $HOME
-						-b $TERMUX_ANDROID_HOME
-						-w $TERMUX_ANDROID_HOME
+						-b $NEOTERM_ANDROID_HOME
+						-w $NEOTERM_ANDROID_HOME
 						-r $HOST_ROOTFS_BASE/"
 	# Get dependencies
 	$PROOT_HOST update-static-dns
-	sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$TERMUX_PREFIX/etc/apt/sources.list
+	sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$NEOTERM_PREFIX/etc/apt/sources.list
 	$PROOT_HOST apt update
 	$PROOT_HOST apt upgrade -yq -o Dpkg::Options::=--force-confnew
-	sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$TERMUX_PREFIX/etc/apt/sources.list
+	sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$NEOTERM_PREFIX/etc/apt/sources.list
 	$PROOT_HOST apt update
 	$PROOT_HOST apt install -o Dpkg::Options::=--force-confnew -yq $BUILD_DEP
 	$PROOT_HOST python2 -m pip install cffi pycparser
 
 	# Copy the statically-built proot
-	cp $PROOT $HOST_ROOTFS_BASE/$TERMUX_PREFIX/bin/
+	cp $PROOT $HOST_ROOTFS_BASE/$NEOTERM_PREFIX/bin/
 
 	# Extract the target platform rootfs to the host platform rootfs if needed.
 	PROOT_TARGET="$PROOT_HOST"
 	TARGET_ROOTFS_BASE=""
-	if [ $HOST_ARCH != $TERMUX_ARCH ]; then
-		TARGET_ROOTFS_BASE=$TERMUX_ANDROID_HOME/target-rootfs
+	if [ $HOST_ARCH != $NEOTERM_ARCH ]; then
+		TARGET_ROOTFS_BASE=$NEOTERM_ANDROID_HOME/target-rootfs
 		mkdir -p $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE
-		cat "$TERMUX_PKG_CACHEDIR/termux_termux-docker_$TERMUX_ARCH.tar" | $UNDOCKER -o $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE
+		cat "$NEOTERM_PKG_CACHEDIR/neoterm_neoterm-docker_$NEOTERM_ARCH.tar" | $UNDOCKER -o $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE
 		PROOT_TARGET="env -i PROOT_NO_SECCOMP=1
-			$TERMUX_RUNTIME_ENV_VARS
+			$NEOTERM_RUNTIME_ENV_VARS
 			$PROOT
-			-q $TERMUX_PKG_CACHEDIR/qemu-$TERMUX_ARCH-static
+			-q $NEOTERM_PKG_CACHEDIR/qemu-$NEOTERM_ARCH-static
 			-b $HOME
-			-b $TERMUX_ANDROID_HOME
+			-b $NEOTERM_ANDROID_HOME
 			-b /proc -b /dev -b /sys
-			-w $TERMUX_ANDROID_HOME
+			-w $NEOTERM_ANDROID_HOME
 			-r $TARGET_ROOTFS_BASE"
 		# Check if it can be run with or without $PROOT_HOST
 		$PROOT_HOST $PROOT_TARGET uname -a
 		$PROOT_TARGET uname -a
 		# update-static-dns will use the arm busybox binary.
-		${PROOT_TARGET/qemu-$TERMUX_ARCH-static/qemu-arm-static} update-static-dns
+		${PROOT_TARGET/qemu-$NEOTERM_ARCH-static/qemu-arm-static} update-static-dns
 		# FIXME: If we don't add `[trusted=yes]`, apt-key will generate an error.
 		# FIXME: The key(s) in the keyring XXX.gpg are ignored as the file is not readable by user '' executing apt-key.
-		sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$TERMUX_PREFIX/etc/apt/sources.list
+		sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$NEOTERM_PREFIX/etc/apt/sources.list
 		$PROOT_TARGET apt update
 		$PROOT_TARGET apt install -o Dpkg::Options::=--force-confnew -yq dash
 		# Use dash to provide /system/bin/sh, since /system/bin/sh is a symbolic link
 		# to /system/bin/busybox which is a 32-bit binary. If we are using an aarch64
 		# qemu, proot cannot execute it.
 		rm -f $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/system/bin/sh
-		$PROOT_TARGET ln -sf $TERMUX_PREFIX/bin/dash /system/bin/sh
+		$PROOT_TARGET ln -sf $NEOTERM_PREFIX/bin/dash /system/bin/sh
 		# Get dependencies
 		$PROOT_TARGET apt update
 		$PROOT_TARGET apt upgrade -yq -o Dpkg::Options::=--force-confnew
-		sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$TERMUX_PREFIX/etc/apt/sources.list
+		sed -i "s/deb/deb [trusted=yes]/g" $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$NEOTERM_PREFIX/etc/apt/sources.list
 		$PROOT_TARGET apt update
 		$PROOT_TARGET apt install -o Dpkg::Options::=--force-confnew -yq $BUILD_DEP
 		# `pip2` is set up in the postinst script of `python2`, but it will segfault on aarch64. Install it manually.
 		$PROOT_TARGET python2 -m ensurepip
-		# Use the target rootfs providing $TERMUX_PREFIX
-		if [ ! -L $TERMUX_PREFIX ]; then
-			if [ -d $TERMUX_PREFIX.backup ]; then
-				rm -rf $TERMUX_PREFIX.backup
+		# Use the target rootfs providing $NEOTERM_PREFIX
+		if [ ! -L $NEOTERM_PREFIX ]; then
+			if [ -d $NEOTERM_PREFIX.backup ]; then
+				rm -rf $NEOTERM_PREFIX.backup
 			fi
-			mv $TERMUX_PREFIX $TERMUX_PREFIX.backup
-			ln -s $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$TERMUX_PREFIX $TERMUX_PREFIX
+			mv $NEOTERM_PREFIX $NEOTERM_PREFIX.backup
+			ln -s $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$NEOTERM_PREFIX $NEOTERM_PREFIX
 		fi
 		# Install cffi and pycparser
 		$PROOT_TARGET python2 -m pip install cffi pycparser
 	fi
 }
 
-termux_step_make() {
+neoterm_step_make() {
 	mkdir -p $HOST_ROOTFS_BASE/$PYPY_USESSION_DIR
 
 	# Translation
 	$PROOT_HOST env -i \
 			-C $PYPY_SRC_DIR/pypy/goal \
-			$TERMUX_RUNTIME_ENV_VARS \
+			$NEOTERM_RUNTIME_ENV_VARS \
 			PYPY_USESSION_DIR=$PYPY_USESSION_DIR \
 			TARGET_ROOTFS_BASE=$TARGET_ROOTFS_BASE \
 			PROOT_TARGET="$PROOT_TARGET" \
-			$TERMUX_PREFIX/bin/python2 -u ../../rpython/bin/rpython \
-					--platform=termux-$TERMUX_ARCH \
+			$NEOTERM_PREFIX/bin/python2 -u ../../rpython/bin/rpython \
+					--platform=neoterm-$NEOTERM_ARCH \
 					--source --no-compile -Ojit \
 					targetpypystandalone.py
 
@@ -248,55 +248,55 @@ termux_step_make() {
 	cd $PYPY_USESSION_DIR
 	cd $(ls -C | awk '{print $1}')/testing_1
 	$PROOT_HOST env -C $(pwd) make clean
-	$PROOT_HOST env -C $(pwd) make -j$TERMUX_MAKE_PROCESSES
+	$PROOT_HOST env -C $(pwd) make -j$NEOTERM_MAKE_PROCESSES
 
 	# Copy the built files
 	cp ./pypy$_MAJOR_VERSION-c $PYPY_SRC_DIR/pypy/goal/pypy$_MAJOR_VERSION-c || bash
 	cp ./libpypy$_MAJOR_VERSION-c.so $PYPY_SRC_DIR/pypy/goal/libpypy$_MAJOR_VERSION-c.so || bash
-	cp ./libpypy$_MAJOR_VERSION-c.so $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$TERMUX_PREFIX/lib/libpypy$_MAJOR_VERSION-c.so || bash
+	cp ./libpypy$_MAJOR_VERSION-c.so $HOST_ROOTFS_BASE/$TARGET_ROOTFS_BASE/$NEOTERM_PREFIX/lib/libpypy$_MAJOR_VERSION-c.so || bash
 
 	# Build cffi imports
-	TARGET_CFLAGS="-I$TERMUX_PREFIX/include -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration"
-	TARGET_LDFLAGS="-L$TERMUX_PREFIX/lib -fno-termux-rpath -Wl,-rpath=$TERMUX_PREFIX/lib"
+	TARGET_CFLAGS="-I$NEOTERM_PREFIX/include -Wno-incompatible-function-pointer-types -Wno-implicit-function-declaration"
+	TARGET_LDFLAGS="-L$NEOTERM_PREFIX/lib -fno-neoterm-rpath -Wl,-rpath=$NEOTERM_PREFIX/lib"
 	$PROOT_TARGET env \
 				CC=cc \
-				TERMUX_STANDALONE_TOOLCHAIN=$TERMUX_STANDALONE_TOOLCHAIN \
+				NEOTERM_STANDALONE_TOOLCHAIN=$NEOTERM_STANDALONE_TOOLCHAIN \
 				CFLAGS="$TARGET_CFLAGS" \
 				LDFLAGS="$TARGET_LDFLAGS" \
 				python2 $PYPY_SRC_DIR/pypy/tool/release/package.py \
-					--archive-name=pypy$_MAJOR_VERSION-v$TERMUX_PKG_VERSION \
+					--archive-name=pypy$_MAJOR_VERSION-v$NEOTERM_PKG_VERSION \
 					--targetdir=$PYPY_SRC_DIR \
 					--no-keep-debug
-	rm -f $TERMUX_PREFIX/lib/libpypy$_MAJOR_VERSION-c.so
+	rm -f $NEOTERM_PREFIX/lib/libpypy$_MAJOR_VERSION-c.so
 }
 
-termux_step_make_install() {
-	# Recover $TERMUX_PREFIX
-	if [ $HOST_ARCH != $TERMUX_ARCH ]; then
-		rm -rf $TERMUX_PREFIX
-		mv $TERMUX_PREFIX.backup $TERMUX_PREFIX
+neoterm_step_make_install() {
+	# Recover $NEOTERM_PREFIX
+	if [ $HOST_ARCH != $NEOTERM_ARCH ]; then
+		rm -rf $NEOTERM_PREFIX
+		mv $NEOTERM_PREFIX.backup $NEOTERM_PREFIX
 	fi
-	rm -rf $TERMUX_PREFIX/opt/pypy3
-	unzip -d $TERMUX_PREFIX/opt/ pypy$_MAJOR_VERSION-v$TERMUX_PKG_VERSION.zip
-	mv $TERMUX_PREFIX/opt/pypy$_MAJOR_VERSION-v$TERMUX_PKG_VERSION $TERMUX_PREFIX/opt/pypy3
-	ln -sfr $TERMUX_PREFIX/opt/pypy3/bin/pypy3 $TERMUX_PREFIX/bin/
-	ln -sfr $TERMUX_PREFIX/opt/pypy3/bin/libpypy3-c.so $TERMUX_PREFIX/lib/
+	rm -rf $NEOTERM_PREFIX/opt/pypy3
+	unzip -d $NEOTERM_PREFIX/opt/ pypy$_MAJOR_VERSION-v$NEOTERM_PKG_VERSION.zip
+	mv $NEOTERM_PREFIX/opt/pypy$_MAJOR_VERSION-v$NEOTERM_PKG_VERSION $NEOTERM_PREFIX/opt/pypy3
+	ln -sfr $NEOTERM_PREFIX/opt/pypy3/bin/pypy3 $NEOTERM_PREFIX/bin/
+	ln -sfr $NEOTERM_PREFIX/opt/pypy3/bin/libpypy3-c.so $NEOTERM_PREFIX/lib/
 }
 
-termux_step_create_debscripts() {
+neoterm_step_create_debscripts() {
 	# Pre-rm script to cleanup runtime-generated files.
 	cat <<- PRERM_EOF > ./prerm
-	#!$TERMUX_PREFIX/bin/sh
+	#!$NEOTERM_PREFIX/bin/sh
 
-	if [ "$TERMUX_PACKAGE_FORMAT" != "pacman" ] && [ "\$1" != "remove" ]; then
+	if [ "$NEOTERM_PACKAGE_FORMAT" != "pacman" ] && [ "\$1" != "remove" ]; then
 	    exit 0
 	fi
 
 	echo "Deleting files from site-packages..."
-	rm -Rf $TERMUX_PREFIX/opt/pypy3/lib/pypy$_MAJOR_VERSION/site-packages/*
+	rm -Rf $NEOTERM_PREFIX/opt/pypy3/lib/pypy$_MAJOR_VERSION/site-packages/*
 
 	echo "Deleting *.pyc..."
-	find $TERMUX_PREFIX/opt/pypy3/lib/ | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+	find $NEOTERM_PREFIX/opt/pypy3/lib/ | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 	exit 0
 	PRERM_EOF
@@ -304,6 +304,6 @@ termux_step_create_debscripts() {
 	chmod 0755 prerm
 }
 
-termux_step_post_make_install() {
-	rm -rf $TERMUX_ANDROID_HOME
+neoterm_step_post_make_install() {
+	rm -rf $NEOTERM_ANDROID_HOME
 }

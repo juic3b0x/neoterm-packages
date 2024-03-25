@@ -8,8 +8,8 @@
 -		sudo mkdir -p /etc/apk/keys
 -		sudo cp -i "$pubkey" /etc/apk/keys/
 +		msg "Installing $pubkey to \$PREFIX/etc/apk/keys..."
-+		mkdir -p @TERMUX_PREFIX@/etc/apk/keys
-+		cp -i "$pubkey" @TERMUX_PREFIX@/etc/apk/keys/
++		mkdir -p @NEOTERM_PREFIX@/etc/apk/keys
++		cp -i "$pubkey" @NEOTERM_PREFIX@/etc/apk/keys/
  	else
  
  		msg ""

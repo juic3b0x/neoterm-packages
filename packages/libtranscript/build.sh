@@ -1,20 +1,20 @@
-TERMUX_PKG_HOMEPAGE=https://os.ghalkes.nl/libtranscript.html
-TERMUX_PKG_DESCRIPTION="A character-set conversion library"
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=0.3.3
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=https://os.ghalkes.nl/dist/libtranscript-${TERMUX_PKG_VERSION}.tar.bz2
-TERMUX_PKG_SHA256=1f8c19f257da5d6fad0ed9a7e5bd2442819e910a19907c38e115116a3955f5fa
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--without-gettext"
+NEOTERM_PKG_HOMEPAGE=https://os.ghalkes.nl/libtranscript.html
+NEOTERM_PKG_DESCRIPTION="A character-set conversion library"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.3.3
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://os.ghalkes.nl/dist/libtranscript-${NEOTERM_PKG_VERSION}.tar.bz2
+NEOTERM_PKG_SHA256=1f8c19f257da5d6fad0ed9a7e5bd2442819e910a19907c38e115116a3955f5fa
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--without-gettext"
 
-termux_step_post_get_source() {
+neoterm_step_post_get_source() {
 	sed -i 's/ -s / /g' Makefile.in
 }
 
-termux_step_pre_configure() {
-	local libtooldir=$TERMUX_PKG_TMPDIR/_libtool
+neoterm_step_pre_configure() {
+	local libtooldir=$NEOTERM_PKG_TMPDIR/_libtool
 	mkdir -p $libtooldir
 	pushd $libtooldir
 	cat > configure.ac <<-EOF
@@ -23,10 +23,10 @@ termux_step_pre_configure() {
 		AC_OUTPUT
 	EOF
 	touch install-sh
-	cp "$TERMUX_SCRIPTDIR/scripts/config.sub" ./
-	cp "$TERMUX_SCRIPTDIR/scripts/config.guess" ./
+	cp "$NEOTERM_SCRIPTDIR/scripts/config.sub" ./
+	cp "$NEOTERM_SCRIPTDIR/scripts/config.guess" ./
 	autoreconf -fi
-	./configure --host=$TERMUX_HOST_PLATFORM
+	./configure --host=$NEOTERM_HOST_PLATFORM
 	popd
 	export LIBTOOL=$libtooldir/libtool
 }

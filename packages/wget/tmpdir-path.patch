@@ -6,7 +6,7 @@ diff -uNr wget-1.20.1/lib/tmpdir.c wget-1.20.1.mod/lib/tmpdir.c
  #  define P_tmpdir _P_tmpdir
  # else
 -#  define P_tmpdir "/tmp"
-+#  define P_tmpdir "@TERMUX_PREFIX@/tmp"
++#  define P_tmpdir "@NEOTERM_PREFIX@/tmp"
  # endif
  #endif
  
@@ -16,8 +16,8 @@ diff -uNr wget-1.20.1/lib/tmpdir.c wget-1.20.1.mod/lib/tmpdir.c
          dir = P_tmpdir;
 -      else if (strcmp (P_tmpdir, "/tmp") != 0 && direxists ("/tmp"))
 -        dir = "/tmp";
-+      else if (strcmp (P_tmpdir, "@TERMUX_PREFIX@/tmp") != 0 && direxists ("@TERMUX_PREFIX@/tmp"))
-+        dir = "@TERMUX_PREFIX@/tmp";
++      else if (strcmp (P_tmpdir, "@NEOTERM_PREFIX@/tmp") != 0 && direxists ("@NEOTERM_PREFIX@/tmp"))
++        dir = "@NEOTERM_PREFIX@/tmp";
        else
          {
            __set_errno (ENOENT);

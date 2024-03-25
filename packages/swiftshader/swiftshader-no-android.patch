@@ -6,7 +6,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkGetProcAddress.cpp b/third_part
  #include <vector>
  
 -#ifdef __ANDROID__
-+#if (defined(__ANDROID__) && !defined(__TERMUX__))
++#if (defined(__ANDROID__) && !defined(__NEOTERM__))
  #	include <hardware/hwvulkan.h>
  #	include <vulkan/vk_android_native_buffer.h>
  #	include <cerrno>
@@ -15,7 +15,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkGetProcAddress.cpp b/third_part
  	// VK_EXT_tooling_info
  	MAKE_VULKAN_INSTANCE_ENTRY(vkGetPhysicalDeviceToolProperties),
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	// VK_KHR_surface
  	MAKE_VULKAN_INSTANCE_ENTRY(vkDestroySurfaceKHR),
  	MAKE_VULKAN_INSTANCE_ENTRY(vkGetPhysicalDeviceSurfaceSupportKHR),
@@ -24,7 +24,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkGetProcAddress.cpp b/third_part
  	MAKE_VULKAN_DEVICE_ENTRY(vkSetDebugUtilsObjectNameEXT),
  	MAKE_VULKAN_DEVICE_ENTRY(vkSetDebugUtilsObjectTagEXT),
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  	MAKE_VULKAN_DEVICE_ENTRY(vkGetSwapchainGrallocUsageANDROID),
  	MAKE_VULKAN_DEVICE_ENTRY(vkGetSwapchainGrallocUsage2ANDROID),
  	MAKE_VULKAN_DEVICE_ENTRY(vkAcquireImageANDROID),
@@ -33,7 +33,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkGetProcAddress.cpp b/third_part
  	        MAKE_VULKAN_DEVICE_ENTRY(vkQueueSubmit2KHR),
  	    } },
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	// VK_KHR_swapchain
  	{
  	    VK_KHR_SWAPCHAIN_EXTENSION_NAME,
@@ -42,7 +42,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkGetProcAddress.cpp b/third_part
  }  // namespace vk
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  
  extern "C" hwvulkan_module_t HAL_MODULE_INFO_SYM;
  
@@ -54,7 +54,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.cpp b/third_party/swiftsh
  #include "Device/ETC_Decoder.hpp"
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #	include "System/GrallocAndroid.hpp"
  #	include "VkDeviceMemoryExternalAndroid.hpp"
  #endif
@@ -63,7 +63,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.cpp b/third_party/swiftsh
  		switch((int)(nextInfo->sType))
  		{
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  		case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
  			{
  				const VkExternalFormatANDROID *externalFormatAndroid = reinterpret_cast<const VkExternalFormatANDROID *>(nextInfo);
@@ -72,7 +72,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.cpp b/third_party/swiftsh
  }
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  VkResult Image::prepareForExternalUseANDROID() const
  {
  	void *nativeBuffer = nullptr;
@@ -84,7 +84,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.hpp b/third_party/swiftsh
  #include "marl/mutex.h"
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #	include <vulkan/vk_android_native_buffer.h>  // For VkSwapchainImageUsageFlagsANDROID and buffer_handle_t
  #endif
  
@@ -93,7 +93,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.hpp b/third_party/swiftsh
  class ImageView;
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  struct BackingMemory
  {
  	int stride = 0;
@@ -102,7 +102,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.hpp b/third_party/swiftsh
  	void destroy(const VkAllocationCallbacks *pAllocator);
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  	VkResult prepareForExternalUseANDROID() const;
  #endif
  
@@ -111,7 +111,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.hpp b/third_party/swiftsh
  	const Image *getSampledImage(const vk::Format &imageViewFormat) const;
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  	void setBackingMemory(BackingMemory &bm)
  	{
  		backingMemory = bm;
@@ -120,7 +120,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkImage.hpp b/third_party/swiftsh
  	VkImageUsageFlags usage = (VkImageUsageFlags)0;
  	Image *decompressedImage = nullptr;
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  	BackingMemory backingMemory = {};
  #endif
  
@@ -132,7 +132,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkPhysicalDevice.cpp b/third_part
  #include <limits>
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #	include <android/hardware_buffer.h>
  #endif
  
@@ -141,7 +141,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkPhysicalDevice.cpp b/third_part
  }
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  void PhysicalDevice::getProperties(VkPhysicalDevicePresentationPropertiesANDROID *properties) const
  {
  	properties->sharedImage = VK_FALSE;
@@ -153,7 +153,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkPhysicalDevice.hpp b/third_part
  	void getProperties(const VkExternalMemoryHandleTypeFlagBits *handleType, VkExternalBufferProperties *properties) const;
  	void getProperties(VkSamplerYcbcrConversionImageFormatProperties *properties) const;
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  	void getProperties(VkPhysicalDevicePresentationPropertiesANDROID *properties) const;
  	void getProperties(const VkPhysicalDeviceImageFormatInfo2 *pImageFormatInfo, VkAndroidHardwareBufferUsageANDROID *properties) const;
  #endif
@@ -165,7 +165,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkQueue.cpp b/third_party/swiftsh
  }
  
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  VkResult Queue::present(const VkPresentInfoKHR *presentInfo)
  {
  	// This is a hack to deal with screen tearing for now.
@@ -177,7 +177,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/VkQueue.hpp b/third_party/swiftsh
  	VkResult submit(uint32_t submitCount, SubmitInfo *pSubmits, Fence *fence);
  	VkResult waitIdle();
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	VkResult present(const VkPresentInfoKHR *presentInfo);
  #endif
  
@@ -189,7 +189,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  #include "marl/tsa.h"
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #	include "commit.h"
  #	include "System/GrallocAndroid.hpp"
  #	include <android/log.h>
@@ -198,7 +198,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  
  // Enable commit_id.py and #include commit.h for other platforms.
 -#if defined(__ANDROID__) && defined(ENABLE_BUILD_VERSION_OUTPUT)
-+#if defined(__ANDROID__) && !defined(__TERMUX__) && defined(ENABLE_BUILD_VERSION_OUTPUT)
++#if defined(__ANDROID__) && !defined(__NEOTERM__) && defined(ENABLE_BUILD_VERSION_OUTPUT)
  void logBuildVersionInformation()
  {
  	// TODO(b/144093703): Don't call __android_log_print() directly
@@ -207,7 +207,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  {
  	static bool doOnce = [] {
 -#if defined(__ANDROID__) && defined(ENABLE_BUILD_VERSION_OUTPUT)
-+#if defined(__ANDROID__) && !defined(__TERMUX__) && defined(ENABLE_BUILD_VERSION_OUTPUT)
++#if defined(__ANDROID__) && !defined(__NEOTERM__) && defined(ENABLE_BUILD_VERSION_OUTPUT)
  		logBuildVersionInformation();
  #endif  // __ANDROID__ && ENABLE_BUILD_VERSION_OUTPUT
  		return true;
@@ -216,7 +216,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	{ { VK_EXT_DEBUG_UTILS_EXTENSION_NAME, VK_EXT_DEBUG_UTILS_SPEC_VERSION } },
  	{ { VK_EXT_HEADLESS_SURFACE_EXTENSION_NAME, VK_EXT_HEADLESS_SURFACE_SPEC_VERSION } },
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	{ { VK_KHR_SURFACE_EXTENSION_NAME, VK_KHR_SURFACE_SPEC_VERSION } },
  #endif
  #ifdef VK_USE_PLATFORM_XCB_KHR
@@ -225,7 +225,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	//{{ VK_KHR_VARIABLE_POINTERS_EXTENSION_NAME, VK_KHR_VARIABLE_POINTERS_SPEC_VERSION }},
  	{ { VK_EXT_QUEUE_FAMILY_FOREIGN_EXTENSION_NAME, VK_EXT_QUEUE_FAMILY_FOREIGN_SPEC_VERSION } },
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	// We fully support the KHR_swapchain v70 additions, so just track the spec version.
  	{ { VK_KHR_SWAPCHAIN_EXTENSION_NAME, VK_KHR_SWAPCHAIN_SPEC_VERSION } },
  #else
@@ -234,7 +234,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  #endif
  	{ { VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME, VK_EXT_PROVOKING_VERTEX_SPEC_VERSION } },
 -#if !defined(__ANDROID__)
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	{ { VK_GOOGLE_SAMPLER_FILTERING_PRECISION_EXTENSION_NAME, VK_GOOGLE_SAMPLER_FILTERING_PRECISION_SPEC_VERSION } },
  #endif
  	{ { VK_EXT_DEPTH_RANGE_UNRESTRICTED_EXTENSION_NAME, VK_EXT_DEPTH_RANGE_UNRESTRICTED_SPEC_VERSION } },
@@ -243,7 +243,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	const VkBaseInStructure *extensionCreateInfo = reinterpret_cast<const VkBaseInStructure *>(pCreateInfo->pNext);
  
 -#ifdef __ANDROID__
-+#if (defined(__ANDROID__) && !defined(__TERMUX__))
++#if (defined(__ANDROID__) && !defined(__NEOTERM__))
  	vk::BackingMemory backmem;
  	bool swapchainImage = false;
  #endif
@@ -252,7 +252,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  		switch((int)(extensionCreateInfo->sType))
  		{
 -#ifdef __ANDROID__
-+#if (defined(__ANDROID__) && !defined(__TERMUX__))
++#if (defined(__ANDROID__) && !defined(__NEOTERM__))
  		case VK_STRUCTURE_TYPE_SWAPCHAIN_IMAGE_CREATE_INFO_ANDROID:
  			{
  				const VkSwapchainImageCreateInfoANDROID *swapImageCreateInfo = reinterpret_cast<const VkSwapchainImageCreateInfoANDROID *>(extensionCreateInfo);
@@ -261,7 +261,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	VkResult result = vk::Image::Create(pAllocator, pCreateInfo, pImage, vk::Cast(device));
  
 -#ifdef __ANDROID__
-+#if (defined(__ANDROID__) && !defined(__TERMUX__))
++#if (defined(__ANDROID__) && !defined(__NEOTERM__))
  	if(swapchainImage)
  	{
  		if(result != VK_SUCCESS)
@@ -270,7 +270,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	      device, static_cast<void *>(image), pAllocator);
  
 -#ifdef __ANDROID__
-+#if (defined(__ANDROID__) && !defined(__TERMUX__))
++#if (defined(__ANDROID__) && !defined(__NEOTERM__))
  	vk::Image *img = vk::Cast(image);
  	if(img && img->hasExternalMemory())
  	{
@@ -279,7 +279,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  			}
  			break;
 -#if !defined(__ANDROID__)
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  		case VK_STRUCTURE_TYPE_SAMPLER_FILTERING_PRECISION_GOOGLE:
  			{
  				const VkSamplerFilteringPrecisionGOOGLE *filteringInfo =
@@ -288,7 +288,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  				break;
  
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  			case VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR:
  				{
  					auto swapchainInfo = reinterpret_cast<VkBindImageMemorySwapchainInfoKHR const *>(extInfo);
@@ -297,7 +297,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  			}
  			break;
 -#ifdef __ANDROID__
-+#if (defined(__ANDROID__) && !defined(__TERMUX__))
++#if (defined(__ANDROID__) && !defined(__NEOTERM__))
  		case VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENTATION_PROPERTIES_ANDROID:
  			{
  				auto properties = reinterpret_cast<VkPhysicalDevicePresentationPropertiesANDROID *>(extensionProperties);
@@ -306,7 +306,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	VkBaseOutStructure *extensionProperties = reinterpret_cast<VkBaseOutStructure *>(pImageFormatProperties->pNext);
  
 -#ifdef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  	bool hasAHBUsage = false;
  #endif
  
@@ -315,7 +315,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  			}
  			break;
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  		case VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID:
  			{
  				auto properties = reinterpret_cast<VkAndroidHardwareBufferUsageANDROID *>(extensionProperties);
@@ -324,7 +324,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	vk::Cast(physicalDevice)->getImageFormatProperties(format, type, tiling, usage, flags, &pImageFormatProperties->imageFormatProperties);
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  	if(hasAHBUsage)
  	{
  		// AHardwareBuffer_lock may only be called with a single layer.
@@ -333,7 +333,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  		switch(extInfo->sType)
  		{
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  		case VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID:
  			break;
  #endif
@@ -342,7 +342,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  }
  
 -#ifndef __ANDROID__
-+#if !(defined(__ANDROID__) && !defined(__TERMUX__))
++#if !(defined(__ANDROID__) && !defined(__NEOTERM__))
  VKAPI_ATTR void VKAPI_CALL vkDestroySurfaceKHR(VkInstance instance, VkSurfaceKHR surface, const VkAllocationCallbacks *pAllocator)
  {
  	TRACE("(VkInstance instance = %p, VkSurfaceKHR surface = %p, const VkAllocationCallbacks* pAllocator = %p)",
@@ -351,7 +351,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  #endif  // ! __ANDROID__
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  
  VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsage2ANDROID(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, VkSwapchainImageUsageFlagsANDROID swapchainUsage, uint64_t *grallocConsumerUsage, uint64_t *grallocProducerUsage)
  {
@@ -362,7 +362,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  #include "Debug.hpp"
  
 -#if __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #	include <android/log.h>
  #endif
  
@@ -371,7 +371,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  };
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  void logv_android(Level level, const char *msg)
  {
  	switch(level)
@@ -380,7 +380,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  		vsnprintf(buffer, sizeof(buffer), format, args);
  
 -#	if defined(__ANDROID__)
-+#	if defined(__ANDROID__) && !defined(__TERMUX__)
++#	if defined(__ANDROID__) && !defined(__NEOTERM__)
  		logv_android(level, buffer);
  #	elif defined(_WIN32)
  		logv_std(level, buffer);
@@ -391,7 +391,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  #include <string>
  
 -#if __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #	include <android/log.h>
  #endif
  
@@ -400,7 +400,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  };
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  void logv_android(Level level, const char *msg)
  {
  	switch(level)
@@ -409,7 +409,7 @@ diff -uNr a/third_party/swiftshader/src/Vulkan/libVulkan.cpp b/third_party/swift
  	vsnprintf(buffer, sizeof(buffer), format, args);
  
 -#	if defined(__ANDROID__)
-+#	if defined(__ANDROID__) && !defined(__TERMUX__)
++#	if defined(__ANDROID__) && !defined(__NEOTERM__)
  	logv_android(level, buffer);
  #	elif defined(_WIN32)
  	logv_std(level, buffer);

@@ -1,4 +1,4 @@
-https://github.com/termux/termux-packages/issues/15852
+https://github.com/neoterm/neoterm-packages/issues/15852
 
 --- a/source3/lib/system_smbd.c
 +++ b/source3/lib/system_smbd.c

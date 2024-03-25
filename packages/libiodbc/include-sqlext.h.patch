@@ -6,8 +6,8 @@
  #else
 -#define SQL_OPT_TRACE_FILE_DEFAULT		"/tmp/odbc.log"
 -#define SQL_OPT_TRACE_FILE_DEFAULTW		L"/tmp/odbc.log"
-+#define SQL_OPT_TRACE_FILE_DEFAULT		"@TERMUX_PREFIX@/tmp/odbc.log"
-+#define SQL_OPT_TRACE_FILE_DEFAULTW		L"@TERMUX_PREFIX@/tmp/odbc.log"
++#define SQL_OPT_TRACE_FILE_DEFAULT		"@NEOTERM_PREFIX@/tmp/odbc.log"
++#define SQL_OPT_TRACE_FILE_DEFAULTW		L"@NEOTERM_PREFIX@/tmp/odbc.log"
  #endif
  
  

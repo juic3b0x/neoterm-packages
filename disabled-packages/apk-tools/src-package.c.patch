@@ -5,7 +5,7 @@ diff -uNr apk-tools-2.10.3/src/package.c apk-tools-2.10.3.mod/src/package.c
  #include "apk_database.h"
  #include "apk_print.h"
  
-+#include "termux_prefix.h"
++#include "neoterm_prefix.h"
 +
  static const apk_spn_match_def apk_spn_dependency_comparer = {
  	[7] = (1<<4) /*<*/ | (1<<5) /*=*/ | (1<<6) /*<*/,
@@ -15,7 +15,7 @@ diff -uNr apk-tools-2.10.3/src/package.c apk-tools-2.10.3.mod/src/package.c
  
  	/* Avoid /tmp as it can be mounted noexec */
 -	snprintf(fn, sizeof(fn), "var/cache/misc/" PKG_VER_FMT ".%s",
-+	snprintf(fn, sizeof(fn), TERMUX_PREFIX_RELATIVE"var/cache/misc/" PKG_VER_FMT ".%s",
++	snprintf(fn, sizeof(fn), NEOTERM_PREFIX_RELATIVE"var/cache/misc/" PKG_VER_FMT ".%s",
  		PKG_VER_PRINTF(pkg),
  		apk_script_types[type]);
  
@@ -24,7 +24,7 @@ diff -uNr apk-tools-2.10.3/src/package.c apk-tools-2.10.3.mod/src/package.c
  	fd = openat(root_fd, fn, O_CREAT|O_RDWR|O_TRUNC|O_CLOEXEC, 0755);
  	if (fd < 0) {
 -		mkdirat(root_fd, "var/cache/misc", 0755);
-+		mkdirat(root_fd, TERMUX_PREFIX_RELATIVE"var/cache/misc", 0755);
++		mkdirat(root_fd, NEOTERM_PREFIX_RELATIVE"var/cache/misc", 0755);
  		fd = openat(root_fd, fn, O_CREAT|O_RDWR|O_TRUNC|O_CLOEXEC, 0755);
  		if (fd < 0) goto err_log;
  	}

@@ -20,7 +20,7 @@ diff -uNr Python-3.9.2/Lib/smtpd.py Python-3.9.2.mod/Lib/smtpd.py
          This program generally tries to setuid `nobody', unless this flag is
          set.  The setuid call will fail if this program is not run as root (in
 -        which case, use this flag).
-+        which case, use this flag). Ignored in Termux as no setuid done on this
++        which case, use this flag). Ignored in NeoTerm as no setuid done on this
 +        platform.
  
      --version

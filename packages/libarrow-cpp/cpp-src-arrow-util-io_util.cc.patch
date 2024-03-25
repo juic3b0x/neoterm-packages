@@ -5,7 +5,7 @@
    selectors = {{"TMPDIR", ""}, {"TMP", ""}, {"TEMP", ""}, {"TEMPDIR", ""}};
  #ifdef __ANDROID__
 -  fallback_tmp = "/data/local/tmp";
-+  fallback_tmp = "@TERMUX_PREFIX@/tmp";
++  fallback_tmp = "@NEOTERM_PREFIX@/tmp";
  #else
    fallback_tmp = "/tmp";
  #endif

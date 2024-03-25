@@ -5,7 +5,7 @@
    /* No temp environment variables defined */
    #if defined(__ANDROID__)
 -    buf = "/data/local/tmp";
-+    buf = "@TERMUX_PREFIX@/tmp";
++    buf = "@NEOTERM_PREFIX@/tmp";
    #else
      buf = "/tmp";
    #endif

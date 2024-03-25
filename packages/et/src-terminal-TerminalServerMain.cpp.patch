@@ -5,7 +5,7 @@
          ("pidfile", "Location of the pid file",
           cxxopts::value<std::string>()->default_value(
 -             "/var/run/etserver.pid"))  //
-+             "@TERMUX_PREFIX@/var/run/etserver.pid"))  //
++             "@NEOTERM_PREFIX@/var/run/etserver.pid"))  //
          ("v,verbose", "Enable verbose logging",
           cxxopts::value<int>()->default_value("0"), "LEVEL")  //
          ("serverfifo",

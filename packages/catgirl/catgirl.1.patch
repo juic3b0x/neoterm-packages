@@ -5,7 +5,7 @@
  .Ic /exec .
  The default is
 -.Pa /bin/sh .
-+.Pa @TERMUX_PREFIX@/bin/sh .
++.Pa @NEOTERM_PREFIX@/bin/sh .
  .It Ev USER
  The default nickname.
  .El

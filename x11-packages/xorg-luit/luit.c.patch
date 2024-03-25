@@ -6,7 +6,7 @@ diff -uNr luit-1.1.1/luit.c luit-1.1.1.mod/luit.c
  		goto bail;
  	} else {
 -	    path = strmalloc("/bin/sh");
-+	    path = strmalloc("@TERMUX_PREFIX@/bin/sh");
++	    path = strmalloc("@NEOTERM_PREFIX@/bin/sh");
  	    if (!path)
  		goto bail;
  	}

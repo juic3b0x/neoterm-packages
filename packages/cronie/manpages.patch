@@ -36,11 +36,11 @@ diff -uNr cronie-1.5.7/man/cron.8 cronie-1.5.7.mod/man/cron.8
 -.I /etc/anacrontab
 -and any files in the
 -.I /etc/cron.d
-+.I @TERMUX_PREFIX@/var/spool/cron
++.I @NEOTERM_PREFIX@/var/spool/cron
 +for crontab file which is being loaded into the memory.
 +.I Cron
 +also searches for any files in the
-+.I @TERMUX_PREFIX@/etc/cron.d
++.I @NEOTERM_PREFIX@/etc/cron.d
  directory, which have a different format (see
  .BR crontab (5)).
  .I Cron
@@ -49,7 +49,7 @@ diff -uNr cronie-1.5.7/man/cron.8 cronie-1.5.7.mod/man/cron.8
  method is checking the modtime of a file.  The second method is using the
  inotify support.  Using of inotify is logged in the
 -.I /var/log/cron
-+.I @TERMUX_PREFIX@/var/log/cron
++.I @NEOTERM_PREFIX@/var/log/cron
  log after the daemon is started.  The inotify support checks for changes
  in all crontables and accesses the hard disk only when a change is
  detected.
@@ -70,11 +70,11 @@ diff -uNr cronie-1.5.7/man/cron.8 cronie-1.5.7.mod/man/cron.8
 +checks these directories:
  .TP
 -.IR /etc/cron.d/
-+.IR @TERMUX_PREFIX@/etc/cron.d/
++.IR @NEOTERM_PREFIX@/etc/cron.d/
  directory that contains system cronjobs stored for different users.
  .TP
 -.IR /var/spool/cron
-+.IR @TERMUX_PREFIX@/var/spool/cron
++.IR @NEOTERM_PREFIX@/var/spool/cron
  directory that contains user crontables created by the
  .IR crontab
  command.
@@ -175,7 +175,7 @@ diff -uNr cronie-1.5.7/man/cronnext.1 cronie-1.5.7.mod/man/cronnext.1
  .B \-s
  Do not consider the system crontab, usually the
 -.I /etc/crontab
-+.I @TERMUX_PREFIX@/etc/crontab
++.I @NEOTERM_PREFIX@/etc/crontab
  file.  The system crontab usually contains the hourly, daily, weekly and
 -monthly crontabs, which might be better dealt with
 -.BR anacron (8).
@@ -267,13 +267,13 @@ diff -uNr cronie-1.5.7/man/crontab.1 cronie-1.5.7.mod/man/crontab.1
 -or modify system cron jobs in the
 -.IR /etc/cron.d/
 -directory.
-+.IR @TERMUX_PREFIX@/var/spool/ ,
++.IR @NEOTERM_PREFIX@/var/spool/ ,
 +they are not intended to be edited directly.
  .PP
  The temporary directory can be set in an environment variable.  If it is
  not set by the user, the
 -.I /tmp
-+.I @TERMUX_PREFIX@/tmp
++.I @NEOTERM_PREFIX@/tmp
  directory is used.
  .PP
  When listing a crontab on a terminal the output will be colorized unless

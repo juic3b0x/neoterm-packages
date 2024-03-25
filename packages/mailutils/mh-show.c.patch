@@ -5,7 +5,7 @@
  
    if (!use_showproc)
 -    showproc = "/bin/cat";
-+    showproc = "@TERMUX_PREFIX@/bin/cat";
++    showproc = "@NEOTERM_PREFIX@/bin/cat";
    else
      showproc = mh_global_profile_get ("showproc", NULL);
  
@@ -14,7 +14,7 @@
        showproc = getenv ("PAGER");
        if (!showproc)
 -	showproc = "/usr/bin/more";
-+	showproc = "@TERMUX_PREFIX@/bin/more";
++	showproc = "@NEOTERM_PREFIX@/bin/more";
      }
    finisarg ();
    execvp (showproc, showargv);

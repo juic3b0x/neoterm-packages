@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        This is a bug tracker of the official Termux packages. Please do not report issues of third-party software there, but ask in [GitHub Discussions](https://github.com/neoterm/neoterm-packages/discussions) or [Community Social Media](https://wiki.neoterm.com/wiki/Community) instead. Use search to check whether your issue has been already reported and perhaps solved.
+        This is a bug tracker of the official NeoTerm packages. Please do not report issues of third-party software there, but ask in [GitHub Discussions](https://github.com/neoterm/neoterm-packages/discussions) or [Community Social Media](https://wiki.neoterm.com/wiki/Community) instead. Use search to check whether your issue has been already reported and perhaps solved.
 
         Android versions 5.x and 6.x are not supported anymore. Issues happening on these operating system versions will not be resolved.
 

@@ -6,7 +6,7 @@ diff -u -r ../deborphan/configure ./configure
  
  
 -$as_echo "#define STATUS_FILE \"/var/lib/dpkg/status\"" >>confdefs.h
-+$as_echo "#define STATUS_FILE \"@TERMUX_PREFIX@/var/lib/dpkg/status\"" >>confdefs.h
++$as_echo "#define STATUS_FILE \"@NEOTERM_PREFIX@/var/lib/dpkg/status\"" >>confdefs.h
  
  
  $as_echo "#define REG_FLAGS REG_ICASE" >>confdefs.h

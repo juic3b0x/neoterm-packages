@@ -5,7 +5,7 @@
   * 5: value of shell in config.h
   */
 -static char *shell = "/bin/sh";
-+static char *shell = "@TERMUX_PREFIX@/bin/sh";
++static char *shell = "@NEOTERM_PREFIX@/bin/sh";
  char *utmp = NULL;
  /* scroll program: to enable use a string like "scroll" */
  char *scroll = NULL;

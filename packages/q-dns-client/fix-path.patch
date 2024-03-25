@@ -8,8 +8,8 @@ index 553961a..31ef2f8 100644
  		} else {
 -			log.Debugf("No server specified or %s set, using /etc/resolv.conf", defaultServerVar)
 -			conf, err := dns.ClientConfigFromFile("/etc/resolv.conf")
-+			log.Debugf("No server specified or %s set, using @TERMUX_PREFIX@/etc/resolv.conf", defaultServerVar)
-+			conf, err := dns.ClientConfigFromFile("@TERMUX_PREFIX@/etc/resolv.conf")
++			log.Debugf("No server specified or %s set, using @NEOTERM_PREFIX@/etc/resolv.conf", defaultServerVar)
++			conf, err := dns.ClientConfigFromFile("@NEOTERM_PREFIX@/etc/resolv.conf")
  			if err != nil {
  				opts.Server[0] = "https://cloudflare-dns.com/dns-query"
  				log.Debugf("no server set, using %s", opts.Server)
@@ -18,7 +18,7 @@ index 553961a..31ef2f8 100644
  				} else {
  					opts.Server[0] = conf.Servers[0]
 -					log.Debugf("found server %s from /etc/resolv.conf", opts.Server)
-+					log.Debugf("found server %s from @TERMUX_PREFIX@/etc/resolv.conf", opts.Server)
++					log.Debugf("found server %s from @NEOTERM_PREFIX@/etc/resolv.conf", opts.Server)
  				}
  			}
  		}

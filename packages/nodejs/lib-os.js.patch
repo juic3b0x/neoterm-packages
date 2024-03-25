@@ -5,7 +5,7 @@
             safeGetenv('TMP') ||
             safeGetenv('TEMP') ||
 -           '/tmp';
-+           '@TERMUX_PREFIX@/tmp';
++           '@NEOTERM_PREFIX@/tmp';
      if (path.length > 1 && StringPrototypeEndsWith(path, '/'))
        path = StringPrototypeSlice(path, 0, -1);
    }

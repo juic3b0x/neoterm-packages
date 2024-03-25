@@ -5,9 +5,9 @@ diff -u -r ../orig-src/llvm/lib/Support/Unix/Path.inc ./llvm/lib/Support/Unix/Pa
    // If we don't have procfs mounted, fall back to argv[0]
    if (getprogpath(exe_path, argv0) != NULL)
      return exe_path;
-+#elif defined(__ANDROID__) // termux-exec linker wrapping does not work with /proc/self/exe
-+  const char *termux_self_exe = std::getenv("TERMUX_EXEC__PROC_SELF_EXE");
-+  if (termux_self_exe != NULL) return std::string(termux_self_exe);
++#elif defined(__ANDROID__) // neoterm-exec linker wrapping does not work with /proc/self/exe
++  const char *neoterm_self_exe = std::getenv("NEOTERM_EXEC__PROC_SELF_EXE");
++  if (neoterm_self_exe != NULL) return std::string(neoterm_self_exe);
 +  if (char *real_path = realpath("/proc/self/exe", nullptr)) {
 +    std::string ret = std::string(real_path);
 +    free(real_path);

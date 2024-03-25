@@ -6,8 +6,8 @@
  # absolute path, or relative to path of this file, directory must exists
 -work_dir = ./var
 -pidfile = ./var/ssdb.pid
-+work_dir = @TERMUX_PREFIX@/var
-+pidfile = @TERMUX_PREFIX@/var/run/ssdb.pid
++work_dir = @NEOTERM_PREFIX@/var
++pidfile = @NEOTERM_PREFIX@/var/run/ssdb.pid
  
  server:
  	# specify an ipv6 address to enable ipv6 support

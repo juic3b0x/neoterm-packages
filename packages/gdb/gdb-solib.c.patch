@@ -6,7 +6,7 @@ diff -u -r ../gdb-7.10.1/gdb/solib.c ./gdb/solib.c
  		 &showlist);
  
 +#ifdef __ANDROID__
-+  /* Termux modification to find system shared libraries. */
++  /* NeoTerm modification to find system shared libraries. */
 +  solib_search_path =
 +# ifdef __LP64__
 +    "/system/lib64:/system/vendor/lib64";

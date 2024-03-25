@@ -6,12 +6,12 @@
          case "$1" in
 -        /usr/local/*)
 -            echo "/usr/local"
-+        @TERMUX_PREFIX@/local/*)
-+            echo "@TERMUX_PREFIX@/local"
++        @NEOTERM_PREFIX@/local/*)
++            echo "@NEOTERM_PREFIX@/local"
              ;;
          *)
 -            echo "/usr"
-+            echo "@TERMUX_PREFIX@"
++            echo "@NEOTERM_PREFIX@"
              ;;
          esac
      }
@@ -21,8 +21,8 @@
          findFirstFile \
 -            "/usr/local/include/$searchName" \
 -            "/usr/include/$searchName" \
-+            "@TERMUX_PREFIX@/local/include/$searchName" \
-+            "@TERMUX_PREFIX@/include/$searchName" \
++            "@NEOTERM_PREFIX@/local/include/$searchName" \
++            "@NEOTERM_PREFIX@/include/$searchName" \
              ;
      }
  

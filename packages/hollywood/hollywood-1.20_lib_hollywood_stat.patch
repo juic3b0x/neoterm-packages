@@ -16,7 +16,7 @@ diff -uNr hollywood-1.20/lib/hollywood/stat hollywood-1.20.mod/lib/hollywood/sta
  while true; do
 -	for f in $(find /sys /dev 2>/dev/null | head -n 4096 | sort -R); do
 -		stat "$f" | ccze -A -c default=yellow
-+	for f in $(find @TERMUX_PREFIX@/etc @TERMUX_PREFIX@/tmp 2>/dev/null | head -n 4096 | sort -R); do
++	for f in $(find @NEOTERM_PREFIX@/etc @NEOTERM_PREFIX@/tmp 2>/dev/null | head -n 4096 | sort -R); do
 +		if ${_HAS_CCZE}; then
 +			stat "$f" | ccze -A -c default=yellow
 +		else

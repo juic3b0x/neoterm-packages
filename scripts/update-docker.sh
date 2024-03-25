@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e -u
 
-CONTAINER=termux-package-builder
-IMAGE=ghcr.io/termux/package-builder
+CONTAINER=neoterm-package-builder
+IMAGE=ghcr.io/neoterm/package-builder
 
 docker pull $IMAGE
 

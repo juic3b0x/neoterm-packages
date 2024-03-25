@@ -5,12 +5,12 @@
  {
    kill $! 2>/dev/null
 -  rm -f /tmp/aview$$.pgm 2>/dev/null
-+  rm -f @TERMUX_PREFIX@/tmp/aview$$.pgm 2>/dev/null
++  rm -f @NEOTERM_PREFIX@/tmp/aview$$.pgm 2>/dev/null
  }
  myconvert()
  {
 -   if anytopnm $1 >/tmp/aview$$.pgm 2>/dev/null ; then
-+   if anytopnm $1 >@TERMUX_PREFIX@/tmp/aview$$.pgm 2>/dev/null ; then
++   if anytopnm $1 >@NEOTERM_PREFIX@/tmp/aview$$.pgm 2>/dev/null ; then
       exit
     elif convert -colorspace gray $1 pgm:- 2>/dev/null ; then
       exit
@@ -20,8 +20,8 @@
  trap clear 0
 -mkfifo /tmp/aview$$.pgm
 -outfile=/tmp/aview$$.pgm
-+mkfifo @TERMUX_PREFIX@/tmp/aview$$.pgm
-+outfile=@TERMUX_PREFIX@/tmp/aview$$.pgm
++mkfifo @NEOTERM_PREFIX@/tmp/aview$$.pgm
++outfile=@NEOTERM_PREFIX@/tmp/aview$$.pgm
  for name in $filenames ; do
  if test -r $name ; then
  case $name in
@@ -30,11 +30,11 @@
    ;;
  *)
 -  myconvert $name >/tmp/aview$$.pgm &
-+  myconvert $name >@TERMUX_PREFIX@/tmp/aview$$.pgm &
++  myconvert $name >@NEOTERM_PREFIX@/tmp/aview$$.pgm &
    pid=$!
    PATH="$PATH:."
 -  aview  $options /tmp/aview$$.pgm
-+  aview  $options @TERMUX_PREFIX@/tmp/aview$$.pgm
++  aview  $options @NEOTERM_PREFIX@/tmp/aview$$.pgm
    kill $pid 2>/dev/null
  esac
  else

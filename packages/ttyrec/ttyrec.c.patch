@@ -57,7 +57,7 @@ diff -uNr ttyrec-1.0.8/ttyrec.c ttyrec-1.0.8/ttyrec.c.patch
  	shell = getenv("SHELL");
  	if (shell == NULL)
 -		shell = "/bin/sh";
-+		shell = "@TERMUX_PREFIX@/bin/sh";
++		shell = "@NEOTERM_PREFIX@/bin/sh";
  
  	getmaster();
  	fixtty();

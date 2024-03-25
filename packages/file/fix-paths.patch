@@ -6,7 +6,7 @@ diff -uNr file-5.42/src/compress.c file-5.42.mod/src/compress.c
  	(void)strlcat(buf, "file.XXXXXX", sizeof(buf));
  #else
 -	(void)strlcpy(buf, "/tmp/file.XXXXXX", sizeof(buf));
-+	(void)strlcpy(buf, "@TERMUX_PREFIX@/tmp/file.XXXXXX", sizeof buf);
++	(void)strlcpy(buf, "@NEOTERM_PREFIX@/tmp/file.XXXXXX", sizeof buf);
  #endif
  #ifndef HAVE_MKSTEMP
  	{
@@ -18,7 +18,7 @@ diff -uNr file-5.42/src/file.h file-5.42.mod/src/file.h
  
  #ifndef MAGIC
 -#define MAGIC "/etc/magic"
-+#define MAGIC "@TERMUX_PREFIX@/etc/magic"
++#define MAGIC "@NEOTERM_PREFIX@/etc/magic"
  #endif
  
  #if defined(__EMX__) || defined (WIN32)

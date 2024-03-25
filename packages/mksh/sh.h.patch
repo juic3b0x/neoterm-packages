@@ -6,7 +6,7 @@ diff -uNr mksh/sh.h mksh.mod/sh.h
  #define MKSH_UNIXROOT	"/@unixroot"
  #else
 -#define MKSH_UNIXROOT	""
-+#define MKSH_UNIXROOT	"@TERMUX_PREFIX@"
++#define MKSH_UNIXROOT	"@NEOTERM_PREFIX@"
  #endif
  
  #ifdef MKSH_DOSPATH

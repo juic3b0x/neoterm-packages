@@ -5,7 +5,7 @@
              if (!FileExists(Cfg)) {
                  // 3. /usr/share/fte
 -                sprintf(tmp, "/usr/share/fte/%s", CfgName);
-+                sprintf(tmp, "@TERMUX_PREFIX@/share/fte/config/%s", CfgName);
++                sprintf(tmp, "@NEOTERM_PREFIX@/share/fte/config/%s", CfgName);
                  ExpandPath(tmp, Cfg, sizeof(Cfg));
                  if (!FileExists(Cfg)) {
                      sprintf(tmp, "%sconfig/%s", StartDir, CfgName);

@@ -5,7 +5,7 @@
  # Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. 
  
 -prefix=/usr/local
-+prefix=@TERMUX_PREFIX@
++prefix=@NEOTERM_PREFIX@
  
  bin_dir=$(prefix)/bin
 -lib_dir=$(prefix)/lib/authbind
@@ -19,7 +19,7 @@
  man8_dir=$(man_dir)/man8
  
 -etc_dir=/etc/authbind
-+etc_dir=@TERMUX_PREFIX@/etc/authbind
++etc_dir=@NEOTERM_PREFIX@/etc/authbind
  
 -INSTALL_FILE	?= install -o root -g root -m 644 
 -INSTALL_PROGRAM ?= install -o root -g root -m 755 -s

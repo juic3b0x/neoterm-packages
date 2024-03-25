@@ -6,7 +6,7 @@ index ffd999892..662358479 100755
  # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  
  import sys
-+sys.path.insert(0,"@TERMUX_PREFIX@/share/sabnzbd")
++sys.path.insert(0,"@NEOTERM_PREFIX@/share/sabnzbd")
  
  if sys.hexversion < 0x03070000:
      print("Sorry, requires Python 3.7 or above")
@@ -36,7 +36,7 @@ index ffd999892..662358479 100755
      sabnzbd.MY_FULLNAME = os.path.normpath(os.path.abspath(sabnzbd.MY_FULLNAME))
      sabnzbd.MY_NAME = os.path.basename(sabnzbd.MY_FULLNAME)
 -    sabnzbd.DIR_PROG = os.path.dirname(sabnzbd.MY_FULLNAME)
-+    sabnzbd.DIR_PROG = "@TERMUX_PREFIX@/share/sabnzbd"
++    sabnzbd.DIR_PROG = "@NEOTERM_PREFIX@/share/sabnzbd"
      sabnzbd.DIR_INTERFACES = real_path(sabnzbd.DIR_PROG, DEF_INTERFACES)
      sabnzbd.DIR_LANGUAGE = real_path(sabnzbd.DIR_PROG, DEF_LANGUAGE)
      org_dir = os.getcwd()

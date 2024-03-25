@@ -6,7 +6,7 @@ diff -u -r ../mosh-05fe24d50ddbabf1c87be748b7397907ae1b9654/scripts/mosh.pl ./sc
      # Non-standard shells and broken shrc files cause the ssh
      # proxy to break mysteriously.
 -    $ENV{ 'SHELL' } = '/bin/sh';
-+    $ENV{ 'SHELL' } = '@TERMUX_PREFIX@/bin/sh';
++    $ENV{ 'SHELL' } = '@NEOTERM_PREFIX@/bin/sh';
      my $quoted_proxy_command = shell_quote( $0, "--family=$family" );
      push @sshopts, ( '-S', 'none', '-o', "ProxyCommand=$quoted_proxy_command --fake-proxy -- %h %p" );
    }

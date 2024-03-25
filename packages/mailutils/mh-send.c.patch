@@ -5,7 +5,7 @@
    const char *url = mu_mhprop_get_value (mts_profile,
  					 "url",
 -					 "sendmail:/usr/sbin/sendmail");
-+					 "sendmail:@TERMUX_PREFIX@/bin/sendmail");
++					 "sendmail:@NEOTERM_PREFIX@/bin/sendmail");
    mu_mailer_t mailer;
    int status;
      

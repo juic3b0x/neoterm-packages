@@ -6,7 +6,7 @@ diff -uNr runc-1.0.0-rc91/list.go runc-1.0.0-rc91.mod/list.go
  
  Where the given root is specified via the global option "--root"
 -(default: "/run/runc").
-+(default: "@TERMUX_PREFIX@/tmp/runc").
++(default: "@NEOTERM_PREFIX@/tmp/runc").
  
  EXAMPLE 1:
  To list containers created via the default "--root":
@@ -18,7 +18,7 @@ diff -uNr runc-1.0.0-rc91/main.go runc-1.0.0-rc91.mod/main.go
  
  	xdgRuntimeDir := ""
 -	root := "/run/runc"
-+	root := "@TERMUX_PREFIX@/tmp/runc"
++	root := "@NEOTERM_PREFIX@/tmp/runc"
  	if shouldHonorXDGRuntimeDir() {
  		if runtimeDir := os.Getenv("XDG_RUNTIME_DIR"); runtimeDir != "" {
  			root = runtimeDir + "/runc"

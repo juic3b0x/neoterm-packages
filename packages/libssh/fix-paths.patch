@@ -6,7 +6,7 @@ diff -uNr libssh-0.9.0/src/dh-gex.c libssh-0.9.0.mod/src/dh-gex.c
  #ifdef WITH_SERVER
  
 -#define MODULI_FILE "/etc/ssh/moduli"
-+#define MODULI_FILE "@TERMUX_PREFIX@/etc/ssh/moduli"
++#define MODULI_FILE "@NEOTERM_PREFIX@/etc/ssh/moduli"
  /* 2     "Safe" prime; (p-1)/2 is also prime. */
  #define SAFE_PRIME 2
  /* 0x04  Probabilistic Miller-Rabin primality tests. */
@@ -18,7 +18,7 @@ diff -uNr libssh-0.9.0/src/options.c libssh-0.9.0.mod/src/options.c
              if (v == NULL) {
                  session->opts.global_knownhosts =
 -                    strdup("/etc/ssh/ssh_known_hosts");
-+                    strdup("@TERMUX_PREFIX@/etc/ssh/ssh_known_hosts");
++                    strdup("@NEOTERM_PREFIX@/etc/ssh/ssh_known_hosts");
                  if (session->opts.global_knownhosts == NULL) {
                      ssh_set_error_oom(session);
                      return -1;
@@ -27,7 +27,7 @@ diff -uNr libssh-0.9.0/src/options.c libssh-0.9.0.mod/src/options.c
      if ((session->opts.exp_flags & SSH_OPT_EXP_FLAG_GLOBAL_KNOWNHOSTS) == 0) {
          if (session->opts.global_knownhosts == NULL) {
 -            tmp = strdup("/etc/ssh/ssh_known_hosts");
-+            tmp = strdup("@TERMUX_PREFIX@/etc/ssh/ssh_known_hosts");
++            tmp = strdup("@NEOTERM_PREFIX@/etc/ssh/ssh_known_hosts");
          } else {
              tmp = ssh_path_expand_escape(session,
                                           session->opts.global_knownhosts);
@@ -39,13 +39,13 @@ diff -uNr libssh-0.9.0/src/socket.c libssh-0.9.0.mod/src/socket.c
          /* Fall back to the /bin/sh only if the bash is not available. But there are 
           * issues with dash or whatever people tend to link to /bin/sh */
 -        rc = access("/bin/bash", 0);
-+        rc = access("@TERMUX_PREFIX@/bin/bash", 0);
++        rc = access("@NEOTERM_PREFIX@/bin/bash", 0);
          if (rc != 0) {
 -            shell = "/bin/sh";
-+            shell = "@TERMUX_PREFIX@/bin/sh";
++            shell = "@NEOTERM_PREFIX@/bin/sh";
          } else {
 -            shell = "/bin/bash";
-+            shell = "@TERMUX_PREFIX@/bin/bash";
++            shell = "@NEOTERM_PREFIX@/bin/bash";
          }
      }
      args[0] = shell;

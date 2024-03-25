@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_INCLUDE="
 bin/bugpoint
 bin/dsymutil
 bin/llc
@@ -18,6 +18,6 @@ share/man/man1/opt.1.gz
 share/man/man1/*tblgen.1.gz
 share/opt-viewer
 "
-TERMUX_SUBPKG_DESCRIPTION="LLVM modular compiler and toolchain executables"
-TERMUX_SUBPKG_BREAKS="libllvm (<< 11.0.0-1)"
-TERMUX_SUBPKG_REPLACES="libllvm (<< 11.0.0-1)"
+NEOTERM_SUBPKG_DESCRIPTION="LLVM modular compiler and toolchain executables"
+NEOTERM_SUBPKG_BREAKS="libllvm (<< 11.0.0-1)"
+NEOTERM_SUBPKG_REPLACES="libllvm (<< 11.0.0-1)"

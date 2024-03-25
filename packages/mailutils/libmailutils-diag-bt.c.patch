@@ -5,7 +5,7 @@
    if (!mu_program_name)
      abort ();
 -  sprintf (fname, "/tmp/mailutils.%s.%lu",
-+  sprintf (fname, "@TERMUX_PREFIX@/tmp/mailutils.%s.%lu",
++  sprintf (fname, "@NEOTERM_PREFIX@/tmp/mailutils.%s.%lu",
  	   mu_program_name, (unsigned long) master_pid);
    
    pid = fork ();
@@ -14,7 +14,7 @@
    close (fd);
    
 -  argv[0] = "/usr/bin/gdb";
-+  argv[0] = "@TERMUX_PREFIX@/bin/gdb";
++  argv[0] = "@NEOTERM_PREFIX@/bin/gdb";
    argv[1] = (char*) mu_full_program_name;
    sprintf (buf, "%lu", (unsigned long) master_pid);
    argv[2] = buf;

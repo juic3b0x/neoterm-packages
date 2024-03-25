@@ -5,7 +5,7 @@
  #include "include/private/base/SkLoadUserConfig.h"
  
 -#if !defined(SK_BUILD_FOR_WIN) && !defined(SK_BUILD_FOR_ANDROID)
-+#if (!defined(SK_BUILD_FOR_WIN) && !defined(SK_BUILD_FOR_ANDROID)) || defined(__TERMUX__)
++#if (!defined(SK_BUILD_FOR_WIN) && !defined(SK_BUILD_FOR_ANDROID)) || defined(__NEOTERM__)
  
  #include <stdarg.h>
  #include <stdio.h>
@@ -16,7 +16,7 @@
  
  #include "include/core/SkTypes.h"
 -#if defined(SK_BUILD_FOR_ANDROID)
-+#if defined(SK_BUILD_FOR_ANDROID) && !defined(__TERMUX__)
++#if defined(SK_BUILD_FOR_ANDROID) && !defined(__NEOTERM__)
  
  #include <stdio.h>
  

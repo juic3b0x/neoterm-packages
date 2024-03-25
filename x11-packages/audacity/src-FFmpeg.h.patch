@@ -5,7 +5,7 @@
     wxString GetLibAVFormatPath()
     {
 -      return wxT("");
-+      return wxT("@TERMUX_PREFIX@/opt/audacity/lib");
++      return wxT("@NEOTERM_PREFIX@/opt/audacity/lib");
     }
  
     wxString GetLibAVFormatName()

@@ -3,9 +3,9 @@
 
 set -e -u
 
-: "${TMPDIR:="@TERMUX_PREFIX@/tmp"}"
+: "${TMPDIR:="@NEOTERM_PREFIX@/tmp"}"
 
-FG_GAMEFOLDER=@TERMUX_PREFIX@/share/games/magneticscrolls
+FG_GAMEFOLDER=@NEOTERM_PREFIX@/share/games/magneticscrolls
 mkdir -p $FG_GAMEFOLDER
 
 FG_TMPFILE=$TMPDIR/dmagnetic

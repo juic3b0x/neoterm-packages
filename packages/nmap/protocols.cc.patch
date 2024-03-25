@@ -6,8 +6,8 @@
    if (nmap_fetchfile(filename, sizeof(filename), "nmap-protocols") != 1) {
 -    error("Unable to find nmap-protocols!  Resorting to /etc/protocols");
 -    strcpy(filename, "/etc/protocols");
-+    error("Unable to find nmap-protocols!  Resorting to @TERMUX_PREFIX@/etc/protocols");
-+    strcpy(filename, "@TERMUX_PREFIX@/etc/protocols");
++    error("Unable to find nmap-protocols!  Resorting to @NEOTERM_PREFIX@/etc/protocols");
++    strcpy(filename, "@NEOTERM_PREFIX@/etc/protocols");
    }
  
    fp = fopen(filename, "r");

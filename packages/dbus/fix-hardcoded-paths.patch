@@ -6,7 +6,7 @@ diff -uNr dbus-1.12.16/dbus/dbus-sysdeps-unix.c dbus-1.12.16.mod/dbus/dbus-sysde
        /* And this is the sane fallback. */
        if (tmpdir == NULL)
 -        tmpdir = "/tmp";
-+        tmpdir = "@TERMUX_PREFIX@/tmp";
++        tmpdir = "@NEOTERM_PREFIX@/tmp";
      }
  
    _DBUS_UNLOCK (sysdeps);

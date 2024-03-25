@@ -6,7 +6,7 @@ diff -uNr xfce4-screensaver-4.18.0/savers/slideshow.c xfce4-screensaver-4.18.0.m
          location = xdg_user_dir_lookup ("PICTURES");
          if (location == NULL ||
 -                strcmp (location, "/tmp") == 0 ||
-+                strcmp (location, "@TERMUX_PREFIX@/tmp") == 0 ||
++                strcmp (location, "@NEOTERM_PREFIX@/tmp") == 0 ||
                  strcmp (location, g_get_home_dir ()) == 0) {
              free (location);
              location = g_build_filename (g_get_home_dir (), "Pictures", NULL);
@@ -18,7 +18,7 @@ diff -uNr xfce4-screensaver-4.18.0/savers/xdg-user-dir-lookup.c xfce4-screensave
  
      if (home_dir == NULL)
 -        return g_strdup ("/tmp");
-+        return g_strdup ("@TERMUX_PREFIX@/tmp");
++        return g_strdup ("@NEOTERM_PREFIX@/tmp");
  
      /* Special case desktop for historical compatibility */
      if (strcmp(type, "DESKTOP") == 0) {

@@ -5,7 +5,7 @@
  	AC_SEARCH_LIBS([gme_open_data], [gme], [], [LOVE_MSG_ERROR([gme])])
  	AC_DEFINE([LOVE_SUPPORT_GME], [], [Enable gme])
 -	AC_CHECK_HEADER([gme/gme.h], [includes="$includes -I/usr/include/gme"], [])])
-+	AC_CHECK_HEADER([gme/gme.h], [includes="$includes -I@TERMUX_PREFIX@/include/gme"], [])])
++	AC_CHECK_HEADER([gme/gme.h], [includes="$includes -I@NEOTERM_PREFIX@/include/gme"], [])])
  
  # For enet
  AC_DEFUN([ACLOVE_SOCKLEN_T], [

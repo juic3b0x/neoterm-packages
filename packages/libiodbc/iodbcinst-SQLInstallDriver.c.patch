@@ -6,8 +6,8 @@
  #else
 -  STRNCPY (lpszPath, "/usr/local/lib", cbPathMax - 1);
 -  if (STRLEN (lpszPath) != STRLEN ("/usr/local/lib"))
-+  STRNCPY (lpszPath, "@TERMUX_PREFIX@/local/lib", cbPathMax - 1);
-+  if (STRLEN (lpszPath) != STRLEN ("@TERMUX_PREFIX@/local/lib"))
++  STRNCPY (lpszPath, "@NEOTERM_PREFIX@/local/lib", cbPathMax - 1);
++  if (STRLEN (lpszPath) != STRLEN ("@NEOTERM_PREFIX@/local/lib"))
  #endif
      {
        PUSH_ERROR (ODBC_ERROR_INVALID_BUFF_LEN);
@@ -17,8 +17,8 @@
  #else
 -  STRNCPY (lpszPath, "/usr/lib", cbPathMax - 1);
 -  if (STRLEN (lpszPath) != STRLEN ("/usr/lib"))
-+  STRNCPY (lpszPath, "@TERMUX_PREFIX@/lib", cbPathMax - 1);
-+  if (STRLEN (lpszPath) != STRLEN ("@TERMUX_PREFIX@/lib"))
++  STRNCPY (lpszPath, "@NEOTERM_PREFIX@/lib", cbPathMax - 1);
++  if (STRLEN (lpszPath) != STRLEN ("@NEOTERM_PREFIX@/lib"))
  #endif
      {
        PUSH_ERROR (ODBC_ERROR_INVALID_BUFF_LEN);

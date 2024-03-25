@@ -5,7 +5,7 @@
         * */
  
 -      chosen_search_path = "/bin:/usr/bin:.";
-+      chosen_search_path = "@TERMUX_PREFIX@/bin:.";
++      chosen_search_path = "@NEOTERM_PREFIX@/bin:.";
      }
  
    if (search_path || search_path_from_envp)
@@ -14,7 +14,7 @@
      return FALSE;
  
 -  argv_buffer[0] = (char *) "/bin/sh";
-+  argv_buffer[0] = (char *) "@TERMUX_PREFIX@/bin/sh";
++  argv_buffer[0] = (char *) "@NEOTERM_PREFIX@/bin/sh";
    argv_buffer[1] = (char *) file;
    while (argc > 0)
      {

@@ -5,7 +5,7 @@
   */
  
 -static char *default_path = "/usr/local/lib/ps:/usr/lib/ps";
-+static char *default_path = "@TERMUX_PREFIX@/usr/lib/ps";
++static char *default_path = "@NEOTERM_PREFIX@/usr/lib/ps";
  
  static char *error_names[] =
  {

@@ -4,7 +4,7 @@
  option('cachedir',
         type : 'string',
 -       value : '/var/cache/pkgfile',
-+       value : '@TERMUX_PREFIX@/var/cache/pkgfile',
++       value : '@NEOTERM_PREFIX@/var/cache/pkgfile',
         description : 'default directory to store pkgfile data')
  
  option('systemd_units',

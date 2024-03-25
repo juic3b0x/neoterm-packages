@@ -1,12 +1,12 @@
-TERMUX_PKG_HOMEPAGE=http://www.doxygen.org
-TERMUX_PKG_DESCRIPTION="A documentation system for C++, C, Java, IDL and PHP"
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.10.0"
-TERMUX_PKG_SRCURL=https://github.com/doxygen/doxygen/archive/Release_${TERMUX_PKG_VERSION//./_}.tar.gz
-TERMUX_PKG_SHA256=795692a53136ca9bb9a6cd72656968af7858a78be7d6d011e12ab1dce6b9533c
-TERMUX_PKG_DEPENDS="libc++, libiconv"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=http://www.doxygen.org
+NEOTERM_PKG_DESCRIPTION="A documentation system for C++, C, Java, IDL and PHP"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.10.0"
+NEOTERM_PKG_SRCURL=https://github.com/doxygen/doxygen/archive/Release_${NEOTERM_PKG_VERSION//./_}.tar.gz
+NEOTERM_PKG_SHA256=795692a53136ca9bb9a6cd72656968af7858a78be7d6d011e12ab1dce6b9533c
+NEOTERM_PKG_DEPENDS="libc++, libiconv"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DBISON_EXECUTABLE=$(command -v bison)
 -DCMAKE_BUILD_TYPE=Release
 -DFLEX_EXECUTABLE=$(command -v flex)
@@ -14,11 +14,11 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dbuild_parse=yes
 -Dbuild_xmlparser=yes
 "
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_UPDATE_VERSION_REGEXP="\d+_\d+_\d+"
-TERMUX_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+_\d+_\d+"
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
 
-termux_step_post_make_install() {
-	mkdir -p "$TERMUX_PREFIX"/share/man/man1
-	cp "$TERMUX_PKG_SRCDIR"/doc/doxygen.1 "$TERMUX_PREFIX"/share/man/man1
+neoterm_step_post_make_install() {
+	mkdir -p "$NEOTERM_PREFIX"/share/man/man1
+	cp "$NEOTERM_PKG_SRCDIR"/doc/doxygen.1 "$NEOTERM_PREFIX"/share/man/man1
 }

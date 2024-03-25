@@ -5,7 +5,7 @@
      if [[ $have_iniparser = "yes" ]] ; then
      LIBS="$LIBS -liniparser"
 -      CPPFLAGS="$CPPFLAGS -I/usr/include/iniparser"
-+      CPPFLAGS="$CPPFLAGS -I@TERMUX_PREFIX@/include/iniparser"
++      CPPFLAGS="$CPPFLAGS -I@NEOTERM_PREFIX@/include/iniparser"
      AC_LINK_IFELSE([AC_LANG_PROGRAM([[#include <iniparser.h>]],
        [[dictionary* ini;
        const char *keys[3];

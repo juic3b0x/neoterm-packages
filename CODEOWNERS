@@ -1,4 +1,4 @@
-# Default assignment: frequent contributors from @termux.
+# Default assignment: frequent contributors from @neoterm.
 * @finagolfin @Grimler91
 
 # Build system.
@@ -8,13 +8,13 @@
 /scripts/ @Grimler91
 
 # GN setup script
-/scripts/build/setup/termux_setup_gn.sh @thunder-coding
+/scripts/build/setup/neoterm_setup_gn.sh @thunder-coding
 
 # GIR (GObject Introspection Repository) setup script and other stuff
 /packages/gobject-introspection/gi-cross-launcher-on-device.in @xtkoba
 /packages/gobject-introspection/gi-cross-launcher.sh @xtkoba
 /packages/ldd/ @xtkoba
-/scripts/build/setup/termux_setup_gir.sh @xtkoba
+/scripts/build/setup/neoterm_setup_gir.sh @xtkoba
 
 # Pre-generated XML dumps for GIR
 /packages/*/gir/ @xtkoba
@@ -45,7 +45,7 @@
 /packages/science-repo/ @Grimler91
 /packages/smalltalk/ @Grimler91
 /packages/teckit/ @Grimler91
-/packages/termux-services/ @Grimler91
+/packages/neoterm-services/ @Grimler91
 /packages/texlive-bin/ @Grimler91
 
 # Packages owned by @ian4hu
@@ -87,7 +87,7 @@
 
 # Packages owned by @michalbednarski
 /packages/proot/ @michalbednarski
-/packages/termux-am/ @michalbednarski
+/packages/neoterm-am/ @michalbednarski
 
 # Packages owned by @MrAdityaAlok
 /packages/haskell-base-compat-batteries/ @MrAdityaAlok
@@ -196,7 +196,7 @@
 /packages/frp/ @2096779623
 
 # Packages owned by @twaik
-/x11-packages/termux-x11-nightly/ @twaik
+/x11-packages/neoterm-x11-nightly/ @twaik
 
 # Misc
 /packages/blogc/ @rafaelmartins

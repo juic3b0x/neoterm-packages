@@ -14,7 +14,7 @@ diff -uNr hollywood-1.20/lib/hollywood/logs hollywood-1.20.mod/lib/hollywood/log
  trap "pkill -f -9 lib/hollywood/ >/dev/null 2>&1; exit" INT
  while true; do
 -	LOGS=$(find /var/log -type f -name "*.log" 2>/dev/null | head -n 4096 | sort -R)
-+	LOGS=$(find @TERMUX_PREFIX@/var/log -type f -name "*.log" 2>/dev/null | head -n 4096 | sort -R)
++	LOGS=$(find @NEOTERM_PREFIX@/var/log -type f -name "*.log" 2>/dev/null | head -n 4096 | sort -R)
  	for log in $LOGS; do
 -		cat "$log" 2>/dev/null | ccze -A
 +		if ${_HAS_CCZE}; then

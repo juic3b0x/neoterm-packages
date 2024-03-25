@@ -1,8 +1,8 @@
-TERMUX_SUBPKG_DESCRIPTION="Library for handling universally unique identifiers"
-TERMUX_SUBPKG_BREAKS="libuuid-dev"
-TERMUX_SUBPKG_REPLACES="libuuid-dev"
-TERMUX_SUBPKG_DEPEND_ON_PARENT="no"
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_DESCRIPTION="Library for handling universally unique identifiers"
+NEOTERM_SUBPKG_BREAKS="libuuid-dev"
+NEOTERM_SUBPKG_REPLACES="libuuid-dev"
+NEOTERM_SUBPKG_DEPEND_ON_PARENT="no"
+NEOTERM_SUBPKG_INCLUDE="
 lib/pkgconfig/uuid.pc
 lib/libuuid.so
 include/uuid/uuid.h

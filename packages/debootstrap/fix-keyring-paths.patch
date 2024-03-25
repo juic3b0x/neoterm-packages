@@ -6,7 +6,7 @@ diff -uNr debootstrap/scripts/aequorea debootstrap.mod/scripts/aequorea
  finddebs_style from-indices
  variants - buildd fakechroot minbase
 -keyring /usr/share/keyrings/tanglu-archive-keyring.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/tanglu-archive-keyring.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/tanglu-archive-keyring.gpg
  default_mirror http://archive.tanglu.org/tanglu
  
  if doing_variant fakechroot; then
@@ -18,7 +18,7 @@ diff -uNr debootstrap/scripts/etch debootstrap.mod/scripts/etch
  variants - buildd fakechroot minbase
  default_mirror http://archive.debian.org/debian
 -keyring /usr/share/keyrings/debian-archive-removed-keys.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
  force_md5
  
  # include common settings
@@ -30,7 +30,7 @@ diff -uNr debootstrap/scripts/gutsy debootstrap.mod/scripts/gutsy
  finddebs_style from-indices
  variants - buildd fakechroot minbase
 -keyring /usr/share/keyrings/ubuntu-archive-keyring.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/ubuntu-archive-keyring.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/ubuntu-archive-keyring.gpg
  
  if doing_variant fakechroot; then
  	test "$FAKECHROOT" = "true" || error 1 FAKECHROOTREQ "This variant requires fakechroot environment to be started"
@@ -42,7 +42,7 @@ diff -uNr debootstrap/scripts/kali debootstrap.mod/scripts/kali
  finddebs_style from-indices
  variants - buildd fakechroot minbase
 -keyring /usr/share/keyrings/kali-archive-keyring.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/kali-archive-keyring.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/kali-archive-keyring.gpg
  default_mirror http://http.kali.org/kali
  
  # include common settings
@@ -54,7 +54,7 @@ diff -uNr debootstrap/scripts/potato debootstrap.mod/scripts/potato
  download_style apt var-state
  default_mirror http://archive.debian.org/debian
 -keyring /usr/share/keyrings/debian-archive-removed-keys.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
  force_md5
  
  LIBC=libc6
@@ -66,7 +66,7 @@ diff -uNr debootstrap/scripts/sarge debootstrap.mod/scripts/sarge
  download_style apt
  default_mirror http://archive.debian.org/debian
 -keyring /usr/share/keyrings/debian-archive-removed-keys.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
  force_md5
  
  LIBC=libc6
@@ -78,7 +78,7 @@ diff -uNr debootstrap/scripts/sid debootstrap.mod/scripts/sid
  finddebs_style from-indices
  variants - buildd fakechroot minbase
 -keyring /usr/share/keyrings/debian-archive-keyring.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/debian-archive-keyring.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/debian-archive-keyring.gpg
  
  # include common settings
  if [ -e "$DEBOOTSTRAP_DIR/scripts/debian-common" ]; then
@@ -90,7 +90,7 @@ diff -uNr debootstrap/scripts/woody debootstrap.mod/scripts/woody
  download_style apt
  default_mirror http://archive.debian.org/debian
 -keyring /usr/share/keyrings/debian-archive-removed-keys.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
  force_md5
  
  LIBC=libc6
@@ -102,7 +102,7 @@ diff -uNr debootstrap/scripts/woody.buildd debootstrap.mod/scripts/woody.buildd
  download_style apt
  default_mirror http://archive.debian.org/debian
 -keyring /usr/share/keyrings/debian-archive-removed-keys.gpg
-+keyring @TERMUX_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
++keyring @NEOTERM_PREFIX@/share/keyrings/debian-archive-removed-keys.gpg
  force_md5
  
  LIBC=libc6

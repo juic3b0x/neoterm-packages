@@ -1,23 +1,23 @@
-TERMUX_PKG_HOMEPAGE=https://liquidsdr.org/
-TERMUX_PKG_DESCRIPTION="Software-defined radio digital signal processing library"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.6.0"
-TERMUX_PKG_SRCURL=https://github.com/jgaeddert/liquid-dsp/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=6ee6a5dfb48e047b118cf613c0b9f43e34356a5667a77a72a55371d2c8c53bf5
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="fftw"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://liquidsdr.org/
+NEOTERM_PKG_DESCRIPTION="Software-defined radio digital signal processing library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.6.0"
+NEOTERM_PKG_SRCURL=https://github.com/jgaeddert/liquid-dsp/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=6ee6a5dfb48e047b118cf613c0b9f43e34356a5667a77a72a55371d2c8c53bf5
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="fftw"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	autoreconf -fi
 }
 
-termux_step_post_massage() {
+neoterm_step_post_massage() {
 	shopt -s nullglob
 	local f
 	for f in lib/libliquid.a.*; do
-		termux_error_exit "File ${f} should not be contained herein."
+		neoterm_error_exit "File ${f} should not be contained herein."
 	done
 	shopt -u nullglob
 }

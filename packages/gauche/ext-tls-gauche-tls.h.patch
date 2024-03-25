@@ -8,7 +8,7 @@
 -    "/usr/share/pki/ca-trust-source/ca-bundle.trust.crt", /* fedora */  \
 -    "/etc/pki/tls/certs/ca-budle.crt",    /* fedora (compat) */         \
 -    "/usr/local/etc/openssl/cert.pem"     /* osx homebrew openssl */
-+    "@TERMUX_PREFIX@/etc/tls/cert.pem"
++    "@NEOTERM_PREFIX@/etc/tls/cert.pem"
  
  #if defined(GAUCHE_USE_AXTLS)
  #include "axTLS/ssl/ssl.h"

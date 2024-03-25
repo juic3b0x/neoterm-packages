@@ -1,16 +1,16 @@
-TERMUX_PKG_HOMEPAGE=http://www.mutt.org/
-TERMUX_PKG_DESCRIPTION="Mail client with patches from neomutt"
+NEOTERM_PKG_HOMEPAGE=http://www.mutt.org/
+NEOTERM_PKG_DESCRIPTION="Mail client with patches from neomutt"
 # License: GPL-2.0-or-later
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="2.2.13"
-TERMUX_PKG_SRCURL=ftp://ftp.mutt.org/pub/mutt/mutt-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=eb23faddc1cc97d867693f3a4a9f30949ad93765ad5b6fdae2797a4001c58efb
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="libandroid-support, ncurses, gdbm, openssl, libsasl, media-types, zlib, libiconv"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.2.13"
+NEOTERM_PKG_SRCURL=ftp://ftp.mutt.org/pub/mutt/mutt-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=eb23faddc1cc97d867693f3a4a9f30949ad93765ad5b6fdae2797a4001c58efb
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libandroid-support, ncurses, gdbm, openssl, libsasl, media-types, zlib, libiconv"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 mutt_cv_c99_snprintf=yes
 mutt_cv_c99_vsnprintf=yes
 --disable-gpgme
@@ -21,8 +21,8 @@ mutt_cv_c99_vsnprintf=yes
 --enable-pop
 --enable-sidebar
 --enable-smtp
---with-exec-shell=$TERMUX_PREFIX/bin/sh
---with-mailpath=$TERMUX_PREFIX/var/mail
+--with-exec-shell=$NEOTERM_PREFIX/bin/sh
+--with-mailpath=$NEOTERM_PREFIX/var/mail
 --without-idn
 --with-sasl
 --with-ssl
@@ -32,16 +32,16 @@ mutt_cv_c99_vsnprintf=yes
 # AC_CHECK_FUNCS(fget{c,s}_unlocked) finds them in libc, even though
 # it is not defined in stdio.h, so we need to override the check or
 # else compilation on device fails
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS+="
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+="
 ac_cv_func_fgetc_unlocked=no
 ac_cv_func_fgets_unlocked=no
 "
 
-if $TERMUX_DEBUG_BUILD; then
-	export TERMUX_PKG_EXTRA_CONFIGURE_ARGS+="--enable-debug"
+if $NEOTERM_DEBUG_BUILD; then
+	export NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+="--enable-debug"
 fi
 
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_RM_AFTER_INSTALL="
 bin/flea
 bin/muttbug
 share/man/man1/muttbug.1
@@ -49,16 +49,16 @@ share/man/man1/flea.1
 etc/mime.types.dist
 "
 
-TERMUX_PKG_CONFFILES="etc/Muttrc"
+NEOTERM_PKG_CONFFILES="etc/Muttrc"
 
-termux_step_post_configure() {
+neoterm_step_post_configure() {
 	# Build wants to run mutt_md5:
-	gcc -DHAVE_STDINT_H -DMD5UTIL $TERMUX_PKG_SRCDIR/md5.c -o $TERMUX_PKG_BUILDDIR/mutt_md5
-	touch -d "next hour" $TERMUX_PKG_BUILDDIR/mutt_md5
+	gcc -DHAVE_STDINT_H -DMD5UTIL $NEOTERM_PKG_SRCDIR/md5.c -o $NEOTERM_PKG_BUILDDIR/mutt_md5
+	touch -d "next hour" $NEOTERM_PKG_BUILDDIR/mutt_md5
 }
 
-termux_step_post_make_install() {
-	cp doc/mutt.man $TERMUX_PREFIX/share/man/man1/mutt.1.man
-	mkdir -p $TERMUX_PREFIX/share/examples/mutt/
-	cp contrib/gpg.rc $TERMUX_PREFIX/share/examples/mutt/
+neoterm_step_post_make_install() {
+	cp doc/mutt.man $NEOTERM_PREFIX/share/man/man1/mutt.1.man
+	mkdir -p $NEOTERM_PREFIX/share/examples/mutt/
+	cp contrib/gpg.rc $NEOTERM_PREFIX/share/examples/mutt/
 }

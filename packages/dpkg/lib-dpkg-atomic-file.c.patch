@@ -8,7 +8,7 @@ diff -u -r ../dpkg-1.18.2/lib/dpkg/atomic-file.c ./lib/dpkg/atomic-file.c
 -	if (link(file->name, name_old) && errno != ENOENT)
 -		ohshite(_("error creating new backup file '%s'"), name_old);
 +#ifdef __ANDROID__
-+	/* Termux: Use rename(2) since Android does not support hardlinks. */
++	/* NeoTerm: Use rename(2) since Android does not support hardlinks. */
 +	if (rename(file->name, name_old) && errno != ENOENT) {
 +#else
 +	if (link(file->name, name_old) && errno != ENOENT) {

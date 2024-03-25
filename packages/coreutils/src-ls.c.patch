@@ -5,7 +5,7 @@ diff -uNr coreutils-8.32/src/ls.c coreutils-8.32.mod/src/ls.c
        }
    }
  
-+  /* Termux patch: Default to colors if terminal. The --color option may override this. */
++  /* NeoTerm patch: Default to colors if terminal. The --color option may override this. */
 +  print_with_color = isatty(STDOUT_FILENO);
 +
    while (true)

@@ -26,8 +26,8 @@ deny-warnings = false
 llvm-config = "/usr/bin/llvm-config-12"
 
 [target.@RUST_TARGET_TRIPLE@]
-android-ndk = "@TERMUX_STANDALONE_TOOLCHAIN@"
-llvm-config = "@TERMUX_PREFIX@/bin/llvm-config"
+android-ndk = "@NEOTERM_STANDALONE_TOOLCHAIN@"
+llvm-config = "@NEOTERM_PREFIX@/bin/llvm-config"
 ar = "llvm-ar"
 
 #jemalloc = "/path/to/jemalloc/libjemalloc_pic.a"

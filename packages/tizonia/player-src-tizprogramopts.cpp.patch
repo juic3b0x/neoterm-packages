@@ -5,7 +5,7 @@
    printf (
        "\nExample configuration files may also be found at \n"
 -      "    - /etc/xdg/tizonia/tizonia.conf or \n"
-+      "    - @TERMUX_PREFIX@/etc/xdg/tizonia/tizonia.conf or \n"
++      "    - @NEOTERM_PREFIX@/etc/xdg/tizonia/tizonia.conf or \n"
        "    - /snap/tizonia/current/etc/xdg/tizonia/tizonia.conf.\n");
  
  //

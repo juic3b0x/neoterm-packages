@@ -14,4 +14,4 @@
    - type: local
      name: local_tmp
 -    dir: /tmp
-+    dir: @TERMUX_PREFIX@/tmp
++    dir: @NEOTERM_PREFIX@/tmp

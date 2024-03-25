@@ -1,21 +1,21 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/termux/termux-packages
-TERMUX_PKG_DESCRIPTION="Fake ldd command"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=0.3
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_SKIP_SRC_EXTRACT=true
-TERMUX_PKG_DEPENDS="bash, binutils-bin"
-TERMUX_PKG_CONFLICTS="binutils (<< 2.39-1)"
+NEOTERM_PKG_HOMEPAGE=https://github.com/neoterm/neoterm-packages
+NEOTERM_PKG_DESCRIPTION="Fake ldd command"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.3
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_SKIP_SRC_EXTRACT=true
+NEOTERM_PKG_DEPENDS="bash, binutils-bin"
+NEOTERM_PKG_CONFLICTS="binutils (<< 2.39-1)"
 
-termux_step_make_install() {
-	local _READELF=$TERMUX_PREFIX/libexec/binutils/readelf
+neoterm_step_make_install() {
+	local _READELF=$NEOTERM_PREFIX/libexec/binutils/readelf
 
-	local ldd="$TERMUX_PREFIX/bin/ldd"
+	local ldd="$NEOTERM_PREFIX/bin/ldd"
 	mkdir -p "$(dirname "${ldd}")"
 	rm -rf "${ldd}"
-	sed "$TERMUX_PKG_BUILDER_DIR/ldd.in" \
-		-e "s|@ARCH_BITS@|${TERMUX_ARCH_BITS}|g" \
+	sed "$NEOTERM_PKG_BUILDER_DIR/ldd.in" \
+		-e "s|@ARCH_BITS@|${NEOTERM_ARCH_BITS}|g" \
 		-e "s|@READELF@|${_READELF}|g" \
 		> "${ldd}"
 	chmod 0700 "${ldd}"

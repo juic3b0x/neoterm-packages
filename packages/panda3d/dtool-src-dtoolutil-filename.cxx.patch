@@ -5,7 +5,7 @@
  #else
      // Posix case.
 -    temp_directory = "/tmp";
-+    temp_directory = "@TERMUX_PREFIX@/tmp";
++    temp_directory = "@NEOTERM_PREFIX@/tmp";
  #endif  // WIN32
  
      if (temp_directory.empty()) {
@@ -14,7 +14,7 @@
      common_appdata_directory = "/usr/local/share";
  #else
 -    common_appdata_directory = "/usr/share";
-+    common_appdata_directory = "@TERMUX_PREFIX@/share";
++    common_appdata_directory = "@NEOTERM_PREFIX@/share";
  #endif  // WIN32
  
      if (common_appdata_directory.empty()) {

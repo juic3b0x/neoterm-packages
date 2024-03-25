@@ -20,8 +20,8 @@ index b11313fab87..fe2e8982300 100644
 +        self.cmake_options.extend(host_config.cmake_options)
 +
 +        if 'ANDROID_DATA' not in os.environ:
-+            self.cmake_options.define('CMAKE_C_FLAGS', '%s --target=%s %s' % (os.environ.get('CFLAGS'), os.environ.get('CCTERMUX_HOST_PLATFORM'), os.environ.get('CPPFLAGS')))
-+            self.cmake_options.define('CMAKE_CXX_FLAGS', '%s --target=%s %s' % (os.environ.get('CXXFLAGS'), os.environ.get('CCTERMUX_HOST_PLATFORM'), os.environ.get('CPPFLAGS')))
++            self.cmake_options.define('CMAKE_C_FLAGS', '%s --target=%s %s' % (os.environ.get('CFLAGS'), os.environ.get('CCNEOTERM_HOST_PLATFORM'), os.environ.get('CPPFLAGS')))
++            self.cmake_options.define('CMAKE_CXX_FLAGS', '%s --target=%s %s' % (os.environ.get('CXXFLAGS'), os.environ.get('CCNEOTERM_HOST_PLATFORM'), os.environ.get('CPPFLAGS')))
 +
          self.build_with_cmake(["all"], self.args.cmark_build_variant, [])
  
@@ -34,8 +34,8 @@ index 744dca10fca..7b5932882f2 100644
              llvm_cmake_options.define('CLANG_TABLEGEN', clang_tblgen)
              llvm = os.path.join(host_build_dir, 'llvm')
              llvm_cmake_options.define('LLVM_NATIVE_BUILD', llvm)
-+            llvm_cmake_options.define('CMAKE_CXX_FLAGS', '{} --target={} {}'.format(os.environ['CXXFLAGS'], os.environ['CCTERMUX_HOST_PLATFORM'], os.environ['CPPFLAGS']))
-+            llvm_cmake_options.define('CMAKE_EXE_LINKER_FLAGS', '{} --target={}'.format(os.environ['LDFLAGS'], os.environ['CCTERMUX_HOST_PLATFORM']))
++            llvm_cmake_options.define('CMAKE_CXX_FLAGS', '{} --target={} {}'.format(os.environ['CXXFLAGS'], os.environ['CCNEOTERM_HOST_PLATFORM'], os.environ['CPPFLAGS']))
++            llvm_cmake_options.define('CMAKE_EXE_LINKER_FLAGS', '{} --target={}'.format(os.environ['LDFLAGS'], os.environ['CCNEOTERM_HOST_PLATFORM']))
 +            llvm_cmake_options.define('CMAKE_FIND_ROOT_PATH:PATH', self.args.cross_compile_deps_path)
 +            llvm_cmake_options.define('CMAKE_FIND_ROOT_PATH_MODE_PROGRAM', 'NEVER')
 +            llvm_cmake_options.define('CMAKE_FIND_ROOT_PATH_MODE_LIBRARY', 'ONLY')

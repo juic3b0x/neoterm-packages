@@ -6,6 +6,6 @@ This variable is needed when compiling packages using pip
      # rpython/translator/platform/darwin.py and Lib/_osx_support.py
      build_time_vars['MACOSX_DEPLOYMENT_TARGET'] = '10.9'
  
-+# Termux Fix: Add ANDROID_API_LEVEL
-+build_time_vars["ANDROID_API_LEVEL"] = @TERMUX_PKG_API_LEVEL@
++# NeoTerm Fix: Add ANDROID_API_LEVEL
++build_time_vars["ANDROID_API_LEVEL"] = @NEOTERM_PKG_API_LEVEL@
 +

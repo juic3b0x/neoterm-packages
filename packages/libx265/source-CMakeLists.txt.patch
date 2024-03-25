@@ -22,13 +22,13 @@ index a407271b4..6ecfda3ee 100755
 -        else()
 -            set(ARM_ARGS -mcpu=native -mfloat-abi=hard -mfpu=vfp -marm)
 -        endif()
-+        # Follow termux_step_setup_toolchain.sh
-+        set(ARM_ARGS @TERMUX_CLANG_TARGET_ARM@ -march=armv7-a -mfpu=neon -mfloat-abi=softfp -mthumb -fPIC)
++        # Follow neoterm_step_setup_toolchain.sh
++        set(ARM_ARGS @NEOTERM_CLANG_TARGET_ARM@ -march=armv7-a -mfpu=neon -mfloat-abi=softfp -mthumb -fPIC)
 +        add_definitions(-DHAVE_NEON)
      endif()
  	if(ARM64 OR CROSS_COMPILE_ARM64)
 -	    set(ARM_ARGS -fPIC -flax-vector-conversions)
-+	    set(ARM_ARGS @TERMUX_CLANG_TARGET_AARCH64@ -fPIC -flax-vector-conversions)
++	    set(ARM_ARGS @NEOTERM_CLANG_TARGET_AARCH64@ -fPIC -flax-vector-conversions)
          find_package(Neon)
          if(CPU_HAS_NEON)
              add_definitions(-DHAVE_NEON)

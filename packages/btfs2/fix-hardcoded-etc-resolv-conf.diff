@@ -27,11 +27,11 @@
 
  	if runtime.GOOS != "openbsd" {
 -		confVal.nss = parseNSSConfFile("/etc/nsswitch.conf")
-+		confVal.nss = parseNSSConfFile("@TERMUX_PREFIX@/etc/nsswitch.conf")
++		confVal.nss = parseNSSConfFile("@NEOTERM_PREFIX@/etc/nsswitch.conf")
  	}
 
 -	confVal.resolv = dnsReadConfig("/etc/resolv.conf")
-+	confVal.resolv = dnsReadConfig("@TERMUX_PREFIX@/etc/resolv.conf")
++	confVal.resolv = dnsReadConfig("@NEOTERM_PREFIX@/etc/resolv.conf")
  	if confVal.resolv.err != nil && !os.IsNotExist(confVal.resolv.err) &&
  		!os.IsPermission(confVal.resolv.err) {
  		// If we can't read the resolv.conf file, assume it
@@ -40,7 +40,7 @@
  	}
 
 -	if _, err := os.Stat("/etc/mdns.allow"); err == nil {
-+	if _, err := os.Stat("@TERMUX_PREFIX@/etc/mdns.allow"); err == nil {
++	if _, err := os.Stat("@NEOTERM_PREFIX@/etc/mdns.allow"); err == nil {
  		confVal.hasMDNSAllow = true
  	}
  }
@@ -73,7 +73,7 @@
  	conf.dnsConfig = systemConf().resolv
  	if conf.dnsConfig == nil {
 -		conf.dnsConfig = dnsReadConfig("/etc/resolv.conf")
-+		conf.dnsConfig = dnsReadConfig("@TERMUX_PREFIX@/etc/resolv.conf")
++		conf.dnsConfig = dnsReadConfig("@NEOTERM_PREFIX@/etc/resolv.conf")
  	}
  	conf.lastChecked = time.Now()
 
@@ -82,7 +82,7 @@
  		return dnsmessage.Parser{}, "", &DNSError{Err: errNoSuchHost.Error(), Name: name, IsNotFound: true}
  	}
 -	resolvConf.tryUpdate("/etc/resolv.conf")
-+	resolvConf.tryUpdate("@TERMUX_PREFIX@/etc/resolv.conf")
++	resolvConf.tryUpdate("@NEOTERM_PREFIX@/etc/resolv.conf")
  	resolvConf.mu.RLock()
  	conf := resolvConf.dnsConfig
  	resolvConf.mu.RUnlock()
@@ -91,7 +91,7 @@
  		return nil, dnsmessage.Name{}, &DNSError{Err: errNoSuchHost.Error(), Name: name, IsNotFound: true}
  	}
 -	resolvConf.tryUpdate("/etc/resolv.conf")
-+	resolvConf.tryUpdate("@TERMUX_PREFIX@/etc/resolv.conf")
++	resolvConf.tryUpdate("@NEOTERM_PREFIX@/etc/resolv.conf")
  	resolvConf.mu.RLock()
  	conf := resolvConf.dnsConfig
  	resolvConf.mu.RUnlock()

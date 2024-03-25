@@ -1,6 +1,6 @@
-#!@TERMUX_PREFIX@/bin/sh
+#!@NEOTERM_PREFIX@/bin/sh
 set -e
-PREFIX="@TERMUX_PREFIX@"
+PREFIX="@NEOTERM_PREFIX@"
 
 if [ -d "${PREFIX}/share/fonts" ]; then
     for dir in $(find "${PREFIX}/share/fonts" -mindepth 1 -type d -printf '%p/\n'); do

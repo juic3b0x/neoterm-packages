@@ -1,5 +1,5 @@
-emulate sh -c '. @TERMUX_PREFIX@/etc/profile'
+emulate sh -c '. @NEOTERM_PREFIX@/etc/profile'
 command_not_found_handler() {
-	@TERMUX_PREFIX@/libexec/neoterm/command-not-found $1
+	@NEOTERM_PREFIX@/libexec/neoterm/command-not-found $1
 }
 PS1='%# '

@@ -11,7 +11,7 @@ diff -u -r ../gawk-4.2.1/main.c ./main.c
  	// inplace tests pass. I think it's a bug in those kernels
  	// but let's just work around it anyway.
 +	// Do not do this for Android as it interferes with SELinux,
-+	// see https://github.com/termux/termux-packages/issues/2979
++	// see https://github.com/neoterm/neoterm-packages/issues/2979
  	int flags = fcntl(fileno(stderr), F_GETFL, NULL);
  	if (flags >= 0 && (flags & O_APPEND) == 0) {
  		flags |= O_APPEND;

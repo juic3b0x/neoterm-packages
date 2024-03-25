@@ -5,7 +5,7 @@
  #endif
  
 -#define DEFAULT_SHELL "/bin/bash"
-+#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/bash"
++#define DEFAULT_SHELL "@NEOTERM_PREFIX@/bin/bash"
  
  /* sort out conflicts in feature.h */
  #ifdef KANJI

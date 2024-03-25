@@ -5,7 +5,7 @@
  	{
  		/* dot -Tpng -o /tmp/source.png < /tmp/source.gv */
 -		FILE	   *fp = fopen("/tmp/source.gv", "w");
-+		FILE	   *fp = fopen("@TERMUX_PREFIX@/tmp/source.gv", "w");
++		FILE	   *fp = fopen("@NEOTERM_PREFIX@/tmp/source.gv", "w");
  
  		fprintf(fp, "%s", buf.data);
  		fclose(fp);
@@ -14,7 +14,7 @@
  	{
  		/* dot -Tpng -o /tmp/transformed.png < /tmp/transformed.gv */
 -		FILE	   *fp = fopen("/tmp/transformed.gv", "w");
-+		FILE	   *fp = fopen("@TERMUX_PREFIX@/tmp/transformed.gv", "w");
++		FILE	   *fp = fopen("@NEOTERM_PREFIX@/tmp/transformed.gv", "w");
  
  		fprintf(fp, "%s", buf.data);
  		fclose(fp);
@@ -23,7 +23,7 @@
  	{
  		/* dot -Tpng -o /tmp/packed.png < /tmp/packed.gv */
 -		FILE	   *fp = fopen("/tmp/packed.gv", "w");
-+		FILE	   *fp = fopen("@TERMUX_PREFIX@/tmp/packed.gv", "w");
++		FILE	   *fp = fopen("@NEOTERM_PREFIX@/tmp/packed.gv", "w");
  
  		fprintf(fp, "%s", buf.data);
  		fclose(fp);
@@ -34,7 +34,7 @@
  					   exec_path, pgdata_opt, post_opts, DEVNULL);
  
 -	(void) execl("/bin/sh", "/bin/sh", "-c", cmd, (char *) NULL);
-+	(void) execl("@TERMUX_PREFIX@/bin/sh", "@TERMUX_PREFIX@/bin/sh", "-c", cmd, (char *) NULL);
++	(void) execl("@NEOTERM_PREFIX@/bin/sh", "@NEOTERM_PREFIX@/bin/sh", "-c", cmd, (char *) NULL);
  
  	/* exec failed */
  	write_stderr(_("%s: could not start server: %s\n"),
@@ -45,7 +45,7 @@
  #ifndef WIN32
  	/* add shebang header */
 -	fprintf(script, "#!/bin/sh\n\n");
-+	fprintf(script, "#!@TERMUX_PREFIX@/bin/sh\n\n");
++	fprintf(script, "#!@NEOTERM_PREFIX@/bin/sh\n\n");
  #endif
  
  	/* delete old cluster's default tablespace */
@@ -56,7 +56,7 @@
  		pg_log_error("could not start editor \"%s\"", editorName);
  	else if (result == 127)
 -		pg_log_error("could not start /bin/sh");
-+		pg_log_error("could not start @TERMUX_PREFIX@/bin/sh");
++		pg_log_error("could not start @NEOTERM_PREFIX@/bin/sh");
  	free(sys);
  
  	return result == 0;
@@ -65,7 +65,7 @@
  
  		if (!tmpdir)
 -			tmpdir = "/tmp";
-+			tmpdir = "@TERMUX_PREFIX@/tmp";
++			tmpdir = "@NEOTERM_PREFIX@/tmp";
  #else
  		char		tmpdir[MAXPGPATH];
  		int			ret;
@@ -74,7 +74,7 @@
  
  #ifndef WIN32
 -#define DEFAULT_SHELL "/bin/sh"
-+#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/sh"
++#define DEFAULT_SHELL "@NEOTERM_PREFIX@/bin/sh"
  #else
  /*
   *	CMD.EXE is in different places in different Win32 releases so we
@@ -85,7 +85,7 @@
   */
  #ifndef WIN32
 -#define DEFAULT_PGSOCKET_DIR  "/tmp"
-+#define DEFAULT_PGSOCKET_DIR  "@TERMUX_PREFIX@/tmp"
++#define DEFAULT_PGSOCKET_DIR  "@NEOTERM_PREFIX@/tmp"
  #else
  #define DEFAULT_PGSOCKET_DIR ""
  #endif

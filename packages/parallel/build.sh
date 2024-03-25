@@ -1,22 +1,22 @@
-TERMUX_PKG_HOMEPAGE=https://www.gnu.org/software/parallel/
-TERMUX_PKG_DESCRIPTION="GNU Parallel is a shell tool for executing jobs in parallel using one or more machines"
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="20240222"
-TERMUX_PKG_SRCURL=https://mirrors.kernel.org/gnu/parallel/parallel-${TERMUX_PKG_VERSION}.tar.bz2
-TERMUX_PKG_SHA256=eba09b6a7e238f622293f7d461597f35075cb56f170d0a73148f53d259ec8556
-TERMUX_PKG_DEPENDS="perl"
-TERMUX_PKG_PLATFORM_INDEPENDENT=true
-TERMUX_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_HOMEPAGE=https://www.gnu.org/software/parallel/
+NEOTERM_PKG_DESCRIPTION="GNU Parallel is a shell tool for executing jobs in parallel using one or more machines"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="20240222"
+NEOTERM_PKG_SRCURL=https://mirrors.kernel.org/gnu/parallel/parallel-${NEOTERM_PKG_VERSION}.tar.bz2
+NEOTERM_PKG_SHA256=eba09b6a7e238f622293f7d461597f35075cb56f170d0a73148f53d259ec8556
+NEOTERM_PKG_DEPENDS="perl"
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_AUTO_UPDATE=true
 
-termux_pkg_auto_update() {
+neoterm_pkg_auto_update() {
 	local e=0
 	local api_url="https://mirrors.kernel.org/gnu/parallel"
 	local api_url_r=$(curl -s "${api_url}/")
 	local r1=$(echo "${api_url_r}" | sed -nE 's|<.*>parallel-(.*).tar.bz2<.*>.*|\1|p')
 	local latest_version=$(echo "${r1}" | sed -nE 's|([0-9]+)|\1|p' | tail -n1)
-	if [[ "${latest_version}" == "${TERMUX_PKG_VERSION}" ]]; then
-		echo "INFO: No update needed. Already at version '${TERMUX_PKG_VERSION}'."
+	if [[ "${latest_version}" == "${NEOTERM_PKG_VERSION}" ]]; then
+		echo "INFO: No update needed. Already at version '${NEOTERM_PKG_VERSION}'."
 		return
 	fi
 	[[ -z "${api_url_r}" ]] && e=1
@@ -38,7 +38,7 @@ termux_pkg_auto_update() {
 	curl -so "${tmpdir}/parallel-latest.tar.bz2" "${latest_tbz}"
 	tar -xf "${tmpdir}/parallel-latest.tar.bz2" -C "${tmpdir}"
 	if [[ ! -d "${tmpdir}/parallel-${latest_version}" ]]; then
-		termux_error_exit "
+		neoterm_error_exit "
 		ERROR: Latest archive does not contain latest version
 		$(ls -l "${tmpdir}")
 		"
@@ -46,14 +46,14 @@ termux_pkg_auto_update() {
 
 	rm -fr "${tmpdir}"
 
-	termux_pkg_upgrade_version "${latest_version}"
+	neoterm_pkg_upgrade_version "${latest_version}"
 }
 
-termux_step_post_make_install() {
-	install -Dm644 /dev/null "${TERMUX_PREFIX}"/share/bash-completion/completions/parallel
+neoterm_step_post_make_install() {
+	install -Dm644 /dev/null "${NEOTERM_PREFIX}"/share/bash-completion/completions/parallel
 
-	mkdir -p "${TERMUX_PREFIX}"/share/zsh/site-functions
-	cat <<- EOF > "${TERMUX_PREFIX}"/share/zsh/site-functions/_parallel
+	mkdir -p "${NEOTERM_PREFIX}"/share/zsh/site-functions
+	cat <<- EOF > "${NEOTERM_PREFIX}"/share/zsh/site-functions/_parallel
 	#compdef parallel
 	(( $+functions[_comp_parallel] )) ||
 	eval "\$(parallel --shell-completion auto)" &&
@@ -61,9 +61,9 @@ termux_step_post_make_install() {
 	EOF
 }
 
-termux_step_create_debscripts() {
+neoterm_step_create_debscripts() {
 	cat <<- EOF > postinst
-	#!${TERMUX_PREFIX}/bin/sh
-	parallel --shell-completion bash > ${TERMUX_PREFIX}/share/bash-completion/completions/parallel
+	#!${NEOTERM_PREFIX}/bin/sh
+	parallel --shell-completion bash > ${NEOTERM_PREFIX}/share/bash-completion/completions/parallel
 	EOF
 }

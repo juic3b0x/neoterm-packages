@@ -9,10 +9,10 @@
 - "/etc/mailcap:"\
 - "/etc/mail/mailcap:"\
 - "/usr/public/lib/mailcap"
-+ "@TERMUX_PREFIX@/local/etc/mailcap:"\
-+ "@TERMUX_PREFIX@/etc/mailcap:"\
-+ "@TERMUX_PREFIX@/etc/mail/mailcap:"\
-+ "@TERMUX_PREFIX@/public/lib/mailcap"
++ "@NEOTERM_PREFIX@/local/etc/mailcap:"\
++ "@NEOTERM_PREFIX@/etc/mailcap:"\
++ "@NEOTERM_PREFIX@/etc/mail/mailcap:"\
++ "@NEOTERM_PREFIX@/public/lib/mailcap"
  
  #define FLAGS_DRY_RUN      0x0001
  #define FLAGS_INTERACTIVE  0x0002
@@ -21,7 +21,7 @@
      {
        char *str;
 -      char *argv[] = { "/bin/sh", "-c", NULL, NULL };
-+      char *argv[] = { "@TERMUX_PREFIX@/bin/sh", "-c", NULL, NULL };
++      char *argv[] = { "@NEOTERM_PREFIX@/bin/sh", "-c", NULL, NULL };
        if (expand_string (ctx, value, &str))
  	status = 1;
        else

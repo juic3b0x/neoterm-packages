@@ -1,30 +1,30 @@
-TERMUX_PKG_HOMEPAGE=https://z-push.org/
-TERMUX_PKG_DESCRIPTION="An open-source application to synchronize ActiveSync compatible devices and Outlook"
-TERMUX_PKG_LICENSE="AGPL-V3"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="2.7.1"
-TERMUX_PKG_SRCURL=https://github.com/Z-Hub/Z-Push/archive/refs/tags/${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=7aadddb5da06494a35c79e4b70d6ade6b2f62203f3df343077731f8952b64a41
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="apache2, php"
-TERMUX_PKG_PLATFORM_INDEPENDENT=true
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://z-push.org/
+NEOTERM_PKG_DESCRIPTION="An open-source application to synchronize ActiveSync compatible devices and Outlook"
+NEOTERM_PKG_LICENSE="AGPL-V3"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.7.1"
+NEOTERM_PKG_SRCURL=https://github.com/Z-Hub/Z-Push/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=7aadddb5da06494a35c79e4b70d6ade6b2f62203f3df343077731f8952b64a41
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="apache2, php"
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_make_install() {
-	cp -rT src $TERMUX_PREFIX/share/z-push
+neoterm_step_make_install() {
+	cp -rT src $NEOTERM_PREFIX/share/z-push
 	local f
 	for f in z-push-{admin,top}; do
-		ln -sfr $TERMUX_PREFIX/share/z-push/${f}.php $TERMUX_PREFIX/bin/${f}
-		install -Dm600 -t $TERMUX_PREFIX/share/man/man8 man/${f}.8
+		ln -sfr $NEOTERM_PREFIX/share/z-push/${f}.php $NEOTERM_PREFIX/bin/${f}
+		install -Dm600 -t $NEOTERM_PREFIX/share/man/man8 man/${f}.8
 	done
-	install -Dm600 -t $TERMUX_PREFIX/etc/apache2/conf.d config/apache2/*.conf
+	install -Dm600 -t $NEOTERM_PREFIX/etc/apache2/conf.d config/apache2/*.conf
 }
 
-termux_step_create_debscripts() {
+neoterm_step_create_debscripts() {
 	cat <<- EOF > ./postinst
-	#!$TERMUX_PREFIX/bin/sh
-	mkdir -p $TERMUX_PREFIX/var/lib/z-push
-	mkdir -p $TERMUX_PREFIX/var/log/z-push
+	#!$NEOTERM_PREFIX/bin/sh
+	mkdir -p $NEOTERM_PREFIX/var/lib/z-push
+	mkdir -p $NEOTERM_PREFIX/var/log/z-push
 	EOF
 }
 

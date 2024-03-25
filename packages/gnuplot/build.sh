@@ -1,22 +1,22 @@
-TERMUX_PKG_HOMEPAGE=http://gnuplot.info/
-TERMUX_PKG_DESCRIPTION="Command-line driven graphing utility"
-TERMUX_PKG_LICENSE="custom"
-TERMUX_PKG_LICENSE_FILE="Copyright"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="6.0.0"
-TERMUX_PKG_SRCURL=https://downloads.sourceforge.net/project/gnuplot/gnuplot/${TERMUX_PKG_VERSION}/gnuplot-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="glib, libandroid-support, libcairo, libgd, libiconv, libx11, pango, readline"
-TERMUX_PKG_BREAKS="gnuplot-x"
-TERMUX_PKG_REPLACES="gnuplot-x"
-TERMUX_PKG_HOSTBUILD=true
-TERMUX_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=http://gnuplot.info/
+NEOTERM_PKG_DESCRIPTION="Command-line driven graphing utility"
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_LICENSE_FILE="Copyright"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="6.0.0"
+NEOTERM_PKG_SRCURL=https://downloads.sourceforge.net/project/gnuplot/gnuplot/${NEOTERM_PKG_VERSION}/gnuplot-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=635a28f0993f6ab0d1179e072ad39b8139d07f51237f841d93c6c2ff4b1758ec
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="glib, libandroid-support, libcairo, libgd, libiconv, libx11, pango, readline"
+NEOTERM_PKG_BREAKS="gnuplot-x"
+NEOTERM_PKG_REPLACES="gnuplot-x"
+NEOTERM_PKG_HOSTBUILD=true
+NEOTERM_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS="
 --disable-wxwidgets
 --without-lua
 --without-qt
 "
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-wxwidgets
 --with-x
 --without-lua
@@ -26,15 +26,15 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 ac_cv_search_iconv_open=-liconv
 "
 
-termux_step_host_build() {
-	"$TERMUX_PKG_SRCDIR/configure" \
-		${TERMUX_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS}
+neoterm_step_host_build() {
+	"$NEOTERM_PKG_SRCDIR/configure" \
+		${NEOTERM_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS}
 	make -C docs/ gnuplot.gih
 }
 
-termux_step_post_make_install() {
-	mkdir -p $TERMUX_PREFIX/share/gnuplot/${TERMUX_PKG_VERSION:0:3}/
+neoterm_step_post_make_install() {
+	mkdir -p $NEOTERM_PREFIX/share/gnuplot/${NEOTERM_PKG_VERSION:0:3}/
 
-	cp $TERMUX_PKG_HOSTBUILD_DIR/docs/gnuplot.gih \
-	   $TERMUX_PREFIX/share/gnuplot/${TERMUX_PKG_VERSION:0:3}/gnuplot.gih
+	cp $NEOTERM_PKG_HOSTBUILD_DIR/docs/gnuplot.gih \
+	   $NEOTERM_PREFIX/share/gnuplot/${NEOTERM_PKG_VERSION:0:3}/gnuplot.gih
 }

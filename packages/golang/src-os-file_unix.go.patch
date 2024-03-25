@@ -6,7 +6,7 @@ diff -uNr go/src/os/file_unix.go go.mod/src/os/file_unix.go
  	if dir == "" {
  		if runtime.GOOS == "android" {
 -			dir = "/data/local/tmp"
-+			dir = "@TERMUX_PREFIX@/tmp"
++			dir = "@NEOTERM_PREFIX@/tmp"
  		} else {
  			dir = "/tmp"
  		}

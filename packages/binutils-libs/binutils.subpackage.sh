@@ -1,5 +1,5 @@
-TERMUX_SUBPKG_INCLUDE="
-bin/$TERMUX_HOST_PLATFORM-*
+NEOTERM_SUBPKG_INCLUDE="
+bin/$NEOTERM_HOST_PLATFORM-*
 bin/addr2line
 bin/ar
 bin/c++filt
@@ -15,7 +15,7 @@ bin/strings
 bin/strip
 share/binutils/
 "
-TERMUX_SUBPKG_DESCRIPTION="GNU Binutils (metapackage)"
-TERMUX_SUBPKG_DEPEND_ON_PARENT=no
-TERMUX_SUBPKG_DEPENDS="binutils-bin"
-TERMUX_SUBPKG_CONFLICTS="binutils-is-llvm"
+NEOTERM_SUBPKG_DESCRIPTION="GNU Binutils (metapackage)"
+NEOTERM_SUBPKG_DEPEND_ON_PARENT=no
+NEOTERM_SUBPKG_DEPENDS="binutils-bin"
+NEOTERM_SUBPKG_CONFLICTS="binutils-is-llvm"

@@ -1,7 +1,7 @@
 From 2ae2e3a15fa3e361b5f2e186d2450a8ccd38f698 Mon Sep 17 00:00:00 2001
 From: Leonid Pliushch <leonid.pliushch@gmail.com>
 Date: Mon, 26 Jul 2021 13:30:08 +0300
-Subject: [PATCH] Termux borgbackup: use distutils instead of packaging
+Subject: [PATCH] NeoTerm borgbackup: use distutils instead of packaging
 
 Do not remove this patch unless you know what you are doing!
 
@@ -10,9 +10,9 @@ installing through "pip". But for stable packages we cannot use it in
 postinst script to add missing dependencies.
 
 So if you decide to drop this patch:
-* Add python3-packaging to termux-packages.
+* Add python3-packaging to neoterm-packages.
 * Alternatively: create a postinst deb script (pip3 install packaging)
-  and move borgbackup to https://github.com/termux/unstable-packages
+  and move borgbackup to https://github.com/neoterm/unstable-packages
 ---
  setup.py             | 24 ++++++++----------------
  src/borg/__init__.py |  5 ++---

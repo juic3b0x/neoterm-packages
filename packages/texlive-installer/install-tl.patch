@@ -5,7 +5,7 @@
  # debugging communication with external gui: use shared logfile
  
 -our $dblfile = "/tmp/dblog";
-+our $dblfile = "@TERMUX_PREFIX@/tmp/dblog";
++our $dblfile = "@NEOTERM_PREFIX@/tmp/dblog";
  $dblfile = $ENV{'TEMP'} . "\\dblog.txt" if ($^O =~ /^MSWin/i);
  $dblfile = $ENV{'TMPDIR'} . "/dblog" if ($^O eq 'darwin'
                                           && exists $ENV{'TMPDIR'});
@@ -35,7 +35,7 @@
      ($opt_in_place ? abs_path($::installerdir) : undef),
      $tlprefixenv,
 -    (wndws() ? getenv('SystemDrive') . '/texlive' : '/usr/local/texlive'));
-+    (wndws() ? getenv('SystemDrive') . '/texlive' : '@TERMUX_PREFIX@/local/texlive'));
++    (wndws() ? getenv('SystemDrive') . '/texlive' : '@NEOTERM_PREFIX@/local/texlive'));
    #
    set_var_from_alternatives("TEXDIR", \$vars{'TEXDIR'},
      $opt_texdir,

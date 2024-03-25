@@ -32,7 +32,7 @@
 +  if (IsAndroid) {
 +    addPathIfExists(D, concat(SysRoot, "/usr/", MultiarchTriple, "/lib"), Paths);
 +    addPathIfExists(D, concat("/system/", OSLibDir), Paths);
-+    if (Args.hasFlag(options::OPT_ftermux_rpath, options::OPT_fno_termux_rpath, true)) {
++    if (Args.hasFlag(options::OPT_fneoterm_rpath, options::OPT_fno_neoterm_rpath, true)) {
 +      if (nativeBuild)
 +        ExtraOpts.push_back("-rpath=" + SysRoot + "/usr/lib");
 +      else

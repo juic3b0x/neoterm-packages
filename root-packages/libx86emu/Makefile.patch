@@ -12,7 +12,7 @@ diff -uNr libx86emu-3.1/Makefile libx86emu-3.1.mod/Makefile
  LDFLAGS =
  
 -LIBDIR = /usr/lib$(shell ldd /bin/sh | grep -q /lib64/ && echo 64)
-+LIBDIR = @TERMUX_PREFIX@/lib
++LIBDIR = @NEOTERM_PREFIX@/lib
  LIBX86	= libx86emu
  
  CFILES	= $(wildcard *.c)
@@ -32,7 +32,7 @@ diff -uNr libx86emu-3.1/Makefile libx86emu-3.1.mod/Makefile
 -	ln -snf $(LIB_NAME) $(DESTDIR)$(LIBDIR)/$(LIB_SONAME)
 -	ln -snf $(LIB_SONAME) $(DESTDIR)$(LIBDIR)/$(LIBX86).so
 -	install -m 644 -D include/x86emu.h $(DESTDIR)/usr/include/x86emu.h
-+	install -m 644 -D include/x86emu.h $(DESTDIR)/@TERMUX_PREFIX@/include/x86emu.h
++	install -m 644 -D include/x86emu.h $(DESTDIR)/@NEOTERM_PREFIX@/include/x86emu.h
  
  $(LIB_NAME): .depend $(OBJS)
  	$(CC) -shared -Wl,-soname,$(LIB_SONAME) $(OBJS) -o $(LIB_NAME) $(LDFLAGS)

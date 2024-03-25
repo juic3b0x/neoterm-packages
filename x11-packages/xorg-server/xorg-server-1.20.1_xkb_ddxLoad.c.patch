@@ -7,8 +7,8 @@ diff -uNr xorg-server-1.20.1/xkb/ddxLoad.c xorg-server-1.20.1.mod/xkb/ddxLoad.c
      if (r < 0 || r >= size) {
 -        assert(strlen("/tmp/") < size);
 -        strcpy(outdir, "/tmp/");
-+        assert(strlen("@TERMUX_PREFIX@/tmp/") < size);
-+        strcpy(outdir, "@TERMUX_PREFIX@/tmp/");
++        assert(strlen("@NEOTERM_PREFIX@/tmp/") < size);
++        strcpy(outdir, "@NEOTERM_PREFIX@/tmp/");
      }
  }
  

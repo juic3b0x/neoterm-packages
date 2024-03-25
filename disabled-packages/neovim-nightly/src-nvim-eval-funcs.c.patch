@@ -7,7 +7,7 @@ index 801b0f9..35c54df 100644
      "win64",
  #endif
 +    "android",
-+    "termux",
++    "neoterm",
  #ifndef CASE_INSENSITIVE_FILENAME
      "fname_case",
  #endif

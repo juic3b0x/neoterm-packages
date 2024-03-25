@@ -6,7 +6,7 @@ diff -uNr links-2.18/dns.c links-2.18.mod/dns.c
  		EINTRLOOP(rs, close(pi[1]));
  		EINTRLOOP(rs, execlp("host", "host", cast_const_char name, (char *)NULL));
 -		EINTRLOOP(rs, execl("/usr/sbin/host", "host", cast_const_char name, (char *)NULL));
-+		EINTRLOOP(rs, execl("@TERMUX_PREFIX@/bin/host", "host", cast_const_char name, (char *)NULL));
++		EINTRLOOP(rs, execl("@NEOTERM_PREFIX@/bin/host", "host", cast_const_char name, (char *)NULL));
  		_exit(1);
  	}
  	EINTRLOOP(rs, close(pi[1]));
@@ -18,7 +18,7 @@ diff -uNr links-2.18/fn_impl.c links-2.18.mod/fn_impl.c
  			d = cast_uchar(P_tmpdir);
  #else
 -			d = cast_uchar "/tmp";
-+			d = cast_uchar "@TERMUX_PREFIX@/tmp";
++			d = cast_uchar "@NEOTERM_PREFIX@/tmp";
  #endif
  		}
  	}
@@ -30,7 +30,7 @@ diff -uNr links-2.18/os_dep.c links-2.18.mod/os_dep.c
  	/* UWin corrupts heap if we use threads and fork */
  	fd_lock();
 -	pid = spawnl("/bin/sh", "/bin/sh", "-c", arg, (char *)NULL);
-+	pid = spawnl("@TERMUX_PREFIX@/bin/sh", "@TERMUX_PREFIX@/bin/sh", "-c", arg, (char *)NULL);
++	pid = spawnl("@NEOTERM_PREFIX@/bin/sh", "@NEOTERM_PREFIX@/bin/sh", "-c", arg, (char *)NULL);
  	fd_unlock();
  #else
  #if 1		/* spawn breaks mouse, do this only in graphics mode */
@@ -39,7 +39,7 @@ diff -uNr links-2.18/os_dep.c links-2.18.mod/os_dep.c
  	unsigned char *param_x = stracpy(param);
  	add_to_strn(&param_x, cast_uchar "'");
 -	exec_new_links(term, cast_uchar(INTERIX_START_COMMAND " '\"Links\"' posix /u /c /bin/sh -c '"), exe, param_x);
-+	exec_new_links(term, cast_uchar(INTERIX_START_COMMAND " '\"Links\"' posix /u /c @TERMUX_PREFIX@/bin/sh -c '"), exe, param_x);
++	exec_new_links(term, cast_uchar(INTERIX_START_COMMAND " '\"Links\"' posix /u /c @NEOTERM_PREFIX@/bin/sh -c '"), exe, param_x);
  	mem_free(param_x);
  	return 0;
  }
@@ -51,10 +51,10 @@ diff -uNr links-2.18/os_dep.h links-2.18.mod/os_dep.h
  #define SYSTEM_ID SYS_UNIX
  #define SYSTEM_NAME "Unix"
 -#define DEFAULT_SHELL "/bin/sh"
-+#define DEFAULT_SHELL "@TERMUX_PREFIX@/bin/sh"
++#define DEFAULT_SHELL "@NEOTERM_PREFIX@/bin/sh"
  #define GETSHELL getenv("SHELL")
 -#define SHARED_CONFIG_DIR "/etc/"
-+#define SHARED_CONFIG_DIR "@TERMUX_PREFIX@/etc/"
++#define SHARED_CONFIG_DIR "@NEOTERM_PREFIX@/etc/"
  #ifdef HAVE_SYS_UN_H
  #define USE_AF_UNIX
  #endif

@@ -5,7 +5,7 @@
    char nulls[32000];
    long nullbytes=0;
 -  char tmp0[] = "/tmp/nullfile.00.avi"; /* XXX: use mktemp*() */
-+  char tmp0[] = "@TERMUX_PREFIX@/tmp/nullfile.00.avi"; /* XXX: use mktemp*() */
++  char tmp0[] = "@NEOTERM_PREFIX@/tmp/nullfile.00.avi"; /* XXX: use mktemp*() */
  
    buffer_list_t *ptr;
  

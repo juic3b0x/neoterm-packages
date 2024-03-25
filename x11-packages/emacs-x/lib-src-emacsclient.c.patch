@@ -5,7 +5,7 @@
  # endif
  	      if (tmpdirlen < 0)
 -		tmpdirlen = snprintf (sockname, socknamesize, "/tmp");
-+		tmpdirlen = snprintf (sockname, socknamesize, "@TERMUX_PREFIX@/tmp");
++		tmpdirlen = snprintf (sockname, socknamesize, "@NEOTERM_PREFIX@/tmp");
  	    }
  	  socknamelen = local_sockname (sockname, socknamesize, tmpdirlen,
  					uid, server_name);
@@ -14,7 +14,7 @@
  	  char sockdirname[socknamesize];
  	  int sockdirnamelen = snprintf (sockdirname, sizeof sockdirname,
 -					 "/run/user/%"PRIuMAX, id);
-+					 "@TERMUX_PREFIX@/var/run/user/%"PRIuMAX, id);
++					 "@NEOTERM_PREFIX@/var/run/user/%"PRIuMAX, id);
  	  if (0 <= sockdirnamelen && sockdirnamelen < sizeof sockdirname
  	      && faccessat (AT_FDCWD, sockdirname, X_OK, AT_EACCESS) == 0)
  	    message

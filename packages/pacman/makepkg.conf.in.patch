@@ -10,20 +10,20 @@
 -          'https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
 -          'rsync::/usr/bin/rsync --no-motd -z %u %o'
 -          'scp::/usr/bin/scp -C %u %o')
-+DLAGENTS=('file::@TERMUX_PREFIX@/bin/curl -gqC - -o %o %u'
-+          'ftp::@TERMUX_PREFIX@/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
-+          'http::@TERMUX_PREFIX@/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-+          'https::@TERMUX_PREFIX@/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
-+          'rsync::@TERMUX_PREFIX@/bin/rsync --no-motd -z %u %o'
-+          'scp::@TERMUX_PREFIX@/bin/scp -C %u %o')
++DLAGENTS=('file::@NEOTERM_PREFIX@/bin/curl -gqC - -o %o %u'
++          'ftp::@NEOTERM_PREFIX@/bin/curl -gqfC - --ftp-pasv --retry 3 --retry-delay 3 -o %o %u'
++          'http::@NEOTERM_PREFIX@/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
++          'https::@NEOTERM_PREFIX@/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u'
++          'rsync::@NEOTERM_PREFIX@/bin/rsync --no-motd -z %u %o'
++          'scp::@NEOTERM_PREFIX@/bin/scp -C %u %o')
  
  # Other common tools:
 -# /usr/bin/snarf
 -# /usr/bin/lftpget -c
 -# /usr/bin/wget
-+# @TERMUX_PREFIX@/bin/snarf
-+# @TERMUX_PREFIX@/bin/lftpget -c0
-+# @TERMUX_PREFIX@/bin/wget
++# @NEOTERM_PREFIX@/bin/snarf
++# @NEOTERM_PREFIX@/bin/lftpget -c0
++# @NEOTERM_PREFIX@/bin/wget
  
  #-- The package required by makepkg to download VCS sources
  #  Format: 'protocol::package'
@@ -32,7 +32,7 @@
  #########################################################################
  #
 -CARCH="@CARCH@"
-+CARCH="@TERMUX_ARCH@"
++CARCH="@NEOTERM_ARCH@"
  CHOST="@CHOST@"
  
  #-- Compiler and Linker Flags
@@ -50,7 +50,7 @@
  PURGE_TARGETS=(usr/{,share}/info/dir .packlist *.pod)
  #-- Directory to store source code in for debug packages
 -DBGSRCDIR="/usr/src/debug"
-+DBGSRCDIR="@TERMUX_PREFIX@/src/debug"
++DBGSRCDIR="@NEOTERM_PREFIX@/src/debug"
  
  #########################################################################
  # PACKAGE OUTPUT

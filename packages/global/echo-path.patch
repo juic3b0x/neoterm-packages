@@ -6,7 +6,7 @@ diff -uNr global-6.6.1.orig/globash/globash.in global-6.6.1/globash/globash.in
  # does not accept -n option.
  #
 -ECHO='/bin/echo'
-+ECHO='@TERMUX_PREFIX@/bin/echo'
++ECHO='@NEOTERM_PREFIX@/bin/echo'
  #
  # global command name
  #

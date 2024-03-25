@@ -1,18 +1,18 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/saghul/txiki.js
-TERMUX_PKG_DESCRIPTION="A small and powerful JavaScript runtime"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=1:22.11.1
-TERMUX_PKG_SRCURL=git+https://github.com/saghul/txiki.js
-TERMUX_PKG_DEPENDS="libcurl, libffi"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=https://github.com/saghul/txiki.js
+NEOTERM_PKG_DESCRIPTION="A small and powerful JavaScript runtime"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1:22.11.1
+NEOTERM_PKG_SRCURL=git+https://github.com/saghul/txiki.js
+NEOTERM_PKG_DEPENDS="libcurl, libffi"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DBUILD_NATIVE=OFF
 -DUSE_EXTERNAL_FFI=ON
--DFFI_INCLUDE_DIR=$TERMUX_PREFIX/include
--DFFI_LIB=$TERMUX_PREFIX/lib/libffi.so
+-DFFI_INCLUDE_DIR=$NEOTERM_PREFIX/include
+-DFFI_LIB=$NEOTERM_PREFIX/lib/libffi.so
 "
-TERMUX_PKG_HOSTBUILD=true
+NEOTERM_PKG_HOSTBUILD=true
 
 # Build failure for i686:
 #   [...]/txikijs/src/deps/wasm3/source/./extra/wasi_core.h:46:1:
@@ -20,22 +20,22 @@ TERMUX_PKG_HOSTBUILD=true
 #   '__alignof(long long) == 8' "non-wasi data layout"
 #   _Static_assert(_Alignof(int64_t) == 8, "non-wasi data layout");
 #   ^              ~~~~~~~~~~~~~~~~~~~~~~
-TERMUX_PKG_BLACKLISTED_ARCHES="i686"
+NEOTERM_PKG_BLACKLISTED_ARCHES="i686"
 
-termux_step_host_build() {
-	find $TERMUX_PKG_SRCDIR -mindepth 1 -maxdepth 1 ! -name '.git*' \
+neoterm_step_host_build() {
+	find $NEOTERM_PKG_SRCDIR -mindepth 1 -maxdepth 1 ! -name '.git*' \
 		-exec cp -a \{\} ./ \;
 
-	termux_setup_cmake
+	neoterm_setup_cmake
 
 	cmake .
-	make -j $TERMUX_MAKE_PROCESSES
+	make -j $NEOTERM_MAKE_PROCESSES
 }
 
-termux_step_post_configure() {
-	export PATH=$TERMUX_PKG_HOSTBUILD_DIR:$PATH
+neoterm_step_post_configure() {
+	export PATH=$NEOTERM_PKG_HOSTBUILD_DIR:$PATH
 }
 
-termux_step_make_install() {
-	install -Dm700 -t $TERMUX_PREFIX/bin tjs
+neoterm_step_make_install() {
+	install -Dm700 -t $NEOTERM_PREFIX/bin tjs
 }

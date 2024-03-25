@@ -5,7 +5,7 @@
      unsigned int can_lock; /* can we LOCK it? */
      struct ne_lock *lock = NULL;
 -    char fname[PATH_MAX] = "/tmp/cadaver-edit-XXXXXX";
-+    char fname[PATH_MAX] = "@TERMUX_PREFIX@/tmp/cadaver-edit-XXXXXX";
++    char fname[PATH_MAX] = "@NEOTERM_PREFIX@/tmp/cadaver-edit-XXXXXX";
      const char *pnt;
      int fd;
      int is_checkout, is_checkin;

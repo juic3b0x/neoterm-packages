@@ -6,7 +6,7 @@ index e8fd5b9e..59f4c6d3 100644
  int
  is_xterm(void)
  {
-+#ifndef __TERMUX__
++#ifndef __NEOTERM__
  	static int xt = -1;
  
  	if (xt == -1) {
@@ -15,7 +15,7 @@ index e8fd5b9e..59f4c6d3 100644
  
  	return xt;
 +#else
-+	return 1; /* Skip checking and always return true on Termux */
++	return 1; /* Skip checking and always return true on NeoTerm */
 +#endif
  }
  

@@ -5,7 +5,7 @@
        execl(zCmd, zCmd, (char*)0);
      }else{
 -      execl("/bin/sh", "/bin/sh", "-c", zCmd, (char*)0);
-+      execl("@TERMUX_PREFIX@/bin/sh", "@TERMUX_PREFIX@/bin/sh", "-c", zCmd, (char*)0);
++      execl("@NEOTERM_PREFIX@/bin/sh", "@NEOTERM_PREFIX@/bin/sh", "-c", zCmd, (char*)0);
      }
      return 1;
    }else{

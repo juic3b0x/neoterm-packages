@@ -6,7 +6,7 @@ diff -u -r ../global-6.5.2/libutil/makepath.c ./libutil/makepath.c
  		 */
  		if (*++file == '/') {
 +#ifdef __ANDROID__
-+			return makepath("@TERMUX_HOME@", file, NULL);
++			return makepath("@NEOTERM_HOME@", file, NULL);
 +#else
  			uid_t uid;
  			file++;

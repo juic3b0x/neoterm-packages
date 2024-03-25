@@ -1,15 +1,15 @@
-TERMUX_PKG_HOMEPAGE=https://sourceforge.net/projects/dict/
-TERMUX_PKG_DESCRIPTION="Provides many low-level data structures which are helpful for writing compilers"
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.4.7"
-TERMUX_PKG_SRCURL=https://downloads.sourceforge.net/project/dict/libmaa/libmaa-${TERMUX_PKG_VERSION}/libmaa-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=4e01a9ebc5d96bc9284b6706aa82bddc2a11047fa9bd02e94cf8753ec7dcb98e
-TERMUX_PKG_AUTO_UPDATE=false # This package requires mkcmake which is not accessible while building packages
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://sourceforge.net/projects/dict/
+NEOTERM_PKG_DESCRIPTION="Provides many low-level data structures which are helpful for writing compilers"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.4.7"
+NEOTERM_PKG_SRCURL=https://downloads.sourceforge.net/project/dict/libmaa/libmaa-${NEOTERM_PKG_VERSION}/libmaa-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=4e01a9ebc5d96bc9284b6706aa82bddc2a11047fa9bd02e94cf8753ec7dcb98e
+NEOTERM_PKG_AUTO_UPDATE=false # This package requires mkcmake which is not accessible while building packages
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_make() {
-	cd ${TERMUX_PKG_SRCDIR}/maa
+neoterm_step_make() {
+	cd ${NEOTERM_PKG_SRCDIR}/maa
 	awk -f arggram2c < arggram.txt > arggram.c
 	$CC -shared -o libmaa.so \
 	    xmalloc.c hash.c set.c stack.c list.c error.c memory.c string.c \
@@ -21,7 +21,7 @@ termux_step_make() {
 	cd -
 }
 
-termux_step_make_install() {
-	install -Dm0755 -t "$TERMUX_PREFIX"/lib "${TERMUX_PKG_SRCDIR}"/maa/libmaa.so
-	install -Dm0644 -t "$TERMUX_PREFIX"/include "${TERMUX_PKG_SRCDIR}"/maa/maa.h
+neoterm_step_make_install() {
+	install -Dm0755 -t "$NEOTERM_PREFIX"/lib "${NEOTERM_PKG_SRCDIR}"/maa/libmaa.so
+	install -Dm0644 -t "$NEOTERM_PREFIX"/include "${NEOTERM_PKG_SRCDIR}"/maa/maa.h
 }

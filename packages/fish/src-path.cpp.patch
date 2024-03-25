@@ -1,12 +1,12 @@
 This patch fixes inconsistent behaviour of fish when executing absolute binaries in absolute path.
 
-When executing command as /bin/<command>, fish first checks whether <command> is present in /bin/ or not. If it is found, then it will execute the command. But as we are using termux-exec, fish will actually try to execute <command> in @TERMUX_PREFIX@/bin/.
+When executing command as /bin/<command>, fish first checks whether <command> is present in /bin/ or not. If it is found, then it will execute the command. But as we are using neoterm-exec, fish will actually try to execute <command> in @NEOTERM_PREFIX@/bin/.
 
 An example of this:-
 /bin/ls:
 1) Fish will first try find whether ls binary exists in /bin and whether user has permissions to execute it
 2) If both the above are true, fish will try to execute /bin/ls.
-3) But since we are using termux-exec, the path will be remapped to @TERMUX_PREFIX@/bin/ls
+3) But since we are using neoterm-exec, the path will be remapped to @NEOTERM_PREFIX@/bin/ls
 4) This is a *highly* inconsistent behaviour.
 
 This can cause weird bugs when a script tries to execute with hardcoded paths, it might get errors about command not found even if it exists, because fish is checking it at the wrong place.
@@ -31,9 +31,9 @@ index d5a649e0e..ad4e84278 100644
  
 +    wcstring _cmd;
 +    if (string_prefixes_string(L"/bin/", cmd)) {
-+        _cmd = L"@TERMUX_PREFIX@" + cmd;
++        _cmd = L"@NEOTERM_PREFIX@" + cmd;
 +    } else if (string_prefixes_string(L"/usr/bin/", cmd)) {
-+        _cmd = L"@TERMUX_BASE_DIR@" + cmd;
++        _cmd = L"@NEOTERM_BASE_DIR@" + cmd;
 +    } else {
 +        _cmd = cmd;
 +    }

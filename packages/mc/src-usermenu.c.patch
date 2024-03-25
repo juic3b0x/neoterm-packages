@@ -6,7 +6,7 @@ diff -uNr mc-4.8.27/src/usermenu.c mc-4.8.27.mod/src/usermenu.c
  
      cmd_file = fdopen (cmd_file_fd, "w");
 -    fputs ("#! /bin/sh\n", cmd_file);
-+    fputs ("#! @TERMUX_PREFIX@/bin/sh\n", cmd_file);
++    fputs ("#! @NEOTERM_PREFIX@/bin/sh\n", cmd_file);
      commands++;
  
      for (col = 0; *commands != '\0'; commands++)
@@ -15,7 +15,7 @@ diff -uNr mc-4.8.27/src/usermenu.c mc-4.8.27.mod/src/usermenu.c
  
      /* Execute the command indirectly to allow execution even on no-exec filesystems. */
 -    cmd = g_strconcat ("/bin/sh ", vfs_path_as_str (file_name_vpath), (char *) NULL);
-+    cmd = g_strconcat ("@TERMUX_PREFIX@/bin/sh ", vfs_path_as_str (file_name_vpath), (char *) NULL);
++    cmd = g_strconcat ("@NEOTERM_PREFIX@/bin/sh ", vfs_path_as_str (file_name_vpath), (char *) NULL);
  
      if (run_view)
      {

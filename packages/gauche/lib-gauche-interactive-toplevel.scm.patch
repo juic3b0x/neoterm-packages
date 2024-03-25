@@ -5,7 +5,7 @@
          (run-process `("cmd.exe" "/c" ,line) :wait #t))]
       [else
 -      (let1 sh (or (sys-getenv "SHELL") "/bin/sh")
-+      (let1 sh (or (sys-getenv "SHELL") "@TERMUX_PREFIX@/bin/sh")
++      (let1 sh (or (sys-getenv "SHELL") "@NEOTERM_PREFIX@/bin/sh")
          (run-process `(,sh "-c" ,line) :wait #t))])
      *no-value*))
  

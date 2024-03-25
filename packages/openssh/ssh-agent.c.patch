@@ -6,7 +6,7 @@ diff -uNr openssh-portable-V_9_5_P1/ssh-agent.c openssh-portable-V_9_5_P1.mod/ss
  
  #ifndef DEFAULT_ALLOWED_PROVIDERS
 -# define DEFAULT_ALLOWED_PROVIDERS "/usr/lib*/*,/usr/local/lib*/*"
-+# define DEFAULT_ALLOWED_PROVIDERS "@TERMUX_PREFIX@/lib*/*,@TERMUX_PREFIX@/local/lib*/*"
++# define DEFAULT_ALLOWED_PROVIDERS "@NEOTERM_PREFIX@/lib*/*,@NEOTERM_PREFIX@/local/lib*/*"
  #endif
  
  /* Maximum accepted message length */

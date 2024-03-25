@@ -1,25 +1,25 @@
-TERMUX_PKG_HOMEPAGE=https://wtfutil.com/
-TERMUX_PKG_DESCRIPTION="The personal information dashboard for your terminal"
-TERMUX_PKG_LICENSE="MPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=0.43.0
-TERMUX_PKG_REVISION=2
+NEOTERM_PKG_HOMEPAGE=https://wtfutil.com/
+NEOTERM_PKG_DESCRIPTION="The personal information dashboard for your terminal"
+NEOTERM_PKG_LICENSE="MPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.43.0
+NEOTERM_PKG_REVISION=2
 # Need metadata in Git repository
-TERMUX_PKG_SRCURL=git+https://github.com/wtfutil/wtf
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_SRCURL=git+https://github.com/wtfutil/wtf
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_pre_configure() {
-	termux_setup_golang
+neoterm_step_pre_configure() {
+	neoterm_setup_golang
 
 	go mod init || :
 	go mod tidy
 }
 
-termux_step_make() {
+neoterm_step_make() {
 	go build -o wtfutil
 }
 
-termux_step_make_install() {
-	install -Dm700 -t $TERMUX_PREFIX/bin wtfutil
+neoterm_step_make_install() {
+	install -Dm700 -t $NEOTERM_PREFIX/bin wtfutil
 }

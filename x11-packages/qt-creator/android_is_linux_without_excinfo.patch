@@ -1,4 +1,4 @@
-excinfo.h is not available on Termux environment
+excinfo.h is not available on NeoTerm environment
 Add an extra macro check for __ANDROID__ so it's excluded
 --- src/src/plugins/debugger/shared/backtrace.cpp	2020-07-07 06:44:20.000000000 +0000
 +++ src.mod/src/plugins/debugger/shared/backtrace.cpp	2021-05-24 10:38:54.023502983 +0000

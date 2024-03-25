@@ -6,7 +6,7 @@ diff -uNr redis-6.0.1/deps/lua/src/luaconf.h redis-6.0.1.mod/deps/lua/src/luacon
  
  #else
 -#define LUA_ROOT	"/usr/local/"
-+#define LUA_ROOT	"@TERMUX_PREFIX@"
++#define LUA_ROOT	"@NEOTERM_PREFIX@"
  #define LUA_LDIR	LUA_ROOT "share/lua/5.1/"
  #define LUA_CDIR	LUA_ROOT "lib/lua/5.1/"
  #define LUA_PATH_DEFAULT  \
@@ -18,7 +18,7 @@ diff -uNr redis-6.0.1/deps/lua/src/luaconf.h redis-6.0.1.mod/deps/lua/src/luacon
 +#define LUA_TMPNAMBUFSIZE	256
  #define lua_tmpnam(b,e)	{ \
 -	strcpy(b, "/tmp/lua_XXXXXX"); \
-+	strcpy(b, "@TERMUX_PREFIX@/tmp/lua_XXXXXX"); \
++	strcpy(b, "@NEOTERM_PREFIX@/tmp/lua_XXXXXX"); \
  	e = mkstemp(b); \
  	if (e != -1) close(e); \
  	e = (e == -1); }

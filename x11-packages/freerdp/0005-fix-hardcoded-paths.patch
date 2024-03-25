@@ -5,7 +5,7 @@
  
  	if (!path)
 -		path = _strdup("/tmp");
-+		path = _strdup("@TERMUX_PREFIX@/tmp");
++		path = _strdup("@NEOTERM_PREFIX@/tmp");
  
  #endif
  	return path;
@@ -16,7 +16,7 @@
  	SSL_CTX_set_options(context->ctx, options);
  
 -	if (SSL_CTX_use_RSAPrivateKey_file(context->ctx, "/tmp/localhost.key", SSL_FILETYPE_PEM) <= 0)
-+	if (SSL_CTX_use_RSAPrivateKey_file(context->ctx, "@TERMUX_PREFIX@/tmp/localhost.key", SSL_FILETYPE_PEM) <= 0)
++	if (SSL_CTX_use_RSAPrivateKey_file(context->ctx, "@NEOTERM_PREFIX@/tmp/localhost.key", SSL_FILETYPE_PEM) <= 0)
  	{
  		WLog_ERR(TAG, "SSL_CTX_use_RSAPrivateKey_file failed");
  		goto out_rsa_key;
@@ -25,7 +25,7 @@
  	}
  
 -	if (SSL_use_certificate_file(context->ssl, "/tmp/localhost.crt", SSL_FILETYPE_PEM) <= 0)
-+	if (SSL_use_certificate_file(context->ssl, "@TERMUX_PREFIX@/tmp/localhost.crt", SSL_FILETYPE_PEM) <= 0)
++	if (SSL_use_certificate_file(context->ssl, "@NEOTERM_PREFIX@/tmp/localhost.crt", SSL_FILETYPE_PEM) <= 0)
  	{
  		WLog_ERR(TAG, "SSL_use_certificate_file failed");
  		goto out_use_certificate;
@@ -36,7 +36,7 @@
  {
  	size_t x;
 -	const char* base = "/etc/pam.d";
-+	const char* base = "@TERMUX_PREFIX@/etc/pam.d";
++	const char* base = "@NEOTERM_PREFIX@/etc/pam.d";
  	const char* hints[] = { "lightdm", "gdm", "xdm", "login", "sshd" };
  
  	for (x = 0; x < ARRAYSIZE(hints); x++)
@@ -47,7 +47,7 @@
  static char* winpr_get_timezone_from_link(void)
  {
 -	const char* links[] = { "/etc/localtime", "/etc/TZ" };
-+	const char* links[] = { "@TERMUX_PREFIX@/etc/localtime", "@TERMUX_PREFIX@/etc/TZ" };
++	const char* links[] = { "@NEOTERM_PREFIX@/etc/localtime", "@NEOTERM_PREFIX@/etc/TZ" };
  	size_t x;
  	ssize_t len;
  	char buf[1024];
@@ -56,7 +56,7 @@
  	fp = winpr_fopen("/var/db/zoneinfo", "r");
  #else
 -	fp = winpr_fopen("/etc/timezone", "r");
-+	fp = winpr_fopen("@TERMUX_PREFIX@/etc/timezone", "r");
++	fp = winpr_fopen("@NEOTERM_PREFIX@/etc/timezone", "r");
  #endif
  
  	if (NULL == fp)
@@ -67,7 +67,7 @@
  #define WINPR_SAM_FILE "C:\\SAM"
  #else
 -#define WINPR_SAM_FILE "/etc/winpr/SAM"
-+#define WINPR_SAM_FILE "@TERMUX_PREFIX@/etc/winpr/SAM"
++#define WINPR_SAM_FILE "@NEOTERM_PREFIX@/etc/winpr/SAM"
  #endif
  #define TAG WINPR_TAG("utils")
  
@@ -78,7 +78,7 @@
  #define TAG WINPR_TAG("registry")
  
 -#define WINPR_HKLM_HIVE "/etc/winpr/HKLM.reg"
-+#define WINPR_HKLM_HIVE "@TERMUX_PREFIX@/etc/winpr/HKLM.reg"
++#define WINPR_HKLM_HIVE "@NEOTERM_PREFIX@/etc/winpr/HKLM.reg"
  
  struct reg_data_type
  {
@@ -89,7 +89,7 @@
  	ini = IniFile_New();
  
 -	if (IniFile_ReadFile(ini, "/var/run/freerds.instance") < 0)
-+	if (IniFile_ReadFile(ini, "@TERMUX_PREFIX@/var/run/freerds.instance") < 0)
++	if (IniFile_ReadFile(ini, "@NEOTERM_PREFIX@/var/run/freerds.instance") < 0)
  	{
  		IniFile_Free(ini);
  		WLog_ERR(TAG, "failed to parse freerds.instance");

@@ -1,7 +1,7 @@
-#!@TERMUX_PREFIX@/bin/bash
+#!@NEOTERM_PREFIX@/bin/bash
 set -e
-export PREFIX=@TERMUX_PREFIX@
-export TMPDIR=@TERMUX_PREFIX@/tmp
+export PREFIX=@NEOTERM_PREFIX@
+export TMPDIR=@NEOTERM_PREFIX@/tmp
 
 echo ""
 echo "You will now be shown texlive's install-tl text gui."
@@ -28,13 +28,13 @@ source $PREFIX/etc/profile.d/texlive.sh
 
 $PREFIX/opt/texlive/install-tl/install-tl \
     -custom-bin $PREFIX/bin/texlive \
-    -init-from-profile $PREFIX/opt/texlive/termux.profile \
+    -init-from-profile $PREFIX/opt/texlive/neoterm.profile \
     "$@"
 
 echo "[*] Installation done."
 echo ""
-echo "    Some scripts need to be fixed before they will work in termux."
-echo "    The script termux-patch-texlive will now be run to try to fix"
+echo "    Some scripts need to be fixed before they will work in neoterm."
+echo "    The script neoterm-patch-texlive will now be run to try to fix"
 echo "    known problems. If your texlive breaks in the future after running"
 echo "    tlmgr update --all"
 echo "    then you might be able to fix it by running this script."
@@ -50,7 +50,7 @@ case $ANSWER in
         exit 1
 esac
 
-$PREFIX/bin/termux-patch-texlive
+$PREFIX/bin/neoterm-patch-texlive
 
 echo "[*] Generating format pdflatex with fmtutil"
 fmtutil-sys --quiet --byfmt pdflatex

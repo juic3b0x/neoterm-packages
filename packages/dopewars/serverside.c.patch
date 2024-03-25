@@ -15,7 +15,7 @@ diff -uNr dopewars-1.5.12/src/serverside.c dopewars-1.5.12.mod/src/serverside.c
  
  #ifndef CYGWIN
 -static gchar sockpref[] = "/tmp/.dopewars";
-+static gchar sockpref[] = "@TERMUX_PREFIX@/tmp/.dopewars";
++static gchar sockpref[] = "@NEOTERM_PREFIX@/tmp/.dopewars";
  
  static gchar *GetLocalSockDir(void)
  {
@@ -24,7 +24,7 @@ diff -uNr dopewars-1.5.12/src/serverside.c dopewars-1.5.12.mod/src/serverside.c
      dopelog(0, LF_SERVER,
              _("Could not set up Unix domain socket for admin "
 -              "connections - check permissions on /tmp!"));
-+              "connections - check permissions on @TERMUX_PREFIX@/tmp!"));
++              "connections - check permissions on @NEOTERM_PREFIX@/tmp!"));
    }
  #endif
  

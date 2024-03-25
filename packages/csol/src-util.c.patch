@@ -5,7 +5,7 @@
      free(relative_path);
    } else {
 -    config_file = combine_paths("/etc/xdg", relative_path);
-+    config_file = combine_paths("@TERMUX_PREFIX@/etc/xdg", relative_path);
++    config_file = combine_paths("@NEOTERM_PREFIX@/etc/xdg", relative_path);
      free(relative_path);
      f = fopen(config_file, "r");
      if (f) {

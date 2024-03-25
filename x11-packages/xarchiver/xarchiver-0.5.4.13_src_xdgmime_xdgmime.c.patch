@@ -6,7 +6,7 @@ diff -uNr xarchiver-0.5.4.13/src/xdgmime/xdgmime.c xarchiver-0.5.4.13.mod/src/xd
    xdg_data_dirs = getenv ("XDG_DATA_DIRS");
    if (xdg_data_dirs == NULL)
 -    xdg_data_dirs = "/usr/local/share/:/usr/share/";
-+    xdg_data_dirs = "@TERMUX_PREFIX@/share/:@TERMUX_PREFIX@/local/share/";
++    xdg_data_dirs = "@NEOTERM_PREFIX@/share/:@NEOTERM_PREFIX@/local/share/";
  
    ptr = xdg_data_dirs;
  

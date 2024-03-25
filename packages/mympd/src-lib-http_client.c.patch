@@ -5,10 +5,10 @@
      sds buffer = sdsempty();
      errno = 0;
 -    FILE *fp = fopen("/etc/resolv.conf", OPEN_FLAGS_READ);
-+    FILE *fp = fopen("@TERMUX_PREFIX@/etc/resolv.conf", OPEN_FLAGS_READ);
++    FILE *fp = fopen("@NEOTERM_PREFIX@/etc/resolv.conf", OPEN_FLAGS_READ);
      if (fp == NULL) {
 -        MYMPD_LOG_WARN(NULL, "Can not open /etc/resolv.conf");
-+        MYMPD_LOG_WARN(NULL, "Can not open @TERMUX_PREFIX@/etc/resolv.conf");
++        MYMPD_LOG_WARN(NULL, "Can not open @NEOTERM_PREFIX@/etc/resolv.conf");
          MYMPD_LOG_ERRNO(NULL, errno);
          return buffer;
      }

@@ -7,7 +7,7 @@ diff -uNr boinc/client/app_start.cpp boinc.mod/client/app_start.cpp
  
 +#ifdef __ANDROID__
 +#include <stdlib.h> // getenv(), setenv(), unsetenv()
-+char helper_path[] = "@TERMUX_PREFIX@/bin/proot";
++char helper_path[] = "@NEOTERM_PREFIX@/bin/proot";
 +#endif
  
  #ifdef _WIN32
@@ -44,10 +44,10 @@ diff -uNr boinc/client/app_start.cpp boinc.mod/client/app_start.cpp
 +        } else if (strstr(exec_name, "x86-android-linux-gnu")) {
 +#endif
 +#if defined(__aarch64__) || defined(__x86_64__)
-+            // fix Termux 32bit compatibility on 64bit devices
++            // fix NeoTerm 32bit compatibility on 64bit devices
 +            // should be no longer required as its fixed on
-+            // termux-exec side, kept for references
-+            // https://github.com/termux/termux-exec/pull/17
++            // neoterm-exec side, kept for references
++            // https://github.com/neoterm/neoterm-exec/pull/17
 +            argv[0] = buf;
 +            parse_command_line(cmdline, argv+1);
 +            // backup and unset LD_PRELOAD var

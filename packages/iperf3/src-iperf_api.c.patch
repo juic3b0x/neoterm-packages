@@ -5,7 +5,7 @@
          if (tempdir == 0){
  #if defined(__ANDROID__)
 -            tempdir = "/data/local/tmp";
-+            tempdir = "@TERMUX_PREFIX@/tmp";
++            tempdir = "@NEOTERM_PREFIX@/tmp";
  #else
              tempdir = "/tmp";
  #endif

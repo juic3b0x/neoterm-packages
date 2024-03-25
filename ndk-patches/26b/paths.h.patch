@@ -5,7 +5,7 @@
  #ifndef _PATH_BSHELL
  /** Path to the default system shell. Historically the 'B' was to specify the Bourne shell. */
 -#define _PATH_BSHELL "/system/bin/sh"
-+#define _PATH_BSHELL "@TERMUX_PREFIX@/bin/sh"
++#define _PATH_BSHELL "@NEOTERM_PREFIX@/bin/sh"
  #endif
  
  /** Path to the system console. */
@@ -13,7 +13,7 @@
  
  /** Default shell search path. */
 -#define _PATH_DEFPATH "/product/bin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/system_ext/bin:/system/bin:/system/xbin:/odm/bin:/vendor/bin:/vendor/xbin"
-+#define _PATH_DEFPATH "@TERMUX_PREFIX@/bin"
++#define _PATH_DEFPATH "@NEOTERM_PREFIX@/bin"
  
  /** Path to the directory containing device files. */
  #define _PATH_DEV "/dev/"
@@ -23,7 +23,7 @@
  #define _PATH_TTY "/dev/tty"
 +
 +#define        _PATH_STDPATH   _PATH_DEFPATH
-+#define        _PATH_TMP       "@TERMUX_PREFIX@/tmp/"
-+#define        _PATH_VARDB     "@TERMUX_PREFIX@/var/db/"
-+#define        _PATH_VARRUN    "@TERMUX_PREFIX@/var/run/"
-+#define        _PATH_VARTMP    "@TERMUX_PREFIX@/var/tmp/"
++#define        _PATH_TMP       "@NEOTERM_PREFIX@/tmp/"
++#define        _PATH_VARDB     "@NEOTERM_PREFIX@/var/db/"
++#define        _PATH_VARRUN    "@NEOTERM_PREFIX@/var/run/"
++#define        _PATH_VARTMP    "@NEOTERM_PREFIX@/var/tmp/"

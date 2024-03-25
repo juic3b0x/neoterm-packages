@@ -5,11 +5,11 @@
  
  	/* prevent interactive utilities from paging output */
 -	setenv("PAGER", "/bin/cat", 0);
-+	setenv("PAGER", "@TERMUX_PREFIX@/bin/cat", 0);
++	setenv("PAGER", "@NEOTERM_PREFIX@/bin/cat", 0);
  
  	/* ensure a shell is available to use */
 -	setenv("SHELL", "/bin/sh", 0);
-+	setenv("SHELL", "@TERMUX_PREFIX@/bin/sh", 0);
++	setenv("SHELL", "@NEOTERM_PREFIX@/bin/sh", 0);
  
  	/* sequential scan may depend on a 0 at the end */
  	files = calloc(open_max+1, sizeof(WatchFile *));

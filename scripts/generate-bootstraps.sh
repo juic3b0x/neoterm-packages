@@ -14,26 +14,26 @@ trap 'rm -rf $BOOTSTRAP_TMPDIR' EXIT
 BOOTSTRAP_ANDROID10_COMPATIBLE=false
 
 # By default, bootstrap archives will be built for all architectures
-# supported by Termux application.
+# supported by NeoTerm application.
 # Override with option '--architectures'.
-TERMUX_ARCHITECTURES=("aarch64" "arm" "i686" "x86_64")
+NEOTERM_ARCHITECTURES=("aarch64" "arm" "i686" "x86_64")
 
-# The supported termux package managers.
-TERMUX_PACKAGE_MANAGERS=("apt" "pacman")
+# The supported neoterm package managers.
+NEOTERM_PACKAGE_MANAGERS=("apt" "pacman")
 
 # The repository base urls mapping for package managers.
 declare -A REPO_BASE_URLS=(
-	["apt"]="https://packages-cf.termux.dev/apt/termux-main"
+	["apt"]="https://packages-cf.neoterm.dev/apt/neoterm-main"
 	["pacman"]="https://s3.amazonaws.io.neoterm-pacman.us/main"
 )
 
 # The package manager that will be installed in bootstrap.
 # The default is 'apt'. Can be changed by using the '--pm' option.
-TERMUX_PACKAGE_MANAGER="apt"
+NEOTERM_PACKAGE_MANAGER="apt"
 
 # The repository base url for package manager.
 # Can be changed by using the '--repository' option.
-REPO_BASE_URL="${REPO_BASE_URLS[${TERMUX_PACKAGE_MANAGER}]}"
+REPO_BASE_URL="${REPO_BASE_URLS[${NEOTERM_PACKAGE_MANAGER}]}"
 
 # A list of non-essential packages. By default it is empty, but can
 # be filled with option '--add'.
@@ -118,7 +118,7 @@ pull_package() {
 	local package_tmpdir="${BOOTSTRAP_PKGDIR}/${package_name}"
 	mkdir -p "$package_tmpdir"
 
-	if [ ${TERMUX_PACKAGE_MANAGER} = "apt" ]; then
+	if [ ${NEOTERM_PACKAGE_MANAGER} = "apt" ]; then
 		local package_url
 		package_url="$REPO_BASE_URL/$(echo "${PACKAGE_METADATA[${package_name}]}" | grep -i "^Filename:" | awk '{ print $2 }')"
 		if [ "${package_url}" = "$REPO_BASE_URL" ] || [ "${package_url}" = "${REPO_BASE_URL}/" ]; then
@@ -177,11 +177,11 @@ pull_package() {
 
 				if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
 					# Register extracted files.
-					tar tf "$data_archive" | sed -E -e 's@^\./@/@' -e 's@^/$@/.@' -e 's@^([^./])@/\1@' > "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info/${package_name}.list"
+					tar tf "$data_archive" | sed -E -e 's@^\./@/@' -e 's@^/$@/.@' -e 's@^([^./])@/\1@' > "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info/${package_name}.list"
 
 					# Generate checksums (md5).
 					tar xf "$data_archive"
-					find data -type f -print0 | xargs -0 -r md5sum | sed 's@^\.$@@g' > "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info/${package_name}.md5sums"
+					find data -type f -print0 | xargs -0 -r md5sum | sed 's@^\.$@@g' > "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info/${package_name}.md5sums"
 
 					# Extract metadata.
 					tar xf "$control_archive"
@@ -189,12 +189,12 @@ pull_package() {
 						cat control
 						echo "Status: install ok installed"
 						echo
-					} >> "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/status"
+					} >> "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/status"
 
 					# Additional data: conffiles & scripts
 					for file in conffiles postinst postrm preinst prerm; do
 						if [ -f "${PWD}/${file}" ]; then
-							cp "$file" "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info/${package_name}.${file}"
+							cp "$file" "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info/${package_name}.${file}"
 						fi
 					done
 				fi
@@ -241,18 +241,18 @@ pull_package() {
 					local package_name_in_host="${package_name//+/0}"
 					local_dir_sp[0]="${local_dir_sp[0]//${package_name_in_host}/${package_name}}"
 				fi
-				mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}"
-				cp -r .MTREE "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/mtree"
-				cp -r "${package_desc}" "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/desc"
+				mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}"
+				cp -r .MTREE "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/mtree"
+				cp -r "${package_desc}" "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/desc"
 				if [ -f .INSTALL ]; then
-					cp -r .INSTALL "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/install"
+					cp -r .INSTALL "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/install"
 				fi
 				{
 					echo "%FILES%"
 					if [ -d ./data ]; then
 						find data
 					fi
-				} >> "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/files"
+				} >> "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local/${local_dir_sp[0]}/files"
 			)
 		fi
 	fi
@@ -263,7 +263,7 @@ pull_package() {
 # Information about symlinks is stored in file SYMLINKS.txt.
 create_bootstrap_archive() {
 	echo "[*] Creating 'bootstrap-${1}.zip'..."
-	(cd "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}"
+	(cd "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}"
 		# Do not store symlinks in bootstrap archive.
 		# Instead, put all information to SYMLINKS.txt
 		while read -r -d '' link; do
@@ -282,7 +282,7 @@ show_usage() {
 	echo
 	echo "Usage: generate-bootstraps.sh [options]"
 	echo
-	echo "Generate bootstrap archives for Termux application."
+	echo "Generate bootstrap archives for NeoTerm application."
 	echo
 	echo "Options:"
 	echo
@@ -308,10 +308,10 @@ show_usage() {
 	echo "                             which packages will be downloaded."
 	echo "                             This must be passed after '--pm' option."
 	echo
-	echo "Architectures: ${TERMUX_ARCHITECTURES[*]}"
+	echo "Architectures: ${NEOTERM_ARCHITECTURES[*]}"
 	echo "Repository Base Url: ${REPO_BASE_URL}"
-	echo "Prefix: ${TERMUX_PREFIX}"
-        echo "Package manager: ${TERMUX_PACKAGE_MANAGER}"
+	echo "Prefix: ${NEOTERM_PREFIX}"
+        echo "Package manager: ${NEOTERM_PACKAGE_MANAGER}"
 	echo
 }
 
@@ -339,8 +339,8 @@ while (($# > 0)); do
 			;;
 		--pm)
 			if [ $# -gt 1 ] && [ -n "$2" ] && [[ $2 != -* ]]; then
-				TERMUX_PACKAGE_MANAGER="$2"
-				REPO_BASE_URL="${REPO_BASE_URLS[${TERMUX_PACKAGE_MANAGER}]}"
+				NEOTERM_PACKAGE_MANAGER="$2"
+				REPO_BASE_URL="${REPO_BASE_URLS[${NEOTERM_PACKAGE_MANAGER}]}"
 				shift 1
 			else
 				echo "[!] Option '--pm' requires an argument." 1>&2
@@ -350,9 +350,9 @@ while (($# > 0)); do
 			;;
 		--architectures)
 			if [ $# -gt 1 ] && [ -n "$2" ] && [[ $2 != -* ]]; then
-				TERMUX_ARCHITECTURES=()
+				NEOTERM_ARCHITECTURES=()
 				for arch in $(echo "$2" | tr ',' ' '); do
-					TERMUX_ARCHITECTURES+=("$arch")
+					NEOTERM_ARCHITECTURES+=("$arch")
 				done
 				unset arch
 				shift 1
@@ -381,9 +381,9 @@ while (($# > 0)); do
 	shift 1
 done
 
-if [[ "$TERMUX_PACKAGE_MANAGER" == *" "* ]] || [[ " ${TERMUX_PACKAGE_MANAGERS[*]} " != *" $TERMUX_PACKAGE_MANAGER "* ]]; then
-	echo "[!] Invalid package manager '$TERMUX_PACKAGE_MANAGER'" 1>&2
-	echo "Supported package managers: '${TERMUX_PACKAGE_MANAGERS[*]}'" 1>&2
+if [[ "$NEOTERM_PACKAGE_MANAGER" == *" "* ]] || [[ " ${NEOTERM_PACKAGE_MANAGERS[*]} " != *" $NEOTERM_PACKAGE_MANAGER "* ]]; then
+	echo "[!] Invalid package manager '$NEOTERM_PACKAGE_MANAGER'" 1>&2
+	echo "Supported package managers: '${NEOTERM_PACKAGE_MANAGERS[*]}'" 1>&2
 	exit 1
 fi
 
@@ -392,35 +392,35 @@ if [ -z "$REPO_BASE_URL" ]; then
 	exit 1
 fi
 
-for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
+for package_arch in "${NEOTERM_ARCHITECTURES[@]}"; do
 	BOOTSTRAP_ROOTFS="$BOOTSTRAP_TMPDIR/rootfs-${package_arch}"
 	BOOTSTRAP_PKGDIR="$BOOTSTRAP_TMPDIR/packages-${package_arch}"
 
-	# Create initial directories for $TERMUX_PREFIX
+	# Create initial directories for $NEOTERM_PREFIX
 	if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
-		if [ ${TERMUX_PACKAGE_MANAGER} = "apt" ]; then
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/apt.conf.d"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/etc/apt/preferences.d"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/info"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/triggers"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/updates"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/log/apt"
-			touch "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/available"
-			touch "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/dpkg/status"
+		if [ ${NEOTERM_PACKAGE_MANAGER} = "apt" ]; then
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/etc/apt/apt.conf.d"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/etc/apt/preferences.d"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/info"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/triggers"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/updates"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/log/apt"
+			touch "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/available"
+			touch "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/dpkg/status"
 		else
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/sync"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local"
-			echo "9" >> "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/lib/pacman/local/ALPM_DB_VERSION"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/cache/pacman/pkg"
-			mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/var/log"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/sync"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local"
+			echo "9" >> "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/lib/pacman/local/ALPM_DB_VERSION"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/cache/pacman/pkg"
+			mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/var/log"
 		fi
 	fi
-	mkdir -p "${BOOTSTRAP_ROOTFS}/${TERMUX_PREFIX}/tmp"
+	mkdir -p "${BOOTSTRAP_ROOTFS}/${NEOTERM_PREFIX}/tmp"
 
 	# Read package metadata.
 	unset PACKAGE_METADATA
 	declare -A PACKAGE_METADATA
-	if [ ${TERMUX_PACKAGE_MANAGER} = "apt" ]; then
+	if [ ${NEOTERM_PACKAGE_MANAGER} = "apt" ]; then
 		read_package_list_deb "$package_arch"
 	else
 		read_package_list_pac "$package_arch"
@@ -428,7 +428,7 @@ for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 
 	# Package manager.
 	if ! ${BOOTSTRAP_ANDROID10_COMPATIBLE}; then
-		pull_package ${TERMUX_PACKAGE_MANAGER}
+		pull_package ${NEOTERM_PACKAGE_MANAGER}
 	fi
 
 	# Core utilities.
@@ -452,15 +452,15 @@ for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 	pull_package psmisc
 	pull_package sed
 	pull_package tar
-	pull_package termux-exec
-	pull_package termux-keyring
-	pull_package termux-tools
+	pull_package neoterm-exec
+	pull_package neoterm-keyring
+	pull_package neoterm-tools
 	pull_package util-linux
 	pull_package xz-utils
 
 	# Additional.
 	pull_package ed
-	if [ ${TERMUX_PACKAGE_MANAGER} = "apt" ]; then
+	if [ ${NEOTERM_PACKAGE_MANAGER} = "apt" ]; then
 		pull_package debianutils
 	fi
 	pull_package dos2unix

@@ -6,7 +6,7 @@ diff -uNr abuild-3.4.0/abuild-fetch.c abuild-3.4.0.mod/abuild-fetch.c
  {
  	int opt;
 -	char *destdir = "/var/cache/distfiles";
-+	char *destdir = "@TERMUX_PREFIX@/var/cache/distfiles";
++	char *destdir = "@NEOTERM_PREFIX@/var/cache/distfiles";
  
  	program = argv[0];
  	while ((opt = getopt(argc, argv, "hd:")) != -1) {

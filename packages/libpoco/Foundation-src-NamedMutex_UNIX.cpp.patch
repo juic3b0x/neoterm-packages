@@ -5,7 +5,7 @@
  	std::string fn = "/";
  #else
 -	std::string fn = "/tmp/";
-+	std::string fn = "@TERMUX_PREFIX@/tmp/";
++	std::string fn = "@NEOTERM_PREFIX@/tmp/";
  #endif
  	fn.append(_name);
  	fn.append(".mutex");

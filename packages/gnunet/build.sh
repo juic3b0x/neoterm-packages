@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://gnunet.org
-TERMUX_PKG_DESCRIPTION="A framework for secure peer-to-peer networking"
-TERMUX_PKG_LICENSE="AGPL-V3"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_SRCURL=git+https://git.gnunet.org/git/gnunet
-TERMUX_PKG_VERSION=0.19.4
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SHA256=e631013cb0672d245d5ad535729339d47d482984fa2a29edf8ade1ef46640464
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_DEPENDS="libcurl, libgcrypt, libgnutls, libgpg-error, libidn2, libjansson, libltdl, libmicrohttpd, libsodium, libsqlite, libunistring, zlib"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_have_decl_struct_in6_ifreq=yes"
+NEOTERM_PKG_HOMEPAGE=https://gnunet.org
+NEOTERM_PKG_DESCRIPTION="A framework for secure peer-to-peer networking"
+NEOTERM_PKG_LICENSE="AGPL-V3"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_SRCURL=git+https://git.gnunet.org/git/gnunet
+NEOTERM_PKG_VERSION=0.19.4
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SHA256=e631013cb0672d245d5ad535729339d47d482984fa2a29edf8ade1ef46640464
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="libcurl, libgcrypt, libgnutls, libgpg-error, libidn2, libjansson, libltdl, libmicrohttpd, libsodium, libsqlite, libunistring, zlib"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_have_decl_struct_in6_ifreq=yes"
 
-# `termux_step_get_source` does not work by default:
+# `neoterm_step_get_source` does not work by default:
 #
 # ```
 # Submodule 'contrib/gana' (git://git.gnunet.org/gana.git) registered for path 'contrib/gana'
@@ -26,23 +26,23 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="ac_cv_have_decl_struct_in6_ifreq=yes"
 # fatal: 
 # ##[error]Process completed with exit code 128.
 # ```
-termux_step_get_source() {
-	rm -rf $TERMUX_PKG_SRCDIR
-	mkdir -p $TERMUX_PKG_SRCDIR
-	cd $TERMUX_PKG_SRCDIR
-	git clone --depth 1 --branch v${TERMUX_PKG_VERSION} \
-		${TERMUX_PKG_SRCURL#git+} .
+neoterm_step_get_source() {
+	rm -rf $NEOTERM_PKG_SRCDIR
+	mkdir -p $NEOTERM_PKG_SRCDIR
+	cd $NEOTERM_PKG_SRCDIR
+	git clone --depth 1 --branch v${NEOTERM_PKG_VERSION} \
+		${NEOTERM_PKG_SRCURL#git+} .
 	git submodule update --init --recursive
 }
 
-termux_step_post_get_source() {
+neoterm_step_post_get_source() {
 	local s=$(find . -type f ! -path '*/.git/*' -print0 | xargs -0 sha256sum | LC_ALL=C sort | sha256sum)
-	if [[ "${s}" != "${TERMUX_PKG_SHA256}  "* ]]; then
-		termux_error_exit "Checksum mismatch for source files."
+	if [[ "${s}" != "${NEOTERM_PKG_SHA256}  "* ]]; then
+		neoterm_error_exit "Checksum mismatch for source files."
 	fi
 }
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	CPPFLAGS+=" -D_LINUX_IN6_H"
 	./bootstrap
 }

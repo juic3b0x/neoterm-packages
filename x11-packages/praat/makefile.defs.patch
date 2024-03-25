@@ -2,13 +2,13 @@ diff -uNr praat-6.2.23/makefile.defs praat-6.2.23.mod/makefile.defs
 --- praat-6.2.23/makefile.defs	1970-01-01 09:00:00.000000000 +0900
 +++ praat-6.2.23.mod/makefile.defs	2022-10-20 18:01:48.926769740 +0900
 @@ -0,0 +1,23 @@
-+# File: makefile.defs.linux.termux
++# File: makefile.defs.linux.neoterm
 +
-+# System: Android via termux
++# System: Android via neoterm
 +
 +CC ?= gcc
 +CXX ?= g++
-+LINK ?= $(CXX) -Wl,-rpath=@TERMUX_PREFIX@/lib
++LINK ?= $(CXX) -Wl,-rpath=@NEOTERM_PREFIX@/lib
 +
 +PKG_CONFIG ?= "pkg-config"
 +

@@ -14,7 +14,7 @@
  
 +#[cfg(target_os = "android")]
 +pub async fn upgrade(upgrade_flags: UpgradeFlags) -> Result<(), AnyError> {
-+  println!("You are currently using Deno packaged by the Termux repo. To upgrade Deno, wait for the packagers to update it. This is done to prevent you from breaking your installation.");
++  println!("You are currently using Deno packaged by the NeoTerm repo. To upgrade Deno, wait for the packagers to update it. This is done to prevent you from breaking your installation.");
 +  std::process::exit(1);
 +}
 +

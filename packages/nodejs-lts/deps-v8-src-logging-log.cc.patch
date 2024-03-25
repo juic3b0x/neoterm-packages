@@ -5,7 +5,7 @@
  };
  
 -const char LinuxPerfBasicLogger::kFilenameFormatString[] = "/tmp/perf-%d.map";
-+const char LinuxPerfBasicLogger::kFilenameFormatString[] = "@TERMUX_PREFIX@/tmp/perf-%d.map";
++const char LinuxPerfBasicLogger::kFilenameFormatString[] = "@NEOTERM_PREFIX@/tmp/perf-%d.map";
  // Extra space for the PID in the filename
  const int LinuxPerfBasicLogger::kFilenameBufferPadding = 16;
  

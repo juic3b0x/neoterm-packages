@@ -5,7 +5,7 @@
  
  my $TZLIST="$ENV{'HOME'}/.config/slashtime/tzlist";
 -my $SYSTZ="/etc/timezone";
-+my $SYSTZ="@TERMUX_PREFIX@/etc/timezone";
++my $SYSTZ="@NEOTERM_PREFIX@/etc/timezone";
  my $FORMAT="%H:%M %a, %e %b %y";
  
  my $now;
@@ -14,10 +14,10 @@
    $local_timezone; close(LOCALZONE);
  }
 -elsif (-f '/etc/localtime')
-+elsif (-f '@TERMUX_PREFIX@/etc/localtime')
++elsif (-f '@NEOTERM_PREFIX@/etc/localtime')
  {
 -  $local_timezone = readlink '/etc/localtime';
-+  $local_timezone = readlink '@TERMUX_PREFIX@/etc/localtime';
++  $local_timezone = readlink '@NEOTERM_PREFIX@/etc/localtime';
    $local_timezone =~ s/.*zoneinfo\///;
  }
  else

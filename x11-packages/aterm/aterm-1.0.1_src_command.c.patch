@@ -44,7 +44,7 @@ diff -uNr aterm-1.0.1/src/command.c aterm-1.0.1.mod/src/command.c
 -    }
 -# endif
 -#endif
-+// do nothing on Termux.
++// do nothing on NeoTerm.
  }
  /*}}} */
  

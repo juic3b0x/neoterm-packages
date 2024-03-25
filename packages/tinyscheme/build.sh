@@ -1,18 +1,18 @@
-TERMUX_PKG_HOMEPAGE=https://tinyscheme.sourceforge.net/home.html
-TERMUX_PKG_DESCRIPTION="Very small scheme implementation"
-TERMUX_PKG_LICENSE="BSD 3-Clause"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=1.42
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=http://downloads.sourceforge.net/project/tinyscheme/tinyscheme/tinyscheme-${TERMUX_PKG_VERSION}/tinyscheme-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=17b0b1bffd22f3d49d5833e22a120b339039d2cfda0b46d6fc51dd2f01b407ad
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://tinyscheme.sourceforge.net/home.html
+NEOTERM_PKG_DESCRIPTION="Very small scheme implementation"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.42
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=http://downloads.sourceforge.net/project/tinyscheme/tinyscheme/tinyscheme-${NEOTERM_PKG_VERSION}/tinyscheme-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=17b0b1bffd22f3d49d5833e22a120b339039d2cfda0b46d6fc51dd2f01b407ad
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	LD=$CC
 }
 
-termux_step_post_make_install() {
-	mkdir -p $TERMUX_PREFIX/share/tinyscheme/
-	cp $TERMUX_PKG_SRCDIR/init.scm $TERMUX_PREFIX/share/tinyscheme/
+neoterm_step_post_make_install() {
+	mkdir -p $NEOTERM_PREFIX/share/tinyscheme/
+	cp $NEOTERM_PKG_SRCDIR/init.scm $NEOTERM_PREFIX/share/tinyscheme/
 }

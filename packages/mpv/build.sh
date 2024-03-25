@@ -1,15 +1,15 @@
-TERMUX_PKG_HOMEPAGE=https://mpv.io/
-TERMUX_PKG_DESCRIPTION="Command-line media player"
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_HOMEPAGE=https://mpv.io/
+NEOTERM_PKG_DESCRIPTION="Command-line media player"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
 # Update both mpv and mpv-x to the same version in one PR.
-TERMUX_PKG_VERSION="0.37.0"
-TERMUX_PKG_SRCURL=https://github.com/mpv-player/mpv/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_DEPENDS="ffmpeg, libandroid-glob, libandroid-support, libarchive, libass, libcaca, libiconv, liblua52, libsixel, libuchardet, openal-soft, pulseaudio, rubberband, zlib, libplacebo"
-TERMUX_PKG_RM_AFTER_INSTALL="share/icons share/applications"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_VERSION="0.37.0"
+NEOTERM_PKG_SRCURL=https://github.com/mpv-player/mpv/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=1d2d4adbaf048a2fa6ee134575032c4b2dad9a7efafd5b3e69b88db935afaddf
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="ffmpeg, libandroid-glob, libandroid-support, libarchive, libass, libcaca, libiconv, liblua52, libsixel, libuchardet, openal-soft, pulseaudio, rubberband, zlib, libplacebo"
+NEOTERM_PKG_RM_AFTER_INSTALL="share/icons share/applications"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -Dlibmpv=true
 -Dlua=lua52
 -Ddvdnav=disabled
@@ -31,22 +31,22 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -Dandroid-media-ndk=disabled
 "
 
-termux_step_post_get_source() {
+neoterm_step_post_get_source() {
 	# Version guard
-	local ver_m=${TERMUX_PKG_VERSION#*:}
-	local ver_x=$(. $TERMUX_SCRIPTDIR/x11-packages/mpv-x/build.sh; echo ${TERMUX_PKG_VERSION#*:})
+	local ver_m=${NEOTERM_PKG_VERSION#*:}
+	local ver_x=$(. $NEOTERM_SCRIPTDIR/x11-packages/mpv-x/build.sh; echo ${NEOTERM_PKG_VERSION#*:})
 	if [ "${ver_m}" != "${ver_x}" ]; then
-		termux_error_exit "Version mismatch between mpv and mpv-x."
+		neoterm_error_exit "Version mismatch between mpv and mpv-x."
 	fi
 }
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	LDFLAGS+=" -landroid-glob"
-	sed -i "s/host_machine.system() == 'android'/false/" ${TERMUX_PKG_SRCDIR}/meson.build
+	sed -i "s/host_machine.system() == 'android'/false/" ${NEOTERM_PKG_SRCDIR}/meson.build
 }
 
-termux_step_post_make_install() {
+neoterm_step_post_make_install() {
 	# Use opensles audio out by default:
-	install -Dm600 -t $TERMUX_PREFIX/etc/mpv/ $TERMUX_PKG_BUILDER_DIR/mpv.conf
-	install -Dm600 -t $TERMUX_PREFIX/share/mpv/scripts/ $TERMUX_PKG_SRCDIR/TOOLS/lua/*
+	install -Dm600 -t $NEOTERM_PREFIX/etc/mpv/ $NEOTERM_PKG_BUILDER_DIR/mpv.conf
+	install -Dm600 -t $NEOTERM_PREFIX/share/mpv/scripts/ $NEOTERM_PKG_SRCDIR/TOOLS/lua/*
 }

@@ -1,16 +1,16 @@
-TERMUX_PKG_HOMEPAGE=https://www.samba.org/
-TERMUX_PKG_DESCRIPTION="SMB/CIFS fileserver"
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=4.16.11
-TERMUX_PKG_SRCURL=https://download.samba.org/pub/samba/samba-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=5218878cdcc01aa8e83d2c84ad16c5f37a01ea5e1a93f640f9ee282053c46e12
-TERMUX_PKG_DEPENDS="krb5, libandroid-execinfo, libandroid-spawn, libbsd, libcap, libcrypt, libgnutls, libiconv, libicu, libpopt, libtalloc, libtasn1, libtirpc, ncurses, openssl, readline, tdb-tools, zlib"
-TERMUX_PKG_BUILD_DEPENDS="e2fsprogs"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://www.samba.org/
+NEOTERM_PKG_DESCRIPTION="SMB/CIFS fileserver"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=4.16.11
+NEOTERM_PKG_SRCURL=https://download.samba.org/pub/samba/samba-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=5218878cdcc01aa8e83d2c84ad16c5f37a01ea5e1a93f640f9ee282053c46e12
+NEOTERM_PKG_DEPENDS="krb5, libandroid-execinfo, libandroid-spawn, libbsd, libcap, libcrypt, libgnutls, libiconv, libicu, libpopt, libtalloc, libtasn1, libtirpc, ncurses, openssl, readline, tdb-tools, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="e2fsprogs"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
 # These files are already present in the package tdb-tools
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_RM_AFTER_INSTALL="
 bin/tdbbackup
 bin/tdbdump
 bin/tdbrestore
@@ -21,12 +21,12 @@ share/man/man8/tdbrestore.8.gz
 share/man/man8/tdbtool.8.gz
 "
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	CPPFLAGS+=" -D_FILE_OFFSET_BITS=64"
 	LDFLAGS+=" -landroid-spawn"
 }
 
-termux_step_configure() {
+neoterm_step_configure() {
 	local _auth_modules='auth_server,auth_netlogond,auth_script'
 	local _pdb_modules='pdb_tdbsam,pdb_smbpasswd,pdb_wbc_sam'
 	local _vfs_modules='vfs_fake_perms,!vfs_recycle,!vfs_btrfs,!vfs_glusterfs_fuse'
@@ -34,11 +34,11 @@ termux_step_configure() {
 	_vfs_modules+=',!vfs_default_quota,!vfs_audit,!vfs_extd_audit,!vfs_full_audit'
 	_vfs_modules+=',!vfs_worm,!vfs_time_audit,!vfs_media_harmony,!vfs_unityed_media,!vfs_shadow_copy,!vfs_shadow_copy2'
 
-	cd "$TERMUX_PKG_SRCDIR"
+	cd "$NEOTERM_PKG_SRCDIR"
 
 	cat <<EOF > cross-answers.txt
 Checking uname sysname type: "Linux"
-Checking uname machine type: "$TERMUX_ARCH"
+Checking uname machine type: "$NEOTERM_ARCH"
 Checking uname release type: "dontcare"
 Checking uname version type: "dontcare"
 Checking simple C program: "hello world"
@@ -92,15 +92,15 @@ EOF
 	USING_SYSTEM_COMPILE_ET=1 COMPILE_ET=/usr/bin/compile_et \
 	CFLAGS="$CFLAGS" LINKFLAGS="$CFLAGS $LDFLAGS" \
 	./buildtools/bin/waf configure \
-		--jobs="$TERMUX_MAKE_PROCESSES" \
+		--jobs="$NEOTERM_MAKE_PROCESSES" \
 		--bundled-libraries='!asn1_compile,!compile_et' \
 		--cross-compile \
 		--cross-answers=cross-answers.txt \
 		--enable-fhs \
-		--prefix="$TERMUX_PREFIX" \
-		--sysconfdir="$TERMUX_PREFIX/etc" \
-		--localstatedir="$TERMUX_PREFIX/var" \
-		--sbindir="$TERMUX_PREFIX/bin" \
+		--prefix="$NEOTERM_PREFIX" \
+		--sysconfdir="$NEOTERM_PREFIX/etc" \
+		--localstatedir="$NEOTERM_PREFIX/var" \
+		--sbindir="$NEOTERM_PREFIX/bin" \
 		--disable-avahi \
 		--disable-cephfs \
 		--disable-cups \
@@ -129,7 +129,7 @@ EOF
 		--without-pam \
 		--without-quotas \
 		--without-regedit \
-		--with-system-mitkrb5 "$TERMUX_PREFIX" \
+		--with-system-mitkrb5 "$NEOTERM_PREFIX" \
 		--without-systemd \
 		--without-utmp \
 		--without-winbind \
@@ -137,29 +137,29 @@ EOF
 		--with-static-modules='!auth_winbind' ||
 		# --disable-fault-handling \
 		# --disable-rpath-private-install \
-		# --with-logfilebase="$TERMUX_PREFIX/tmp/log/samba" \
+		# --with-logfilebase="$NEOTERM_PREFIX/tmp/log/samba" \
 		(cat cross-answers.txt | grep UNKNOWN && return 1)
 }
 
 
-termux_step_make() {
-	./buildtools/bin/waf build --jobs="$TERMUX_MAKE_PROCESSES"
+neoterm_step_make() {
+	./buildtools/bin/waf build --jobs="$NEOTERM_MAKE_PROCESSES"
 }
 
-termux_step_make_install() {
-	./buildtools/bin/waf install --jobs="$TERMUX_MAKE_PROCESSES"
+neoterm_step_make_install() {
+	./buildtools/bin/waf install --jobs="$NEOTERM_MAKE_PROCESSES"
 }
 
-termux_step_post_make_install() {
-	install -Dm700 -t "$TERMUX_PREFIX/bin" \
-		"$TERMUX_PKG_SRCDIR/examples/scripts/nmb/findsmb"
-	mkdir -p "$TERMUX_PREFIX/share/doc/samba"
-	sed -e "s|@TERMUX_PREFIX@|${TERMUX_PREFIX}|g" \
-		"$TERMUX_PKG_BUILDER_DIR/smb.conf.example.in" \
-		> "$TERMUX_PREFIX/share/doc/samba/smb.conf.example"
+neoterm_step_post_make_install() {
+	install -Dm700 -t "$NEOTERM_PREFIX/bin" \
+		"$NEOTERM_PKG_SRCDIR/examples/scripts/nmb/findsmb"
+	mkdir -p "$NEOTERM_PREFIX/share/doc/samba"
+	sed -e "s|@NEOTERM_PREFIX@|${NEOTERM_PREFIX}|g" \
+		"$NEOTERM_PKG_BUILDER_DIR/smb.conf.example.in" \
+		> "$NEOTERM_PREFIX/share/doc/samba/smb.conf.example"
 }
 
-termux_step_post_massage() {
+neoterm_step_post_massage() {
 	# keep empty dirs which were deleted in massage
 	mkdir -p "var/lib/samba/bind-dns" "var/lib/samba/private"
 	for dir in cache lock log run; do

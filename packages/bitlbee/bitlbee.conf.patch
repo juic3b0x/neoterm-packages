@@ -5,7 +5,7 @@
  ## on the --etcdir argument to configure.
  ##
 -# MotdFile = /etc/bitlbee/motd.txt
-+# MotdFile = @TERMUX_PREFIX@/etc/bitlbee/motd.txt
++# MotdFile = @NEOTERM_PREFIX@/etc/bitlbee/motd.txt
  
  ## ConfigDir
  ##
@@ -13,7 +13,7 @@
  ## files. (.nicks/.accounts)
  ##
 -# ConfigDir = /var/lib/bitlbee
-+# ConfigDir = @TERMUX_PREFIX@/var/lib/bitlbee
++# ConfigDir = @NEOTERM_PREFIX@/var/lib/bitlbee
  
  ## Ping settings
  ##
@@ -22,7 +22,7 @@
  ## example, try /etc/ssl/ca-bundle.pem on OpenSUSE.
  ##
 -# CAfile = /etc/ssl/certs/ca-certificates.crt
-+# CAfile = @TERMUX_PREFIX@/etc/tls/cert.pem
++# CAfile = @NEOTERM_PREFIX@/etc/tls/cert.pem
  
  [defaults]
  

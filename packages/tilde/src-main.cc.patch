@@ -5,7 +5,7 @@
  
  static std::string get_run_file_name() {
 -  static const char *TMP_DIR_BASE = "/tmp/tilde-";
-+  static const char *TMP_DIR_BASE = "@TERMUX_PREFIX@/tmp/tilde-";
++  static const char *TMP_DIR_BASE = "@NEOTERM_PREFIX@/tmp/tilde-";
    char hostname[128];
    std::string linkname;
    std::unique_ptr<char, free_deleter> path;

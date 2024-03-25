@@ -26,17 +26,17 @@ diff -uNr glew-2.2.0/config/Makefile.linux glew-2.2.0.mod/config/Makefile.linux
 +CC ?= cc
 +LD ?= cc
 +LIBDIR = $(GLEW_DEST)/lib
-+LDFLAGS.EXTRA = -L@TERMUX_PREFIX@/lib
++LDFLAGS.EXTRA = -L@NEOTERM_PREFIX@/lib
  LDFLAGS.GL = -lGL -lX11
  LDFLAGS.STATIC = -Wl,-Bstatic
 -LDFLAGS.DYNAMIC = -Wl,-Bdynamic
-+LDFLAGS.DYNAMIC = -Wl,-Bdynamic -Wl,-rpath=@TERMUX_PREFIX@/lib -Wl,--enable-new-dtags
++LDFLAGS.DYNAMIC = -Wl,-Bdynamic -Wl,-rpath=@NEOTERM_PREFIX@/lib -Wl,--enable-new-dtags
  NAME = GLEW
  WARN += -Wall -W
  WARN += -Wshadow
  WARN += -pedantic
  POPT = -O2
-+CFLAGS.EXTRA += -I@TERMUX_PREFIX@/include
++CFLAGS.EXTRA += -I@NEOTERM_PREFIX@/include
  CFLAGS.EXTRA += -fPIC
  CFLAGS.EXTRA += -Wcast-qual
  CFLAGS.EXTRA += -ansi -pedantic
@@ -45,7 +45,7 @@ diff -uNr glew-2.2.0/config/Makefile.linux glew-2.2.0.mod/config/Makefile.linux
  LIB.SHARED = lib$(NAME).so.$(SO_VERSION)
  LIB.STATIC = lib$(NAME).a
 -LDFLAGS.SO = -shared -Wl,-soname=$(LIB.SONAME)
-+LDFLAGS.SO = -shared -Wl,-soname=$(LIB.SONAME) -Wl,-rpath=@TERMUX_PREFIX@/lib -Wl,--enable-new-dtags
++LDFLAGS.SO = -shared -Wl,-soname=$(LIB.SONAME) -Wl,-rpath=@NEOTERM_PREFIX@/lib -Wl,--enable-new-dtags
 diff -uNr glew-2.2.0/Makefile glew-2.2.0.mod/Makefile
 --- glew-2.2.0/Makefile	2020-03-15 13:53:59.000000000 +0200
 +++ glew-2.2.0.mod/Makefile	2021-11-04 18:06:35.454704596 +0200
@@ -59,8 +59,8 @@ diff -uNr glew-2.2.0/Makefile glew-2.2.0.mod/Makefile
 -LIBDIR    ?= $(GLEW_DEST)/lib
 -INCDIR    ?= $(GLEW_DEST)/include/GL
 -PKGDIR    ?= $(GLEW_DEST)/lib/pkgconfig
-+GLEW_PREFIX = @TERMUX_PREFIX@
-+GLEW_DEST = @TERMUX_PREFIX@
++GLEW_PREFIX = @NEOTERM_PREFIX@
++GLEW_DEST = @NEOTERM_PREFIX@
 +BINDIR    = $(GLEW_DEST)/bin
 +LIBDIR    = $(GLEW_DEST)/lib
 +INCDIR    = $(GLEW_DEST)/include/GL

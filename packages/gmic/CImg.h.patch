@@ -28,8 +28,8 @@ diff -uNr gmic-2.6.7/src/CImg.h gmic-2.6.7.mod/src/CImg.h
  #else
 -        _cimg_test_temporary_path("/tmp");
 -        _cimg_test_temporary_path("/var/tmp");
-+        _cimg_test_temporary_path("@TERMUX_PREFIX@/tmp");
-+        _cimg_test_temporary_path("@TERMUX_PREFIX@/var/tmp");
++        _cimg_test_temporary_path("@NEOTERM_PREFIX@/tmp");
++        _cimg_test_temporary_path("@NEOTERM_PREFIX@/var/tmp");
  #endif
          if (!path_found) {
            *s_path = 0;

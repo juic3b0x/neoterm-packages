@@ -6,7 +6,7 @@ diff -u -r ../lftp-4.8.0/src/SysCmdJob.cc ./src/SysCmdJob.cc
     const char *shell=getenv("SHELL");
     if(!shell)
 -      shell="/bin/sh";
-+      shell="@TERMUX_PREFIX@/bin/sh";
++      shell="@NEOTERM_PREFIX@/bin/sh";
  
     ProcWait::Signal(false);
  

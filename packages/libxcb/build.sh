@@ -1,13 +1,13 @@
 # X11 package
-TERMUX_PKG_HOMEPAGE=https://xcb.freedesktop.org/
-TERMUX_PKG_DESCRIPTION="X11 client-side library"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.16.1"
-TERMUX_PKG_SRCURL=https://xorg.freedesktop.org/archive/individual/lib/libxcb-$TERMUX_PKG_VERSION.tar.xz
-TERMUX_PKG_SHA256=f24d187154c8e027b358fc7cb6588e35e33e6a92f11c668fe77396a7ae66e311
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="libxau, libxdmcp"
-TERMUX_PKG_BUILD_DEPENDS="xcb-proto, xorg-util-macros"
-TERMUX_PKG_RECOMMENDS="xorg-xauth"
-TERMUX_PKG_RM_AFTER_INSTALL="lib/python*"
+NEOTERM_PKG_HOMEPAGE=https://xcb.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X11 client-side library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.16.1"
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/archive/individual/lib/libxcb-$NEOTERM_PKG_VERSION.tar.xz
+NEOTERM_PKG_SHA256=f24d187154c8e027b358fc7cb6588e35e33e6a92f11c668fe77396a7ae66e311
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libxau, libxdmcp"
+NEOTERM_PKG_BUILD_DEPENDS="xcb-proto, xorg-util-macros"
+NEOTERM_PKG_RECOMMENDS="xorg-xauth"
+NEOTERM_PKG_RM_AFTER_INSTALL="lib/python*"

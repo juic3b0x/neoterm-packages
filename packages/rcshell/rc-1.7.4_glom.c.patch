@@ -6,7 +6,7 @@ diff -uNr rc-1.7.4/glom.c rc-1.7.4.mod/glom.c
  	static int fifonumber = 0;
  
 -	name = nprint("/tmp/rc%d.%d", getpid(), fifonumber++);
-+	name = nprint("@TERMUX_PREFIX@/tmp/rc%d.%d", getpid(), fifonumber++);
++	name = nprint("@NEOTERM_PREFIX@/tmp/rc%d.%d", getpid(), fifonumber++);
  	if (mkfifo(name, 0666) < 0) {
  		uerror("mkfifo");
  		return NULL;

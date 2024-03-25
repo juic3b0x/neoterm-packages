@@ -5,10 +5,10 @@
  		} else {
  			if (env.envarray) {
 -				execle("/bin/sh", "sh", "-c", command, NULL, env.envarray);
-+				execle("@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL, env.envarray);
++				execle("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", command, NULL, env.envarray);
  			} else {
 -				execl("/bin/sh", "sh", "-c", command, NULL);
-+				execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", command, NULL);
++				execl("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", command, NULL);
  			}
  		}
  		_exit(127);

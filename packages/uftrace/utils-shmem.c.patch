@@ -6,7 +6,7 @@ diff -uNr uftrace-0.14/utils/shmem.c uftrace-0.14.mod/utils/shmem.c
  		tmpdir = getenv("TMPDIR");
  		if (!tmpdir)
 -			tmpdir = "/tmp";
-+			tmpdir = "@TERMUX_PREFIX@/tmp";
++			tmpdir = "@NEOTERM_PREFIX@/tmp";
  
  		snprintf(uftrace_dir, sizeof(uftrace_dir), "%s/uftrace", tmpdir);
  	}

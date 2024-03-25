@@ -4,7 +4,7 @@
  
      parsedCommandLine->AppendSwitchASCII(service_manager::switches::kApplicationName, QCoreApplication::applicationName().toUtf8().toPercentEncoding().toStdString());
  
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +    parsedCommandLine->AppendSwitch(sandbox::policy::switches::kNoSandbox);
 +    qInfo() << "Sandboxing disabled.";
 +#else

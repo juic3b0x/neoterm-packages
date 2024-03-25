@@ -5,7 +5,7 @@
   */
  
 -static const char *tmpdir = "/tmp";
-+static const char *tmpdir = "@TERMUX_PREFIX@/tmp";
++static const char *tmpdir = "@NEOTERM_PREFIX@/tmp";
  
  /* Do not change shlock_mode.  Doing so can cause mailbox corruption and
   * denial of service.  It also defeats the entire purpose of the shared

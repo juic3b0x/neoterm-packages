@@ -7,8 +7,8 @@
 -    "/usr/local/etc/fte/system.fterc",
 -    "/etc/fte/system.fterc",
 -    "/usr/X11R6/lib/X11/fte/system.fterc",
-+    "@TERMUX_PREFIX@/local/etc/fte/system.fterc",
-+    "@TERMUX_PREFIX@/etc/fte/system.fterc",
++    "@NEOTERM_PREFIX@/local/etc/fte/system.fterc",
++    "@NEOTERM_PREFIX@/etc/fte/system.fterc",
  };
  
  // variables used by vfte

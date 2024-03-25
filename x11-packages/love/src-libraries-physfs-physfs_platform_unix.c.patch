@@ -5,7 +5,7 @@
      struct mntent *ent = NULL;
  
 -    mounts = setmntent("/etc/mtab", "r");
-+    mounts = setmntent("@TERMUX_PREFIX@/etc/mtab", "r");
++    mounts = setmntent("@NEOTERM_PREFIX@/etc/mtab", "r");
      BAIL_IF(mounts == NULL, PHYSFS_ERR_IO, /*return void*/);
  
      while ( (ent = getmntent(mounts)) != NULL )

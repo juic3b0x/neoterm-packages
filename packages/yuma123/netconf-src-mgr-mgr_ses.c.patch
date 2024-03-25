@@ -5,7 +5,7 @@
          ses_putchar(scb, ';');
      } else {
 -        ses_putstr(scb, (const xmlChar *)"/tmp;");
-+        ses_putstr(scb, (const xmlChar *)"@TERMUX_PREFIX@/tmp;");
++        ses_putstr(scb, (const xmlChar *)"@NEOTERM_PREFIX@/tmp;");
      }
  
      /* groups list is empty */

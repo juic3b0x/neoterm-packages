@@ -1,21 +1,21 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/wwmm/easyeffects
-TERMUX_PKG_DESCRIPTION="Audio effects for PulseAudio applications"
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="@termux"
+NEOTERM_PKG_HOMEPAGE=https://github.com/wwmm/easyeffects
+NEOTERM_PKG_DESCRIPTION="Audio effects for PulseAudio applications"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
 # Do not upgrade to EasyEffects version.
-TERMUX_PKG_VERSION=4.8.7
-TERMUX_PKG_REVISION=3
-TERMUX_PKG_SRCURL=https://github.com/wwmm/easyeffects/archive/refs/tags/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=d841f27df87b99747349be6b8de62d131422369908fcb57a81f39590437a8099
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_DEPENDS="boost, glib, gst-plugins-bad, gst-plugins-base, gst-plugins-good, gstreamer, gtk3, gtkmm3, libbs2b, libc++, libebur128, librnnoise, libsndfile, libzita-convolver, lilv, pulseaudio"
-TERMUX_PKG_BUILD_DEPENDS="boost-headers, libsamplerate"
+NEOTERM_PKG_VERSION=4.8.7
+NEOTERM_PKG_REVISION=3
+NEOTERM_PKG_SRCURL=https://github.com/wwmm/easyeffects/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=d841f27df87b99747349be6b8de62d131422369908fcb57a81f39590437a8099
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="boost, glib, gst-plugins-bad, gst-plugins-base, gst-plugins-good, gstreamer, gtk3, gtkmm3, libbs2b, libc++, libebur128, librnnoise, libsndfile, libzita-convolver, lilv, pulseaudio"
+NEOTERM_PKG_BUILD_DEPENDS="boost-headers, libsamplerate"
 
-termux_step_pre_configure() {
-	case "$TERMUX_PKG_VERSION" in
+neoterm_step_pre_configure() {
+	case "$NEOTERM_PKG_VERSION" in
 		4.*|*:4.* ) ;;
-		* ) termux_error_exit "Dubious version '$TERMUX_PKG_VERSION' for package '$TERMUX_PKG_NAME'." ;;
+		* ) neoterm_error_exit "Dubious version '$NEOTERM_PKG_VERSION' for package '$NEOTERM_PKG_NAME'." ;;
 	esac
 
-	export BOOST_ROOT=$TERMUX_PREFIX
+	export BOOST_ROOT=$NEOTERM_PREFIX
 }

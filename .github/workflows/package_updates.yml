@@ -38,7 +38,7 @@ jobs:
           GIT_COMMIT_PACKAGES: "true"
           GIT_PUSH_PACKAGES: "true"
         run: |
-          git config --global user.name "Termux Github Actions"
+          git config --global user.name "NeoTerm Github Actions"
           git config --global user.email "contact@neoterm.dev"
 
           if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then

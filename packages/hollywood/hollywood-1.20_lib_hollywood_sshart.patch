@@ -14,7 +14,7 @@ diff -uNr hollywood-1.20/lib/hollywood/sshart hollywood-1.20.mod/lib/hollywood/s
  
  PKG=hollywood
 -tmpdir="/tmp/$PKG"
-+tmpdir="@TERMUX_PREFIX@/tmp/$PKG"
++tmpdir="@NEOTERM_PREFIX@/tmp/$PKG"
  trap "rm -rf $tmpdir 2>/dev/null && pkill -f -9 lib/hollywood/ >/dev/null 2>&1; exit" INT
  while true; do
  	mkdir -p "$tmpdir"

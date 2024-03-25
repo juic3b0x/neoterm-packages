@@ -11,7 +11,7 @@ diff -uNr i3-4.15/libi3/get_exe_path.c i3-4.15.mod/libi3/get_exe_path.c
 -            tmp = srealloc(tmp, tmp_size);
 -        }
 -        sasprintf(&path, ":%s", tmp);
-+		path = sstrdup("@TERMUX_PREFIX@/bin:@TERMUX_PREFIX@/bin/applets");
++		path = sstrdup("@NEOTERM_PREFIX@/bin:@NEOTERM_PREFIX@/bin/applets");
      } else {
          path = sstrdup(path);
      }
@@ -20,5 +20,5 @@ diff -uNr i3-4.15/libi3/get_exe_path.c i3-4.15.mod/libi3/get_exe_path.c
  
      /* Last resort: maybe it’s in /usr/bin? */
 -    return sstrdup("/usr/bin/i3-nagbar");
-+    return sstrdup("@TERMUX_PREFIX@/bin/i3-nagbar");
++    return sstrdup("@NEOTERM_PREFIX@/bin/i3-nagbar");
  }

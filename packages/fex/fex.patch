@@ -6,11 +6,11 @@ index 97a879a03..436fd16ee 100644
  
  #include <bitset>
  #include <cstddef>
--#ifdef TERMUX_BUILD
+-#ifdef NEOTERM_BUILD
 +
  #ifdef __has_include
  #if __has_include(<memory_resource>)
--#error Termux <experimental/memory_resource> workaround can be removed
+-#error NeoTerm <experimental/memory_resource> workaround can be removed
 -#endif
 -#endif
 +#include <memory_resource>
@@ -88,7 +88,7 @@ index 5d6cfed33..74918edd1 100644
  
 -      Args[0] = RecoverGuestProgramFilename(std::move(Args[0]), ExecFDInterp, ProgramFDFromEnv);
 -      fextl::string& Program = Args[0];
-+      // really bad workaround for Termux Proot
++      // really bad workaround for NeoTerm Proot
 +      for (size_t j=0; j<Args.size(); j++) {
 +        if (Args[j] == "-U") continue;
 +        if (Args[j] == "LD_LIBRARY_PATH") continue;
@@ -112,9 +112,9 @@ index 357d16cd0..08c836886 100644
      add_subdirectory(FEXConfig/)
    endif()
  
--  if (NOT TERMUX_BUILD)
-+  #if (NOT TERMUX_BUILD)
-     # Disable FEXRootFSFetcher on Termux, it doesn't even work there
+-  if (NOT NEOTERM_BUILD)
++  #if (NOT NEOTERM_BUILD)
+     # Disable FEXRootFSFetcher on NeoTerm, it doesn't even work there
      add_subdirectory(FEXRootFSFetcher/)
 -  endif()
 +  #endif()

@@ -5,7 +5,7 @@
          strcpy(tmpname3, "\\temp\\xrdbD_XXXXXX");
  #else
 -        strcpy(tmpname2, "/tmp/xrdbD_XXXXXX");
-+        strcpy(tmpname2, "@TERMUX_PREFIX@/tmp/xrdbD_XXXXXX");
++        strcpy(tmpname2, "@NEOTERM_PREFIX@/tmp/xrdbD_XXXXXX");
  #endif
          (void) mktemp(tmpname2);
      }
@@ -14,7 +14,7 @@
          strcpy(tmpname, "\\temp\\xrdb_XXXXXX");
  #else
 -        strcpy(tmpname, "/tmp/xrdb_XXXXXX");
-+        strcpy(tmpname, "@TERMUX_PREFIX@/tmp/xrdb_XXXXXX");
++        strcpy(tmpname, "@NEOTERM_PREFIX@/tmp/xrdb_XXXXXX");
  #endif
  #ifndef HAVE_MKSTEMP
          (void) mktemp(tmpname);

@@ -7,7 +7,7 @@ index c528a5d..8e782c0 100644
  #define DATABASEDIR "/var/db/vnstat"
  #else
 -#define DATABASEDIR "/var/lib/vnstat"
-+#define DATABASEDIR "@TERMUX_PREFIX@/var/lib/vnstat"
++#define DATABASEDIR "@NEOTERM_PREFIX@/var/lib/vnstat"
  #endif
  #endif
  
@@ -17,8 +17,8 @@ index c528a5d..8e782c0 100644
  #define UPDATEFILEOWNER 1
 -#define LOGFILE "/var/log/vnstat/vnstat.log"
 -#define PIDFILE "/var/run/vnstat/vnstat.pid"
-+#define LOGFILE "@TERMUX_PREFIX@/var/log/vnstat/vnstat.log"
-+#define PIDFILE "@TERMUX_PREFIX@/var/run/vnstat/vnstat.pid"
++#define LOGFILE "@NEOTERM_PREFIX@/var/log/vnstat/vnstat.log"
++#define PIDFILE "@NEOTERM_PREFIX@/var/run/vnstat/vnstat.pid"
  #define IS64BIT -2
  #define WALDB 0
  #define WALDBCHECKPOINTINTERVALMINS 240

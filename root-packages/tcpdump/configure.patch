@@ -6,8 +6,8 @@
      else
 -	    V_INCLS="$V_INCLS -I/usr/local/include"
 -	    LDFLAGS="$LDFLAGS -L/usr/local/lib"
-+	    V_INCLS="$V_INCLS -I@TERMUX_PREFIX@/local/include"
-+	    LDFLAGS="$LDFLAGS -L@TERMUX_PREFIX@/local/lib"
++	    V_INCLS="$V_INCLS -I@NEOTERM_PREFIX@/local/include"
++	    LDFLAGS="$LDFLAGS -L@NEOTERM_PREFIX@/local/lib"
  
  	    case "$host_os" in
  
@@ -16,7 +16,7 @@
    ipv6type=$i;
  				ipv6lib=inet6;
 -				ipv6libdir=/usr/local/v6/lib;
-+				ipv6libdir=@TERMUX_PREFIX@/local/v6/lib;
++				ipv6libdir=@NEOTERM_PREFIX@/local/v6/lib;
  				ipv6trylibc=yes
  fi
  rm -f conftest*
@@ -25,7 +25,7 @@
  			;;
  		linux-libinet6)
 -																		if test -d /usr/inet6 -o -f /usr/include/netinet/ip6.h; then
-+																		if test -d /usr/inet6 -o -f @TERMUX_PREFIX@/include/netinet/ip6.h; then
++																		if test -d /usr/inet6 -o -f @NEOTERM_PREFIX@/include/netinet/ip6.h; then
  				ipv6type=$i
  				ipv6lib=inet6
  				ipv6libdir=/usr/inet6/lib
@@ -34,7 +34,7 @@
    ipv6type=$i;
  				ipv6lib=inet6;
 -				ipv6libdir=/usr/local/v6/lib
-+				ipv6libdir=@TERMUX_PREFIX@/local/v6/lib
++				ipv6libdir=@NEOTERM_PREFIX@/local/v6/lib
  fi
  rm -f conftest*
  
@@ -43,7 +43,7 @@
  			cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
 -#include </usr/local/v6/include/sys/v6config.h>
-+#include <@TERMUX_PREFIX@/local/v6/include/sys/v6config.h>
++#include <@NEOTERM_PREFIX@/local/v6/include/sys/v6config.h>
  #ifdef __V6D__
  yes
  #endif
@@ -53,8 +53,8 @@
  				ipv6lib=v6;
 -				ipv6libdir=/usr/local/v6/lib;
 -				CFLAGS="-I/usr/local/v6/include $CFLAGS"
-+				ipv6libdir=@TERMUX_PREFIX@/local/v6/lib;
-+				CFLAGS="-I@TERMUX_PREFIX@/local/v6/include $CFLAGS"
++				ipv6libdir=@NEOTERM_PREFIX@/local/v6/lib;
++				CFLAGS="-I@NEOTERM_PREFIX@/local/v6/include $CFLAGS"
  fi
  rm -f conftest*
  
@@ -63,7 +63,7 @@
    ipv6type=$i;
  				ipv6lib=inet6;
 -				ipv6libdir=/usr/local/v6/lib
-+				ipv6libdir=@TERMUX_PREFIX@/local/v6/lib
++				ipv6libdir=@NEOTERM_PREFIX@/local/v6/lib
  fi
  rm -f conftest*
  
@@ -77,12 +77,12 @@
 -                        d="/usr/local/include/pcap"
 -                    elif test -r /usr/include/pcap/pcap.h; then
 -                        d="/usr/include/pcap"
-+                if test \( ! -r @TERMUX_PREFIX@/local/include/pcap.h \) -a \
-+                        \( ! -r @TERMUX_PREFIX@/include/pcap.h \); then
-+                    if test -r @TERMUX_PREFIX@/local/include/pcap/pcap.h; then
-+                        d="@TERMUX_PREFIX@/local/include/pcap"
-+                    elif test -r @TERMUX_PREFIX@/include/pcap/pcap.h; then
-+                        d="@TERMUX_PREFIX@/include/pcap"
++                if test \( ! -r @NEOTERM_PREFIX@/local/include/pcap.h \) -a \
++                        \( ! -r @NEOTERM_PREFIX@/include/pcap.h \); then
++                    if test -r @NEOTERM_PREFIX@/local/include/pcap/pcap.h; then
++                        d="@NEOTERM_PREFIX@/local/include/pcap"
++                    elif test -r @NEOTERM_PREFIX@/include/pcap/pcap.h; then
++                        d="@NEOTERM_PREFIX@/include/pcap"
                      fi
                  fi
                  if test -z "$d" ; then

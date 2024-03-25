@@ -4,7 +4,7 @@
      const exe = b.addExecutable("tldr", "src/main.zig");
      exe.setTarget(target);
      exe.setBuildMode(mode);
-+    exe.addLibPath("@TERMUX_PREFIX@/lib");
++    exe.addLibPath("@NEOTERM_PREFIX@/lib");
 +    exe.linkSystemLibraryName("c++_shared");
      exe.install();
      exe.setOutputDir("bin");

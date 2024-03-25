@@ -4,7 +4,7 @@
  		}
  		else
  		{
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +			libwl = loadLibrary("libwayland-client.so");
 +#else
  			libwl = loadLibrary("libwayland-client.so.0");
@@ -18,7 +18,7 @@
  		}
  		else
  		{
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +			libxcb = loadLibrary("libxcb.so");
 +#else
  			libxcb = loadLibrary("libxcb.so.1");
@@ -30,7 +30,7 @@
  		}
  		else
  		{
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +			libshm = loadLibrary("libxcb-shm.so");
 +#else
  			libshm = loadLibrary("libxcb-shm.so.0");

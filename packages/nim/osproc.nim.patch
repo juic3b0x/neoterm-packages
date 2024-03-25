@@ -6,7 +6,7 @@ diff -uNr nim-1.6.0/lib/pure/osproc.nim nim-1.6.0.mod/lib/pure/osproc.nim
        const useShPath {.strdefine.} =
          when not defined(android): "/bin/sh"
 -        else: "/system/bin/sh"
-+        else: "@TERMUX_PREFIX@/bin/sh"
++        else: "@NEOTERM_PREFIX@/bin/sh"
        data.sysCommand = useShPath
        sysArgsRaw = @[useShPath, "-c", command]
        assert args.len == 0, "`args` has to be empty when using poEvalCommand."

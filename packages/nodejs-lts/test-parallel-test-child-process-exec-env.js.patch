@@ -5,7 +5,7 @@
  
  if (!isWindows) {
 -  child = exec('/usr/bin/env', { env: { 'HELLO': 'WORLD' } }, after);
-+  child = exec('@TERMUX_PREFIX@/bin/env', { env: { 'HELLO': 'WORLD' } }, after);
++  child = exec('@NEOTERM_PREFIX@/bin/env', { env: { 'HELLO': 'WORLD' } }, after);
  } else {
    child = exec('set',
                 { env: { ...process.env, 'HELLO': 'WORLD' } },

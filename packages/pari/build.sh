@@ -1,29 +1,29 @@
-TERMUX_PKG_HOMEPAGE=https://pari.math.u-bordeaux.fr/
-TERMUX_PKG_DESCRIPTION="A computer algebra system designed for fast computations in number theory"
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="2.15.5"
-TERMUX_PKG_SRCURL=https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=0efdda7515d9d954f63324c34b34c560e60f73a81c3924a71260a2cc91d5f981
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="gzip, libgmp, readline"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
---with-gmp=$TERMUX_PREFIX
---with-readline=$TERMUX_PREFIX
+NEOTERM_PKG_HOMEPAGE=https://pari.math.u-bordeaux.fr/
+NEOTERM_PKG_DESCRIPTION="A computer algebra system designed for fast computations in number theory"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.15.5"
+NEOTERM_PKG_SRCURL=https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=0efdda7515d9d954f63324c34b34c560e60f73a81c3924a71260a2cc91d5f981
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="gzip, libgmp, readline"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+--with-gmp=$NEOTERM_PREFIX
+--with-readline=$NEOTERM_PREFIX
 "
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	LD="$CC"
-	case $TERMUX_ARCH_BITS in
+	case $NEOTERM_ARCH_BITS in
 		32) PARI_DOUBLE_FORMAT=1 ;;
 		64) PARI_DOUBLE_FORMAT=- ;;
 	esac
 	export PARI_DOUBLE_FORMAT
 }
 
-termux_step_configure() {
-	./Configure --prefix=$TERMUX_PREFIX --host=$TERMUX_HOST_PLATFORM \
-		$TERMUX_PKG_EXTRA_CONFIGURE_ARGS
-	TERMUX_PKG_EXTRA_MAKE_ARGS="-C $(echo O*)"
+neoterm_step_configure() {
+	./Configure --prefix=$NEOTERM_PREFIX --host=$NEOTERM_HOST_PLATFORM \
+		$NEOTERM_PKG_EXTRA_CONFIGURE_ARGS
+	NEOTERM_PKG_EXTRA_MAKE_ARGS="-C $(echo O*)"
 }

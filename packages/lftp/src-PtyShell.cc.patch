@@ -5,7 +5,7 @@
        if(a)
  	 execvp(a->a0(),a->GetVNonConst());
 -      execl("/bin/sh","sh","-c",name.get(),NULL);
-+      execl("@TERMUX_PREFIX@/bin/sh","sh","-c",name.get(),NULL);
++      execl("@NEOTERM_PREFIX@/bin/sh","sh","-c",name.get(),NULL);
        fprintf(stderr,_("execl(/bin/sh) failed: %s\n"),strerror(errno));
        fflush(stderr);
        _exit(1);

@@ -6,7 +6,7 @@ diff -u -r ../hunspell-1.4.1/src/tools/hunspell.cxx ./src/tools/hunspell.cxx
  
  #define LIBDIR                \
 -  "/usr/share/hunspell:"      \
-+  "@TERMUX_PREFIX@/share/hunspell:"      \
++  "@NEOTERM_PREFIX@/share/hunspell:"      \
    "/usr/share/myspell:"       \
    "/usr/share/myspell/dicts:" \
    "/Library/Spelling"
@@ -15,7 +15,7 @@ diff -u -r ../hunspell-1.4.1/src/tools/hunspell.cxx ./src/tools/hunspell.cxx
  #define HOME getenv("HOME")
  #define DICBASENAME ".hunspell_"
 -#define LOGFILE "/tmp/hunspell.log"
-+#define LOGFILE "@TERMUX_PREFIX@/tmp/hunspell.log"
++#define LOGFILE "@NEOTERM_PREFIX@/tmp/hunspell.log"
  #define DIRSEPCH '/'
  #define DIRSEP "/"
  #define PATHSEP ":"

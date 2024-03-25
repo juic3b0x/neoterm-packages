@@ -16,7 +16,7 @@
  #endif
  
  	/* clear environment if -e was not set */
-+	/* termux: do not clear environment on android */
++	/* neoterm: do not clear environment on android */
 +#ifndef __ANDROID__
  	/* if we're debugging using valgrind etc, we need to keep the LD_PRELOAD
  	 * etc. This is hazardous, so should only be used for debugging. */
@@ -33,7 +33,7 @@
  	}
  #endif
  
-+	/* termux: do not modify environment since we did not clean it */
++	/* neoterm: do not modify environment since we did not clean it */
 +#ifndef __ANDROID__
  	/* set env vars */
  	addnewvar("USER", ses.authstate.pw_name);

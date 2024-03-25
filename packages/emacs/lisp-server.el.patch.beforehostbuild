@@ -5,7 +5,7 @@
  	       (expand-file-name "emacs" runtime-dir)
  	     (expand-file-name (format "emacs%d" (user-uid))
 -                               (or (getenv "TMPDIR") "/tmp"))))))
-+                               "@TERMUX_PREFIX@/var/run")))))
++                               "@NEOTERM_PREFIX@/var/run")))))
    "The directory in which to place the server socket.
  If local sockets are not supported, this is nil.")
  

@@ -85,7 +85,7 @@ const char H5libhdf5_settings[]=
 	"               AM Fortran Flags: \n"
 	"         Shared Fortran Library: YES\n"
 	"         Static Fortran Library: YES\n"
-	"               Module Directory: /data/data/io.neoterm/files/files/home/termux.libhdf5.build/mod\n"
+	"               Module Directory: /data/data/io.neoterm/files/files/home/neoterm.libhdf5.build/mod\n"
 	"\n"
 	"                            C++: ON\n"
 	"                   C++ Compiler: /data/data/io.neoterm/files/usr/bin/clang++ 15.0.7\n"

@@ -15,7 +15,7 @@
  #endif
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  #include <sys/system_properties.h>
  #endif
  
@@ -24,7 +24,7 @@
  #include <algorithm>
  
 -#if defined(__ANDROID__)
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
  static std::string GetAndroidProperty(const char *name) {
      std::string output;
      const prop_info *pi = __system_property_find(name);
@@ -33,7 +33,7 @@
  
  static std::string GetEnvironment(const char *variable) {
 -#if defined(__ANDROID__)
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
      std::string result = GetAndroidProperty(variable);
      // Workaround for screenshot layer backward compatibility
      if (result.empty() && std::string(variable) == "debug.vulkan.screenshot.frames") {
@@ -42,7 +42,7 @@
  #endif
  
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
      std::string env_path = GetEnvironment("debug.vulkan.khronos_profiles.settings_path");
  #else
      // Look for an environment variable override for the settings file location
@@ -53,7 +53,7 @@
  
  static const char *GetDefaultPrefix() {
 -#ifdef __ANDROID__
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
      return "vulkan";
  #else
      return "";
@@ -62,7 +62,7 @@
      const std::string prefix = (requested_prefix == nullptr || trim_mode != TRIM_NAMESPACE) ? GetDefaultPrefix() : requested_prefix;
  
 -#if defined(__ANDROID__)
-+#if defined(__ANDROID__) && !defined(__TERMUX__)
++#if defined(__ANDROID__) && !defined(__NEOTERM__)
      const std::string full_prefix = std::string("debug.") + prefix + ".";
      switch (trim_mode) {
          default:

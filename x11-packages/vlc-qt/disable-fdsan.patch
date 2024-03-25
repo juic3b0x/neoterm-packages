@@ -7,7 +7,7 @@
 +#ifdef __ANDROID__
 +#include <android/fdsan.h>
 +#include <dlfcn.h>
-+static inline void termux_disable_fdsan() {
++static inline void neoterm_disable_fdsan() {
 +    // For Android 11+.
 +    void *lib_handle = dlopen("libc.so", RTLD_LAZY);
 +    if (lib_handle) {
@@ -28,7 +28,7 @@
      signal (SIGCHLD, SIG_DFL);
  
 +#ifdef __ANDROID__
-+    termux_disable_fdsan();
++    neoterm_disable_fdsan();
 +#endif
 +
  #ifndef NDEBUG

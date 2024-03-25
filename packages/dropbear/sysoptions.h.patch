@@ -6,7 +6,7 @@ diff -uNr dropbear-2018.76/sysoptions.h dropbear-2018.76.mod/sysoptions.h
  #define _PATH_TTY "/dev/tty"
  
 -#define _PATH_CP "/bin/cp"
-+#define _PATH_CP "@TERMUX_PREFIX@/bin/cp"
++#define _PATH_CP "@NEOTERM_PREFIX@/bin/cp"
  
  #define DROPBEAR_ESCAPE_CHAR '~'
  
@@ -15,7 +15,7 @@ diff -uNr dropbear-2018.76/sysoptions.h dropbear-2018.76.mod/sysoptions.h
   */
  #ifndef COMPAT_USER_SHELLS
 -#define COMPAT_USER_SHELLS "/bin/sh","/bin/csh"
-+#define COMPAT_USER_SHELLS "@TERMUX_PREFIX@/bin/sh","@TERMUX_PREFIX@/bin/csh"
++#define COMPAT_USER_SHELLS "@NEOTERM_PREFIX@/bin/sh","@NEOTERM_PREFIX@/bin/csh"
  #endif
  
  #define DROPBEAR_ESCAPE_CHAR '~'

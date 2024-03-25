@@ -5,7 +5,7 @@
  
  CPPFLAGS_SAVE="$CPPFLAGS"
 -CPPFLAGS="$XML2_CPPFLAGS"
-+CPPFLAGS="$XML2_CPPFLAGS -I@TERMUX_PREFIX@/include"
++CPPFLAGS="$XML2_CPPFLAGS -I@NEOTERM_PREFIX@/include"
  for ac_header in libxml/tree.h libxml/parser.h libxml/xpath.h libxml/xpathInternals.h
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`

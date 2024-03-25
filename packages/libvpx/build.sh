@@ -1,61 +1,61 @@
-TERMUX_PKG_HOMEPAGE=https://www.webmproject.org
-TERMUX_PKG_DESCRIPTION="VP8 & VP9 Codec SDK"
-TERMUX_PKG_LICENSE="BSD 3-Clause"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1:1.14.0"
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=https://github.com/webmproject/libvpx/archive/v${TERMUX_PKG_VERSION:2}.tar.gz
-TERMUX_PKG_SHA256=5f21d2db27071c8a46f1725928a10227ae45c5cd1cad3727e4aafbe476e321fa
-TERMUX_PKG_DEPENDS="libc++"
-TERMUX_PKG_BREAKS="libvpx-dev"
-TERMUX_PKG_REPLACES="libvpx-dev"
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_UPDATE_TAG_TYPE="newest-tag"
-TERMUX_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+NEOTERM_PKG_HOMEPAGE=https://www.webmproject.org
+NEOTERM_PKG_DESCRIPTION="VP8 & VP9 Codec SDK"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1:1.14.0"
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/webmproject/libvpx/archive/v${NEOTERM_PKG_VERSION:2}.tar.gz
+NEOTERM_PKG_SHA256=5f21d2db27071c8a46f1725928a10227ae45c5cd1cad3727e4aafbe476e321fa
+NEOTERM_PKG_DEPENDS="libc++"
+NEOTERM_PKG_BREAKS="libvpx-dev"
+NEOTERM_PKG_REPLACES="libvpx-dev"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
 
-termux_pkg_auto_update() {
+neoterm_pkg_auto_update() {
 	# Get the newest tag:
 	local tag
-	tag="$(termux_github_api_get_tag "${TERMUX_PKG_SRCURL}" "${TERMUX_PKG_UPDATE_TAG_TYPE}")"
+	tag="$(neoterm_github_api_get_tag "${NEOTERM_PKG_SRCURL}" "${NEOTERM_PKG_UPDATE_TAG_TYPE}")"
 	# check if this is not a release (e.g. a release candidate):
-	if grep -qP "^${TERMUX_PKG_UPDATE_VERSION_REGEXP}\$" <<<"$tag"; then
-		termux_pkg_upgrade_version "$tag"
+	if grep -qP "^${NEOTERM_PKG_UPDATE_VERSION_REGEXP}\$" <<<"$tag"; then
+		neoterm_pkg_upgrade_version "$tag"
 	else
 		echo "WARNING: Skipping auto-update: Not a release($tag)"
 	fi
 }
 
-termux_step_configure() {
+neoterm_step_configure() {
 	# Certain packages are not safe to build on device because their
-	# build.sh script deletes specific files in $TERMUX_PREFIX.
-	if $TERMUX_ON_DEVICE_BUILD; then
-		termux_error_exit "Package '$TERMUX_PKG_NAME' is not safe for on-device builds."
+	# build.sh script deletes specific files in $NEOTERM_PREFIX.
+	if $NEOTERM_ON_DEVICE_BUILD; then
+		neoterm_error_exit "Package '$NEOTERM_PKG_NAME' is not safe for on-device builds."
 	fi
 
 	# Force fresh install of header files:
-	rm -Rf $TERMUX_PREFIX/include/vpx
+	rm -Rf $NEOTERM_PREFIX/include/vpx
 
-	if [ $TERMUX_ARCH = "arm" ]; then
+	if [ $NEOTERM_ARCH = "arm" ]; then
 		_CONFIGURE_TARGET="--target=armv7-android-gcc --disable-neon-asm"
-	elif [ $TERMUX_ARCH = "i686" ]; then
+	elif [ $NEOTERM_ARCH = "i686" ]; then
 		_CONFIGURE_TARGET="--target=x86-android-gcc"
-	elif [ $TERMUX_ARCH = "aarch64" ]; then
+	elif [ $NEOTERM_ARCH = "aarch64" ]; then
 		_CONFIGURE_TARGET="--force-target=arm64-v8a-android-gcc"
-	elif [ $TERMUX_ARCH = "x86_64" ]; then
+	elif [ $NEOTERM_ARCH = "x86_64" ]; then
 		_CONFIGURE_TARGET="--target=x86_64-android-gcc"
 	else
-		termux_error_exit "Unsupported arch: $TERMUX_ARCH"
+		neoterm_error_exit "Unsupported arch: $NEOTERM_ARCH"
 	fi
 
 	# For --disable-realtime-only, see
 	# https://bugs.chromium.org/p/webm/issues/detail?id=800
 	# "The issue is that on android we soft enable realtime only.
 	#  [..] You can enable non-realtime by setting --disable-realtime-only"
-	# Discovered in https://github.com/termux/termux-packages/issues/554
-	#CROSS=${TERMUX_HOST_PLATFORM}- CC=clang CXX=clang++ $TERMUX_PKG_SRCDIR/configure \
-	$TERMUX_PKG_SRCDIR/configure \
+	# Discovered in https://github.com/neoterm/neoterm-packages/issues/554
+	#CROSS=${NEOTERM_HOST_PLATFORM}- CC=clang CXX=clang++ $NEOTERM_PKG_SRCDIR/configure \
+	$NEOTERM_PKG_SRCDIR/configure \
 		$_CONFIGURE_TARGET \
-		--prefix=$TERMUX_PREFIX \
+		--prefix=$NEOTERM_PREFIX \
 		--disable-examples \
 		--disable-realtime-only \
 		--disable-unit-tests \
@@ -72,14 +72,14 @@ termux_step_configure() {
 		--extra-cflags="-fPIC"
 }
 
-termux_step_post_massage() {
+neoterm_step_post_massage() {
 	# Do not forget to bump revision of reverse dependencies and rebuild them
 	# after SOVERSION is changed.
 	local _SOVERSION_GUARD_FILES="lib/libvpx.so.9"
 	local f
 	for f in ${_SOVERSION_GUARD_FILES}; do
 		if [ ! -e "${f}" ]; then
-			termux_error_exit "Error: file ${f} not found; please check if SOVERSION has changed."
+			neoterm_error_exit "Error: file ${f} not found; please check if SOVERSION has changed."
 		fi
 	done
 }

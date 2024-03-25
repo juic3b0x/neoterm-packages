@@ -16,7 +16,7 @@
  # will automatically pick out the right one).
  if [ $IN_SYSTEM_PATH -eq 1 ] ; then
 -    if LC_ALL=C LD_PRELOAD="${GTK3_NOCSD_NAME}" /bin/true 2>&1  | grep LD_PRELOAD | grep -qF "${GTK3_NOCSD_NAME}" ; then
-+    if LC_ALL=C LD_PRELOAD="${GTK3_NOCSD_NAME}" @TERMUX_PREFIX@/bin/true 2>&1  | grep LD_PRELOAD | grep -qF "${GTK3_NOCSD_NAME}" ; then
++    if LC_ALL=C LD_PRELOAD="${GTK3_NOCSD_NAME}" @NEOTERM_PREFIX@/bin/true 2>&1  | grep LD_PRELOAD | grep -qF "${GTK3_NOCSD_NAME}" ; then
          IN_SYSTEM_PATH=0
      else
          GTK3_NOCSD="${GTK3_NOCSD_NAME}"
@@ -25,14 +25,14 @@
  # Find the real program (the first one that's not symlinked to get3-nocsd)
  APPNAME="$(basename "$0")"
 -for APPPATH in $(which -a "$APPNAME") /bin/false; do
-+for APPPATH in $(which -a "$APPNAME") @TERMUX_PREFIX@/bin/false; do
++for APPPATH in $(which -a "$APPNAME") @NEOTERM_PREFIX@/bin/false; do
      APPPATH_LINK="$(readlink -fe "$APPPATH")"
      [ x"${APPPATH_LINK##*/}"x = x"gtk3-nocsd"x ] || break
  done
  
  # Provide error message at all
 -if [ x"$APPNAME"x != x"false"x ] && [ x"${APPPATH}"x = x"/bin/false"x ] ; then
-+if [ x"$APPNAME"x != x"false"x ] && [ x"${APPPATH}"x = x"@TERMUX_PREFIX@/bin/false"x ] ; then
++if [ x"$APPNAME"x != x"false"x ] && [ x"${APPPATH}"x = x"@NEOTERM_PREFIX@/bin/false"x ] ; then
      APPPATH=/.gtk3-nocsd./"$APPNAME"
  fi
  

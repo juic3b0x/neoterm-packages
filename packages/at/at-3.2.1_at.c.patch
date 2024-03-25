@@ -7,7 +7,7 @@ diff -uNr at-3.2.1/at.c at-3.2.1.mod/at.c
  
 +#ifdef PIDFILE
 +#undef PIDFILE
-+#define PIDFILE "@TERMUX_PREFIX@/var/run/atd.pid"
++#define PIDFILE "@NEOTERM_PREFIX@/var/run/atd.pid"
 +#endif
 +
  /* Macros */
@@ -30,7 +30,7 @@ diff -uNr at-3.2.1/at.c at-3.2.1.mod/at.c
      }
  
 -    fprintf(fp, "#!/bin/sh\n# atrun uid=%d gid=%d\n# mail %s %d\n",
-+    fprintf(fp, "#!@TERMUX_PREFIX@/bin/sh\n# atrun uid=%d gid=%d\n# mail %s %d\n",
++    fprintf(fp, "#!@NEOTERM_PREFIX@/bin/sh\n# atrun uid=%d gid=%d\n# mail %s %d\n",
  	    real_uid, real_gid, mailname, send_mail);
  
      /* Write out the umask at the time of invocation
@@ -91,7 +91,7 @@ diff -uNr at-3.2.1/at.c at-3.2.1.mod/at.c
  	   possible variance, we always output the diagnostic. */
  
 -	fprintf(stderr, "warning: commands will be executed using /bin/sh\n");
-+	fprintf(stderr, "warning: commands will be executed using @TERMUX_PREFIX@/bin/sh\n");
++	fprintf(stderr, "warning: commands will be executed using @NEOTERM_PREFIX@/bin/sh\n");
  
  	writefile(timer, queue);
  	break;

@@ -1,17 +1,17 @@
 # x11-packages
-TERMUX_PKG_HOMEPAGE=https://sourceforge.net/projects/pypanel/
-TERMUX_PKG_DESCRIPTION="A lightweight panel/taskbar for X11 window managers written in python."
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION=2.4
-TERMUX_PKG_REVISION=35
-TERMUX_PKG_SRCURL=https://downloads.sourceforge.net/pypanel/PyPanel-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=4e612b43c61b3a8af7d57a0364f6cd89df481dc41e20728afa643e9e3546e911
-TERMUX_PKG_DEPENDS="freetype, imlib2, libx11, libxft, python2, python2-xlib"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_CONFFILES="etc/pypanelrc"
+NEOTERM_PKG_HOMEPAGE=https://sourceforge.net/projects/pypanel/
+NEOTERM_PKG_DESCRIPTION="A lightweight panel/taskbar for X11 window managers written in python."
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.4
+NEOTERM_PKG_REVISION=35
+NEOTERM_PKG_SRCURL=https://downloads.sourceforge.net/pypanel/PyPanel-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=4e612b43c61b3a8af7d57a0364f6cd89df481dc41e20728afa643e9e3546e911
+NEOTERM_PKG_DEPENDS="freetype, imlib2, libx11, libxft, python2, python2-xlib"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_CONFFILES="etc/pypanelrc"
 
-termux_step_make() {
+neoterm_step_make() {
 	"${CC}" -DNDEBUG \
 			-fwrapv \
 			-Wall \
@@ -21,9 +21,9 @@ termux_step_make() {
 			-fPIC \
 			-DHAVE_XFT=1 \
 			-DIMLIB2_FIX=1 \
-			-I$TERMUX_PREFIX/include \
-			-I$TERMUX_PREFIX/include/freetype2 \
-			-I$TERMUX_PREFIX/include/libpng16 \
+			-I$NEOTERM_PREFIX/include \
+			-I$NEOTERM_PREFIX/include/freetype2 \
+			-I$NEOTERM_PREFIX/include/libpng16 \
 			-c ppmodule.c \
 			-o ppmodule.o \
 
@@ -38,20 +38,20 @@ termux_step_make() {
 			-o ppmodule.so
 }
 
-termux_step_make_install() {
-	mkdir -p "${TERMUX_PREFIX}/bin"
-	cp -f pypanel "${TERMUX_PREFIX}/bin/pypanel"
-	chmod 755 "${TERMUX_PREFIX}/bin/pypanel"
+neoterm_step_make_install() {
+	mkdir -p "${NEOTERM_PREFIX}/bin"
+	cp -f pypanel "${NEOTERM_PREFIX}/bin/pypanel"
+	chmod 755 "${NEOTERM_PREFIX}/bin/pypanel"
 
-	mkdir -p "${TERMUX_PREFIX}/etc"
-	cp -f pypanelrc "${TERMUX_PREFIX}/etc/pypanelrc"
-	chmod 644 "${TERMUX_PREFIX}/etc/pypanelrc"
+	mkdir -p "${NEOTERM_PREFIX}/etc"
+	cp -f pypanelrc "${NEOTERM_PREFIX}/etc/pypanelrc"
+	chmod 644 "${NEOTERM_PREFIX}/etc/pypanelrc"
 
-	mkdir -p "${TERMUX_PREFIX}/lib/python2.7/site-packages"
-	cp ppmodule.so "${TERMUX_PREFIX}/lib/python2.7/site-packages/ppmodule.so"
-	chmod 644 "${TERMUX_PREFIX}/lib/python2.7/site-packages/ppmodule.so"
+	mkdir -p "${NEOTERM_PREFIX}/lib/python2.7/site-packages"
+	cp ppmodule.so "${NEOTERM_PREFIX}/lib/python2.7/site-packages/ppmodule.so"
+	chmod 644 "${NEOTERM_PREFIX}/lib/python2.7/site-packages/ppmodule.so"
 
-	mkdir -p "${TERMUX_PREFIX}/lib/python2.7/site-packages/pypanel"
-	cp -f COPYING README pypanelrc ppicon.png "${TERMUX_PREFIX}/lib/python2.7/site-packages/pypanel/"
-	chmod 644 ${TERMUX_PREFIX}/lib/python2.7/site-packages/pypanel/*
+	mkdir -p "${NEOTERM_PREFIX}/lib/python2.7/site-packages/pypanel"
+	cp -f COPYING README pypanelrc ppicon.png "${NEOTERM_PREFIX}/lib/python2.7/site-packages/pypanel/"
+	chmod 644 ${NEOTERM_PREFIX}/lib/python2.7/site-packages/pypanel/*
 }

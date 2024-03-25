@@ -5,7 +5,7 @@
  #elif defined(XP_DARWIN)
      mMutex = OS_UNFAIR_LOCK_INIT;
 -#elif defined(XP_LINUX) && !defined(ANDROID)
-+#elif defined(XP_LINUX) && !defined(__TERMUX__)
++#elif defined(XP_LINUX) && !defined(__NEOTERM__)
      pthread_mutexattr_t attr;
      if (pthread_mutexattr_init(&attr) != 0) {
        return false;
@@ -14,7 +14,7 @@
  #  if defined(XP_DARWIN)
  #    define STATIC_MUTEX_INIT OS_UNFAIR_LOCK_INIT
 -#  elif defined(XP_LINUX) && !defined(ANDROID)
-+#  elif defined(XP_LINUX) && !defined(__TERMUX__)
++#  elif defined(XP_LINUX) && !defined(__NEOTERM__)
  #    define STATIC_MUTEX_INIT PTHREAD_ADAPTIVE_MUTEX_INITIALIZER_NP
  #  else
  #    define STATIC_MUTEX_INIT PTHREAD_MUTEX_INITIALIZER

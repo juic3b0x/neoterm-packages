@@ -5,7 +5,7 @@
                size_t size=0, offset=0;
                strbuf_sprintf(&tmp_name, &size, &offset, "%s/ncat.XXXXXX",
 -                  tmpdir ? tmpdir : "/tmp");
-+                  tmpdir ? tmpdir : "@TERMUX_PREFIX@/tmp");
++                  tmpdir ? tmpdir : "@NEOTERM_PREFIX@/tmp");
                if (mkstemp(tmp_name) == -1) {
                  bye("Failed to create name for temporary DGRAM source Unix domain socket (mkstemp).");
                }

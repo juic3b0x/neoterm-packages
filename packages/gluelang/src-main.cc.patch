@@ -5,7 +5,7 @@
  	// set tmpdir
  	string tmp_k = "tmpdir";
 -	string tmp_v = "/tmp/";
-+	string tmp_v = "@TERMUX_PREFIX@/tmp/";
++	string tmp_v = "@NEOTERM_PREFIX@/tmp/";
  	env.setImportPath(&tmp_k,&tmp_v);
  	Script s(&feeder,&env,NULL);
  

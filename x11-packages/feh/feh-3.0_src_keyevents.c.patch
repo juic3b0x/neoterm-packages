@@ -6,7 +6,7 @@ diff -uNr feh-3.0/src/keyevents.c feh-3.0.mod/src/keyevents.c
  	free(confpath);
  
 -	if (!conf && ((conf = fopen("/etc/feh/keys", "r")) == NULL))
-+	if (!conf && ((conf = fopen("@TERMUX_PREFIX@/etc/feh/keys", "r")) == NULL))
++	if (!conf && ((conf = fopen("@NEOTERM_PREFIX@/etc/feh/keys", "r")) == NULL))
  		return;
  
  	while (fgets(line, sizeof(line), conf)) {

@@ -1,30 +1,30 @@
-TERMUX_PKG_HOMEPAGE="https://helix-editor.com/"
-TERMUX_PKG_DESCRIPTION="A post-modern modal text editor written in rust"
-TERMUX_PKG_LICENSE="MPL-2.0"
-TERMUX_PKG_MAINTAINER="Aditya Alok <alok@neoterm.org>"
-TERMUX_PKG_VERSION="23.10"
-TERMUX_PKG_SRCURL="git+https://github.com/helix-editor/helix"
-TERMUX_PKG_GIT_BRANCH="${TERMUX_PKG_VERSION}"
-TERMUX_PKG_SUGGESTS="helix-grammars"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_HOMEPAGE="https://helix-editor.com/"
+NEOTERM_PKG_DESCRIPTION="A post-modern modal text editor written in rust"
+NEOTERM_PKG_LICENSE="MPL-2.0"
+NEOTERM_PKG_MAINTAINER="Aditya Alok <alok@neoterm.org>"
+NEOTERM_PKG_VERSION="23.10"
+NEOTERM_PKG_SRCURL="git+https://github.com/helix-editor/helix"
+NEOTERM_PKG_GIT_BRANCH="${NEOTERM_PKG_VERSION}"
+NEOTERM_PKG_SUGGESTS="helix-grammars"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_RM_AFTER_INSTALL="
 opt/helix/runtime/grammars/sources/
 "
 
-termux_step_make_install() {
-	termux_setup_rust
+neoterm_step_make_install() {
+	neoterm_setup_rust
 
-	cargo build --jobs "${TERMUX_MAKE_PROCESSES}" --target "${CARGO_TARGET_NAME}" --release
+	cargo build --jobs "${NEOTERM_MAKE_PROCESSES}" --target "${CARGO_TARGET_NAME}" --release
 
-	local datadir="${TERMUX_PREFIX}/opt/${TERMUX_PKG_NAME}"
+	local datadir="${NEOTERM_PREFIX}/opt/${NEOTERM_PKG_NAME}"
 	mkdir -p "${datadir}"
 
-	cat >"${TERMUX_PREFIX}/bin/hx" <<-EOF
-		#!${TERMUX_PREFIX}/bin/sh
+	cat >"${NEOTERM_PREFIX}/bin/hx" <<-EOF
+		#!${NEOTERM_PREFIX}/bin/sh
 		HELIX_RUNTIME=${datadir}/runtime exec ${datadir}/hx "\$@"
 	EOF
-	chmod 0700 "${TERMUX_PREFIX}/bin/hx"
+	chmod 0700 "${NEOTERM_PREFIX}/bin/hx"
 
 	install -Dm700 target/"${CARGO_TARGET_NAME}"/release/hx "${datadir}/hx"
 

@@ -5,7 +5,7 @@
  #define SHELL "cmd /k"
  #else
 -#define SHELL "/bin/sh"
-+#define SHELL "@TERMUX_PREFIX@/bin/sh"
++#define SHELL "@NEOTERM_PREFIX@/bin/sh"
  #endif
  
  /* Fork a shell. */
@@ -14,7 +14,7 @@
          } else {
              char * const com = wl_flatten(wl);
 -            execl("/bin/sh", "sh", "-c", com, 0);
-+            execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", com, 0);
++            execl("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", com, 0);
              txfree(com);
          }
      } else {

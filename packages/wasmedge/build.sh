@@ -1,20 +1,20 @@
-TERMUX_PKG_HOMEPAGE=https://wasmedge.org/
-TERMUX_PKG_DESCRIPTION="A lightweight, high-performance, and extensible WebAssembly runtime"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_LICENSE_FILE="LICENSE, LICENSE.spdx"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="0.13.5"
-TERMUX_PKG_SRCURL=https://github.com/WasmEdge/WasmEdge/archive/refs/tags/${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=588b8933a89f75c3ee5d4b92fe9d65294ae86fd48a95d2d4ac1a93ee3c5e1d75
-TERMUX_PKG_DEPENDS="libc++"
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=https://wasmedge.org/
+NEOTERM_PKG_DESCRIPTION="A lightweight, high-performance, and extensible WebAssembly runtime"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_LICENSE_FILE="LICENSE, LICENSE.spdx"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.13.5"
+NEOTERM_PKG_SRCURL=https://github.com/WasmEdge/WasmEdge/archive/refs/tags/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=588b8933a89f75c3ee5d4b92fe9d65294ae86fd48a95d2d4ac1a93ee3c5e1d75
+NEOTERM_PKG_DEPENDS="libc++"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DWASMEDGE_BUILD_AOT_RUNTIME=OFF
 -DWASMEDGE_FORCE_DISABLE_LTO=ON
 "
 
-termux_step_pre_configure() {
-	case "${TERMUX_ARCH}" in
+neoterm_step_pre_configure() {
+	case "${NEOTERM_ARCH}" in
 	i686)
 		CFLAGS+=" -malign-double"
 		CXXFLAGS+=" -malign-double"

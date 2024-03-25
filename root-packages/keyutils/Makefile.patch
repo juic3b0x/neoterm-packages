@@ -18,22 +18,22 @@
 -SBINDIR		:= /sbin
 -SHAREDIR	:= /usr/share/keyutils
 -MANDIR		:= /usr/share/man
-+ETCDIR		:= @TERMUX_PREFIX@/etc
-+BINDIR		:= @TERMUX_PREFIX@/bin
-+SBINDIR		:= @TERMUX_PREFIX@/bin
-+SHAREDIR	:= @TERMUX_PREFIX@/share/keyutils
-+MANDIR		:= @TERMUX_PREFIX@/share/man
++ETCDIR		:= @NEOTERM_PREFIX@/etc
++BINDIR		:= @NEOTERM_PREFIX@/bin
++SBINDIR		:= @NEOTERM_PREFIX@/bin
++SHAREDIR	:= @NEOTERM_PREFIX@/share/keyutils
++MANDIR		:= @NEOTERM_PREFIX@/share/man
  MAN1		:= $(MANDIR)/man1
  MAN3		:= $(MANDIR)/man3
  MAN5		:= $(MANDIR)/man5
  MAN7		:= $(MANDIR)/man7
  MAN8		:= $(MANDIR)/man8
 -INCLUDEDIR	:= /usr/include
-+INCLUDEDIR	:= @TERMUX_PREFIX@/include
++INCLUDEDIR	:= @NEOTERM_PREFIX@/include
  LN		:= ln
  LNS		:= $(LN) -sf
 -PREFIX 		:= /usr
-+PREFIX 		:= @TERMUX_PREFIX@
++PREFIX 		:= @NEOTERM_PREFIX@
  
  ###############################################################################
  #
@@ -42,11 +42,11 @@
  ###############################################################################
  ifeq ($(origin LIBDIR),undefined)
 -LIBDIR		:= $(shell ldd /usr/bin/make | grep '\(/libc[.]\)' | sed -e 's!.*\(/.*\)/libc[.].*!\1!')
-+LIBDIR		:= @TERMUX_PREFIX@/lib
++LIBDIR		:= @NEOTERM_PREFIX@/lib
  endif
  ifeq ($(origin USRLIBDIR),undefined)
 -USRLIBDIR	:= $(patsubst /lib/%,/usr/lib/%,$(LIBDIR))
-+USRLIBDIR	:= @TERMUX_PREFIX@/lib
++USRLIBDIR	:= @NEOTERM_PREFIX@/lib
  endif
 -BUILDFOR	:= $(shell file /usr/bin/make | sed -e 's!.*ELF \(32\|64\)-bit.*!\1!')-bit
 +BUILDFOR	:=

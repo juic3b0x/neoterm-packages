@@ -9,7 +9,7 @@
 +int
 +main(int argc, char **argv, char **envp)
 +{
-+  execve("@TERMUX_PREFIX@/bin/aapt", argv, envp);
++  execve("@NEOTERM_PREFIX@/bin/aapt", argv, envp);
 +  perror("aapt-wrapper: execve");
 +  return -1;
 +}
@@ -24,7 +24,7 @@
 +int
 +main(int argc, char **argv, char **envp)
 +{
-+  execve("@TERMUX_PREFIX@/bin/aapt2", argv, envp);
++  execve("@NEOTERM_PREFIX@/bin/aapt2", argv, envp);
 +  perror("aapt2-wrapper: execve");
 +  return -1;
 +}

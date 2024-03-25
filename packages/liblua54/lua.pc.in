@@ -1,7 +1,7 @@
 V=%VER%
 R=%REL%
 
-prefix=@TERMUX_PREFIX@
+prefix=@NEOTERM_PREFIX@
 INSTALL_BIN=${prefix}/bin
 INSTALL_INC=${prefix}/include/lua${V}
 INSTALL_LIB=${prefix}/lib

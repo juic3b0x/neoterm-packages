@@ -6,8 +6,8 @@
      // Read MIME type - extension associations
 -    LoadXDGGlobs( "/usr/share/mime/globs" );
 -    LoadXDGGlobs( "/usr/local/share/mime/globs" );
-+    LoadXDGGlobs( "@TERMUX_PREFIX@/share/mime/globs" );
-+    LoadXDGGlobs( "@TERMUX_PREFIX@/local/share/mime/globs" );
++    LoadXDGGlobs( "@NEOTERM_PREFIX@/share/mime/globs" );
++    LoadXDGGlobs( "@NEOTERM_PREFIX@/local/share/mime/globs" );
  
      // Load desktop files for XDG, and then override them with the defaults.
      // We will override them one desktop file at a time, rather
@@ -16,14 +16,14 @@
          if ( xdgDataDirs.empty() )
          {
 -            xdgDataDirs = "/usr/local/share:/usr/share";
-+            xdgDataDirs = "@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share";
++            xdgDataDirs = "@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share";
  
              if ( mailcapStyles & wxMAILCAP_GNOME )
              {
 -                AppendToPathIfExists(xdgDataDirs, "/usr/share/gnome");
 -                AppendToPathIfExists(xdgDataDirs, "/opt/gnome/share");
-+                AppendToPathIfExists(xdgDataDirs, "@TERMUX_PREFIX@/share/gnome");
-+                AppendToPathIfExists(xdgDataDirs, "@TERMUX_PREFIX@/opt/gnome/share");
++                AppendToPathIfExists(xdgDataDirs, "@NEOTERM_PREFIX@/share/gnome");
++                AppendToPathIfExists(xdgDataDirs, "@NEOTERM_PREFIX@/opt/gnome/share");
              }
  
              if ( mailcapStyles & wxMAILCAP_KDE )
@@ -33,8 +33,8 @@
                      const wxString& kdeDir = wxString::Format("kde%d", kdeVer);
 -                    if ( AppendToPathIfExists(xdgDataDirs, "/usr/share/" + kdeDir)
 -                            || AppendToPathIfExists(xdgDataDirs, "/opt/" + kdeDir + "/share") )
-+                    if ( AppendToPathIfExists(xdgDataDirs, "@TERMUX_PREFIX@/share/" + kdeDir)
-+                            || AppendToPathIfExists(xdgDataDirs, "@TERMUX_PREFIX@/opt/" + kdeDir + "/share") )
++                    if ( AppendToPathIfExists(xdgDataDirs, "@NEOTERM_PREFIX@/share/" + kdeDir)
++                            || AppendToPathIfExists(xdgDataDirs, "@NEOTERM_PREFIX@/opt/" + kdeDir + "/share") )
                      {
                          // We don't need to use earlier versions if we found a
                          // later one.

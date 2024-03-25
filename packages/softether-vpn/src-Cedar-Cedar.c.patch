@@ -5,7 +5,7 @@
  void InitNetSvcList(CEDAR *cedar)
  {
 -	char filename[MAX_PATH] = "/etc/services";
-+	char filename[MAX_PATH] = "@TERMUX_PREFIX@/etc/services";
++	char filename[MAX_PATH] = "@NEOTERM_PREFIX@/etc/services";
  	BUF *b;
  	// Validate arguments
  	if (cedar == NULL)

@@ -1,22 +1,22 @@
-TERMUX_PKG_HOMEPAGE=https://swi-prolog.org/
-TERMUX_PKG_DESCRIPTION="Most popular and complete prolog implementation"
-TERMUX_PKG_LICENSE="BSD 2-Clause"
-TERMUX_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_HOMEPAGE=https://swi-prolog.org/
+NEOTERM_PKG_DESCRIPTION="Most popular and complete prolog implementation"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
 # Use "development" versions.
-TERMUX_PKG_VERSION=9.1.11
-TERMUX_PKG_SRCURL=https://www.swi-prolog.org/download/devel/src/swipl-${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=2a668333faebc19431989bd08f5d0f9716af29eb914a092a795bf3705925a289
-TERMUX_PKG_DEPENDS="libarchive, libcrypt, libgmp, libyaml, ncurses, openssl, ossp-uuid, readline, zlib, pcre2"
-TERMUX_PKG_FORCE_CMAKE=true
-TERMUX_PKG_HOSTBUILD=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_VERSION=9.1.11
+NEOTERM_PKG_SRCURL=https://www.swi-prolog.org/download/devel/src/swipl-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=2a668333faebc19431989bd08f5d0f9716af29eb914a092a795bf3705925a289
+NEOTERM_PKG_DEPENDS="libarchive, libcrypt, libgmp, libyaml, ncurses, openssl, ossp-uuid, readline, zlib, pcre2"
+NEOTERM_PKG_FORCE_CMAKE=true
+NEOTERM_PKG_HOSTBUILD=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DHAVE_WEAK_ATTRIBUTE_EXITCODE=0
 -DHAVE_WEAK_ATTRIBUTE_EXITCODE__TRYRUN_OUTPUT=
 -DINSTALL_DOCUMENTATION=OFF
 -DUSE_GMP=ON
--DSWIPL_NATIVE_FRIEND=${TERMUX_PKG_HOSTBUILD_DIR}
--DPOSIX_SHELL=${TERMUX_PREFIX}/bin/sh
--DSWIPL_TMP_DIR=${TERMUX_PREFIX}/tmp
+-DSWIPL_NATIVE_FRIEND=${NEOTERM_PKG_HOSTBUILD_DIR}
+-DPOSIX_SHELL=${NEOTERM_PREFIX}/bin/sh
+-DSWIPL_TMP_DIR=${NEOTERM_PREFIX}/tmp
 -DSWIPL_INSTALL_IN_LIB=ON
 -DSWIPL_PACKAGES_BDB=OFF
 -DSWIPL_PACKAGES_ODBC=OFF
@@ -24,7 +24,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 -DSWIPL_PACKAGES_X=OFF
 -DINSTALL_TESTS=OFF
 -DBUILD_TESTING=OFF
--DSYSTEM_CACERT_FILENAME=${TERMUX_PREFIX}/etc/tls/cert.pem"
+-DSYSTEM_CACERT_FILENAME=${NEOTERM_PREFIX}/etc/tls/cert.pem"
 
 # We do this to produce:
 # a native host build to produce
@@ -32,11 +32,11 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 # SWIPL_NATIVE_FRIEND tells SWI-Prolog to use
 # this build for the artifacts needed to build the
 # Android version
-termux_step_host_build() {
-	termux_setup_cmake
-	termux_setup_ninja
+neoterm_step_host_build() {
+	neoterm_setup_cmake
+	neoterm_setup_ninja
 
-	if [ $TERMUX_ARCH_BITS = 32 ]; then
+	if [ $NEOTERM_ARCH_BITS = 32 ]; then
 		export LDFLAGS=-m32
 		export CFLAGS=-m32
 		export CXXFLAGS=-m32
@@ -45,7 +45,7 @@ termux_step_host_build() {
 		CMAKE_EXTRA_DEFS=""
 	fi
 
-	cmake "$TERMUX_PKG_SRCDIR"          \
+	cmake "$NEOTERM_PKG_SRCDIR"          \
 		-G "Ninja"                      \
 		$CMAKE_EXTRA_DEFS               \
 		-DINSTALL_DOCUMENTATION=OFF     \
@@ -64,12 +64,12 @@ termux_step_host_build() {
 	unset CXXFLAGS
 }
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	LDFLAGS+=" $($CC -print-libgcc-file-name)"
 }
 
-termux_step_post_make_install() {
+neoterm_step_post_make_install() {
 	# Remove host build because future builds may be
 	# of a different word size (e.g. 32bit or 64bit)
-	rm -rf "$TERMUX_PKG_HOSTBUILD_DIR"
+	rm -rf "$NEOTERM_PKG_HOSTBUILD_DIR"
 }

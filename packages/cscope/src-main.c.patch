@@ -6,10 +6,10 @@ diff -u -r ../cscope-15.8b/src/main.c ./src/main.c
  #define	SHELL	"sh"
  #define LINEFLAG "+%s"	/* default: used by vi and emacs */
 -#define TMPDIR	"/tmp"
-+#define TMPDIR	"@TERMUX_PREFIX@/tmp"
++#define TMPDIR	"@NEOTERM_PREFIX@/tmp"
  #ifndef DFLT_INCDIR
 -#define DFLT_INCDIR "/usr/include"
-+#define DFLT_INCDIR "@TERMUX_PREFIX@/include"
++#define DFLT_INCDIR "@NEOTERM_PREFIX@/include"
  #endif
  
  static char const rcsid[] = "$Id: main.c,v 1.57 2014/11/20 21:12:54 broeker Exp $";

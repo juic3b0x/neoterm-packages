@@ -7,7 +7,7 @@ diff -u -r ../multitail-6.5.0/Makefile ./Makefile
  UTF8_SUPPORT:=yes
 -DESTDIR=
 -PREFIX=/usr/local
-+DESTDIR=@TERMUX_PREFIX@
++DESTDIR=@NEOTERM_PREFIX@
 +PREFIX=
  CONFIG_FILE=$(DESTDIR)$(PREFIX)/etc/multitail.conf
  

@@ -5,7 +5,7 @@
      int             dest, res;
      const char     *s, *p, *q;
 -    char            tmp[] = "/tmp/imlib2_loader_dec-XXXXXX";
-+    char            tmp[] = "@TERMUX_PREFIX@/tmp/imlib2_loader_dec-XXXXXX";
++    char            tmp[] = "@NEOTERM_PREFIX@/tmp/imlib2_loader_dec-XXXXXX";
      char           *real_ext;
  
      rc = LOAD_FAIL;
@@ -16,7 +16,7 @@
      if (loader)
      {
 -        char            tmp[] = "/tmp/imlib2_loader_id3-XXXXXX";
-+        char            tmp[] = "@TERMUX_PREFIX@/tmp/imlib2_loader_id3-XXXXXX";
++        char            tmp[] = "@NEOTERM_PREFIX@/tmp/imlib2_loader_id3-XXXXXX";
          int             dest, res;
  
          if ((dest = mkstemp(tmp)) < 0)

@@ -16,7 +16,7 @@
 -    Sprintf(SAVEF, "save/%d%s", (int) getuid(), plname);
 -    if (regularize_it)
 -        regularize(SAVEF + 5); /* avoid . or / in name */
-+    Sprintf(SAVEF, "@TERMUX_PREFIX@/games/nethackdir/save/termux_%s", plname);
++    Sprintf(SAVEF, "@NEOTERM_PREFIX@/games/nethackdir/save/neoterm_%s", plname);
  #endif /* WIN32 */
  #endif /* MICRO */
  #endif /* VMS   */

@@ -6,7 +6,7 @@ diff -uNr gtk-2.24.32/tests/testfilechooser.c gtk-2.24.32.mod/tests/testfilechoo
  
    gtk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER (dialog),
 -					    "file:///usr/share/pixmaps",
-+					    "file://@TERMUX_PREFIX@/share/pixmaps",
++					    "file://@NEOTERM_PREFIX@/share/pixmaps",
  					    NULL);
  
    /* Initial filename or folder */

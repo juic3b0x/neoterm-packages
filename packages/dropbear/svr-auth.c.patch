@@ -45,7 +45,7 @@ diff -uNr dropbear-2020.81/svr-auth.c dropbear-2020.81.mod/svr-auth.c
  	if (usershell[0] == '\0') {
  		/* empty shell in /etc/passwd means /bin/sh according to passwd(5) */
 -		usershell = "/bin/sh";
-+		usershell = "@TERMUX_PREFIX@/bin/sh";
++		usershell = "@NEOTERM_PREFIX@/bin/sh";
  	}
  
 +   goto goodshell;

@@ -6,7 +6,7 @@ diff -uNr algernon-1.15.2/engine/config.go algernon-1.15.2.mod/engine/config.go
  // New creates a new server configuration based using the default values
  func New(versionString, description string) (*Config, error) {
 -	tmpdir := env.Str("TMPDIR", "/tmp")
-+	tmpdir := env.Str("TMPDIR", "@TERMUX_PREFIX@/tmp")
++	tmpdir := env.Str("TMPDIR", "@NEOTERM_PREFIX@/tmp")
  	ac := &Config{
  		curlSupport: true,
  
@@ -15,7 +15,7 @@ diff -uNr algernon-1.15.2/engine/config.go algernon-1.15.2.mod/engine/config.go
  
  		// List of configuration filenames to check
 -		serverConfigurationFilenames: []string{"/etc/algernon/serverconf.lua", "/etc/algernon/server.lua"},
-+		serverConfigurationFilenames: []string{"@TERMUX_PREFIX@/etc/algernon/serverconf.lua", "@TERMUX_PREFIX@/etc/algernon/server.lua"},
++		serverConfigurationFilenames: []string{"@NEOTERM_PREFIX@/etc/algernon/serverconf.lua", "@NEOTERM_PREFIX@/etc/algernon/server.lua"},
  
  		// Compression speed over compactness
  		cacheCompressionSpeed: true,
@@ -29,9 +29,9 @@ diff -uNr algernon-1.15.2/engine/flags.go algernon-1.15.2.mod/engine/flags.go
 -		ac.serverDirOrFilename = "/srv/algernon"
 -		ac.serverCert = "/etc/algernon/cert.pem"
 -		ac.serverKey = "/etc/algernon/key.pem"
-+		ac.serverDirOrFilename = "@TERMUX_PREFIX@/var/lib/algernon"
-+		ac.serverCert = "@TERMUX_PREFIX@/etc/algernon/cert.pem"
-+		ac.serverKey = "@TERMUX_PREFIX@/etc/algernon/key.pem"
++		ac.serverDirOrFilename = "@NEOTERM_PREFIX@/var/lib/algernon"
++		ac.serverCert = "@NEOTERM_PREFIX@/etc/algernon/cert.pem"
++		ac.serverKey = "@NEOTERM_PREFIX@/etc/algernon/key.pem"
  		ac.cacheMode = cachemode.Production
  		ac.serverMode = true
  	case ac.devMode:
@@ -43,7 +43,7 @@ diff -uNr algernon-1.15.2/engine/mime.go algernon-1.15.2.mod/engine/mime.go
  func (ac *Config) initializeMime() {
  	// Read in the mimetype information from the system. Set UTF-8 when setting Content-Type.
 -	ac.mimereader = mime.New("/etc/mime.types", true)
-+	ac.mimereader = mime.New("@TERMUX_PREFIX@/etc/mime.types", true)
++	ac.mimereader = mime.New("@NEOTERM_PREFIX@/etc/mime.types", true)
  }
 diff -uNr algernon-1.15.2/engine/serve.go algernon-1.15.2.mod/engine/serve.go
 --- algernon-1.15.2/engine/serve.go	2023-06-03 20:37:01.000000000 +0800
@@ -53,7 +53,7 @@ diff -uNr algernon-1.15.2/engine/serve.go algernon-1.15.2.mod/engine/serve.go
  			// If $HOME is not set, use $TMPDIR.
  			// If $TMPDIR is not set, use /tmp.
 -			certStorageDir := env.StrAlt("XDG_CONFIG_DIR", "HOME", env.Str("TMPDIR", "/tmp"))
-+			certStorageDir := env.StrAlt("XDG_CONFIG_DIR", "HOME", env.Str("TMPDIR", "@TERMUX_PREFIX@/tmp"))
++			certStorageDir := env.StrAlt("XDG_CONFIG_DIR", "HOME", env.Str("TMPDIR", "@NEOTERM_PREFIX@/tmp"))
  
  			defaultEmail := env.Str("LOGNAME", "root") + "@localhost"
  			if len(ac.certMagicDomains) > 0 {
@@ -65,7 +65,7 @@ diff -uNr algernon-1.15.2/vendor/github.com/caddyserver/certmagic/dnsutil.go alg
  )
  
 -const defaultResolvConf = "/etc/resolv.conf"
-+const defaultResolvConf = "@TERMUX_PREFIX@/etc/resolv.conf"
++const defaultResolvConf = "@NEOTERM_PREFIX@/etc/resolv.conf"
 diff -uNr algernon-1.15.2/vendor/github.com/go-sql-driver/mysql/dsn.go algernon-1.15.2.mod/vendor/github.com/go-sql-driver/mysql/dsn.go
 --- algernon-1.15.2/vendor/github.com/go-sql-driver/mysql/dsn.go	2023-06-03 20:37:01.000000000 +0800
 +++ algernon-1.15.2.mod/vendor/github.com/go-sql-driver/mysql/dsn.go	2023-06-04 12:41:01.690131413 +0800
@@ -74,7 +74,7 @@ diff -uNr algernon-1.15.2/vendor/github.com/go-sql-driver/mysql/dsn.go algernon-
  			cfg.Addr = "127.0.0.1:3306"
  		case "unix":
 -			cfg.Addr = "/tmp/mysql.sock"
-+			cfg.Addr = "@TERMUX_PREFIX@/tmp/mysql.sock"
++			cfg.Addr = "@NEOTERM_PREFIX@/tmp/mysql.sock"
  		default:
  			return errors.New("default addr for network '" + cfg.Net + "' unknown")
  		}
@@ -86,7 +86,7 @@ diff -uNr algernon-1.15.2/vendor/github.com/xyproto/gopher-lua/utils.go algernon
  
  func popenArgs(arg string) (string, []string) {
 -	cmd := "/bin/sh"
-+	cmd := "@TERMUX_PREFIX@/bin/sh"
++	cmd := "@NEOTERM_PREFIX@/bin/sh"
  	args := []string{"-c"}
  	if LuaOS == "windows" {
  		cmd = "C:\\Windows\\system32\\cmd.exe"

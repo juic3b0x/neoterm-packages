@@ -1,14 +1,14 @@
-TERMUX_PKG_HOMEPAGE=https://aerc-mail.org/
-TERMUX_PKG_DESCRIPTION="A pretty good email client"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="0.17.0"
-TERMUX_PKG_SRCURL=https://git.sr.ht/~rjarry/aerc/archive/${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=a8a1af36b4d4989afd670601d83fc2088e14d804c66bd1e3bdd14561bd89c2cc
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_MAKE_ARGS="LDFLAGS="
-TERMUX_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_HOMEPAGE=https://aerc-mail.org/
+NEOTERM_PKG_DESCRIPTION="A pretty good email client"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.17.0"
+NEOTERM_PKG_SRCURL=https://git.sr.ht/~rjarry/aerc/archive/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=a8a1af36b4d4989afd670601d83fc2088e14d804c66bd1e3bdd14561bd89c2cc
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_MAKE_ARGS="LDFLAGS="
+NEOTERM_PKG_AUTO_UPDATE=true
 
-termux_step_pre_configure() {
-	termux_setup_golang
+neoterm_step_pre_configure() {
+	neoterm_setup_golang
 }

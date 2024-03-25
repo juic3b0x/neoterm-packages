@@ -6,7 +6,7 @@ diff -u -r ../libcap-2.34/progs/capsh.c ./progs/capsh.c
  
  #ifndef SHELL
 -#define SHELL "/bin/bash"
-+#define SHELL "@TERMUX_PREFIX@/bin/bash"
++#define SHELL "@NEOTERM_PREFIX@/bin/bash"
  #endif /* ndef SHELL */
  
  #define MAX_GROUPS       100   /* max number of supplementary groups for user */

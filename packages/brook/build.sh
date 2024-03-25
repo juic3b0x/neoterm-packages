@@ -1,27 +1,27 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/txthinking/brook
-TERMUX_PKG_DESCRIPTION="A cross-platform strong encryption and not detectable proxy. Zero-Configuration."
-TERMUX_PKG_LICENSE="GPL-3.0"
-TERMUX_PKG_MAINTAINER="Krishna kanhaiya @kcubeterm"
-TERMUX_PKG_VERSION="20240404"
-TERMUX_PKG_SRCURL=https://github.com/txthinking/brook/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=6eda9a348f9c3555a1c27711e81c0982ea9999bf2878e73cf2eaaee90e8cc2e7
-TERMUX_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_HOMEPAGE=https://github.com/txthinking/brook
+NEOTERM_PKG_DESCRIPTION="A cross-platform strong encryption and not detectable proxy. Zero-Configuration."
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="Krishna kanhaiya @kcubeterm"
+NEOTERM_PKG_VERSION="20240404"
+NEOTERM_PKG_SRCURL=https://github.com/txthinking/brook/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=6eda9a348f9c3555a1c27711e81c0982ea9999bf2878e73cf2eaaee90e8cc2e7
+NEOTERM_PKG_AUTO_UPDATE=true
 
-termux_step_make() {
-	termux_setup_golang
+neoterm_step_make() {
+	neoterm_setup_golang
 
-	cd "$TERMUX_PKG_SRCDIR"
+	cd "$NEOTERM_PKG_SRCDIR"
 
-	export GOPATH=$TERMUX_PKG_BUILDDIR
+	export GOPATH=$NEOTERM_PKG_BUILDDIR
 	mkdir -p "$GOPATH"/src/github.com/txthinking
-	mkdir -p "$TERMUX_PREFIX"/share/doc/brook
-	cp -a "$TERMUX_PKG_SRCDIR" "$GOPATH"/src/github.com/txthinking/brook
+	mkdir -p "$NEOTERM_PREFIX"/share/doc/brook
+	cp -a "$NEOTERM_PKG_SRCDIR" "$GOPATH"/src/github.com/txthinking/brook
 	cd "$GOPATH"/src/github.com/txthinking/brook/cli/brook
 	go get -d -v
 	go build -o brook 
 }
 
-termux_step_make_install() {
-	install -Dm700 -t "$TERMUX_PREFIX"/bin "$GOPATH"/src/github.com/txthinking/brook/cli/brook/brook
-	cp -r "$TERMUX_PKG_SRCDIR"/docs/* "$TERMUX_PREFIX"/share/doc/brook
+neoterm_step_make_install() {
+	install -Dm700 -t "$NEOTERM_PREFIX"/bin "$GOPATH"/src/github.com/txthinking/brook/cli/brook/brook
+	cp -r "$NEOTERM_PKG_SRCDIR"/docs/* "$NEOTERM_PREFIX"/share/doc/brook
 }

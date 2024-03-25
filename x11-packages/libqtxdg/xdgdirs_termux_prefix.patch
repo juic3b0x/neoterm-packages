@@ -4,7 +4,7 @@
      QLatin1String("Videos")
  };
  
-+static const char* TERMUX_PREFIX = "@TERMUX_PREFIX@";
++static const char* NEOTERM_PREFIX = "@NEOTERM_PREFIX@";
 +
  // Helper functions prototypes
  void fixBashShortcuts(QString &s);
@@ -14,7 +14,7 @@
  
      if (home.isEmpty())
 -        return QString::fromLatin1("/tmp");
-+        return QString::fromLatin1(TERMUX_PREFIX) + QString::fromLatin1("/tmp");
++        return QString::fromLatin1(NEOTERM_PREFIX) + QString::fromLatin1("/tmp");
      else if (dir == XdgDirs::Desktop)
          fallback = QString::fromLatin1("%1/%2").arg(home, QLatin1String("Desktop"));
      else
@@ -24,8 +24,8 @@
      if (dirs.isEmpty()) {
 -        dirs.append(QString::fromLatin1("/usr/local/share"));
 -        dirs.append(QString::fromLatin1("/usr/share"));
-+        dirs.append(QString::fromLatin1(TERMUX_PREFIX) + QString::fromLatin1("/local/share"));
-+        dirs.append(QString::fromLatin1(TERMUX_PREFIX) + QString::fromLatin1("/share"));
++        dirs.append(QString::fromLatin1(NEOTERM_PREFIX) + QString::fromLatin1("/local/share"));
++        dirs.append(QString::fromLatin1(NEOTERM_PREFIX) + QString::fromLatin1("/share"));
      } else {
          QMutableListIterator<QString> it(dirs);
          while (it.hasNext()) {
@@ -34,7 +34,7 @@
      const QString env = QFile::decodeName(qgetenv("XDG_CONFIG_DIRS"));
      if (env.isEmpty())
 -        dirs.append(QString::fromLatin1("/etc/xdg"));
-+        dirs.append(QString::fromLatin1(TERMUX_PREFIX) + QString::fromLatin1("/etc/xdg"));
++        dirs.append(QString::fromLatin1(NEOTERM_PREFIX) + QString::fromLatin1("/etc/xdg"));
      else
  #if (QT_VERSION >= QT_VERSION_CHECK(5,15,0))
          dirs = env.split(QLatin1Char(':'), Qt::SkipEmptyParts);

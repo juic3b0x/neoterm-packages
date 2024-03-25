@@ -5,7 +5,7 @@
  ;; Customize this to the appropriate value for your system:
  
 -(define message-path '("/usr/share/locale"))
-+(define message-path '("@TERMUX_PREFIX@/share/locale"))
++(define message-path '("@NEOTERM_PREFIX@/share/locale"))
  
  ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
  ;; store meta info for gettext files

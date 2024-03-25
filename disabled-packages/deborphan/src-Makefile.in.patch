@@ -6,7 +6,7 @@ diff -u -r ../deborphan/src/Makefile.in ./src/Makefile.in
  deborphan_SOURCES = deborphan.c exit.c libdeps.c pkginfo.c xalloc.c string.c keep.c file.c set.c
  KEEPNAME = keep
 -STATEDIR = /var/lib/deborphan
-+STATEDIR = @TERMUX_PREFIX@/var/lib/deborphan
++STATEDIR = @NEOTERM_PREFIX@/var/lib/deborphan
  KEEPFILE = $(STATEDIR)/$(KEEPNAME)
  INCLUDES = -I../include
  all: all-am

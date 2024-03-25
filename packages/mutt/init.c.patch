@@ -6,7 +6,7 @@ diff -u -r ../mutt-1.5.23/init.c ./init.c
    }
  
 -  Tempdir = safe_strdup ((p = getenv ("TMPDIR")) ? p : "/tmp");
-+  Tempdir = safe_strdup ((p = getenv ("TMPDIR")) ? p : "@TERMUX_PREFIX@/tmp");
++  Tempdir = safe_strdup ((p = getenv ("TMPDIR")) ? p : "@NEOTERM_PREFIX@/tmp");
  
    p = getenv ("VISUAL");
    if (!p)

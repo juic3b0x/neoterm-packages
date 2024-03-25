@@ -6,7 +6,7 @@ diff -u -r /home/builder/lib/android-ndk/sysroot/usr/include/asm-generic/termbit
  #define TCSANOW 0
  #define TCSADRAIN 1
 -#define TCSAFLUSH 2
-+/* TCSAFLUSH is patched to be TCSANOW in Termux to work around Android SELinux rule */
++/* TCSAFLUSH is patched to be TCSANOW in NeoTerm to work around Android SELinux rule */
 +#define TCSAFLUSH 0
  #endif
 --- ./usr/include/bits/termios_inlines.h.orig	2021-08-16 17:05:16.001067630 +0200

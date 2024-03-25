@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_INCLUDE="
 bin/ld.lld
 bin/ld64.lld
 bin/lld
@@ -8,4 +8,4 @@ include/lld/
 lib/cmake/lld/
 lib/liblld*.a
 "
-TERMUX_SUBPKG_DESCRIPTION="LLVM-based linker"
+NEOTERM_SUBPKG_DESCRIPTION="LLVM-based linker"

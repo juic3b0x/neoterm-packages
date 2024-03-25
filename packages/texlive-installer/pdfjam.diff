@@ -5,7 +5,7 @@
  ##  by editing the following variable:                                 ##
  ##                                                                     ##
 -    configpath='/etc:/usr/share/etc:/usr/local/share:/usr/local/etc'   ##
-+    configpath='@TERMUX_PREFIX@/etc:@TERMUX_PREFIX@/share/etc:/usr/local/share:/usr/local/etc'   ##
++    configpath='@NEOTERM_PREFIX@/etc:@NEOTERM_PREFIX@/share/etc:/usr/local/share:/usr/local/etc'   ##
  ##                                                                     ##
  ##  Nothing else in this file should need to be changed.               ##
  ##                                                                     ##
@@ -14,7 +14,7 @@
  ##  Next a permitted location for temporary files on your system:
  ##
 -tempfileDir='/var/tmp'   ##  /var/tmp is standard on most unix systems
-+tempfileDir='@TERMUX_PREFIX@/tmp'   ##  /var/tmp is standard on most unix systems
++tempfileDir='@NEOTERM_PREFIX@/tmp'   ##  /var/tmp is standard on most unix systems
  ##
  ##
  ##  Default for the output file location:

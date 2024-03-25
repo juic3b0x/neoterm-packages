@@ -5,10 +5,10 @@
      }
  #else
 -  if (access ("/usr/local/lib", R_OK | W_OK | X_OK) == 0)
-+  if (access ("@TERMUX_PREFIX@/local/lib", R_OK | W_OK | X_OK) == 0)
++  if (access ("@NEOTERM_PREFIX@/local/lib", R_OK | W_OK | X_OK) == 0)
      {
 -      len = STRLEN ("/usr/local/lib");
-+      len = STRLEN ("@TERMUX_PREFIX@/local/lib");
++      len = STRLEN ("@NEOTERM_PREFIX@/local/lib");
        goto done;
      }
  #endif
@@ -17,10 +17,10 @@
      }
  #else
 -  if (access ("/usr/lib", R_OK | W_OK | X_OK) == 0)
-+  if (access ("@TERMUX_PREFIX@/lib", R_OK | W_OK | X_OK) == 0)
++  if (access ("@NEOTERM_PREFIX@/lib", R_OK | W_OK | X_OK) == 0)
      {
 -      len = STRLEN ("/usr/lib");
-+      len = STRLEN ("@TERMUX_PREFIX@/lib");
++      len = STRLEN ("@NEOTERM_PREFIX@/lib");
        goto done;
      }
  #endif

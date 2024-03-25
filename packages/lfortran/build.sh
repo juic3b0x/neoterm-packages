@@ -1,20 +1,20 @@
-TERMUX_PKG_HOMEPAGE=https://lfortran.org/
-TERMUX_PKG_DESCRIPTION="A modern open-source interactive Fortran compiler"
-TERMUX_PKG_LICENSE="BSD 3-Clause"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=0.19.0
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=git+https://github.com/lfortran/lfortran
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_DEPENDS="clang, libandroid-complex-math, libc++, ncurses, zlib, zstd"
-TERMUX_PKG_BUILD_DEPENDS="libllvm-static"
-TERMUX_PKG_SUGGESTS="libkokkos"
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=https://lfortran.org/
+NEOTERM_PKG_DESCRIPTION="A modern open-source interactive Fortran compiler"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.19.0
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=git+https://github.com/lfortran/lfortran
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="clang, libandroid-complex-math, libc++, ncurses, zlib, zstd"
+NEOTERM_PKG_BUILD_DEPENDS="libllvm-static"
+NEOTERM_PKG_SUGGESTS="libkokkos"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DBUILD_SHARED_LIBS=ON
 -DWITH_LLVM=yes
--DLLVM_DIR=$TERMUX_PREFIX/lib/cmake/llvm
+-DLLVM_DIR=$NEOTERM_PREFIX/lib/cmake/llvm
 "
-TERMUX_PKG_HOSTBUILD=true
+NEOTERM_PKG_HOSTBUILD=true
 
 # ```
 # [...]/src/lfortran/parser/parser_stype.h:97:1: error: static_assert failed
@@ -24,24 +24,24 @@ TERMUX_PKG_HOSTBUILD=true
 # ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # ```
 # Furthermore libkokkos does not support ILP32
-TERMUX_PKG_BLACKLISTED_ARCHES="arm, i686"
+NEOTERM_PKG_BLACKLISTED_ARCHES="arm, i686"
 
-termux_step_host_build() {
-	termux_setup_cmake
+neoterm_step_host_build() {
+	neoterm_setup_cmake
 
-	( cd $TERMUX_PKG_SRCDIR && sh build0.sh )
-	cmake $TERMUX_PKG_SRCDIR
-	make -j $TERMUX_MAKE_PROCESSES
+	( cd $NEOTERM_PKG_SRCDIR && sh build0.sh )
+	cmake $NEOTERM_PKG_SRCDIR
+	make -j $NEOTERM_MAKE_PROCESSES
 }
 
-termux_step_pre_configure() {
-	PATH=$TERMUX_PKG_HOSTBUILD_DIR/src/bin:$PATH
+neoterm_step_pre_configure() {
+	PATH=$NEOTERM_PKG_HOSTBUILD_DIR/src/bin:$PATH
 	echo "Applying CMakeLists.txt.diff"
-	sed "s|@TERMUX_PKG_HOSTBUILD_DIR@|${TERMUX_PKG_HOSTBUILD_DIR}|g" \
-		$TERMUX_PKG_BUILDER_DIR/CMakeLists.txt.diff \
+	sed "s|@NEOTERM_PKG_HOSTBUILD_DIR@|${NEOTERM_PKG_HOSTBUILD_DIR}|g" \
+		$NEOTERM_PKG_BUILDER_DIR/CMakeLists.txt.diff \
 		| patch --silent -p1
 
-	( cd $TERMUX_PKG_SRCDIR && sh build0.sh )
+	( cd $NEOTERM_PKG_SRCDIR && sh build0.sh )
 
 	LDFLAGS+=" -landroid-complex-math -lm"
 }

@@ -1,46 +1,46 @@
-TERMUX_PKG_HOMEPAGE=https://micro-editor.github.io/
-TERMUX_PKG_DESCRIPTION="Modern and intuitive terminal-based text editor"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="2.0.13"
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_SRCURL=git+https://github.com/zyedidia/micro
+NEOTERM_PKG_HOMEPAGE=https://micro-editor.github.io/
+NEOTERM_PKG_DESCRIPTION="Modern and intuitive terminal-based text editor"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="2.0.13"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_SRCURL=git+https://github.com/zyedidia/micro
 
-termux_step_make() {
+neoterm_step_make() {
 	return
 }
 
-termux_step_make_install() {
-	termux_setup_golang
+neoterm_step_make_install() {
+	neoterm_setup_golang
 
-	export GOPATH=$TERMUX_PKG_BUILDDIR
+	export GOPATH=$NEOTERM_PKG_BUILDDIR
 	local MICRO_SRC=$GOPATH/src/github.com/zyedidia/micro
 
-	cd $TERMUX_PKG_SRCDIR
+	cd $NEOTERM_PKG_SRCDIR
 	mkdir -p $MICRO_SRC
 	cp -R . $MICRO_SRC
 
 	cd $MICRO_SRC
 	make build
-	mv micro $TERMUX_PREFIX/bin/micro
+	mv micro $NEOTERM_PREFIX/bin/micro
 }
 
-termux_step_create_debscripts() {
+neoterm_step_create_debscripts() {
 	cat <<- EOF > ./postinst
-	#!$TERMUX_PREFIX/bin/sh
-	if [ "$TERMUX_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" = "configure" ] || [ "\$1" = "abort-upgrade" ]; then
-		if [ -x "$TERMUX_PREFIX/bin/update-alternatives" ]; then
+	#!$NEOTERM_PREFIX/bin/sh
+	if [ "$NEOTERM_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" = "configure" ] || [ "\$1" = "abort-upgrade" ]; then
+		if [ -x "$NEOTERM_PREFIX/bin/update-alternatives" ]; then
 			update-alternatives --install \
-				$TERMUX_PREFIX/bin/editor editor $TERMUX_PREFIX/bin/micro 25
+				$NEOTERM_PREFIX/bin/editor editor $NEOTERM_PREFIX/bin/micro 25
 		fi
 	fi
 	EOF
 
 	cat <<- EOF > ./prerm
-	#!$TERMUX_PREFIX/bin/sh
-	if [ "$TERMUX_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" != "upgrade" ]; then
-		if [ -x "$TERMUX_PREFIX/bin/update-alternatives" ]; then
-			update-alternatives --remove editor $TERMUX_PREFIX/bin/micro
+	#!$NEOTERM_PREFIX/bin/sh
+	if [ "$NEOTERM_PACKAGE_FORMAT" = "pacman" ] || [ "\$1" != "upgrade" ]; then
+		if [ -x "$NEOTERM_PREFIX/bin/update-alternatives" ]; then
+			update-alternatives --remove editor $NEOTERM_PREFIX/bin/micro
 		fi
 	fi
 	EOF

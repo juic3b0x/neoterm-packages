@@ -6,7 +6,7 @@ diff -uNr hunspell-1.6.1/src/tools/hunspell.cxx hunspell-1.6.1.mod/src/tools/hun
    const char* extension = (filename) ? basename(filename, '.') : NULL;
    TextParser* parser = get_parser(format, extension, pMS[0]);
 -  char tmpdirtemplate[] = "/tmp/hunspellXXXXXX";
-+  char tmpdirtemplate[] = "@TERMUX_PREFIX@/tmp/hunspellXXXXXX";
++  char tmpdirtemplate[] = "@NEOTERM_PREFIX@/tmp/hunspellXXXXXX";
  
    bool bZippedOdf = is_zipped_odf(parser, extension);
    // access content.xml of ODF
@@ -15,7 +15,7 @@ diff -uNr hunspell-1.6.1/src/tools/hunspell.cxx hunspell-1.6.1.mod/src/tools/hun
    const char* extension = basename(filename, '.');
    TextParser* parser = get_parser(format, extension, pMS[0]);
 -  char tmpdirtemplate[] = "/tmp/hunspellXXXXXX";
-+  char tmpdirtemplate[] = "@TERMUX_PREFIX@/tmp/hunspellXXXXXX";
++  char tmpdirtemplate[] = "@NEOTERM_PREFIX@/tmp/hunspellXXXXXX";
  
    bool bZippedOdf = is_zipped_odf(parser, extension);
    // access content.xml of ODF
@@ -27,7 +27,7 @@ diff -uNr hunspell-1.6.1/src/tools/hzip.cxx hunspell-1.6.1.mod/src/tools/hzip.cx
      return fail("hzip: %s: Permission denied\n", filename);
  
 -  char tmpfiletemplate[] = "/tmp/hunspellXXXXXX";
-+  char tmpfiletemplate[] = "@TERMUX_PREFIX@/tmp/hunspellXXXXXX";
++  char tmpfiletemplate[] = "@NEOTERM_PREFIX@/tmp/hunspellXXXXXX";
    mode_t mask = umask(S_IXUSR | S_IRWXG | S_IRWXO);
    int tempfileno = mkstemp(tmpfiletemplate);
    umask(mask);

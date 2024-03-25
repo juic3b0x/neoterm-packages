@@ -5,7 +5,7 @@
  		     (t
  		      (or (getenv "TMPDIR") (getenv "TMP") (getenv "TEMP")
 -			  "/tmp"))))
-+			  "@TERMUX_PREFIX@/tmp"))))
++			  "@NEOTERM_PREFIX@/tmp"))))
  	      :initialize custom-initialize-delay)
  	     ;; fns.c
  	     (use-dialog-box menu boolean "21.1")

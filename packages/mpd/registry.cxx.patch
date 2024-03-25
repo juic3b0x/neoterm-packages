@@ -5,7 +5,7 @@
  #endif
  	&null_output_plugin,
 -#ifdef ANDROID
-+#if defined(ANDROID) || defined(TERMUX)
++#if defined(ANDROID) || defined(NEOTERM)
  	&sles_output_plugin,
  #endif
  #ifdef HAVE_FIFO

@@ -6,7 +6,7 @@ diff -uNr xarchiver-0.5.4.13/src/open-with-dlg.c xarchiver-0.5.4.13.mod/src/open
  							NULL);
  
 -	gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (file_selector),"/usr/bin");
-+	gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (file_selector),"@TERMUX_PREFIX@/bin");
++	gtk_file_chooser_set_current_folder(GTK_FILE_CHOOSER (file_selector),"@NEOTERM_PREFIX@/bin");
  	response = gtk_dialog_run (GTK_DIALOG(file_selector));
  	if (response == GTK_RESPONSE_ACCEPT)
  	{

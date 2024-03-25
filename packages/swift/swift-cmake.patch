@@ -40,7 +40,7 @@ index ac9e0871489d..b495cbfb5c2e 100644
      endif()
      execute_process(
 -      COMMAND ${clang_command} "${cmd_prefix}--rtlib=compiler-rt" "${cmd_prefix}-print-libgcc-file-name"
-+      COMMAND ${clang_command} "${cmd_prefix}--rtlib=compiler-rt" "${cmd_prefix}-print-libgcc-file-name" "-resource-dir=$ENV{PREFIX}/lib/clang/$ENV{TERMUX_CLANG_VERSION}/"
++      COMMAND ${clang_command} "${cmd_prefix}--rtlib=compiler-rt" "${cmd_prefix}-print-libgcc-file-name" "-resource-dir=$ENV{PREFIX}/lib/clang/$ENV{NEOTERM_CLANG_VERSION}/"
        RESULT_VARIABLE had_error
        OUTPUT_VARIABLE library_file
      )
@@ -79,7 +79,7 @@ index b7503ecdd6..c643c2c9a5 100644
  endif()
  
 -if(SWIFT_ENABLE_DISPATCH)
-+# Use the Termux libdispatch when cross-compiling instead.
++# Use the NeoTerm libdispatch when cross-compiling instead.
 +if(SWIFT_ENABLE_DISPATCH AND ${CMAKE_HOST_SYSTEM_NAME} STREQUAL Android)
    include(Libdispatch)
  endif()
@@ -229,7 +229,7 @@ index 7a77e125f95..7eddfea2054 100644
    endif()
    target_compile_options(${target} PRIVATE
      -fblocks)
-+  # Look in Termux sysroot for dispatch/dispatch.h from libdispatch
++  # Look in NeoTerm sysroot for dispatch/dispatch.h from libdispatch
 +  target_include_directories("${target}" SYSTEM PRIVATE
 +    ${SWIFT_ANDROID_NATIVE_SYSROOT}/usr/include)
  endfunction()

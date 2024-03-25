@@ -8,7 +8,7 @@
 +#include <android/fdsan.h>
 +#include <dlfcn.h>
 +
-+/* termux hack to disable file descriptor sanitizer */
++/* neoterm hack to disable file descriptor sanitizer */
 +static int disable_fdsan() {
 +  void *lib_handle = dlopen("libc.so", RTLD_LAZY);
 +  if (lib_handle) {

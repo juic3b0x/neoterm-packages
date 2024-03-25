@@ -5,7 +5,7 @@
  ##
  test -z "${XDG_DATA_HOME}" && XDG_DATA_HOME="${HOME}/.local/share"
 -test -z "${XDG_DATA_DIRS}" && XDG_DATA_DIRS="/usr/local/share:/usr/share"
-+test -z "${XDG_DATA_DIRS}" && XDG_DATA_DIRS="@TERMUX_PREFIX@/local/share:@TERMUX_PREFIX@/share"
++test -z "${XDG_DATA_DIRS}" && XDG_DATA_DIRS="@NEOTERM_PREFIX@/local/share:@NEOTERM_PREFIX@/share"
  test -d "@datadir@" && XDG_DATA_DIRS="@datadir@:${XDG_DATA_DIRS}"
  XDG_DATA_DIRS="${XDG_DATA_HOME}:${XDG_DATA_DIRS}"
  export XDG_DATA_DIRS XDG_DATA_HOME

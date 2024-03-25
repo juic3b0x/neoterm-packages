@@ -5,7 +5,7 @@
                      toupper( tracing_string[ 1 ] ) == 'N' ))
          {
 -            SQLGetPrivateProfileString( "ODBC", "TraceFile", "/tmp/sql.log",
-+            SQLGetPrivateProfileString( "ODBC", "TraceFile", "@TERMUX_PREFIX@/tmp/sql.log",
++            SQLGetPrivateProfileString( "ODBC", "TraceFile", "@NEOTERM_PREFIX@/tmp/sql.log",
                      tracing_file, sizeof( tracing_file ), 
                      "odbcinst.ini" );
  
@@ -16,7 +16,7 @@
          if ( !log_info.log_file_name )
          {
 -            strcpy( file_name, "/tmp/sql.log" );
-+            strcpy( file_name, "@TERMUX_PREFIX@/tmp/sql.log" );
++            strcpy( file_name, "@NEOTERM_PREFIX@/tmp/sql.log" );
          }
          else
          {
@@ -25,7 +25,7 @@
          if ( !log_info.log_file_name )
          {
 -            fp = uo_fopen( "/tmp/sql.log", "a" );
-+            fp = uo_fopen( "@TERMUX_PREFIX@/tmp/sql.log", "a" );
++            fp = uo_fopen( "@NEOTERM_PREFIX@/tmp/sql.log", "a" );
          }
          else
          {
@@ -34,7 +34,7 @@
          if ( !log_info.log_file_name )
          {
 -            strcpy( file_name, "/tmp/sql.log" );
-+            strcpy( file_name, "@TERMUX_PREFIX@/tmp/sql.log" );
++            strcpy( file_name, "@NEOTERM_PREFIX@/tmp/sql.log" );
          }
          else
          {
@@ -43,7 +43,7 @@
          if ( !log_info.log_file_name )
          {
 -            fp = uo_fopen( "/tmp/sql.log", "a" );
-+            fp = uo_fopen( "@TERMUX_PREFIX@/tmp/sql.log", "a" );
++            fp = uo_fopen( "@NEOTERM_PREFIX@/tmp/sql.log", "a" );
          }
          else
          {
@@ -54,7 +54,7 @@
  Specifies the system path or path-pattern to which ODBC driver trace output will
  be written. This option has no effect unless \fBTrace\fR is enabled. The default
 -file location for trace output is \fB/tmp/sql.log\fR.
-+file location for trace output is \fB@TERMUX_PREFIX@/tmp/sql.log\fR.
++file location for trace output is \fB@NEOTERM_PREFIX@/tmp/sql.log\fR.
  
  \fIWARNING\fR: Setting \fBTraceFile\fR to a path writable by multiple users
  might not work correctly, as only the first user will be able to create and open

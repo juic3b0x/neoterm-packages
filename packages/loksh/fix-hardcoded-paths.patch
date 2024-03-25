@@ -6,7 +6,7 @@ diff -uNr loksh-6.3/io.c loksh-6.3.mod/io.c
  	if (kshdebug_shf)
  		shf_close(kshdebug_shf);
 -	kshdebug_shf = shf_open("/tmp/ksh-debug.log",
-+	kshdebug_shf = shf_open("@TERMUX_PREFIX@/tmp/ksh-debug.log",
++	kshdebug_shf = shf_open("@NEOTERM_PREFIX@/tmp/ksh-debug.log",
  	    O_WRONLY|O_APPEND|O_CREAT, 0600, SHF_WR|SHF_MAPHI);
  	if (kshdebug_shf) {
  		shf_fprintf(kshdebug_shf, "\nNew shell[pid %d]\n", getpid());
@@ -15,7 +15,7 @@ diff -uNr loksh-6.3/io.c loksh-6.3.mod/io.c
  	const char *dir;
  
 -	dir = tmpdir ? tmpdir : "/tmp";
-+	dir = tmpdir ? tmpdir : "@TERMUX_PREFIX@/tmp";
++	dir = tmpdir ? tmpdir : "@NEOTERM_PREFIX@/tmp";
  	/* The 20 + 20 is a paranoid worst case for pid/inc */
  	len = strlen(dir) + 3 + 20 + 20 + 1;
  	tp = alloc(sizeof(struct temp) + len, ap);
@@ -27,7 +27,7 @@ diff -uNr loksh-6.3/sh.h loksh-6.3.mod/sh.h
  
  /* Determine the location of the system (common) profile */
 -#define KSH_SYSTEM_PROFILE "/etc/profile"
-+#define KSH_SYSTEM_PROFILE "@TERMUX_PREFIX@/etc/profile"
++#define KSH_SYSTEM_PROFILE "@NEOTERM_PREFIX@/etc/profile"
  
  /* Used by v_evaluate() and setstr() to control action when error occurs */
  #define KSH_UNWIND_ERROR	0x0	/* unwind the stack (longjmp) */

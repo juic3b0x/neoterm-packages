@@ -1,43 +1,43 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/tesseract-ocr/tesseract
-TERMUX_PKG_DESCRIPTION="Tesseract is probably the most accurate open source OCR engine available"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="5.3.4"
-TERMUX_PKG_SRCURL=https://github.com/tesseract-ocr/tesseract/archive/${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=141afc12b34a14bb691a939b4b122db0d51bd38feda7f41696822bacea7710c7
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="fontconfig, glib, harfbuzz, leptonica, libandroid-glob, libandroid-posix-semaphore, libarchive, libc++, libcairo, libcurl, libicu, pango"
-TERMUX_PKG_BUILD_DEPENDS="libcpufeatures"
-TERMUX_PKG_BREAKS="tesseract-dev"
-TERMUX_PKG_REPLACES="tesseract-dev"
-TERMUX_PKG_FORCE_CMAKE=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_HOMEPAGE=https://github.com/tesseract-ocr/tesseract
+NEOTERM_PKG_DESCRIPTION="Tesseract is probably the most accurate open source OCR engine available"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="5.3.4"
+NEOTERM_PKG_SRCURL=https://github.com/tesseract-ocr/tesseract/archive/${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=141afc12b34a14bb691a939b4b122db0d51bd38feda7f41696822bacea7710c7
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="fontconfig, glib, harfbuzz, leptonica, libandroid-glob, libandroid-posix-semaphore, libarchive, libc++, libcairo, libcurl, libicu, pango"
+NEOTERM_PKG_BUILD_DEPENDS="libcpufeatures"
+NEOTERM_PKG_BREAKS="tesseract-dev"
+NEOTERM_PKG_REPLACES="tesseract-dev"
+NEOTERM_PKG_FORCE_CMAKE=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 -DBUILD_SHARED_LIBS=ON
 -DUSE_SYSTEM_ICU=on
--DTESSDATA_PREFIX=$TERMUX_PREFIX/share
+-DTESSDATA_PREFIX=$NEOTERM_PREFIX/share
 -DOPENMP_BUILD=ON
 -DLEPT_TIFF_RESULT=0
 "
 
-termux_step_post_get_source() {
+neoterm_step_post_get_source() {
 	# Do not forget to bump revision of reverse dependencies and rebuild them
 	# after SOVERSION is changed.
 	local _SOVERSION=5
 
 	local v=$(sed -n 's/^\([^.]*\)\..*/\1/p' VERSION)
 	if [ "${_SOVERSION}" != "${v}" ]; then
-		termux_error_exit "SOVERSION guard check failed."
+		neoterm_error_exit "SOVERSION guard check failed."
 	fi
 }
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	LDFLAGS+=" -landroid-posix-semaphore"
 }
 
-termux_step_post_make_install() {
+neoterm_step_post_make_install() {
 	# download english trained data
-	mkdir -p "${TERMUX_PREFIX}"/share/tessdata
-	cd "${TERMUX_PREFIX}"/share/tessdata
+	mkdir -p "${NEOTERM_PREFIX}"/share/tessdata
+	cd "${NEOTERM_PREFIX}"/share/tessdata
 	rm -f eng.*
 
 	local checksums
@@ -52,11 +52,11 @@ termux_step_post_make_install() {
 	checksums[tesseract_cube.nn]=196bedc8a5bc8c30361c2c9518f648b45b498759cb6041827ff6fbfb8da2a8d1
 	checksums[traineddata]=c0515c9f1e0c79e1069fcc05c2b2f6a6841fb5e1082d695db160333c1154f06d
 
-	mkdir -p $TERMUX_PKG_CACHEDIR/tessdata
+	mkdir -p $NEOTERM_PKG_CACHEDIR/tessdata
 
-	termux_download \
+	neoterm_download \
 		https://raw.githubusercontent.com/tesseract-ocr/tessdata/4.0.0/eng.traineddata \
-		$TERMUX_PKG_CACHEDIR/tessdata/eng.traineddata \
+		$NEOTERM_PKG_CACHEDIR/tessdata/eng.traineddata \
 		daa0c97d651c19fba3b25e81317cd697e9908c8208090c94c3905381c23fc047
-	cp $TERMUX_PKG_CACHEDIR/tessdata/eng.traineddata .
+	cp $NEOTERM_PKG_CACHEDIR/tessdata/eng.traineddata .
 }

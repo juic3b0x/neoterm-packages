@@ -6,7 +6,7 @@ diff -u -r ../git-2.8.1/tempfile.c ./tempfile.c
  	tmpdir = getenv("TMPDIR");
  	if (!tmpdir)
 -		tmpdir = "/tmp";
-+		tmpdir = "@TERMUX_PREFIX@/tmp";
++		tmpdir = "@NEOTERM_PREFIX@/tmp";
  
  	strbuf_addf(&tempfile->filename, "%s/%s", tmpdir, template);
  	tempfile->fd = git_mkstemps_mode(tempfile->filename.buf, suffixlen, mode);

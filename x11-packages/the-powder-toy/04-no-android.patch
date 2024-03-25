@@ -13,7 +13,7 @@
  else
  	ident_platform = 'UNKNOWN'
  endif
-+ident_platform = 'TERMUX'
++ident_platform = 'NEOTERM'
  
  app_exe = get_option('app_exe')
  app_id = get_option('app_id')

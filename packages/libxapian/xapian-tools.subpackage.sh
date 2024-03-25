@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_INCLUDE="
 bin/copydatabase
 bin/quest
 bin/simpleexpand
@@ -16,6 +16,6 @@ bin/xapian-tcpsrv
 share/man/man1/
 share/xapian-core/
 "
-TERMUX_SUBPKG_DESCRIPTION="Basic tools for the Xapian search engine"
-TERMUX_SUBPKG_BREAKS="libxapian (<< 1.4.21)"
-TERMUX_SUBPKG_REPLACES="libxapian (<< 1.4.21)"
+NEOTERM_SUBPKG_DESCRIPTION="Basic tools for the Xapian search engine"
+NEOTERM_SUBPKG_BREAKS="libxapian (<< 1.4.21)"
+NEOTERM_SUBPKG_REPLACES="libxapian (<< 1.4.21)"

@@ -1,4 +1,4 @@
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_INCLUDE="
 bin/amdgpu-arch
 bin/analyze-build
 bin/c++
@@ -40,8 +40,8 @@ share/man/man1/diagtool.1.gz
 share/man/man1/scan-build.1.gz
 share/scan-*
 "
-TERMUX_SUBPKG_DESCRIPTION="C language frontend for LLVM"
-TERMUX_SUBPKG_DEPENDS="libcompiler-rt, lld, llvm, ndk-sysroot"
-TERMUX_SUBPKG_BREAKS="libllvm (<< 16.0.0), clangd"
-TERMUX_SUBPKG_REPLACES="libllvm (<< 16.0.0), clangd"
-TERMUX_SUBPKG_GROUPS="base-devel"
+NEOTERM_SUBPKG_DESCRIPTION="C language frontend for LLVM"
+NEOTERM_SUBPKG_DEPENDS="libcompiler-rt, lld, llvm, ndk-sysroot"
+NEOTERM_SUBPKG_BREAKS="libllvm (<< 16.0.0), clangd"
+NEOTERM_SUBPKG_REPLACES="libllvm (<< 16.0.0), clangd"
+NEOTERM_SUBPKG_GROUPS="base-devel"

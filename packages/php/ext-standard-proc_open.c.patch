@@ -6,10 +6,10 @@ diff -uNr php-8.1.0/ext/standard/proc_open.c php-8.1.0.mod/ext/standard/proc_ope
  		} else {
  			if (env.envarray) {
 -				execle("/bin/sh", "sh", "-c", ZSTR_VAL(command_str), NULL, env.envarray);
-+				execle("@TERMUX_PREFIX@/bin/sh", "sh", "-c", ZSTR_VAL(command_str), NULL, env.envarray);
++				execle("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", ZSTR_VAL(command_str), NULL, env.envarray);
  			} else {
 -				execl("/bin/sh", "sh", "-c", ZSTR_VAL(command_str), NULL);
-+				execl("@TERMUX_PREFIX@/bin/sh", "sh", "-c", ZSTR_VAL(command_str), NULL);
++				execl("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", ZSTR_VAL(command_str), NULL);
  			}
  		}
  

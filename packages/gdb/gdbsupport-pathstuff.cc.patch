@@ -6,7 +6,7 @@ diff -u -r ../gdb-10.1/gdbsupport/pathstuff.cc ./gdbsupport/pathstuff.cc
      return tmp;
  
 -  return "/tmp";
-+  return "@TERMUX_PREFIX@/tmp";
++  return "@NEOTERM_PREFIX@/tmp";
  #endif
  }
  
@@ -15,7 +15,7 @@ diff -u -r ../gdb-10.1/gdbsupport/pathstuff.cc ./gdbsupport/pathstuff.cc
    const char *ret = getenv ("SHELL");
    if (ret == NULL)
 -    ret = "/bin/sh";
-+    ret = "@TERMUX_PREFIX@/bin/sh";
++    ret = "@NEOTERM_PREFIX@/bin/sh";
  
    return ret;
  }

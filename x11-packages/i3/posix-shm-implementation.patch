@@ -20,9 +20,9 @@ diff -uNr i3-4.16/i3-dump-log/main.c i3-4.16.mod/i3-dump-log/main.c
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    fd = open(fname, oflag, mode);
 +    if (fd != -1) {
@@ -67,9 +67,9 @@ diff -uNr i3-4.16/src/log.c i3-4.16.mod/src/log.c
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    return unlink(fname);
 +}
@@ -89,9 +89,9 @@ diff -uNr i3-4.16/src/log.c i3-4.16.mod/src/log.c
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    fd = open(fname, oflag, mode);
 +    if (fd != -1) {
@@ -136,9 +136,9 @@ diff -uNr i3-4.16/src/main.c i3-4.16.mod/src/main.c
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    return unlink(fname);
 +}

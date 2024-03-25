@@ -1,4 +1,4 @@
-# Termux doesn't provide locale support, but UTF-8 is the default.
+# NeoTerm doesn't provide locale support, but UTF-8 is the default.
 
 --- ./asciinema/__main__.py.orig	2022-05-08 04:11:10.417277242 +0000
 +++ ./asciinema/__main__.py	2022-05-08 04:11:37.593919730 +0000

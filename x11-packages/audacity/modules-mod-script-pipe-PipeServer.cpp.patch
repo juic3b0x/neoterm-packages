@@ -5,7 +5,7 @@
  #include <string.h>
  
 -const char fifotmpl[] = "/tmp/audacity_script_pipe.%s.%d";
-+const char fifotmpl[] = "@TERMUX_PREFIX@/tmp/audacity_script_pipe.%s.%d";
++const char fifotmpl[] = "@NEOTERM_PREFIX@/tmp/audacity_script_pipe.%s.%d";
  
  const int nBuff = 1024;
  

@@ -5,7 +5,7 @@
  	die_e("sigprocmask error");
      xcloselog();
 -    execl("/bin/sh", "/bin/sh", "-c", jr->command, (char *)NULL);
-+    execl("@TERMUX_PREFIX@/bin/sh", "@TERMUX_PREFIX@/bin/sh", "-c", jr->command, (char *)NULL);
++    execl("@NEOTERM_PREFIX@/bin/sh", "@NEOTERM_PREFIX@/bin/sh", "-c", jr->command, (char *)NULL);
      die_e("execl() error");
  }
  

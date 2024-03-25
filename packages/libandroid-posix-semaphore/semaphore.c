@@ -1,4 +1,4 @@
-/* This file is a port of posix named semaphore for Termux Android, 
+/* This file is a port of posix named semaphore for NeoTerm Android, 
    based on musl-libc which is licensed under the standard MIT license. 
    The ported files are listed as following.
 

@@ -9,7 +9,7 @@ diff -u -r ../sbcl-1.3.4/make-config.sh ./make-config.sh
 -tools-for-build/determine-endianness >> $ltf
 +# $GNUMAKE -C tools-for-build determine-endianness -I ../src/runtime
 +# tools-for-build/determine-endianness >> $ltf
-+echo " :little-endian" >> $ltf # Termux patch.
++echo " :little-endian" >> $ltf # NeoTerm patch.
  
  export sbcl_os sbcl_arch
  sh tools-for-build/grovel-features.sh >> $ltf

@@ -5,21 +5,21 @@
    unix password sync = no
    pam password change = no
    obey pam restrictions = no
-   passwd program = @TERMUX_PREFIX@/bin/true
-   add user script = @TERMUX_PREFIX@/bin/true
-   add group script = @TERMUX_PREFIX@/bin/true
-   add user to group script = @TERMUX_PREFIX@/bin/true
-   add machine script = @TERMUX_PREFIX@/bin/true
-   delete user script = @TERMUX_PREFIX@/bin/true
-   delete user from group script = @TERMUX_PREFIX@/bin/true
-   delete group script = @TERMUX_PREFIX@/bin/true
-   rename user script = @TERMUX_PREFIX@/bin/true
+   passwd program = @NEOTERM_PREFIX@/bin/true
+   add user script = @NEOTERM_PREFIX@/bin/true
+   add group script = @NEOTERM_PREFIX@/bin/true
+   add user to group script = @NEOTERM_PREFIX@/bin/true
+   add machine script = @NEOTERM_PREFIX@/bin/true
+   delete user script = @NEOTERM_PREFIX@/bin/true
+   delete user from group script = @NEOTERM_PREFIX@/bin/true
+   delete group script = @NEOTERM_PREFIX@/bin/true
+   rename user script = @NEOTERM_PREFIX@/bin/true
    name resolve order = lmhosts host bcast
    bind interfaces only = yes
    interfaces = 127.0.0.0/8 wlan0
 
    ;hosts allow = 192.168.1.5 127.
-   server string = Samba on Termux
+   server string = Samba on NeoTerm
    security = user
    server role = standalone
    delete readonly = yes
@@ -34,7 +34,7 @@
    host msdfs = no
    dns proxy = no
    allow dns updates = disabled
-   dns update command = @TERMUX_PREFIX@/bin/false
+   dns update command = @NEOTERM_PREFIX@/bin/false
    server services = smb
    dcerpc endpoint servers = rpcecho
 
@@ -76,7 +76,7 @@
    map readonly = no
    map system = no
 
-   ;log file = @TERMUX_PREFIX@/var/log/samba/log.%m
+   ;log file = @NEOTERM_PREFIX@/var/log/samba/log.%m
    ;log level = 0
    max log size = 50
    ;logging = syslog
@@ -91,15 +91,15 @@
    disable spoolss = yes
    show add printer wizard = no
    max print jobs = 0
-   lpq command = @TERMUX_PREFIX@/bin/false
-   lprm command = @TERMUX_PREFIX@/bin/false
-   print command = @TERMUX_PREFIX@/bin/false
+   lpq command = @NEOTERM_PREFIX@/bin/false
+   lprm command = @NEOTERM_PREFIX@/bin/false
+   print command = @NEOTERM_PREFIX@/bin/false
 
 #============================ Share Definitions ==============================
-; remember to run termux-setup-storage first
+; remember to run neoterm-setup-storage first
 [internal]
    comment = Internal storage
-   path = @TERMUX_HOME@/storage/shared
+   path = @NEOTERM_HOME@/storage/shared
    vfs objects = aio_pthread
    aio_pthread:aio open = yes
    read only = no

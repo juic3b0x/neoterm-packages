@@ -6,7 +6,7 @@ diff -uNr slang-2.3.2/slsh/lib/rline/editor.sl slang-2.3.2.mod/slsh/lib/rline/ed
  private define open_tmp_file (prefix, ext)
  {
 -   variable dir, dirs = ["/tmp", "$HOME"$];
-+   variable dir, dirs = ["@TERMUX_PREFIX@/tmp", "$HOME"$];
++   variable dir, dirs = ["@NEOTERM_PREFIX@/tmp", "$HOME"$];
     if (__is_initialized (&RLine_Tmp_Dir))
       dirs = [RLine_Tmp_Dir, dirs];
  

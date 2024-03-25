@@ -5,7 +5,7 @@
  	dup2(utilPipe[1], STDERR_FILENO);
  
 -	const char *shell = getenv("SHELL") ?: "/bin/sh";
-+	const char *shell = getenv("SHELL") ?: "@TERMUX_PREFIX@/bin/sh";
++	const char *shell = getenv("SHELL") ?: "@NEOTERM_PREFIX@/bin/sh";
  	execl(shell, shell, "-c", params, NULL);
  	warn("%s", shell);
  	_exit(EX_UNAVAILABLE);

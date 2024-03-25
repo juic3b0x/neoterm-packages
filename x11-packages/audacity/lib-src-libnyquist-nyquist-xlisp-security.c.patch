@@ -1,4 +1,4 @@
-https://github.com/termux/termux-packages/issues/15852
+https://github.com/neoterm/neoterm-packages/issues/15852
 
 --- a/lib-src/libnyquist/nyquist/xlisp/security.c
 +++ b/lib-src/libnyquist/nyquist/xlisp/security.c

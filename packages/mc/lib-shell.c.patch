@@ -19,14 +19,14 @@ diff -u -r ../mc-4.8.17/lib/shell.c ./lib/shell.c
 -        mc_shell->path = g_strdup ("/bin/tcsh");
 -    else if (access ("/bin/csh", X_OK) == 0)
 -        mc_shell->path = g_strdup ("/bin/csh");
-+    if (access ("@TERMUX_PREFIX@/bin/bash", X_OK) == 0)
-+        mc_shell->path = g_strdup ("@TERMUX_PREFIX@/bin/bash");
-+    else if (access ("@TERMUX_PREFIX@/bin/ash", X_OK) == 0)
-+        mc_shell->path = g_strdup ("@TERMUX_PREFIX@/bin/ash");
-+    else if (access ("@TERMUX_PREFIX@/bin/dash", X_OK) == 0)
-+        mc_shell->path = g_strdup ("@TERMUX_PREFIX@/bin/dash");
-+    else if (access ("@TERMUX_PREFIX@/bin/zsh", X_OK) == 0)
-+        mc_shell->path = g_strdup ("@TERMUX_PREFIX@/bin/zsh");
++    if (access ("@NEOTERM_PREFIX@/bin/bash", X_OK) == 0)
++        mc_shell->path = g_strdup ("@NEOTERM_PREFIX@/bin/bash");
++    else if (access ("@NEOTERM_PREFIX@/bin/ash", X_OK) == 0)
++        mc_shell->path = g_strdup ("@NEOTERM_PREFIX@/bin/ash");
++    else if (access ("@NEOTERM_PREFIX@/bin/dash", X_OK) == 0)
++        mc_shell->path = g_strdup ("@NEOTERM_PREFIX@/bin/dash");
++    else if (access ("@NEOTERM_PREFIX@/bin/zsh", X_OK) == 0)
++        mc_shell->path = g_strdup ("@NEOTERM_PREFIX@/bin/zsh");
      /* No fish as fallback because it is so much different from other shells and
       * in a way exotic (even though user-friendly by name) that we should not
       * present it as a subshell without the user's explicit intention. We rather
@@ -35,7 +35,7 @@ diff -u -r ../mc-4.8.17/lib/shell.c ./lib/shell.c
      else
          /* Fallback and last resort: system default shell */
 -        mc_shell->path = g_strdup ("/bin/sh");
-+        mc_shell->path = g_strdup ("@TERMUX_PREFIX@/bin/sh");
++        mc_shell->path = g_strdup ("@NEOTERM_PREFIX@/bin/sh");
  
      return mc_shell;
  }

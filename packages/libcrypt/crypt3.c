@@ -1,6 +1,6 @@
 /**************************************************************************
 * Implementation of crypt(3) using routines in libcrypto from openssl for
-* use on Android in Termux.
+* use on Android in NeoTerm.
 *
 *  https://www.freebsd.org/cgi/man.cgi?crypt(3)
 *  http://man7.org/linux/man-pages/man3/crypt.3.html

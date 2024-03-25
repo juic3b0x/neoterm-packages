@@ -14,7 +14,7 @@ diff -uNr nelua-lang/Makefile nelua-lang.mod/Makefile
  
  # Install paths
 -PREFIX=/usr/local
-+PREFIX=@TERMUX_PREFIX@
++PREFIX=@NEOTERM_PREFIX@
  DPREFIX=$(DESTDIR)$(PREFIX)
  PREFIX_BIN=$(DPREFIX)/bin
  PREFIX_LIB=$(DPREFIX)/lib
@@ -23,7 +23,7 @@ diff -uNr nelua-lang/Makefile nelua-lang.mod/Makefile
  CACHE_DIR=.cache
  ifdef HOME
 -	CACHE_DIR=$(HOME)/.cache/nelua
-+	CACHE_DIR=@TERMUX_HOME@/.cache/nelua
++	CACHE_DIR=@NEOTERM_HOME@/.cache/nelua
  else ifdef USERPROFILE
  	CACHE_DIR=$(USERPROFILE)\\.cache\\nelua
  endif

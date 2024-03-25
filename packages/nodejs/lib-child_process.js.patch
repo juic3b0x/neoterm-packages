@@ -6,7 +6,7 @@ diff '--color=auto' -uNr node-v18.0.0.orig/lib/child_process.js node-v18.0.0/lib
          file = options.shell;
        else if (process.platform === 'android')
 -        file = '/system/bin/sh';
-+        file = '@TERMUX_PREFIX@/bin/sh';
++        file = '@NEOTERM_PREFIX@/bin/sh';
        else
          file = '/bin/sh';
        args = ['-c', command];

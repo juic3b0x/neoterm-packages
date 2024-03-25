@@ -12,7 +12,7 @@ diff -uNr abuild-3.2.0/abuild.conf abuild-3.2.0.mod/abuild.conf
  USE_COLORS=1
  
 -SRCDEST=/var/cache/distfiles
-+SRCDEST=@TERMUX_PREFIX@/var/cache/distfiles
++SRCDEST=@NEOTERM_PREFIX@/var/cache/distfiles
  
  # uncomment line below to store built packages in other location
  # The package will be stored as $REPODEST/$repo/$pkgname-$pkgver-r$pkgrel.apk

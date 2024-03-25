@@ -5,7 +5,7 @@
          # Lance Ellinghaus's syslog module
          # syslog daemon interface
 -        self.addext(Extension('syslog', ['syslogmodule.c']))
-+	# Termux: Add 'log' android library since we use android logging
++	# NeoTerm: Add 'log' android library since we use android logging
 +        self.addext(Extension('syslog', ['syslogmodule.c'], libraries=['log']))
  
          # Python interface to subinterpreter C-API.

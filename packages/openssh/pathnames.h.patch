@@ -6,7 +6,7 @@ diff -uNr openssh-portable-V_9_5_P1/pathnames.h openssh-portable-V_9_5_P1.mod/pa
   */
  #define _PATH_SSH_HOSTS_EQUIV		SSHDIR "/shosts.equiv"
 -#define _PATH_RHOSTS_EQUIV		"/etc/hosts.equiv"
-+#define _PATH_RHOSTS_EQUIV		"@TERMUX_PREFIX@/etc/hosts.equiv"
++#define _PATH_RHOSTS_EQUIV		"@NEOTERM_PREFIX@/etc/hosts.equiv"
  
  /*
   * Default location of askpass
@@ -15,13 +15,13 @@ diff -uNr openssh-portable-V_9_5_P1/pathnames.h openssh-portable-V_9_5_P1.mod/pa
  /* xauth for X11 forwarding */
  #ifndef _PATH_XAUTH
 -#define _PATH_XAUTH			"/usr/X11R6/bin/xauth"
-+#define _PATH_XAUTH			"@TERMUX_PREFIX@/bin/xauth"
++#define _PATH_XAUTH			"@NEOTERM_PREFIX@/bin/xauth"
  #endif
  
  /* UNIX domain socket for X11 server; displaynum will replace %u */
  #ifndef _PATH_UNIX_X
 -#define _PATH_UNIX_X "/tmp/.X11-unix/X%u"
-+#define _PATH_UNIX_X "@TERMUX_PREFIX@/tmp/.X11-unix/X%u"
++#define _PATH_UNIX_X "@NEOTERM_PREFIX@/tmp/.X11-unix/X%u"
  #endif
  
  /* for scp */
@@ -30,7 +30,7 @@ diff -uNr openssh-portable-V_9_5_P1/pathnames.h openssh-portable-V_9_5_P1.mod/pa
  /* for passwd change */
  #ifndef _PATH_PASSWD_PROG
 -#define _PATH_PASSWD_PROG             "/usr/bin/passwd"
-+#define _PATH_PASSWD_PROG             "@TERMUX_PREFIX@/bin/passwd"
++#define _PATH_PASSWD_PROG             "@NEOTERM_PREFIX@/bin/passwd"
  #endif
  
  #ifndef _PATH_LS

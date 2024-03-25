@@ -5,7 +5,7 @@
          tmpdir = getenv("TEMP");
          if (!tmpdir || !*tmpdir)
 -            tmpdir = "/tmp";
-+            tmpdir = "@TERMUX_PREFIX@/tmp";
++            tmpdir = "@NEOTERM_PREFIX@/tmp";
  
          int k = 0, extlen;
  

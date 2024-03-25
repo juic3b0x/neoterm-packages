@@ -1,6 +1,6 @@
 
-# Termux layout
-<Layout Termux>
+# NeoTerm layout
+<Layout NeoTerm>
     prefix:
     exec_prefix:   ${prefix}
     bindir:        ${exec_prefix}/bin

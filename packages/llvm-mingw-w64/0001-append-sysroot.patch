@@ -4,7 +4,7 @@
  FLAGS="$FLAGS -unwindlib=libunwind"
  FLAGS="$FLAGS -stdlib=libc++"
  FLAGS="$FLAGS -fuse-ld=lld"
-+FLAGS="$FLAGS --sysroot=@TERMUX_PREFIX@/opt/llvm-mingw-w64"
++FLAGS="$FLAGS --sysroot=@NEOTERM_PREFIX@/opt/llvm-mingw-w64"
  FLAGS="$FLAGS --end-no-unused-arguments"
  
  $CCACHE "$CLANG" $FLAGS "$@"

@@ -6,8 +6,8 @@
        '~' / '.lv2',
 -      '/usr/local' / get_option('libdir') / 'lv2',
 -      '/usr' / get_option('libdir') / 'lv2',
-+      '@TERMUX_PREFIX@/lib/lv2',
-+      '@TERMUX_PREFIX@/local/lib/lv2',
++      '@NEOTERM_PREFIX@/lib/lv2',
++      '@NEOTERM_PREFIX@/local/lib/lv2',
      ]
  
      default_lv2_path = ':'.join(lv2_dirs)

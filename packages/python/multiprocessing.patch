@@ -42,7 +42,7 @@ diff -uNr Python-3.10.1/Modules/_multiprocessing/posix-shm-extension.c Python-3.
 --- Python-3.10.1/Modules/_multiprocessing/posix-shm-extension.c        1970-01-01 08:00:00.000000000 +0800
 +++ Python-3.10.1.mod/Modules/_multiprocessing/posix-shm-extension.c    2022-02-12 13:25:30.306949200 +0800
 @@ -0,0 +1,76 @@
-+/* This file is a port of posix shared memory for Python3 on Termux Android, 
++/* This file is a port of posix shared memory for Python3 on NeoTerm Android, 
 +   based on musl-libc which is licensed under the following standard MIT 
 +   license. The ported files are listed as following.
 +
@@ -76,7 +76,7 @@ diff -uNr Python-3.10.1/Modules/_multiprocessing/posix-shm-extension.c Python-3.
 +#include <limits.h>    // NAME_MAX
 +#include <unistd.h>    // unlink()
 +
-+#define SHM_PREFIX "@TERMUX_PREFIX@/tmp/shm."
++#define SHM_PREFIX "@NEOTERM_PREFIX@/tmp/shm."
 +
 +static __inline__ char *__strchrnul(const char *s, int c)
 +{

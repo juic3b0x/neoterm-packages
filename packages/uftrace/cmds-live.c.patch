@@ -5,7 +5,7 @@
  {
  #define LIVE_NAME "uftrace-live-XXXXXX"
 -	char template[32] = "/tmp/" LIVE_NAME;
-+	char template[strlen("@TERMUX_PREFIX@") + 32] = "@TERMUX_PREFIX@/tmp/" LIVE_NAME;
++	char template[strlen("@NEOTERM_PREFIX@") + 32] = "@NEOTERM_PREFIX@/tmp/" LIVE_NAME;
  	int fd;
  	struct sigaction sa = {
  		.sa_flags = SA_RESETHAND,
@@ -14,7 +14,7 @@
  
  			if (errno != EPERM && errno != ENOENT)
 -				pr_err("cannot access to /tmp");
-+				pr_err("cannot access to @TERMUX_PREFIX@/tmp");
++				pr_err("cannot access to @NEOTERM_PREFIX@/tmp");
  
  			fd = mkstemp(template);
  

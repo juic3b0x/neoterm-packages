@@ -5,7 +5,7 @@ diff -uNr mobile-ec285598849a27f681ea6269342cf03cf382eb56/src/java.base/share/na
  #include "java.h"
  #include "jni.h"
  
-+#ifdef __TERMUX__
++#ifdef __NEOTERM__
 +#include <stdbool.h>
 +#include <dlfcn.h>
 +static void android_disable_tags() {

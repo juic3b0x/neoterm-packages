@@ -14,12 +14,12 @@
  # which is probably a good idea).
  
 -JETCDIR = /etc/jove
-+JETCDIR = @TERMUX_PREFIX@/etc/jove
++JETCDIR = @NEOTERM_PREFIX@/etc/jove
  DETCDIR = $(DESTDIR)$(JETCDIR)
 -JTMPDIR = /var/tmp
 -JRECDIR = /var/lib/jove/preserve
-+JTMPDIR = @TERMUX_PREFIX@/tmp
-+JRECDIR = @TERMUX_PREFIX@/var/lib/jove/preserve
++JTMPDIR = @NEOTERM_PREFIX@/tmp
++JRECDIR = @NEOTERM_PREFIX@/var/lib/jove/preserve
  DRECDIR = $(DESTDIR)$(JRECDIR)
  
  # Install permission for DRECDIR
@@ -28,7 +28,7 @@
  
  # DFLTSHELL is the default shell invoked by JOVE.
 -DFLTSHELL = /bin/sh
-+DFLTSHELL = @TERMUX_PREFIX@/bin/sh
++DFLTSHELL = @NEOTERM_PREFIX@/bin/sh
  
  # The install commands of BSD and System V differ in unpleasant ways:
  # -c: copy (BSD); -c dir: destination directory (SysV)

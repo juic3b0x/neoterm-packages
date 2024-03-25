@@ -5,7 +5,7 @@
  const inline static gchar* VTE_SHELL_DEFAULT        {"/bin/zsh"};
  #else
 -const inline static gchar* VTE_SHELL_DEFAULT        {"/bin/bash"};
-+const inline static gchar* VTE_SHELL_DEFAULT        {"@TERMUX_PREFIX@/bin/bash"};
++const inline static gchar* VTE_SHELL_DEFAULT        {"@NEOTERM_PREFIX@/bin/bash"};
  #endif
  const inline static gchar* STYLE_SCHEME_LIGHT       {"classic"};
  const inline static gchar* STYLE_SCHEME_DARK        {"cobalt"};

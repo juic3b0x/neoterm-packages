@@ -5,7 +5,7 @@
              process-environment))
      (apply #'start-process name buffer
 -	   "/bin/sh" "-c"
-+	   "@TERMUX_PREFIX@/bin/sh" "-c"
++	   "@NEOTERM_PREFIX@/bin/sh" "-c"
  	   (format "stty -nl echo rows %d columns %d sane 2>%s;\
  if [ $1 = .. ]; then shift; fi; exec \"$@\""
  		   term-height term-width null-device)

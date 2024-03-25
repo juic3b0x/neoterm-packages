@@ -1,31 +1,31 @@
-TERMUX_PKG_HOMEPAGE=https://ninja-build.org
-TERMUX_PKG_DESCRIPTION="A small build system with a focus on speed"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.11.1"
-TERMUX_PKG_SRCURL=https://github.com/ninja-build/ninja/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea
-TERMUX_PKG_AUTO_UPDATE=true
-TERMUX_PKG_DEPENDS="libc++, libandroid-spawn"
+NEOTERM_PKG_HOMEPAGE=https://ninja-build.org
+NEOTERM_PKG_DESCRIPTION="A small build system with a focus on speed"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.11.1"
+NEOTERM_PKG_SRCURL=https://github.com/ninja-build/ninja/archive/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=31747ae633213f1eda3842686f83c2aa1412e0f5691d1c14dbbcc67fe7400cea
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, libandroid-spawn"
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	CXXFLAGS+=" $CPPFLAGS"
 	LDFLAGS+=" -landroid-spawn"
 }
 
-termux_step_configure() {
-	$TERMUX_PKG_SRCDIR/configure.py
+neoterm_step_configure() {
+	$NEOTERM_PKG_SRCDIR/configure.py
 }
 
-termux_step_make() {
-	if $TERMUX_ON_DEVICE_BUILD; then
-		$TERMUX_PKG_SRCDIR/configure.py --bootstrap
+neoterm_step_make() {
+	if $NEOTERM_ON_DEVICE_BUILD; then
+		$NEOTERM_PKG_SRCDIR/configure.py --bootstrap
 	else
-		termux_setup_ninja
-		ninja -j $TERMUX_MAKE_PROCESSES
+		neoterm_setup_ninja
+		ninja -j $NEOTERM_MAKE_PROCESSES
 	fi
 }
 
-termux_step_make_install() {
-	cp ninja $TERMUX_PREFIX/bin
+neoterm_step_make_install() {
+	cp ninja $NEOTERM_PREFIX/bin
 }

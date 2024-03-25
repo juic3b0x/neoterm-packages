@@ -39,7 +39,7 @@
  
      # Locating libPNG
 -    libpng = shutil.which("libpng-config")
-+    libpng = "@TERMUX_PREFIX@/bin/libpng-config"
++    libpng = "@NEOTERM_PREFIX@/bin/libpng-config"
      pngfix = shutil.which("pngfix")
      png_found = libpng is not None or pngfix is not None
  
@@ -61,7 +61,7 @@
  
      # Locating ffmpeg
 -    ffmpeg_exe = shutil.which("ffmpeg")
-+    ffmpeg_exe = "@TERMUX_PREFIX@/bin/ffmpeg"
++    ffmpeg_exe = "@NEOTERM_PREFIX@/bin/ffmpeg"
      has_ffmpeg = ffmpeg_exe is not None
      ffmpeg_version = None
      # FIXME: Building torchvision with ffmpeg on MacOS or with Python 3.9

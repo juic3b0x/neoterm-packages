@@ -5,7 +5,7 @@
      return Qnil;
  
 -  p = USER_FULL_NAME;
-+  p = "termux";
++  p = "neoterm";
    /* Chop off everything after the first comma, since 'pw_gecos' is a
       comma-separated list. */
    q = strchr (p, ',');

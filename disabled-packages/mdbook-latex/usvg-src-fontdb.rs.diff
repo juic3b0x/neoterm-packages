@@ -7,8 +7,8 @@
 +#[cfg(target_os = "android")]
 +fn load_all_fonts() -> Vec<FontPath> {
 +    let mut paths = Vec::new();
-+    load_fonts_from("@TERMUX_PREFIX@/share/fonts/", &mut paths);
-+    load_fonts_from("@TERMUX_PREFIX@/local/share/fonts/", &mut paths);
++    load_fonts_from("@NEOTERM_PREFIX@/share/fonts/", &mut paths);
++    load_fonts_from("@NEOTERM_PREFIX@/local/share/fonts/", &mut paths);
 +    load_fonts_from("/system/fonts/", &mut paths);
 +
 +    if let Ok(ref home) = std::env::var("HOME") {

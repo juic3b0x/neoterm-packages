@@ -6,8 +6,8 @@
          }
 -        all_data_paths[i++] = lib_stralloc("/usr/share/1oom");
 -        all_data_paths[i++] = lib_stralloc("/usr/local/share/1oom");
-+        all_data_paths[i++] = lib_stralloc("@TERMUX_PREFIX@/share/1oom");
-+        all_data_paths[i++] = lib_stralloc("@TERMUX_PREFIX@/local/share/1oom");
++        all_data_paths[i++] = lib_stralloc("@NEOTERM_PREFIX@/share/1oom");
++        all_data_paths[i++] = lib_stralloc("@NEOTERM_PREFIX@/local/share/1oom");
          all_data_paths[i++] = lib_stralloc(".");
          all_data_paths[i] = NULL;
          num_data_paths = i;

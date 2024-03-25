@@ -6,7 +6,7 @@ diff -uNr Hilbish-2.1.2/Taskfile.yaml Hilbish-2.1.2.mod/Taskfile.yaml
  
  vars:
 -  PREFIX: '{{default "/usr/local" .PREFIX}}'
-+  PREFIX: '{{default "@TERMUX_PREFIX@" .PREFIX}}'
++  PREFIX: '{{default "@NEOTERM_PREFIX@" .PREFIX}}'
    bindir__: '{{.PREFIX}}/bin'
    BINDIR: '{{default .bindir__ .BINDIR}}'
    libdir__: '{{.PREFIX}}/share/hilbish'
@@ -24,7 +24,7 @@ diff -uNr Hilbish-2.1.2/Taskfile.yaml Hilbish-2.1.2.mod/Taskfile.yaml
        - mkdir -p "{{.DESTDIR}}{{.LIBDIR}}"
        - cp -r libs docs emmyLuaDocs nature .hilbishrc.lua {{.DESTDIR}}{{.LIBDIR}}
 -      - grep -qxF "{{.DESTDIR}}{{.BINDIR}}/hilbish" /etc/shells || echo "{{.DESTDIR}}{{.BINDIR}}/hilbish" >> /etc/shells
-+      - grep -qxF "{{.DESTDIR}}{{.BINDIR}}/hilbish" @TERMUX_PREFIX@/etc/shells || echo "{{.DESTDIR}}{{.BINDIR}}/hilbish" >> @TERMUX_PREFIX@/etc/shells
++      - grep -qxF "{{.DESTDIR}}{{.BINDIR}}/hilbish" @NEOTERM_PREFIX@/etc/shells || echo "{{.DESTDIR}}{{.BINDIR}}/hilbish" >> @NEOTERM_PREFIX@/etc/shells
  
    uninstall:
      cmds:
@@ -36,7 +36,7 @@ diff -uNr Hilbish-2.1.2/vars_linux.go Hilbish-2.1.2.mod/vars_linux.go
  	.. hilbish.userDir.config	.. '/hilbish/?/?.lua;'
  	.. hilbish.userDir.config	.. '/hilbish/?.lua'`
 -	dataDir = "/usr/local/share/hilbish"
-+	dataDir = "@TERMUX_PREFIX@/share/hilbish"
++	dataDir = "@NEOTERM_PREFIX@/share/hilbish"
  	preloadPath = dataDir + "/nature/init.lua"
  	sampleConfPath = dataDir + "/.hilbishrc.lua" // Path to default/sample config
  	defaultConfDir = ""

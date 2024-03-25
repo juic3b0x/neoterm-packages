@@ -6,7 +6,7 @@ diff -uNr recordmydesktop-0.3.8.1/src/rmd_initialize_data.c recordmydesktop-0.3.
      char *tmpdir = getenv("TMPDIR");
      if (tmpdir == NULL) {
 -        tmpdir = "/tmp";
-+        tmpdir = "@TERMUX_PREFIX@/tmp";
++        tmpdir = "@NEOTERM_PREFIX@/tmp";
      }
      args->workdir = strdup(tmpdir);
  

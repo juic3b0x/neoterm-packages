@@ -1,20 +1,20 @@
-TERMUX_SUBPKG_DESCRIPTION="Tkinter support for PyPy"
-TERMUX_SUBPKG_DEPENDS="tk"
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_DESCRIPTION="Tkinter support for PyPy"
+NEOTERM_SUBPKG_DEPENDS="tk"
+NEOTERM_SUBPKG_INCLUDE="
 opt/pypy/lib_pypy/_tkinter/*
 "
 
-termux_step_create_subpkg_debscripts() {
+neoterm_step_create_subpkg_debscripts() {
 	# Pre-rm script to cleanup runtime-generated files.
 	cat <<- PRERM_EOF > ./prerm
-	#!$TERMUX_PREFIX/bin/sh
+	#!$NEOTERM_PREFIX/bin/sh
 
-	if [ "$TERMUX_PACKAGE_FORMAT" != "pacman" ] && [ "\$1" != "remove" ]; then
+	if [ "$NEOTERM_PACKAGE_FORMAT" != "pacman" ] && [ "\$1" != "remove" ]; then
 	    exit 0
 	fi
 
 	echo "Deleting *.pyc..."
-	find $TERMUX_PREFIX/opt/pypy/lib_pypy/_tkinter/ | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
+	find $NEOTERM_PREFIX/opt/pypy/lib_pypy/_tkinter/ | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf
 
 	exit 0
 	PRERM_EOF

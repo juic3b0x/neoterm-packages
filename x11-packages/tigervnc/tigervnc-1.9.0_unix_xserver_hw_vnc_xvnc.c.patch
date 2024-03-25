@@ -6,15 +6,15 @@ diff -uNr tigervnc-1.9.0/unix/xserver/hw/vnc/xvnc.c tigervnc-1.9.0.mod/unix/xser
      if (vncIsTCPPortUsed(6000+num))
          return FALSE;
 -    sprintf(file, "/tmp/.X%d-lock", num);
-+    sprintf(file, "@TERMUX_PREFIX@/tmp/.X%d-lock", num);
++    sprintf(file, "@NEOTERM_PREFIX@/tmp/.X%d-lock", num);
      if (access(file, F_OK) == 0)
          return FALSE;
 -    sprintf(file, "/tmp/.X11-unix/X%d", num);
-+    sprintf(file, "@TERMUX_PREFIX@/tmp/.X11-unix/X%d", num);
++    sprintf(file, "@NEOTERM_PREFIX@/tmp/.X11-unix/X%d", num);
      if (access(file, F_OK) == 0)
          return FALSE;
 -    sprintf(file, "/usr/spool/sockets/X11/%d", num);
-+    sprintf(file, "@TERMUX_PREFIX@/spool/sockets/X11/%d", num);
++    sprintf(file, "@NEOTERM_PREFIX@/spool/sockets/X11/%d", num);
      if (access(file, F_OK) == 0)
          return FALSE;
      return TRUE;

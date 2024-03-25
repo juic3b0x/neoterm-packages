@@ -6,7 +6,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_brotlilib.m4 ugrep-4.3.3.mod/m4/ax_check_brotl
  #
  [AC_MSG_CHECKING(if brotli is wanted)
 -brotli_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+brotli_places="@TERMUX_PREFIX@"
++brotli_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([brotli],
  [  --with-brotli=DIR       root directory path of brotli library installation
                            @<:@defaults to /usr/local or /usr if not found in
@@ -18,7 +18,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_bz2lib.m4 ugrep-4.3.3.mod/m4/ax_check_bz2lib.m
  #
  [AC_MSG_CHECKING(if bzlib is wanted)
 -bzlib_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+bzlib_places="@TERMUX_PREFIX@"
++bzlib_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([bzlib],
  [  --with-bzlib=DIR        root directory path of bzlib installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@
@@ -30,7 +30,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_bzip3lib.m4 ugrep-4.3.3.mod/m4/ax_check_bzip3l
  #
  [AC_MSG_CHECKING(if bzip3 is wanted)
 -bzip3_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+bzip3_places="@TERMUX_PREFIX@"
++bzip3_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([bzip3],
  [  --with-bzip3=DIR        root directory path of bzip3 library installation
                            @<:@defaults to /usr/local or /usr if not found in
@@ -42,7 +42,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_lz4lib.m4 ugrep-4.3.3.mod/m4/ax_check_lz4lib.m
  #
  [AC_MSG_CHECKING(if lz4 is wanted)
 -lz4_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+lz4_places="@TERMUX_PREFIX@"
++lz4_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([lz4],
  [  --with-lz4=DIR          root directory path of lz4 installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@
@@ -54,7 +54,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_lzmalib.m4 ugrep-4.3.3.mod/m4/ax_check_lzmalib
  #
  [AC_MSG_CHECKING(if lzma is wanted)
 -lzma_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+lzma_places="@TERMUX_PREFIX@"
++lzma_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([lzma],
  [  --with-lzma=DIR         root directory path of lzma installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@
@@ -66,7 +66,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_pcre2.m4 ugrep-4.3.3.mod/m4/ax_check_pcre2.m4
  #
  [AC_MSG_CHECKING(if PCRE2 is wanted)
 -pcre2_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+pcre2_places="@TERMUX_PREFIX@"
++pcre2_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([pcre2],
  [  --with-pcre2=DIR        root directory path of PCRE2 installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@
@@ -78,7 +78,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_zlib.m4 ugrep-4.3.3.mod/m4/ax_check_zlib.m4
  #
  [AC_MSG_CHECKING(if zlib is wanted)
 -zlib_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+zlib_places="@TERMUX_PREFIX@"
++zlib_places="@NEOTERM_PREFIX@"
  AC_ARG_WITH([zlib],
  [  --with-zlib=DIR         root directory path of zlib installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@
@@ -90,7 +90,7 @@ diff -uNr ugrep-4.3.3/m4/ax_check_zstdlib.m4 ugrep-4.3.3.mod/m4/ax_check_zstdlib
  #
  [AC_MSG_CHECKING(if zstd is wanted)
 -zstd_places="/usr/local /usr /opt/homebrew /opt/local /sw"
-+zstd_places="@TERMUX_RPEFIX@"
++zstd_places="@NEOTERM_RPEFIX@"
  AC_ARG_WITH([zstd],
  [  --with-zstd=DIR         root directory path of zstd installation @<:@defaults to
                            /usr/local or /usr if not found in /usr/local@:>@

@@ -6,7 +6,7 @@ diff -u -r ../ranger-1.7.0/ranger/ext/rifle.py ./ranger/ext/rifle.py
                      prefix = ['sudo', '-E', 'su', '-mc']
                  else:
 -                    prefix = ['/bin/sh', '-c']
-+                    prefix = ['@TERMUX_PREFIX@/bin/sh', '-c']
++                    prefix = ['@NEOTERM_PREFIX@/bin/sh', '-c']
  
                  cmd = prefix + [command]
                  if 't' in flags:

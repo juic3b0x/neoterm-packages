@@ -1,15 +1,15 @@
-TERMUX_SUBPKG_DESCRIPTION="units_cur Python script"
-TERMUX_SUBPKG_INCLUDE="
+NEOTERM_SUBPKG_DESCRIPTION="units_cur Python script"
+NEOTERM_SUBPKG_INCLUDE="
 bin/units_cur
 "
-TERMUX_SUBPKG_PLATFORM_INDEPENDENT=true
-TERMUX_SUBPKG_DEPENDS="python, python-pip"
-TERMUX_SUBPKG_BREAKS="units (<< 2.22)"
-TERMUX_SUBPKG_REPLACES="units (<< 2.22)"
+NEOTERM_SUBPKG_PLATFORM_INDEPENDENT=true
+NEOTERM_SUBPKG_DEPENDS="python, python-pip"
+NEOTERM_SUBPKG_BREAKS="units (<< 2.22)"
+NEOTERM_SUBPKG_REPLACES="units (<< 2.22)"
 
-termux_step_create_subpkg_debscripts() {
+neoterm_step_create_subpkg_debscripts() {
 	cat <<- EOF > ./postinst
-	#!$TERMUX_PREFIX/bin/sh
+	#!$NEOTERM_PREFIX/bin/sh
 	echo "Installing dependencies through pip..."
 	pip3 install requests
 	EOF

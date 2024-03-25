@@ -4,7 +4,7 @@ diff -u -r ../p7zip_15.14.1/makefile.android_arm ./makefile.android_arm
 @@ -1,41 +1,29 @@
  #
 -# makefile for ANDROID (generic ARM)
-+# makefile for ANDROID with Termux
++# makefile for ANDROID with NeoTerm
  #
  # export NDK=<ndk_home>
  # tested with android-ndk-r8c-linux-x86

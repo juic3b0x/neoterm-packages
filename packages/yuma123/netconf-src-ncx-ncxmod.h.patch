@@ -5,7 +5,7 @@
  
  /* per user yangcli internal data home when $HOME not defined */
 -#define NCXMOD_TEMP_YUMA_DIR (const xmlChar *)"/tmp/yuma"
-+#define NCXMOD_TEMP_YUMA_DIR (const xmlChar *)"@TERMUX_PREFIX@/tmp/yuma"
++#define NCXMOD_TEMP_YUMA_DIR (const xmlChar *)"@NEOTERM_PREFIX@/tmp/yuma"
  
  /* Yuma work directory name */
  #define NCXMOD_YUMA_DIRNAME    (const xmlChar *)".yuma"
@@ -14,7 +14,7 @@
   * appended to ncxmod_yumadir_path
   */
 -#define NCXMOD_TEMP_DIR (const xmlChar *)"/tmp"
-+#define NCXMOD_TEMP_DIR (const xmlChar *)"@TERMUX_PREFIX@/tmp"
++#define NCXMOD_TEMP_DIR (const xmlChar *)"@NEOTERM_PREFIX@/tmp"
  
  /********************************************************************
  *								    *

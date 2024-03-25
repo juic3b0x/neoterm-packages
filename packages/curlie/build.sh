@@ -1,20 +1,20 @@
-TERMUX_PKG_HOMEPAGE=https://curlie.io/
-TERMUX_PKG_DESCRIPTION="The power of curl, the ease of use of httpie"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.7.2"
-TERMUX_PKG_SRCURL=git+https://github.com/rs/curlie
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_HOMEPAGE=https://curlie.io/
+NEOTERM_PKG_DESCRIPTION="The power of curl, the ease of use of httpie"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.7.2"
+NEOTERM_PKG_SRCURL=git+https://github.com/rs/curlie
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_AUTO_UPDATE=true
 
-termux_step_make() {
-	termux_setup_golang
+neoterm_step_make() {
+	neoterm_setup_golang
 
 	go mod init || :
 	go mod tidy
 	go build
 }
 
-termux_step_make_install() {
-	install -Dm700 -t $TERMUX_PREFIX/bin curlie
+neoterm_step_make_install() {
+	install -Dm700 -t $NEOTERM_PREFIX/bin curlie
 }

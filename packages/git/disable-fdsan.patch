@@ -15,7 +15,7 @@ diff -uNr git-2.36.1/common-main.c git-2.36.1.mod/common-main.c
  	signal(SIGPIPE, SIG_DFL);
  }
  
-+static inline void termux_disable_fdsan() {
++static inline void neoterm_disable_fdsan() {
 +	// For Android 11+.
 +	void *lib_handle = dlopen("libc.so", RTLD_LAZY);
 +	if (lib_handle) {
@@ -32,7 +32,7 @@ diff -uNr git-2.36.1/common-main.c git-2.36.1.mod/common-main.c
  	int result;
  	struct strbuf tmp = STRBUF_INIT;
  
-+	termux_disable_fdsan();
++	neoterm_disable_fdsan();
 +
  	trace2_initialize_clock();
  

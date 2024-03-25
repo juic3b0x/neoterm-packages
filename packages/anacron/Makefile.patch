@@ -16,8 +16,8 @@
  # Only absolute paths here, please
 -SPOOLDIR = /var/spool/anacron
 -ANACRONTAB = /etc/anacrontab
-+SPOOLDIR = @TERMUX_PREFIX@/var/spool/anacron
-+ANACRONTAB = @TERMUX_PREFIX@/etc/anacrontab
++SPOOLDIR = @NEOTERM_PREFIX@/var/spool/anacron
++ANACRONTAB = @NEOTERM_PREFIX@/etc/anacrontab
  
  RELEASE = 2.3
  package_name = anacron-$(RELEASE)

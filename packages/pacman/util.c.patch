@@ -1,6 +1,6 @@
-diff -uNr pacman-6.0.0/lib/libalpm/util.c pacman-termux/lib/libalpm/util.c
+diff -uNr pacman-6.0.0/lib/libalpm/util.c pacman-neoterm/lib/libalpm/util.c
 --- pacman-6.0.0/lib/libalpm/util.c	2021-05-20 06:38:45.948119900 +0300
-+++ pacman-termux/lib/libalpm/util.c	2021-10-04 16:00:39.000000000 +0300
++++ pacman-neoterm/lib/libalpm/util.c	2021-10-04 16:00:39.000000000 +0300
 @@ -650,10 +650,6 @@
  		}
  
@@ -26,7 +26,7 @@ diff -uNr pacman-6.0.0/lib/libalpm/util.c pacman-termux/lib/libalpm/util.c
  		/* TMPDIR was good, we can use it */
  	} else {
 -		tmpdir = "/tmp";
-+		tmpdir = "@TERMUX_PREFIX@/tmp";
++		tmpdir = "@NEOTERM_PREFIX@/tmp";
  	}
  	alpm_option_add_cachedir(handle, tmpdir);
  	cachedir = handle->cachedirs->prev->data;

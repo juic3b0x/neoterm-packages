@@ -5,7 +5,7 @@ diff -uNr dvtm-0.15/dvtm-status dvtm-0.15.mod/dvtm-status
  #!/bin/sh
  
 -FIFO="/tmp/dvtm-status.$$"
-+FIFO="@TERMUX_PREFIX@/tmp/dvtm-status.$$"
++FIFO="@NEOTERM_PREFIX@/tmp/dvtm-status.$$"
  
  [ -p "$FIFO" ] || mkfifo -m 600 "$FIFO" || exit 1
  

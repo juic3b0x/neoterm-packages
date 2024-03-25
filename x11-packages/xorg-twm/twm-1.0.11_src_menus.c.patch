@@ -6,7 +6,7 @@ diff -uNr twm-1.0.11/src/menus.c twm-1.0.11.mod/src/menus.c
          break;
      case F_STARTWM:
 -        execlp("/bin/sh", "sh", "-c", action, (void *) NULL);
-+        execlp("@TERMUX_PREFIX@/bin/sh", "sh", "-c", action, (void *) NULL);
++        execlp("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", action, (void *) NULL);
          twmWarning("unable to start:  %s", *Argv);
          break;
  

@@ -6,7 +6,7 @@ diff -uNr apg-2.3.0b/Makefile apg-2.3.0b.mod/Makefile
  # Directories
  # Install dirs
 -INSTALL_PREFIX = /usr/local
-+INSTALL_PREFIX = @TERMUX_PREFIX@
++INSTALL_PREFIX = @NEOTERM_PREFIX@
  
  # Full default path is /usr/local/bin
  APG_BIN_DIR = /bin
@@ -30,7 +30,7 @@ diff -uNr apg-2.3.0b/Makefile apg-2.3.0b.mod/Makefile
  #
  STANDALONE_OPTIONS += -DAPG_USE_CRYPT
 -APG_CLIBS += -lcrypt
-+APG_CLIBS += -L@TERMUX_PREFIX@/lib -lcrypt
++APG_CLIBS += -L@NEOTERM_PREFIX@/lib -lcrypt
  
  ##################################################################
  # Support for cracklib
@@ -45,7 +45,7 @@ diff -uNr apg-2.3.0b/Makefile apg-2.3.0b.mod/Makefile
  # Compilation flags
  # You should comment the line below for AIX+native cc
 -CFLAGS = -Wall
-+CFLAGS = -Wall -I@TERMUX_PREFIX@/include -Wl,-rpath=@TERMUX_PREFIX@/lib -Wl,--enable-new-dtags
++CFLAGS = -Wall -I@NEOTERM_PREFIX@/include -Wl,-rpath=@NEOTERM_PREFIX@/lib -Wl,--enable-new-dtags
  
  ####################################################################
  # If you plan to install APG daemon you should look at lines below #

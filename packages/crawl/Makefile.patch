@@ -53,7 +53,7 @@
  endif
 
 -NC_LIBS := -L$(NC_PREFIX)/lib -l$(NCURSESLIB)
-+NC_LIBS := -L@TERMUX_PREFIX@/lib -lncurses
++NC_LIBS := -L@NEOTERM_PREFIX@/lib -lncurses
  NC_CFLAGS := -isystem $(NC_PREFIX)/include/$(NCURSESLIB)
 
  ifndef NO_PKGCONFIG

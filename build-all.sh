@@ -3,10 +3,10 @@
 
 set -e -u -o pipefail
 
-TERMUX_SCRIPTDIR=$(cd "$(realpath "$(dirname "$0")")"; pwd)
+NEOTERM_SCRIPTDIR=$(cd "$(realpath "$(dirname "$0")")"; pwd)
 
 # Store pid of current process in a file for docker__run_docker_exec_trap
-source "$TERMUX_SCRIPTDIR/scripts/utils/docker/docker.sh"; docker__create_docker_exec_pid_file
+source "$NEOTERM_SCRIPTDIR/scripts/utils/docker/docker.sh"; docker__create_docker_exec_pid_file
 
 
 if [ "$(uname -o)" = "Android" ] || [ -e "/system/bin/app_process" ]; then
@@ -14,13 +14,13 @@ if [ "$(uname -o)" = "Android" ] || [ -e "/system/bin/app_process" ]; then
 	exit 1
 fi
 
-# Read settings from .termuxrc if existing
-test -f "$HOME"/.termuxrc && . "$HOME"/.termuxrc
-: ${TERMUX_TOPDIR:="$HOME/.neoterm-build"}
-: ${TERMUX_ARCH:="aarch64"}
-: ${TERMUX_DEBUG_BUILD:=""}
-: ${TERMUX_INSTALL_DEPS:="-s"}
-# Set TERMUX_INSTALL_DEPS to -s unless set to -i
+# Read settings from .neotermrc if existing
+test -f "$HOME"/.neotermrc && . "$HOME"/.neotermrc
+: ${NEOTERM_TOPDIR:="$HOME/.neoterm-build"}
+: ${NEOTERM_ARCH:="aarch64"}
+: ${NEOTERM_DEBUG_BUILD:=""}
+: ${NEOTERM_INSTALL_DEPS:="-s"}
+# Set NEOTERM_INSTALL_DEPS to -s unless set to -i
 
 _show_usage() {
 	echo "Usage: ./build-all.sh [-a ARCH] [-d] [-i] [-o DIR]"
@@ -34,10 +34,10 @@ _show_usage() {
 
 while getopts :a:hdio: option; do
 case "$option" in
-	a) TERMUX_ARCH="$OPTARG";;
-	d) TERMUX_DEBUG_BUILD='-d';;
-	i) TERMUX_INSTALL_DEPS='-i';;
-	o) TERMUX_OUTPUT_DIR="$(realpath -m "$OPTARG")";;
+	a) NEOTERM_ARCH="$OPTARG";;
+	d) NEOTERM_DEBUG_BUILD='-d';;
+	i) NEOTERM_INSTALL_DEPS='-i';;
+	o) NEOTERM_OUTPUT_DIR="$(realpath -m "$OPTARG")";;
 	h) _show_usage;;
 	*) _show_usage >&2 ;;
 esac
@@ -45,13 +45,13 @@ done
 shift $((OPTIND-1))
 if [ "$#" -ne 0 ]; then _show_usage; fi
 
-if [[ ! "$TERMUX_ARCH" =~ ^(all|aarch64|arm|i686|x86_64)$ ]]; then
-	echo "ERROR: Invalid arch '$TERMUX_ARCH'" 1>&2
+if [[ ! "$NEOTERM_ARCH" =~ ^(all|aarch64|arm|i686|x86_64)$ ]]; then
+	echo "ERROR: Invalid arch '$NEOTERM_ARCH'" 1>&2
 	exit 1
 fi
 
 BUILDSCRIPT=$(dirname "$0")/build-package.sh
-BUILDALL_DIR=$TERMUX_TOPDIR/_buildall-$TERMUX_ARCH
+BUILDALL_DIR=$NEOTERM_TOPDIR/_buildall-$NEOTERM_ARCH
 BUILDORDER_FILE=$BUILDALL_DIR/buildorder.txt
 BUILDSTATUS_FILE=$BUILDALL_DIR/buildstatus.txt
 
@@ -59,7 +59,7 @@ if [ -e "$BUILDORDER_FILE" ]; then
 	echo "Using existing buildorder file: $BUILDORDER_FILE"
 else
 	mkdir -p "$BUILDALL_DIR"
-	"$TERMUX_SCRIPTDIR/scripts/buildorder.py" > "$BUILDORDER_FILE"
+	"$NEOTERM_SCRIPTDIR/scripts/buildorder.py" > "$BUILDORDER_FILE"
 fi
 if [ -e "$BUILDSTATUS_FILE" ]; then
 	echo "Continuing build-all from: $BUILDSTATUS_FILE"
@@ -78,8 +78,8 @@ while read -r PKG PKG_DIR; do
 
 	echo -n "Building $PKG... "
 	BUILD_START=$(date "+%s")
-	bash -x "$BUILDSCRIPT" -a "$TERMUX_ARCH" $TERMUX_DEBUG_BUILD \
-		${TERMUX_OUTPUT_DIR+-o $TERMUX_OUTPUT_DIR} $TERMUX_INSTALL_DEPS "$PKG_DIR" \
+	bash -x "$BUILDSCRIPT" -a "$NEOTERM_ARCH" $NEOTERM_DEBUG_BUILD \
+		${NEOTERM_OUTPUT_DIR+-o $NEOTERM_OUTPUT_DIR} $NEOTERM_INSTALL_DEPS "$PKG_DIR" \
 		> "$BUILDALL_DIR"/"${PKG}".out 2> "$BUILDALL_DIR"/"${PKG}".err
 	BUILD_END=$(date "+%s")
 	BUILD_SECONDS=$(( BUILD_END - BUILD_START ))

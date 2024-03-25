@@ -5,7 +5,7 @@ diff -uNr squid-4.12/src/ipc/mem/Segment.cc squid-4.12.mod/src/ipc/mem/Segment.c
  #include <unistd.h>
  #endif
  
-+static int termux_shm_unlink(const char *name) {
++static int neoterm_shm_unlink(const char *name) {
 +    size_t namelen;
 +    char *fname;
 +
@@ -19,14 +19,14 @@ diff -uNr squid-4.12/src/ipc/mem/Segment.cc squid-4.12.mod/src/ipc/mem/Segment.c
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    return unlink(fname);
 +}
 +
-+static int termux_shm_open(const char *name, int oflag, mode_t mode) {
++static int neoterm_shm_open(const char *name, int oflag, mode_t mode) {
 +    size_t namelen;
 +    char *fname;
 +    int fd;
@@ -41,9 +41,9 @@ diff -uNr squid-4.12/src/ipc/mem/Segment.cc squid-4.12.mod/src/ipc/mem/Segment.c
 +    }
 +
 +    namelen = strlen(name);
-+    fname = (char *) alloca(sizeof("@TERMUX_PREFIX@/tmp/") - 1 + namelen + 1);
-+    memcpy(fname, "@TERMUX_PREFIX@/tmp/", sizeof("@TERMUX_PREFIX@/tmp/") - 1);
-+    memcpy(fname + sizeof("@TERMUX_PREFIX@/tmp/") - 1, name, namelen + 1);
++    fname = (char *) alloca(sizeof("@NEOTERM_PREFIX@/tmp/") - 1 + namelen + 1);
++    memcpy(fname, "@NEOTERM_PREFIX@/tmp/", sizeof("@NEOTERM_PREFIX@/tmp/") - 1);
++    memcpy(fname + sizeof("@NEOTERM_PREFIX@/tmp/") - 1, name, namelen + 1);
 +
 +    fd = open(fname, oflag, mode);
 +    if (fd != -1) {
@@ -72,7 +72,7 @@ diff -uNr squid-4.12/src/ipc/mem/Segment.cc squid-4.12.mod/src/ipc/mem/Segment.c
      assert(theFD < 0);
  
 -    theFD = shm_open(theName.termedBuf(), O_RDWR, 0);
-+    theFD = termux_shm_open(theName.termedBuf(), O_RDWR, 0);
++    theFD = neoterm_shm_open(theName.termedBuf(), O_RDWR, 0);
      if (theFD < 0) {
          int xerrno = errno;
          debugs(54, 5, "shm_open " << theName << ": " << xstrerr(xerrno));
@@ -81,7 +81,7 @@ diff -uNr squid-4.12/src/ipc/mem/Segment.cc squid-4.12.mod/src/ipc/mem/Segment.c
  Ipc::Mem::Segment::createFresh(int &xerrno)
  {
 -    theFD = shm_open(theName.termedBuf(),
-+    theFD = termux_shm_open(theName.termedBuf(),
++    theFD = neoterm_shm_open(theName.termedBuf(),
                       O_EXCL | O_CREAT | O_RDWR,
                       S_IRUSR | S_IWUSR);
      xerrno = errno;
@@ -90,7 +90,7 @@ diff -uNr squid-4.12/src/ipc/mem/Segment.cc squid-4.12.mod/src/ipc/mem/Segment.c
  Ipc::Mem::Segment::unlink()
  {
 -    if (shm_unlink(theName.termedBuf()) != 0) {
-+    if (termux_shm_unlink(theName.termedBuf()) != 0) {
++    if (neoterm_shm_unlink(theName.termedBuf()) != 0) {
          int xerrno = errno;
          debugs(54, 5, "shm_unlink(" << theName << "): " << xstrerr(xerrno));
      } else

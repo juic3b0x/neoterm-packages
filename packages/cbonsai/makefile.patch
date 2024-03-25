@@ -8,7 +8,7 @@ diff -Naur cbonsai-v1.3.1/Makefile cbonsai-v1.3.1.mod/Makefile
  CFLAGS	+= -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -pedantic $(shell $(PKG_CONFIG) --cflags ncursesw panelw)
  LDLIBS	= $(shell $(PKG_CONFIG) --libs ncursesw panelw || echo "-lncursesw -ltinfo -lpanelw")
 -PREFIX	= /usr/local
-+PREFIX	= @TERMUX_PREFIX@
++PREFIX	= @NEOTERM_PREFIX@
  MANDIR	= $(PREFIX)/share/man
  
  cbonsai: cbonsai.c

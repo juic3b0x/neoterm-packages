@@ -5,7 +5,7 @@
          execl ("/usr/bin/sh", "sh", "-c", args, NULL);
  #else
 -        execl ("/bin/sh", "sh", "-c", args, NULL);
-+        execl ("@TERMUX_PREFIX@/bin/sh", "sh", "-c", args, NULL);
++        execl ("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", args, NULL);
  #endif
  
  
@@ -16,7 +16,7 @@
  
      } else {
 -	static char XmConst	c_include_dir[]= "/usr/include/";
-+	static char XmConst	c_include_dir[]= "@TERMUX_PREFIX@/include/";
++	static char XmConst	c_include_dir[]= "@NEOTERM_PREFIX@/include/";
  	Boolean			search_user_include=True;
  	Boolean			specific_directory=False;
  
@@ -27,7 +27,7 @@
      XmNrgbFile, XmCString, XmRString,
      sizeof(String), XtOffsetOf(XmColorSelectorRec, cs.rgb_file),
 -    XmRString, (XtPointer) "/usr/lib/X11/rgb.txt"
-+    XmRString, (XtPointer) "@TERMUX_PREFIX@/lib/X11/rgb.txt"
++    XmRString, (XtPointer) "@NEOTERM_PREFIX@/lib/X11/rgb.txt"
    },
  #endif
    {

@@ -6,7 +6,7 @@ diff -uNr fftw-3.3.6-pl1/api/import-system-wisdom.c fftw-3.3.6-pl1.mod/api/impor
  #  define WISDOM_DIR "/dev/env/DJDIR/etc/fftw/"
  #else
 -#  define WISDOM_DIR "/etc/fftw/"
-+#  define WISDOM_DIR "@TERMUX_PREFIX@/etc/fftw/"
++#  define WISDOM_DIR "@NEOTERM_PREFIX@/etc/fftw/"
  #endif
  
  int X(import_system_wisdom)(void)

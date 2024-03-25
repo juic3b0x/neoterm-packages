@@ -7,7 +7,7 @@ index 57c76b489..4fce27066 100644
              'xargs',
              '-0r',
 -            '/usr/lib/apt/apt-helper',
-+            '@TERMUX_PREFIX@/lib/apt/apt-helper',
++            '@NEOTERM_PREFIX@/lib/apt/apt-helper',
              @apt_options,
              'cat-file'
          );

@@ -1,13 +1,13 @@
-#!@TERMUX_PREFIX@/bin/sh
+#!@NEOTERM_PREFIX@/bin/sh
 
-PREFIX="@TERMUX_PREFIX@"
+PREFIX="@NEOTERM_PREFIX@"
 
 if [ `uname -o` = 'Android' ]; then
     echo "Patching Qt installation configuration files ..."
 
     ## Set qt spec path suitable for target.
     sed -i \
-        's|/lib/qt//mkspecs/termux-cross"|/lib/qt/mkspecs/termux"|g' \
+        's|/lib/qt//mkspecs/neoterm-cross"|/lib/qt/mkspecs/neoterm"|g' \
         "${PREFIX}/lib/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake"
 
     ## Make sure the cmake configurations point to the on-device programs instead of the host tools

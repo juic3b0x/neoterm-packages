@@ -4,7 +4,7 @@
  dbus_bool_t
  _dbus_verify_daemon_user (const char *user)
  {
-+/* Termux is a single-user environment. */
++/* NeoTerm is a single-user environment. */
 +#ifdef __ANDROID__
 +  return TRUE;
 +#else
@@ -21,7 +21,7 @@
  _dbus_change_to_daemon_user  (const char    *user,
                                DBusError     *error)
  {
-+/* Termux is a single-user environment. */
++/* NeoTerm is a single-user environment. */
 +#ifndef __ANDROID__
    dbus_uid_t uid;
    dbus_gid_t gid;

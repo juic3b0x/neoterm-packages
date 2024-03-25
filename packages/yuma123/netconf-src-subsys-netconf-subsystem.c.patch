@@ -5,7 +5,7 @@
      char  defname[21];
  
 -    strncpy(defname, "/tmp/subsys-err.log", 20);
-+    strncpy(defname, "@TERMUX_PREFIX@/tmp/subsys-err.log", 20);
++    strncpy(defname, "@NEOTERM_PREFIX@/tmp/subsys-err.log", 20);
      err_filename = defname;
      while ( arg_idx < argc-1 ) {
          if ( !strcmp( argv[arg_idx], "-filename" ) ||

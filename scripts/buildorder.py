@@ -5,10 +5,10 @@ import json, os, re, sys
 
 from itertools import filterfalse
 
-termux_arch = os.getenv('TERMUX_ARCH') or 'aarch64'
-termux_global_library = os.getenv('TERMUX_GLOBAL_LIBRARY') or 'false'
-termux_pkg_library = os.getenv('TERMUX_PACKAGE_LIBRARY') or 'bionic'
-termux_install_deps = os.getenv('TERMUX_INSTALL_DEPS') or 'false'
+neoterm_arch = os.getenv('NEOTERM_ARCH') or 'aarch64'
+neoterm_global_library = os.getenv('NEOTERM_GLOBAL_LIBRARY') or 'false'
+neoterm_pkg_library = os.getenv('NEOTERM_PACKAGE_LIBRARY') or 'bionic'
+neoterm_install_deps = os.getenv('NEOTERM_INSTALL_DEPS') or 'false'
 
 def unique_everseen(iterable, key=None):
     """List unique elements, preserving order. Remember all elements ever seen.
@@ -48,12 +48,12 @@ def parse_build_file_dependencies_with_vars(path, vars):
                 for dependency_value in re.split(',|\\|', dependencies_string):
                     # Replace parenthesis to ignore version qualifiers as in "gcc (>= 5.0)":
                     dependency_value = re.sub(r'\(.*?\)', '', dependency_value).strip()
-                    arch = os.getenv('TERMUX_ARCH')
+                    arch = os.getenv('NEOTERM_ARCH')
                     if arch is None:
                         arch = 'aarch64'
                     if arch == "x86_64":
                         arch = "x86-64"
-                    dependency_value = re.sub(r'\${TERMUX_ARCH/_/-}', arch, dependency_value)
+                    dependency_value = re.sub(r'\${NEOTERM_ARCH/_/-}', arch, dependency_value)
 
                     dependencies.append(dependency_value)
 
@@ -61,11 +61,11 @@ def parse_build_file_dependencies_with_vars(path, vars):
 
 def parse_build_file_dependencies(path):
     "Extract the dependencies of a build.sh or *.subpackage.sh file."
-    return parse_build_file_dependencies_with_vars(path, ('TERMUX_PKG_DEPENDS', 'TERMUX_PKG_BUILD_DEPENDS', 'TERMUX_SUBPKG_DEPENDS', 'TERMUX_PKG_DEVPACKAGE_DEPENDS'))
+    return parse_build_file_dependencies_with_vars(path, ('NEOTERM_PKG_DEPENDS', 'NEOTERM_PKG_BUILD_DEPENDS', 'NEOTERM_SUBPKG_DEPENDS', 'NEOTERM_PKG_DEVPACKAGE_DEPENDS'))
 
 def parse_build_file_antidependencies(path):
     "Extract the antidependencies of a build.sh file."
-    return parse_build_file_dependencies_with_vars(path, 'TERMUX_PKG_ANTI_BUILD_DEPENDS')
+    return parse_build_file_dependencies_with_vars(path, 'NEOTERM_PKG_ANTI_BUILD_DEPENDS')
 
 def parse_build_file_excluded_arches(path):
     "Extract the excluded arches specified in a build.sh or *.subpackage.sh file."
@@ -73,7 +73,7 @@ def parse_build_file_excluded_arches(path):
 
     with open(path, encoding="utf-8") as build_script:
         for line in build_script:
-            if line.startswith(('TERMUX_PKG_BLACKLISTED_ARCHES', 'TERMUX_SUBPKG_EXCLUDED_ARCHES')):
+            if line.startswith(('NEOTERM_PKG_BLACKLISTED_ARCHES', 'NEOTERM_SUBPKG_EXCLUDED_ARCHES')):
                 arches_string = line.split('ARCHES=')[1]
                 for char in "\"'\n":
                     arches_string = arches_string.replace(char, '')
@@ -93,7 +93,7 @@ def parse_build_file_variable_bool(path, var):
 
     return separate_subdeps == 'true'
 
-class TermuxPackage(object):
+class NeoTermPackage(object):
     "A main package definition represented by a directory with a build.sh file."
     def __init__(self, dir_path, fast_build_mode):
         self.dir = dir_path
@@ -111,10 +111,10 @@ class TermuxPackage(object):
         self.deps = parse_build_file_dependencies(build_sh_path)
         self.antideps = parse_build_file_antidependencies(build_sh_path)
         self.excluded_arches = parse_build_file_excluded_arches(build_sh_path)
-        self.only_installing = parse_build_file_variable_bool(build_sh_path, 'TERMUX_PKG_ONLY_INSTALLING')
-        self.separate_subdeps = parse_build_file_variable_bool(build_sh_path, 'TERMUX_PKG_SEPARATE_SUB_DEPENDS')
+        self.only_installing = parse_build_file_variable_bool(build_sh_path, 'NEOTERM_PKG_ONLY_INSTALLING')
+        self.separate_subdeps = parse_build_file_variable_bool(build_sh_path, 'NEOTERM_PKG_SEPARATE_SUB_DEPENDS')
 
-        if os.getenv('TERMUX_ON_DEVICE_BUILD') == "true" and termux_pkg_library == "bionic":
+        if os.getenv('NEOTERM_ON_DEVICE_BUILD') == "true" and neoterm_pkg_library == "bionic":
             always_deps = ['libc++']
             for dependency_name in always_deps:
                 if dependency_name not in self.deps and self.name not in always_deps:
@@ -126,13 +126,13 @@ class TermuxPackage(object):
         for filename in os.listdir(self.dir):
             if not filename.endswith('.subpackage.sh'):
                 continue
-            subpkg = TermuxSubPackage(self.dir + '/' + filename, self)
-            if termux_arch in subpkg.excluded_arches:
+            subpkg = NeoTermSubPackage(self.dir + '/' + filename, self)
+            if neoterm_arch in subpkg.excluded_arches:
                 continue
 
             self.subpkgs.append(subpkg)
 
-        subpkg = TermuxSubPackage(self.dir + '/' + self.name + '-static' + '.subpackage.sh', self, virtual=True)
+        subpkg = NeoTermSubPackage(self.dir + '/' + self.name + '-static' + '.subpackage.sh', self, virtual=True)
         self.subpkgs.append(subpkg)
 
         self.needed_by = set()  # Populated outside constructor, reverse of deps.
@@ -146,7 +146,7 @@ class TermuxPackage(object):
         is_root = dir_root == None
         if is_root:
             dir_root = self.dir
-        if is_root or termux_install_deps == 'false' or not self.separate_subdeps:
+        if is_root or neoterm_install_deps == 'false' or not self.separate_subdeps:
             for subpkg in self.subpkgs:
                 if f"{self.name}-static" != subpkg.name:
                     self.deps.add(subpkg.name)
@@ -156,7 +156,7 @@ class TermuxPackage(object):
             if not self.fast_build_mode or self.dir == dir_root:
                 self.deps.difference_update([subpkg.name for subpkg in self.subpkgs])
         for dependency_name in sorted(self.deps):
-            if termux_global_library == "true" and termux_pkg_library == "glibc" and "glibc" not in dependency_name.split("-"):
+            if neoterm_global_library == "true" and neoterm_pkg_library == "glibc" and "glibc" not in dependency_name.split("-"):
                 if "static" == dependency_name.split("-")[-1]:
                     mod_dependency_name = dependency_name.replace("-static", "-glibc-static")
                 else:
@@ -165,14 +165,14 @@ class TermuxPackage(object):
             if dependency_name not in self.pkgs_cache:
                 self.pkgs_cache.append(dependency_name)
                 dependency_package = pkgs_map[dependency_name]
-                if dependency_package.dir != dir_root and dependency_package.only_installing and termux_install_deps == 'false':
+                if dependency_package.dir != dir_root and dependency_package.only_installing and neoterm_install_deps == 'false':
                     continue
                 result += dependency_package.recursive_dependencies(pkgs_map, dir_root)
                 if dependency_package.dir != dir_root:
                     result += [dependency_package]
         return unique_everseen(result)
 
-class TermuxSubPackage:
+class NeoTermSubPackage:
     "A sub-package represented by a ${PACKAGE_NAME}.subpackage.sh file."
     def __init__(self, subpackage_file_path, parent, virtual=False):
         if parent is None:
@@ -212,7 +212,7 @@ class TermuxSubPackage:
         return unique_everseen(result)
 
 def read_packages_from_directories(directories, fast_build_mode, full_buildmode):
-    """Construct a map from package name to TermuxPackage.
+    """Construct a map from package name to NeoTermPackage.
     Subpackages are mapped to the parent package if fast_build_mode is false."""
     pkgs_map = {}
     all_packages = []
@@ -230,9 +230,9 @@ def read_packages_from_directories(directories, fast_build_mode, full_buildmode)
         for pkgdir_name in sorted(os.listdir(package_dir)):
             dir_path = package_dir + '/' + pkgdir_name
             if os.path.isfile(dir_path + '/build.sh'):
-                new_package = TermuxPackage(package_dir + '/' + pkgdir_name, fast_build_mode)
+                new_package = NeoTermPackage(package_dir + '/' + pkgdir_name, fast_build_mode)
 
-                if termux_arch in new_package.excluded_arches:
+                if neoterm_arch in new_package.excluded_arches:
                     continue
 
                 if new_package.name in pkgs_map:
@@ -242,7 +242,7 @@ def read_packages_from_directories(directories, fast_build_mode, full_buildmode)
                 all_packages.append(new_package)
 
                 for subpkg in new_package.subpkgs:
-                    if termux_arch in subpkg.excluded_arches:
+                    if neoterm_arch in subpkg.excluded_arches:
                         continue
                     if subpkg.name in pkgs_map:
                         die('Duplicated package: ' + subpkg.name)
@@ -257,7 +257,7 @@ def read_packages_from_directories(directories, fast_build_mode, full_buildmode)
             if dependency_name not in pkgs_map:
                 die('Package %s depends on non-existing package "%s"' % (pkg.name, dependency_name))
             dep_pkg = pkgs_map[dependency_name]
-            if fast_build_mode or not isinstance(pkg, TermuxSubPackage):
+            if fast_build_mode or not isinstance(pkg, NeoTermSubPackage):
                 dep_pkg.needed_by.add(pkg)
     return pkgs_map
 
@@ -265,7 +265,7 @@ def generate_full_buildorder(pkgs_map):
     "Generate a build order for building all packages."
     build_order = []
 
-    # List of all TermuxPackages without dependencies
+    # List of all NeoTermPackages without dependencies
     leaf_pkgs = [pkg for name, pkg in pkgs_map.items() if not pkg.deps]
 
     if not leaf_pkgs:
@@ -373,7 +373,7 @@ def main():
 
     for pkg in build_order:
         pkg_name = pkg.name
-        if termux_global_library == "true" and termux_pkg_library == "glibc" and "glibc" not in pkg_name.split("-"):
+        if neoterm_global_library == "true" and neoterm_pkg_library == "glibc" and "glibc" not in pkg_name.split("-"):
             pkg_name = pkg_name.replace("-static", "-glibc-static") if "static" == pkg_name.split("-")[-1] else f"{pkg_name}-glibc"
         print("%-30s %s" % (pkg_name, pkg.dir))
 

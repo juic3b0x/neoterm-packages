@@ -6,7 +6,7 @@ diff -uNr pngwriter-0.7.0/CMakeLists.txt pngwriter-0.7.0.mod/CMakeLists.txt
  # Targets #####################################################################
  #
 +
-+INCLUDE_DIRECTORIES(@TERMUX_PREFIX@/include/freetype2)
++INCLUDE_DIRECTORIES(@NEOTERM_PREFIX@/include/freetype2)
 +
  add_library(PNGwriter
      src/pngwriter.cc

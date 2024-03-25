@@ -5,7 +5,7 @@
  // Not supported in Android NDK before API 28.
  #if !defined(_WIN32) && !defined(__EMSCRIPTEN__) && \
 -    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28)
-+    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28 || defined(__TERMUX__))
++    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28 || defined(__NEOTERM__))
        const std::string basename = GetBaseName(filename);
        TemporaryFile in_file(basename, "pnm");
        TemporaryFile encoded_file(basename, "jpg");
@@ -16,7 +16,7 @@
  // until API 28.
  #if __has_include(<glob.h>) && \
 -    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28)
-+    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28 || defined(__TERMUX__))
++    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28 || defined(__NEOTERM__))
  #undef HAS_GLOB
  #define HAS_GLOB 1
  #endif  // __has_include(<glob.h>)
@@ -27,7 +27,7 @@
  // Not supported in Android NDK before API 28.
  #if !defined(_WIN32) && !defined(__EMSCRIPTEN__) && \
 -    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28)
-+    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28 || defined(__TERMUX__))
++    (!defined(__ANDROID_API__) || __ANDROID_API__ >= 28 || defined(__NEOTERM__))
  
  #include <libgen.h>
  #include <spawn.h>

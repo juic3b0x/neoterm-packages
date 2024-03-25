@@ -5,7 +5,7 @@
  #define DEFAULT_PERF_PROF_PATH DEFAULT_PERF_BASIC_PROF_PATH
  #else
 -#define DEFAULT_PERF_BASIC_PROF_PATH "/tmp"
-+#define DEFAULT_PERF_BASIC_PROF_PATH "@TERMUX_PREFIX@/tmp"
++#define DEFAULT_PERF_BASIC_PROF_PATH "@NEOTERM_PREFIX@/tmp"
  #define DEFAULT_PERF_PROF_PATH "."
  #endif
  
@@ -14,7 +14,7 @@
  #undef DEFINE_PERF_PROF_IMPLICATION
  
 -DEFINE_STRING(gc_fake_mmap, "/tmp/__v8_gc__",
-+DEFINE_STRING(gc_fake_mmap, "@TERMUX_PREFIX@/tmp/__v8_gc__",
++DEFINE_STRING(gc_fake_mmap, "@NEOTERM_PREFIX@/tmp/__v8_gc__",
                "Specify the name of the file for fake gc mmap used in ll_prof")
  
  DEFINE_BOOL(redirect_code_traces, false,

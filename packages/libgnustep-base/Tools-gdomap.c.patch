@@ -5,7 +5,7 @@
    if (0 == jail)
      {
 -      jail = "/tmp";    /* Not great, but better than nothing */
-+      jail = "@TERMUX_PREFIX@/tmp";    /* Not great, but better than nothing */
++      jail = "@NEOTERM_PREFIX@/tmp";    /* Not great, but better than nothing */
      }
    if (chdir(jail) < 0)
      {

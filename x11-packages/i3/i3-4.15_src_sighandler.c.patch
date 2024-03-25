@@ -6,7 +6,7 @@ diff -uNr i3-4.15/src/sighandler.c i3-4.15.mod/src/sighandler.c
      char *tmpdir = getenv("TMPDIR");
      if (tmpdir == NULL)
 -        tmpdir = "/tmp";
-+        tmpdir = "@TERMUX_PREFIX@/tmp";
++        tmpdir = "@NEOTERM_PREFIX@/tmp";
  
      pid_t pid_parent = getpid();
  

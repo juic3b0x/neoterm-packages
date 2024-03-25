@@ -5,7 +5,7 @@ diff -ur pidgin1/configure pidgin2/configure
  	TCLCONFIG=no
  	TCLCONFIGDIRS="/usr/lib \
  			/usr/lib64 \
-+			@TERMUX_PREFIX@/lib \
++			@NEOTERM_PREFIX@/lib \
  			/usr/lib/tcl8.7 \
  			/usr/lib/tcl8.6 \
  			/usr/lib/tcl8.5 \
@@ -13,7 +13,7 @@ diff -ur pidgin1/configure pidgin2/configure
  	TKCONFIG=no
  	TKCONFIGDIRS="/usr/lib \
  			/usr/lib64 \
-+			@TERMUX_PREFIX@/lib \
++			@NEOTERM_PREFIX@/lib \
  			/usr/lib/tk8.7 \
  			/usr/lib/tk8.6 \
  			/usr/lib/tk8.5 \

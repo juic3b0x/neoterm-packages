@@ -5,5 +5,5 @@
  # /etc/snmptt/snmptt.*.conf
  snmptt_conf_files = <<END
 -/etc/snmptt/snmptt.conf
-+@TERMUX_PREFIX@/etc/snmptt/snmptt.conf
++@NEOTERM_PREFIX@/etc/snmptt/snmptt.conf
  END

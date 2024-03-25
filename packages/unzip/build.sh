@@ -1,19 +1,19 @@
-TERMUX_PKG_HOMEPAGE=https://sourceforge.net/projects/infozip/
-TERMUX_PKG_DESCRIPTION="Tools for working with zip files"
-TERMUX_PKG_LICENSE="BSD"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=6.0
-TERMUX_PKG_REVISION=9
-TERMUX_PKG_SRCURL=https://downloads.sourceforge.net/infozip/unzip60.tar.gz
-TERMUX_PKG_SHA256=036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
-TERMUX_PKG_DEPENDS="libbz2"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://sourceforge.net/projects/infozip/
+NEOTERM_PKG_DESCRIPTION="Tools for working with zip files"
+NEOTERM_PKG_LICENSE="BSD"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=6.0
+NEOTERM_PKG_REVISION=9
+NEOTERM_PKG_SRCURL=https://downloads.sourceforge.net/infozip/unzip60.tar.gz
+NEOTERM_PKG_SHA256=036d96991646d0449ed0aa952e4fbe21b476ce994abc276e49d30e686708bd37
+NEOTERM_PKG_DEPENDS="libbz2"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_configure() {
+neoterm_step_configure() {
 	cp unix/Makefile Makefile
 }
 
-termux_step_make() {
+neoterm_step_make() {
 	CFLAGS+=" $CPPFLAGS"
 	CFLAGS+=" -DACORN_FTYPE_NFS"
 	CFLAGS+=" -DWILD_STOP_AT_DIR"
@@ -28,10 +28,10 @@ termux_step_make() {
 	CFLAGS+=" -DNO_WORKING_ISPRINT"
 	CFLAGS+=" -I."
 
-	make -f unix/Makefile prefix=$TERMUX_PREFIX D_USE_BZ2=-DUSE_BZIP2 \
+	make -f unix/Makefile prefix=$NEOTERM_PREFIX D_USE_BZ2=-DUSE_BZIP2 \
 		L_BZ2=-lbz2 LF2="$LDFLAGS" CC="$CC" CF="$CFLAGS" LD="$CC" unzips
 }
 
-termux_step_make_install() {
-	make -f unix/Makefile prefix=$TERMUX_PREFIX install
+neoterm_step_make_install() {
+	make -f unix/Makefile prefix=$NEOTERM_PREFIX install
 }

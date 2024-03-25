@@ -9,7 +9,7 @@
 +	])
  	AS_IF([test "x$cross_compiling" = xno], [
                  AC_MSG_CHECKING([for Android API version])
-                 # hacky workaround: https://github.com/termux/termux-packages/issues/6176
+                 # hacky workaround: https://github.com/neoterm/neoterm-packages/issues/6176
 -                rb_android_api=`getprop ro.build.version.sdk`
 +                rb_android_api=24
                  AC_MSG_RESULT($rb_android_api)

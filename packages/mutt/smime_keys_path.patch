@@ -6,7 +6,7 @@ diff -u -r ../mutt-1.5.24/smime_keys.pl ./smime_keys.pl
  
  my $mutt = $ENV{MUTT_CMDLINE} || 'mutt';
 -my $opensslbin = "/usr/bin/openssl";
-+my $opensslbin = "@TERMUX_PREFIX@/bin/openssl";
++my $opensslbin = "@NEOTERM_PREFIX@/bin/openssl";
  my $tmpdir;
  
  # Get the directories mutt uses for certificate/key storage.

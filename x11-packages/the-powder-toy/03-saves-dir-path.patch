@@ -5,8 +5,8 @@
  	//Read config
  	std::ifstream configFile;
 -	configFile.open("powder.pref", std::ios::binary);
-+	Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
-+	configFile.open("@TERMUX_HOME@/.powdertoy/powder.pref", std::ios::binary);
++	Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
++	configFile.open("@NEOTERM_HOME@/.powdertoy/powder.pref", std::ios::binary);
  	if (configFile)
  	{
  		try
@@ -15,8 +15,8 @@
  {
  	std::ofstream configFile;
 -	configFile.open("powder.pref", std::ios::trunc);
-+	Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
-+	configFile.open("@TERMUX_HOME@/.powdertoy/powder.pref", std::ios::trunc);
++	Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
++	configFile.open("@NEOTERM_HOME@/.powdertoy/powder.pref", std::ios::trunc);
  
  	if (configFile)
  	{
@@ -24,7 +24,7 @@
  	ByteString saveID = ByteString::Build(Format::Hex(Format::Width(lastStampTime, 8)), Format::Hex(Format::Width(lastStampName, 2)));
  	ByteString filename = STAMPS_DIR PATH_SEP + saveID + ".stm";
  
-+	Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
++	Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
  	Platform::MakeDirectory(STAMPS_DIR);
  
  	Json::Value stampInfo;
@@ -32,7 +32,7 @@
  
  void Client::updateStamps()
  {
-+	Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
++	Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
  	Platform::MakeDirectory(STAMPS_DIR);
  
  	std::ofstream stampsStream;
@@ -43,13 +43,13 @@
  #define ENFORCE_HTTPS
  
 -#define LOCAL_SAVE_DIR "Saves"
-+#define LOCAL_SAVE_DIR "@TERMUX_HOME@/.powdertoy/saves"
++#define LOCAL_SAVE_DIR "@NEOTERM_HOME@/.powdertoy/saves"
  
 -#define STAMPS_DIR "stamps"
-+#define STAMPS_DIR "@TERMUX_HOME@/.powdertoy/stamps"
++#define STAMPS_DIR "@NEOTERM_HOME@/.powdertoy/stamps"
  
 -#define BRUSH_DIR "Brushes"
-+#define BRUSH_DIR "@TERMUX_HOME@/.powdertoy/brushes"
++#define BRUSH_DIR "@NEOTERM_HOME@/.powdertoy/brushes"
  
  #ifndef M_GRAV
  #define M_GRAV 6.67300e-1
@@ -68,7 +68,7 @@
  			gameSave->authors = localSaveInfo;
  
  			gameModel->SetSaveFile(&tempSave, gameView->ShiftBehaviour());
-+			Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
++			Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
  			Platform::MakeDirectory(LOCAL_SAVE_DIR);
  			std::vector<char> saveData = gameSave->Serialise();
  			if (saveData.size() == 0)
@@ -78,7 +78,7 @@
  	brushList.push_back(new TriangleBrush(ui::Point(4, 4)));
  
  	//Load more from brushes folder
-+	Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
++	Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
  	std::vector<ByteString> brushFiles = Platform::DirectorySearch(BRUSH_DIR, "", { ".ptb" });
  	for (size_t i = 0; i < brushFiles.size(); i++)
  	{
@@ -93,7 +93,7 @@
 -			Platform::OpenURI(cwd);
 -		else
 -			fprintf(stderr, "cannot open data folder: Platform::GetCwd(...) failed\n");
-+		Platform::OpenURI("@TERMUX_HOME@/.powdertoy");
++		Platform::OpenURI("@NEOTERM_HOME@/.powdertoy");
  	} });
  	scrollPanel->AddChild(dataFolderButton);
  
@@ -103,7 +103,7 @@
  
  void LocalSaveActivity::saveWrite(ByteString finalFilename)
  {
-+	Platform::MakeDirectory("@TERMUX_HOME@/.powdertoy");
++	Platform::MakeDirectory("@NEOTERM_HOME@/.powdertoy");
  	Platform::MakeDirectory(LOCAL_SAVE_DIR);
  	GameSave *gameSave = save.GetGameSave();
  	Json::Value localSaveInfo;

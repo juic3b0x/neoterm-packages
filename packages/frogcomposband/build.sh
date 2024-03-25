@@ -1,25 +1,25 @@
-TERMUX_PKG_HOMEPAGE=https://github.com/sulkasormi/frogcomposband/
-TERMUX_PKG_DESCRIPTION="Open world Angband variant with many additions"
-TERMUX_PKG_LICENSE="custom"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_SRCURL=git+https://github.com/sulkasormi/frogcomposband
-TERMUX_PKG_VERSION=7.1.salmiak
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_DEPENDS="ncurses"
-TERMUX_PKG_BUILD_IN_SRC=true
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="--disable-x11 --bindir=$TERMUX_PREFIX/bin --sysconfdir=$TERMUX_PREFIX/share/frogcomposband"
-TERMUX_PKG_RM_AFTER_INSTALL="share/angband/xtra share/angband/icons"
+NEOTERM_PKG_HOMEPAGE=https://github.com/sulkasormi/frogcomposband/
+NEOTERM_PKG_DESCRIPTION="Open world Angband variant with many additions"
+NEOTERM_PKG_LICENSE="custom"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_SRCURL=git+https://github.com/sulkasormi/frogcomposband
+NEOTERM_PKG_VERSION=7.1.salmiak
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_DEPENDS="ncurses"
+NEOTERM_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--disable-x11 --bindir=$NEOTERM_PREFIX/bin --sysconfdir=$NEOTERM_PREFIX/share/frogcomposband"
+NEOTERM_PKG_RM_AFTER_INSTALL="share/angband/xtra share/angband/icons"
 
-termux_step_pre_configure () {
+neoterm_step_pre_configure () {
 	./autogen.sh
 	perl -p -i -e 's|ncursesw5-config|ncursesw6-config|g' configure
 }
 
-termux_step_post_make_install () {
-	rm -Rf $TERMUX_PREFIX/share/frogcomposband/fonts
+neoterm_step_post_make_install () {
+	rm -Rf $NEOTERM_PREFIX/share/frogcomposband/fonts
 }
 
-termux_step_install_license() {
-	install -Dm600 $TERMUX_PKG_BUILDER_DIR/LICENSE \
-		$TERMUX_PREFIX/share/doc/$TERMUX_PKG_NAME/LICENSE
+neoterm_step_install_license() {
+	install -Dm600 $NEOTERM_PKG_BUILDER_DIR/LICENSE \
+		$NEOTERM_PREFIX/share/doc/$NEOTERM_PKG_NAME/LICENSE
 }

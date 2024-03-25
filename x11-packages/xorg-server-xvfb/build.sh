@@ -1,17 +1,17 @@
-TERMUX_PKG_HOMEPAGE=https://xorg.freedesktop.org/
-TERMUX_PKG_DESCRIPTION="X virtual framebuffer"
-TERMUX_PKG_LICENSE="MIT"
-TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION=21.1.8
-TERMUX_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${TERMUX_PKG_VERSION}.tar.xz
-TERMUX_PKG_SHA256=38aadb735650c8024ee25211c190bf8aad844c5f59632761ab1ef4c4d5aeb152
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X virtual framebuffer"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=21.1.8
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/xserver/xorg-server-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=38aadb735650c8024ee25211c190bf8aad844c5f59632761ab1ef4c4d5aeb152
 
-TERMUX_PKG_DEPENDS="libandroid-shmem, libdrm, libpixman, libx11, libxau, libxfont2, libxinerama, libxkbfile, libxshmfence, opengl, openssl, xkeyboard-config, xorg-protocol-txt, xorg-xkbcomp"
-TERMUX_PKG_BUILD_DEPENDS="libxcvt, mesa-dev"
-TERMUX_PKG_CONFLICTS="xorg-xvfb"
-TERMUX_PKG_REPLACES="xorg-xvfb"
+NEOTERM_PKG_DEPENDS="libandroid-shmem, libdrm, libpixman, libx11, libxau, libxfont2, libxinerama, libxkbfile, libxshmfence, opengl, openssl, xkeyboard-config, xorg-protocol-txt, xorg-xkbcomp"
+NEOTERM_PKG_BUILD_DEPENDS="libxcvt, mesa-dev"
+NEOTERM_PKG_CONFLICTS="xorg-xvfb"
+NEOTERM_PKG_REPLACES="xorg-xvfb"
 
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 ac_cv_path_RAWCPP=/usr/bin/cpp
 --enable-composite
 --enable-mitshm
@@ -53,21 +53,21 @@ ac_cv_path_RAWCPP=/usr/bin/cpp
 --enable-xshmfence
 --enable-ipv6
 --with-sha1=libcrypto
---with-fontrootdir=${TERMUX_PREFIX}/share/fonts
---with-xkb-path=${TERMUX_PREFIX}/share/X11/xkb
+--with-fontrootdir=${NEOTERM_PREFIX}/share/fonts
+--with-xkb-path=${NEOTERM_PREFIX}/share/X11/xkb
 LIBS=-landroid-shmem
 "
 
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_RM_AFTER_INSTALL="
 share/X11/xkb/compiled
 share/man/man1/Xserver.1
 "
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	CFLAGS+=" -DFNDELAY=O_NDELAY"
-	CPPFLAGS+=" -I${TERMUX_PREFIX}/include/libdrm"
+	CPPFLAGS+=" -I${NEOTERM_PREFIX}/include/libdrm"
 
-	if [ "$TERMUX_DEBUG_BUILD" = "true" ]; then
-		TERMUX_PKG_EXTRA_CONFIGURE_ARGS+=" --enable-debug"
+	if [ "$NEOTERM_DEBUG_BUILD" = "true" ]; then
+		NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" --enable-debug"
 	fi
 }

@@ -7,7 +7,7 @@ elif [ $1 = "--build" ]; then
 	cmake "$@"
 else
 	_CACHE="$1/defaultcache.cmake"
-	cp $TERMUX_COMMON_CACHEDIR/defaultcache.cmake "$_CACHE"
+	cp $NEOTERM_COMMON_CACHEDIR/defaultcache.cmake "$_CACHE"
 
 	for var in "$@"; do
 		case "$var" in

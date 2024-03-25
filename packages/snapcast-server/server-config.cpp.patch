@@ -5,7 +5,7 @@
          dir = root_directory;
      else if (getenv("HOME") == nullptr)
 -        dir = "/var/lib/snapserver/";
-+        dir = "@TERMUX_PREFIX@/var/lib/snapserver/";
++        dir = "@NEOTERM_PREFIX@/var/lib/snapserver/";
      else
          dir = string(getenv("HOME")) + "/.config/snapserver/";
  

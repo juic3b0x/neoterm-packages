@@ -5,7 +5,7 @@
  .SH USAGE
  The location of this program needs to be configured
 -in the /etc/ssh/sshd_config file.  The following
-+in the @TERMUX_PREFIX@/etc/ssh/sshd_config file.  The following
++in the @NEOTERM_PREFIX@/etc/ssh/sshd_config file.  The following
  configuration needs to be present:
  .nf
  
@@ -14,7 +14,7 @@
  netconfd instances to run on the same host.
  
 -/etc/ssh/sshd_config:
-+@TERMUX_PREFIX@/etc/ssh/sshd_config:
++@NEOTERM_PREFIX@/etc/ssh/sshd_config:
  .nf
  \&...
  Port 830

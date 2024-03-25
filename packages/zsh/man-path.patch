@@ -5,7 +5,7 @@
  
    (( $#_manpath )) ||
 -      _manpath=( /usr/man(-/) /(opt|usr)/(pkg|dt|share|X11R6|local)/(cat|)man(-/) )
-+      _manpath=( @TERMUX_PREFIX@/man(-/) @TERMUX_PREFIX@/(pkg|dt|share|X11R6|local)/(cat|)man(-/) )
++      _manpath=( @NEOTERM_PREFIX@/man(-/) @NEOTERM_PREFIX@/(pkg|dt|share|X11R6|local)/(cat|)man(-/) )
  
    # Override man path
    [[ -n ${opt_args[-M]} ]] &&

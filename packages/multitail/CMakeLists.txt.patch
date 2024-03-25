@@ -5,7 +5,7 @@
  
  add_definitions(-D_FORTIFY_SOURCE=2)
 -add_definitions(-DCONFIG_FILE=\"/etc/multitail.conf\")
-+add_definitions(-DCONFIG_FILE=\"@TERMUX_PREFIX@/etc/multitail.conf\")
++add_definitions(-DCONFIG_FILE=\"@NEOTERM_PREFIX@/etc/multitail.conf\")
  add_definitions(-DVERSION=\"${VERSION}\")
  add_definitions(-D${CMAKE_C_PLATFORM_ID})
  message(STATUS "CMAKE_C_PLATFORM_ID=${CMAKE_C_PLATFORM_ID}")

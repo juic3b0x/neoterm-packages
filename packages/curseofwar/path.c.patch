@@ -9,11 +9,11 @@
 -  path[5] = strdup("/usr/share/curseofwar-sdl/");
 -  path[6] = strdup("/usr/share/curseofwar-common/");
 -  path[7] = strdup(INSTALL_DATA);
-+  path[3] = strdup("@TERMUX_PREFIX@/local/share/curseofwar/");
-+  path[4] = strdup("@TERMUX_PREFIX@/share/curseofwar/");
-+  path[5] = strdup("@TERMUX_PREFIX@/share/curseofwar-sdl/");
-+  path[6] = strdup("@TERMUX_PREFIX@/share/curseofwar-common/");
-+  path[7] = strdup("@TERMUX_PREFIX@/share/curseofwar/");
++  path[3] = strdup("@NEOTERM_PREFIX@/local/share/curseofwar/");
++  path[4] = strdup("@NEOTERM_PREFIX@/share/curseofwar/");
++  path[5] = strdup("@NEOTERM_PREFIX@/share/curseofwar-sdl/");
++  path[6] = strdup("@NEOTERM_PREFIX@/share/curseofwar-common/");
++  path[7] = strdup("@NEOTERM_PREFIX@/share/curseofwar/");
  #else
    int dirs_num = 1;
    char **path = (char**) malloc(sizeof(char*) * (dirs_num + 1));

@@ -68,7 +68,7 @@
 +_USE_ROCM = _get_build("USE_ROCM", False)
 +_USE_CUDA = _get_build("USE_CUDA", False)
 +_USE_OPENMP = _get_build("USE_OPENMP", False)
-+_CMAKE_PREFIX_PATH = os.environ.get("TORCHAUDIO_CMAKE_PREFIX_PATH", "@TERMUX_PREFIX@")
++_CMAKE_PREFIX_PATH = os.environ.get("TORCHAUDIO_CMAKE_PREFIX_PATH", "@NEOTERM_PREFIX@")
  _TORCH_CUDA_ARCH_LIST = os.environ.get("TORCH_CUDA_ARCH_LIST", None)
  
  

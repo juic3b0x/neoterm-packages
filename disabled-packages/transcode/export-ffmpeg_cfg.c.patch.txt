@@ -5,7 +5,7 @@
  
  char *lavc_param_video_preset = "none";
 -char *lavc_param_ffmpeg_datadir = "/usr/share/ffmpeg";
-+char *lavc_param_ffmpeg_datadir = "@TERMUX_PREFIX@/share/ffmpeg";
++char *lavc_param_ffmpeg_datadir = "@NEOTERM_PREFIX@/share/ffmpeg";
  
  TCConfigEntry lavcopts_conf[]={
  //    {"acodec", &lavc_param_acodec, TCCONF_TYPE_STRING, 0, 0, 0},

@@ -5,5 +5,5 @@
  		return paths
  	}
 -	return []string{"/usr/local/share/fonts/", "/usr/share/fonts/"}
-+	return []string{"@TERMUX_PREFIX@/local/share/fonts/", "@TERMUX_PREFIX@/share/fonts/"}
++	return []string{"@NEOTERM_PREFIX@/local/share/fonts/", "@NEOTERM_PREFIX@/share/fonts/"}
  }

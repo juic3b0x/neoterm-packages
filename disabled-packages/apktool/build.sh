@@ -1,15 +1,15 @@
-TERMUX_PKG_HOMEPAGE=https://ibotpeaches.github.io/Apktool/
-TERMUX_PKG_DESCRIPTION="A tool for reverse engineering 3rd party, closed, binary Android apps"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION=2.6.1
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=https://github.com/iBotPeaches/Apktool/archive/refs/tags/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=8932e77d963b9e0e07227422d82ed4a355e8aa268bad1361e5cfaffa8e4d52ee
-TERMUX_PKG_DEPENDS="aapt, aapt2, openjdk-17"
-TERMUX_PKG_BUILD_IN_SRC=true
+NEOTERM_PKG_HOMEPAGE=https://ibotpeaches.github.io/Apktool/
+NEOTERM_PKG_DESCRIPTION="A tool for reverse engineering 3rd party, closed, binary Android apps"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.6.1
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://github.com/iBotPeaches/Apktool/archive/refs/tags/v${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=8932e77d963b9e0e07227422d82ed4a355e8aa268bad1361e5cfaffa8e4d52ee
+NEOTERM_PKG_DEPENDS="aapt, aapt2, openjdk-17"
+NEOTERM_PKG_BUILD_IN_SRC=true
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	local prebuilt_dir="brut.apktool/apktool-lib/src/main/resources/prebuilt"
 	rm -rf $prebuilt_dir/{linux,macosx,windows}
 	mkdir -p $prebuilt_dir/linux
@@ -21,16 +21,16 @@ termux_step_pre_configure() {
 	done
 }
 
-termux_step_make() {
+neoterm_step_make() {
 	sh gradlew build shadowJar -x test
 }
 
-termux_step_make_install() {
+neoterm_step_make_install() {
 	install -Dm600 brut.apktool/apktool-cli/build/libs/apktool-cli-all.jar \
-		$TERMUX_PREFIX/share/java/apktool.jar
-	cat <<- EOF > $TERMUX_PREFIX/bin/apktool
-	#!${TERMUX_PREFIX}/bin/sh
-	exec java -jar $TERMUX_PREFIX/share/java/apktool.jar "\$@"
+		$NEOTERM_PREFIX/share/java/apktool.jar
+	cat <<- EOF > $NEOTERM_PREFIX/bin/apktool
+	#!${NEOTERM_PREFIX}/bin/sh
+	exec java -jar $NEOTERM_PREFIX/share/java/apktool.jar "\$@"
 	EOF
-	chmod 700 $TERMUX_PREFIX/bin/apktool
+	chmod 700 $NEOTERM_PREFIX/bin/apktool
 }

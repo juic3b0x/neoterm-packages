@@ -6,7 +6,7 @@ diff -uNr sdcv-0.5.3/src/sdcv.cpp sdcv-0.5.3.mod/src/sdcv.cpp
                  data_dir = stardict_data_dir;
              else
 -                data_dir = "/usr/share/stardict/dic";
-+                data_dir = "@TERMUX_PREFIX@/share/stardict/dic";
++                data_dir = "@NEOTERM_PREFIX@/share/stardict/dic";
          }
      } else {
          data_dir = get_impl(opt_data_dir);

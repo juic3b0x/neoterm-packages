@@ -6,7 +6,7 @@ diff -uNr i3-4.15/i3-dmenu-desktop i3-4.15.mod/i3-dmenu-desktop
  
  my $xdg_data_dirs = $ENV{XDG_DATA_DIRS};
 -$xdg_data_dirs = '/usr/local/share/:/usr/share/' if
-+$xdg_data_dirs = '@TERMUX_PREFIX@/local/share/:@TERMUX_PREFIX@/share/' if
++$xdg_data_dirs = '@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/' if
      !defined($xdg_data_dirs) ||
      $xdg_data_dirs eq '';
  
@@ -15,7 +15,7 @@ diff -uNr i3-4.15/i3-dmenu-desktop i3-4.15.mod/i3-dmenu-desktop
      binmode($fh, ':utf8');
      say $fh <<EOT;
 -#!/bin/sh
-+#!@TERMUX_PREFIX@/bin/sh
++#!@NEOTERM_PREFIX@/bin/sh
  rm $filename
  exec $exec
  EOT

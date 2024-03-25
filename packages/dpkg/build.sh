@@ -1,31 +1,31 @@
-TERMUX_PKG_HOMEPAGE=https://packages.debian.org/dpkg
-TERMUX_PKG_DESCRIPTION="Debian package management system"
-TERMUX_PKG_LICENSE="GPL-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION="1.22.1"
-TERMUX_PKG_REVISION=1
-TERMUX_PKG_SRCURL=https://mirror.sobukus.de/files/src/dpkg//dpkg_${TERMUX_PKG_VERSION}.tar.xz
-TERMUX_PKG_SHA256=5a4824e9869494e501953c7466ab1960a7fa23d9b0b911b8a6f113094e0226cf
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_DEPENDS="bzip2, coreutils, diffutils, gzip, less, libbz2, liblzma, libmd, tar, xz-utils, zlib, zstd"
-TERMUX_PKG_ANTI_BUILD_DEPENDS="clang"
-TERMUX_PKG_BREAKS="dpkg-dev"
-TERMUX_PKG_REPLACES="dpkg-dev"
-TERMUX_PKG_ESSENTIAL=true
+NEOTERM_PKG_HOMEPAGE=https://packages.debian.org/dpkg
+NEOTERM_PKG_DESCRIPTION="Debian package management system"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="1.22.1"
+NEOTERM_PKG_REVISION=1
+NEOTERM_PKG_SRCURL=https://mirror.sobukus.de/files/src/dpkg//dpkg_${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=5a4824e9869494e501953c7466ab1960a7fa23d9b0b911b8a6f113094e0226cf
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_DEPENDS="bzip2, coreutils, diffutils, gzip, less, libbz2, liblzma, libmd, tar, xz-utils, zlib, zstd"
+NEOTERM_PKG_ANTI_BUILD_DEPENDS="clang"
+NEOTERM_PKG_BREAKS="dpkg-dev"
+NEOTERM_PKG_REPLACES="dpkg-dev"
+NEOTERM_PKG_ESSENTIAL=true
 
-TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 ac_cv_lib_selinux_setexecfilecon=no
 --disable-dselect
 --disable-largefile
 --disable-shared
 dpkg_cv_c99_snprintf=yes
 HAVE_SETEXECFILECON_FALSE=#
---host=${TERMUX_ARCH}-linux
+--host=${NEOTERM_ARCH}-linux
 --without-selinux
 DPKG_PAGER=less
 "
 
-TERMUX_PKG_RM_AFTER_INSTALL="
+NEOTERM_PKG_RM_AFTER_INSTALL="
 bin/dpkg-architecture
 bin/dpkg-buildflags
 bin/dpkg-buildpackage
@@ -70,15 +70,15 @@ share/man/man5
 share/polkit-1
 "
 
-termux_step_pre_configure() {
+neoterm_step_pre_configure() {
 	export TAR=tar # To make sure dpkg tries to use "tar" instead of e.g. "gnutar" (which happens when building on OS X)
-	perl -p -i -e "s/TERMUX_ARCH/$TERMUX_ARCH/" $TERMUX_PKG_SRCDIR/configure
-	sed -i 's/$req_vars = \$arch_vars.$varname./if ($varname eq "DEB_HOST_ARCH_CPU" or $varname eq "DEB_HOST_ARCH"){ print("'$TERMUX_ARCH'");exit; }; $req_vars = $arch_vars{$varname}/' scripts/dpkg-architecture.pl
+	perl -p -i -e "s/NEOTERM_ARCH/$NEOTERM_ARCH/" $NEOTERM_PKG_SRCDIR/configure
+	sed -i 's/$req_vars = \$arch_vars.$varname./if ($varname eq "DEB_HOST_ARCH_CPU" or $varname eq "DEB_HOST_ARCH"){ print("'$NEOTERM_ARCH'");exit; }; $req_vars = $arch_vars{$varname}/' scripts/dpkg-architecture.pl
 }
 
-termux_step_post_massage() {
-	mkdir -p "${TERMUX_PKG_MASSAGEDIR}/${TERMUX_PREFIX}/var/lib/dpkg/alternatives"
-	mkdir -p "${TERMUX_PKG_MASSAGEDIR}/${TERMUX_PREFIX}/var/lib/dpkg/info"
-	mkdir -p "${TERMUX_PKG_MASSAGEDIR}/${TERMUX_PREFIX}/var/lib/dpkg/triggers"
-	mkdir -p "${TERMUX_PKG_MASSAGEDIR}/${TERMUX_PREFIX}/var/lib/dpkg/updates"
+neoterm_step_post_massage() {
+	mkdir -p "${NEOTERM_PKG_MASSAGEDIR}/${NEOTERM_PREFIX}/var/lib/dpkg/alternatives"
+	mkdir -p "${NEOTERM_PKG_MASSAGEDIR}/${NEOTERM_PREFIX}/var/lib/dpkg/info"
+	mkdir -p "${NEOTERM_PKG_MASSAGEDIR}/${NEOTERM_PREFIX}/var/lib/dpkg/triggers"
+	mkdir -p "${NEOTERM_PKG_MASSAGEDIR}/${NEOTERM_PREFIX}/var/lib/dpkg/updates"
 }

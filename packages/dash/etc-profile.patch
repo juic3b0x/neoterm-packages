@@ -7,7 +7,7 @@ index fcd3e7d..39b6e70 100644
  	if (login) {
  		state = 1;
 -		read_profile("/etc/profile");
-+		read_profile("@TERMUX_PREFIX@/etc/profile");
++		read_profile("@NEOTERM_PREFIX@/etc/profile");
  state1:
  		state = 2;
  		read_profile("$HOME/.profile");

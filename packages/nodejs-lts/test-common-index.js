@@ -5,7 +5,7 @@
  const isLinux = process.platform === 'linux';
  const isOSX = process.platform === 'darwin';
 +// The regex inside the function causes test-startup-empty-regexp-statics.js
-+// to break. Probably not something Termux specific, but don't know why anyone
++// to break. Probably not something NeoTerm specific, but don't know why anyone
 +// else hasn't complaint upstream
 +const isPi = false;
 +/* 

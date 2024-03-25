@@ -6,7 +6,7 @@ diff -uNr gdb-8.0.1/gdb/compile/compile.c gdb-8.0.1.mod/gdb/compile/compile.c
  /* Initial filename for temporary files.  */
  
 -#define TMP_PREFIX "/tmp/gdbobj-"
-+#define TMP_PREFIX "@TERMUX_PREFIX@/tmp/gdbobj-"
++#define TMP_PREFIX "@NEOTERM_PREFIX@/tmp/gdbobj-"
  
  /* Hold "compile" commands.  */
  

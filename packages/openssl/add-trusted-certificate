@@ -13,7 +13,7 @@ if [ ! -f "$CERTIFICATE_TO_ADD" ]; then
     exit 1
 fi
 
-CERT_DIR=@TERMUX_PREFIX@/etc/tls/certs/
+CERT_DIR=@NEOTERM_PREFIX@/etc/tls/certs/
 mkdir -p $CERT_DIR
 echo "Copying $CERTIFICATE_TO_ADD to $CERT_DIR"
 cp "$CERTIFICATE_TO_ADD" $CERT_DIR

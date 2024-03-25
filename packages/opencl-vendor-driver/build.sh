@@ -1,33 +1,33 @@
-TERMUX_PKG_HOMEPAGE=https://termux.dev
-TERMUX_PKG_DESCRIPTION="OpenCL driver from system vendor"
-TERMUX_PKG_LICENSE="Apache-2.0"
-TERMUX_PKG_MAINTAINER="@neoterm"
-TERMUX_PKG_VERSION=0.3
-TERMUX_PKG_AUTO_UPDATE=false
-TERMUX_PKG_RECOMMENDS="binutils | binutils-is-llvm, ocl-icd, patchelf"
-TERMUX_PKG_SKIP_SRC_EXTRACT=true
+NEOTERM_PKG_HOMEPAGE=https://neoterm.dev
+NEOTERM_PKG_DESCRIPTION="OpenCL driver from system vendor"
+NEOTERM_PKG_LICENSE="Apache-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.3
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_RECOMMENDS="binutils | binutils-is-llvm, ocl-icd, patchelf"
+NEOTERM_PKG_SKIP_SRC_EXTRACT=true
 
-termux_step_make_install() {
-	echo "${TERMUX_PREFIX}/opt/vendor/lib/libOpenCL.so" > vendor.icd
-	install -Dm644 vendor.icd "${TERMUX_PREFIX}/etc/OpenCL/vendors/vendor.icd"
-	install -Dm644 /dev/null "${TERMUX_PREFIX}/opt/vendor/lib/libOpenCL.so"
+neoterm_step_make_install() {
+	echo "${NEOTERM_PREFIX}/opt/vendor/lib/libOpenCL.so" > vendor.icd
+	install -Dm644 vendor.icd "${NEOTERM_PREFIX}/etc/OpenCL/vendors/vendor.icd"
+	install -Dm644 /dev/null "${NEOTERM_PREFIX}/opt/vendor/lib/libOpenCL.so"
 }
 
-termux_step_create_debscripts() {
-	cp -f "${TERMUX_PKG_BUILDER_DIR}/postinst.sh" postinst
-	sed -i postinst -e "s|@TERMUX_PREFIX@|${TERMUX_PREFIX}|g"
+neoterm_step_create_debscripts() {
+	cp -f "${NEOTERM_PKG_BUILDER_DIR}/postinst.sh" postinst
+	sed -i postinst -e "s|@NEOTERM_PREFIX@|${NEOTERM_PREFIX}|g"
 
 	cat <<- EOF > prerm
-	#!${TERMUX_PREFIX}/bin/sh
+	#!${NEOTERM_PREFIX}/bin/sh
 	case "\$1" in
 	purge|remove)
-	rm -fr "${TERMUX_PREFIX}/opt/vendor/lib"
+	rm -fr "${NEOTERM_PREFIX}/opt/vendor/lib"
 	esac
 	EOF
 }
 
 # Goal:
-# To allow Termux to use on-device OpenCL drivers without export
+# To allow NeoTerm to use on-device OpenCL drivers without export
 # LD_LIBRARY_PATH=/vendor/lib64 or other trickery
 
 # What it does:

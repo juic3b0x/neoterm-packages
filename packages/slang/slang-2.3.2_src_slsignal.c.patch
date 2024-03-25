@@ -6,7 +6,7 @@ diff -uNr slang-2.3.2/src/slsignal.c slang-2.3.2.mod/src/slsignal.c
  # endif
  
 -	execl ("/bin/sh", "sh", "-c", cmd, (char *)NULL);
-+	execl ("@TERMUX_PREFIX@/bin/sh", "sh", "-c", cmd, (char *)NULL);
++	execl ("@NEOTERM_PREFIX@/bin/sh", "sh", "-c", cmd, (char *)NULL);
  	_exit (127);
       }
     else

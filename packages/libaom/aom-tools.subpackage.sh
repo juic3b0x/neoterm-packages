@@ -1,3 +1,3 @@
-TERMUX_SUBPKG_INCLUDE="bin/"
-TERMUX_SUBPKG_DESCRIPTION="Command-line tools using AOMedia library"
-TERMUX_SUBPKG_DEPENDS="libc++"
+NEOTERM_SUBPKG_INCLUDE="bin/"
+NEOTERM_SUBPKG_DESCRIPTION="Command-line tools using AOMedia library"
+NEOTERM_SUBPKG_DEPENDS="libc++"

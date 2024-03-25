@@ -5,7 +5,7 @@
      # prevent multiple calls if $tmp is already set
      test "$tmp" && return 0
 -    : "${TMPDIR=/tmp}"
-+    : "${TMPDIR=@TERMUX_PREFIX@/tmp}"
++    : "${TMPDIR=@NEOTERM_PREFIX@/tmp}"
      # shellcheck disable=SC2039,SC3028
      { tmp=`(umask 077 && mktemp -d "$TMPDIR/cgXXXXXX") 2>/dev/null` && test -n "$tmp" && test -d "$tmp" ; } ||
  	{ test -n "$RANDOM" && tmp=$TMPDIR/cg$$-$RANDOM && (umask 077 && mkdir "$tmp" 2>/dev/null) ; } ||

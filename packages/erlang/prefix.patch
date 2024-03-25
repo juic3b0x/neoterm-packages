@@ -5,10 +5,10 @@
      %% or in /system/bin/sh as implemented on Android. The raw option is
      %% used to bypass the file server and speed up the file access.
 -    Shell = case file:read_file_info("/bin/sh",[raw]) of
-+    Shell = case file:read_file_info("@TERMUX_PREFIX@/bin/sh",[raw]) of
++    Shell = case file:read_file_info("@NEOTERM_PREFIX@/bin/sh",[raw]) of
                  {ok,#file_info{type=regular}} ->
 -                    "/bin/sh";
-+                    "@TERMUX_PREFIX@/bin/sh";
++                    "@NEOTERM_PREFIX@/bin/sh";
                  _ ->
                      case file:read_file_info("/system/bin/sh",[raw]) of
                          {ok,#file_info{type=regular}} ->

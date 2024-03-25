@@ -6,7 +6,7 @@ diff -uNr autoconf-2.13/acspecific.m4 autoconf-2.13.mod/acspecific.m4
    ac_tmpdirs="$TMPDIR"
  else
 -  ac_tmpdirs='/tmp /var/tmp /usr/tmp'
-+  ac_tmpdirs='@TERMUX_PREFIX@/tmp'
++  ac_tmpdirs='@NEOTERM_PREFIX@/tmp'
  fi
  for ac_dir in  . $ac_tmpdirs `eval echo $prefix/lib $exec_prefix/lib` ; do
    test -d $ac_dir || continue

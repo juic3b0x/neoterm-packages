@@ -5,7 +5,7 @@
          }
          else {
 -            for my $ed (qw(/usr/bin/vim /usr/bin/emacs /usr/bin/nano)) {
-+            for my $ed (qw(@TERMUX_PREFIX@/bin/vim @TERMUX_PREFIX@/bin/emacs @TERMUX_PREFIX@/bin/nano)) {
++            for my $ed (qw(@NEOTERM_PREFIX@/bin/vim @NEOTERM_PREFIX@/bin/emacs @NEOTERM_PREFIX@/bin/nano)) {
                  if (-x $ed) {
                      $EDITOR = $ed;
                      last;
@@ -13,7 +13,7 @@
              }
              if (!$EDITOR) {
 -                for my $ed (qw(/usr/bin/editor /usr/bin/open /bin/open)) {
-+                for my $ed (qw(@TERMUX_PREFIX@/bin/editor @TERMUX_PREFIX@/bin/open @TERMUX_PREFIX@/bin/open)) {
++                for my $ed (qw(@NEOTERM_PREFIX@/bin/editor @NEOTERM_PREFIX@/bin/open @NEOTERM_PREFIX@/bin/open)) {
                      if (-x $ed) {
                          $EDITOR = "$ed \"%f\"";
                          last;

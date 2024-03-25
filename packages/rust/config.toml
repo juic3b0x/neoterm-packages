@@ -29,10 +29,10 @@ tools = [
     "rust-demangler",
 ]
 sanitizers = false
-android-ndk = "@TERMUX_STANDALONE_TOOLCHAIN@"
+android-ndk = "@NEOTERM_STANDALONE_TOOLCHAIN@"
 
 [install]
-prefix = "@TERMUX_PREFIX@"
+prefix = "@NEOTERM_PREFIX@"
 sysconfdir = "etc"
 
 [rust]
@@ -47,23 +47,23 @@ rpath = false
 llvm-config = "/usr/bin/llvm-config-16"
 
 [target.aarch64-linux-android]
-llvm-config = "@TERMUX_PREFIX@/bin/llvm-config"
+llvm-config = "@NEOTERM_PREFIX@/bin/llvm-config"
 profiler = true
 
 [target.armv7-linux-androideabi]
-llvm-config = "@TERMUX_PREFIX@/bin/llvm-config"
+llvm-config = "@NEOTERM_PREFIX@/bin/llvm-config"
 profiler = true
 
 [target.i686-linux-android]
-llvm-config = "@TERMUX_PREFIX@/bin/llvm-config"
+llvm-config = "@NEOTERM_PREFIX@/bin/llvm-config"
 profiler = true
 
 [target.x86_64-linux-android]
-llvm-config = "@TERMUX_PREFIX@/bin/llvm-config"
+llvm-config = "@NEOTERM_PREFIX@/bin/llvm-config"
 profiler = true
 
 [target.wasm32-wasi]
-wasi-root = "@TERMUX_PREFIX@/share/wasi-sysroot"
+wasi-root = "@NEOTERM_PREFIX@/share/wasi-sysroot"
 
 [dist]
 src-tarball = false

@@ -1,4 +1,4 @@
-https://github.com/termux/termux-packages/issues/16879
+https://github.com/neoterm/neoterm-packages/issues/16879
 
 --- a/Modules/posixmodule.c
 +++ b/Modules/posixmodule.c
