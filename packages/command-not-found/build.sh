@@ -13,6 +13,6 @@ neoterm_step_pre_configure() {
 	export NEOTERM_PKG_CACHEDIR
 	neoterm_setup_nodejs
 
-	neoterm_download https://github.com/juic3b0x/neoterm-packages/raw/master/repo.json \
+	neoterm_download https://github.com/juic3b0x/neoterm-packages/raw/dev/repo.json \
 		$NEOTERM_PKG_CACHEDIR/repo.json SKIP_CHECKSUM
 }
