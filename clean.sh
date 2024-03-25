@@ -24,12 +24,12 @@ fi
 
 # Read settings from .termuxrc if existing
 test -f "$HOME/.termuxrc" && . "$HOME/.termuxrc"
-: "${TERMUX_TOPDIR:="$HOME/.termux-build"}"
+: "${TERMUX_TOPDIR:="$HOME/.neoterm-build"}"
 : "${TMPDIR:=/tmp}"
 export TMPDIR
 
 # Lock file. Same as used in build-package.sh.
-TERMUX_BUILD_LOCK_FILE="${TMPDIR}/.termux-build.lck"
+TERMUX_BUILD_LOCK_FILE="${TMPDIR}/.neoterm-build.lck"
 if [ ! -e "$TERMUX_BUILD_LOCK_FILE" ]; then
 	touch "$TERMUX_BUILD_LOCK_FILE"
 fi

@@ -16,7 +16,7 @@ termux_step_host_build() {
 
 	mkdir -p 32bit
 	# Add -Wno-shift-count-overflow to ignore:
-	# /home/builder/.termux-build/pforth/src/csrc/pf_save.c:223:34: error: right shift count >= width of type [-Werror=shift-count-overflow
+	# /home/builder/.neoterm-build/pforth/src/csrc/pf_save.c:223:34: error: right shift count >= width of type [-Werror=shift-count-overflow
 	#   223 |         *addr++ = (uint8_t) (data>>56);
 	#       |                                  ^~
 	CC="gcc -m32" CFLAGS="-Wno-shift-count-overflow" cmake .

@@ -5,7 +5,7 @@
 ##
 ##  Usage:
 ##
-##  ./termux-build-qmake.sh
+##  ./neoterm-build-qmake.sh
 
 set -e
 

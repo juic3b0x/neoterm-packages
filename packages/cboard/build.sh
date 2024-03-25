@@ -16,7 +16,7 @@ termux_step_pre_configure() {
 
 	if $TERMUX_DEBUG_BUILD; then
 		# When doing debug build, -D_FORTIFY_SOURCE=2 gives this error:
-		# /home/builder/.termux-build/cboard/src/libchess/pgn.c:2235:33: error: 'umask' called with invalid mode
+		# /home/builder/.neoterm-build/cboard/src/libchess/pgn.c:2235:33: error: 'umask' called with invalid mode
 		# mode = umask(600);
 		export CFLAGS=${CFLAGS/-D_FORTIFY_SOURCE=2/}
 	fi

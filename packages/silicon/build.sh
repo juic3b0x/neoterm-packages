@@ -16,7 +16,7 @@ termux_step_pre_configure() {
 	# Dummy CMake toolchain file to workaround build error:
 	# error: failed to run custom build command for `freetype-sys v0.13.1`
 	# ...
-	# CMake Error at /home/builder/.termux-build/_cache/cmake-3.27.5/share/cmake-3.27/Modules/Platform/Android-Determine.cmake:217 (message):
+	# CMake Error at /home/builder/.neoterm-build/_cache/cmake-3.27.5/share/cmake-3.27/Modules/Platform/Android-Determine.cmake:217 (message):
 	# Android: Neither the NDK or a standalone toolchain was found.
 	export TARGET_CMAKE_TOOLCHAIN_FILE="${TERMUX_PKG_BUILDDIR}/android.toolchain.cmake"
 	touch "${TERMUX_PKG_BUILDDIR}/android.toolchain.cmake"

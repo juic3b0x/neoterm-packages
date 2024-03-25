@@ -1,6 +1,6 @@
 Fix error
 ```
-/storage/termux-build/moria/src/src/ui_io.cpp:524:19: error: cast from 'int *' to 'fd_set *' increases required alignment from 4 to 8 [-Werror,-Wcast-align]
+/storage/neoterm-build/moria/src/src/ui_io.cpp:524:19: error: cast from 'int *' to 'fd_set *' increases required alignment from 4 to 8 [-Werror,-Wcast-align]
     if (select(1, (fd_set *) &smask, (fd_set *) nullptr, (fd_set *) nullptr, &tbuf) == 1) {
                   ^~~~~~~~~~~~~~~~~
 ```

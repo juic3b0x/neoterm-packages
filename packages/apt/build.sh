@@ -72,9 +72,9 @@ termux_step_pre_configure() {
 termux_step_post_make_install() {
 	{
 		echo "# The main termux repository, with cloudflare cache"
-		echo "deb https://repo.theworkjoy.com/neoterm/ stable main"
+		echo "deb https://repo.theworkjoy.com/apt/neoterm-main stable main"
 		echo "# The main termux repository, without cloudflare cache"
-		echo "# deb https://repo.theworkjoy.com/neoterm/ stable main"
+		echo "# deb https://repo.theworkjoy.com/apt/neoterm-main stable main"
 	} > $TERMUX_PREFIX/etc/apt/sources.list
 
 	# apt-transport-tor

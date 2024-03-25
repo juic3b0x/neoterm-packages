@@ -1,16 +1,16 @@
 {
   "pkg_format": "debian",
   "packages": {
-    "name": "termux-main",
+    "name": "neoterm-main",
     "distribution": "stable",
     "component": "main",
-    "url": "https://repo.theworkjoy.com/neoterm"
+    "url": "https://repo.theworkjoy.com/apt/neoterm-main"
   },
   "root-packages": {
-    "name": "termux-root",
+    "name": "neoterm-root",
     "distribution": "root",
     "component": "stable",
-    "url": "https://packages-cf.termux.dev/apt/termux-root"
+    "url": "https://repo.theworkjoy.com/apt/neoterm-root"
   },
   "x11-packages": {
     "name": "termux-x11",

@@ -62,7 +62,7 @@ for component in $(jq -r 'del(.pkg_format) | .[] | .component' ${TERMUX_SCRIPTDI
 done
 
 # Allow to override setup.
-for f in "${HOME}/.config/termux/termuxrc.sh" "${HOME}/.termux/termuxrc.sh" "${HOME}/.termuxrc"; do
+for f in "${HOME}/.config/neoterm/neotermrc.sh" "${HOME}/.neoterm/neotermrc.sh" "${HOME}/.neotermrc"; do
 	if [ -f "$f" ]; then
 		echo "Using builder configuration from '$f'..."
 		. "$f"

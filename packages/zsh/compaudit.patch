@@ -20,7 +20,7 @@ diff -u -r ../zsh-5.0.7/Completion/compaudit ./Completion/compaudit
 -    _i_wdirs=( ${^_i_wdirs}(N-f:g+w:^g:${GROUP}:,-f:o+w:,-^${_i_owners}) )
 -  fi
 -fi
-+# NOTE: Disabled by termux, compaudit.patch:
++# NOTE: Disabled by neoterm, compaudit.patch:
 +#if (( $#_i_wdirs )); then
 +#  local GROUP GROUPMEM _i_pw _i_gid
 +#  if ((UID == EUID )); then

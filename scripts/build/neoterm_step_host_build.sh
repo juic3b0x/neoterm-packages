@@ -1,4 +1,0 @@
-neoterm_step_host_build() {
-	"$NEOTERM_PKG_SRCDIR/configure" ${NEOTERM_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS}
-	make -j "$NEOTERM_MAKE_PROCESSES"
-}

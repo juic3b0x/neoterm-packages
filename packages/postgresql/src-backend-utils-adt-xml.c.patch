@@ -1,6 +1,6 @@
 Fixes the following error
 
-/home/builder/.termux-build/postgresql/src/src/backend/utils/adt/xml.c:1177:45: error: incompatible function pointer types passing 'void (void *, xmlErrorPtr)' (aka 'void (void *, struct _xmlError *)') to parameter of type 'xmlStructuredErrorFunc' (aka 'void (*)(void *, const struct _xmlError *)') [-Wincompatible-function-pointer-types]
+/home/builder/.neoterm-build/postgresql/src/src/backend/utils/adt/xml.c:1177:45: error: incompatible function pointer types passing 'void (void *, xmlErrorPtr)' (aka 'void (void *, struct _xmlError *)') to parameter of type 'xmlStructuredErrorFunc' (aka 'void (*)(void *, const struct _xmlError *)') [-Wincompatible-function-pointer-types]
         xmlSetStructuredErrorFunc((void *) errcxt, xml_errorHandler);
                                                    ^~~~~~~~~~~~~~~~
 /data/data/io.neoterm/files/usr/include/libxml2/libxml/xmlerror.h:898:29: note: passing argument to parameter 'handler' here

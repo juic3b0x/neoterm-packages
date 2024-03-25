@@ -45,7 +45,7 @@ termux_step_get_source() {
     termux_download \
         https://storage.googleapis.com/git-repo-downloads/repo \
         ${TERMUX_PKG_CACHEDIR}/repo \
-        3c996dbd6cca4c70a41416355c4a90e8689d0ccc794f9263ac8b4d6e8ff64764
+        b03b473e2f5342acd914693a3a9d70560de6d6cd5fad2bdb8dcbb5ae170d78c9
     chmod +x ${TERMUX_PKG_CACHEDIR}/repo
     ${TERMUX_PKG_CACHEDIR}/repo init \
         -u https://android.googlesource.com/platform/manifest \

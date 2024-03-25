@@ -16,7 +16,7 @@ fi
 
 # Read settings from .termuxrc if existing
 test -f "$HOME"/.termuxrc && . "$HOME"/.termuxrc
-: ${TERMUX_TOPDIR:="$HOME/.termux-build"}
+: ${TERMUX_TOPDIR:="$HOME/.neoterm-build"}
 : ${TERMUX_ARCH:="aarch64"}
 : ${TERMUX_DEBUG_BUILD:=""}
 : ${TERMUX_INSTALL_DEPS:="-s"}

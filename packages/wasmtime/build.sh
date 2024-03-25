@@ -11,10 +11,10 @@ TERMUX_PKG_AUTO_UPDATE=true
 
 # arm:
 # ```
-# error: failed to run custom build command for `cranelift-codegen v0.90.1 (/home/builder/.termux-build/wasmtime/src/cranelift/codegen)`
+# error: failed to run custom build command for `cranelift-codegen v0.90.1 (/home/builder/.neoterm-build/wasmtime/src/cranelift/codegen)`
 #
 # Caused by:
-#   process didn't exit successfully: `/home/builder/.termux-build/wasmtime/src/target/release/build/cranelift-codegen-6ca5eab3f38213ac/build-script-build` (exit status: 101)
+#   process didn't exit successfully: `/home/builder/.neoterm-build/wasmtime/src/target/release/build/cranelift-codegen-6ca5eab3f38213ac/build-script-build` (exit status: 101)
 #   --- stderr
 #   thread 'main' panicked at 'error when identifying target: "no supported isa found for arch `armv7`"', cranelift/codegen/build.rs:42:53
 # ```

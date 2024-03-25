@@ -19,15 +19,15 @@ TERMUX_PKG_EXTRA_MAKE_ARGS="
 "
 
 # ```
-# /home/builder/.termux-build/pyqt5/src/sip/QtQuick/qsggeometry.sip:136:30:
+# /home/builder/.neoterm-build/pyqt5/src/sip/QtQuick/qsggeometry.sip:136:30:
 # error: use of undeclared identifier 'GL_BYTE'
 #			 case GL_BYTE:
 #			      ^
-# /home/builder/.termux-build/pyqt5/src/sip/QtQuick/qsggeometry.sip:148:30:
+# /home/builder/.neoterm-build/pyqt5/src/sip/QtQuick/qsggeometry.sip:148:30:
 # error: use of undeclared identifier 'GL_FLOAT'
 #			 case GL_FLOAT:
 #			      ^
-# /home/builder/.termux-build/pyqt5/src/sip/QtQuick/qsggeometry.sip:152:30:
+# /home/builder/.neoterm-build/pyqt5/src/sip/QtQuick/qsggeometry.sip:152:30:
 # error: use of undeclared identifier 'GL_INT'
 #			 case GL_INT:
 #			      ^

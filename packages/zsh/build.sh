@@ -1,7 +1,7 @@
 TERMUX_PKG_HOMEPAGE=https://www.zsh.org
 TERMUX_PKG_DESCRIPTION="Shell with lots of features"
 TERMUX_PKG_LICENSE="custom"
-TERMUX_PKG_LICENSE_FILE="LICENCE"
+TERMUX_PKG_LICENSE_FILE="LICENSE"
 TERMUX_PKG_MAINTAINER="@neoterm"
 TERMUX_PKG_VERSION=5.9
 TERMUX_PKG_REVISION=3
@@ -25,7 +25,7 @@ ac_cv_func_setresuid=no
 TERMUX_PKG_CONFFILES="etc/zshrc"
 TERMUX_PKG_BUILD_IN_SRC=true
 
-# Remove compdef pkg not suitable for Termux:
+# Remove compdef pkg not suitable for NeoTerm:
 TERMUX_PKG_RM_AFTER_INSTALL+="
 share/zsh/${TERMUX_PKG_VERSION}/functions/_pkg5
 "
@@ -41,9 +41,9 @@ termux_step_pre_configure() {
 	"
 	if [[ "$TERMUX_ARCH" = arm || "$TERMUX_ARCH" = i686 ]] ; then
 		## this essentially attempts to add zsh_cv_64_bit_type="long long" in EXTRA_CONFIGURE_ARGS.
-		## the space in argument to this flag make build script of termux
+		## the space in argument to this flag make build script of neoterm
 		## wrongly splitted the flag as separated flags
-		## the reason is termux build script does not use ${TERMUX_PKG_EXTRA_CONFIGURE_ARGS[@]}
+		## the reason is neoterm build script does not use ${TERMUX_PKG_EXTRA_CONFIGURE_ARGS[@]}
 		## (which is required to keep space in each flags by using an array) during shell expansion
 		perl -0pe 's#zsh_cv_64_bit_type=no#zsh_cv_64_bit_type="long long"#ms' < configure > configure.newf
 		cat configure.newf > configure
@@ -72,17 +72,17 @@ termux_step_post_configure() {
 	# and you will need to edit config.modules to make any other modules available."
 	# Since we build zsh non-dynamically (since dynamic loading doesn't work on Android when enabled),
 	# we need to explicitly enable the additional modules we want.
-	# - The files module is needed by `compinstall` (https://github.com/termux/termux-packages/issues/61).
+	# - The files module is needed by `compinstall` (https://github.com/neoterm/neoterm-packages/issues/61).
 	# - The regex module seems to be used by several extensions.
-	# - The curses, socket and zprof modules was desired by BrainDamage on IRC (#termux).
-	# - The deltochar and mathfunc modules is used by grml-zshrc (https://github.com/termux/termux-packages/issues/494).
-	# - The system module is needed by zplug (https://github.com/termux/termux-packages/issues/659).
-	# - The zpty module is needed by zsh-async (https://github.com/termux/termux-packages/issues/672).
-	# - The stat module is needed by zui (https://github.com/termux/termux-packages/issues/2829).
-	# - The mapfile module was requested in https://github.com/termux/termux-packages/issues/3116.
-	# - The zselect module is used by multiple plugins (https://github.com/termux/termux-packages/issues/4939)
-	# - The param_private module was requested in https://github.com/termux/termux-packages/issues/7391.
-	# - The cap module was requested in https://github.com/termux/termux-packages/issues/3102.
+	# - The curses, socket and zprof modules was desired by BrainDamage on IRC (#neoterm).
+	# - The deltochar and mathfunc modules is used by grml-zshrc (https://github.com/neoterm/neoterm-packages/issues/494).
+	# - The system module is needed by zplug (https://github.com/neoterm/neoterm-packages/issues/659).
+	# - The zpty module is needed by zsh-async (https://github.com/neoterm/neoterm-packages/issues/672).
+	# - The stat module is needed by zui (https://github.com/neoterm/neoterm-packages/issues/2829).
+	# - The mapfile module was requested in https://github.com/neoterm/neoterm-packages/issues/3116.
+	# - The zselect module is used by multiple plugins (https://github.com/neoterm/neoterm-packages/issues/4939)
+	# - The param_private module was requested in https://github.com/neoterm/neoterm-packages/issues/7391.
+	# - The cap module was requested in https://github.com/neoterm/neoterm-packages/issues/3102.
 	for module in cap curses deltochar files mapfile mathfunc pcre regex \
 		socket stat system zprof zpty zselect param_private
 	do

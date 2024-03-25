@@ -73,7 +73,7 @@ termux_step_pre_configure() {
 	-DCAFFE2_CUSTOM_PROTOC_EXECUTABLE=$(command -v protoc)
 	"
 
-	# /home/builder/.termux-build/python-torch/src/torch/csrc/jit/codegen/onednn/graph_helper.h:3:10: fatal error: 'oneapi/dnnl/dnnl_graph.hpp' file not found
+	# /home/builder/.neoterm-build/python-torch/src/torch/csrc/jit/codegen/onednn/graph_helper.h:3:10: fatal error: 'oneapi/dnnl/dnnl_graph.hpp' file not found
 	TERMUX_PKG_EXTRA_CONFIGURE_ARGS+="
 	-DUSE_MKLDNN=OFF
 	"
