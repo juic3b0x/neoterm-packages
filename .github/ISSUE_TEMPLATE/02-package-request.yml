@@ -8,7 +8,7 @@ body:
       value: |
         Use search (`pkg search <name>`) to check whether package is already available. If package does not exist in our repositories, fill the form below to request it.
 
-        Package requests are recommendational and are served at low priority. There no guarantee that package will be added at all, for example if it violates our [Packaging Policy](https://github.com/neoterm/neoterm-packages/blob/master/CONTRIBUTING.md#packaging-policy) or doesn't seem to have obvious practical use.
+        Package requests are recommendational and are served at low priority. There no guarantee that package will be added at all, for example if it violates our [Packaging Policy](https://github.com/juic3b0x/neoterm-packages/blob/dev/CONTRIBUTING.md#packaging-policy) or doesn't seem to have obvious practical use.
   - type: textarea
     attributes:
       label: Why is it worth to add this package?
@@ -27,9 +27,9 @@ body:
   - type: checkboxes
     attributes:
       label: Packaging policy acknowledgement
-      description: We reject packages that are used for Hacking or fall under certain other conditions described in [Packaging Policy](https://github.com/neoterm/neoterm-packages/blob/master/CONTRIBUTING.md#packaging-policy). Please READ this policy document!
+      description: We reject packages that are used for Hacking or fall under certain other conditions described in [Packaging Policy](https://github.com/juic3b0x/neoterm-packages/blob/dev/CONTRIBUTING.md#packaging-policy). Please READ this policy document!
       options:
-        - label: I certify that I have read [NeoTerm Packaging Policy](https://github.com/neoterm/neoterm-packages/blob/master/CONTRIBUTING.md#packaging-policy) and understand that my request will be denied in case of violation.
+        - label: I certify that I have read [NeoTerm Packaging Policy](https://github.com/juic3b0x/neoterm-packages/blob/dev/CONTRIBUTING.md#packaging-policy) and understand that my request will be denied in case of violation.
           required: true
   - type: textarea
     attributes:

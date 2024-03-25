@@ -30,13 +30,13 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        target_arch: [aarch64, arm, i686, x86_64]
+        target_arch: [aarch64]
       fail-fast: false
     steps:
-    - name: Setup arm and aarch64 CPU emulators
+    - name: Setup aarch64 CPU emulators
       uses: dbhi/qus/action@main
       with:
-        targets: arm aarch64
+        targets: aarch64
     - name: Clone repository
       uses: actions/checkout@v4
       with:
@@ -166,7 +166,7 @@ jobs:
               fi
             fi
             cd ./scripts
-            docker build -t ghcr.io/neoterm/package-builder:latest .
+            docker build -t ghcr.io/juic3b0x/package-builder:latest .
             cd ..
           fi
         fi

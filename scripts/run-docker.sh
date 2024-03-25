@@ -23,7 +23,7 @@ else
 	VOLUME=$REPOROOT:$CONTAINER_HOME_DIR/neoterm-packages
 fi
 
-: ${NEOTERM_BUILDER_IMAGE_NAME:=ghcr.io/neoterm/package-builder}
+: ${NEOTERM_BUILDER_IMAGE_NAME:=ghcr.io/juic3b0x/package-builder}
 : ${CONTAINER_NAME:=neoterm-package-builder}
 
 USER=builder

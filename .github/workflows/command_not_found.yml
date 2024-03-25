@@ -12,7 +12,7 @@ jobs:
     permissions:
       issues: write
       contents: write
-    if: github.repository == 'neoterm/neoterm-packages'
+    if: github.repository == 'juic3b0x/neoterm-packages'
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
@@ -25,7 +25,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.NEOTERMBOT2_TOKEN }}
         run: |
           git config --global user.name "NeoTerm Github Actions"
-          git config --global user.email "contact@neoterm.dev"
+          git config --global user.email "contact@theworkjoy.com"
 
           ./scripts/bin/revbump command-not-found
           git add .
