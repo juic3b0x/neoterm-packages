@@ -4,7 +4,7 @@ NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="Michal Bednarski @michalbednarski"
 NEOTERM_PKG_VERSION=0.8.0
 NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/NeoTermAm/archive/v$NEOTERM_PKG_VERSION.tar.gz
-NEOTERM_PKG_SHA256=7d4cfa2bfff93d5fc89fc89e537d2c072e08918276b140b7ed48ea45ebfbe8f3
+NEOTERM_PKG_SHA256=969f42e896097c3b637eeb4f0fac92e2a714279fe4d14d10db27832e6be132ad
 NEOTERM_PKG_PLATFORM_INDEPENDENT=true
 NEOTERM_PKG_BUILD_IN_SRC=true
 NEOTERM_PKG_CONFLICTS="neoterm-tools (<< 0.51)"
@@ -12,7 +12,7 @@ _GRADLE_VERSION=7.5
 
 neoterm_step_post_get_source() {
 	sed -i'' -E -e "s|\@NEOTERM_PREFIX\@|${NEOTERM_PREFIX}|g" "$NEOTERM_PKG_SRCDIR/am-libexec-packaged"
-	sed -i'' -E -e "s|\@NEOTERM_APP_PACKAGE\@|${NEOTERM_APP_PACKAGE}|g" "$NEOTERM_PKG_SRCDIR/app/src/main/java/com/neoterm/neotermam/FakeContext.java"
+	sed -i'' -E -e "s|\@NEOTERM_APP_PACKAGE\@|${NEOTERM_APP_PACKAGE}|g" "$NEOTERM_PKG_SRCDIR/app/src/main/java/io/neoterm/neotermam/FakeContext.java"
 }
 
 neoterm_step_make() {

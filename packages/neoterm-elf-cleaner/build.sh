@@ -6,7 +6,7 @@ NEOTERM_PKG_MAINTAINER="@neoterm"
 # updating the package.
 NEOTERM_PKG_VERSION=2.2.1
 NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/neoterm-elf-cleaner/archive/v${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=105be3c8673fd377ea7fd6becb6782b2ba060ad764439883710a5a7789421c46
+NEOTERM_PKG_SHA256=b51bc10aff3d733345e7809824c9c652fb228d92e229cd5eb63c48d67d7670cb
 NEOTERM_PKG_DEPENDS="libc++"
 
 neoterm_step_pre_configure() {

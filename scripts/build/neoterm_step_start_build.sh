@@ -101,7 +101,7 @@ neoterm_step_start_build() {
 			neoterm_download \
 				"https://github.com/juic3b0x/neoterm-elf-cleaner/releases/download/v${NEOTERM_ELF_CLEANER_VERSION}/neoterm-elf-cleaner" \
 				"$NEOTERM_ELF_CLEANER" \
-				2c57aa961e25dfe44feb87030da3b0e54d314c110b8be6ffede39806ac356cd6
+				7ca6b93fc02c003a7d804e7977891852f529f6162c71714a0da06f27487393ef
 			chmod u+x "$NEOTERM_ELF_CLEANER"
 		fi
 
