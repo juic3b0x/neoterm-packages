@@ -15,7 +15,7 @@ neoterm_step_post_get_source() {
 	local WASI_LIBC_SHA256=0a1c09c8c1da62a1ba214254ff4c9db6b60979c00f648a5eae33831d6ee2840e
 	local LLVM_VERSION=$(. "${NEOTERM_SCRIPTDIR}/packages/libllvm/build.sh"; echo ${NEOTERM_PKG_VERSION})
 	local LLVM_SRCURL="https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/llvm-project-${LLVM_VERSION}.src.tar.xz"
-	local LLVM_SHA256=be5a1e44d64f306bb44fce7d36e3b3993694e8e6122b2348608906283c176db8
+	local LLVM_SHA256=58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813
 
 	neoterm_download \
 		"${WASI_LIBC_SRCURL}" \
