@@ -3,14 +3,14 @@
 # coreutils and are clearly not a default part of most Linux installations,
 # or sourcing any other script in our build directories.
 
-NEOTERM_SDK_REVISION=9123335
-NEOTERM_ANDROID_BUILD_TOOLS_VERSION=33.0.1
+NEOTERM_SDK_REVISION=11076708
+NEOTERM_ANDROID_BUILD_TOOLS_VERSION=34.0.0
 # when changing the above:
 # change NEOTERM_PKG_VERSION (and remove NEOTERM_PKG_REVISION if necessary) in:
 #   apksigner, d8
 # and trigger rebuild of them
 : "${NEOTERM_NDK_VERSION_NUM:="26"}"
-: "${NEOTERM_NDK_REVISION:="b"}"
+: "${NEOTERM_NDK_REVISION:="c"}"
 NEOTERM_NDK_VERSION=$NEOTERM_NDK_VERSION_NUM$NEOTERM_NDK_REVISION
 # when changing the above:
 # update version and hashsum in packages

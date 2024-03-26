@@ -4,10 +4,10 @@ NEOTERM_PKG_LICENSE="NCSA"
 NEOTERM_PKG_MAINTAINER="@neoterm"
 # Version should be equal to NEOTERM_NDK_{VERSION_NUM,REVISION} in
 # scripts/properties.sh
-NEOTERM_PKG_VERSION=26b
+NEOTERM_PKG_VERSION=26c
 NEOTERM_PKG_REVISION=1
 NEOTERM_PKG_SRCURL=https://dl.google.com/android/repository/android-ndk-r${NEOTERM_PKG_VERSION}-linux.zip
-NEOTERM_PKG_SHA256=ad73c0370f0b0a87d1671ed2fd5a9ac9acfd1eb5c43a7fbfbd330f85d19dd632
+NEOTERM_PKG_SHA256=6d6e659834d28bb24ba7ae66148ad05115ebbad7dabed1af9b3265674774fcf6
 NEOTERM_PKG_AUTO_UPDATE=false
 # This package has taken over <pty.h> from the previous libutil-dev
 # and iconv.h from libandroid-support-dev:
