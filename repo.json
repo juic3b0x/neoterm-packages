@@ -5,5 +5,17 @@
     "distribution": "stable",
     "component": "main",
     "url": "https://repo.theworkjoy.com/apt/neoterm-main"
+  },
+  "root-packages": {
+    "name": "neoterm-root",
+    "distribution": "root",
+    "component": "stable",
+    "url": "https://repo.theworkjoy.com/apt/neoterm-root"
+  },
+  "x11-packages": {
+    "name": "neoterm-x11",
+    "distribution": "x11",
+    "component": "main",
+    "url": "https://repo.theworkjoy.com/apt/neoterm-x11"
   }
 }
