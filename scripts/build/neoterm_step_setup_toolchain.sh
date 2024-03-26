@@ -6,7 +6,7 @@ neoterm_step_setup_toolchain() {
 		# Bump NEOTERM_STANDALONE_TOOLCHAIN if a change is made in
 		# toolchain setup to ensure that everyone gets an updated
 		# toolchain
-		if [ "${NEOTERM_NDK_VERSION}" = "26b" ]; then
+		if [ "${NEOTERM_NDK_VERSION}" = "26c" ]; then
 			NEOTERM_STANDALONE_TOOLCHAIN+="-v1"
 			neoterm_setup_toolchain_26b
 		elif [ "${NEOTERM_NDK_VERSION}" = 23c ]; then
