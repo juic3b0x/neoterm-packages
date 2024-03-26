@@ -426,7 +426,7 @@ main() {
 		PACKAGES+=("neoterm-keyring")
 		PACKAGES+=("neoterm-tools")
 		PACKAGES+=("util-linux")
-		PACKAGES+=("xz-utils")
+		PACKAGES+=("liblzma")
 
 		# Additional.
 		PACKAGES+=("ed")

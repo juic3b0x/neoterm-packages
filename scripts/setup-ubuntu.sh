@@ -64,14 +64,14 @@ PACKAGES+=" xmlto"
 PACKAGES+=" xmltoman"
 
 # Needed by python modules (e.g. asciinema) and some build systems.
-PACKAGES+=" python3.9"
-PACKAGES+=" python3.10"
+# PACKAGES+=" python3.9"
 PACKAGES+=" python3.11"
+PACKAGES+=" python3.12"
 PACKAGES+=" python3-pip"
 PACKAGES+=" python3-setuptools"
 PACKAGES+=" python-wheel-common"
-PACKAGES+=" python3.10-venv"
 PACKAGES+=" python3.11-venv"
+PACKAGES+=" python3.12-venv"
 
 # Needed by package bc.
 PACKAGES+=" ed"
@@ -319,14 +319,14 @@ $SUDO dpkg --add-architecture i386
 $SUDO cp $(dirname "$(realpath "$0")")/llvm-snapshot.gpg.key /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 $SUDO chmod a+r /etc/apt/trusted.gpg.d/apt.llvm.org.asc
 {
-	echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy main"
-	echo "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-16 main"
+	echo "deb http://apt.llvm.org/mantic/ llvm-toolchain-mantic main"
+	echo "deb http://apt.llvm.org/mantic/ llvm-toolchain-mantic-16 main"
 } | $SUDO tee /etc/apt/sources.list.d/apt-llvm-org.list > /dev/null
 
 # Add ppa repo to be able to get openjdk-17 on ubuntu 22.04
-$SUDO cp $(dirname "$(realpath "$0")")/openjdk-r-ppa.gpg /etc/apt/trusted.gpg.d/
-$SUDO chmod a+r /etc/apt/trusted.gpg.d/openjdk-r-ppa.gpg
-echo "deb https://ppa.launchpadcontent.net/openjdk-r/ppa/ubuntu/ jammy main" | $SUDO tee /etc/apt/sources.list.d/openjdk-r-ubuntu-ppa-jammy.list > /dev/null
+#$SUDO cp $(dirname "$(realpath "$0")")/openjdk-r-ppa.gpg /etc/apt/trusted.gpg.d/
+#$SUDO chmod a+r /etc/apt/trusted.gpg.d/openjdk-r-ppa.gpg
+#echo "deb https://ppa.launchpadcontent.net/openjdk-r/ppa/ubuntu/ mantic main" | $SUDO tee /etc/apt/sources.list.d/openjdk-r-ubuntu-ppa-mantic.list > /dev/null
 
 $SUDO apt-get -yq update
 
