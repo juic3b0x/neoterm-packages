@@ -1,7 +1,7 @@
 NEOTERM_PKG_HOMEPAGE=https://www.zsh.org
 NEOTERM_PKG_DESCRIPTION="Shell with lots of features"
 NEOTERM_PKG_LICENSE="custom"
-NEOTERM_PKG_LICENSE_FILE="LICENSE"
+NEOTERM_PKG_LICENSE_FILE="LICENCE"
 NEOTERM_PKG_MAINTAINER="@neoterm"
 NEOTERM_PKG_VERSION=5.9
 NEOTERM_PKG_REVISION=3
@@ -9,8 +9,9 @@ NEOTERM_PKG_SRCURL="https://sourceforge.net/projects/zsh/files/zsh/$NEOTERM_PKG_
 NEOTERM_PKG_SHA256=9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45acd5
 # Remove hard link to bin/zsh as Android does not support hard links:
 NEOTERM_PKG_RM_AFTER_INSTALL="bin/zsh-${NEOTERM_PKG_VERSION}"
-NEOTERM_PKG_DEPENDS="libandroid-support, libcap, ncurses, neoterm-tools, command-not-found, pcre"
-NEOTERM_PKG_RECOMMENDS="command-not-found, zsh-completions"
+NEOTERM_PKG_DEPENDS="libandroid-support, libcap, ncurses, neoterm-tools, pcre"
+NEOTERM_PKG_RECOMMENDS="zsh-completions"
+#NEOTERM_PKG_RECOMMENDS="command-not-found, zsh-completions"
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-gdbm
 --enable-pcre
