@@ -11,7 +11,7 @@ NEOTERM_PKG_SHA256=9b8d1ecedd5b5e81fbf1918e876752a7dd948e05c1a0dba10ab863842d45a
 NEOTERM_PKG_RM_AFTER_INSTALL="bin/zsh-${NEOTERM_PKG_VERSION}"
 NEOTERM_PKG_DEPENDS="libandroid-support, libcap, ncurses, neoterm-tools, pcre"
 NEOTERM_PKG_RECOMMENDS="zsh-completions"
-#NEOTERM_PKG_RECOMMENDS="command-not-found, zsh-completions"
+NEOTERM_PKG_RECOMMENDS="command-not-found-neoterm, zsh-completions"
 NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
 --disable-gdbm
 --enable-pcre
