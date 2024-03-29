@@ -19,7 +19,7 @@ test -f "$HOME"/.neotermrc && . "$HOME"/.neotermrc
 : ${NEOTERM_TOPDIR:="$HOME/.neoterm-build"}
 : ${NEOTERM_ARCH:="aarch64"}
 : ${NEOTERM_DEBUG_BUILD:=""}
-: ${NEOTERM_INSTALL_DEPS:="-s"}
+: ${NEOTERM_INSTALL_DEPS:="-i"}
 # Set NEOTERM_INSTALL_DEPS to -s unless set to -i
 
 _show_usage() {

@@ -544,17 +544,9 @@ fi
 if [ "${NEOTERM_INSTALL_DEPS-false}" = "true" ] || [ "${NEOTERM_PACKAGE_LIBRARY-bionic}" = "glibc" ]; then
 	# Setup PGP keys for verifying integrity of dependencies.
 	# Keys are obtained from our keyring package.
-	gpg --list-keys 2C7F29AE97891F6419A9E2CDB0076E490B71616B > /dev/null 2>&1 || {
-		gpg --import "$NEOTERM_SCRIPTDIR/packages/neoterm-keyring/grimler.gpg"
-		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key 2C7F29AE97891F6419A9E2CDB0076E490B71616B
-	}
-	gpg --list-keys CC72CF8BA7DBFA0182877D045A897D96E57CF20C > /dev/null 2>&1 || {
-		gpg --import "$NEOTERM_SCRIPTDIR/packages/neoterm-keyring/neoterm-autobuilds.gpg"
-		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key CC72CF8BA7DBFA0182877D045A897D96E57CF20C
-	}
-	gpg --list-keys 998DE27318E867EA976BA877389CEED64573DFCA > /dev/null 2>&1 || {
-		gpg --import "$NEOTERM_SCRIPTDIR/packages/neoterm-keyring/neoterm-pacman.gpg"
-		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key 998DE27318E867EA976BA877389CEED64573DFCA
+	gpg --list-keys 017D5CD5439FDFCD7EEA855268A8B0A42E1B638F > /dev/null 2>&1 || {
+		gpg --import "$NEOTERM_SCRIPTDIR/packages/neoterm-keyring/theworkjoy-repo.gpg"
+		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key 017D5CD5439FDFCD7EEA855268A8B0A42E1B638F
 	}
 fi
 
