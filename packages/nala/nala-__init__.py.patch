@@ -1,12 +1,12 @@
 --- a/nala/__init__.py
 +++ b/nala/__init__.py
 @@ -30,9 +30,9 @@
- # ROOT = "@NEOTERM_PREFIX@"
- # USR = "@NEOTERM_PREFIX@"
- # NEOTERM = True
+ # ROOT = "@TERMUX_PREFIX@"
+ # USR = "@TERMUX_PREFIX@"
+ # TERMUX = True
 -ROOT = ""
 -USR = "/usr"
--NEOTERM = False
+-TERMUX = False
 +ROOT = "@NEOTERM_PREFIX@"
 +USR = "@NEOTERM_PREFIX@"
 +NEOTERM = True
