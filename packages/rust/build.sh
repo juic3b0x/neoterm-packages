@@ -58,7 +58,7 @@ neoterm_step_pre_configure() {
 	# but written in a future-proof manner.
 	ln -sft $RUST_LIBDIR $(echo | $CC -x c - -Wl,-t -shared | grep '\.so$')
 
-	# rust checks libs in PREFIX/lib. It then can't find libc.so and libdl.so because rust program doesn't
+	# rust checks libs in PREFIX/lib. It then cant find libc.so and libdl.so because rust program doesnt
 	# know where those are. Putting them temporarly in $PREFIX/lib prevents that failure
 	mv $NEOTERM_PREFIX/lib/libtinfo.so.6 $NEOTERM_PREFIX/lib/libtinfo.so.6.tmp
 	mv $NEOTERM_PREFIX/lib/libz.so.1 $NEOTERM_PREFIX/lib/libz.so.1.tmp
