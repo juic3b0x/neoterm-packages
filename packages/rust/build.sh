@@ -53,10 +53,10 @@ neoterm_step_pre_configure() {
 	# The build system somehow tries to link binaries against a wrong libc,
 	# leading to build failures for arm and runtime errors for others.
 	# The following command is equivalent to
-	#	ln -sft $RUST_LIBDIR \
-	#		$NEOTERM_STANDALONE_TOOLCHAIN/sysroot/usr/lib/$NEOTERM_HOST_PLATFORM/$NEOTERM_PKG_API_LEVEL/lib{c,dl}.so
+	ln -sft $RUST_LIBDIR \
+		$NEOTERM_STANDALONE_TOOLCHAIN/sysroot/usr/lib/$NEOTERM_HOST_PLATFORM/$NEOTERM_PKG_API_LEVEL/lib{c,dl}.so
 	# but written in a future-proof manner.
-	ln -sft $RUST_LIBDIR $(echo | $CC -x c - -Wl,-t -shared | grep '\.so$')
+	#ln -sft $RUST_LIBDIR $(echo | $CC -x c - -Wl,-t -shared | grep '\.so$')
 
 	# rust checks libs in PREFIX/lib. It then cant find libc.so and libdl.so because rust program doesnt
 	# know where those are. Putting them temporarly in $PREFIX/lib prevents that failure
