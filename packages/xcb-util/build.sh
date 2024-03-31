@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://xcb.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="Utility libraries for XC Binding"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.4.1
+NEOTERM_PKG_SRCURL=https://xcb.freedesktop.org/dist/xcb-util-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=5abe3bbbd8e54f0fa3ec945291b7e8fa8cfd3cccc43718f8758430f94126e512
+NEOTERM_PKG_DEPENDS="libxcb"
+NEOTERM_PKG_BUILD_DEPENDS="xorg-util-macros"

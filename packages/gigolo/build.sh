@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://docs.xfce.org/apps/gigolo/start
+NEOTERM_PKG_DESCRIPTION="Gigolo is a frontend to easily manage connections to local and remote filesystems using GIO/GVfs."
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="0.5.3"
+NEOTERM_PKG_SRCURL=https://archive.xfce.org/src/apps/gigolo/0.5/gigolo-$NEOTERM_PKG_VERSION.tar.bz2
+NEOTERM_PKG_SHA256=d25984f65744665e2433335249f9547a38cead45440027af0c397ebf254d2fd0
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="gtk3"

@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/tsujan/Arqiver
+NEOTERM_PKG_DESCRIPTION="A simple Qt archiver manager based on libarchive"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="Yisus7u7 <dev.yisus@hotmail.com>"
+NEOTERM_PKG_VERSION="0.12.0"
+NEOTERM_PKG_SRCURL=https://github.com/tsujan/Arqiver/releases/download/V${NEOTERM_PKG_VERSION}/Arqiver-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=053df7eb855313f74b7f058b2a7ebbb1ba1bad235fbd433e38736c4c928d1660
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase, qt5-qtsvg"
+NEOTERM_PKG_RECOMMENDS="bsdtar, gzip, hicolor-icon-theme"
+NEOTERM_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools, qt5-qttools-cross-tools"

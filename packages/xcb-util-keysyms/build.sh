@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://xcb.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="Utility libraries for XC Binding - Standard X key constants and conversion to/from keycodes"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=0.4.1
+NEOTERM_PKG_SRCURL=https://xcb.freedesktop.org/dist/xcb-util-keysyms-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=7c260a5294412aed429df1da2f8afd3bd07b7cba3fec772fba15a613a6d5c638
+NEOTERM_PKG_DEPENDS="libxcb"
+NEOTERM_PKG_BUILD_DEPENDS="xorg-util-macros"

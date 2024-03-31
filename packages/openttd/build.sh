@@ -1,0 +1,33 @@
+NEOTERM_PKG_HOMEPAGE=https://www.openttd.org/
+NEOTERM_PKG_DESCRIPTION="An engine for running Transport Tycoon Deluxe"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION="13.4"
+NEOTERM_PKG_REVISION=2
+NEOTERM_PKG_SRCURL=git+https://github.com/OpenTTD/OpenTTD
+NEOTERM_PKG_GIT_BRANCH="$NEOTERM_PKG_VERSION"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="fontconfig, freetype, libc++, libicu, liblzma, liblzo, libpng, openttd-gfx, openttd-msx, openttd-sfx, sdl2, zlib"
+NEOTERM_PKG_RECOMMENDS="desktop-file-utils, hicolor-icon-theme"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
+-DBINARY_NAME=openttd
+-DCMAKE_INSTALL_DATADIR=share
+-DCMAKE_INSTALL_BINDIR=bin
+"
+NEOTERM_PKG_HOSTBUILD=true
+NEOTERM_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS="
+-DOPTION_DEDICATED=ON
+"
+
+neoterm_step_host_build() {
+	neoterm_setup_cmake
+	cmake "$NEOTERM_PKG_SRCDIR" $NEOTERM_PKG_EXTRA_HOSTBUILD_CONFIGURE_ARGS
+	make -j $NEOTERM_MAKE_PROCESSES
+}
+
+neoterm_step_pre_configure() {
+	if [ "$NEOTERM_ON_DEVICE_BUILD" = "false" ]; then
+		NEOTERM_PKG_EXTRA_CONFIGURE_ARGS+=" -DHOST_BINARY_DIR=$NEOTERM_PKG_HOSTBUILD_DIR"
+	fi
+	CXXFLAGS+=" -DU_USING_ICU_NAMESPACE=1"
+}

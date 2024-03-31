@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/x11-packages
+NEOTERM_PKG_DESCRIPTION="A metapackage that installs all parts of the LXQt desktop environment"
+NEOTERM_PKG_LICENSE="Public Domain"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION=1.2.0
+NEOTERM_PKG_AUTO_UPDATE=false
+NEOTERM_PKG_SKIP_SRC_EXTRACT=true
+NEOTERM_PKG_DEPENDS="pcmanfm-qt, qterminal, lxqt-session, lxqt-panel, lxqt-runner, lxqt-openssh-askpass, lxqt-notificationd, lxqt-globalkeys, lxqt-config, lxqt-archiver, lxqt-about, lximage-qt, obconf-qt, lxqt-qtplugin, lxqt-themes, pavucontrol-qt"
+NEOTERM_PKG_RECOMMENDS="kvantum"
+NEOTERM_PKG_SUGGESTS="papirus-icon-theme"
+NEOTERM_PKG_METAPACKAGE=true
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true

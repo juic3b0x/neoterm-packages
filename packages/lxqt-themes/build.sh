@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="Themes, graphics and icons for LXQt"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="1.3.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/lxqt-themes/releases/download/${NEOTERM_PKG_VERSION}/lxqt-themes-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=217fec5bb2c1d5b92c9b07d470a960d1fbfeeac927c12f54a85c5e9c25c67504
+NEOTERM_PKG_DEPENDS="hicolor-icon-theme"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools"
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_AUTO_UPDATE=true

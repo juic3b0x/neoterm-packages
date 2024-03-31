@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/tsujan/FeatherPad
+NEOTERM_PKG_DESCRIPTION="Lightweight Qt Plain-Text Editor"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="1.4.1"
+NEOTERM_PKG_SRCURL=https://github.com/tsujan/FeatherPad/releases/download/V${NEOTERM_PKG_VERSION}/FeatherPad-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=f57d7e9392afe3819998049dac1a74528e29728b1132632a2b802c897497e621
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+NEOTERM_PKG_DEPENDS="hunspell, libc++, libx11, qt5-qtbase, qt5-qtsvg, qt5-qtx11extras"
+NEOTERM_PKG_RECOMMENDS="hicolor-icon-theme"
+NEOTERM_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools, qt5-qttools-cross-tools"

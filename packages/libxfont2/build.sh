@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="X11 font rasterisation library"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=2.0.6
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/releases/individual/lib/libXfont2-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=74ca20017eb0fb3f56d8d5e60685f560fc85e5ff3d84c61c4cb891e40c27aef4
+NEOTERM_PKG_DEPENDS="freetype, libfontenc, zlib"
+NEOTERM_PKG_BUILD_DEPENDS="xorgproto, xorg-util-macros, xtrans"

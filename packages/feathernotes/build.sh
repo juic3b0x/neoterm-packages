@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE=https://github.com/tsujan/FeatherNotes
+NEOTERM_PKG_DESCRIPTION="Lightweight Qt Notes-Manager for Linux"
+NEOTERM_PKG_LICENSE="GPL-3.0"
+NEOTERM_PKG_MAINTAINER="Yisus7u7 <dev.yisus@hotmail.com>"
+NEOTERM_PKG_VERSION="1.1.1"
+NEOTERM_PKG_SRCURL=https://github.com/tsujan/FeatherNotes/archive/refs/tags/V${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=27dde444e5250637861cf89c2878be864e10a6760dc8523d3f2be9920dc55ae5
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_VERSION_REGEXP="\d+\.\d+\.\d+"
+NEOTERM_PKG_DEPENDS="hunspell, libc++, libx11, qt5-qtbase, qt5-qtsvg, qt5-qtx11extras"
+NEOTERM_PKG_RECOMMENDS="hicolor-icon-theme"
+NEOTERM_PKG_BUILD_DEPENDS="qt5-qtbase-cross-tools, qt5-qttools-cross-tools"

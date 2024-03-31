@@ -1,0 +1,8 @@
+NEOTERM_PKG_HOMEPAGE=https://xorg.freedesktop.org/
+NEOTERM_PKG_DESCRIPTION="Print contents of X events"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+NEOTERM_PKG_VERSION=1.2.5
+NEOTERM_PKG_SRCURL=https://xorg.freedesktop.org/archive/individual/app/xev-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=c9461a4389714e0f33974f9e75934bdc38d836a0f059b8dc089c7cbf2ce36ec1
+NEOTERM_PKG_DEPENDS="libx11, libxrandr"

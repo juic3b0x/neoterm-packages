@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=http://joewing.net/projects/jwm/
+NEOTERM_PKG_DESCRIPTION="Joe's Window Manager is a light-weight X11 window manager"
+NEOTERM_PKG_LICENSE="MIT"
+NEOTERM_PKG_MAINTAINER="Joshua Kahn @TomJo2000"
+NEOTERM_PKG_VERSION=2.4.3
+NEOTERM_PKG_SRCURL=https://github.com/joewing/jwm/releases/download/v${NEOTERM_PKG_VERSION}/jwm-${NEOTERM_PKG_VERSION}.tar.xz
+NEOTERM_PKG_SHA256=ee3b4ee0c452ef31fcb9303ab50aaf496cf5bdf7b5f1fdc9a1251b7175ca67ab
+NEOTERM_PKG_DEPENDS="libcairo,librsvg,pango,libjpeg-turbo,libpng,libxext,libxrender,libxmu,libxinerama,libxpm"
+NEOTERM_PKG_BUILD_IN_SRC=true

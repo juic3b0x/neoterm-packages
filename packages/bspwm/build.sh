@@ -1,0 +1,12 @@
+NEOTERM_PKG_HOMEPAGE="https://github.com/baskerville/bspwm"
+NEOTERM_PKG_DESCRIPTION="A tiling window manager based on binary space partitioning"
+NEOTERM_PKG_LICENSE="BSD 2-Clause"
+NEOTERM_PKG_MAINTAINER="@leapofazzam123"
+NEOTERM_PKG_VERSION=0.9.10
+NEOTERM_PKG_REVISION=6
+NEOTERM_PKG_SRCURL="https://github.com/baskerville/bspwm/archive/refs/tags/$NEOTERM_PKG_VERSION.tar.gz"
+NEOTERM_PKG_SHA256="0d0f5e465b9c27a5c2143c86189392fa297fad55253b9ed8f6854473d3928f8f"
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_UPDATE_TAG_TYPE="newest-tag"
+NEOTERM_PKG_DEPENDS="libxcb, sxhkd, xcb-util, xcb-util-keysyms, xcb-util-wm"
+NEOTERM_PKG_BUILD_IN_SRC=true

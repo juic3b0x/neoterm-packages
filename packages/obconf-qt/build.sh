@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="OpenBox window manager configuration tool"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="0.16.4"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/obconf-qt/releases/download/${NEOTERM_PKG_VERSION}/obconf-qt-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=b37d94ff5e3ae527f83e26e970a736775f27749b0946bf6b6cf4c3ac7047a997
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase, qt5-qtx11extras, glib, openbox, liblxqt, hicolor-icon-theme"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools, qt5-qtbase-cross-tools, qt5-qttools-cross-tools"
+NEOTERM_PKG_AUTO_UPDATE=true

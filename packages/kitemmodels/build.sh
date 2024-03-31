@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.kde.org/
+NEOTERM_PKG_DESCRIPTION="Set of item models extending the Qt model-view framework (KDE)"
+NEOTERM_PKG_LICENSE="LGPL-2.1"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="5.112.0"
+NEOTERM_PKG_SRCURL="https://download.kde.org/stable/frameworks/${NEOTERM_PKG_VERSION%.*}/kitemmodels-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=5aec7f9040ce0640494bcf4e65f082dbcb3c2e50b6a6f1d4450e614aeede0a8c
+NEOTERM_PKG_AUTO_UPDATE=true
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase, qt5-qtdeclarative"
+NEOTERM_PKG_BUILD_DEPENDS="extra-cmake-modules, qt5-qtbase-cross-tools, qt5-qtdeclarative-cross-tools"

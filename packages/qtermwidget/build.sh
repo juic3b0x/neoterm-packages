@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="A terminal emulator widget for Qt 5"
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="1.4.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/qtermwidget/releases/download/${NEOTERM_PKG_VERSION}/qtermwidget-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=e7253065f74fa056843c95f9543e690bcaf7a03647ef5e02379eec4eb162026b
+NEOTERM_PKG_DEPENDS="libc++, qt5-qtbase"
+NEOTERM_PKG_BUILD_DEPENDS="lxqt-build-tools, qt5-qttools-cross-tools"
+NEOTERM_PKG_AUTO_UPDATE=true

@@ -1,0 +1,11 @@
+NEOTERM_PKG_HOMEPAGE=https://lxqt.github.io
+NEOTERM_PKG_DESCRIPTION="Building tools required by LXQt project"
+NEOTERM_PKG_LICENSE="BSD 3-Clause"
+NEOTERM_PKG_LICENSE_FILE="BSD-3-Clause"
+NEOTERM_PKG_MAINTAINER="Simeon Huang <symeon@librehat.com>"
+NEOTERM_PKG_VERSION="0.13.0"
+NEOTERM_PKG_SRCURL="https://github.com/lxqt/lxqt-build-tools/releases/download/${NEOTERM_PKG_VERSION}/lxqt-build-tools-${NEOTERM_PKG_VERSION}.tar.xz"
+NEOTERM_PKG_SHA256=fd3c199d0d7c61f23040a45ead57cc9a4f888af5995371f6b0ce1fa902eb59ce
+NEOTERM_PKG_DEPENDS="cmake, libc++, qt5-qtbase"
+NEOTERM_PKG_PLATFORM_INDEPENDENT=true
+NEOTERM_PKG_AUTO_UPDATE=true

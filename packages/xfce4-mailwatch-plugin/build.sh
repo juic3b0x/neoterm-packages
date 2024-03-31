@@ -1,0 +1,9 @@
+NEOTERM_PKG_HOMEPAGE=https://docs.xfce.org/panel-plugins/xfce4-mailwatch-plugin/start
+NEOTERM_PKG_DESCRIPTION="Xfce4 Mailwatch Plugin is a multi-protocol, multi-mailbox mail watcher for the Xfce4 panel."
+NEOTERM_PKG_LICENSE="GPL-2.0"
+NEOTERM_PKG_MAINTAINER="@neoterm"
+_MAJOR_VERSION=1.3
+NEOTERM_PKG_VERSION=${_MAJOR_VERSION}.1
+NEOTERM_PKG_SRCURL=https://archive.xfce.org/src/panel-plugins/xfce4-mailwatch-plugin/${_MAJOR_VERSION}/xfce4-mailwatch-plugin-$NEOTERM_PKG_VERSION.tar.bz2
+NEOTERM_PKG_SHA256=054964e9fe4ca668486400991ce1ea01d07aac7ba235f4b14d4a8f7d9800046a
+NEOTERM_PKG_DEPENDS="atk, exo, gdk-pixbuf, glib, gtk3, harfbuzz, libcairo, libgnutls, libxfce4ui, libxfce4util, pango, xfce4-panel, zlib"

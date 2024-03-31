@@ -1,0 +1,10 @@
+NEOTERM_PKG_HOMEPAGE=https://www.libsdl.org/projects/SDL_net/
+NEOTERM_PKG_DESCRIPTION="A small sample cross-platform networking library (version 2)"
+NEOTERM_PKG_LICENSE="ZLIB"
+NEOTERM_PKG_LICENSE_FILE="LICENSE.txt"
+NEOTERM_PKG_MAINTAINER="@leapofazzam123"
+NEOTERM_PKG_VERSION=2.2.0
+NEOTERM_PKG_SRCURL=https://www.libsdl.org/projects/SDL_net/release/SDL2_net-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=4e4a891988316271974ff4e9585ed1ef729a123d22c08bd473129179dc857feb
+NEOTERM_PKG_DEPENDS="sdl2"
+NEOTERM_PKG_BUILD_DEPENDS="sdl2-static"

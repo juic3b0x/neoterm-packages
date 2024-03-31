@@ -1,0 +1,11 @@
+--- a/src/inkscape-main.cpp
++++ b/src/inkscape-main.cpp
+@@ -81,7 +81,7 @@ static void set_themes_env()
+         return;
+ #else
+         // initialize with glib default (don't call g_get_system_data_dirs; it's cached!)
+-        xdg_data_dirs = "/usr/local/share/:/usr/share/";
++        xdg_data_dirs = "@NEOTERM_PREFIX@/local/share/:@NEOTERM_PREFIX@/share/";
+ #endif
+     }
+ 
