@@ -16,15 +16,14 @@ BOOTSTRAP_ANDROID10_COMPATIBLE=false
 # By default, bootstrap archives will be built for all architectures
 # supported by NeoTerm application.
 # Override with option '--architectures'.
-NEOTERM_ARCHITECTURES=("aarch64" "arm" "i686" "x86_64")
+NEOTERM_ARCHITECTURES=("aarch64")
 
 # The supported neoterm package managers.
-NEOTERM_PACKAGE_MANAGERS=("apt" "pacman")
+NEOTERM_PACKAGE_MANAGERS=("apt")
 
 # The repository base urls mapping for package managers.
 declare -A REPO_BASE_URLS=(
-	["apt"]="https://packages-cf.neoterm.dev/apt/neoterm-main"
-	["pacman"]="https://s3.amazonaws.io.neoterm-pacman.us/main"
+	["apt"]="https://repo.theworkjoy.com/apt/neoterm-main"
 )
 
 # The package manager that will be installed in bootstrap.

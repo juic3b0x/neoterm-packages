@@ -28,7 +28,7 @@ def check_manifest(arch, manifest):
             parts = line.decode().split(':', 1)
             current_package[parts[0].strip()] = parts[1].strip()
 
-for arch in ['all', 'aarch64', 'arm', 'i686', 'x86_64']:
-    manifest_url = f'https://neoterm.dev/packages/dists/stable/main/binary-{arch}/Packages'
+for arch in ['all', 'aarch64']:
+    manifest_url = f'https://reo.theworkjoy.com/apt/neoterm-main/dists/stable/main/binary-{arch}/Packages'
     with urllib.request.urlopen(manifest_url) as manifest:
         check_manifest(arch, manifest)

@@ -13,9 +13,9 @@ neoterm_step_make_install() {
 	mkdir -p $NEOTERM_PREFIX/etc/apt/sources.list.d
 	{
 		echo "# The x11 neoterm repository, with cloudflare cache"
-		echo "deb https://packages-cf.neoterm.dev/apt/neoterm-x11/ x11 main"
+		echo "deb https://repo.theworkjoy.com/apt/neoterm-x11/ x11 stable"
 		echo "# The x11 neoterm repository, without cloudflare cache"
-		echo "# deb https://packages.neoterm.dev/apt/neoterm-x11/ x11 main"
+		echo "# deb https://repo.theworkjoy.com/apt/neoterm-x11/ x11 stable"
 	} > $NEOTERM_PREFIX/etc/apt/sources.list.d/x11.list
 }
 
