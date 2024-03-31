@@ -30,7 +30,8 @@ permissions: {} # none
 jobs:
   build:
     permissions:
-      contents: read # actions/upload-artifact doesn't need contents: write
+      contents: read
+      packages: write
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -176,7 +177,7 @@ jobs:
               fi
             fi
             cd ./scripts
-            docker build -t ghcr.io/juic3b0x/package-builder:latest .
+            sudo docker build -t ghcr.io/juic3b0x/package-builder:latest .
             cd ..
           fi
         fi
