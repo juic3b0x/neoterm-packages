@@ -274,9 +274,9 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         path: ./
-    - name: Upload to packages.neoterm.dev
+    - name: Upload to repo.theworkjoy.com
       env:
-        REPOSITORY_URL: https://packages.neoterm.dev/aptly-api
+        REPOSITORY_URL: https://repo.theworkjoy.com/aptly-api
       run: |
         GITHUB_SHA=${{ github.sha }}
         APTLY_API_AUTH=${{ secrets.APTLY_API_AUTH }}
