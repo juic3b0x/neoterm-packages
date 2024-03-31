@@ -15,7 +15,7 @@
   "x11-packages": {
     "name": "neoterm-x11",
     "distribution": "x11",
-    "component": "main",
+    "component": "stable",
     "url": "https://repo.theworkjoy.com/apt/neoterm-x11"
   }
 }
