@@ -4,7 +4,7 @@ NEOTERM_PKG_LICENSE="GPL-3.0"
 NEOTERM_PKG_MAINTAINER="@neoterm"
 NEOTERM_PKG_VERSION=4.10.0
 NEOTERM_PKG_SRCURL=https://github.com/theworkjoy/proot-distro/archive/v${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=0504a7da85683c0f79539a7f93ffbf9ff59546016275cdbedad9ee2b5cca401f
+NEOTERM_PKG_SHA256=c102d2ffcb87487f1c722cc988d6c616612b00ebb9ceca87087329aca0f8d8cd
 NEOTERM_PKG_DEPENDS="bash, bzip2, coreutils, curl, findutils, gzip, ncurses-utils, proot (>= 5.1.107-32), sed, tar, neoterm-tools, xz-utils"
 NEOTERM_PKG_SUGGESTS="bash-completion, neoterm-api"
 NEOTERM_PKG_BUILD_IN_SRC=true
