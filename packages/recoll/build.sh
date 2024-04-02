@@ -1,10 +1,10 @@
-NEOTERM_PKG_HOMEPAGE=https://www.lesbonscomptes.com/recoll/index.html
+NEOTERM_PKG_HOMEPAGE=https://www.recoll.org
 NEOTERM_PKG_DESCRIPTION="Full-text search for your desktop"
 NEOTERM_PKG_LICENSE="GPL-2.0"
 NEOTERM_PKG_MAINTAINER="@neoterm"
-NEOTERM_PKG_VERSION="1.37.4"
-NEOTERM_PKG_SRCURL=https://www.lesbonscomptes.com/recoll/recoll-${NEOTERM_PKG_VERSION}.tar.gz
-NEOTERM_PKG_SHA256=3109d76a65bb2f887231b643994ed701c2efe6ba0771f8451b39e2f186c3b6ad
+NEOTERM_PKG_VERSION="1.37.5"
+NEOTERM_PKG_SRCURL=https://www.recoll.org/recoll-${NEOTERM_PKG_VERSION}.tar.gz
+NEOTERM_PKG_SHA256=befd8032deae7eb7f1457db2176f17dc4e74d0c60ff619c67c36f723d45d3155
 NEOTERM_PKG_AUTO_UPDATE=true
 NEOTERM_PKG_DEPENDS="aspell, file, libc++, libiconv, libxapian, libxml2, libxslt, zlib"
 NEOTERM_PKG_PYTHON_COMMON_DEPS="wheel"

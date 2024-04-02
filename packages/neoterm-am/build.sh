@@ -2,9 +2,9 @@ NEOTERM_PKG_HOMEPAGE=https://github.com/juic3b0x/NeoTermAm
 NEOTERM_PKG_DESCRIPTION="Android Oreo-compatible am command reimplementation"
 NEOTERM_PKG_LICENSE="Apache-2.0"
 NEOTERM_PKG_MAINTAINER="Michal Bednarski @michalbednarski"
-NEOTERM_PKG_VERSION=0.8.0
+NEOTERM_PKG_VERSION=0.8.1
 NEOTERM_PKG_SRCURL=https://github.com/juic3b0x/NeoTermAm/archive/v$NEOTERM_PKG_VERSION.tar.gz
-NEOTERM_PKG_SHA256=969f42e896097c3b637eeb4f0fac92e2a714279fe4d14d10db27832e6be132ad
+NEOTERM_PKG_SHA256=b2b545191c37a18e268bccbd51ce6c1816330cd409954ae56c9d3c07682fef69
 NEOTERM_PKG_PLATFORM_INDEPENDENT=true
 NEOTERM_PKG_BUILD_IN_SRC=true
 NEOTERM_PKG_CONFLICTS="neoterm-tools (<< 0.51)"
@@ -29,7 +29,7 @@ neoterm_step_make() {
   	sed -i'' -E '/^org\.gradle\.jvmargs=.*/d' gradle.properties
 
 	export ANDROID_HOME
-	export GRADLE_OPTS="-Dorg.gradle.daemon=false -Xmx1536m -Dorg.gradle.java.home=/usr/lib/jvm/java-1.17.0-openjdk-amd64"
+	export GRADLE_OPTS="-Dorg.gradle.daemon=false -Xmx1536m -Dorg.gradle.java.home=/home/builder/.sdkman/candidates/java/current"
 
 	$NEOTERM_PKG_TMPDIR/gradle/gradle-$_GRADLE_VERSION/bin/gradle \
 		:app:assembleRelease
