@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e -u
 
-CONTAINER=juic3b0x-package-builder
+CONTAINER=neoterm-package-builder
 IMAGE=ghcr.io/juic3b0x/package-builder
 
 docker pull $IMAGE
