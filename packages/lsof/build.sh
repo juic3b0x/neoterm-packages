@@ -9,10 +9,7 @@ NEOTERM_PKG_SHA256=b9c56468b927d9691ab168c0b1e9f8f1f835694a35ff898c549d383bd8d09
 NEOTERM_PKG_AUTO_UPDATE=true
 NEOTERM_PKG_DEPENDS="libandroid-support, libtirpc"
 NEOTERM_PKG_BUILD_IN_SRC=true
-NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="
---with-libtirpc
---with-selinux=no
-"
+NEOTERM_PKG_EXTRA_CONFIGURE_ARGS="--with-libtirpc --with-selinux=no"
 
 neoterm_step_pre_configure() {
 	autoreconf -fiv
