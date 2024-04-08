@@ -20,9 +20,6 @@ jobs:
       matrix:
         arch:
           - aarch64
-          - arm
-          - i686
-          - x86_64
     if: github.repository == 'juic3b0x/neoterm-packages'
     steps:
       - name: Git clone
@@ -64,7 +61,7 @@ jobs:
           git push --tags
           echo "tag_name=$new_tag" >> $GITHUB_OUTPUT
       - name: Publish bootstrap zips to GitHub release
-        uses: neoterm/upload-release-action@v4.1.0
+        uses: termux/upload-release-action@v4.1.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: "*.zip"
