@@ -4,7 +4,7 @@
     "name": "neoterm-main",
     "distribution": "stable",
     "component": "main",
-    "url": "https://repo.theworkjoy.com/apt/neoterm-main"
+    "url": "http://repo.theworkjoy.com.s3-website.us-east-2.amazonaws.com"
   },
   "root-packages": {
     "name": "neoterm-root",
