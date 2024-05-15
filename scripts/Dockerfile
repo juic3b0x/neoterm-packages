@@ -15,7 +15,7 @@ RUN mkdir /tmp/build
 COPY ./build/neoterm_download.sh /tmp/build/
 
 # Setup needed packages and the Android SDK and NDK and the CGCT:
-RUN apt-get update && \
+RUN unset JAVA_HOME && apt-get update && \
 	apt-get -yq upgrade && \
 	apt-get install -yq sudo lsb-release software-properties-common && \
 	useradd -u 1001 -U -m -s /bin/bash builder && \
