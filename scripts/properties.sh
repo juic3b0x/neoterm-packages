@@ -18,7 +18,7 @@ NEOTERM_NDK_VERSION=$NEOTERM_NDK_VERSION_NUM$NEOTERM_NDK_REVISION
 # and update SHA256 sums in scripts/setup-android-sdk.sh
 # check all packages build and run correctly and bump if needed
 
-: "${NEOTERM_JAVA_HOME:=/home/builder/.sdkman/candidates/java/current}"
+: "${NEOTERM_JAVA_HOME:=/usr/lib/jvm/java-17-openjdk-amd64}"
 export JAVA_HOME=${NEOTERM_JAVA_HOME}
 
 if [ "${NEOTERM_PACKAGES_OFFLINE-false}" = "true" ]; then
