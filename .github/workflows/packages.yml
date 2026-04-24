@@ -49,7 +49,7 @@ jobs:
       with:
         targets: aarch64
     - name: Clone repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         fetch-depth: 1000
     - name: Gather build summary
@@ -280,7 +280,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Clone repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Get *.deb files
       uses: actions/download-artifact@v4
       with:
