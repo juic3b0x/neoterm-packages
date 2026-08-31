@@ -22,7 +22,7 @@ jobs:
     if: github.repository == 'juic3b0x/neoterm-packages'
     steps:
     - name: Clone repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
     - name: Build
       run: |
         cd ./scripts

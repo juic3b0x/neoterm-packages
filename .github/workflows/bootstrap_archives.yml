@@ -23,7 +23,7 @@ jobs:
     if: github.repository == 'juic3b0x/neoterm-packages'
     steps:
       - name: Git clone
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Create bootstrap archive
         run: ./scripts/generate-bootstraps.sh --architectures ${{ matrix.arch }}
       - name: Store artifacts
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Fetch bootstrap archives
